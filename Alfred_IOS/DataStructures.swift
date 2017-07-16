@@ -23,20 +23,22 @@ class LogFileData {
 
 class LightData {
     
-    var lightID: String?
-    var name: String?
+    var lightID: Int?
+    var lightName: String?
     var onoff: String?
-    var brightness: String?
-    var x: String?
-    var y: String?
+    var brightness: Int?
+    var x: Double?
+    var y: Double?
+    var type: String?
     
     init(json: NSDictionary) {
-        self.lightID = json["lightID"] as? String
-        self.name = json["name"] as? String
+        self.lightID = json["lightID"] as? Int
+        self.lightName = json["lightName"] as? String
         self.onoff = json["onoff"] as? String
-        self.brightness = json["brightness"] as? String
-        self.x = json["x"] as? String
-        self.y = json["y"] as? String
+        self.brightness = json["brightness"] as? Int
+        self.x = json["x"] as? Double
+        self.y = json["y"] as? Double
+        self.type = json["type"] as? String
     }
 }
 

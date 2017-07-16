@@ -89,11 +89,24 @@ class SunsetViewController: UIViewController, UITableViewDataSource, UITableView
                             // Setup the lights
                             let lightsData = eveningData["lights"] as! [NSDictionary]
                             for item in lightsData {
-                                self.lightData.append(LightData(json: item))
+                                
+                                let jsonObject: [String: Any] = [
+                                    "lightID": item["lightID"]!,
+                                    "lightName": item["lightName"]!,
+                                    "onoff": item["onoff"]!,
+                                    "brightness": item["brightness"]!,
+                                    "x": item["x"]!,
+                                    "y": item["y"]!
+                                ]
+                                
+                                self.lightData.append(LightData(json: jsonObject as NSDictionary))
                             }
+                            
                             DispatchQueue.main.async() {
+                                self.LightTableView.separatorColor = UIColor.clear
                                 self.LightTableView.reloadData() // Refresh the table view
                             }
+                            
                             //EZLoadingActivity.hide(true, animated: true) // Hide loading msg
                         }
                     } else {
@@ -117,16 +130,20 @@ class SunsetViewController: UIViewController, UITableViewDataSource, UITableView
         return lightData.count
     }
     
-    
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LightTableViewCell") as! LightTableViewCell
         let row = indexPath.row
-        
-        cell.LightNameLabel.text = "Light"
-        cell.LightIDLabel.text = lightData[row].lightID
-
-        
+    
+        cell.LightIDLabel.text = String(describing: lightData[row].lightID)
+        cell.LightNameLabel.text = lightData[row].lightName
+        cell.LightIDLabel.text = String(describing: lightData[row].lightID)
+        if lightData[row].onoff == "on" {
+            cell.onOffSwitch.setOn(true, animated:true)
+        } else {
+            cell.onOffSwitch.setOn(false, animated:true)
+        }
+        cell.LightBrightnessSlider.setValue(Float(lightData[row].brightness!), animated: true)
         
         return cell
     }
