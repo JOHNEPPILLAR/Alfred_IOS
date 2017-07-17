@@ -59,6 +59,7 @@ class LogTableViewController: UITableViewController {
                             self.logFileData.append(LogFileData(json: item))
                         }
                         
+                        // Update the UI
                         DispatchQueue.main.async() {
                             self.tableView.reloadData() // Refresh the table view
                             //if firstLoad {
@@ -92,7 +93,6 @@ class LogTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "LogFileTableViewCell") as! LogFileTableViewCell
-
         let row = indexPath.row
 
         if logFileData[row].level == "info" {
@@ -114,7 +114,5 @@ class LogTableViewController: UITableViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+    }    
 }

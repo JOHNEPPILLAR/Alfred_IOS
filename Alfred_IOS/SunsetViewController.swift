@@ -42,7 +42,10 @@ class SunsetViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //EZLoadingActivity.show("Loading...", disableUI: false) // Show loading msg
+        // Add save button to navigation bar
+        let saveButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(saveSettingsAction(sender:)))
+        navigationItem.rightBarButtonItem = saveButton
+        
         self.getLogData() // Get sunset configuration info from Alfred
     }
 
@@ -52,6 +55,7 @@ class SunsetViewController: UIViewController, UITableViewDataSource, UITableView
     
     //MARK: Private Methods
     func getLogData() {
+        
         let url = URL(string: logURL)
         
         URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
@@ -98,16 +102,15 @@ class SunsetViewController: UIViewController, UITableViewDataSource, UITableView
                                     "x": item["x"]!,
                                     "y": item["y"]!
                                 ]
-                                
                                 self.lightData.append(LightData(json: jsonObject as NSDictionary))
                             }
                             
+                            // Update the UI
                             DispatchQueue.main.async() {
-                                self.LightTableView.separatorColor = UIColor.clear
+                                //self.LightTableView.separatorColor = UIColor.darkGray
                                 self.LightTableView.reloadData() // Refresh the table view
                             }
                             
-                            //EZLoadingActivity.hide(true, animated: true) // Hide loading msg
                         }
                     } else {
                         let alertController = UIAlertController(title: "Alfred", message:
@@ -135,9 +138,8 @@ class SunsetViewController: UIViewController, UITableViewDataSource, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "LightTableViewCell") as! LightTableViewCell
         let row = indexPath.row
     
-        cell.LightIDLabel.text = String(describing: lightData[row].lightID)
         cell.LightNameLabel.text = lightData[row].lightName
-        cell.LightIDLabel.text = String(describing: lightData[row].lightID)
+        cell.LightIDLabel.text = "\(lightData[row].lightID)"
         if lightData[row].onoff == "on" {
             cell.onOffSwitch.setOn(true, animated:true)
         } else {
@@ -147,4 +149,10 @@ class SunsetViewController: UIViewController, UITableViewDataSource, UITableView
         
         return cell
     }
+    
+    func saveSettingsAction(sender: UIBarButtonItem)
+    {
+        print("saveing...")
+    }
+    
 }
