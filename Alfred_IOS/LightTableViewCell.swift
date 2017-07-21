@@ -18,6 +18,10 @@ class LightTableViewCell: UITableViewCell {
     
     @IBOutlet weak var LightBrightnessSlider: UISlider!
     
+    @IBOutlet weak var yLabel: UILabel!
+    
+    @IBOutlet weak var xLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
