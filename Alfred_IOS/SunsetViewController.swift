@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class SunsetViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var lightData = [LightData]()
+    var eveningData = [Evening]()
     
     @IBOutlet weak var LightTableView: UITableView!
     
@@ -18,24 +19,28 @@ class SunsetViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var offsetHRStepper: UIStepper!
     @IBAction func offsetHRStepper(_ sender: UIStepper) {
         offsetHRLabel.text = Int(sender.value).description
+        eveningData[0].offsetHr = Int(sender.value)
     }
     
     @IBOutlet weak var offsetMINLabel: UILabel!
     @IBOutlet weak var offsetMINStepper: UIStepper!
     @IBAction func offsetMINStepper(_ sender: UIStepper) {
         offsetMINLabel.text = Int(sender.value).description
+        eveningData[0].offsetMin = Int(sender.value)
     }
     
     @IBOutlet weak var turnoffHRLabel: UILabel!
     @IBOutlet weak var turnoffHRStepper: UIStepper!
     @IBAction func turnoffHRStepper(_ sender: UIStepper) {
         turnoffHRLabel.text = Int(sender.value).description
+        eveningData[0].offHr = Int(sender.value)
     }
     
     @IBOutlet weak var turnoffMINLabel: UILabel!
     @IBOutlet weak var turnoffMINStepper: UIStepper!
     @IBAction func turnoffMINStepper(_ sender: UIStepper) {
         turnoffMINLabel.text = Int(sender.value).description
+        eveningData[0].offMin = Int(sender.value)
     }
     
     override func viewDidLoad() {
@@ -68,58 +73,38 @@ class SunsetViewController: UIViewController, UITableViewDataSource, UITableView
                 self.present(alertController, animated: true, completion: nil)
             } else {
                 guard let data = data, error == nil else { return }
-                do {
-                    let jsonObj = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any]
-                    let apiStatus = jsonObj?["code"] as? String
-                    if apiStatus == "sucess" {
-                        
+                let json = JSON(data: data)
+                let apiStatus = json["code"]
+                let apiStatusString = apiStatus.string!
+                    
+                if apiStatusString == "sucess" {
+
+                    // Save json to custom classes
+                    let jsonData = json["data"]["evening"]
+                    self.eveningData = [Evening(json: jsonData)]
+                    
+                    DispatchQueue.main.async() {
+                            
+                        // Setup the offset and off timer settings
+                        self.offsetHRLabel.text = String(self.eveningData[0].offsetHr!)
+                        self.offsetHRStepper.value = Double(self.eveningData[0].offsetHr!)
+ 
+                        self.offsetMINLabel.text = String(self.eveningData[0].offsetMin!)
+                        self.offsetMINStepper.value = Double(self.eveningData[0].offsetMin!)
+                            
+                        self.turnoffHRLabel.text = String(self.eveningData[0].offHr!)
+                        self.turnoffHRStepper.value = Double(self.eveningData[0].offHr!)
+                            
+                        self.turnoffMINLabel.text = String(self.eveningData[0].offMin!)
+                        self.turnoffMINStepper.value = Double(self.eveningData[0].offMin!)
+                            
+                        // Update the UI
                         DispatchQueue.main.async() {
-                            
-                            let apiData = jsonObj?["data"] as! [String: Any]
-                            let eveningData = apiData["evening"] as! [String: Any]
-                            
-                            // Setup the offset and off timer settings
-                            self.offsetHRLabel.text = String(eveningData["offset_hr"] as! Int)
-                            self.offsetHRStepper.value = Double(eveningData["offset_hr"] as! Int)
-                            
-                            self.offsetMINLabel.text = String(eveningData["offset_min"] as! Int)
-                            self.offsetMINStepper.value = Double(eveningData["off_min"] as! Int)
-                            
-                            self.turnoffHRLabel.text = String(eveningData["off_hr"] as! Int)
-                            self.turnoffHRStepper.value = Double(eveningData["off_hr"] as! Int)
-                            
-                            self.turnoffMINLabel.text = String(eveningData["off_min"] as! Int)
-                            self.turnoffMINStepper.value = Double(eveningData["off_min"] as! Int)
-                            
-                            // Setup the lights
-                            let lightsData = eveningData["lights"] as! [NSDictionary]
-                            for item in lightsData {
-                                
-                                let jsonObject: [String: Any] = [
-                                    "lightID": item["lightID"]!,
-                                    "lightName": item["lightName"]!,
-                                    "onoff": item["onoff"]!,
-                                    "brightness": item["brightness"]!,
-                                    "x": item["x"]!,
-                                    "y": item["y"]!,
-                                    "type": item["type"]!
-                                ]
-                                self.lightData.append(LightData(json: jsonObject as NSDictionary))
-                            }
-                            
-                            // Update the UI
-                            DispatchQueue.main.async() {
-                                self.LightTableView.reloadData() // Refresh the table view
-                            }
-                            
+                            self.LightTableView.reloadData() // Refresh the table view
                         }
-                    } else {
-                        let alertController = UIAlertController(title: "Alfred", message:
-                            "Unable to retrieve settings. Please try again.", preferredStyle: UIAlertControllerStyle.alert)
-                        alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
-                        self.present(alertController, animated: true, completion: nil)
+                        
                     }
-                } catch {
+                } else {
                     let alertController = UIAlertController(title: "Alfred", message:
                         "Unable to retrieve settings. Please try again.", preferredStyle: UIAlertControllerStyle.alert)
                     alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
@@ -131,7 +116,11 @@ class SunsetViewController: UIViewController, UITableViewDataSource, UITableView
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return lightData.count
+        if (eveningData.count) > 0 {
+            return (eveningData[0].lights?.count)!
+        } else {
+            return 0
+        }
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
@@ -139,34 +128,40 @@ class SunsetViewController: UIViewController, UITableViewDataSource, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "LightTableViewCell") as! LightTableViewCell
         let row = indexPath.row
         
-        cell.LightNameLabel.text = lightData[row].lightName
-        if lightData[row].onoff == "on" {
+        cell.LightNameLabel.text = eveningData[0].lights?[row].lightName
+        if eveningData[0].lights?[row].onoff == "on" {
             cell.onOffSwitch.setOn(true, animated:true)
         } else {
             cell.onOffSwitch.setOn(false, animated:true)
         }
-        cell.LightBrightnessSlider.setValue(Float(lightData[row].brightness!), animated: true)
-        cell.xLabel.text = String(describing: lightData[row].x)
-        cell.yLabel.text = String(describing: lightData[row].y)
+        cell.LightBrightnessSlider.setValue(Float((eveningData[0].lights?[row].brightness)!), animated: true)
+        cell.xLabel.text = String(describing: eveningData[0].lights?[row].x)
+        cell.yLabel.text = String(describing: eveningData[0].lights?[row].y)
         
         return cell
     }
     
+
     func saveSettingsAction(sender: UIBarButtonItem)
     {
+        
+        // Disable the save button
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
+        
+        EZLoadingActivity.show("Saving data...", disableUI: false) // Show loading msg
         
         //  Update table data array with UI changes
         var i = 0
         for cell in LightTableView.visibleCells {
             if let customCell = cell as? LightTableViewCell {
                 if customCell.onOffSwitch.isOn {
-                    lightData[i].onoff = "on"
+                    eveningData[0].lights?[i].onoff = "on"
                 } else {
-                    lightData[i].onoff = "off"
+                    eveningData[0].lights?[i].onoff = "off"
                 }
-                lightData[i].brightness = Int(customCell.LightBrightnessSlider.value)
-                lightData[i].x = Double(customCell.xLabel.text!)
-                lightData[i].y = Double(customCell.yLabel.text!)
+                eveningData[0].lights?[i].brightness = Int(customCell.LightBrightnessSlider.value)
+                eveningData[0].lights?[i].x = Int(customCell.xLabel.text!)
+                eveningData[0].lights?[i].y = Int(customCell.yLabel.text!)
             }
             i += 1
         }
@@ -176,43 +171,50 @@ class SunsetViewController: UIViewController, UITableViewDataSource, UITableView
         let AlfredAppKey = Bundle.main.infoDictionary!["AlfredAppKey"] as! String
         let url = URL(string: AlfredBaseURL + "savesettings" + AlfredAppKey)
         
-        i = 0
-        let evening = [
-            "evening": [
-                "offset_hr": self.offsetHRLabel.text!,
-                "offset_min": self.offsetMINLabel.text!,
-                "off_hr": self.turnoffHRLabel.text!,
-                "off_min": self.turnoffMINLabel.text!,
-                "lights": [
-                    "lightID": lightData[i].lightID!,
-                    "onoff": "on",
-                    "brightness": lightData[i].brightness!,
-                    "x": lightData[i].x!,
-                    "y": lightData[i].y!,
-                    "type" : lightData[i].type!
-                ],
-            ],
-            ] as [String: Any]
-        
         var request = URLRequest(url: url!)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.httpBody = try! JSONSerialization.data(withJSONObject: evening, options: [])
+        request.httpBody = try! JSONSerialization.data(withJSONObject: eveningData[0].dictionaryRepresentation(), options: [])
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else { // check for fundamental networking error
-                print("error=(error)")
+            // Update the UI
+            DispatchQueue.main.async() {
+
+                EZLoadingActivity.hide(true, animated: true) // Hide loading msg
                 
-                let alertController = UIAlertController(title: "Alfred", message:
-                    "Unable to save settings. Please try again.", preferredStyle: UIAlertControllerStyle.alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
-                self.present(alertController, animated: true, completion: nil)
+                guard let data = data, error == nil else { // check for fundamental networking error
+                    print("save data error: " + error.debugDescription)
                 
-                return
+                    let alertController = UIAlertController(title: "Alfred", message:
+                        "Unable to save settings. Please try again.", preferredStyle: UIAlertControllerStyle.alert)
+                    alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
+                    self.present(alertController, animated: true, completion: nil)
+                
+                    // Re enable the save button
+                    self.navigationItem.rightBarButtonItem?.isEnabled = true
+
+                    return
+                }
+                let json = JSON(data: data)
+                let apiStatus = json["code"]
+                let apiStatusString = apiStatus.string!
+            
+                if apiStatusString == "sucess" {
+                    let alertController = UIAlertController(title: "Alfred", message:
+                        "Settings saved.", preferredStyle: UIAlertControllerStyle.alert)
+                    alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
+                    self.present(alertController, animated: true, completion: nil)
+                } else {
+                    let alertController = UIAlertController(title: "Alfred", message:
+                        "Unable to save settings. Please try again.", preferredStyle: UIAlertControllerStyle.alert)
+                    alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            
+                // Re enable the save button
+                self.navigationItem.rightBarButtonItem?.isEnabled = true
             }
-            let responseString = String(data: data, encoding: .utf8)
-            dump(responseString)
         }
         task.resume()
     }

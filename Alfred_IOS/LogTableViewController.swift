@@ -7,14 +7,14 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class LogTableViewController: UITableViewController {
 
     @IBOutlet weak var LogTableView: UITableView!
     
-    var logFileData = [LogFileData]()
+    var logs = [Logs]()
     var viewPage = 1 as Int
-    let logURL = "http://johneppillar.synology.me:3978/displaylog?app_key=631dd7b4-62bf-4dbe-93be-7eef30922bc4" as String
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,14 +26,16 @@ class LogTableViewController: UITableViewController {
 
     //MARK: Private Methods
     func getLogData(firstLoad: Bool) {
+        let AlfredBaseURL = Bundle.main.infoDictionary!["AlfredBaseURL"] as! String
+        let AlfredAppKey = Bundle.main.infoDictionary!["AlfredAppKey"] as! String
         var tmpURL = "" as String
         if firstLoad {
-            tmpURL = logURL + "&reverse=true"
+            tmpURL = "&reverse=true"
         } else {
-            tmpURL = logURL + "&page=" + String(viewPage)
+            tmpURL = "&page=" + String(viewPage)
         }
-        let url = URL(string: tmpURL)
-        
+        let url = URL(string: AlfredBaseURL + "displaylog" + AlfredAppKey + tmpURL)
+     
         URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
             if error != nil {
                 print ("Log File - Unable to get data")
@@ -42,37 +44,29 @@ class LogTableViewController: UITableViewController {
                 alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
                 self.present(alertController, animated: true, completion: nil)
             } else {
-                guard let data = data, error == nil else { return }
-                do {
-                    let jsonObj = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! NSDictionary
-                    let apiStatus = jsonObj["code"] as? String
+                let data = data
+                let json = JSON(data: data!)
+                let apiStatus = json["code"]
+                let apiStatusString = apiStatus.string!
                 
-                    if apiStatus == "sucess" {
-                        
-                        let json = try JSONSerialization.jsonObject(with: data) as! [String: Any]
-                        let jsonData = json["data"] as! [String:Any]
-                        let logData = jsonData["logs"] as! [NSDictionary]
+                if apiStatusString == "sucess" {
                     
-                        self.viewPage = jsonData["currentpage"] as! Int
-                    
-                        for item in logData {
-                            self.logFileData.append(LogFileData(json: item))
-                        }
+                    let logData = json["data"]
+                    let currentpagejson = logData["currentpage"]
+                    self.viewPage = currentpagejson.int!
                         
-                        // Update the UI
-                        DispatchQueue.main.async() {
-                            self.tableView.reloadData() // Refresh the table view
-                            //if firstLoad {
-                            //    EZLoadingActivity.hide(true, animated: true) // Hide loading msg
-                            //}
-                        }
-                    } else {
-                        let alertController = UIAlertController(title: "Alfred", message:
-                            "Unable to retrieve log data. Please try again.", preferredStyle: UIAlertControllerStyle.alert)
-                        alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
-                        self.present(alertController, animated: true, completion: nil)
+                    for item in logData["logs"] {
+                        self.logs.append(Logs(json: item.1))
                     }
-                } catch {
+                    
+                    // Update the UI
+                    DispatchQueue.main.async() {
+                        self.tableView.reloadData() // Refresh the table view
+                        //if firstLoad {
+                        //    EZLoadingActivity.hide(true, animated: true) // Hide loading msg
+                        //}
+                    }
+                } else {
                     let alertController = UIAlertController(title: "Alfred", message:
                         "Unable to retrieve log data. Please try again.", preferredStyle: UIAlertControllerStyle.alert)
                     alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
@@ -87,7 +81,7 @@ class LogTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return logFileData.count
+        return logs.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -95,15 +89,15 @@ class LogTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LogFileTableViewCell") as! LogFileTableViewCell
         let row = indexPath.row
 
-        if logFileData[row].level == "info" {
+        if logs[row].level == "info" {
             cell.infoImage.image = UIImage(named: "Information-icon.png")
         } else {
             cell.infoImage.image = UIImage(named: "error-icon.png")
         }
-        cell.messagelabel.text = logFileData[row].message
-        cell.datelabel.text = logFileData[row].timestamp
+        cell.messagelabel.text = logs[row].message
+        cell.datelabel.text = logs[row].timestamp
         
-        if indexPath.row == logFileData.count - 1 { // if last cell check if there is more data to load
+        if indexPath.row == logs.count - 1 { // if last cell check if there is more data to load
             if viewPage > 1 {
                 self.viewPage -= 1
                 getLogData(firstLoad: false) // Load more data

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class SettingsViewController: UIViewController {
     
@@ -25,12 +26,12 @@ class SettingsViewController: UIViewController {
         }))
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         self.present(alertController, animated: true, completion: nil)
-}
+    }
     
     func DelAflredLog() {
-        let AlfredURL = "http://johneppillar.synology.me:3978/ping?app_key=631dd7b4-62bf-4dbe-93be-7eef30922bc4";
-        
-        let url = URL(string: AlfredURL)
+        let AlfredBaseURL = Bundle.main.infoDictionary!["AlfredBaseURL"] as! String
+        let AlfredAppKey = Bundle.main.infoDictionary!["AlfredAppKey"] as! String
+        let url = URL(string: AlfredBaseURL + "ping" + AlfredAppKey)
         
         URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
             if error != nil {
@@ -41,26 +42,18 @@ class SettingsViewController: UIViewController {
             }
             
             guard let data = data, error == nil else { return }
-            do {
-                let jsonObj = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! NSDictionary
-                
-                let pingStatus = jsonObj["data"] as? String
-                
-                if pingStatus == "sucess." {
-                    let alertController = UIAlertController(title: "Alfred", message:
-                        "Alfred's log file was sucesfully cleared.", preferredStyle: UIAlertControllerStyle.alert)
-                    alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
-                    self.present(alertController, animated: true, completion: nil)
-                } else {
-                    let alertController = UIAlertController(title: "Alfred", message:
-                        "There was a problem clearing the flog file. Please try again.", preferredStyle: UIAlertControllerStyle.alert)
-                    alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
-                    self.present(alertController, animated: true, completion: nil)
-                }
-            } catch {
-                print(error)
+            let json = JSON(data: data)
+            let apiStatus = json["code"]
+            let apiStatusString = apiStatus.string!
+            
+            if apiStatusString == "sucess" {
                 let alertController = UIAlertController(title: "Alfred", message:
-                    error.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
+                    "Alfred's log file was sucesfully cleared.", preferredStyle: UIAlertControllerStyle.alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
+                self.present(alertController, animated: true, completion: nil)
+            } else {
+                let alertController = UIAlertController(title: "Alfred", message:
+                    "There was a problem clearing the flog file. Please try again.", preferredStyle: UIAlertControllerStyle.alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
                 self.present(alertController, animated: true, completion: nil)
             }

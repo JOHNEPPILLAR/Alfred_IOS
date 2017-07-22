@@ -7,12 +7,10 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class ViewController: UIViewController {
 
-    //let app_key = "631dd7b4-62bf-4dbe-93be-7eef30922bc4";
-    var ping_URL = "http://johneppillar.synology.me:3978/ping?app_key=631dd7b4-62bf-4dbe-93be-7eef30922bc4";
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,10 +23,11 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
     
     func ping_Aflred_DI() {
-        let url = URL(string: ping_URL)
+        let AlfredBaseURL = Bundle.main.infoDictionary!["AlfredBaseURL"] as! String
+        let AlfredAppKey = Bundle.main.infoDictionary!["AlfredAppKey"] as! String
+        let url = URL(string: AlfredBaseURL + "ping" + AlfredAppKey)
         
         URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
             if error != nil {
@@ -41,28 +40,21 @@ class ViewController: UIViewController {
             }
             
             guard let data = data, error == nil else { return }
-            do {
-                let jsonObj = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! NSDictionary
+            let json = JSON(data: data)
+            let pingStatus = json["code"]
+            let pingStatusString = pingStatus.string!
                 
-                let pingStatus = jsonObj["data"] as? String
-                
-                if pingStatus == "sucess." {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
-                        self.performSegue(withIdentifier: "home", sender: self)
-                    })
-                } else {
-                    print ("Start up - Ping status returned not a sucess")
-                    let alertController = UIAlertController(title: "Alfred", message:
-                        "Unable to connect to Alfred. Close the app and try again.", preferredStyle: UIAlertControllerStyle.alert)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: {
-                        self.present(alertController, animated: true, completion: nil)
-                    })
-                }
-            } catch {
-                print(error)
+            if pingStatusString == "sucess" {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
+                    self.performSegue(withIdentifier: "home", sender: self)
+                })
+            } else {
+                print ("Start up - Ping status returned not a sucess")
                 let alertController = UIAlertController(title: "Alfred", message:
-                        error.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
-                self.present(alertController, animated: true, completion: nil)
+                    "Unable to connect to Alfred. Close the app and try again.", preferredStyle: UIAlertControllerStyle.alert)
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: {
+                    self.present(alertController, animated: true, completion: nil)
+                })
             }
         }).resume()
     }
