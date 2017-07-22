@@ -113,7 +113,7 @@ class SunsetViewController: UIViewController, UITableViewDataSource, UITableView
                             
                         self.turnoffMINLabel.text = String(self.eveningData[0].offMin!)
                         self.turnoffMINStepper.value = Double(self.eveningData[0].offMin!)
-
+                        
                         // Enable UI controls
                         self.offsetHRStepper.isEnabled = true
                         self.offsetMINStepper.isEnabled = true
@@ -161,8 +161,6 @@ class SunsetViewController: UIViewController, UITableViewDataSource, UITableView
             cell.onOffSwitch.setOn(false, animated:true)
         }
         cell.LightBrightnessSlider.setValue(Float((eveningData[0].lights?[row].brightness)!), animated: true)
-        cell.xLabel.text = String(describing: eveningData[0].lights?[row].x)
-        cell.yLabel.text = String(describing: eveningData[0].lights?[row].y)
         
         return cell
     }
@@ -184,8 +182,6 @@ class SunsetViewController: UIViewController, UITableViewDataSource, UITableView
                     eveningData[0].lights?[i].onoff = "off"
                 }
                 eveningData[0].lights?[i].brightness = Int(customCell.LightBrightnessSlider.value)
-                eveningData[0].lights?[i].x = Int(customCell.xLabel.text!)
-                eveningData[0].lights?[i].y = Int(customCell.yLabel.text!)
             }
             i += 1
         }

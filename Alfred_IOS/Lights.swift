@@ -27,8 +27,8 @@ public final class Lights: NSCoding {
     public var lightName: String?
     public var brightness: Int?
     public var onoff: String?
-    public var x: Int?
-    public var y: Int?
+    public var x: Double?
+    public var y: Double?
     public var type: String?
     
     // MARK: SwiftyJSON Initializers
@@ -48,8 +48,8 @@ public final class Lights: NSCoding {
         lightName = json[SerializationKeys.lightName].string
         brightness = json[SerializationKeys.brightness].int
         onoff = json[SerializationKeys.onoff].string
-        x = json[SerializationKeys.x].int
-        y = json[SerializationKeys.y].int
+        x = json[SerializationKeys.x].double
+        y = json[SerializationKeys.y].double
         type = json[SerializationKeys.type].string
     }
     
@@ -74,8 +74,8 @@ public final class Lights: NSCoding {
         self.lightName = aDecoder.decodeObject(forKey: SerializationKeys.lightName) as? String
         self.brightness = aDecoder.decodeObject(forKey: SerializationKeys.brightness) as? Int
         self.onoff = aDecoder.decodeObject(forKey: SerializationKeys.onoff) as? String
-        self.x = aDecoder.decodeObject(forKey: SerializationKeys.x) as? Int
-        self.y = aDecoder.decodeObject(forKey: SerializationKeys.y) as? Int
+        self.x = aDecoder.decodeObject(forKey: SerializationKeys.x) as? Double
+        self.y = aDecoder.decodeObject(forKey: SerializationKeys.y) as? Double
         self.type = aDecoder.decodeObject(forKey: SerializationKeys.type) as? String
     }
     
