@@ -69,6 +69,14 @@
 			name = TableCells;
 			sourceTree = "<group>";
 		};
+		0A48AD8A1F2376E7008922C9 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0AF938DC1F1A2A4F00B5B247 /* EZLoadingActivity.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		0A69FB741F10C25B00563A69 = {
 			isa = PBXGroup;
 			children = (
@@ -91,7 +99,8 @@
 		0A69FB7F1F10C25C00563A69 /* Alfred_IOS */ = {
 			isa = PBXGroup;
 			children = (
-				0AF938DE1F1A321900B5B247 /* Helpers */,
+				0A48AD8A1F2376E7008922C9 /* Helpers */,
+				0AF938DE1F1A321900B5B247 /* Data Classes */,
 				0A69FB801F10C25C00563A69 /* AppDelegate.swift */,
 				0A69FB9D1F1160C400563A69 /* View Controlers */,
 				0A69FB841F10C25C00563A69 /* Main.storyboard */,
@@ -114,15 +123,14 @@
 			name = "View Controlers";
 			sourceTree = "<group>";
 		};
-		0AF938DE1F1A321900B5B247 /* Helpers */ = {
+		0AF938DE1F1A321900B5B247 /* Data Classes */ = {
 			isa = PBXGroup;
 			children = (
-				0AF938DC1F1A2A4F00B5B247 /* EZLoadingActivity.swift */,
 				0AFCD86A1F22832000FD1C1C /* Evening.swift */,
 				0AFCD86C1F2283CC00FD1C1C /* Lights.swift */,
 				0AD1C1C21F22928E000D899D /* Logs.swift */,
 			);
-			name = Helpers;
+			name = "Data Classes";
 			sourceTree = "<group>";
 		};
 		17082966A7C3C836DD16EAE4 /* Frameworks */ = {

@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import BRYXBanner
 
 class LogTableViewController: UITableViewController {
 
@@ -19,13 +20,12 @@ class LogTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //EZLoadingActivity.show("Loading...", disableUI: false) // Show loading msg
-        
         self.getLogData(firstLoad: true) // Get log info from Alfred
     }
 
     //MARK: Private Methods
     func getLogData(firstLoad: Bool) {
+
         let AlfredBaseURL = Bundle.main.infoDictionary!["AlfredBaseURL"] as! String
         let AlfredAppKey = Bundle.main.infoDictionary!["AlfredAppKey"] as! String
         var tmpURL = "" as String
@@ -38,12 +38,13 @@ class LogTableViewController: UITableViewController {
      
         URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
             if error != nil {
-                print ("Log File - Unable to get data")
-                let alertController = UIAlertController(title: "Alfred", message:
-                    "Unable to retrieve log data. Please try again.", preferredStyle: UIAlertControllerStyle.alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
-                self.present(alertController, animated: true, completion: nil)
+                
+                let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to retrieve logfile data. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
+                banner.dismissesOnTap = true
+                banner.show()
+
             } else {
+                
                 let data = data
                 let json = JSON(data: data!)
                 let apiStatus = json["code"]
@@ -62,15 +63,17 @@ class LogTableViewController: UITableViewController {
                     // Update the UI
                     DispatchQueue.main.async() {
                         self.tableView.reloadData() // Refresh the table view
-                        //if firstLoad {
-                        //    EZLoadingActivity.hide(true, animated: true) // Hide loading msg
-                        //}
                     }
+
                 } else {
-                    let alertController = UIAlertController(title: "Alfred", message:
-                        "Unable to retrieve log data. Please try again.", preferredStyle: UIAlertControllerStyle.alert)
-                    alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
-                    self.present(alertController, animated: true, completion: nil)
+                    
+                    // Update the UI
+                    DispatchQueue.main.async() {
+                        let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to retrieve logfile data. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
+                        banner.dismissesOnTap = true
+                        banner.show()
+                    }
+                    
                 }
             }
         }).resume()

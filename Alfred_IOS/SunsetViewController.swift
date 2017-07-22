@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import BRYXBanner
 
 class SunsetViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -49,8 +50,16 @@ class SunsetViewController: UIViewController, UITableViewDataSource, UITableView
         // Add save button to navigation bar
         let saveButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(saveSettingsAction(sender:)))
         navigationItem.rightBarButtonItem = saveButton
+
+        // Disable UI controls untill data is loaded
+        navigationItem.rightBarButtonItem?.isEnabled = false
+        self.offsetHRStepper.isEnabled = false
+        self.offsetMINStepper.isEnabled = false
+        self.turnoffHRStepper.isEnabled = false
+        self.turnoffMINStepper.isEnabled = false
         
-        self.getLogData() // Get sunset configuration info from Alfred
+        // Get sunset configuration info from Alfred
+        self.getLogData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -65,13 +74,20 @@ class SunsetViewController: UIViewController, UITableViewDataSource, UITableView
         let url = URL(string: AlfredBaseURL + "settings" + AlfredAppKey)
         
         URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
+            
             if error != nil {
-                print ("Sunset - Unable to get data")
-                let alertController = UIAlertController(title: "Alfred", message:
-                    "Unable to retrieve settings. Please try again.", preferredStyle: UIAlertControllerStyle.alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
-                self.present(alertController, animated: true, completion: nil)
+            
+                // Update the UI
+                DispatchQueue.main.async() {
+
+                    let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to retrieve settings. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
+                    banner.dismissesOnTap = true
+                    banner.show()
+
+                }
+                
             } else {
+                
                 guard let data = data, error == nil else { return }
                 let json = JSON(data: data)
                 let apiStatus = json["code"]
@@ -97,18 +113,28 @@ class SunsetViewController: UIViewController, UITableViewDataSource, UITableView
                             
                         self.turnoffMINLabel.text = String(self.eveningData[0].offMin!)
                         self.turnoffMINStepper.value = Double(self.eveningData[0].offMin!)
-                            
-                        // Update the UI
-                        DispatchQueue.main.async() {
-                            self.LightTableView.reloadData() // Refresh the table view
-                        }
+
+                        // Enable UI controls
+                        self.offsetHRStepper.isEnabled = true
+                        self.offsetMINStepper.isEnabled = true
+                        self.turnoffHRStepper.isEnabled = true
+                        self.turnoffMINStepper.isEnabled = true
+                        self.navigationItem.rightBarButtonItem?.isEnabled = true
+                        
+                        // Refresh the table view
+                        self.LightTableView.reloadData()
                         
                     }
                 } else {
-                    let alertController = UIAlertController(title: "Alfred", message:
-                        "Unable to retrieve settings. Please try again.", preferredStyle: UIAlertControllerStyle.alert)
-                    alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
-                    self.present(alertController, animated: true, completion: nil)
+
+                    // Update the UI
+                    DispatchQueue.main.async() {
+                    
+                        let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to retrieve settings. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
+                        banner.dismissesOnTap = true
+                        banner.show()
+                        
+                    }
                 }
             }
         }).resume()
@@ -148,8 +174,6 @@ class SunsetViewController: UIViewController, UITableViewDataSource, UITableView
         // Disable the save button
         self.navigationItem.rightBarButtonItem?.isEnabled = false
         
-        EZLoadingActivity.show("Saving data...", disableUI: false) // Show loading msg
-        
         //  Update table data array with UI changes
         var i = 0
         for cell in LightTableView.visibleCells {
@@ -178,40 +202,41 @@ class SunsetViewController: UIViewController, UITableViewDataSource, UITableView
         request.httpBody = try! JSONSerialization.data(withJSONObject: eveningData[0].dictionaryRepresentation(), options: [])
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            
             // Update the UI
             DispatchQueue.main.async() {
 
-                EZLoadingActivity.hide(true, animated: true) // Hide loading msg
-                
-                guard let data = data, error == nil else { // check for fundamental networking error
+                guard let data = data, error == nil else { // Check for fundamental networking error
                     print("save data error: " + error.debugDescription)
                 
-                    let alertController = UIAlertController(title: "Alfred", message:
-                        "Unable to save settings. Please try again.", preferredStyle: UIAlertControllerStyle.alert)
-                    alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
-                    self.present(alertController, animated: true, completion: nil)
+                    let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to save data. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
+                    banner.dismissesOnTap = true
+                    banner.show()
                 
                     // Re enable the save button
                     self.navigationItem.rightBarButtonItem?.isEnabled = true
 
                     return
                 }
+
                 let json = JSON(data: data)
                 let apiStatus = json["code"]
                 let apiStatusString = apiStatus.string!
             
                 if apiStatusString == "sucess" {
-                    let alertController = UIAlertController(title: "Alfred", message:
-                        "Settings saved.", preferredStyle: UIAlertControllerStyle.alert)
-                    alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
-                    self.present(alertController, animated: true, completion: nil)
+                
+                    let banner = Banner(title: "Alfred API Notification", subtitle: "Saved.", backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
+                    banner.dismissesOnTap = true
+                    banner.show(duration: 3.0)
+
                 } else {
-                    let alertController = UIAlertController(title: "Alfred", message:
-                        "Unable to save settings. Please try again.", preferredStyle: UIAlertControllerStyle.alert)
-                    alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
-                    self.present(alertController, animated: true, completion: nil)
+
+                    let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to save data. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
+                    banner.dismissesOnTap = true
+                    banner.show()
+
                 }
-            
+
                 // Re enable the save button
                 self.navigationItem.rightBarButtonItem?.isEnabled = true
             }
