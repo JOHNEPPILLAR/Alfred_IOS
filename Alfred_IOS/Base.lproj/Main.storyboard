@@ -256,10 +256,19 @@
                                                     <rect key="frame" x="6" y="35" width="331" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </slider>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aqC-Bl-RqJ" userLabel="ColorButton" customClass="RoundButton" customModule="Alfred_IOS" customModuleProvider="target">
+                                                    <rect key="frame" x="225" y="4" width="46" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="ColorButton" destination="aqC-Bl-RqJ" id="FxC-f0-TrK"/>
                                             <outlet property="LightBrightnessSlider" destination="OOU-wE-N1I" id="WUS-b6-UfW"/>
                                             <outlet property="LightNameLabel" destination="Yay-zt-oIJ" id="tk0-uL-sIh"/>
                                             <outlet property="onOffSwitch" destination="VQW-NY-CeT" id="RA7-hR-6fO"/>

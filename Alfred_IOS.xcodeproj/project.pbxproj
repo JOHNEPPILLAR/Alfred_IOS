@@ -11,6 +11,7 @@
 		0A12B4AB1F193B470012B619 /* SunsetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A12B4AA1F193B470012B619 /* SunsetViewController.swift */; };
 		0A3B4E7F1F169D500072587A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3B4E7E1F169D500072587A /* SettingsViewController.swift */; };
 		0A420E4A1F140D0500BD2713 /* LogFileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A420E491F140D0500BD2713 /* LogFileTableViewCell.swift */; };
+		0A48AD8C1F23DB06008922C9 /* PhilipsHueColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A48AD8B1F23DB06008922C9 /* PhilipsHueColors.swift */; };
 		0A69FB811F10C25C00563A69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A69FB801F10C25C00563A69 /* AppDelegate.swift */; };
 		0A69FB861F10C25C00563A69 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A69FB841F10C25C00563A69 /* Main.storyboard */; };
 		0A69FB891F10C25C00563A69 /* Alfred_IOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0A69FB871F10C25C00563A69 /* Alfred_IOS.xcdatamodeld */; };
@@ -30,6 +31,7 @@
 		0A12B4AA1F193B470012B619 /* SunsetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SunsetViewController.swift; sourceTree = "<group>"; };
 		0A3B4E7E1F169D500072587A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0A420E491F140D0500BD2713 /* LogFileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogFileTableViewCell.swift; path = Alfred_IOS/LogFileTableViewCell.swift; sourceTree = "<group>"; };
+		0A48AD8B1F23DB06008922C9 /* PhilipsHueColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhilipsHueColors.swift; sourceTree = "<group>"; };
 		0A69FB7D1F10C25C00563A69 /* Alfred_IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alfred_IOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A69FB801F10C25C00563A69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A69FB851F10C25C00563A69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -67,12 +69,14 @@
 				0A11F51E1F1B339400A018EB /* LightTableViewCell.swift */,
 			);
 			name = TableCells;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		0A48AD8A1F2376E7008922C9 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				0AF938DC1F1A2A4F00B5B247 /* EZLoadingActivity.swift */,
+				0A48AD8B1F23DB06008922C9 /* PhilipsHueColors.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -80,7 +84,6 @@
 		0A69FB741F10C25B00563A69 = {
 			isa = PBXGroup;
 			children = (
-				0A11F51D1F1ABDBE00A018EB /* TableCells */,
 				0A69FB7F1F10C25C00563A69 /* Alfred_IOS */,
 				0A69FB7E1F10C25C00563A69 /* Products */,
 				A661620EC33CBC8FF6D18124 /* Pods */,
@@ -99,6 +102,7 @@
 		0A69FB7F1F10C25C00563A69 /* Alfred_IOS */ = {
 			isa = PBXGroup;
 			children = (
+				0A11F51D1F1ABDBE00A018EB /* TableCells */,
 				0A48AD8A1F2376E7008922C9 /* Helpers */,
 				0AF938DE1F1A321900B5B247 /* Data Classes */,
 				0A69FB801F10C25C00563A69 /* AppDelegate.swift */,
@@ -280,6 +284,7 @@
 				0A69FB9F1F1160F500563A69 /* ViewController.swift in Sources */,
 				0AFCD86D1F2283CC00FD1C1C /* Lights.swift in Sources */,
 				0AFCD86B1F22832000FD1C1C /* Evening.swift in Sources */,
+				0A48AD8C1F23DB06008922C9 /* PhilipsHueColors.swift in Sources */,
 				0A420E4A1F140D0500BD2713 /* LogFileTableViewCell.swift in Sources */,
 				0A12B4AB1F193B470012B619 /* SunsetViewController.swift in Sources */,
 				0A69FB811F10C25C00563A69 /* AppDelegate.swift in Sources */,

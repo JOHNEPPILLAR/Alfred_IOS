@@ -71,7 +71,7 @@ class SunsetViewController: UIViewController, UITableViewDataSource, UITableView
         
         let AlfredBaseURL = Bundle.main.infoDictionary!["AlfredBaseURL"] as! String
         let AlfredAppKey = Bundle.main.infoDictionary!["AlfredAppKey"] as! String
-        let url = URL(string: AlfredBaseURL + "settings" + AlfredAppKey)
+        let url = URL(string: AlfredBaseURL + "settings/view" + AlfredAppKey)
         
         URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
             
@@ -162,6 +162,18 @@ class SunsetViewController: UIViewController, UITableViewDataSource, UITableView
         }
         cell.LightBrightnessSlider.setValue(Float((eveningData[0].lights?[row].brightness)!), animated: true)
         
+        var r:CGFloat = 0
+        var g:CGFloat = 0
+        var b:CGFloat = 0
+        var a:CGFloat = 0
+        
+        let color = UIColor(red: CGFloat((eveningData[0].lights?[row].red)!)/255.0, green: CGFloat((eveningData[0].lights?[row].green)!)/255.0, blue: CGFloat((eveningData[0].lights?[row].blue)!)/255.0, alpha: 1.0)
+
+        if color.getRed(&r, green: &g, blue: &b, alpha: &a){
+            cell.ColorButton.backgroundColor = color
+        } else {
+            cell.ColorButton.isHidden = true
+        }
         return cell
     }
     
@@ -188,8 +200,9 @@ class SunsetViewController: UIViewController, UITableViewDataSource, UITableView
         
         // Create post request
         let AlfredBaseURL = "http://localhost:3978/"
+//        let AlfredBaseURL = Bundle.main.infoDictionary!["AlfredBaseURL"] as! String
         let AlfredAppKey = Bundle.main.infoDictionary!["AlfredAppKey"] as! String
-        let url = URL(string: AlfredBaseURL + "savesettings" + AlfredAppKey)
+        let url = URL(string: AlfredBaseURL + "settings/saveevening" + AlfredAppKey)
         
         var request = URLRequest(url: url!)
         request.httpMethod = "POST"

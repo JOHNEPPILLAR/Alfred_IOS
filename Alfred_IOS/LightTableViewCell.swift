@@ -8,6 +8,25 @@
 
 import UIKit
 
+@IBDesignable class RoundButton: UIButton
+{
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        updateCornerRadius()
+    }
+    
+    @IBInspectable var rounded: Bool = false {
+        didSet {
+            updateCornerRadius()
+        }
+    }
+    
+    func updateCornerRadius() {
+        layer.cornerRadius = rounded ? frame.size.height / 2 : 0
+    }
+}
+
 class LightTableViewCell: UITableViewCell {
 
     @IBOutlet weak var LightNameLabel: UILabel!
@@ -15,6 +34,10 @@ class LightTableViewCell: UITableViewCell {
     @IBOutlet weak var onOffSwitch: UISwitch!
     
     @IBOutlet weak var LightBrightnessSlider: UISlider!
+    
+    @IBOutlet weak var ColorButton: UIButton!
+    
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

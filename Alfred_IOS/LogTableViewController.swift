@@ -105,7 +105,7 @@ class LogTableViewController: UITableViewController {
                 self.viewPage -= 1
                 getLogData(firstLoad: false) // Load more data
             }
-        }
+        }        
         return cell
     }
     
