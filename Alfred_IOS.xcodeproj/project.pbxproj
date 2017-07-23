@@ -19,6 +19,7 @@
 		0A69FB8E1F10C25C00563A69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A69FB8C1F10C25C00563A69 /* LaunchScreen.storyboard */; };
 		0A69FB9F1F1160F500563A69 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A69FB9E1F1160F500563A69 /* ViewController.swift */; };
 		0A69FBA31F11621A00563A69 /* LogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A69FBA21F11621A00563A69 /* LogTableViewController.swift */; };
+		0A80C09C1F24812E0082F77C /* Alfred.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A80C09B1F24812E0082F77C /* Alfred.plist */; };
 		0AD1C1C31F22928E000D899D /* Logs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD1C1C21F22928E000D899D /* Logs.swift */; };
 		0AF938DD1F1A2A4F00B5B247 /* EZLoadingActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF938DC1F1A2A4F00B5B247 /* EZLoadingActivity.swift */; };
 		0AFCD86B1F22832000FD1C1C /* Evening.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFCD86A1F22832000FD1C1C /* Evening.swift */; };
@@ -41,6 +42,7 @@
 		0A69FB8F1F10C25C00563A69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A69FB9E1F1160F500563A69 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0A69FBA21F11621A00563A69 /* LogTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogTableViewController.swift; sourceTree = "<group>"; };
+		0A80C09B1F24812E0082F77C /* Alfred.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Alfred.plist; sourceTree = "<group>"; };
 		0AD1C1C21F22928E000D899D /* Logs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logs.swift; sourceTree = "<group>"; };
 		0AF938DC1F1A2A4F00B5B247 /* EZLoadingActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZLoadingActivity.swift; sourceTree = "<group>"; };
 		0AFCD86A1F22832000FD1C1C /* Evening.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Evening.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 		0A69FB7F1F10C25C00563A69 /* Alfred_IOS */ = {
 			isa = PBXGroup;
 			children = (
+				0A80C09D1F2481380082F77C /* Property List */,
 				0A11F51D1F1ABDBE00A018EB /* TableCells */,
 				0A48AD8A1F2376E7008922C9 /* Helpers */,
 				0AF938DE1F1A321900B5B247 /* Data Classes */,
@@ -110,7 +113,6 @@
 				0A69FB841F10C25C00563A69 /* Main.storyboard */,
 				0A69FB8A1F10C25C00563A69 /* Assets.xcassets */,
 				0A69FB8C1F10C25C00563A69 /* LaunchScreen.storyboard */,
-				0A69FB8F1F10C25C00563A69 /* Info.plist */,
 				0A69FB871F10C25C00563A69 /* Alfred_IOS.xcdatamodeld */,
 			);
 			path = Alfred_IOS;
@@ -125,6 +127,15 @@
 				0A69FB9E1F1160F500563A69 /* ViewController.swift */,
 			);
 			name = "View Controlers";
+			sourceTree = "<group>";
+		};
+		0A80C09D1F2481380082F77C /* Property List */ = {
+			isa = PBXGroup;
+			children = (
+				0A69FB8F1F10C25C00563A69 /* Info.plist */,
+				0A80C09B1F24812E0082F77C /* Alfred.plist */,
+			);
+			name = "Property List";
 			sourceTree = "<group>";
 		};
 		0AF938DE1F1A321900B5B247 /* Data Classes */ = {
@@ -216,6 +227,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A80C09C1F24812E0082F77C /* Alfred.plist in Resources */,
 				0A69FB8E1F10C25C00563A69 /* LaunchScreen.storyboard in Resources */,
 				0A69FB8B1F10C25C00563A69 /* Assets.xcassets in Resources */,
 				0A69FB861F10C25C00563A69 /* Main.storyboard in Resources */,

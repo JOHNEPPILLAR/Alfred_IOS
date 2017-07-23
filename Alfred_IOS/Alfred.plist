@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AlfredAppKey</key>
+	<string>?app_key=631dd7b4-62bf-4dbe-93be-7eef30922bc4</string>
+	<key>AlfredBaseURL</key>
+	<string>http://johneppillar.synology.me:3978/</string>
+</dict>
+</plist>
