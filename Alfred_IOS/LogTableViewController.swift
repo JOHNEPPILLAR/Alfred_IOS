@@ -26,8 +26,9 @@ class LogTableViewController: UITableViewController {
     //MARK: Private Methods
     func getLogData(firstLoad: Bool) {
 
-        let AlfredBaseURL = Bundle.main.infoDictionary!["AlfredBaseURL"] as! String
-        let AlfredAppKey = Bundle.main.infoDictionary!["AlfredAppKey"] as! String
+        let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+        let AlfredAppKey = readPlist(item: "AlfredAppKey")
+        
         var tmpURL = "" as String
         if firstLoad {
             tmpURL = "&reverse=true"

@@ -30,8 +30,8 @@ class SettingsViewController: UIViewController {
     }
     
     func DelAflredLog() {
-        let AlfredBaseURL = Bundle.main.infoDictionary!["AlfredBaseURL"] as! String
-        let AlfredAppKey = Bundle.main.infoDictionary!["AlfredAppKey"] as! String
+        let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+        let AlfredAppKey = readPlist(item: "AlfredAppKey")
         let url = URL(string: AlfredBaseURL + "ping" + AlfredAppKey)
         
         URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
