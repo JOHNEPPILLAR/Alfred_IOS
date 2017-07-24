@@ -35,7 +35,8 @@ class LightTableViewCell: UITableViewCell {
     
     @IBOutlet weak var LightBrightnessSlider: UISlider!
     
-    @IBOutlet weak var ColorButton: UIButton!
+    @IBOutlet weak var ColorButton: RoundButton!
+    
     
     
     

@@ -13,7 +13,7 @@ import BRYXBanner
 class SunsetViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var eveningData = [Evening]()
-    
+
     @IBOutlet weak var LightTableView: UITableView!
     
     @IBOutlet weak var offsetHRLabel: UILabel!
@@ -42,6 +42,10 @@ class SunsetViewController: UIViewController, UITableViewDataSource, UITableView
     @IBAction func turnoffMINStepper(_ sender: UIStepper) {
         turnoffMINLabel.text = Int(sender.value).description
         eveningData[0].offMin = Int(sender.value)
+    }
+    
+    @IBAction func colourButtonPress(_ sender: RoundButton) {
+        print("Color button presses")
     }
     
     override func viewDidLoad() {
@@ -153,7 +157,11 @@ class SunsetViewController: UIViewController, UITableViewDataSource, UITableView
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LightTableViewCell") as! LightTableViewCell
         let row = indexPath.row
-        
+
+        // Tag colour button so can referance it later if needed
+        cell.tag = indexPath.row
+
+        // Populate the cell elements
         cell.LightNameLabel.text = eveningData[0].lights?[row].lightName
         if eveningData[0].lights?[row].onoff == "on" {
             cell.onOffSwitch.setOn(true, animated:true)
@@ -162,6 +170,7 @@ class SunsetViewController: UIViewController, UITableViewDataSource, UITableView
         }
         cell.LightBrightnessSlider.setValue(Float((eveningData[0].lights?[row].brightness)!), animated: true)
         
+        // Get RGB colour for button background
         var r:CGFloat = 0
         var g:CGFloat = 0
         var b:CGFloat = 0
@@ -174,10 +183,10 @@ class SunsetViewController: UIViewController, UITableViewDataSource, UITableView
         } else {
             cell.ColorButton.isHidden = true
         }
+        
         return cell
     }
     
-
     func saveSettingsAction(sender: UIBarButtonItem)
     {
         

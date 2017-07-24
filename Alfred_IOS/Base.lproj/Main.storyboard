@@ -298,12 +298,15 @@
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="colourButtonPress:" destination="f1C-gJ-uKM" eventType="touchUpInside" id="G2h-bV-OxS"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="ColorButton" destination="aqC-Bl-RqJ" id="FxC-f0-TrK"/>
+                                            <outlet property="ColorButton" destination="aqC-Bl-RqJ" id="Yqu-fm-EvL"/>
                                             <outlet property="LightBrightnessSlider" destination="OOU-wE-N1I" id="WUS-b6-UfW"/>
                                             <outlet property="LightNameLabel" destination="Yay-zt-oIJ" id="tk0-uL-sIh"/>
                                             <outlet property="onOffSwitch" destination="VQW-NY-CeT" id="RA7-hR-6fO"/>
@@ -501,7 +504,7 @@
                     <tabBarItem key="tabBarItem" title="Settings" image="Settings" id="hqB-Kw-GbM"/>
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="07W-xP-OVQ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="07W-xP-OVQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.24313725489999999" green="0.73333333329999995" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
