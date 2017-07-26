@@ -474,7 +474,7 @@
         <!--Home-->
         <scene sceneID="V00-nC-hfW">
             <objects>
-                <tabBarController title="Home" modalTransitionStyle="crossDissolve" id="up0-ux-FeL" sceneMemberID="viewController">
+                <tabBarController title="Home" modalTransitionStyle="flipHorizontal" id="up0-ux-FeL" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="BGN-Vc-9jy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
