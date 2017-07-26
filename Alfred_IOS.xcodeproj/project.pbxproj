@@ -15,7 +15,6 @@
 		0A69FB861F10C25C00563A69 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A69FB841F10C25C00563A69 /* Main.storyboard */; };
 		0A69FB891F10C25C00563A69 /* Alfred_IOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0A69FB871F10C25C00563A69 /* Alfred_IOS.xcdatamodeld */; };
 		0A69FB8B1F10C25C00563A69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A69FB8A1F10C25C00563A69 /* Assets.xcassets */; };
-		0A69FB8E1F10C25C00563A69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A69FB8C1F10C25C00563A69 /* LaunchScreen.storyboard */; };
 		0A69FB9F1F1160F500563A69 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A69FB9E1F1160F500563A69 /* ViewController.swift */; };
 		0A69FBA31F11621A00563A69 /* LogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A69FBA21F11621A00563A69 /* LogTableViewController.swift */; };
 		0A80C09C1F24812E0082F77C /* Alfred.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A80C09B1F24812E0082F77C /* Alfred.plist */; };
@@ -37,7 +36,6 @@
 		0A69FB851F10C25C00563A69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0A69FB881F10C25C00563A69 /* Alfred_IOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Alfred_IOS.xcdatamodel; sourceTree = "<group>"; };
 		0A69FB8A1F10C25C00563A69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		0A69FB8D1F10C25C00563A69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A69FB8F1F10C25C00563A69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A69FB9E1F1160F500563A69 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0A69FBA21F11621A00563A69 /* LogTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogTableViewController.swift; sourceTree = "<group>"; };
@@ -112,7 +110,6 @@
 				0A69FB9D1F1160C400563A69 /* View Controlers */,
 				0A69FB841F10C25C00563A69 /* Main.storyboard */,
 				0A69FB8A1F10C25C00563A69 /* Assets.xcassets */,
-				0A69FB8C1F10C25C00563A69 /* LaunchScreen.storyboard */,
 				0A69FB871F10C25C00563A69 /* Alfred_IOS.xcdatamodeld */,
 			);
 			path = Alfred_IOS;
@@ -229,7 +226,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A80C09C1F24812E0082F77C /* Alfred.plist in Resources */,
-				0A69FB8E1F10C25C00563A69 /* LaunchScreen.storyboard in Resources */,
 				0A69FB8B1F10C25C00563A69 /* Assets.xcassets in Resources */,
 				0A69FB861F10C25C00563A69 /* Main.storyboard in Resources */,
 			);
@@ -315,14 +311,6 @@
 				0A69FB851F10C25C00563A69 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		0A69FB8C1F10C25C00563A69 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0A69FB8D1F10C25C00563A69 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
