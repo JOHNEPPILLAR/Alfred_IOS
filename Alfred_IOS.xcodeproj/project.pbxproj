@@ -20,6 +20,8 @@
 		0A80C09C1F24812E0082F77C /* Alfred.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A80C09B1F24812E0082F77C /* Alfred.plist */; };
 		0A8AF14A1F24EF030064894F /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8AF1491F24EF030064894F /* Helpers.swift */; };
 		0AD1C1C31F22928E000D899D /* Logs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD1C1C21F22928E000D899D /* Logs.swift */; };
+		0AE740251F28C54B00B8ABB1 /* Morning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE740241F28C54B00B8ABB1 /* Morning.swift */; };
+		0AE84DE71F289F120031F6C2 /* SunriseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE84DE61F289F120031F6C2 /* SunriseViewController.swift */; };
 		0AF938DD1F1A2A4F00B5B247 /* EZLoadingActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF938DC1F1A2A4F00B5B247 /* EZLoadingActivity.swift */; };
 		0AFCD86B1F22832000FD1C1C /* Evening.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFCD86A1F22832000FD1C1C /* Evening.swift */; };
 		0AFCD86D1F2283CC00FD1C1C /* Lights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFCD86C1F2283CC00FD1C1C /* Lights.swift */; };
@@ -42,6 +44,8 @@
 		0A80C09B1F24812E0082F77C /* Alfred.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Alfred.plist; sourceTree = "<group>"; };
 		0A8AF1491F24EF030064894F /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		0AD1C1C21F22928E000D899D /* Logs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logs.swift; sourceTree = "<group>"; };
+		0AE740241F28C54B00B8ABB1 /* Morning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Morning.swift; sourceTree = "<group>"; };
+		0AE84DE61F289F120031F6C2 /* SunriseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SunriseViewController.swift; sourceTree = "<group>"; };
 		0AF938DC1F1A2A4F00B5B247 /* EZLoadingActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZLoadingActivity.swift; sourceTree = "<group>"; };
 		0AFCD86A1F22832000FD1C1C /* Evening.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Evening.swift; sourceTree = "<group>"; };
 		0AFCD86C1F2283CC00FD1C1C /* Lights.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lights.swift; sourceTree = "<group>"; };
@@ -122,6 +126,7 @@
 				0A12B4AA1F193B470012B619 /* SunsetViewController.swift */,
 				0A69FBA21F11621A00563A69 /* LogTableViewController.swift */,
 				0A69FB9E1F1160F500563A69 /* ViewController.swift */,
+				0AE84DE61F289F120031F6C2 /* SunriseViewController.swift */,
 			);
 			name = "View Controlers";
 			sourceTree = "<group>";
@@ -139,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				0AFCD86A1F22832000FD1C1C /* Evening.swift */,
+				0AE740241F28C54B00B8ABB1 /* Morning.swift */,
 				0AFCD86C1F2283CC00FD1C1C /* Lights.swift */,
 				0AD1C1C21F22928E000D899D /* Logs.swift */,
 			);
@@ -287,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A11F51F1F1B339400A018EB /* LightTableViewCell.swift in Sources */,
+				0AE740251F28C54B00B8ABB1 /* Morning.swift in Sources */,
 				0A69FBA31F11621A00563A69 /* LogTableViewController.swift in Sources */,
 				0A69FB891F10C25C00563A69 /* Alfred_IOS.xcdatamodeld in Sources */,
 				0A3B4E7F1F169D500072587A /* SettingsViewController.swift in Sources */,
@@ -298,6 +305,7 @@
 				0A69FB811F10C25C00563A69 /* AppDelegate.swift in Sources */,
 				0A8AF14A1F24EF030064894F /* Helpers.swift in Sources */,
 				0AD1C1C31F22928E000D899D /* Logs.swift in Sources */,
+				0AE84DE71F289F120031F6C2 /* SunriseViewController.swift in Sources */,
 				0AF938DD1F1A2A4F00B5B247 /* EZLoadingActivity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -53,7 +53,9 @@ public final class Lights: NSCoding {
         lightID = json[SerializationKeys.lightID].int
         lightName = json[SerializationKeys.lightName].string
         brightness = json[SerializationKeys.brightness].int
+        if brightness == nil { brightness = 0 }
         onoff = json[SerializationKeys.onoff].string
+        if onoff == nil { onoff = "off" }
         x = json[SerializationKeys.x].double
         y = json[SerializationKeys.y].double
         type = json[SerializationKeys.type].string

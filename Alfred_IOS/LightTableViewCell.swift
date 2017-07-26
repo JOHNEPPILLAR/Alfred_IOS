@@ -29,16 +29,17 @@ import UIKit
 
 class LightTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var LightNameLabel: UILabel!
-       
-    @IBOutlet weak var onOffSwitch: UISwitch!
+    @IBOutlet weak var LightNameLabelEvening: UILabel!
+    @IBOutlet weak var LightNameLabelMorning: UILabel!
+
+    @IBOutlet weak var onOffSwitchEvening: UISwitch!
+    @IBOutlet weak var onOffSwitchMorning: UISwitch!
     
-    @IBOutlet weak var LightBrightnessSlider: UISlider!
+    @IBOutlet weak var LightBrightnessSliderEvening: UISlider!
+    @IBOutlet weak var LightBrightnessSliderMorning: UISlider!
     
-    @IBOutlet weak var ColorButton: RoundButton!
-    
-    
-    
+    @IBOutlet weak var ColorButtonEvening: RoundButton!
+    @IBOutlet weak var ColorButtonMorning: RoundButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

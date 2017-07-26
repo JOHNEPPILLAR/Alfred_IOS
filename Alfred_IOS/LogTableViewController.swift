@@ -20,11 +20,11 @@ class LogTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.getLogData(firstLoad: true) // Get log info from Alfred
+        self.getData(firstLoad: true) // Get log info from Alfred
     }
 
     //MARK: Private Methods
-    func getLogData(firstLoad: Bool) {
+    func getData(firstLoad: Bool) {
 
         let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
         let AlfredAppKey = readPlist(item: "AlfredAppKey")
@@ -104,7 +104,7 @@ class LogTableViewController: UITableViewController {
         if indexPath.row == logs.count - 1 { // if last cell check if there is more data to load
             if viewPage > 1 {
                 self.viewPage -= 1
-                getLogData(firstLoad: false) // Load more data
+                getData(firstLoad: false) // Load more data
             }
         }        
         return cell
