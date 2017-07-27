@@ -170,20 +170,24 @@ class SunsetViewController: UIViewController, UITableViewDataSource, UITableView
         }
         cell.LightBrightnessSliderEvening.setValue(Float((eveningData[0].lights?[row].brightness)!), animated: true)
         
-        // Get RGB colour for button background
-        var r:CGFloat = 0
-        var g:CGFloat = 0
-        var b:CGFloat = 0
-        var a:CGFloat = 0
-        
-        let color = UIColor(red: CGFloat((eveningData[0].lights?[row].red)!)/255.0, green: CGFloat((eveningData[0].lights?[row].green)!)/255.0, blue: CGFloat((eveningData[0].lights?[row].blue)!)/255.0, alpha: 1.0)
-
-        if color.getRed(&r, green: &g, blue: &b, alpha: &a){
-            cell.ColorButtonEvening.backgroundColor = color
-        } else {
+        if eveningData[0].lights?[row].type == "white" {
             cell.ColorButtonEvening.isHidden = true
-        }
+        } else {
+
+            // Get RGB colour for button background
+            var r:CGFloat = 0
+            var g:CGFloat = 0
+            var b:CGFloat = 0
+            var a:CGFloat = 0
         
+            let color = UIColor(red: CGFloat((eveningData[0].lights?[row].red)!)/255.0, green: CGFloat((eveningData[0].lights?[row].green)!)/255.0, blue: CGFloat((eveningData[0].lights?[row].blue)!)/255.0, alpha: 1.0)
+
+            if color.getRed(&r, green: &g, blue: &b, alpha: &a){
+                cell.ColorButtonEvening.backgroundColor = color
+            } else {
+                cell.ColorButtonEvening.isHidden = true
+            }
+        }
         return cell
     }
     
@@ -208,8 +212,8 @@ class SunsetViewController: UIViewController, UITableViewDataSource, UITableView
         }
         
         // Create post request
-        let AlfredBaseURL = "http://localhost:3978/"
-        //let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+        //let AlfredBaseURL = "http://localhost:3978/"
+        let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
         let AlfredAppKey = readPlist(item: "AlfredAppKey")
         let url = URL(string: AlfredBaseURL + "settings/saveevening" + AlfredAppKey)
         

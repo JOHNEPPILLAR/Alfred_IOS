@@ -168,20 +168,24 @@ class SunriseViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         cell.LightBrightnessSliderMorning.setValue(Float((morningData[0].lights?[row].brightness)!), animated: true)
 
-        // Get RGB colour for button background
-        var r:CGFloat = 0
-        var g:CGFloat = 0
-        var b:CGFloat = 0
-        var a:CGFloat = 0
-        
-        let color = UIColor(red: CGFloat((morningData[0].lights?[row].red)!)/255.0, green: CGFloat((morningData[0].lights?[row].green)!)/255.0, blue: CGFloat((morningData[0].lights?[row].blue)!)/255.0, alpha: 1.0)
-        
-        if color.getRed(&r, green: &g, blue: &b, alpha: &a){
-            cell.ColorButtonMorning.backgroundColor = color
-        } else {
+        if morningData[0].lights?[row].type == "white" {
             cell.ColorButtonMorning.isHidden = true
-        }
+        } else {
+
+            // Get RGB colour for button background
+            var r:CGFloat = 0
+            var g:CGFloat = 0
+            var b:CGFloat = 0
+            var a:CGFloat = 0
         
+            let color = UIColor(red: CGFloat((morningData[0].lights?[row].red)!)/255.0, green: CGFloat((morningData[0].lights?[row].green)!)/255.0, blue: CGFloat((morningData[0].lights?[row].blue)!)/255.0, alpha: 1.0)
+        
+            if color.getRed(&r, green: &g, blue: &b, alpha: &a){
+                cell.ColorButtonMorning.backgroundColor = color
+            } else {
+                cell.ColorButtonMorning.isHidden = true
+            }
+        }
         return cell
 
     }
@@ -207,8 +211,8 @@ class SunriseViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         
         // Create post request
-        let AlfredBaseURL = "http://localhost:3978/"
-        //let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+        //let AlfredBaseURL = "http://localhost:3978/"
+        let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
         let AlfredAppKey = readPlist(item: "AlfredAppKey")
         let url = URL(string: AlfredBaseURL + "settings/savemorning" + AlfredAppKey)
         
