@@ -20,22 +20,15 @@ class LogTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.getData(firstLoad: true) // Get log info from Alfred
+        self.getData() // Get log info from Alfred
     }
 
     //MARK: Private Methods
-    func getData(firstLoad: Bool) {
+    func getData() {
 
         let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
         let AlfredAppKey = readPlist(item: "AlfredAppKey")
-        
-        var tmpURL = "" as String
-        if firstLoad {
-            tmpURL = "&reverse=true"
-        } else {
-            tmpURL = "&page=" + String(viewPage)
-        }
-        let url = URL(string: AlfredBaseURL + "displaylog" + AlfredAppKey + tmpURL)
+        let url = URL(string: AlfredBaseURL + "displaylog" + AlfredAppKey + "&page=" + String(viewPage))
      
         URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
             if error != nil {
@@ -102,11 +95,9 @@ class LogTableViewController: UITableViewController {
         cell.datelabel.text = logs[row].timestamp
         
         if indexPath.row == logs.count - 1 { // if last cell check if there is more data to load
-            if viewPage > 1 {
-                self.viewPage -= 1
-                getData(firstLoad: false) // Load more data
-            }
-        }        
+            self.viewPage += 1
+            getData() // Load more data
+        }
         return cell
     }
     

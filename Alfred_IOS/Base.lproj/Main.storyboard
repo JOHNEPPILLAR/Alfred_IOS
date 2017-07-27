@@ -855,7 +855,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hWA-Vi-bGD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2256.8000000000002" y="-398.05097451274366"/>
+            <point key="canvasLocation" x="2257" y="-398"/>
         </scene>
         <!--Home-->
         <scene sceneID="V00-nC-hfW">
@@ -876,6 +876,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="Ygp-2e-XC5" kind="relationship" relationship="viewControllers" id="add-1a-llN"/>
+                        <segue destination="HwC-A8-fct" kind="relationship" relationship="viewControllers" id="keV-Jd-dDs"/>
                         <segue destination="mB2-T5-fal" kind="relationship" relationship="viewControllers" id="lVi-Qp-FwH"/>
                     </connections>
                 </tabBarController>
@@ -909,6 +910,32 @@
             </objects>
             <point key="canvasLocation" x="1317.5999999999999" y="585.1574212893554"/>
         </scene>
+        <!--Events-->
+        <scene sceneID="vXH-Nk-zOs">
+            <objects>
+                <viewController title="Events" id="sAk-WK-wbN" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FkA-Dp-hVZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="14S-2N-ypk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vWR-bd-oOM">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="London_bg" translatesAutoresizingMaskIntoConstraints="NO" id="vLu-Uz-O5q">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Events" id="gKd-nW-Uuh"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XhR-R8-HLT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2256.8000000000002" y="-1128.4857571214393"/>
+        </scene>
         <!--Lights-->
         <scene sceneID="lJT-gB-Ur4">
             <objects>
@@ -927,14 +954,36 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sd4-oi-pa4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1317.5999999999999" y="-398.05097451274366"/>
+            <point key="canvasLocation" x="1318" y="-398"/>
+        </scene>
+        <!--Events-->
+        <scene sceneID="jP8-Vi-OsP">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HwC-A8-fct" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Events" image="ic_insert_emoticon" id="bgz-6X-G5F"/>
+                    <toolbarItems/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="j5O-Hk-mpm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="sAk-WK-wbN" kind="relationship" relationship="rootViewController" id="6uA-Li-g5o"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jN3-98-9qT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1318" y="-1128"/>
         </scene>
     </scenes>
     <resources>
         <image name="Alfred_Logo" width="512" height="512"/>
         <image name="Lights" width="24" height="24"/>
+        <image name="London_bg" width="1024" height="397"/>
         <image name="Settings" width="25" height="25"/>
         <image name="del_bg" width="670" height="335"/>
+        <image name="ic_insert_emoticon" width="24" height="24"/>
         <image name="log_bg" width="695" height="336"/>
         <image name="movie_bg" width="640" height="320"/>
         <image name="restart_bg" width="1418" height="786"/>
