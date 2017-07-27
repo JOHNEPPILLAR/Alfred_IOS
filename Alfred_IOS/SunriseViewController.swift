@@ -141,10 +141,6 @@ class SunriseViewController: UIViewController, UITableViewDataSource, UITableVie
         }).resume()
     }
   
-    public func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         if (morningData.count) > 0 {
@@ -192,7 +188,76 @@ class SunriseViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func saveSettingsAction(sender: UIBarButtonItem)
     {
-        print("Saving... TO DO ...")
         
+        // Disable the save button
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
+        
+        //  Update table data array with UI changes
+        var i = 0
+        for cell in LightTableViewMorning.visibleCells {
+            if let customCell = cell as? LightTableViewCell {
+                if customCell.onOffSwitchMorning.isOn {
+                    morningData[0].lights?[i].onoff = "on"
+                } else {
+                    morningData[0].lights?[i].onoff = "off"
+                }
+                morningData[0].lights?[i].brightness = Int(customCell.LightBrightnessSliderMorning.value)
+            }
+            i += 1
+        }
+        
+        // Create post request
+        let AlfredBaseURL = "http://localhost:3978/"
+        //let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+        let AlfredAppKey = readPlist(item: "AlfredAppKey")
+        let url = URL(string: AlfredBaseURL + "settings/savemorning" + AlfredAppKey)
+        
+        var request = URLRequest(url: url!)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.httpBody = try! JSONSerialization.data(withJSONObject: morningData[0].dictionaryRepresentation(), options: [])
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            // Update the UI
+            DispatchQueue.main.async() {
+                
+                guard let data = data, error == nil else { // Check for fundamental networking error
+                    print("save data error: " + error.debugDescription)
+                    
+                    let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to save data. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
+                    banner.dismissesOnTap = true
+                    banner.show()
+                    
+                    // Re enable the save button
+                    self.navigationItem.rightBarButtonItem?.isEnabled = true
+                    
+                    return
+                }
+                
+                let json = JSON(data: data)
+                let apiStatus = json["code"]
+                let apiStatusString = apiStatus.string!
+                
+                if apiStatusString == "sucess" {
+                    
+                    let banner = Banner(title: "Alfred API Notification", subtitle: "Saved.", backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
+                    banner.dismissesOnTap = true
+                    banner.show(duration: 3.0)
+                    
+                } else {
+                    
+                    let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to save data. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
+                    banner.dismissesOnTap = true
+                    banner.show()
+                    
+                }
+                
+                // Re enable the save button
+                self.navigationItem.rightBarButtonItem?.isEnabled = true
+            }
+        }
+        task.resume()
     }
 }
