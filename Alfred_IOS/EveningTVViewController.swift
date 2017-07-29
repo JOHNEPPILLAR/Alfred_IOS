@@ -42,7 +42,7 @@
             self.turnOnHRStepper.isEnabled = false
             self.turnOnMINStepper.isEnabled = false
             
-            // Get sunset configuration info from Alfred
+            // Get evening TV lights configuration info from Alfred
             self.getData()
         }
         
@@ -185,8 +185,7 @@
             }
             
             // Create post request
-            let AlfredBaseURL = "http://localhost:3978/"
-            //let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+            let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
             let AlfredAppKey = readPlist(item: "AlfredAppKey")
             let url = URL(string: AlfredBaseURL + "settings/saveeveningtv" + AlfredAppKey)
             

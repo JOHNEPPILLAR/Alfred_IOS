@@ -59,7 +59,7 @@ class SunriseViewController: UIViewController, UITableViewDataSource, UITableVie
         self.turnOnHRStepper.isEnabled = false
         self.turnOffHRStepper.isEnabled = false
         
-        // Get sunset configuration info from Alfred
+        // Get sunrise configuration info from Alfred
         self.getData()
     }
 
