@@ -138,9 +138,33 @@ class LightsViewController: UIViewController, UITableViewDataSource, UITableView
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "LightTableViewCellRooms") as! LightsTableViewCell
         let row = indexPath.row
- 
-        // Tag colour button so can referance it later if needed
-        cell.tag = indexPath.row
+
+        // Setup the light bulb colour
+        var r:CGFloat = 0, g:CGFloat = 0, b:CGFloat = 0, a:CGFloat = 0
+        
+        var color = UIColor(red: CGFloat((roomLightsData[0].data?[row].action?.red)!)/255.0, green: CGFloat((roomLightsData[0].data?[row].action?.green)!)/255.0, blue: CGFloat((roomLightsData[0].data?[row].action?.blue)!)/255.0, alpha: 1.0)
+        
+        if roomLightsData[0].data?[row].action?.red != 0 &&
+            roomLightsData[0].data?[row].action?.green != 0 &&
+            roomLightsData[0].data?[row].action?.blue != 0 &&
+            color.getRed(&r, green: &g, blue: &b, alpha: &a) {
+            //cell.lightColor.backgroundColor = color
+            
+            dump (color.cgColor.components)
+        
+        } else {
+            color = UIColor.white
+        }
+        
+        
+        cell.backgroundColor = color
+        if isLight(colors: color) {
+            cell.lightName.textColor = UIColor.black
+            cell.lightColor.image = UIImage(named: "lightbulb_black")
+        } else {
+            cell.lightName.textColor = UIColor.white
+            cell.lightColor.image = UIImage(named: "lightbulb_white")
+        }
         
         // Populate the cell elements
         cell.lightName.text = roomLightsData[0].data?[row].name
@@ -150,13 +174,25 @@ class LightsViewController: UIViewController, UITableViewDataSource, UITableView
             cell.lightSwitch.setOn(false, animated:true)
         }
         
-        
-        
+        cell.lightBrightness.setValue(Float((roomLightsData[0].data?[row].action?.bri)!), animated: true)
+        cell.lightBrightness.tag = indexPath.row
+        //cell.lightBrightness.addTarget(self, action: Selector(("sliderValueChange:")), for: .valueChanged)
         
         return cell
         
     }
     
+    
+    @IBAction func sliderValueChange(sender: UISlider) {
+        print ("changed")
+        // Get the sliders value
+        //var currentValue = Int(sender.value)
+        //var sliderRow = sender.tag
+        
+        
+        // Do whatever you want with the value :)
+        // And now the row of the slider!
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

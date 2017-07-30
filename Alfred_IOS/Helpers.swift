@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 
 func readPlist(item: String) -> String {
 
@@ -21,4 +21,22 @@ func readPlist(item: String) -> String {
     }
     return plistItem
     
+}
+
+func isLight(colors: UIColor) -> Bool {
+    let components = colors.cgColor.components
+    
+    let firstComponent = ((components?[0])! * 299)
+    let secondComponent = ((components?[1])! * 587)
+    let thirdComponent = ((components?[2])! * 114)
+    let brightness = (firstComponent + secondComponent + thirdComponent) / 1000
+    
+    if brightness < 0.5
+    {
+        return false
+    }
+    else
+    {
+        return true
+    }
 }

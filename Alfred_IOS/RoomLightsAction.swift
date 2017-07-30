@@ -21,6 +21,9 @@ public final class RoomLightsAction: NSCoding {
     static let effect = "effect"
     static let colormode = "colormode"
     static let xy = "xy"
+    static let red = "red"
+    static let green = "green"
+    static let blue = "blue"
   }
 
   // MARK: Properties
@@ -33,7 +36,11 @@ public final class RoomLightsAction: NSCoding {
   public var effect: String?
   public var colormode: String?
   public var xy: [Float]?
+  public var red: Int?
+  public var green: Int?
+  public var blue: Int?
 
+    
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
   ///
@@ -56,6 +63,9 @@ public final class RoomLightsAction: NSCoding {
     effect = json[SerializationKeys.effect].string
     colormode = json[SerializationKeys.colormode].string
     if let items = json[SerializationKeys.xy].array { xy = items.map { $0.floatValue } }
+    red = json[SerializationKeys.red].int
+    green = json[SerializationKeys.green].int
+    blue = json[SerializationKeys.blue].int
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -72,6 +82,9 @@ public final class RoomLightsAction: NSCoding {
     if let value = effect { dictionary[SerializationKeys.effect] = value }
     if let value = colormode { dictionary[SerializationKeys.colormode] = value }
     if let value = xy { dictionary[SerializationKeys.xy] = value }
+    if let value = red { dictionary[SerializationKeys.red] = value }
+    if let value = green { dictionary[SerializationKeys.green] = value }
+    if let value = blue { dictionary[SerializationKeys.blue] = value }
     return dictionary
   }
 
@@ -86,6 +99,9 @@ public final class RoomLightsAction: NSCoding {
     self.effect = aDecoder.decodeObject(forKey: SerializationKeys.effect) as? String
     self.colormode = aDecoder.decodeObject(forKey: SerializationKeys.colormode) as? String
     self.xy = aDecoder.decodeObject(forKey: SerializationKeys.xy) as? [Float]
+    self.red = aDecoder.decodeObject(forKey: SerializationKeys.red) as? Int
+    self.green = aDecoder.decodeObject(forKey: SerializationKeys.green) as? Int
+    self.blue = aDecoder.decodeObject(forKey: SerializationKeys.blue) as? Int
   }
 
   public func encode(with aCoder: NSCoder) {
@@ -98,6 +114,9 @@ public final class RoomLightsAction: NSCoding {
     aCoder.encode(effect, forKey: SerializationKeys.effect)
     aCoder.encode(colormode, forKey: SerializationKeys.colormode)
     aCoder.encode(xy, forKey: SerializationKeys.xy)
+    aCoder.encode(red, forKey: SerializationKeys.red)
+    aCoder.encode(green, forKey: SerializationKeys.green)
+    aCoder.encode(blue, forKey: SerializationKeys.blue)
   }
 
 }

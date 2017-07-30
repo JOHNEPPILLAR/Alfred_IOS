@@ -8,12 +8,56 @@
 
 import UIKit
 
+@IBDesignable class RoundButton: UIButton
+{
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        updateCornerRadius()
+    }
+    
+    @IBInspectable var rounded: Bool = false {
+        didSet {
+            updateCornerRadius()
+        }
+    }
+    
+    func updateCornerRadius() {
+        layer.cornerRadius = rounded ? frame.size.height / 2 : 0
+    }
+}
+
+@IBDesignable class ReoundImage: UIImageView
+{
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        updateRadius()
+    }
+    
+    @IBInspectable var rounded: Bool = false {
+        didSet {
+            updateRadius()
+        }
+    }
+    
+    func updateRadius() {
+        layer.borderWidth = 1
+        layer.masksToBounds = false
+        layer.borderColor = UIColor.white.cgColor
+        layer.cornerRadius = frame.height/2
+        clipsToBounds = true
+        
+    }
+}
+
 class LightsTableViewCell: UITableViewCell {
 
     
     @IBOutlet weak var lightName: UILabel!
     @IBOutlet weak var lightSwitch: UISwitch!
     @IBOutlet weak var lightBrightness: UISlider!
+    @IBOutlet weak var lightColor: ReoundImage!
     
     
     override func awakeFromNib() {
