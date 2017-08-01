@@ -1,15 +1,21 @@
 PODS:
   - BRYXBanner (0.7.3)
+  - SevenSwitch (2.1.0)
   - SwiftyJSON (3.1.4)
+  - TGPControls (4.0.0)
 
 DEPENDENCIES:
   - BRYXBanner
+  - SevenSwitch
   - SwiftyJSON
+  - TGPControls
 
 SPEC CHECKSUMS:
   BRYXBanner: bd26a91cb8a5826a8bc7687891043d287dd3ee53
+  SevenSwitch: 5543327829b7bec5b29b73bad5f3cc3f92c1736d
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  TGPControls: d7ab5a338746c100b2ae57f6b6cedee7151f116a
 
-PODFILE CHECKSUM: 5bd5c0c7e033d363e36982cf0a687a0ebd8227d7
+PODFILE CHECKSUM: 0cb4be3684f346068c46f0681276bf3ccf48013c
 
 COCOAPODS: 1.2.1

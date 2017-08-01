@@ -55,8 +55,6 @@ class LightsTableViewCell: UITableViewCell {
 
     
     @IBOutlet weak var lightName: UILabel!
-    @IBOutlet weak var lightSwitch: UISwitch!
-    @IBOutlet weak var lightBrightness: UISlider!
     @IBOutlet weak var lightColor: ReoundImage!
     
     

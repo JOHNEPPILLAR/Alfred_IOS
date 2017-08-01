@@ -9,11 +9,13 @@
 import UIKit
 import SwiftyJSON
 import BRYXBanner
+import SevenSwitch
+import TGPControls
 
 class LightsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    
     var roomLightsData = [RoomLights]()
-
+    
     @IBOutlet weak var LightTableViewRooms: UITableView!
     
     override func viewDidLoad() {
@@ -29,7 +31,7 @@ class LightsViewController: UIViewController, UITableViewDataSource, UITableView
         
         // Get room lights configuration info from Alfred
         self.getData()
- 
+        
     }
     
     func turnOffAllLights()
@@ -122,7 +124,7 @@ class LightsViewController: UIViewController, UITableViewDataSource, UITableView
             }
         }).resume()
     }
- 
+    
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         if (roomLightsData.count) > 0 {
@@ -138,60 +140,79 @@ class LightsViewController: UIViewController, UITableViewDataSource, UITableView
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "LightTableViewCellRooms") as! LightsTableViewCell
         let row = indexPath.row
+        
+        var color: UIColor
+        if (roomLightsData[0].data?[row].state?.anyOn)! {
 
-        // Setup the light bulb colour
-        var r:CGFloat = 0, g:CGFloat = 0, b:CGFloat = 0, a:CGFloat = 0
-        
-        var color = UIColor(red: CGFloat((roomLightsData[0].data?[row].action?.red)!)/255.0, green: CGFloat((roomLightsData[0].data?[row].action?.green)!)/255.0, blue: CGFloat((roomLightsData[0].data?[row].action?.blue)!)/255.0, alpha: 1.0)
-        
-        if roomLightsData[0].data?[row].action?.red != 0 &&
-            roomLightsData[0].data?[row].action?.green != 0 &&
-            roomLightsData[0].data?[row].action?.blue != 0 &&
-            color.getRed(&r, green: &g, blue: &b, alpha: &a) {
-            //cell.lightColor.backgroundColor = color
-            
-            dump (color.cgColor.components)
-        
+            // Setup the light bulb colour
+            if roomLightsData[0].data?[row].action?.red != 0 &&
+                roomLightsData[0].data?[row].action?.green != 0 &&
+                roomLightsData[0].data?[row].action?.blue != 0 {
+                
+                //var r:CGFloat = 0, g:CGFloat = 0, b:CGFloat = 0, a:CGFloat = 0
+                
+                color = UIColor(red: CGFloat((roomLightsData[0].data?[row].action?.red)!)/255.0, green: CGFloat((roomLightsData[0].data?[row].action?.green)!)/255.0, blue: CGFloat((roomLightsData[0].data?[row].action?.blue)!)/255.0, alpha: 1.0)
+                
+            } else {
+                
+                color = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+                
+            }
         } else {
-            color = UIColor.white
+            
+            color = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
+            
         }
         
-        
         cell.backgroundColor = color
-        if isLight(colors: color) {
+        
+        if color.isLight() {
             cell.lightName.textColor = UIColor.black
+            cell.lightColor.layer.borderColor = UIColor.black.cgColor
             cell.lightColor.image = UIImage(named: "lightbulb_black")
         } else {
             cell.lightName.textColor = UIColor.white
+            cell.lightColor.layer.borderColor = UIColor.white.cgColor
             cell.lightColor.image = UIImage(named: "lightbulb_white")
         }
         
-        // Populate the cell elements
         cell.lightName.text = roomLightsData[0].data?[row].name
-        if (roomLightsData[0].data?[row].state?.anyOn)! {
-            cell.lightSwitch.setOn(true, animated:true)
-        } else {
-            cell.lightSwitch.setOn(false, animated:true)
-        }
         
-        cell.lightBrightness.setValue(Float((roomLightsData[0].data?[row].action?.bri)!), animated: true)
-        cell.lightBrightness.tag = indexPath.row
-        //cell.lightBrightness.addTarget(self, action: Selector(("sliderValueChange:")), for: .valueChanged)
+        // Add the custom on/off switch
+        let lightSwitch = SevenSwitch()
+        lightSwitch.isRounded = false
+        lightSwitch.tag = Int((roomLightsData[0].data?[row].id)!)!
+        cell.addSubview(lightSwitch)
+        
+        // Set switch state
+        if (roomLightsData[0].data?[row].state?.anyOn)! {
+            lightSwitch.setOn(true, animated: true)
+        } else {
+            lightSwitch.setOn(false, animated: true)
+        }
+        lightSwitch.frame = CGRect(x: 318, y: 8, width: 51, height: 31)
+        lightSwitch.addTarget(self, action: #selector(LightsViewController.switchChanged(_:)), for: UIControlEvents.valueChanged)
+        
+        // Setup the brightness slider
+        let lightBrightness = TGPDiscreteSlider()
+        lightBrightness.tickStyle = 1
+        lightBrightness.trackStyle = 1
+        lightBrightness.frame = CGRect(x: 5, y: 53, width: 100, height: 31)
+
+        //cell.addSubview(lightBrightness)
         
         return cell
         
     }
     
     
-    @IBAction func sliderValueChange(sender: UISlider) {
-        print ("changed")
-        // Get the sliders value
-        //var currentValue = Int(sender.value)
-        //var sliderRow = sender.tag
-        
-        
-        // Do whatever you want with the value :)
-        // And now the row of the slider!
+    func switchChanged(_ sender: SevenSwitch) {
+        if sender.on {
+            let lightID = sender.tag
+            print (lightID)
+            // TODO - call alfred to turn on the light group
+        }
+        print("Changed value to: \(sender.on)")
     }
     
     override func didReceiveMemoryWarning() {
@@ -199,5 +220,5 @@ class LightsViewController: UIViewController, UITableViewDataSource, UITableView
         // Dispose of any resources that can be recreated.
     }
     
-
+    
 }

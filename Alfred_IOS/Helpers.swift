@@ -8,9 +8,10 @@
 
 import Foundation
 import UIKit
+import SpriteKit
 
 func readPlist(item: String) -> String {
-
+    
     var plistItem: String = ""
     
     if let path = Bundle.main.path(forResource: "Alfred", ofType: "plist") {
@@ -23,20 +24,23 @@ func readPlist(item: String) -> String {
     
 }
 
-func isLight(colors: UIColor) -> Bool {
-    let components = colors.cgColor.components
+public extension UIColor {
     
-    let firstComponent = ((components?[0])! * 299)
-    let secondComponent = ((components?[1])! * 587)
-    let thirdComponent = ((components?[2])! * 114)
-    let brightness = (firstComponent + secondComponent + thirdComponent) / 1000
-    
-    if brightness < 0.5
+    public func isLight() -> Bool
     {
-        return false
-    }
-    else
-    {
-        return true
+        let components = self.cgColor.components
+        
+        let firstComponent = ((components?[0])! * 299)
+        let secondComponent = ((components?[1])! * 587)
+        let thirdComponent = ((components?[2])! * 114)
+        let brightness = (firstComponent + secondComponent + thirdComponent) / 1000
+        
+        if brightness < 0.5 {
+            return false
+        } else {
+            return true
+        }
     }
 }
+
+

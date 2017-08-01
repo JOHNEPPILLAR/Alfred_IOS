@@ -14,7 +14,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SevenSwitch.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SwiftyJSON.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>TGPControls.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -27,12 +37,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6BE8C54CA9EC32DAC9B7614812877560</key>
+		<key>1062BA3F166C0B246A9176D3E7CC6F1E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D57D3E1682C4C3A16A24B919F637C398</key>
+		<key>552540E5AFD6B9306A7407EA8B60463A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>749ABB9E072C6779216360A1026E56B9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D868D03C50BA6CA549BC089AA43FA954</key>
 		<dict>
 			<key>primary</key>
 			<true/>
