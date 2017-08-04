@@ -7,16 +7,14 @@
 //
 
 import UIKit
+import MTCircularSlider
 
 class LightsCollectionViewCell: UICollectionViewCell {
-  
     
+    @IBOutlet weak var powerButton: UIImageView!
     
+    @IBOutlet weak var lightName: RoundButton!
     
-    
-    
-    
-    
-    
+    @IBOutlet weak var brightnessSlider: MTCircularSlider!
     
 }

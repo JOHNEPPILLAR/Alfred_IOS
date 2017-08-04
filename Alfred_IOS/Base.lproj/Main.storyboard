@@ -861,23 +861,72 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xaI-eR-Yne">
-                                        <rect key="frame" x="0.0" y="31" width="375" height="587"/>
+                                        <rect key="frame" x="0.0" y="23" width="375" height="587"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bwR-fY-VnH">
-                                            <size key="itemSize" width="171" height="149"/>
+                                            <size key="itemSize" width="170" height="144"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="c5A-hb-bJI" customClass="LightsCollectionViewCell" customModule="Alfred_IOS" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="171" height="149"/>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="lightCell" id="c5A-hb-bJI" customClass="LightsCollectionViewCell" customModule="Alfred_IOS">
+                                                <rect key="frame" x="0.0" y="0.0" width="170" height="144"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                    <rect key="frame" x="0.0" y="0.0" width="171" height="149"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="170" height="144"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2nN-c8-JlC" customClass="MTCircularSlider" customModule="MTCircularSlider">
+                                                            <rect key="frame" x="0.0" y="0.0" width="170" height="125"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <subviews>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="power_button_grey" translatesAutoresizingMaskIntoConstraints="NO" id="ePP-Zb-K8h" customClass="ReoundImage" customModule="Alfred_IOS" customModuleProvider="target">
+                                                                    <rect key="frame" x="51" y="27" width="70" height="70"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="trackWidth">
+                                                                    <real key="value" value="2"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="hasThumb" value="YES"/>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="thumbRadius">
+                                                                    <real key="value" value="8"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="valueMinimum">
+                                                                    <real key="value" value="0.0"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="valueMaximum">
+                                                                    <real key="value" value="255"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="trackMinAngle">
+                                                                    <real key="value" value="330"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="trackMaxAngle">
+                                                                    <real key="value" value="570"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="OWD-Zn-pjn" customClass="RoundButton" customModule="Alfred_IOS" customModuleProvider="target">
+                                                            <rect key="frame" x="20" y="105" width="130" height="30"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <state key="normal" title="Button">
+                                                                <color key="titleColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </state>
+                                                        </button>
+                                                    </subviews>
                                                 </view>
+                                                <connections>
+                                                    <outlet property="brightnessSlider" destination="2nN-c8-JlC" id="Qmx-54-3br"/>
+                                                    <outlet property="lightName" destination="OWD-Zn-pjn" id="prp-29-WcS"/>
+                                                    <outlet property="powerButton" destination="ePP-Zb-K8h" id="6WX-zX-tmA"/>
+                                                </connections>
                                             </collectionViewCell>
                                         </cells>
                                         <connections>
@@ -1016,6 +1065,7 @@
         <image name="ic_insert_emoticon" width="24" height="24"/>
         <image name="log_bg" width="695" height="336"/>
         <image name="movie_bg" width="640" height="320"/>
+        <image name="power_button_grey" width="512" height="512"/>
         <image name="restart_bg" width="1418" height="786"/>
         <image name="sunrise_bg" width="1280" height="800"/>
         <image name="sunset_bg" width="2560" height="1600"/>

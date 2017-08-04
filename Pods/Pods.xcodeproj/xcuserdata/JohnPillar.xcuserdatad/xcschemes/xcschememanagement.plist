@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>MTCircularSlider.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Alfred_IOS.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,27 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0E0AFE85DC330066AF2B881B89C45C88</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>0F3B36547C3C2CC3060475E614BCBF32</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1062BA3F166C0B246A9176D3E7CC6F1E</key>
+		<key>692FA2E1D139AE73E671DCEDD48607B1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>552540E5AFD6B9306A7407EA8B60463A</key>
+		<key>8C46F2046AF67FFD52C8C8777C19994B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>749ABB9E072C6779216360A1026E56B9</key>
+		<key>BF4BBD176BAEB27319A7A9BC1DC253BE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D868D03C50BA6CA549BC089AA43FA954</key>
+		<key>FC32A4731165469603AB6CD16A64F5F7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
