@@ -26,6 +26,7 @@
 		0AA83A731F2CE72500B933A8 /* RoomLightsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA83A6F1F2CE72500B933A8 /* RoomLightsData.swift */; };
 		0AA83A741F2CE72500B933A8 /* RoomLightsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA83A701F2CE72500B933A8 /* RoomLightsState.swift */; };
 		0AD1C1C31F22928E000D899D /* Logs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD1C1C21F22928E000D899D /* Logs.swift */; };
+		0AD5B0E31F32F19D00C91308 /* LightsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD5B0E21F32F19D00C91308 /* LightsCollectionViewCell.swift */; };
 		0ADDC4D31F29C02000C08F55 /* EveningTVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADDC4D21F29C02000C08F55 /* EveningTVViewController.swift */; };
 		0ADDC4D51F29C09B00C08F55 /* EveningTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADDC4D41F29C09B00C08F55 /* EveningTV.swift */; };
 		0AE740251F28C54B00B8ABB1 /* Morning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE740241F28C54B00B8ABB1 /* Morning.swift */; };
@@ -58,6 +59,7 @@
 		0AA83A6F1F2CE72500B933A8 /* RoomLightsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomLightsData.swift; sourceTree = "<group>"; };
 		0AA83A701F2CE72500B933A8 /* RoomLightsState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomLightsState.swift; sourceTree = "<group>"; };
 		0AD1C1C21F22928E000D899D /* Logs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logs.swift; sourceTree = "<group>"; };
+		0AD5B0E21F32F19D00C91308 /* LightsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightsCollectionViewCell.swift; sourceTree = "<group>"; };
 		0ADDC4D21F29C02000C08F55 /* EveningTVViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EveningTVViewController.swift; sourceTree = "<group>"; };
 		0ADDC4D41F29C09B00C08F55 /* EveningTV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EveningTV.swift; sourceTree = "<group>"; };
 		0AE740241F28C54B00B8ABB1 /* Morning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Morning.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				0A420E491F140D0500BD2713 /* LogFileTableViewCell.swift */,
 				0A11F51E1F1B339400A018EB /* LightTableViewCell.swift */,
 				0A360CA71F2C9703006BBF34 /* LightsTableViewCell.swift */,
+				0AD5B0E21F32F19D00C91308 /* LightsCollectionViewCell.swift */,
 			);
 			name = TableViewCells;
 			path = ..;
@@ -319,6 +322,7 @@
 				0A11F51F1F1B339400A018EB /* LightTableViewCell.swift in Sources */,
 				0AE740251F28C54B00B8ABB1 /* Morning.swift in Sources */,
 				0A69FBA31F11621A00563A69 /* LogTableViewController.swift in Sources */,
+				0AD5B0E31F32F19D00C91308 /* LightsCollectionViewCell.swift in Sources */,
 				0A69FB891F10C25C00563A69 /* Alfred_IOS.xcdatamodeld in Sources */,
 				0ADDC4D51F29C09B00C08F55 /* EveningTV.swift in Sources */,
 				0A3B4E7F1F169D500072587A /* SettingsViewController.swift in Sources */,

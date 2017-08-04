@@ -10,13 +10,12 @@ import UIKit
 import SwiftyJSON
 import BRYXBanner
 import SevenSwitch
-import TGPControls
 
-class LightsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class LightsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     var roomLightsData = [RoomLights]()
     
-    @IBOutlet weak var LightTableViewRooms: UITableView!
+    @IBOutlet weak var LightCollectionViewRooms: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,7 +106,7 @@ class LightsViewController: UIViewController, UITableViewDataSource, UITableView
                     
                     DispatchQueue.main.async() {
                         
-                        self.LightTableViewRooms.reloadData() // Refresh the table view
+                        self.LightCollectionViewRooms.reloadData() // Refresh the table view
                         
                     }
                 } else {
@@ -125,15 +124,38 @@ class LightsViewController: UIViewController, UITableViewDataSource, UITableView
         }).resume()
     }
     
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         if (roomLightsData.count) > 0 {
             return (roomLightsData[0].data!.count)
         } else {
             return 0
         }
-        
+
     }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        
+        // Configure the cell
+        cell.backgroundColor = UIColor.black
+        
+        return cell
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
@@ -168,11 +190,13 @@ class LightsViewController: UIViewController, UITableViewDataSource, UITableView
         
         if color.isLight() {
             cell.lightName.textColor = UIColor.black
-            cell.lightColor.layer.borderColor = UIColor.black.cgColor
+            cell.lightColor.setBlackBorder()
+//            cell.brightnessSliderBg.layer.borderColor = UIColor.black.cgColor
             cell.lightColor.image = UIImage(named: "lightbulb_black")
         } else {
             cell.lightName.textColor = UIColor.white
-            cell.lightColor.layer.borderColor = UIColor.white.cgColor
+            cell.lightColor.setWhiteBorder()
+//            cell.brightnessSliderBg.layer.borderColor = UIColor.white.cgColor
             cell.lightColor.image = UIImage(named: "lightbulb_white")
         }
         
@@ -194,13 +218,9 @@ class LightsViewController: UIViewController, UITableViewDataSource, UITableView
         lightSwitch.addTarget(self, action: #selector(LightsViewController.switchChanged(_:)), for: UIControlEvents.valueChanged)
         
         // Setup the brightness slider
-        let lightBrightness = TGPDiscreteSlider()
-        lightBrightness.tickStyle = 1
-        lightBrightness.trackStyle = 1
-        lightBrightness.frame = CGRect(x: 5, y: 53, width: 100, height: 31)
-
-        //cell.addSubview(lightBrightness)
-        
+        cell.lightBrightness.maximumTrackTintColor = color
+        cell.lightBrightness.value = CGFloat(Float((roomLightsData[0].data?[row].action?.bri)!))
+                
         return cell
         
     }
@@ -219,6 +239,6 @@ class LightsViewController: UIViewController, UITableViewDataSource, UITableView
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+   */
     
 }

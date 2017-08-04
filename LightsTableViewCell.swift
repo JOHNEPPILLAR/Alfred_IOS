@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TGPControls
 
 @IBDesignable class RoundButton: UIButton
 {
@@ -44,11 +45,27 @@ import UIKit
     func updateRadius() {
         layer.borderWidth = 1
         layer.masksToBounds = false
+        //layer.borderColor = UIColor.white.cgColor
+        layer.cornerRadius = frame.height/2
+        clipsToBounds = true
+    }
+
+    func setBlackBorder() {
+        layer.borderWidth = 1
+        layer.masksToBounds = false
+        layer.borderColor = UIColor.black.cgColor
+        layer.cornerRadius = frame.height/2
+        clipsToBounds = true
+    }
+
+    func setWhiteBorder() {
+        layer.borderWidth = 1
+        layer.masksToBounds = false
         layer.borderColor = UIColor.white.cgColor
         layer.cornerRadius = frame.height/2
         clipsToBounds = true
-        
     }
+
 }
 
 class LightsTableViewCell: UITableViewCell {
@@ -56,7 +73,9 @@ class LightsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var lightName: UILabel!
     @IBOutlet weak var lightColor: ReoundImage!
+    @IBOutlet weak var lightBrightness: TGPDiscreteSlider!
     
+    @IBOutlet weak var brightnessSliderBg: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
