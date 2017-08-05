@@ -9,12 +9,13 @@
     import UIKit
     import SwiftyJSON
     import BRYXBanner
+    import MTCircularSlider
     
-    class EveningTVViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    class EveningTVViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
         
         var eveningTVData = [EveningTV]()
         
-        @IBOutlet weak var LightTableViewEveningTV: UITableView!
+        @IBOutlet weak var LightCollectionView: UICollectionView!
         
         @IBOutlet weak var turnOnHRLabel: UILabel!
         @IBOutlet weak var turnOnHRStepper: UIStepper!
@@ -98,7 +99,7 @@
                             self.navigationItem.rightBarButtonItem?.isEnabled = true
                             
                             // Refresh the table view
-                            self.LightTableViewEveningTV.reloadData()
+                            self.LightCollectionView.reloadData()
                             
                         }
                     } else {
@@ -116,52 +117,130 @@
             }).resume()
         }
         
-        public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-        {
+        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+            
             if (eveningTVData.count) > 0 {
                 return (eveningTVData[0].lights?.count)!
             } else {
                 return 0
             }
+            
         }
         
-        public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-        {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "LightTableViewCellEveningTV") as! LightTableViewCell
+        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "lightCell", for: indexPath) as! LightsCollectionViewCell
             let row = indexPath.row
             
-            // Tag colour button so can referance it later if needed
-            cell.tag = indexPath.row
+            cell.tag = (eveningTVData[0].lights?[row].lightID)!
             
-            // Populate the cell elements
-            cell.LightNameLabelEveningTV.text = eveningTVData[0].lights?[row].lightName
-            if eveningTVData[0].lights?[row].onoff == "on" {
-                cell.onOffSwitchEveningTV.setOn(true, animated:true)
-            } else {
-                cell.onOffSwitchEveningTV.setOn(false, animated:true)
-            }
-            cell.LightBrightnessSliderEveningTV.setValue(Float((eveningTVData[0].lights?[row].brightness)!), animated: true)
+            cell.lightName.setTitle(eveningTVData[0].lights?[row].lightName, for: .normal)
             
-            if eveningTVData[0].lights?[row].type == "white" {
-                cell.ColorButtonEveningTV.isHidden = true
-            } else {
-
-                // Get RGB colour for button background
-                var r:CGFloat = 0
-                var g:CGFloat = 0
-                var b:CGFloat = 0
-                var a:CGFloat = 0
-            
-                let color = UIColor(red: CGFloat((eveningTVData[0].lights?[row].red)!)/255.0, green: CGFloat((eveningTVData[0].lights?[row].green)!)/255.0, blue: CGFloat((eveningTVData[0].lights?[row].blue)!)/255.0, alpha: 1.0)
-            
-                if color.getRed(&r, green: &g, blue: &b, alpha: &a){
-                    cell.ColorButtonEveningTV.backgroundColor = color
+            // Work out light group color
+            var color: UIColor
+            if (eveningTVData[0].lights?[row].onoff == "on") {
+                
+                // Setup the light bulb colour
+                if eveningTVData[0].lights?[row].red != 0 &&
+                    eveningTVData[0].lights?[row].green != 0 &&
+                    eveningTVData[0].lights?[row].blue != 0 {
+                    
+                    color = UIColor(red: CGFloat((eveningTVData[0].lights?[row].red)!)/255.0, green: CGFloat((eveningTVData[0].lights?[row].green)!)/255.0, blue: CGFloat((eveningTVData[0].lights?[row].blue)!)/255.0, alpha: 1.0)
+                    
                 } else {
-                    cell.ColorButtonEveningTV.isHidden = true
+                    
+                    color = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+                    
                 }
+                
+                cell.powerButton.backgroundColor = color
+                cell.brightnessSlider.value = Float((eveningTVData[0].lights?[row].brightness)!)
+                
             }
+            
+            cell.brightnessSlider.tag = row
+            cell.brightnessSlider?.addTarget(self, action: #selector(brightnessValueChange(_:)), for: .valueChanged)
+            
+            // Configure the power button
+            cell.powerButton.tag = row
+            cell.powerButton.isUserInteractionEnabled = true
+            let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(powerButtonValueChange(_:)))
+            cell.powerButton.addGestureRecognizer(tapRecognizer)
             
             return cell
+            
+        }
+        
+        func brightnessValueChange(_ sender: MTCircularSlider!) {
+            
+            // Figure out which cell is being updated
+            let cell = sender.superview?.superview as? LightsCollectionViewCell
+            let row = sender.tag
+            var color: UIColor
+            
+            // Update local data store
+            eveningTVData[0].lights?[row].brightness = Int(sender.value)
+            if sender.value == 0 {
+                
+                eveningTVData[0].lights?[row].onoff = "off"
+                cell?.powerButton.backgroundColor = UIColor.clear
+                
+            } else {
+                
+                eveningTVData[0].lights?[row].onoff = "on"
+                
+                // Setup the light bulb colour
+                if (eveningTVData[0].lights?[row].red)! != 0 &&
+                    (eveningTVData[0].lights?[row].green)! != 0 &&
+                    (eveningTVData[0].lights?[row].blue)! != 0 {
+                    
+                    color = UIColor(red: CGFloat((eveningTVData[0].lights?[row].red)!)/255.0, green: CGFloat((eveningTVData[0].lights?[row].green)!)/255.0, blue: CGFloat((eveningTVData[0].lights?[row].blue)!)/255.0, alpha: 1.0)
+                    
+                } else {
+                    
+                    color = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+                    
+                }
+                cell?.powerButton.backgroundColor = color
+                
+            }
+            
+        }
+        
+        func powerButtonValueChange(_ sender: UITapGestureRecognizer!) {
+            
+            // Figure out which cell is being updated
+            let point : CGPoint = sender.view!.convert(CGPoint.zero, to:LightCollectionView)
+            let indexPath = LightCollectionView!.indexPathForItem(at: point)
+            let cell = LightCollectionView!.cellForItem(at: indexPath!) as! LightsCollectionViewCell
+            let row = indexPath?.row
+            var color: UIColor
+            
+            
+            if (eveningTVData[0].lights?[row!].onoff == "on") {
+                
+                eveningTVData[0].lights?[row!].onoff = "off"
+                cell.powerButton.backgroundColor = UIColor.clear
+                
+            } else {
+                
+                eveningTVData[0].lights?[row!].onoff = "on"
+                
+                // Setup the light bulb colour
+                if eveningTVData[0].lights?[row!].red != 0 &&
+                    eveningTVData[0].lights?[row!].green != 0 &&
+                    eveningTVData[0].lights?[row!].blue != 0 {
+                    
+                    color = UIColor(red: CGFloat((eveningTVData[0].lights?[row!].red)!)/255.0, green: CGFloat((eveningTVData[0].lights?[row!].green)!)/255.0, blue: CGFloat((eveningTVData[0].lights?[row!].blue)!)/255.0, alpha: 1.0)
+                    
+                } else {
+                    
+                    color = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+                    
+                }
+                cell.powerButton.backgroundColor = color
+                
+            }
         }
         
         func saveSettingsAction(sender: UIBarButtonItem)
@@ -169,20 +248,6 @@
             
             // Disable the save button
             self.navigationItem.rightBarButtonItem?.isEnabled = false
-            
-            //  Update table data array with UI changes
-            var i = 0
-            for cell in LightTableViewEveningTV.visibleCells {
-                if let customCell = cell as? LightTableViewCell {
-                    if customCell.onOffSwitchEveningTV.isOn {
-                        eveningTVData[0].lights?[i].onoff = "on"
-                    } else {
-                        eveningTVData[0].lights?[i].onoff = "off"
-                    }
-                    eveningTVData[0].lights?[i].brightness = Int(customCell.LightBrightnessSliderEveningTV.value)
-                }
-                i += 1
-            }
             
             // Create post request
             let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
