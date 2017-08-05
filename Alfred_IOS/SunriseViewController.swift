@@ -9,12 +9,13 @@
 import UIKit
 import SwiftyJSON
 import BRYXBanner
+import MTCircularSlider
 
-class SunriseViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SunriseViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
     var morningData = [Morning]()
     
-    @IBOutlet weak var LightTableViewMorning: UITableView!
+    @IBOutlet weak var LightCollectionView: UICollectionView!
     
     @IBOutlet weak var TableView: UITableView!
     @IBAction func turnOnHRStepper(_ sender: UIStepper) {
@@ -123,7 +124,7 @@ class SunriseViewController: UIViewController, UITableViewDataSource, UITableVie
                         self.navigationItem.rightBarButtonItem?.isEnabled = true
                         
                         // Refresh the table view
-                        self.LightTableViewMorning.reloadData()
+                        self.LightCollectionView.reloadData()
 
                     }
                 } else {
@@ -141,74 +142,136 @@ class SunriseViewController: UIViewController, UITableViewDataSource, UITableVie
         }).resume()
     }
   
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+
         if (morningData.count) > 0 {
             return (morningData[0].lights?.count)!
         } else {
             return 0
         }
+        
     }
     
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LightTableViewCellMorning") as! LightTableViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "lightCell", for: indexPath) as! LightsCollectionViewCell
         let row = indexPath.row
         
-        // Tag colour button so can referance it later if needed
-        cell.tag = indexPath.row
+        cell.tag = (morningData[0].lights?[row].lightID)!
         
-        // Populate the cell elements
-        cell.LightNameLabelMorning.text = morningData[0].lights?[row].lightName
+        cell.lightName.setTitle(morningData[0].lights?[row].lightName, for: .normal)
 
-        if morningData[0].lights?[row].onoff == "on" {
-            cell.onOffSwitchMorning.setOn(true, animated:true)
-        } else {
-            cell.onOffSwitchMorning.setOn(false, animated:true)
-        }
-        cell.LightBrightnessSliderMorning.setValue(Float((morningData[0].lights?[row].brightness)!), animated: true)
-
-        if morningData[0].lights?[row].type == "white" {
-            cell.ColorButtonMorning.isHidden = true
-        } else {
-
-            // Get RGB colour for button background
-            var r:CGFloat = 0
-            var g:CGFloat = 0
-            var b:CGFloat = 0
-            var a:CGFloat = 0
-        
-            let color = UIColor(red: CGFloat((morningData[0].lights?[row].red)!)/255.0, green: CGFloat((morningData[0].lights?[row].green)!)/255.0, blue: CGFloat((morningData[0].lights?[row].blue)!)/255.0, alpha: 1.0)
-        
-            if color.getRed(&r, green: &g, blue: &b, alpha: &a){
-                cell.ColorButtonMorning.backgroundColor = color
+        // Work out light group color
+        var color: UIColor
+        if (morningData[0].lights?[row].onoff == "on") {
+            
+            // Setup the light bulb colour
+            if morningData[0].lights?[row].red != 0 &&
+                morningData[0].lights?[row].green != 0 &&
+                morningData[0].lights?[row].blue != 0 {
+                
+                color = UIColor(red: CGFloat((morningData[0].lights?[row].red)!)/255.0, green: CGFloat((morningData[0].lights?[row].green)!)/255.0, blue: CGFloat((morningData[0].lights?[row].blue)!)/255.0, alpha: 1.0)
+                
             } else {
-                cell.ColorButtonMorning.isHidden = true
+                
+                color = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+                
             }
+            
+            cell.powerButton.backgroundColor = color
+            cell.brightnessSlider.value = Float((morningData[0].lights?[row].brightness)!)
+            
         }
+        
+        cell.brightnessSlider.tag = row
+        cell.brightnessSlider?.addTarget(self, action: #selector(brightnessValueChange(_:)), for: .valueChanged)
+        
+        // Configure the power button
+        cell.powerButton.tag = row
+        cell.powerButton.isUserInteractionEnabled = true
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(powerButtonValueChange(_:)))
+        cell.powerButton.addGestureRecognizer(tapRecognizer)
+        
         return cell
 
     }
+ 
+    func brightnessValueChange(_ sender: MTCircularSlider!) {
+        
+        // Figure out which cell is being updated
+        let cell = sender.superview?.superview as? LightsCollectionViewCell
+        let row = sender.tag
+        var color: UIColor
+ 
+        // Update local data store
+        morningData[0].lights?[row].brightness = Int(sender.value)
+        if sender.value == 0 {
+
+            morningData[0].lights?[row].onoff = "off"
+            cell?.powerButton.backgroundColor = UIColor.clear
+            
+        } else {
+            
+            morningData[0].lights?[row].onoff = "on"
+            
+            // Setup the light bulb colour
+            if (morningData[0].lights?[row].red)! != 0 &&
+                (morningData[0].lights?[row].green)! != 0 &&
+                (morningData[0].lights?[row].blue)! != 0 {
+                
+                color = UIColor(red: CGFloat((morningData[0].lights?[row].red)!)/255.0, green: CGFloat((morningData[0].lights?[row].green)!)/255.0, blue: CGFloat((morningData[0].lights?[row].blue)!)/255.0, alpha: 1.0)
+                
+            } else {
+                
+                color = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+                
+            }
+            cell?.powerButton.backgroundColor = color
+            
+        }
+        
+    }
     
-    func saveSettingsAction(sender: UIBarButtonItem)
-    {
+    func powerButtonValueChange(_ sender: UITapGestureRecognizer!) {
+        
+        // Figure out which cell is being updated
+        let point : CGPoint = sender.view!.convert(CGPoint.zero, to:LightCollectionView)
+        let indexPath = LightCollectionView!.indexPathForItem(at: point)
+        let cell = LightCollectionView!.cellForItem(at: indexPath!) as! LightsCollectionViewCell
+        let row = indexPath?.row
+        var color: UIColor
+
+        
+        if (morningData[0].lights?[row!].onoff == "on") {
+            
+            morningData[0].lights?[row!].onoff = "off"
+            cell.powerButton.backgroundColor = UIColor.clear
+            
+        } else {
+            
+            morningData[0].lights?[row!].onoff = "on"
+            
+            // Setup the light bulb colour
+            if morningData[0].lights?[row!].red != 0 &&
+                morningData[0].lights?[row!].green != 0 &&
+                morningData[0].lights?[row!].blue != 0 {
+                
+                color = UIColor(red: CGFloat((morningData[0].lights?[row!].red)!)/255.0, green: CGFloat((morningData[0].lights?[row!].green)!)/255.0, blue: CGFloat((morningData[0].lights?[row!].blue)!)/255.0, alpha: 1.0)
+                
+            } else {
+                
+                color = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+                
+            }
+            cell.powerButton.backgroundColor = color
+            
+        }
+    }
+    
+    func saveSettingsAction(sender: UIBarButtonItem) {
         
         // Disable the save button
         self.navigationItem.rightBarButtonItem?.isEnabled = false
-        
-        //  Update table data array with UI changes
-        var i = 0
-        for cell in LightTableViewMorning.visibleCells {
-            if let customCell = cell as? LightTableViewCell {
-                if customCell.onOffSwitchMorning.isOn {
-                    morningData[0].lights?[i].onoff = "on"
-                } else {
-                    morningData[0].lights?[i].onoff = "off"
-                }
-                morningData[0].lights?[i].brightness = Int(customCell.LightBrightnessSliderMorning.value)
-            }
-            i += 1
-        }
         
         // Create post request
         //let AlfredBaseURL = "http://localhost:3978/"

@@ -26,8 +26,7 @@ func readPlist(item: String) -> String {
 
 public extension UIColor {
     
-    public func isLight() -> Bool
-    {
+    public func isLight() -> Bool {
         let components = self.cgColor.components
         
         let firstComponent = ((components?[0])! * 299)
@@ -43,8 +42,7 @@ public extension UIColor {
     }
 }
 
-@IBDesignable class RoundButton: UIButton
-{
+@IBDesignable class RoundButton: UIButton {
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -62,8 +60,7 @@ public extension UIColor {
     }
 }
 
-@IBDesignable class ReoundImage: UIImageView
-{
+@IBDesignable class ReoundImage: UIImageView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -77,8 +74,8 @@ public extension UIColor {
     }
     
     func updateRadius() {
-        //layer.borderWidth = 1
         layer.masksToBounds = false
+        //layer.borderWidth = 1
         //layer.borderColor = UIColor.white.cgColor
         layer.cornerRadius = frame.height/2
         clipsToBounds = true

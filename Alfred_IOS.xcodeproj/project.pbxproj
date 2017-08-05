@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0A11F51F1F1B339400A018EB /* LightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A11F51E1F1B339400A018EB /* LightTableViewCell.swift */; };
 		0A12B4AB1F193B470012B619 /* SunsetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A12B4AA1F193B470012B619 /* SunsetViewController.swift */; };
+		0A2D9E2E1F3617EF0037594C /* LogFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2D9E2D1F3617EF0037594C /* LogFileViewController.swift */; };
 		0A3B4E7F1F169D500072587A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3B4E7E1F169D500072587A /* SettingsViewController.swift */; };
 		0A420E4A1F140D0500BD2713 /* LogFileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A420E491F140D0500BD2713 /* LogFileTableViewCell.swift */; };
 		0A69FB811F10C25C00563A69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A69FB801F10C25C00563A69 /* AppDelegate.swift */; };
@@ -16,10 +17,9 @@
 		0A69FB891F10C25C00563A69 /* Alfred_IOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0A69FB871F10C25C00563A69 /* Alfred_IOS.xcdatamodeld */; };
 		0A69FB8B1F10C25C00563A69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A69FB8A1F10C25C00563A69 /* Assets.xcassets */; };
 		0A69FB9F1F1160F500563A69 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A69FB9E1F1160F500563A69 /* ViewController.swift */; };
-		0A69FBA31F11621A00563A69 /* LogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A69FBA21F11621A00563A69 /* LogTableViewController.swift */; };
 		0A80C09C1F24812E0082F77C /* Alfred.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A80C09B1F24812E0082F77C /* Alfred.plist */; };
 		0A8AF14A1F24EF030064894F /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8AF1491F24EF030064894F /* Helpers.swift */; };
-		0A97CCAF1F2B0AEF00E6FF1F /* LightsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A97CCAE1F2B0AEF00E6FF1F /* LightsViewController.swift */; };
+		0A97CCAF1F2B0AEF00E6FF1F /* RoomLightsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A97CCAE1F2B0AEF00E6FF1F /* RoomLightsViewController.swift */; };
 		0AA83A711F2CE72500B933A8 /* RoomLightsAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA83A6D1F2CE72500B933A8 /* RoomLightsAction.swift */; };
 		0AA83A721F2CE72500B933A8 /* RoomLights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA83A6E1F2CE72500B933A8 /* RoomLights.swift */; };
 		0AA83A731F2CE72500B933A8 /* RoomLightsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA83A6F1F2CE72500B933A8 /* RoomLightsData.swift */; };
@@ -39,6 +39,7 @@
 /* Begin PBXFileReference section */
 		0A11F51E1F1B339400A018EB /* LightTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LightTableViewCell.swift; path = Alfred_IOS/LightTableViewCell.swift; sourceTree = "<group>"; };
 		0A12B4AA1F193B470012B619 /* SunsetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SunsetViewController.swift; sourceTree = "<group>"; };
+		0A2D9E2D1F3617EF0037594C /* LogFileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogFileViewController.swift; sourceTree = "<group>"; };
 		0A3B4E7E1F169D500072587A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0A420E491F140D0500BD2713 /* LogFileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogFileTableViewCell.swift; path = Alfred_IOS/LogFileTableViewCell.swift; sourceTree = "<group>"; };
 		0A69FB7D1F10C25C00563A69 /* Alfred_IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alfred_IOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,10 +49,9 @@
 		0A69FB8A1F10C25C00563A69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A69FB8F1F10C25C00563A69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A69FB9E1F1160F500563A69 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0A69FBA21F11621A00563A69 /* LogTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogTableViewController.swift; sourceTree = "<group>"; };
 		0A80C09B1F24812E0082F77C /* Alfred.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Alfred.plist; sourceTree = "<group>"; };
 		0A8AF1491F24EF030064894F /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
-		0A97CCAE1F2B0AEF00E6FF1F /* LightsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightsViewController.swift; sourceTree = "<group>"; };
+		0A97CCAE1F2B0AEF00E6FF1F /* RoomLightsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomLightsViewController.swift; sourceTree = "<group>"; };
 		0AA83A6D1F2CE72500B933A8 /* RoomLightsAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomLightsAction.swift; sourceTree = "<group>"; };
 		0AA83A6E1F2CE72500B933A8 /* RoomLights.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomLights.swift; sourceTree = "<group>"; };
 		0AA83A6F1F2CE72500B933A8 /* RoomLightsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomLightsData.swift; sourceTree = "<group>"; };
@@ -141,11 +141,11 @@
 			children = (
 				0A3B4E7E1F169D500072587A /* SettingsViewController.swift */,
 				0A12B4AA1F193B470012B619 /* SunsetViewController.swift */,
-				0A69FBA21F11621A00563A69 /* LogTableViewController.swift */,
+				0A2D9E2D1F3617EF0037594C /* LogFileViewController.swift */,
 				0A69FB9E1F1160F500563A69 /* ViewController.swift */,
 				0AE84DE61F289F120031F6C2 /* SunriseViewController.swift */,
 				0ADDC4D21F29C02000C08F55 /* EveningTVViewController.swift */,
-				0A97CCAE1F2B0AEF00E6FF1F /* LightsViewController.swift */,
+				0A97CCAE1F2B0AEF00E6FF1F /* RoomLightsViewController.swift */,
 			);
 			name = "View Controlers";
 			sourceTree = "<group>";
@@ -318,7 +318,6 @@
 			files = (
 				0A11F51F1F1B339400A018EB /* LightTableViewCell.swift in Sources */,
 				0AE740251F28C54B00B8ABB1 /* Morning.swift in Sources */,
-				0A69FBA31F11621A00563A69 /* LogTableViewController.swift in Sources */,
 				0AD5B0E31F32F19D00C91308 /* LightsCollectionViewCell.swift in Sources */,
 				0A69FB891F10C25C00563A69 /* Alfred_IOS.xcdatamodeld in Sources */,
 				0ADDC4D51F29C09B00C08F55 /* EveningTV.swift in Sources */,
@@ -326,11 +325,12 @@
 				0A69FB9F1F1160F500563A69 /* ViewController.swift in Sources */,
 				0AFCD86D1F2283CC00FD1C1C /* Lights.swift in Sources */,
 				0AFCD86B1F22832000FD1C1C /* Evening.swift in Sources */,
-				0A97CCAF1F2B0AEF00E6FF1F /* LightsViewController.swift in Sources */,
+				0A97CCAF1F2B0AEF00E6FF1F /* RoomLightsViewController.swift in Sources */,
 				0AA83A721F2CE72500B933A8 /* RoomLights.swift in Sources */,
 				0A420E4A1F140D0500BD2713 /* LogFileTableViewCell.swift in Sources */,
 				0A12B4AB1F193B470012B619 /* SunsetViewController.swift in Sources */,
 				0A69FB811F10C25C00563A69 /* AppDelegate.swift in Sources */,
+				0A2D9E2E1F3617EF0037594C /* LogFileViewController.swift in Sources */,
 				0A8AF14A1F24EF030064894F /* Helpers.swift in Sources */,
 				0AA83A741F2CE72500B933A8 /* RoomLightsState.swift in Sources */,
 				0AA83A731F2CE72500B933A8 /* RoomLightsData.swift in Sources */,

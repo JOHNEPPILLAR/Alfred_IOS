@@ -1,5 +1,5 @@
 //
-//  LightsViewController.swift
+//  RoomLightsViewController.swift
 //  Alfred_IOS
 //
 //  Created by John Pillar on 28/07/2017.
@@ -11,7 +11,7 @@ import SwiftyJSON
 import BRYXBanner
 import MTCircularSlider
 
-class LightsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class RoomLightsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     var roomLightsData = [RoomLights]()
     
@@ -181,36 +181,34 @@ class LightsViewController: UIViewController, UICollectionViewDataSource, UIColl
     func brightnessValueChange(_ sender: MTCircularSlider!) {
         
         // Figure out which cell is being updated
-        let point : CGPoint = sender.convert(CGPoint.zero, to:LightCollectionViewRooms)
-        let indexPath = LightCollectionViewRooms!.indexPathForItem(at: point)
-        let cell = LightCollectionViewRooms!.cellForItem(at: indexPath!) as! LightsCollectionViewCell
-        let row = indexPath?.row
+        let cell = sender.superview?.superview as? LightsCollectionViewCell
+        let row = sender.tag
         var color: UIColor
         
         // Update local data store
-        roomLightsData[0].data?[row!].action?.bri = Int(sender.value)
+        roomLightsData[0].data?[row].action?.bri = Int(sender.value)
         if sender.value == 0 {
 
-            roomLightsData[0].data?[row!].state?.anyOn = false
-            cell.powerButton.backgroundColor = UIColor.clear
+            roomLightsData[0].data?[row].state?.anyOn = false
+            cell?.powerButton.backgroundColor = UIColor.clear
         
         } else {
         
-            roomLightsData[0].data?[row!].state?.anyOn = true
+            roomLightsData[0].data?[row].state?.anyOn = true
             
             // Setup the light bulb colour
-            if roomLightsData[0].data?[row!].action?.red != 0 &&
-                roomLightsData[0].data?[row!].action?.green != 0 &&
-                roomLightsData[0].data?[row!].action?.blue != 0 {
+            if roomLightsData[0].data?[row].action?.red != 0 &&
+                roomLightsData[0].data?[row].action?.green != 0 &&
+                roomLightsData[0].data?[row].action?.blue != 0 {
                 
-                color = UIColor(red: CGFloat((roomLightsData[0].data?[row!].action?.red)!)/255.0, green: CGFloat((roomLightsData[0].data?[row!].action?.green)!)/255.0, blue: CGFloat((roomLightsData[0].data?[row!].action?.blue)!)/255.0, alpha: 1.0)
+                color = UIColor(red: CGFloat((roomLightsData[0].data?[row].action?.red)!)/255.0, green: CGFloat((roomLightsData[0].data?[row].action?.green)!)/255.0, blue: CGFloat((roomLightsData[0].data?[row].action?.blue)!)/255.0, alpha: 1.0)
                 
             } else {
                 
                 color = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
                 
             }
-            cell.powerButton.backgroundColor = color
+            cell?.powerButton.backgroundColor = color
 
         }
 
