@@ -124,7 +124,6 @@ class LightsViewController: UIViewController, UICollectionViewDataSource, UIColl
         }).resume()
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if (roomLightsData.count) > 0 {
@@ -162,8 +161,6 @@ class LightsViewController: UIViewController, UICollectionViewDataSource, UIColl
             }
 
             cell.powerButton.backgroundColor = color
-
-            
             cell.brightnessSlider.value = Float((roomLightsData[0].data?[row].action?.bri)!)
 
         } 
@@ -188,24 +185,33 @@ class LightsViewController: UIViewController, UICollectionViewDataSource, UIColl
         let indexPath = LightCollectionViewRooms!.indexPathForItem(at: point)
         let cell = LightCollectionViewRooms!.cellForItem(at: indexPath!) as! LightsCollectionViewCell
         let row = indexPath?.row
+        var color: UIColor
         
         // Update local data store
         roomLightsData[0].data?[row!].action?.bri = Int(sender.value)
         if sender.value == 0 {
+
             roomLightsData[0].data?[row!].state?.anyOn = false
             cell.powerButton.backgroundColor = UIColor.clear
+        
         } else {
+        
             roomLightsData[0].data?[row!].state?.anyOn = true
+            
             // Setup the light bulb colour
             if roomLightsData[0].data?[row!].action?.red != 0 &&
                 roomLightsData[0].data?[row!].action?.green != 0 &&
                 roomLightsData[0].data?[row!].action?.blue != 0 {
                 
-                let color = UIColor(red: CGFloat((roomLightsData[0].data?[row!].action?.red)!)/255.0, green: CGFloat((roomLightsData[0].data?[row!].action?.green)!)/255.0, blue: CGFloat((roomLightsData[0].data?[row!].action?.blue)!)/255.0, alpha: 1.0)
+                color = UIColor(red: CGFloat((roomLightsData[0].data?[row!].action?.red)!)/255.0, green: CGFloat((roomLightsData[0].data?[row!].action?.green)!)/255.0, blue: CGFloat((roomLightsData[0].data?[row!].action?.blue)!)/255.0, alpha: 1.0)
                 
-                cell.powerButton.backgroundColor = color
-        
+            } else {
+                
+                color = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+                
             }
+            cell.powerButton.backgroundColor = color
+
         }
 
         // Call Alfred to update the light group
@@ -220,11 +226,15 @@ class LightsViewController: UIViewController, UICollectionViewDataSource, UIColl
         let indexPath = LightCollectionViewRooms!.indexPathForItem(at: point)
         let cell = LightCollectionViewRooms!.cellForItem(at: indexPath!) as! LightsCollectionViewCell
         let row = indexPath?.row
+        var color: UIColor
         
         if (roomLightsData[0].data?[row!].state?.anyOn)! {
+            
             roomLightsData[0].data?[row!].state?.anyOn = false
             cell.powerButton.backgroundColor = UIColor.clear
+            
         } else {
+            
             roomLightsData[0].data?[row!].state?.anyOn = true
 
             // Setup the light bulb colour
@@ -232,14 +242,19 @@ class LightsViewController: UIViewController, UICollectionViewDataSource, UIColl
                 roomLightsData[0].data?[row!].action?.green != 0 &&
                 roomLightsData[0].data?[row!].action?.blue != 0 {
                 
-                let color = UIColor(red: CGFloat((roomLightsData[0].data?[row!].action?.red)!)/255.0, green: CGFloat((roomLightsData[0].data?[row!].action?.green)!)/255.0, blue: CGFloat((roomLightsData[0].data?[row!].action?.blue)!)/255.0, alpha: 1.0)
+                color = UIColor(red: CGFloat((roomLightsData[0].data?[row!].action?.red)!)/255.0, green: CGFloat((roomLightsData[0].data?[row!].action?.green)!)/255.0, blue: CGFloat((roomLightsData[0].data?[row!].action?.blue)!)/255.0, alpha: 1.0)
                 
-                cell.powerButton.backgroundColor = color
-                
-            }
+            } else {
             
+                color = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            
+            }
+            cell.powerButton.backgroundColor = color
+        
         }
     
-    }
+        // Call Alfred to update the light group
+        // TO DO
     
+    }
 }

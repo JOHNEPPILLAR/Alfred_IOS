@@ -17,11 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        // Overrise tab bar color
         let barColor = UIColor(red: 49/255, green: 75/255, blue: 108/255, alpha: 1.0)
+
+        // Override tab bar color
         UITabBar.appearance().barTintColor = barColor
+    
+        // Override nav bar color
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().barTintColor = UIColor.clear
+        UINavigationBar.appearance().isTranslucent = true
         
-        // Override point for customization after application launch.
         return true
     }
 
