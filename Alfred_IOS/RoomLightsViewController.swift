@@ -28,6 +28,8 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, UI
     //MARK: Private Methods
     func getData() {
         
+        roomLightsData = [RoomLights]() // Clear data store
+        
         let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
         let AlfredAppKey = readPlist(item: "AlfredAppKey")
         let url = URL(string: AlfredBaseURL + "lights/listlightgroups" + AlfredAppKey)
@@ -59,10 +61,9 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, UI
                     self.roomLightsData = [RoomLights(json: jsonData)]
                     
                     DispatchQueue.main.async() {
-                        
-                        self.LightCollectionViewRooms.reloadData() // Refresh the table view
-                        
+                        self.LightCollectionViewRooms.reloadData() // Refresh the colection view
                     }
+                    
                 } else {
                     
                     // Update the UI
@@ -120,7 +121,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, UI
         
         cell.brightnessSlider.value = Float((roomLightsData[0].data?[row].action?.bri)!)
         cell.brightnessSlider.tag = row
-        cell.brightnessSlider?.addTarget(self, action: #selector(brightnessValueChange(_:)), for: .valueChanged)
+        cell.brightnessSlider?.addTarget(self, action: #selector(brightnessValueChange(_:)), for: .touchUpInside)
         
         // Configure the power button
         cell.powerButton.tag = row
@@ -137,38 +138,47 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, UI
         // Figure out which cell is being updated
         let cell = sender.superview?.superview as? LightsCollectionViewCell
         let row = sender.tag
-        var color: UIColor
         
         // Update local data store
         roomLightsData[0].data?[row].action?.bri = Int(sender.value)
-        if sender.value == 0 {
-
-            roomLightsData[0].data?[row].state?.anyOn = false
-            cell?.powerButton.backgroundColor = UIColor.clear
-        
-        } else {
-        
-            roomLightsData[0].data?[row].state?.anyOn = true
-            
-            // Setup the light bulb colour
-            if roomLightsData[0].data?[row].action?.red != 0 &&
-                roomLightsData[0].data?[row].action?.green != 0 &&
-                roomLightsData[0].data?[row].action?.blue != 0 {
-                
-                color = UIColor(red: CGFloat((roomLightsData[0].data?[row].action?.red)!)/255.0, green: CGFloat((roomLightsData[0].data?[row].action?.green)!)/255.0, blue: CGFloat((roomLightsData[0].data?[row].action?.blue)!)/255.0, alpha: 1.0)
-                
-            } else {
-                
-                color = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-                
-            }
-            cell?.powerButton.backgroundColor = color
-
-        }
 
         // Call Alfred to update the light group
-        // TO DO
+        let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+        let AlfredAppKey = readPlist(item: "AlfredAppKey")
+        
+        let lightParams = "&light_number=" + "\(cell!.tag)" + "&percentage=" + String(roomLightsData[0].data![row].action!.bri!)
+        let url = URL(string: AlfredBaseURL + "lights/brightenlightgroup" + AlfredAppKey + lightParams)
+        
+        URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
+            if error != nil {
+                
+                // Update the UI
+                DispatchQueue.main.async() {
+                    
+                    let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to update the light group", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
+                    banner.dismissesOnTap = true
+                    banner.show()
+                }
+            }
             
+            guard let data = data, error == nil else { return }
+            let json = JSON(data: data)
+            let apiStatus = json["code"]
+            let apiStatusString = apiStatus.string!
+            
+            if apiStatusString != "sucess" {
+                
+                // Update the UI
+                DispatchQueue.main.async() {
+                    
+                    let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to update the light group. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
+                    banner.dismissesOnTap = true
+                    banner.show()
+                    
+                }
+            }
+        }).resume()
+        
     }
     
     func powerButtonValueChange(_ sender: UITapGestureRecognizer!) {
@@ -216,7 +226,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, UI
         // Call Alfred to update the light group
         let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
         let AlfredAppKey = readPlist(item: "AlfredAppKey")
-        let lightParams = "&light_number=" + String(cell.tag) + "&light_status=" + lightsOn + "&percentage=" + String(describing: roomLightsData[0].data?[row!].action?.bri)
+        let lightParams = "&light_number=" + "\(cell.tag)" + "&light_status=" + lightsOn + "&percentage=" + String(roomLightsData[0].data![row!].action!.bri!)
         let url = URL(string: AlfredBaseURL + "lights/lightgrouponoff" + AlfredAppKey + lightParams)
 
         URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
@@ -236,17 +246,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, UI
             let apiStatus = json["code"]
             let apiStatusString = apiStatus.string!
             
-            if apiStatusString == "sucess" {
-                
-                // Update the UI
-                DispatchQueue.main.async() {
-                    
-                    let banner = Banner(title: "Alfred API Notification", subtitle: "Lights changed.", backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
-                    banner.dismissesOnTap = true
-                    banner.show(duration: 3.0)
-                    
-                }
-            } else {
+            if apiStatusString != "sucess" {
                 
                 // Update the UI
                 DispatchQueue.main.async() {
@@ -269,7 +269,6 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, UI
         URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
             if error != nil {
                 DispatchQueue.main.async() {
-                    print ("Lights - Unable to turn off all ligths")
                     let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to turn off all lights. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
                     banner.dismissesOnTap = true
                     banner.show()
@@ -282,20 +281,36 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, UI
             let pingStatusString = pingStatus.string!
             
             if pingStatusString == "sucess" {
+                
+                // Update the UI
                 DispatchQueue.main.async() {
+
+                    // Update local data & UI and turn off all light groups
+                    for var i in (0..<self.roomLightsData[0].data!.count){
+                        self.roomLightsData[0].data?[i].state?.anyOn = false
+
+                        let indexPath = IndexPath(row: i, section: 0)
+                        let cell = self.LightCollectionViewRooms!.cellForItem(at: indexPath) as! LightsCollectionViewCell
+                        cell.powerButton.backgroundColor = UIColor.clear
+
+                        i += 1
+                    }
+                    
                     let banner = Banner(title: "Alfred API Notification", subtitle: "Turning off all lights.", backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
                     banner.dismissesOnTap = true
                     banner.show(duration: 3.0)
+                    
                 }
+                
             } else {
                 DispatchQueue.main.async() {
-                    print ("Lights - Unable to turn off all ligths")
                     let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to turn off all lights. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
                     banner.dismissesOnTap = true
                     banner.show()
                 }
             }
         }).resume()
+
     }
     
 }

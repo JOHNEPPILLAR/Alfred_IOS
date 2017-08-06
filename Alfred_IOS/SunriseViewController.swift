@@ -184,7 +184,7 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, UICol
         }
         
         cell.brightnessSlider.tag = row
-        cell.brightnessSlider?.addTarget(self, action: #selector(brightnessValueChange(_:)), for: .valueChanged)
+        cell.brightnessSlider?.addTarget(self, action: #selector(brightnessValueChange(_:)), for: .touchUpInside)
         
         // Configure the power button
         cell.powerButton.tag = row
