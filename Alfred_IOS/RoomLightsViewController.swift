@@ -115,10 +115,10 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, UI
             }
 
             cell.powerButton.backgroundColor = color
-            cell.brightnessSlider.value = Float((roomLightsData[0].data?[row].action?.bri)!)
 
         } 
         
+        cell.brightnessSlider.value = Float((roomLightsData[0].data?[row].action?.bri)!)
         cell.brightnessSlider.tag = row
         cell.brightnessSlider?.addTarget(self, action: #selector(brightnessValueChange(_:)), for: .valueChanged)
         
@@ -178,16 +178,19 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, UI
         let indexPath = LightCollectionViewRooms!.indexPathForItem(at: point)
         let cell = LightCollectionViewRooms!.cellForItem(at: indexPath!) as! LightsCollectionViewCell
         let row = indexPath?.row
+        var lightsOn: String
         var color: UIColor
         
         if (roomLightsData[0].data?[row!].state?.anyOn)! {
             
             roomLightsData[0].data?[row!].state?.anyOn = false
             cell.powerButton.backgroundColor = UIColor.clear
+            lightsOn = "off"
             
         } else {
             
             roomLightsData[0].data?[row!].state?.anyOn = true
+            lightsOn = "on"
 
             // Setup the light bulb colour
             if roomLightsData[0].data?[row!].action?.red != 0 &&
@@ -203,11 +206,59 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, UI
             }
             cell.powerButton.backgroundColor = color
         
+            if roomLightsData[0].data?[row!].action?.bri == 0 {
+                roomLightsData[0].data?[row!].action?.bri = 128
+                cell.brightnessSlider.value = 128
+            }
+            
         }
     
         // Call Alfred to update the light group
-        // TO DO
-    
+        let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+        let AlfredAppKey = readPlist(item: "AlfredAppKey")
+        let lightParams = "&light_number=" + String(cell.tag) + "&light_status=" + lightsOn + "&percentage=" + String(describing: roomLightsData[0].data?[row!].action?.bri)
+        let url = URL(string: AlfredBaseURL + "lights/lightgrouponoff" + AlfredAppKey + lightParams)
+
+        URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
+            if error != nil {
+                
+                // Update the UI
+                DispatchQueue.main.async() {
+                    
+                    let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to update the light group", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
+                    banner.dismissesOnTap = true
+                    banner.show()
+                }
+            }
+            
+            guard let data = data, error == nil else { return }
+            let json = JSON(data: data)
+            let apiStatus = json["code"]
+            let apiStatusString = apiStatus.string!
+            
+            if apiStatusString == "sucess" {
+                
+                // Update the UI
+                DispatchQueue.main.async() {
+                    
+                    let banner = Banner(title: "Alfred API Notification", subtitle: "Lights changed.", backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
+                    banner.dismissesOnTap = true
+                    banner.show(duration: 3.0)
+                    
+                }
+            } else {
+                
+                // Update the UI
+                DispatchQueue.main.async() {
+                    
+                    let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to update the light group. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
+                    banner.dismissesOnTap = true
+                    banner.show()
+                    
+                }
+            }
+        }).resume()
+ 
     }
     
     @IBAction func turnOffAllLights(recognizer:UIPanGestureRecognizer) {
