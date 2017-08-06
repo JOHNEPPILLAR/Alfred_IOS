@@ -61,11 +61,6 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, UI
                     DispatchQueue.main.async() {
                         
                         self.LightCollectionViewRooms.reloadData() // Refresh the table view
-        
-                        
-                        
-                        //button.addTarget(self, action:#selector(self.turnOffAllLights), for: UIControlEvents.touchUpInside)
-
                         
                     }
                 } else {

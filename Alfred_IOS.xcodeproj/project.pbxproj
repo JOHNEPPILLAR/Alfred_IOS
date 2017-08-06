@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A11F51F1F1B339400A018EB /* LightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A11F51E1F1B339400A018EB /* LightTableViewCell.swift */; };
 		0A12B4AB1F193B470012B619 /* SunsetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A12B4AA1F193B470012B619 /* SunsetViewController.swift */; };
 		0A2D9E2E1F3617EF0037594C /* LogFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2D9E2D1F3617EF0037594C /* LogFileViewController.swift */; };
 		0A3B4E7F1F169D500072587A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3B4E7E1F169D500072587A /* SettingsViewController.swift */; };
@@ -37,7 +36,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0A11F51E1F1B339400A018EB /* LightTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LightTableViewCell.swift; path = Alfred_IOS/LightTableViewCell.swift; sourceTree = "<group>"; };
 		0A12B4AA1F193B470012B619 /* SunsetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SunsetViewController.swift; sourceTree = "<group>"; };
 		0A2D9E2D1F3617EF0037594C /* LogFileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogFileViewController.swift; sourceTree = "<group>"; };
 		0A3B4E7E1F169D500072587A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -82,14 +80,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0A11F51D1F1ABDBE00A018EB /* TableViewCells */ = {
+		0A11F51D1F1ABDBE00A018EB /* ViewCells */ = {
 			isa = PBXGroup;
 			children = (
 				0A420E491F140D0500BD2713 /* LogFileTableViewCell.swift */,
-				0A11F51E1F1B339400A018EB /* LightTableViewCell.swift */,
 				0AD5B0E21F32F19D00C91308 /* LightsCollectionViewCell.swift */,
 			);
-			name = TableViewCells;
+			name = ViewCells;
 			path = ..;
 			sourceTree = "<group>";
 		};
@@ -124,7 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				0A80C09D1F2481380082F77C /* Property List */,
-				0A11F51D1F1ABDBE00A018EB /* TableViewCells */,
+				0A11F51D1F1ABDBE00A018EB /* ViewCells */,
 				0A48AD8A1F2376E7008922C9 /* Helpers */,
 				0AF938DE1F1A321900B5B247 /* Data Classes */,
 				0A69FB801F10C25C00563A69 /* AppDelegate.swift */,
@@ -316,7 +313,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A11F51F1F1B339400A018EB /* LightTableViewCell.swift in Sources */,
 				0AE740251F28C54B00B8ABB1 /* Morning.swift in Sources */,
 				0AD5B0E31F32F19D00C91308 /* LightsCollectionViewCell.swift in Sources */,
 				0A69FB891F10C25C00563A69 /* Alfred_IOS.xcdatamodeld in Sources */,

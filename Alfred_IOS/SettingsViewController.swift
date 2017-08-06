@@ -16,7 +16,6 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    
     @IBAction func RestartAlfred(_ sender: UITapGestureRecognizer) {
         let alertController = UIAlertController(title: "Alfred", message:
             "Are you sure you want to restart Alfred?", preferredStyle: UIAlertControllerStyle.alert)
@@ -32,7 +31,7 @@ class SettingsViewController: UIViewController {
     func RestartAflred() {
         let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
         let AlfredAppKey = readPlist(item: "AlfredAppKey")
-        let url = URL(string: AlfredBaseURL + "ping" + AlfredAppKey)
+        let url = URL(string: AlfredBaseURL + "restart" + AlfredAppKey)
         
         URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
             if error != nil {
@@ -91,7 +90,7 @@ class SettingsViewController: UIViewController {
     func DelAflredLog() {
         let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
         let AlfredAppKey = readPlist(item: "AlfredAppKey")
-        let url = URL(string: AlfredBaseURL + "ping" + AlfredAppKey)
+        let url = URL(string: AlfredBaseURL + "dellog" + AlfredAppKey)
         
         URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
             if error != nil {
