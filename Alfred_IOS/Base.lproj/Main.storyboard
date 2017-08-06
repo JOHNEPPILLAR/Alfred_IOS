@@ -214,11 +214,11 @@
                         <viewControllerLayoutGuide type="bottom" id="yx1-Wi-Wdd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="OJh-Wh-Lmd">
-                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="EF2-7R-x3x">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="604"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="717"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3Qf-yn-fan">
@@ -296,7 +296,7 @@
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9hS-Pv-BdJ">
-                                <rect key="frame" x="195" y="70" width="164" height="110"/>
+                                <rect key="frame" x="195" y="70" width="164" height="135.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Turn off" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pY8-DR-0er">
@@ -361,7 +361,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t7Y-gz-w6a">
-                                <rect key="frame" x="16" y="70" width="164" height="110"/>
+                                <rect key="frame" x="16" y="70" width="164" height="135.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Turn on" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1R8-uC-7Ru">
@@ -919,7 +919,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xaI-eR-Yne">
-                                        <rect key="frame" x="0.0" y="24" width="375" height="586"/>
+                                        <rect key="frame" x="0.0" y="24" width="375" height="591"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bwR-fY-VnH">
@@ -993,6 +993,21 @@
                                             <outlet property="prefetchDataSource" destination="WKt-N1-aWc" id="IN3-Rd-RjD"/>
                                         </connections>
                                     </collectionView>
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_lights_off" translatesAutoresizingMaskIntoConstraints="NO" id="lqB-ZJ-3sK">
+                                        <rect key="frame" x="255" y="454" width="70" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="JXG-T1-jrS" appends="YES" id="83G-QH-ly5"/>
+                                        </connections>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="All Off" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PhI-Et-KjQ">
+                                        <rect key="frame" x="255" y="532" width="70" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -1006,8 +1021,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hWA-Vi-bGD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="JXG-T1-jrS" userLabel="All off Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="turnOffAllLightsWithRecognizer:" destination="WKt-N1-aWc" id="FI7-D7-j8a"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1317.5999999999999" y="-163.26836581709148"/>
+            <point key="canvasLocation" x="1271.2" y="-144.3778110944528"/>
         </scene>
         <!--Home-->
         <scene sceneID="V00-nC-hfW">
@@ -1067,6 +1087,7 @@
         <image name="Lights" width="24" height="24"/>
         <image name="Settings" width="25" height="25"/>
         <image name="ic_del_log" width="100" height="100"/>
+        <image name="ic_lights_off" width="80" height="80"/>
         <image name="ic_restart" width="80" height="80"/>
         <image name="ic_sunrise" width="100" height="100"/>
         <image name="ic_sunset" width="100" height="100"/>
@@ -1075,9 +1096,9 @@
         <image name="power_button_grey" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Zau-6A-ghY"/>
         <segue reference="iQe-EX-QAu"/>
         <segue reference="shl-jr-mqR"/>
+        <segue reference="Zau-6A-ghY"/>
         <segue reference="PXd-qe-vgO"/>
     </inferredMetricsTieBreakers>
 </document>

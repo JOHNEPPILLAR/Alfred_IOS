@@ -20,55 +20,9 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Add a power off lights button to the nav bar
-        let button = UIButton.init(type: .custom)
-        button.setImage(UIImage.init(named: "power"), for: UIControlState.normal)
-        button.addTarget(self, action:#selector(self.turnOffAllLights), for: UIControlEvents.touchUpInside)
-        button.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30)
-        let barButton = UIBarButtonItem(customView: button)
-        self.navigationItem.rightBarButtonItem = barButton
-        
         // Get room lights configuration info from Alfred
         self.getData()
         
-    }
-    
-    func turnOffAllLights()
-    {
-        let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
-        let AlfredAppKey = readPlist(item: "AlfredAppKey")
-        let url = URL(string: AlfredBaseURL + "lights/alloff" + AlfredAppKey)
-        
-        URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
-            if error != nil {
-                DispatchQueue.main.async() {
-                    print ("Lights - Unable to turn off all ligths")
-                    let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to turn off all lights. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
-                    banner.dismissesOnTap = true
-                    banner.show()
-                }
-            }
-            
-            guard let data = data, error == nil else { return }
-            let json = JSON(data: data)
-            let pingStatus = json["code"]
-            let pingStatusString = pingStatus.string!
-            
-            if pingStatusString == "sucess" {
-                DispatchQueue.main.async() {
-                    let banner = Banner(title: "Alfred API Notification", subtitle: "Turning off all lights.", backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
-                    banner.dismissesOnTap = true
-                    banner.show(duration: 3.0)
-                }
-            } else {
-                DispatchQueue.main.async() {
-                    print ("Lights - Unable to turn off all ligths")
-                    let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to turn off all lights. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
-                    banner.dismissesOnTap = true
-                    banner.show()
-                }
-            }
-        }).resume()
     }
     
     //MARK: Private Methods
@@ -107,6 +61,11 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, UI
                     DispatchQueue.main.async() {
                         
                         self.LightCollectionViewRooms.reloadData() // Refresh the table view
+        
+                        
+                        
+                        //button.addTarget(self, action:#selector(self.turnOffAllLights), for: UIControlEvents.touchUpInside)
+
                         
                     }
                 } else {
@@ -255,4 +214,42 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, UI
         // TO DO
     
     }
+    
+    @IBAction func turnOffAllLights(recognizer:UIPanGestureRecognizer) {
+        let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+        let AlfredAppKey = readPlist(item: "AlfredAppKey")
+        let url = URL(string: AlfredBaseURL + "lights/alloff" + AlfredAppKey)
+        
+        URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
+            if error != nil {
+                DispatchQueue.main.async() {
+                    print ("Lights - Unable to turn off all ligths")
+                    let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to turn off all lights. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
+                    banner.dismissesOnTap = true
+                    banner.show()
+                }
+            }
+            
+            guard let data = data, error == nil else { return }
+            let json = JSON(data: data)
+            let pingStatus = json["code"]
+            let pingStatusString = pingStatus.string!
+            
+            if pingStatusString == "sucess" {
+                DispatchQueue.main.async() {
+                    let banner = Banner(title: "Alfred API Notification", subtitle: "Turning off all lights.", backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
+                    banner.dismissesOnTap = true
+                    banner.show(duration: 3.0)
+                }
+            } else {
+                DispatchQueue.main.async() {
+                    print ("Lights - Unable to turn off all ligths")
+                    let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to turn off all lights. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
+                    banner.dismissesOnTap = true
+                    banner.show()
+                }
+            }
+        }).resume()
+    }
+    
 }

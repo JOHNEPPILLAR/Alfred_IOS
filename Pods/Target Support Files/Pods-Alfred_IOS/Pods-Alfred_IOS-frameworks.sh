@@ -91,14 +91,12 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/BRYXBanner/BRYXBanner.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MTCircularSlider/MTCircularSlider.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/SevenSwitch/SevenSwitch.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftyJSON/SwiftyJSON.framework"
   install_framework "$BUILT_PRODUCTS_DIR/TGPControls/TGPControls.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/BRYXBanner/BRYXBanner.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MTCircularSlider/MTCircularSlider.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/SevenSwitch/SevenSwitch.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftyJSON/SwiftyJSON.framework"
   install_framework "$BUILT_PRODUCTS_DIR/TGPControls/TGPControls.framework"
 fi

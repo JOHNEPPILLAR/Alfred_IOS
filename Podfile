@@ -5,6 +5,5 @@ target 'Alfred_IOS' do
 	pod 'SwiftyJSON'
     pod 'BRYXBanner'
     pod 'MTCircularSlider'
-    pod 'SevenSwitch'
     pod 'TGPControls'
 end
