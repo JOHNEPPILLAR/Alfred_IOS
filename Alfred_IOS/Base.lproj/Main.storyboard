@@ -905,12 +905,12 @@
         <!--colorPicker-->
         <scene sceneID="pX0-GH-gBv">
             <objects>
-                <viewController storyboardIdentifier="colorPickerVC" title="colorPicker" modalTransitionStyle="crossDissolve" id="1C1-UV-wNr" customClass="ColorViewController" customModule="Alfred_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="colorPickerVC" title="colorPicker" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="1C1-UV-wNr" customClass="ColorViewController" customModule="Alfred_IOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="R9t-1e-jb5"/>
                         <viewControllerLayoutGuide type="bottom" id="FZM-02-hbV"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Kfz-Vs-OyN">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="Kfz-Vs-OyN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
