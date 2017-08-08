@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A0463F11F38E99B004A738D /* ColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0463F01F38E99B004A738D /* ColorViewController.swift */; };
 		0A12B4AB1F193B470012B619 /* SunsetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A12B4AA1F193B470012B619 /* SunsetViewController.swift */; };
 		0A2D9E2E1F3617EF0037594C /* LogFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2D9E2D1F3617EF0037594C /* LogFileViewController.swift */; };
 		0A3B4E7F1F169D500072587A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3B4E7E1F169D500072587A /* SettingsViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A0463F01F38E99B004A738D /* ColorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorViewController.swift; sourceTree = "<group>"; };
 		0A12B4AA1F193B470012B619 /* SunsetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SunsetViewController.swift; sourceTree = "<group>"; };
 		0A2D9E2D1F3617EF0037594C /* LogFileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogFileViewController.swift; sourceTree = "<group>"; };
 		0A3B4E7E1F169D500072587A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				0AE84DE61F289F120031F6C2 /* SunriseViewController.swift */,
 				0ADDC4D21F29C02000C08F55 /* EveningTVViewController.swift */,
 				0A97CCAE1F2B0AEF00E6FF1F /* RoomLightsViewController.swift */,
+				0A0463F01F38E99B004A738D /* ColorViewController.swift */,
 			);
 			name = "View Controlers";
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				0A69FB811F10C25C00563A69 /* AppDelegate.swift in Sources */,
 				0A2D9E2E1F3617EF0037594C /* LogFileViewController.swift in Sources */,
 				0A8AF14A1F24EF030064894F /* Helpers.swift in Sources */,
+				0A0463F11F38E99B004A738D /* ColorViewController.swift in Sources */,
 				0AA83A741F2CE72500B933A8 /* RoomLightsState.swift in Sources */,
 				0AA83A731F2CE72500B933A8 /* RoomLightsData.swift in Sources */,
 				0AD1C1C31F22928E000D899D /* Logs.swift in Sources */,

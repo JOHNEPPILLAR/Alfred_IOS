@@ -128,10 +128,11 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, UI
         cell.powerButton.isUserInteractionEnabled = true
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(powerButtonValueChange(_:)))
         cell.powerButton.addGestureRecognizer(tapRecognizer)
-        
+        let longTapRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPowerButtonPress(_:)))
+        cell.powerButton.addGestureRecognizer(longTapRecognizer)
+
         return cell
     }
-    
     
     func brightnessValueChange(_ sender: MTCircularSlider!) {
         
@@ -259,6 +260,24 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, UI
             }
         }).resume()
  
+    }
+    
+    func longPowerButtonPress(_ sender: UITapGestureRecognizer!) {
+        
+        // Only do when finished long press
+        if sender.state == .ended {
+            
+            // Figure out which cell is being updated
+            let point : CGPoint = sender.view!.convert(CGPoint.zero, to:LightCollectionViewRooms)
+            let indexPath = LightCollectionViewRooms!.indexPathForItem(at: point)
+            let cell = LightCollectionViewRooms!.cellForItem(at: indexPath!) as! LightsCollectionViewCell
+            
+            cellID.sharedInstance.cell = cell
+            performSegue(withIdentifier: "roomsShowColor", sender: cell)
+    
+            // TODO callback needs to update Alfred
+            
+        }
     }
     
     @IBAction func turnOffAllLights(recognizer:UIPanGestureRecognizer) {

@@ -11,7 +11,7 @@ import SwiftyJSON
 import BRYXBanner
 import MTCircularSlider
 
-class SunriseViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class SunriseViewController: UIViewController, UICollectionViewDataSource {
 
     var morningData = [Morning]()
     
@@ -189,8 +189,10 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, UICol
         // Configure the power button
         cell.powerButton.tag = row
         cell.powerButton.isUserInteractionEnabled = true
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(powerButtonValueChange(_:)))
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(powerButtonPress(_:)))
         cell.powerButton.addGestureRecognizer(tapRecognizer)
+        let longTapRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPowerButtonPress(_:)))
+        cell.powerButton.addGestureRecognizer(longTapRecognizer)
         
         return cell
 
@@ -232,7 +234,7 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, UICol
         
     }
     
-    func powerButtonValueChange(_ sender: UITapGestureRecognizer!) {
+    func powerButtonPress(_ sender: UITapGestureRecognizer!) {
         
         // Figure out which cell is being updated
         let point : CGPoint = sender.view!.convert(CGPoint.zero, to:LightCollectionView)
@@ -264,6 +266,22 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, UICol
                 
             }
             cell.powerButton.backgroundColor = color
+            
+        }
+    }
+    
+    func longPowerButtonPress(_ sender: UITapGestureRecognizer!) {
+        
+        // Only do when finished long press
+        if sender.state == .ended {
+            
+            // Figure out which cell is being updated
+            let point : CGPoint = sender.view!.convert(CGPoint.zero, to:LightCollectionView)
+            let indexPath = LightCollectionView!.indexPathForItem(at: point)
+            let cell = LightCollectionView!.cellForItem(at: indexPath!) as! LightsCollectionViewCell
+            
+            cellID.sharedInstance.cell = cell
+            performSegue(withIdentifier: "sunriseShowColor", sender: cell)
             
         }
     }

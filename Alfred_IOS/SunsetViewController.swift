@@ -10,6 +10,7 @@ import UIKit
 import SwiftyJSON
 import BRYXBanner
 import MTCircularSlider
+import IMGLYColorPicker
 
 class SunsetViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
@@ -190,11 +191,13 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, UIColl
         cell.powerButton.isUserInteractionEnabled = true
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(powerButtonValueChange(_:)))
         cell.powerButton.addGestureRecognizer(tapRecognizer)
-        
+        let longTapRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPowerButtonPress(_:)))
+        cell.powerButton.addGestureRecognizer(longTapRecognizer)
+   
         return cell
         
     }
-    
+        
     func brightnessValueChange(_ sender: MTCircularSlider!) {
         
         // Figure out which cell is being updated
@@ -263,6 +266,22 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, UIColl
                 
             }
             cell.powerButton.backgroundColor = color
+            
+        }
+    }
+    
+    func longPowerButtonPress(_ sender: UITapGestureRecognizer!) {
+        
+        // Only do when finished long press
+        if sender.state == .ended {
+            
+            // Figure out which cell is being updated
+            let point : CGPoint = sender.view!.convert(CGPoint.zero, to:LightCollectionView)
+            let indexPath = LightCollectionView!.indexPathForItem(at: point)
+            let cell = LightCollectionView!.cellForItem(at: indexPath!) as! LightsCollectionViewCell
+            
+            cellID.sharedInstance.cell = cell
+            performSegue(withIdentifier: "sunsetShowColor", sender: cell)
             
         }
     }

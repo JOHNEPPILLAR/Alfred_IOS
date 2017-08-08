@@ -10,6 +10,13 @@ import Foundation
 import UIKit
 import SpriteKit
 
+class cellID {
+    static var sharedInstance = cellID()
+    private init() {}
+    
+    var cell: LightsCollectionViewCell?
+}
+
 func readPlist(item: String) -> String {
     
     var plistItem: String = ""
@@ -40,6 +47,26 @@ public extension UIColor {
             return true
         }
     }
+    
+    public func rgb() -> (red:Int, green:Int, blue:Int, alpha:Int)? {
+        var fRed : CGFloat = 0
+        var fGreen : CGFloat = 0
+        var fBlue : CGFloat = 0
+        var fAlpha: CGFloat = 0
+        if self.getRed(&fRed, green: &fGreen, blue: &fBlue, alpha: &fAlpha) {
+            let iRed = Int(fRed * 255.0)
+            let iGreen = Int(fGreen * 255.0)
+            let iBlue = Int(fBlue * 255.0)
+            let iAlpha = Int(fAlpha * 255.0)
+            
+            //  (Bits 24-31 are alpha, 16-23 are red, 8-15 are green, 0-7 are blue).
+            //let rgb = (iAlpha << 24) + (iRed << 16) + (iGreen << 8) + iBlue
+            return (red:iRed, green: (iGreen << 8), blue: iBlue, alpha: (iAlpha << 24))
+        } else {
+            // Could not extract RGBA components:
+            return nil
+        }
+    }
 }
 
 @IBDesignable class RoundButton: UIButton {
@@ -56,11 +83,13 @@ public extension UIColor {
     }
     
     func updateCornerRadius() {
-        layer.cornerRadius = rounded ? frame.size.height / 2 : 0
+        layer.cornerRadius = 5
+        layer.borderWidth = 1
+        layer.borderColor = UIColor.lightGray.cgColor
     }
 }
 
-@IBDesignable class ReoundImage: UIImageView {
+@IBDesignable class RoundImage: UIImageView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -80,22 +109,5 @@ public extension UIColor {
         layer.cornerRadius = frame.height/2
         clipsToBounds = true
     }
-    
-    func setBlackBorder() {
-        layer.borderWidth = 1
-        layer.masksToBounds = false
-        layer.borderColor = UIColor.black.cgColor
-        layer.cornerRadius = frame.height/2
-        clipsToBounds = true
-    }
-    
-    func setWhiteBorder() {
-        layer.borderWidth = 1
-        layer.masksToBounds = false
-        layer.borderColor = UIColor.white.cgColor
-        layer.cornerRadius = frame.height/2
-        clipsToBounds = true
-    }
-    
 }
 

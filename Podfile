@@ -6,4 +6,5 @@ target 'Alfred_IOS' do
     pod 'BRYXBanner'
     pod 'MTCircularSlider'
     pod 'TGPControls'
+    pod 'IMGLYColorPicker'
 end

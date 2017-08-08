@@ -243,9 +243,10 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="170" height="125"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="power_button_grey" translatesAutoresizingMaskIntoConstraints="NO" id="c8z-cG-a5p" customClass="ReoundImage" customModule="Alfred_IOS" customModuleProvider="target">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="power_button_grey" translatesAutoresizingMaskIntoConstraints="NO" id="c8z-cG-a5p" customClass="RoundImage" customModule="Alfred_IOS" customModuleProvider="target">
                                                             <rect key="frame" x="51" y="27" width="70" height="70"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <gestureRecognizers/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
                                                             </userDefinedRuntimeAttributes>
@@ -274,7 +275,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Q7E-w2-5lu" customClass="RoundButton" customModule="Alfred_IOS" customModuleProvider="target">
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Q7E-w2-5lu">
                                                     <rect key="frame" x="0.0" y="100" width="170" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Button">
@@ -432,11 +433,12 @@
                         <outlet property="turnOnHRStepper" destination="0Mz-EX-6Vy" id="eap-NF-dDk"/>
                         <outlet property="turnOnMINLabel" destination="KMG-Eb-wXU" id="sba-7z-HI4"/>
                         <outlet property="turnOnMINStepper" destination="IiR-2l-ICa" id="DVx-4a-6td"/>
+                        <segue destination="1C1-UV-wNr" kind="presentation" identifier="sunriseShowColor" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="iYm-RY-6IT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MqP-2a-6Pq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1679" y="1357"/>
+            <point key="canvasLocation" x="1318" y="1357"/>
         </scene>
         <!--Sunset Lights-->
         <scene sceneID="Xbi-kS-Ldo">
@@ -592,7 +594,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="170" height="125"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="power_button_grey" translatesAutoresizingMaskIntoConstraints="NO" id="mGg-9U-qsU" customClass="ReoundImage" customModule="Alfred_IOS" customModuleProvider="target">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="power_button_grey" translatesAutoresizingMaskIntoConstraints="NO" id="mGg-9U-qsU" customClass="RoundImage" customModule="Alfred_IOS" customModuleProvider="target">
                                                             <rect key="frame" x="51" y="27" width="70" height="70"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <userDefinedRuntimeAttributes>
@@ -623,7 +625,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Ey1-Kl-TWg" customClass="RoundButton" customModule="Alfred_IOS" customModuleProvider="target">
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Ey1-Kl-TWg">
                                                     <rect key="frame" x="0.0" y="100" width="170" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Button">
@@ -657,11 +659,12 @@
                         <outlet property="turnoffHRStepper" destination="Rew-Gz-fZx" id="KAa-bM-MDe"/>
                         <outlet property="turnoffMINLabel" destination="QeF-Re-oAv" id="XUe-Z2-OQA"/>
                         <outlet property="turnoffMINStepper" destination="WPd-bp-etl" id="5x2-pW-CWN"/>
+                        <segue destination="1C1-UV-wNr" kind="presentation" identifier="sunsetShowColor" id="Gj3-7b-C3a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mc2-Dx-JPI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2485.5999999999999" y="1356.9715142428786"/>
+            <point key="canvasLocation" x="3079" y="1357"/>
         </scene>
         <!--View Log File-->
         <scene sceneID="eze-ob-QUp">
@@ -733,7 +736,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ojO-pZ-aKk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2486" y="2104"/>
+            <point key="canvasLocation" x="3078" y="2104"/>
         </scene>
         <!--Evening TV Lights-->
         <scene sceneID="WP0-XH-jaR">
@@ -831,7 +834,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="170" height="125"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="power_button_grey" translatesAutoresizingMaskIntoConstraints="NO" id="fd9-FJ-yte" customClass="ReoundImage" customModule="Alfred_IOS" customModuleProvider="target">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="power_button_grey" translatesAutoresizingMaskIntoConstraints="NO" id="fd9-FJ-yte" customClass="RoundImage" customModule="Alfred_IOS" customModuleProvider="target">
                                                             <rect key="frame" x="51" y="27" width="70" height="70"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <userDefinedRuntimeAttributes>
@@ -862,7 +865,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="fEs-aS-hrW" customClass="RoundButton" customModule="Alfred_IOS" customModuleProvider="target">
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="fEs-aS-hrW">
                                                     <rect key="frame" x="0.0" y="100" width="170" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Button">
@@ -892,11 +895,69 @@
                         <outlet property="turnOnHRStepper" destination="cbW-Og-AZX" id="qeC-xQ-lvV"/>
                         <outlet property="turnOnMINLabel" destination="TlZ-yo-ob3" id="q0a-4M-thk"/>
                         <outlet property="turnOnMINStepper" destination="2lN-E8-Gfe" id="RmZ-bV-QeU"/>
+                        <segue destination="1C1-UV-wNr" kind="presentation" identifier="eveningTVShowColor" id="How-IC-abe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zjx-XO-rD9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1677.5" y="2104.5"/>
+            <point key="canvasLocation" x="1318" y="2104"/>
+        </scene>
+        <!--colorPicker-->
+        <scene sceneID="pX0-GH-gBv">
+            <objects>
+                <viewController storyboardIdentifier="colorPickerVC" title="colorPicker" modalTransitionStyle="crossDissolve" id="1C1-UV-wNr" customClass="ColorViewController" customModule="Alfred_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="R9t-1e-jb5"/>
+                        <viewControllerLayoutGuide type="bottom" id="FZM-02-hbV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Kfz-Vs-OyN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nT3-IS-AnB">
+                                <rect key="frame" x="5" y="194" width="364" height="310"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VxD-Kr-RxM" customClass="RoundButton" customModule="Alfred_IOS" customModuleProvider="target">
+                                        <rect key="frame" x="15" y="270" width="130" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelButton:" destination="1C1-UV-wNr" eventType="touchUpInside" id="c66-Wg-xzq"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hUh-cf-h7s" customClass="RoundButton" customModule="Alfred_IOS" customModuleProvider="target">
+                                        <rect key="frame" x="214" y="270" width="130" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Done">
+                                            <color key="titleColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="SaveButton:" destination="1C1-UV-wNr" eventType="touchUpInside" id="hEN-e5-ASp"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.19215686274509802" green="0.29411764705882354" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sng-7T-6uB" customClass="IMGLYColorPickerView">
+                                <rect key="frame" x="16" y="192" width="343" height="282"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="colorPicker" destination="Sng-7T-6uB" id="wjs-Bm-pfX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hgu-L4-Swk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2173.5999999999999" y="1850.824587706147"/>
         </scene>
         <!--Lights-->
         <scene sceneID="DFj-jh-qUz">
@@ -940,7 +1001,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="170" height="125"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="power_button_grey" translatesAutoresizingMaskIntoConstraints="NO" id="ePP-Zb-K8h" customClass="ReoundImage" customModule="Alfred_IOS" customModuleProvider="target">
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="power_button_grey" translatesAutoresizingMaskIntoConstraints="NO" id="ePP-Zb-K8h" customClass="RoundImage" customModule="Alfred_IOS" customModuleProvider="target">
                                                                     <rect key="frame" x="51" y="27" width="70" height="70"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <userDefinedRuntimeAttributes>
@@ -971,7 +1032,7 @@
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </view>
-                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="OWD-Zn-pjn" customClass="RoundButton" customModule="Alfred_IOS" customModuleProvider="target">
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="OWD-Zn-pjn">
                                                             <rect key="frame" x="0.0" y="95" width="170" height="30"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <state key="normal" title="Button">
@@ -1018,6 +1079,7 @@
                     <tabBarItem key="tabBarItem" title="Rooms" image="Lights" id="fjM-10-zoY"/>
                     <connections>
                         <outlet property="LightCollectionViewRooms" destination="xaI-eR-Yne" id="Rcu-Qf-fry"/>
+                        <segue destination="1C1-UV-wNr" kind="presentation" identifier="roomsShowColor" id="43U-s2-kp5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hWA-Vi-bGD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1096,9 +1158,10 @@
         <image name="power_button_grey" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="PXd-qe-vgO"/>
+        <segue reference="43U-s2-kp5"/>
         <segue reference="iQe-EX-QAu"/>
         <segue reference="shl-jr-mqR"/>
         <segue reference="Zau-6A-ghY"/>
-        <segue reference="PXd-qe-vgO"/>
     </inferredMetricsTieBreakers>
 </document>
