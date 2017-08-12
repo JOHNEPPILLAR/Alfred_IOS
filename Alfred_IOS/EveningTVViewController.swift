@@ -11,7 +11,7 @@
     import BRYXBanner
     import MTCircularSlider
     
-    class EveningTVViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+    class EveningTVViewController: UIViewController, UICollectionViewDataSource, colorPickerDelegate {
         
         var eveningTVData = [EveningTV]()
         
@@ -253,13 +253,54 @@
                 // Figure out which cell is being updated
                 let point : CGPoint = sender.view!.convert(CGPoint.zero, to:LightCollectionView)
                 let indexPath = LightCollectionView!.indexPathForItem(at: point)
+                let row = indexPath?.row
                 let cell = LightCollectionView!.cellForItem(at: indexPath!) as! LightsCollectionViewCell
-                
                 cellID.sharedInstance.cell = cell
-                performSegue(withIdentifier: "eveningTVShowColor", sender: cell)
+                
+                // Store the color
+                var color: UIColor
+                if eveningTVData[0].lights?[row!].red != 0 &&
+                    eveningTVData[0].lights?[row!].green != 0 &&
+                    eveningTVData[0].lights?[row!].blue != 0 {
+                    
+                    color = UIColor(red: CGFloat((eveningTVData[0].lights?[row!].red)!)/255.0, green: CGFloat((eveningTVData[0].lights?[row!].green)!)/255.0, blue: CGFloat((eveningTVData[0].lights?[row!].blue)!)/255.0, alpha: 1.0)
+                    
+                } else {
+                    
+                    color = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+                    
+                }
+                
+                // Open the color picker
+                performSegue(withIdentifier: "eveningTVShowColor", sender: color)
+                
                 
             }
         }
+        
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            
+            let secondViewController = segue.destination as! ColorViewController
+            secondViewController.delegate = self
+            secondViewController.colorID = sender as? UIColor
+            
+        }
+        
+        func backFromColorPicker(_ newColor: UIColor?) {
+            
+            // Update the button background
+            let cell = cellID.sharedInstance.cell
+            cell?.powerButton.backgroundColor = newColor
+            
+            // Update the local data store
+            let row = cell?.powerButton.tag
+            let rgb = newColor?.rgb()
+            eveningTVData[0].lights?[row!].red = rgb?.red
+            eveningTVData[0].lights?[row!].green = rgb?.green
+            eveningTVData[0].lights?[row!].blue = rgb?.blue
+            
+        }
+        
         
         func saveSettingsAction(sender: UIBarButtonItem)
         {

@@ -11,7 +11,7 @@ import SwiftyJSON
 import BRYXBanner
 import MTCircularSlider
 
-class SunriseViewController: UIViewController, UICollectionViewDataSource {
+class SunriseViewController: UIViewController, UICollectionViewDataSource, colorPickerDelegate {
 
     var morningData = [Morning]()
     
@@ -45,7 +45,9 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource {
     }
     @IBOutlet weak var turnOffMINStepper: UIStepper!
     @IBOutlet weak var turnOffMINLabel: UILabel!
-    
+
+    var colorPickerView: ColorViewController?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -62,6 +64,7 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource {
         
         // Get sunrise configuration info from Alfred
         self.getData()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -278,12 +281,51 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource {
             // Figure out which cell is being updated
             let point : CGPoint = sender.view!.convert(CGPoint.zero, to:LightCollectionView)
             let indexPath = LightCollectionView!.indexPathForItem(at: point)
+            let row = indexPath?.row
             let cell = LightCollectionView!.cellForItem(at: indexPath!) as! LightsCollectionViewCell
-            
             cellID.sharedInstance.cell = cell
-            performSegue(withIdentifier: "sunriseShowColor", sender: cell)
+
+            // Store the color
+            var color: UIColor
+            if morningData[0].lights?[row!].red != 0 &&
+                morningData[0].lights?[row!].green != 0 &&
+                morningData[0].lights?[row!].blue != 0 {
+                
+                color = UIColor(red: CGFloat((morningData[0].lights?[row!].red)!)/255.0, green: CGFloat((morningData[0].lights?[row!].green)!)/255.0, blue: CGFloat((morningData[0].lights?[row!].blue)!)/255.0, alpha: 1.0)
+                
+            } else {
+                
+                color = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+                
+            }
+    
+            // Open the color picker
+            performSegue(withIdentifier: "sunriseShowColor", sender: color)
             
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let secondViewController = segue.destination as! ColorViewController
+        secondViewController.delegate = self
+        secondViewController.colorID = sender as? UIColor
+        
+    }
+    
+    func backFromColorPicker(_ newColor: UIColor?) {
+
+        // Update the button background
+        let cell = cellID.sharedInstance.cell
+        cell?.powerButton.backgroundColor = newColor
+        
+        // Update the local data store
+        let row = cell?.powerButton.tag
+        let rgb = newColor?.rgb()
+        morningData[0].lights?[row!].red = rgb?.red
+        morningData[0].lights?[row!].green = rgb?.green
+        morningData[0].lights?[row!].blue = rgb?.blue
+        
     }
     
     func saveSettingsAction(sender: UIBarButtonItem) {

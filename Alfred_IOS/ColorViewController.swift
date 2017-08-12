@@ -9,22 +9,28 @@
 import UIKit
 import IMGLYColorPicker
 
+protocol colorPickerDelegate: class {
+    func backFromColorPicker(_ color: UIColor?)
+}
+
 class ColorViewController: UIViewController {
 
+    weak var delegate: colorPickerDelegate?
+    var colorID: UIColor?
+    
     @IBOutlet weak var colorPicker: ColorPickerView!
+    @IBOutlet weak var calledby: UIViewController!
     
     @IBAction func cancelButton(_ sender: RoundButton) {
         
-        //cellID.sharedInstance.cell = nil
         self.dismiss(animated: true)
         
     }
     
     @IBAction func SaveButton(_ sender: RoundButton) {
 
-        let cell = cellID.sharedInstance.cell
-        cell?.powerButton.backgroundColor = colorPicker.color
-        //cellID.sharedInstance.cell = nil
+        delegate?.backFromColorPicker(colorPicker.color)
+
         self.dismiss(animated: true)
         
     }
@@ -32,14 +38,8 @@ class ColorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let cell = cellID.sharedInstance.cell
-        var color = cell?.powerButton.backgroundColor
-        if color == nil {
-            color = UIColor.white
-        }
-    
-        self.colorPicker.color = color!
-
+        self.colorPicker.color = colorID!
+        
     }
 
     override func didReceiveMemoryWarning() {
