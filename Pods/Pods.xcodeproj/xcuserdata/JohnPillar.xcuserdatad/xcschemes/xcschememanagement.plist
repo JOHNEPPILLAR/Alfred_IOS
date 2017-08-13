@@ -9,16 +9,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>IMGLYColorPicker-IMGLYColorPicker.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>IMGLYColorPicker.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>MTCircularSlider.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,12 +37,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3B9535CC60FD2023A9AA15FA9A1647FB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8A0FBD28D23098109204CB081F893BB2</key>
+		<key>196EC89F186D5BB5D295CCBC577EF51C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,17 +47,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C10C73CB178F8C3018DCDD59C26CFE41</key>
+		<key>A39A8FCF4B02B482D7BE6B7BF7F6521B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D291163F2E18477ACE560FE6EE5BF8E9</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F964594206A7545503C59BA69AB726F7</key>
+		<key>EF565C6698D843B812C3B67425F9491C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

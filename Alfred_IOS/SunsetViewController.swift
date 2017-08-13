@@ -10,7 +10,6 @@ import UIKit
 import SwiftyJSON
 import BRYXBanner
 import MTCircularSlider
-import IMGLYColorPicker
 
 class SunsetViewController: UIViewController, UICollectionViewDataSource, colorPickerDelegate {
     

@@ -44,22 +44,10 @@ class ColorViewController: UIViewController {
         }
         
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func displayColor(_ sender: UIButton){
-
-        // Update the local color store
-        colorID = sender.backgroundColor!
-
-    }
     
     func makeRainbowButtons(buttonFrame: CGRect, sat: CGFloat, bright: CGFloat) {
         var myButtonFrame = buttonFrame
-
+        
         for i in 0..<12 {
             let hue:CGFloat = CGFloat(i) / 12.0
             let color = UIColor(hue: hue, saturation: sat, brightness: bright, alpha: 1.0)
@@ -67,8 +55,29 @@ class ColorViewController: UIViewController {
             myButtonFrame.origin.x = myButtonFrame.size.width + myButtonFrame.origin.x
             aButton.backgroundColor = color
             view.addSubview(aButton)
-            aButton.addTarget(self, action: #selector(displayColor(_:)), for: .touchUpInside)
+            aButton.addTarget(self, action: #selector(selectColor(_:)), for: .touchUpInside)
         }
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func selectColor(_ sender: UIButton){
+
+        // Update the local color store
+        colorID = sender.backgroundColor!
+        
+        // Remove any previous highlighted cels
+        for case let button as UIButton in self.view.subviews {
+            button.layer.borderWidth = 0
+        }
+        
+        // Highlight the current selected cell
+        sender.layer.borderWidth = 3
+        sender.layer.borderColor = UIColor.black.cgColor
+
     }
     
 }
