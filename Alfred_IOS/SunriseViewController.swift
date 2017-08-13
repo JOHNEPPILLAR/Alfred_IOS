@@ -322,9 +322,11 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
         // Update the local data store
         let row = cell?.powerButton.tag
         let rgb = newColor?.rgb()
-        morningData[0].lights?[row!].red = rgb?.red
-        morningData[0].lights?[row!].green = rgb?.green
-        morningData[0].lights?[row!].blue = rgb?.blue
+        
+dump(rgb)
+        morningData[0].lights?[row!].red = Int((rgb?.red)!)
+        morningData[0].lights?[row!].green = Int((rgb?.green)!)
+        morningData[0].lights?[row!].blue = Int((rgb?.blue)!)
         
     }
     

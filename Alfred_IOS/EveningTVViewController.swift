@@ -274,7 +274,6 @@
                 // Open the color picker
                 performSegue(withIdentifier: "eveningTVShowColor", sender: color)
                 
-                
             }
         }
         
@@ -295,9 +294,9 @@
             // Update the local data store
             let row = cell?.powerButton.tag
             let rgb = newColor?.rgb()
-            eveningTVData[0].lights?[row!].red = rgb?.red
-            eveningTVData[0].lights?[row!].green = rgb?.green
-            eveningTVData[0].lights?[row!].blue = rgb?.blue
+            eveningTVData[0].lights?[row!].red = Int((rgb?.red)!)
+            eveningTVData[0].lights?[row!].green = Int((rgb?.green)!)
+            eveningTVData[0].lights?[row!].blue = Int((rgb?.blue)!)
             
         }
         

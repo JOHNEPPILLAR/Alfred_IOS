@@ -319,9 +319,9 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
         // Update the local data store
         let row = cell?.powerButton.tag
         let rgb = newColor?.rgb()
-        eveningData[0].lights?[row!].red = rgb?.red
-        eveningData[0].lights?[row!].green = rgb?.green
-        eveningData[0].lights?[row!].blue = rgb?.blue
+        eveningData[0].lights?[row!].red = Int((rgb?.red)!)
+        eveningData[0].lights?[row!].green = Int((rgb?.green)!)
+        eveningData[0].lights?[row!].blue = Int((rgb?.blue)!)
         
     }
     

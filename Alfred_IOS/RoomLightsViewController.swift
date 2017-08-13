@@ -11,7 +11,7 @@ import SwiftyJSON
 import BRYXBanner
 import MTCircularSlider
 
-class RoomLightsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class RoomLightsViewController: UIViewController, UICollectionViewDataSource, colorPickerDelegate {
     
     var roomLightsData = [RoomLights]()
     
@@ -270,14 +270,90 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, UI
             // Figure out which cell is being updated
             let point : CGPoint = sender.view!.convert(CGPoint.zero, to:LightCollectionViewRooms)
             let indexPath = LightCollectionViewRooms!.indexPathForItem(at: point)
+            let row = indexPath?.row
             let cell = LightCollectionViewRooms!.cellForItem(at: indexPath!) as! LightsCollectionViewCell
-            
             cellID.sharedInstance.cell = cell
-            performSegue(withIdentifier: "roomsShowColor", sender: cell)
-    
-            // TODO callback needs to update Alfred
+            
+            // Store the color
+            var color: UIColor
+            if roomLightsData[0].data?[row!].action?.red != 0 &&
+                roomLightsData[0].data?[row!].action?.green != 0 &&
+                roomLightsData[0].data?[row!].action?.blue != 0 {
+                
+                color = UIColor(red: CGFloat((roomLightsData[0].data?[row!].action?.red)!)/255.0, green: CGFloat((roomLightsData[0].data?[row!].action?.green)!)/255.0, blue: CGFloat((roomLightsData[0].data?[row!].action?.blue)!)/255.0, alpha: 1.0)
+                
+            } else {
+                
+                color = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+                
+            }
+            
+            // Open the color picker
+            performSegue(withIdentifier: "roomsShowColor", sender: color)
             
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let secondViewController = segue.destination as! ColorViewController
+        secondViewController.delegate = self
+        secondViewController.colorID = sender as? UIColor
+        
+    }
+    
+    func backFromColorPicker(_ newColor: UIColor?) {
+        
+        // Update the button background
+        let cell = cellID.sharedInstance.cell
+        cell?.powerButton.backgroundColor = newColor
+        
+        // Update the local data store
+        let row = cell?.powerButton.tag
+        let r = newColor?.rgb()?.red
+        roomLightsData[0].data?[row!].action?.red = Int(r!)
+        let g = newColor?.rgb()?.green
+        roomLightsData[0].data?[row!].action?.green = Int(g!)
+        let b = newColor?.rgb()?.blue
+        roomLightsData[0].data?[row!].action?.blue = Int(b!)
+        
+        var lightsOn = "off"
+        if (roomLightsData[0].data?[row!].state?.anyOn)! {
+            lightsOn = "on"
+        }
+        
+        // Call Alfred to update the light group color
+        let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+        let AlfredAppKey: String = readPlist(item: "AlfredAppKey")
+        var lightParams: String = "&light_number=" + "\(cell?.tag ?? 0)" + "&light_status=" + lightsOn
+        lightParams = lightParams + "&percentage=" + String(roomLightsData[0].data![row!].action!.bri!)
+        lightParams = lightParams + "&red=" + "\(r!)" + "&green=" + "\(g!)" + "&blue=" + "\(b!)"
+        let url = URL(string: AlfredBaseURL + "lights/lightgrouponoff" + AlfredAppKey + lightParams)
+        
+        URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
+            if error != nil {
+                DispatchQueue.main.async() {
+                    let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to change the light group color. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
+                    banner.dismissesOnTap = true
+                    banner.show()
+                }
+            }
+            
+            guard let data = data, error == nil else { return }
+            let json = JSON(data: data)
+            let pingStatus = json["code"]
+            let pingStatusString = pingStatus.string!
+            
+            if pingStatusString != "sucess" {
+                
+                DispatchQueue.main.async() {
+                    let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to change the light group color. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
+                    banner.dismissesOnTap = true
+                    banner.show()
+                }
+            }
+        }).resume()
+ 
     }
     
     @IBAction func turnOffAllLights(recognizer:UIPanGestureRecognizer) {

@@ -47,23 +47,31 @@ public extension UIColor {
             return true
         }
     }
-    
-    public func rgb() -> (red:Int, green:Int, blue:Int, alpha:Int)? {
-        var fRed : CGFloat = 0
-        var fGreen : CGFloat = 0
-        var fBlue : CGFloat = 0
-        var fAlpha: CGFloat = 0
-        if self.getRed(&fRed, green: &fGreen, blue: &fBlue, alpha: &fAlpha) {
-            let iRed = Int(fRed * 255.0)
-            let iGreen = Int(fGreen * 255.0)
-            let iBlue = Int(fBlue * 255.0)
-            let iAlpha = Int(fAlpha * 255.0)
-            
-            //  (Bits 24-31 are alpha, 16-23 are red, 8-15 are green, 0-7 are blue).
-            //let rgb = (iAlpha << 24) + (iRed << 16) + (iGreen << 8) + iBlue
-            return (red:iRed, green: (iGreen << 8), blue: iBlue, alpha: (iAlpha << 24))
+ 
+    public func rgb() -> (red:Float, green:Float, blue:Float, alpha:Float)? {
+
+        var r:CGFloat = 0,
+            g:CGFloat = 0,
+            b:CGFloat = 0,
+            a:CGFloat = 0,
+            h:CGFloat = 0,
+            s:CGFloat = 0,
+            l:CGFloat = 0
+        
+        if self.getHue(&h, saturation: &s, brightness: &l, alpha: &a) {
+            if self.getRed(&r, green: &g, blue: &b, alpha: &a) {
+                
+                let fRed =  Float(r*255)
+                let fGreen = Float(g*255)
+                let fBlue = Float(b*255)
+                let fAlpha = Float(a)
+                
+                return (red: fRed, green: fGreen, blue: fBlue, alpha: fAlpha)
+                
+            } else {
+                return nil
+            }
         } else {
-            // Could not extract RGBA components:
             return nil
         }
     }

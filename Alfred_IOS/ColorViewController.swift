@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import IMGLYColorPicker
 
 protocol colorPickerDelegate: class {
     func backFromColorPicker(_ color: UIColor?)
@@ -18,9 +17,6 @@ class ColorViewController: UIViewController {
     weak var delegate: colorPickerDelegate?
     var colorID: UIColor?
     
-    @IBOutlet weak var colorPicker: ColorPickerView!
-    @IBOutlet weak var calledby: UIViewController!
-    
     @IBAction func cancelButton(_ sender: RoundButton) {
         
         self.dismiss(animated: true)
@@ -29,7 +25,7 @@ class ColorViewController: UIViewController {
     
     @IBAction func SaveButton(_ sender: RoundButton) {
 
-        delegate?.backFromColorPicker(colorPicker.color)
+        delegate?.backFromColorPicker(colorID)
 
         self.dismiss(animated: true)
         
@@ -38,13 +34,41 @@ class ColorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.colorPicker.color = colorID!
+        // Draw the color picker
+        var i:CGFloat = 1.0
+        var buttonFrame = CGRect(x: 27, y: 173, width: 26, height: 26)
+        while i > 0 {
+            makeRainbowButtons(buttonFrame: buttonFrame, sat: i ,bright: 1.0)
+            i = i - 0.1
+            buttonFrame.origin.y = buttonFrame.origin.y + buttonFrame.size.height
+        }
         
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func displayColor(_ sender: UIButton){
+
+        // Update the local color store
+        colorID = sender.backgroundColor!
+
+    }
+    
+    func makeRainbowButtons(buttonFrame: CGRect, sat: CGFloat, bright: CGFloat) {
+        var myButtonFrame = buttonFrame
+
+        for i in 0..<12 {
+            let hue:CGFloat = CGFloat(i) / 12.0
+            let color = UIColor(hue: hue, saturation: sat, brightness: bright, alpha: 1.0)
+            let aButton = UIButton(frame: myButtonFrame)
+            myButtonFrame.origin.x = myButtonFrame.size.width + myButtonFrame.origin.x
+            aButton.backgroundColor = color
+            view.addSubview(aButton)
+            aButton.addTarget(self, action: #selector(displayColor(_:)), for: .touchUpInside)
+        }
     }
     
 }
