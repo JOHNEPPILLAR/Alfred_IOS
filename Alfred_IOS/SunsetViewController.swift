@@ -14,9 +14,9 @@ import MTCircularSlider
 class SunsetViewController: UIViewController, UICollectionViewDataSource, colorPickerDelegate {
     
     var eveningData = [Evening]()
-
+    
     @IBOutlet weak var LightCollectionView: UICollectionView!
-
+    
     @IBOutlet weak var offsetHRLabel: UILabel!
     @IBOutlet weak var offsetHRStepper: UIStepper!
     @IBAction func offsetHRStepper(_ sender: UIStepper) {
@@ -51,7 +51,7 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
         // Add save button to navigation bar
         let saveButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(saveSettingsAction(sender:)))
         navigationItem.rightBarButtonItem = saveButton
-
+        
         // Disable UI controls untill data is loaded
         navigationItem.rightBarButtonItem?.isEnabled = false
         self.offsetHRStepper.isEnabled = false
@@ -77,14 +77,14 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
         URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
             
             if error != nil {
-            
+                
                 // Update the UI
                 DispatchQueue.main.async() {
-
+                    
                     let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to retrieve settings. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
                     banner.dismissesOnTap = true
                     banner.show()
-
+                    
                 }
                 
             } else {
@@ -93,25 +93,25 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
                 let json = JSON(data: data)
                 let apiStatus = json["code"]
                 let apiStatusString = apiStatus.string!
-                    
+                
                 if apiStatusString == "sucess" {
-
+                    
                     // Save json to custom classes
                     let jsonData = json["data"]["evening"]
                     self.eveningData = [Evening(json: jsonData)]
                     
                     DispatchQueue.main.async() {
-                            
+                        
                         // Setup the offset and off timer settings
                         self.offsetHRLabel.text = String(self.eveningData[0].offsetHr!)
                         self.offsetHRStepper.value = Double(self.eveningData[0].offsetHr!)
- 
+                        
                         self.offsetMINLabel.text = String(self.eveningData[0].offsetMin!)
                         self.offsetMINStepper.value = Double(self.eveningData[0].offsetMin!)
-                            
+                        
                         self.turnoffHRLabel.text = String(self.eveningData[0].offHr!)
                         self.turnoffHRStepper.value = Double(self.eveningData[0].offHr!)
-                            
+                        
                         self.turnoffMINLabel.text = String(self.eveningData[0].offMin!)
                         self.turnoffMINStepper.value = Double(self.eveningData[0].offMin!)
                         
@@ -127,10 +127,10 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
                         
                     }
                 } else {
-
+                    
                     // Update the UI
                     DispatchQueue.main.async() {
-                    
+                        
                         let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to retrieve settings. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
                         banner.dismissesOnTap = true
                         banner.show()
@@ -160,8 +160,8 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
         
         cell.lightName.setTitle(eveningData[0].lights?[row].lightName, for: .normal)
         
-        // Work out light group color
-        var color: UIColor
+        // Work out light color
+        var color: UIColor = UIColor.white
         if (eveningData[0].lights?[row].onoff == "on") {
             
             // Setup the light bulb colour
@@ -171,17 +171,12 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
                 
                 color = UIColor(red: CGFloat((eveningData[0].lights?[row].red)!)/255.0, green: CGFloat((eveningData[0].lights?[row].green)!)/255.0, blue: CGFloat((eveningData[0].lights?[row].blue)!)/255.0, alpha: 1.0)
                 
-            } else {
-                
-                color = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-                
             }
-            
             cell.powerButton.backgroundColor = color
-            cell.brightnessSlider.value = Float((eveningData[0].lights?[row].brightness)!)
             
         }
         
+        cell.brightnessSlider.value = Float((eveningData[0].lights?[row].brightness)!)
         cell.brightnessSlider.tag = row
         cell.brightnessSlider?.addTarget(self, action: #selector(brightnessValueChange(_:)), for: .touchUpInside)
         
@@ -192,17 +187,17 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
         cell.powerButton.addGestureRecognizer(tapRecognizer)
         let longTapRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPowerButtonPress(_:)))
         cell.powerButton.addGestureRecognizer(longTapRecognizer)
-   
+        
         return cell
         
     }
-        
+    
     func brightnessValueChange(_ sender: MTCircularSlider!) {
         
         // Figure out which cell is being updated
         let cell = sender.superview?.superview as? LightsCollectionViewCell
         let row = sender.tag
-        var color: UIColor
+        var color: UIColor = UIColor.white
         
         // Update local data store
         eveningData[0].lights?[row].brightness = Int(sender.value)
@@ -222,10 +217,6 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
                 
                 color = UIColor(red: CGFloat((eveningData[0].lights?[row].red)!)/255.0, green: CGFloat((eveningData[0].lights?[row].green)!)/255.0, blue: CGFloat((eveningData[0].lights?[row].blue)!)/255.0, alpha: 1.0)
                 
-            } else {
-                
-                color = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-                
             }
             cell?.powerButton.backgroundColor = color
             
@@ -240,8 +231,7 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
         let indexPath = LightCollectionView!.indexPathForItem(at: point)
         let cell = LightCollectionView!.cellForItem(at: indexPath!) as! LightsCollectionViewCell
         let row = indexPath?.row
-        var color: UIColor
-        
+        var color: UIColor = UIColor.white
         
         if (eveningData[0].lights?[row!].onoff == "on") {
             
@@ -258,10 +248,6 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
                 eveningData[0].lights?[row!].blue != 0 {
                 
                 color = UIColor(red: CGFloat((eveningData[0].lights?[row!].red)!)/255.0, green: CGFloat((eveningData[0].lights?[row!].green)!)/255.0, blue: CGFloat((eveningData[0].lights?[row!].blue)!)/255.0, alpha: 1.0)
-                
-            } else {
-                
-                color = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
                 
             }
             cell.powerButton.backgroundColor = color
@@ -282,16 +268,12 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
             cellID.sharedInstance.cell = cell
             
             // Store the color
-            var color: UIColor
+            var color: UIColor = UIColor.white
             if eveningData[0].lights?[row!].red != 0 &&
                 eveningData[0].lights?[row!].green != 0 &&
                 eveningData[0].lights?[row!].blue != 0 {
                 
                 color = UIColor(red: CGFloat((eveningData[0].lights?[row!].red)!)/255.0, green: CGFloat((eveningData[0].lights?[row!].green)!)/255.0, blue: CGFloat((eveningData[0].lights?[row!].blue)!)/255.0, alpha: 1.0)
-                
-            } else {
-                
-                color = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
                 
             }
             
@@ -300,7 +282,7 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
             
         }
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let secondViewController = segue.destination as! ColorViewController
@@ -346,38 +328,38 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
             
             // Update the UI
             DispatchQueue.main.async() {
-
+                
                 guard let data = data, error == nil else { // Check for fundamental networking error
                     print("save data error: " + error.debugDescription)
-                
+                    
                     let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to save data. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
                     banner.dismissesOnTap = true
                     banner.show()
-                
+                    
                     // Re enable the save button
                     self.navigationItem.rightBarButtonItem?.isEnabled = true
-
+                    
                     return
                 }
-
+                
                 let json = JSON(data: data)
                 let apiStatus = json["code"]
                 let apiStatusString = apiStatus.string!
-            
-                if apiStatusString == "sucess" {
                 
+                if apiStatusString == "sucess" {
+                    
                     let banner = Banner(title: "Alfred API Notification", subtitle: "Saved.", backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
                     banner.dismissesOnTap = true
                     banner.show(duration: 3.0)
-
+                    
                 } else {
-
+                    
                     let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to save data. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
                     banner.dismissesOnTap = true
                     banner.show()
-
+                    
                 }
-
+                
                 // Re enable the save button
                 self.navigationItem.rightBarButtonItem?.isEnabled = true
             }

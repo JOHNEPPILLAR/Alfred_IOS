@@ -2,20 +2,17 @@ PODS:
   - BRYXBanner (0.7.3)
   - MTCircularSlider (0.2.15)
   - SwiftyJSON (3.1.4)
-  - TGPControls (4.0.0)
 
 DEPENDENCIES:
   - BRYXBanner
   - MTCircularSlider
   - SwiftyJSON
-  - TGPControls
 
 SPEC CHECKSUMS:
   BRYXBanner: bd26a91cb8a5826a8bc7687891043d287dd3ee53
   MTCircularSlider: 9dfa03bc7d512c2a9b58c58bdca63fb40abcfda8
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
-  TGPControls: d7ab5a338746c100b2ae57f6b6cedee7151f116a
 
-PODFILE CHECKSUM: 0372aac707f70748c621881a9935b0462415b0b9
+PODFILE CHECKSUM: f4535a962abbe4d3b455e5a9265a1d2ddf5c789b
 
 COCOAPODS: 1.2.1

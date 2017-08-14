@@ -86,20 +86,20 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
         } else {
             return 0
         }
-
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "lightCell", for: indexPath) as! LightsCollectionViewCell
         let row = indexPath.row
-
+        
         cell.tag = Int((roomLightsData[0].data?[row].id)!)!
-
+        
         cell.lightName.setTitle(roomLightsData[0].data?[row].name, for: .normal)
-
+        
         // Work out light group color
-        var color: UIColor
+        var color: UIColor = UIColor.white
         if (roomLightsData[0].data?[row].state?.anyOn)! {
             
             // Setup the light bulb colour
@@ -109,15 +109,11 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
                 
                 color = UIColor(red: CGFloat((roomLightsData[0].data?[row].action?.red)!)/255.0, green: CGFloat((roomLightsData[0].data?[row].action?.green)!)/255.0, blue: CGFloat((roomLightsData[0].data?[row].action?.blue)!)/255.0, alpha: 1.0)
                 
-            } else {
-                
-                color = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-                
             }
-
+            
             cell.powerButton.backgroundColor = color
-
-        } 
+            
+        }
         
         cell.brightnessSlider.value = Float((roomLightsData[0].data?[row].action?.bri)!)
         cell.brightnessSlider.tag = row
@@ -130,7 +126,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
         cell.powerButton.addGestureRecognizer(tapRecognizer)
         let longTapRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPowerButtonPress(_:)))
         cell.powerButton.addGestureRecognizer(longTapRecognizer)
-
+        
         return cell
     }
     
@@ -142,7 +138,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
         
         // Update local data store
         roomLightsData[0].data?[row].action?.bri = Int(sender.value)
-
+        
         // Call Alfred to update the light group
         let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
         let AlfredAppKey = readPlist(item: "AlfredAppKey")
@@ -190,7 +186,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
         let cell = LightCollectionViewRooms!.cellForItem(at: indexPath!) as! LightsCollectionViewCell
         let row = indexPath?.row
         var lightsOn: String
-        var color: UIColor
+        var color: UIColor = UIColor.white
         
         if (roomLightsData[0].data?[row!].state?.anyOn)! {
             
@@ -202,7 +198,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
             
             roomLightsData[0].data?[row!].state?.anyOn = true
             lightsOn = "on"
-
+            
             // Setup the light bulb colour
             if roomLightsData[0].data?[row!].action?.red != 0 &&
                 roomLightsData[0].data?[row!].action?.green != 0 &&
@@ -210,26 +206,22 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
                 
                 color = UIColor(red: CGFloat((roomLightsData[0].data?[row!].action?.red)!)/255.0, green: CGFloat((roomLightsData[0].data?[row!].action?.green)!)/255.0, blue: CGFloat((roomLightsData[0].data?[row!].action?.blue)!)/255.0, alpha: 1.0)
                 
-            } else {
-            
-                color = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-            
             }
             cell.powerButton.backgroundColor = color
-        
+            
             if roomLightsData[0].data?[row!].action?.bri == 0 {
                 roomLightsData[0].data?[row!].action?.bri = 128
                 cell.brightnessSlider.value = 128
             }
             
         }
-    
+        
         // Call Alfred to update the light group
         let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
         let AlfredAppKey = readPlist(item: "AlfredAppKey")
         let lightParams = "&light_number=" + "\(cell.tag)" + "&light_status=" + lightsOn + "&percentage=" + String(roomLightsData[0].data![row!].action!.bri!)
         let url = URL(string: AlfredBaseURL + "lights/lightgrouponoff" + AlfredAppKey + lightParams)
-
+        
         URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
             if error != nil {
                 
@@ -259,7 +251,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
                 }
             }
         }).resume()
- 
+        
     }
     
     func longPowerButtonPress(_ sender: UITapGestureRecognizer!) {
@@ -275,16 +267,12 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
             cellID.sharedInstance.cell = cell
             
             // Store the color
-            var color: UIColor
+            var color: UIColor = UIColor.white
             if roomLightsData[0].data?[row!].action?.red != 0 &&
                 roomLightsData[0].data?[row!].action?.green != 0 &&
                 roomLightsData[0].data?[row!].action?.blue != 0 {
                 
                 color = UIColor(red: CGFloat((roomLightsData[0].data?[row!].action?.red)!)/255.0, green: CGFloat((roomLightsData[0].data?[row!].action?.green)!)/255.0, blue: CGFloat((roomLightsData[0].data?[row!].action?.blue)!)/255.0, alpha: 1.0)
-                
-            } else {
-                
-                color = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
                 
             }
             
@@ -353,7 +341,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
                 }
             }
         }).resume()
- 
+        
     }
     
     @IBAction func turnOffAllLights(recognizer:UIPanGestureRecognizer) {
@@ -379,15 +367,15 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
                 
                 // Update the UI
                 DispatchQueue.main.async() {
-
+                    
                     // Update local data & UI and turn off all light groups
                     for var i in (0..<self.roomLightsData[0].data!.count){
                         self.roomLightsData[0].data?[i].state?.anyOn = false
-
+                        
                         let indexPath = IndexPath(row: i, section: 0)
                         let cell = self.LightCollectionViewRooms!.cellForItem(at: indexPath) as! LightsCollectionViewCell
                         cell.powerButton.backgroundColor = UIColor.clear
-
+                        
                         i += 1
                     }
                     
@@ -405,7 +393,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
                 }
             }
         }).resume()
-
+        
     }
     
 }

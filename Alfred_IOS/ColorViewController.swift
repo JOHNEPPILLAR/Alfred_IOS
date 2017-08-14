@@ -13,7 +13,7 @@ protocol colorPickerDelegate: class {
 }
 
 class ColorViewController: UIViewController {
-
+    
     weak var delegate: colorPickerDelegate?
     var colorID: UIColor?
     
@@ -24,9 +24,9 @@ class ColorViewController: UIViewController {
     }
     
     @IBAction func SaveButton(_ sender: RoundButton) {
-
+        
         delegate?.backFromColorPicker(colorID)
-
+        
         self.dismiss(animated: true)
         
     }
@@ -65,7 +65,7 @@ class ColorViewController: UIViewController {
     }
     
     func selectColor(_ sender: UIButton){
-
+        
         // Update the local color store
         colorID = sender.backgroundColor!
         
@@ -77,7 +77,7 @@ class ColorViewController: UIViewController {
         // Highlight the current selected cell
         sender.layer.borderWidth = 3
         sender.layer.borderColor = UIColor.black.cgColor
-
+        
     }
     
 }

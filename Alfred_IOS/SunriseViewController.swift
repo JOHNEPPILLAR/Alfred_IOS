@@ -12,7 +12,7 @@ import BRYXBanner
 import MTCircularSlider
 
 class SunriseViewController: UIViewController, UICollectionViewDataSource, colorPickerDelegate {
-
+    
     var morningData = [Morning]()
     
     @IBOutlet weak var LightCollectionView: UICollectionView!
@@ -45,9 +45,9 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
     }
     @IBOutlet weak var turnOffMINStepper: UIStepper!
     @IBOutlet weak var turnOffMINLabel: UILabel!
-
+    
     var colorPickerView: ColorViewController?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,12 +66,12 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
         self.getData()
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     //MARK: Private Methods
     func getData() {
         
@@ -128,7 +128,7 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
                         
                         // Refresh the table view
                         self.LightCollectionView.reloadData()
-
+                        
                     }
                 } else {
                     
@@ -144,9 +144,9 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
             }
         }).resume()
     }
-  
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-
+        
         if (morningData.count) > 0 {
             return (morningData[0].lights?.count)!
         } else {
@@ -156,16 +156,16 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "lightCell", for: indexPath) as! LightsCollectionViewCell
         let row = indexPath.row
         
         cell.tag = (morningData[0].lights?[row].lightID)!
         
         cell.lightName.setTitle(morningData[0].lights?[row].lightName, for: .normal)
-
-        // Work out light group color
-        var color: UIColor
+        
+        // Work out light color
+        var color: UIColor = UIColor.white
         if (morningData[0].lights?[row].onoff == "on") {
             
             // Setup the light bulb colour
@@ -175,18 +175,15 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
                 
                 color = UIColor(red: CGFloat((morningData[0].lights?[row].red)!)/255.0, green: CGFloat((morningData[0].lights?[row].green)!)/255.0, blue: CGFloat((morningData[0].lights?[row].blue)!)/255.0, alpha: 1.0)
                 
-            } else {
-                
-                color = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-                
             }
             
             cell.powerButton.backgroundColor = color
-            cell.brightnessSlider.value = Float((morningData[0].lights?[row].brightness)!)
             
         }
         
+        // Set brightness slider
         cell.brightnessSlider.tag = row
+        cell.brightnessSlider.value = Float((morningData[0].lights?[row].brightness)!)
         cell.brightnessSlider?.addTarget(self, action: #selector(brightnessValueChange(_:)), for: .touchUpInside)
         
         // Configure the power button
@@ -198,20 +195,20 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
         cell.powerButton.addGestureRecognizer(longTapRecognizer)
         
         return cell
-
+        
     }
- 
+    
     func brightnessValueChange(_ sender: MTCircularSlider!) {
         
         // Figure out which cell is being updated
         let cell = sender.superview?.superview as? LightsCollectionViewCell
         let row = sender.tag
-        var color: UIColor
- 
+        var color: UIColor = UIColor.white
+        
         // Update local data store
         morningData[0].lights?[row].brightness = Int(sender.value)
         if sender.value == 0 {
-
+            
             morningData[0].lights?[row].onoff = "off"
             cell?.powerButton.backgroundColor = UIColor.clear
             
@@ -225,10 +222,6 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
                 (morningData[0].lights?[row].blue)! != 0 {
                 
                 color = UIColor(red: CGFloat((morningData[0].lights?[row].red)!)/255.0, green: CGFloat((morningData[0].lights?[row].green)!)/255.0, blue: CGFloat((morningData[0].lights?[row].blue)!)/255.0, alpha: 1.0)
-                
-            } else {
-                
-                color = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
                 
             }
             cell?.powerButton.backgroundColor = color
@@ -244,8 +237,7 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
         let indexPath = LightCollectionView!.indexPathForItem(at: point)
         let cell = LightCollectionView!.cellForItem(at: indexPath!) as! LightsCollectionViewCell
         let row = indexPath?.row
-        var color: UIColor
-
+        var color: UIColor = UIColor.white
         
         if (morningData[0].lights?[row!].onoff == "on") {
             
@@ -262,10 +254,6 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
                 morningData[0].lights?[row!].blue != 0 {
                 
                 color = UIColor(red: CGFloat((morningData[0].lights?[row!].red)!)/255.0, green: CGFloat((morningData[0].lights?[row!].green)!)/255.0, blue: CGFloat((morningData[0].lights?[row!].blue)!)/255.0, alpha: 1.0)
-                
-            } else {
-                
-                color = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
                 
             }
             cell.powerButton.backgroundColor = color
@@ -284,9 +272,9 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
             let row = indexPath?.row
             let cell = LightCollectionView!.cellForItem(at: indexPath!) as! LightsCollectionViewCell
             cellID.sharedInstance.cell = cell
-
+            
             // Store the color
-            var color: UIColor
+            var color: UIColor = UIColor.white
             if morningData[0].lights?[row!].red != 0 &&
                 morningData[0].lights?[row!].green != 0 &&
                 morningData[0].lights?[row!].blue != 0 {
@@ -298,7 +286,7 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
                 color = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
                 
             }
-    
+            
             // Open the color picker
             performSegue(withIdentifier: "sunriseShowColor", sender: color)
             
@@ -314,7 +302,7 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
     }
     
     func backFromColorPicker(_ newColor: UIColor?) {
-
+        
         // Update the button background
         let cell = cellID.sharedInstance.cell
         cell?.powerButton.backgroundColor = newColor
@@ -323,7 +311,6 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
         let row = cell?.powerButton.tag
         let rgb = newColor?.rgb()
         
-dump(rgb)
         morningData[0].lights?[row!].red = Int((rgb?.red)!)
         morningData[0].lights?[row!].green = Int((rgb?.green)!)
         morningData[0].lights?[row!].blue = Int((rgb?.blue)!)
