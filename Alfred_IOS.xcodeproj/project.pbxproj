@@ -12,6 +12,7 @@
 		0A2D9E2E1F3617EF0037594C /* LogFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2D9E2D1F3617EF0037594C /* LogFileViewController.swift */; };
 		0A3B4E7F1F169D500072587A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3B4E7E1F169D500072587A /* SettingsViewController.swift */; };
 		0A420E4A1F140D0500BD2713 /* LogFileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A420E491F140D0500BD2713 /* LogFileTableViewCell.swift */; };
+		0A4986411F42BEBA006979E0 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4986401F42BEBA006979E0 /* CameraViewController.swift */; };
 		0A69FB811F10C25C00563A69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A69FB801F10C25C00563A69 /* AppDelegate.swift */; };
 		0A69FB861F10C25C00563A69 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A69FB841F10C25C00563A69 /* Main.storyboard */; };
 		0A69FB891F10C25C00563A69 /* Alfred_IOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0A69FB871F10C25C00563A69 /* Alfred_IOS.xcdatamodeld */; };
@@ -42,6 +43,7 @@
 		0A2D9E2D1F3617EF0037594C /* LogFileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogFileViewController.swift; sourceTree = "<group>"; };
 		0A3B4E7E1F169D500072587A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0A420E491F140D0500BD2713 /* LogFileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogFileTableViewCell.swift; path = Alfred_IOS/LogFileTableViewCell.swift; sourceTree = "<group>"; };
+		0A4986401F42BEBA006979E0 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		0A69FB7D1F10C25C00563A69 /* Alfred_IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alfred_IOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A69FB801F10C25C00563A69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A69FB851F10C25C00563A69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				0ADDC4D21F29C02000C08F55 /* EveningTVViewController.swift */,
 				0A97CCAE1F2B0AEF00E6FF1F /* RoomLightsViewController.swift */,
 				0A0463F01F38E99B004A738D /* ColorViewController.swift */,
+				0A4986401F42BEBA006979E0 /* CameraViewController.swift */,
 			);
 			name = "View Controlers";
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				0A69FB891F10C25C00563A69 /* Alfred_IOS.xcdatamodeld in Sources */,
 				0ADDC4D51F29C09B00C08F55 /* EveningTV.swift in Sources */,
 				0A3B4E7F1F169D500072587A /* SettingsViewController.swift in Sources */,
+				0A4986411F42BEBA006979E0 /* CameraViewController.swift in Sources */,
 				0A69FB9F1F1160F500563A69 /* ViewController.swift in Sources */,
 				0AFCD86D1F2283CC00FD1C1C /* Lights.swift in Sources */,
 				0AFCD86B1F22832000FD1C1C /* Evening.swift in Sources */,

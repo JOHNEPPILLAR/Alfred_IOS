@@ -951,6 +951,31 @@
             </objects>
             <point key="canvasLocation" x="2173.5999999999999" y="1850.824587706147"/>
         </scene>
+        <!--Video-->
+        <scene sceneID="Fb0-je-XIa">
+            <objects>
+                <viewController id="ChQ-jE-DrM" customClass="CameraViewController" customModule="Alfred_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="w83-rR-oBh"/>
+                        <viewControllerLayoutGuide type="bottom" id="Feo-ik-QNw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pif-U6-RAA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="Z7P-P5-pf4">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Video" image="ic_camera" id="3lw-fI-f3r"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IDr-Zb-1bz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2081" y="-144"/>
+        </scene>
         <!--Lights-->
         <scene sceneID="DFj-jh-qUz">
             <objects>
@@ -1101,6 +1126,7 @@
                     <connections>
                         <segue destination="WKt-N1-aWc" kind="relationship" relationship="viewControllers" id="27W-sg-6Br"/>
                         <segue destination="mB2-T5-fal" kind="relationship" relationship="viewControllers" id="lVi-Qp-FwH"/>
+                        <segue destination="ChQ-jE-DrM" kind="relationship" relationship="viewControllers" id="HtL-VG-4t1"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f7P-Rc-NyA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1140,6 +1166,7 @@
         <image name="Background" width="640" height="960"/>
         <image name="Lights" width="24" height="24"/>
         <image name="Settings" width="25" height="25"/>
+        <image name="ic_camera" width="24" height="24"/>
         <image name="ic_del_log" width="100" height="100"/>
         <image name="ic_lights_off" width="80" height="80"/>
         <image name="ic_restart" width="80" height="80"/>
