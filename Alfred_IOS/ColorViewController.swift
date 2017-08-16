@@ -49,7 +49,7 @@ class ColorViewController: UIViewController {
         var myButtonFrame = buttonFrame
         
         for i in 0..<12 {
-            let hue:CGFloat = CGFloat(i) / 12.0
+            let hue: CGFloat = CGFloat(i) / 12.0
             let color = UIColor(hue: hue, saturation: sat, brightness: bright, alpha: 1.0)
             let aButton = UIButton(frame: myButtonFrame)
             myButtonFrame.origin.x = myButtonFrame.size.width + myButtonFrame.origin.x

@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		139FF6DA1D05B90F2631E069C8D13832 /* BRYXBanner-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = ECBFB12043325C52F1C887F2D0E33FF4 /* BRYXBanner-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2AC1F9B8162D0236725247D4A253A77F /* MTCircularSlider-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A89491F87F8E8387E4A67920F5D975AC /* MTCircularSlider-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		139FF6DA1D05B90F2631E069C8D13832 /* BRYXBanner-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AF34CA605543F6A8A0D05FA9436268F /* BRYXBanner-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2AC1F9B8162D0236725247D4A253A77F /* MTCircularSlider-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DF5E6E541BF00F87951D7618166B0CB /* MTCircularSlider-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6F2B066A3A07A4763B781D059080931D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		7EEFB34CDD0ECA5C67FDC40BE66BB023 /* SwiftyJSON-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B550FA160B90CA0D5377F48FB697B91 /* SwiftyJSON-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8182796D4EF1815EFD26040BD5284C6A /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834339DFA5D23020E82A718AF61F1DB6 /* SwiftyJSON.swift */; };
-		9CEE806C686E8F80DADE5C41C8D20F37 /* BRYXBanner-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BF94E3ABF70ABB609B024BD094327AA3 /* BRYXBanner-dummy.m */; };
+		7EEFB34CDD0ECA5C67FDC40BE66BB023 /* SwiftyJSON-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AC7968416FDC203DD7FF32F66B3CAD3 /* SwiftyJSON-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8182796D4EF1815EFD26040BD5284C6A /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E05A69F75D5E7EE14DCFD56B33A1350 /* SwiftyJSON.swift */; };
+		9CEE806C686E8F80DADE5C41C8D20F37 /* BRYXBanner-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F56E6C4127B7767B84B37C40F22257B1 /* BRYXBanner-dummy.m */; };
 		A1FA2BCED9F58A81E5C0B5EEB3D6F521 /* Pods-Alfred_IOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B1434289CF2F96A25BA71E473A3A18E0 /* Pods-Alfred_IOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A2D367E52ABBD4BE0FFD891B8D4F110D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		B5BA27F9ABAFE1564998010F61A0374B /* MTCircularSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070EB7B33B35E0C0893B01F849E7E52F /* MTCircularSlider.swift */; };
+		B5BA27F9ABAFE1564998010F61A0374B /* MTCircularSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA60667BDE59BCA279F9AEA2C6BC257 /* MTCircularSlider.swift */; };
 		BEBB6C0D3CA7593E4D995BB70ACBA0D6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		C24D8F0A01750F88E2850092A9FA5EA4 /* SwiftyJSON-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A93092A0C611F95EF4365C6F8D5378D /* SwiftyJSON-dummy.m */; };
-		CFBD4BDD68023529A9ACE2A85EC65ADE /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0DC8BC930346A8B55F25F79F5BCAC0 /* Banner.swift */; };
-		D1474C54B94498A8708444C7CAA336EB /* MTCircularSlider-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A0580B63DB2AE90C9B224DADAB24F5 /* MTCircularSlider-dummy.m */; };
+		C24D8F0A01750F88E2850092A9FA5EA4 /* SwiftyJSON-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B96B3AE1B0A4B7B77B035C0B49560E6C /* SwiftyJSON-dummy.m */; };
+		CFBD4BDD68023529A9ACE2A85EC65ADE /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC382E0BFAFE3D96066B712EDADC752C /* Banner.swift */; };
+		D1474C54B94498A8708444C7CAA336EB /* MTCircularSlider-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3B64828D00FFC482374A9B1ACCC549 /* MTCircularSlider-dummy.m */; };
 		D31204ACBD2292F6BCFCE7303B66BBA7 /* Pods-Alfred_IOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCEA9B4EB609E024B27D75233FE1526 /* Pods-Alfred_IOS-dummy.m */; };
 		E23C62DEDC08CEF215B35581281A166F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 /* End PBXBuildFile section */
@@ -50,41 +50,42 @@
 
 /* Begin PBXFileReference section */
 		04E58407C2C95D2C60D05403437CE354 /* Pods-Alfred_IOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Alfred_IOS.debug.xcconfig"; sourceTree = "<group>"; };
-		070EB7B33B35E0C0893B01F849E7E52F /* MTCircularSlider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MTCircularSlider.swift; path = MTCircularSlider/Classes/MTCircularSlider.swift; sourceTree = "<group>"; };
-		0B550FA160B90CA0D5377F48FB697B91 /* SwiftyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-umbrella.h"; sourceTree = "<group>"; };
-		121C861B14F2F14D2CD00382C8792BEA /* BRYXBanner.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = BRYXBanner.modulemap; sourceTree = "<group>"; };
+		1283CEF47EC1E6490FB1A58FC04C1826 /* BRYXBanner.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BRYXBanner.xcconfig; sourceTree = "<group>"; };
+		1C3B64828D00FFC482374A9B1ACCC549 /* MTCircularSlider-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MTCircularSlider-dummy.m"; sourceTree = "<group>"; };
+		1ED610272EE441582B436F3E32FEF23D /* SwiftyJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SwiftyJSON.modulemap; sourceTree = "<group>"; };
 		26371540EC3D17E7401E6521696A84E3 /* BRYXBanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BRYXBanner.framework; path = BRYXBanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2A93092A0C611F95EF4365C6F8D5378D /* SwiftyJSON-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyJSON-dummy.m"; sourceTree = "<group>"; };
+		2AF34CA605543F6A8A0D05FA9436268F /* BRYXBanner-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BRYXBanner-umbrella.h"; sourceTree = "<group>"; };
+		34848A4712CB767DE6F1D5E819A18037 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35F52B959D0C87058D9810D5B1FEC8C9 /* MTCircularSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MTCircularSlider.framework; path = MTCircularSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C231377BDA010AAB4B44C3459E5AF5E /* Pods-Alfred_IOS-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Alfred_IOS-resources.sh"; sourceTree = "<group>"; };
-		40DDB3853E66FE12A72DB88639D1DF4C /* SwiftyJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SwiftyJSON.modulemap; sourceTree = "<group>"; };
-		42A0580B63DB2AE90C9B224DADAB24F5 /* MTCircularSlider-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MTCircularSlider-dummy.m"; sourceTree = "<group>"; };
-		5F6A8BAEE0C9B8566145CBE8F37ECB18 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3DF5E6E541BF00F87951D7618166B0CB /* MTCircularSlider-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MTCircularSlider-umbrella.h"; sourceTree = "<group>"; };
+		4FA60667BDE59BCA279F9AEA2C6BC257 /* MTCircularSlider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MTCircularSlider.swift; path = MTCircularSlider/Classes/MTCircularSlider.swift; sourceTree = "<group>"; };
+		54B8C406D429DD4F5C415F8AECA69A47 /* MTCircularSlider.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = MTCircularSlider.modulemap; sourceTree = "<group>"; };
+		6460E286AE45EEAC7521AAC7EFF3092B /* MTCircularSlider-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MTCircularSlider-prefix.pch"; sourceTree = "<group>"; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		74F64CFF3A3F4BF5284FDBF3ACB5AE03 /* BRYXBanner-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BRYXBanner-prefix.pch"; sourceTree = "<group>"; };
-		7AB033940333C228A90C3E4665E497F6 /* SwiftyJSON.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.xcconfig; sourceTree = "<group>"; };
-		7ABC195FFAF1CC6619394403AC987C3D /* MTCircularSlider.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = MTCircularSlider.modulemap; sourceTree = "<group>"; };
-		834339DFA5D23020E82A718AF61F1DB6 /* SwiftyJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Source/SwiftyJSON.swift; sourceTree = "<group>"; };
+		7AC7968416FDC203DD7FF32F66B3CAD3 /* SwiftyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-umbrella.h"; sourceTree = "<group>"; };
+		7E05A69F75D5E7EE14DCFD56B33A1350 /* SwiftyJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Source/SwiftyJSON.swift; sourceTree = "<group>"; };
 		8501A4FFEFB22F357020EC9709CFC5EE /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8CA1B23BA76F26EC7FED540BEB0D19E4 /* Pods_Alfred_IOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Alfred_IOS.framework; path = "Pods-Alfred_IOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		94813B58FB322CCACE53BE1EC112D5B4 /* BRYXBanner.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BRYXBanner.xcconfig; sourceTree = "<group>"; };
+		95CEFE32153C346DD5FC6C9BAEB1685B /* MTCircularSlider.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MTCircularSlider.xcconfig; sourceTree = "<group>"; };
+		98114B5DC12DEFB388995C66E9CD4AA3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9CCEA9B4EB609E024B27D75233FE1526 /* Pods-Alfred_IOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Alfred_IOS-dummy.m"; sourceTree = "<group>"; };
+		9FD7CBCB712EA25746F80D9844D580BB /* SwiftyJSON.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.xcconfig; sourceTree = "<group>"; };
+		A38206E33D9A30390A6C3346B3FFC9E8 /* BRYXBanner-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BRYXBanner-prefix.pch"; sourceTree = "<group>"; };
 		A6F3405835FD0DB11FC0329E07BFE064 /* Pods-Alfred_IOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Alfred_IOS.release.xcconfig"; sourceTree = "<group>"; };
-		A7EAF24C427935EC98A560019F439297 /* SwiftyJSON-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-prefix.pch"; sourceTree = "<group>"; };
-		A89491F87F8E8387E4A67920F5D975AC /* MTCircularSlider-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MTCircularSlider-umbrella.h"; sourceTree = "<group>"; };
 		B1434289CF2F96A25BA71E473A3A18E0 /* Pods-Alfred_IOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Alfred_IOS-umbrella.h"; sourceTree = "<group>"; };
-		B680827C1C6DC75E5CFB21C7ED9126E8 /* MTCircularSlider.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MTCircularSlider.xcconfig; sourceTree = "<group>"; };
-		BF94E3ABF70ABB609B024BD094327AA3 /* BRYXBanner-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BRYXBanner-dummy.m"; sourceTree = "<group>"; };
+		B96B3AE1B0A4B7B77B035C0B49560E6C /* SwiftyJSON-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyJSON-dummy.m"; sourceTree = "<group>"; };
+		C0981AB0943F29B3623A88C5CC737105 /* SwiftyJSON-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-prefix.pch"; sourceTree = "<group>"; };
 		C7916851CA3889075FC671AFBF3E6272 /* Pods-Alfred_IOS-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Alfred_IOS-frameworks.sh"; sourceTree = "<group>"; };
 		D31D0721FD164C8F13A895F0FC197440 /* Pods-Alfred_IOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Alfred_IOS.modulemap"; sourceTree = "<group>"; };
-		D930D081784003BECFDD129797085BFB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9F9AFF9F92E08C64C9A03098236C5B0 /* Pods-Alfred_IOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Alfred_IOS-acknowledgements.plist"; sourceTree = "<group>"; };
-		DA0DC8BC930346A8B55F25F79F5BCAC0 /* Banner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Banner.swift; path = Pod/Classes/Banner.swift; sourceTree = "<group>"; };
-		ECBFB12043325C52F1C887F2D0E33FF4 /* BRYXBanner-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BRYXBanner-umbrella.h"; sourceTree = "<group>"; };
+		DC382E0BFAFE3D96066B712EDADC752C /* Banner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Banner.swift; path = Pod/Classes/Banner.swift; sourceTree = "<group>"; };
+		DC6A5A9CEFCEC8B44F6D0F8359BCE558 /* BRYXBanner.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = BRYXBanner.modulemap; sourceTree = "<group>"; };
+		E0623FF7E96F4D9B9EBDE1AF32271684 /* MobileVLCKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileVLCKit.framework; path = "MobileVLCKit-binary/MobileVLCKit.framework"; sourceTree = "<group>"; };
+		E28FCB80E8634037972C57224B6CF5A8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ECC8BF99D6615260A8779FC61B7F3CE1 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyJSON.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F4FA39BF78B5CEAE0E91C24CAC672530 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F60A21398510A824661591AA4BD6C324 /* MTCircularSlider-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MTCircularSlider-prefix.pch"; sourceTree = "<group>"; };
+		F56E6C4127B7767B84B37C40F22257B1 /* BRYXBanner-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BRYXBanner-dummy.m"; sourceTree = "<group>"; };
 		F9D50892461ACCB3530246C5CE996673 /* Pods-Alfred_IOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Alfred_IOS-acknowledgements.markdown"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,28 +125,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2108D1C267C04DE47A69C581F03F399C /* Support Files */ = {
+		062CEB35026D8A7B084018F92AD4090F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				5F6A8BAEE0C9B8566145CBE8F37ECB18 /* Info.plist */,
-				7ABC195FFAF1CC6619394403AC987C3D /* MTCircularSlider.modulemap */,
-				B680827C1C6DC75E5CFB21C7ED9126E8 /* MTCircularSlider.xcconfig */,
-				42A0580B63DB2AE90C9B224DADAB24F5 /* MTCircularSlider-dummy.m */,
-				F60A21398510A824661591AA4BD6C324 /* MTCircularSlider-prefix.pch */,
-				A89491F87F8E8387E4A67920F5D975AC /* MTCircularSlider-umbrella.h */,
+				8059A574FD58ED32D00A2F238E78D6A0 /* BRYXBanner */,
+				B5A8F518B5750BAC6087B0BB22A062AC /* MobileVLCKit */,
+				E25CD3A759885C947684F760DA774651 /* MTCircularSlider */,
+				66F6D679A8A4AF1444E5E7EF9D197F30 /* SwiftyJSON */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/MTCircularSlider";
+			name = Pods;
 			sourceTree = "<group>";
 		};
-		48D74B61079635B0374AEC74A323E458 /* BRYXBanner */ = {
+		184D6013046F05FB8A597970DC52CB0E /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				DA0DC8BC930346A8B55F25F79F5BCAC0 /* Banner.swift */,
-				FD76D9DE78F230B27686A29102C4B8D7 /* Support Files */,
+				34848A4712CB767DE6F1D5E819A18037 /* Info.plist */,
+				1ED610272EE441582B436F3E32FEF23D /* SwiftyJSON.modulemap */,
+				9FD7CBCB712EA25746F80D9844D580BB /* SwiftyJSON.xcconfig */,
+				B96B3AE1B0A4B7B77B035C0B49560E6C /* SwiftyJSON-dummy.m */,
+				C0981AB0943F29B3623A88C5CC737105 /* SwiftyJSON-prefix.pch */,
+				7AC7968416FDC203DD7FF32F66B3CAD3 /* SwiftyJSON-umbrella.h */,
 			);
-			name = BRYXBanner;
-			path = BRYXBanner;
+			name = "Support Files";
+			path = "../Target Support Files/SwiftyJSON";
+			sourceTree = "<group>";
+		};
+		66F6D679A8A4AF1444E5E7EF9D197F30 /* SwiftyJSON */ = {
+			isa = PBXGroup;
+			children = (
+				7E05A69F75D5E7EE14DCFD56B33A1350 /* SwiftyJSON.swift */,
+				184D6013046F05FB8A597970DC52CB0E /* Support Files */,
+			);
+			name = SwiftyJSON;
+			path = SwiftyJSON;
 			sourceTree = "<group>";
 		};
 		708EEA78451B8C20CE69CCD8A1D17C5E /* Targets Support Files */ = {
@@ -156,22 +168,12 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		7756B5A34E081425B8607B847CF388CB /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				48D74B61079635B0374AEC74A323E458 /* BRYXBanner */,
-				98479513698B622635D04FD4A4B09C09 /* MTCircularSlider */,
-				F22C96F409E58DA87B4C844DA711EEF0 /* SwiftyJSON */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				7756B5A34E081425B8607B847CF388CB /* Pods */,
+				062CEB35026D8A7B084018F92AD4090F /* Pods */,
 				C5EEFCA155F6C83753B35E8954EE5094 /* Products */,
 				708EEA78451B8C20CE69CCD8A1D17C5E /* Targets Support Files */,
 			);
@@ -195,28 +197,45 @@
 			path = "Target Support Files/Pods-Alfred_IOS";
 			sourceTree = "<group>";
 		};
-		98479513698B622635D04FD4A4B09C09 /* MTCircularSlider */ = {
+		8059A574FD58ED32D00A2F238E78D6A0 /* BRYXBanner */ = {
 			isa = PBXGroup;
 			children = (
-				070EB7B33B35E0C0893B01F849E7E52F /* MTCircularSlider.swift */,
-				2108D1C267C04DE47A69C581F03F399C /* Support Files */,
+				DC382E0BFAFE3D96066B712EDADC752C /* Banner.swift */,
+				F609AE1C30DF745CC6982DF65B59C0A9 /* Support Files */,
 			);
-			name = MTCircularSlider;
-			path = MTCircularSlider;
+			name = BRYXBanner;
+			path = BRYXBanner;
 			sourceTree = "<group>";
 		};
-		B78A8F8330AA691656C28EE5CC7703C8 /* Support Files */ = {
+		958FA9A5A99977C6E91B6D52F9456CAB /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				D930D081784003BECFDD129797085BFB /* Info.plist */,
-				40DDB3853E66FE12A72DB88639D1DF4C /* SwiftyJSON.modulemap */,
-				7AB033940333C228A90C3E4665E497F6 /* SwiftyJSON.xcconfig */,
-				2A93092A0C611F95EF4365C6F8D5378D /* SwiftyJSON-dummy.m */,
-				A7EAF24C427935EC98A560019F439297 /* SwiftyJSON-prefix.pch */,
-				0B550FA160B90CA0D5377F48FB697B91 /* SwiftyJSON-umbrella.h */,
+				E28FCB80E8634037972C57224B6CF5A8 /* Info.plist */,
+				54B8C406D429DD4F5C415F8AECA69A47 /* MTCircularSlider.modulemap */,
+				95CEFE32153C346DD5FC6C9BAEB1685B /* MTCircularSlider.xcconfig */,
+				1C3B64828D00FFC482374A9B1ACCC549 /* MTCircularSlider-dummy.m */,
+				6460E286AE45EEAC7521AAC7EFF3092B /* MTCircularSlider-prefix.pch */,
+				3DF5E6E541BF00F87951D7618166B0CB /* MTCircularSlider-umbrella.h */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/SwiftyJSON";
+			path = "../Target Support Files/MTCircularSlider";
+			sourceTree = "<group>";
+		};
+		AB98AED2D81CDC922FCA7D53AEFA67B8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E0623FF7E96F4D9B9EBDE1AF32271684 /* MobileVLCKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B5A8F518B5750BAC6087B0BB22A062AC /* MobileVLCKit */ = {
+			isa = PBXGroup;
+			children = (
+				AB98AED2D81CDC922FCA7D53AEFA67B8 /* Frameworks */,
+			);
+			name = MobileVLCKit;
+			path = MobileVLCKit;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -246,25 +265,25 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		F22C96F409E58DA87B4C844DA711EEF0 /* SwiftyJSON */ = {
+		E25CD3A759885C947684F760DA774651 /* MTCircularSlider */ = {
 			isa = PBXGroup;
 			children = (
-				834339DFA5D23020E82A718AF61F1DB6 /* SwiftyJSON.swift */,
-				B78A8F8330AA691656C28EE5CC7703C8 /* Support Files */,
+				4FA60667BDE59BCA279F9AEA2C6BC257 /* MTCircularSlider.swift */,
+				958FA9A5A99977C6E91B6D52F9456CAB /* Support Files */,
 			);
-			name = SwiftyJSON;
-			path = SwiftyJSON;
+			name = MTCircularSlider;
+			path = MTCircularSlider;
 			sourceTree = "<group>";
 		};
-		FD76D9DE78F230B27686A29102C4B8D7 /* Support Files */ = {
+		F609AE1C30DF745CC6982DF65B59C0A9 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				121C861B14F2F14D2CD00382C8792BEA /* BRYXBanner.modulemap */,
-				94813B58FB322CCACE53BE1EC112D5B4 /* BRYXBanner.xcconfig */,
-				BF94E3ABF70ABB609B024BD094327AA3 /* BRYXBanner-dummy.m */,
-				74F64CFF3A3F4BF5284FDBF3ACB5AE03 /* BRYXBanner-prefix.pch */,
-				ECBFB12043325C52F1C887F2D0E33FF4 /* BRYXBanner-umbrella.h */,
-				F4FA39BF78B5CEAE0E91C24CAC672530 /* Info.plist */,
+				DC6A5A9CEFCEC8B44F6D0F8359BCE558 /* BRYXBanner.modulemap */,
+				1283CEF47EC1E6490FB1A58FC04C1826 /* BRYXBanner.xcconfig */,
+				F56E6C4127B7767B84B37C40F22257B1 /* BRYXBanner-dummy.m */,
+				A38206E33D9A30390A6C3346B3FFC9E8 /* BRYXBanner-prefix.pch */,
+				2AF34CA605543F6A8A0D05FA9436268F /* BRYXBanner-umbrella.h */,
+				98114B5DC12DEFB388995C66E9CD4AA3 /* Info.plist */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/BRYXBanner";
@@ -470,7 +489,7 @@
 /* Begin XCBuildConfiguration section */
 		01F0C635932A864D2950DA80C9E56107 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 94813B58FB322CCACE53BE1EC112D5B4 /* BRYXBanner.xcconfig */;
+			baseConfigurationReference = 1283CEF47EC1E6490FB1A58FC04C1826 /* BRYXBanner.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -505,7 +524,7 @@
 		};
 		040EAFBDCCDE6146DF4E17F28F70BE39 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B680827C1C6DC75E5CFB21C7ED9126E8 /* MTCircularSlider.xcconfig */;
+			baseConfigurationReference = 95CEFE32153C346DD5FC6C9BAEB1685B /* MTCircularSlider.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -540,7 +559,7 @@
 		};
 		138C75132E7B43E65A3B2CC2B1789CA3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7AB033940333C228A90C3E4665E497F6 /* SwiftyJSON.xcconfig */;
+			baseConfigurationReference = 9FD7CBCB712EA25746F80D9844D580BB /* SwiftyJSON.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -622,7 +641,7 @@
 		};
 		448407A8F54EC23D3E0558BE14CDC511 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 94813B58FB322CCACE53BE1EC112D5B4 /* BRYXBanner.xcconfig */;
+			baseConfigurationReference = 1283CEF47EC1E6490FB1A58FC04C1826 /* BRYXBanner.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -656,7 +675,7 @@
 		};
 		56CFCB0138AA33944E7FBAF42529E7F7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B680827C1C6DC75E5CFB21C7ED9126E8 /* MTCircularSlider.xcconfig */;
+			baseConfigurationReference = 95CEFE32153C346DD5FC6C9BAEB1685B /* MTCircularSlider.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -772,7 +791,7 @@
 		};
 		A8D00A98E6F712FA2B3050EB1F471AAF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7AB033940333C228A90C3E4665E497F6 /* SwiftyJSON.xcconfig */;
+			baseConfigurationReference = 9FD7CBCB712EA25746F80D9844D580BB /* SwiftyJSON.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";

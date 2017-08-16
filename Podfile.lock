@@ -1,18 +1,21 @@
 PODS:
   - BRYXBanner (0.7.3)
+  - MobileVLCKit (2.2.2)
   - MTCircularSlider (0.2.15)
   - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
   - BRYXBanner
+  - MobileVLCKit
   - MTCircularSlider
   - SwiftyJSON
 
 SPEC CHECKSUMS:
   BRYXBanner: bd26a91cb8a5826a8bc7687891043d287dd3ee53
+  MobileVLCKit: 75c2c36b0e3478c3f18cac3a2e7fa127cda0ff92
   MTCircularSlider: 9dfa03bc7d512c2a9b58c58bdca63fb40abcfda8
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: f4535a962abbe4d3b455e5a9265a1d2ddf5c789b
+PODFILE CHECKSUM: a25fc767d8da2708dec2ffa8e8be4f92a7120c75
 
 COCOAPODS: 1.2.1
