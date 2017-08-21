@@ -31,7 +31,7 @@ class SettingsViewController: UIViewController {
     func RestartAflred() {
         let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
         let AlfredAppKey = readPlist(item: "AlfredAppKey")
-        let url = URL(string: AlfredBaseURL + "restart" + AlfredAppKey)
+        let url = URL(string: AlfredBaseURL + "settings/restart" + AlfredAppKey)
         
         URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
             if error != nil {
@@ -90,8 +90,8 @@ class SettingsViewController: UIViewController {
     func DelAflredLog() {
         let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
         let AlfredAppKey = readPlist(item: "AlfredAppKey")
-        let url = URL(string: AlfredBaseURL + "dellog" + AlfredAppKey)
-        
+        let url = URL(string: AlfredBaseURL + "settings/dellog" + AlfredAppKey)
+    
         URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
             if error != nil {
                 
