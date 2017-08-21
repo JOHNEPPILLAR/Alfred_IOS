@@ -17,12 +17,8 @@ public final class Lights: NSCoding {
         static let lightName = "lightName"
         static let brightness = "brightness"
         static let onoff = "onoff"
-        static let x = "x"
-        static let y = "y"
         static let type = "type"
-        static let red = "red"
-        static let green = "green"
-        static let blue = "blue"
+        static let xy = "xy"
     }
     
     // MARK: Properties
@@ -30,12 +26,8 @@ public final class Lights: NSCoding {
     public var lightName: String?
     public var brightness: Int?
     public var onoff: String?
-    public var x: Double?
-    public var y: Double?
     public var type: String?
-    public var red: Int?
-    public var green: Int?
-    public var blue: Int?
+    public var xy: [Float]?
     
     // MARK: SwiftyJSON Initializers
     /// Initiates the instance based on the object.
@@ -56,12 +48,8 @@ public final class Lights: NSCoding {
         if brightness == nil { brightness = 0 }
         onoff = json[SerializationKeys.onoff].string
         if onoff == nil { onoff = "off" }
-        x = json[SerializationKeys.x].double
-        y = json[SerializationKeys.y].double
         type = json[SerializationKeys.type].string
-        red = json[SerializationKeys.red].int
-        green = json[SerializationKeys.green].int
-        blue = json[SerializationKeys.blue].int
+        if let items = json[SerializationKeys.xy].array { xy = items.map { $0.floatValue } }
     }
     
     /// Generates description of the object in the form of a NSDictionary.
@@ -73,12 +61,8 @@ public final class Lights: NSCoding {
         if let value = lightName { dictionary[SerializationKeys.lightName] = value }
         if let value = brightness { dictionary[SerializationKeys.brightness] = value }
         if let value = onoff { dictionary[SerializationKeys.onoff] = value }
-        if let value = x { dictionary[SerializationKeys.x] = value }
-        if let value = y { dictionary[SerializationKeys.y] = value }
         if let value = type { dictionary[SerializationKeys.type] = value }
-        if let value = red { dictionary[SerializationKeys.red] = value }
-        if let value = green { dictionary[SerializationKeys.green] = value }
-        if let value = blue { dictionary[SerializationKeys.blue] = value }
+        if let value = xy { dictionary[SerializationKeys.xy] = value }
         return dictionary
     }
     
@@ -88,12 +72,8 @@ public final class Lights: NSCoding {
         self.lightName = aDecoder.decodeObject(forKey: SerializationKeys.lightName) as? String
         self.brightness = aDecoder.decodeObject(forKey: SerializationKeys.brightness) as? Int
         self.onoff = aDecoder.decodeObject(forKey: SerializationKeys.onoff) as? String
-        self.x = aDecoder.decodeObject(forKey: SerializationKeys.x) as? Double
-        self.y = aDecoder.decodeObject(forKey: SerializationKeys.y) as? Double
         self.type = aDecoder.decodeObject(forKey: SerializationKeys.type) as? String
-        self.red = aDecoder.decodeObject(forKey: SerializationKeys.red) as? Int
-        self.green = aDecoder.decodeObject(forKey: SerializationKeys.green) as? Int
-        self.blue = aDecoder.decodeObject(forKey: SerializationKeys.blue) as? Int
+        self.xy = aDecoder.decodeObject(forKey: SerializationKeys.xy) as? [Float]
     }
     
     public func encode(with aCoder: NSCoder) {
@@ -101,12 +81,7 @@ public final class Lights: NSCoding {
         aCoder.encode(lightName, forKey: SerializationKeys.lightName)
         aCoder.encode(brightness, forKey: SerializationKeys.brightness)
         aCoder.encode(onoff, forKey: SerializationKeys.onoff)
-        aCoder.encode(x, forKey: SerializationKeys.x)
-        aCoder.encode(y, forKey: SerializationKeys.y)
         aCoder.encode(type, forKey: SerializationKeys.type)
-        aCoder.encode(red, forKey: SerializationKeys.red)
-        aCoder.encode(green, forKey: SerializationKeys.green)
-        aCoder.encode(blue, forKey: SerializationKeys.blue)
+        aCoder.encode(xy, forKey: SerializationKeys.xy)
     }
-    
 }

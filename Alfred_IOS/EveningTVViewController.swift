@@ -137,19 +137,17 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
         cell.lightName.setTitle(eveningTVData[0].lights?[row].lightName, for: .normal)
         
         // Work out light group color
-        var color: UIColor = UIColor.white
         if (eveningTVData[0].lights?[row].onoff == "on") {
             
             // Setup the light bulb colour
-            if eveningTVData[0].lights?[row].red != 0 &&
-                eveningTVData[0].lights?[row].green != 0 &&
-                eveningTVData[0].lights?[row].blue != 0 {
-                
-                color = UIColor(red: CGFloat((eveningTVData[0].lights?[row].red)!)/255.0, green: CGFloat((eveningTVData[0].lights?[row].green)!)/255.0, blue: CGFloat((eveningTVData[0].lights?[row].blue)!)/255.0, alpha: 1.0)
-                
+            var color = UIColor.white
+            let xy = eveningTVData[0].lights?[row].xy
+            if xy != nil {
+                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT001")
             }
             cell.powerButton.backgroundColor = color
-            
+        } else {
+            cell.powerButton.backgroundColor = UIColor.clear
         }
         
         cell.brightnessSlider.value = Float((eveningTVData[0].lights?[row].brightness)!)
@@ -173,7 +171,6 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
         // Figure out which cell is being updated
         let cell = sender.superview?.superview as? LightsCollectionViewCell
         let row = sender.tag
-        var color: UIColor = UIColor.white
         
         // Update local data store
         eveningTVData[0].lights?[row].brightness = Int(sender.value)
@@ -187,12 +184,10 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
             eveningTVData[0].lights?[row].onoff = "on"
             
             // Setup the light bulb colour
-            if (eveningTVData[0].lights?[row].red)! != 0 &&
-                (eveningTVData[0].lights?[row].green)! != 0 &&
-                (eveningTVData[0].lights?[row].blue)! != 0 {
-                
-                color = UIColor(red: CGFloat((eveningTVData[0].lights?[row].red)!)/255.0, green: CGFloat((eveningTVData[0].lights?[row].green)!)/255.0, blue: CGFloat((eveningTVData[0].lights?[row].blue)!)/255.0, alpha: 1.0)
-                
+            var color = UIColor.white
+            let xy = eveningTVData[0].lights?[row].xy
+            if xy != nil {
+                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT001")
             }
             cell?.powerButton.backgroundColor = color
             
@@ -207,7 +202,6 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
         let indexPath = LightCollectionView!.indexPathForItem(at: point)
         let cell = LightCollectionView!.cellForItem(at: indexPath!) as! LightsCollectionViewCell
         let row = indexPath?.row
-        var color: UIColor = UIColor.white
         
         if (eveningTVData[0].lights?[row!].onoff == "on") {
             
@@ -219,12 +213,10 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
             eveningTVData[0].lights?[row!].onoff = "on"
             
             // Setup the light bulb colour
-            if eveningTVData[0].lights?[row!].red != 0 &&
-                eveningTVData[0].lights?[row!].green != 0 &&
-                eveningTVData[0].lights?[row!].blue != 0 {
-                
-                color = UIColor(red: CGFloat((eveningTVData[0].lights?[row!].red)!)/255.0, green: CGFloat((eveningTVData[0].lights?[row!].green)!)/255.0, blue: CGFloat((eveningTVData[0].lights?[row!].blue)!)/255.0, alpha: 1.0)
-                
+            var color = UIColor.white
+            let xy = eveningTVData[0].lights?[row!].xy
+            if xy != nil {
+                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT001")
             }
             cell.powerButton.backgroundColor = color
             
@@ -244,13 +236,10 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
             cellID.sharedInstance.cell = cell
             
             // Store the color
-            var color: UIColor = UIColor.white
-            if eveningTVData[0].lights?[row!].red != 0 &&
-                eveningTVData[0].lights?[row!].green != 0 &&
-                eveningTVData[0].lights?[row!].blue != 0 {
-                
-                color = UIColor(red: CGFloat((eveningTVData[0].lights?[row!].red)!)/255.0, green: CGFloat((eveningTVData[0].lights?[row!].green)!)/255.0, blue: CGFloat((eveningTVData[0].lights?[row!].blue)!)/255.0, alpha: 1.0)
-                
+            var color = UIColor.white
+            let xy = eveningTVData[0].lights?[row!].xy
+            if xy != nil {
+                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT001")
             }
             
             // Open the color picker
@@ -275,13 +264,9 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
         
         // Update the local data store
         let row = cell?.powerButton.tag
-        let rgb = newColor?.rgb()
-        eveningTVData[0].lights?[row!].red = Int((rgb?.red)!)
-        eveningTVData[0].lights?[row!].green = Int((rgb?.green)!)
-        eveningTVData[0].lights?[row!].blue = Int((rgb?.blue)!)
-        
+        let xy = HueColorHelper.calculateXY(newColor!, forModel: "LST001")
+        eveningTVData[0].lights![row!].xy = [Float(xy.x), Float(xy.y)]
     }
-    
     
     func saveSettingsAction(sender: UIBarButtonItem)
     {

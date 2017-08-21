@@ -47,36 +47,8 @@ public extension UIColor {
             return true
         }
     }
- 
-    public func rgb() -> (red:Float, green:Float, blue:Float, alpha:Float)? {
-
-        var r:CGFloat = 0,
-            g:CGFloat = 0,
-            b:CGFloat = 0,
-            a:CGFloat = 0,
-            h:CGFloat = 0,
-            s:CGFloat = 0,
-            l:CGFloat = 0
-        
-        if self.getHue(&h, saturation: &s, brightness: &l, alpha: &a) {
-            if self.getRed(&r, green: &g, blue: &b, alpha: &a) {
-                
-                let fRed =  Float(r*255)
-                let fGreen = Float(g*255)
-                let fBlue = Float(b*255)
-                let fAlpha = Float(a)
-                
-                return (red: fRed, green: fGreen, blue: fBlue, alpha: fAlpha)
-                
-            } else {
-                return nil
-            }
-        } else {
-            return nil
-        }
-    }
 }
-
+    
 @IBDesignable class RoundButton: UIButton {
     override func layoutSubviews() {
         super.layoutSubviews()

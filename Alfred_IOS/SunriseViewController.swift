@@ -159,26 +159,23 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "lightCell", for: indexPath) as! LightsCollectionViewCell
         let row = indexPath.row
-        
         cell.tag = (morningData[0].lights?[row].lightID)!
-        
+
         cell.lightName.setTitle(morningData[0].lights?[row].lightName, for: .normal)
         
         // Work out light color
-        var color: UIColor = UIColor.white
         if (morningData[0].lights?[row].onoff == "on") {
             
             // Setup the light bulb colour
-            if morningData[0].lights?[row].red != 0 &&
-                morningData[0].lights?[row].green != 0 &&
-                morningData[0].lights?[row].blue != 0 {
-                
-                color = UIColor(red: CGFloat((morningData[0].lights?[row].red)!)/255.0, green: CGFloat((morningData[0].lights?[row].green)!)/255.0, blue: CGFloat((morningData[0].lights?[row].blue)!)/255.0, alpha: 1.0)
-                
+            var color = UIColor.white
+            let xy = morningData[0].lights?[row].xy
+            if xy != nil {
+                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT001")
             }
-            
             cell.powerButton.backgroundColor = color
             
+        } else {
+            cell.powerButton.backgroundColor = UIColor.clear
         }
         
         // Set brightness slider
@@ -203,7 +200,6 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
         // Figure out which cell is being updated
         let cell = sender.superview?.superview as? LightsCollectionViewCell
         let row = sender.tag
-        var color: UIColor = UIColor.white
         
         // Update local data store
         morningData[0].lights?[row].brightness = Int(sender.value)
@@ -217,12 +213,10 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
             morningData[0].lights?[row].onoff = "on"
             
             // Setup the light bulb colour
-            if (morningData[0].lights?[row].red)! != 0 &&
-                (morningData[0].lights?[row].green)! != 0 &&
-                (morningData[0].lights?[row].blue)! != 0 {
-                
-                color = UIColor(red: CGFloat((morningData[0].lights?[row].red)!)/255.0, green: CGFloat((morningData[0].lights?[row].green)!)/255.0, blue: CGFloat((morningData[0].lights?[row].blue)!)/255.0, alpha: 1.0)
-                
+            var color = UIColor.white
+            let xy = morningData[0].lights?[row].xy
+            if xy != nil {
+                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT001")
             }
             cell?.powerButton.backgroundColor = color
             
@@ -237,7 +231,6 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
         let indexPath = LightCollectionView!.indexPathForItem(at: point)
         let cell = LightCollectionView!.cellForItem(at: indexPath!) as! LightsCollectionViewCell
         let row = indexPath?.row
-        var color: UIColor = UIColor.white
         
         if (morningData[0].lights?[row!].onoff == "on") {
             
@@ -249,12 +242,10 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
             morningData[0].lights?[row!].onoff = "on"
             
             // Setup the light bulb colour
-            if morningData[0].lights?[row!].red != 0 &&
-                morningData[0].lights?[row!].green != 0 &&
-                morningData[0].lights?[row!].blue != 0 {
-                
-                color = UIColor(red: CGFloat((morningData[0].lights?[row!].red)!)/255.0, green: CGFloat((morningData[0].lights?[row!].green)!)/255.0, blue: CGFloat((morningData[0].lights?[row!].blue)!)/255.0, alpha: 1.0)
-                
+            var color = UIColor.white
+            let xy = morningData[0].lights?[row!].xy
+            if xy != nil {
+                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT001")
             }
             cell.powerButton.backgroundColor = color
             
@@ -274,17 +265,11 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
             cellID.sharedInstance.cell = cell
             
             // Store the color
-            var color: UIColor = UIColor.white
-            if morningData[0].lights?[row!].red != 0 &&
-                morningData[0].lights?[row!].green != 0 &&
-                morningData[0].lights?[row!].blue != 0 {
-                
-                color = UIColor(red: CGFloat((morningData[0].lights?[row!].red)!)/255.0, green: CGFloat((morningData[0].lights?[row!].green)!)/255.0, blue: CGFloat((morningData[0].lights?[row!].blue)!)/255.0, alpha: 1.0)
-                
-            } else {
-                
-                color = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-                
+            var color = UIColor.white
+            let xy = morningData[0].lights?[row!].xy
+dump(xy)
+            if xy != nil {
+                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT001")
             }
             
             // Open the color picker
@@ -309,12 +294,10 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
         
         // Update the local data store
         let row = cell?.powerButton.tag
-        let rgb = newColor?.rgb()
-        
-        morningData[0].lights?[row!].red = Int((rgb?.red)!)
-        morningData[0].lights?[row!].green = Int((rgb?.green)!)
-        morningData[0].lights?[row!].blue = Int((rgb?.blue)!)
-        
+        let xy = HueColorHelper.calculateXY(newColor!, forModel: "LST001")
+dump(xy)
+        morningData[0].lights![row!].xy = [Float(xy.x), Float(xy.y)]
+dump(morningData[0].lights![row!].xy)
     }
     
     func saveSettingsAction(sender: UIBarButtonItem) {

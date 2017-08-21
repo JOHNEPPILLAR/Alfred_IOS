@@ -21,6 +21,7 @@
 		0A69FB891F10C25C00563A69 /* Alfred_IOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0A69FB871F10C25C00563A69 /* Alfred_IOS.xcdatamodeld */; };
 		0A69FB8B1F10C25C00563A69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A69FB8A1F10C25C00563A69 /* Assets.xcassets */; };
 		0A69FB9F1F1160F500563A69 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A69FB9E1F1160F500563A69 /* ViewController.swift */; };
+		0A7DADE11F4A2BF9002FEE9F /* HueColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DADE01F4A2BF9002FEE9F /* HueColorHelper.swift */; };
 		0A80C09C1F24812E0082F77C /* Alfred.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A80C09B1F24812E0082F77C /* Alfred.plist */; };
 		0A8AF14A1F24EF030064894F /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8AF1491F24EF030064894F /* Helpers.swift */; };
 		0A97CCAF1F2B0AEF00E6FF1F /* RoomLightsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A97CCAE1F2B0AEF00E6FF1F /* RoomLightsViewController.swift */; };
@@ -58,6 +59,7 @@
 		0A69FB8A1F10C25C00563A69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A69FB8F1F10C25C00563A69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A69FB9E1F1160F500563A69 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0A7DADE01F4A2BF9002FEE9F /* HueColorHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HueColorHelper.swift; sourceTree = "<group>"; };
 		0A80C09B1F24812E0082F77C /* Alfred.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Alfred.plist; sourceTree = "<group>"; };
 		0A8AF1491F24EF030064894F /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		0A97CCAE1F2B0AEF00E6FF1F /* RoomLightsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomLightsViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			children = (
 				0AF938DC1F1A2A4F00B5B247 /* EZLoadingActivity.swift */,
 				0A8AF1491F24EF030064894F /* Helpers.swift */,
+				0A7DADE01F4A2BF9002FEE9F /* HueColorHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				0ADDC4D31F29C02000C08F55 /* EveningTVViewController.swift in Sources */,
 				0AE84DE71F289F120031F6C2 /* SunriseViewController.swift in Sources */,
 				0AA83A711F2CE72500B933A8 /* RoomLightsAction.swift in Sources */,
+				0A7DADE11F4A2BF9002FEE9F /* HueColorHelper.swift in Sources */,
 				0AF938DD1F1A2A4F00B5B247 /* EZLoadingActivity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

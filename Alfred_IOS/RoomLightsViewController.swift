@@ -99,18 +99,14 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
         cell.lightName.setTitle(roomLightsData[0].data?[row].name, for: .normal)
         
         // Work out light group color
-        var color: UIColor = UIColor.white
         if (roomLightsData[0].data?[row].state?.anyOn)! {
             
             // Setup the light bulb colour
-            if roomLightsData[0].data?[row].action?.red != 0 &&
-                roomLightsData[0].data?[row].action?.green != 0 &&
-                roomLightsData[0].data?[row].action?.blue != 0 {
-                
-                color = UIColor(red: CGFloat((roomLightsData[0].data?[row].action?.red)!)/255.0, green: CGFloat((roomLightsData[0].data?[row].action?.green)!)/255.0, blue: CGFloat((roomLightsData[0].data?[row].action?.blue)!)/255.0, alpha: 1.0)
-                
+            var color = UIColor.white
+            let xy = roomLightsData[0].data?[row].action?.xy
+            if xy != nil {
+                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT001")
             }
-            
             cell.powerButton.backgroundColor = color
             
         }
@@ -186,7 +182,6 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
         let cell = LightCollectionViewRooms!.cellForItem(at: indexPath!) as! LightsCollectionViewCell
         let row = indexPath?.row
         var lightsOn: String
-        var color: UIColor = UIColor.white
         
         if (roomLightsData[0].data?[row!].state?.anyOn)! {
             
@@ -200,12 +195,10 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
             lightsOn = "on"
             
             // Setup the light bulb colour
-            if roomLightsData[0].data?[row!].action?.red != 0 &&
-                roomLightsData[0].data?[row!].action?.green != 0 &&
-                roomLightsData[0].data?[row!].action?.blue != 0 {
-                
-                color = UIColor(red: CGFloat((roomLightsData[0].data?[row!].action?.red)!)/255.0, green: CGFloat((roomLightsData[0].data?[row!].action?.green)!)/255.0, blue: CGFloat((roomLightsData[0].data?[row!].action?.blue)!)/255.0, alpha: 1.0)
-                
+            var color = UIColor.white
+            let xy = roomLightsData[0].data?[row!].action?.xy
+            if xy != nil {
+                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT001")
             }
             cell.powerButton.backgroundColor = color
             
@@ -267,13 +260,10 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
             cellID.sharedInstance.cell = cell
             
             // Store the color
-            var color: UIColor = UIColor.white
-            if roomLightsData[0].data?[row!].action?.red != 0 &&
-                roomLightsData[0].data?[row!].action?.green != 0 &&
-                roomLightsData[0].data?[row!].action?.blue != 0 {
-                
-                color = UIColor(red: CGFloat((roomLightsData[0].data?[row!].action?.red)!)/255.0, green: CGFloat((roomLightsData[0].data?[row!].action?.green)!)/255.0, blue: CGFloat((roomLightsData[0].data?[row!].action?.blue)!)/255.0, alpha: 1.0)
-                
+            var color = UIColor.white
+            let xy = roomLightsData[0].data?[row!].action?.xy
+            if xy != nil {
+                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT001")
             }
             
             // Open the color picker
@@ -298,13 +288,9 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
         
         // Update the local data store
         let row = cell?.powerButton.tag
-        let r = newColor?.rgb()?.red
-        roomLightsData[0].data?[row!].action?.red = Int(r!)
-        let g = newColor?.rgb()?.green
-        roomLightsData[0].data?[row!].action?.green = Int(g!)
-        let b = newColor?.rgb()?.blue
-        roomLightsData[0].data?[row!].action?.blue = Int(b!)
-        
+        let xy = HueColorHelper.calculateXY(newColor!, forModel: "LST001")
+        roomLightsData[0].data![row!].action!.xy = [Float(xy.x), Float(xy.y)]
+       
         var lightsOn = "off"
         if (roomLightsData[0].data?[row!].state?.anyOn)! {
             lightsOn = "on"
@@ -315,7 +301,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
         let AlfredAppKey: String = readPlist(item: "AlfredAppKey")
         var lightParams: String = "&light_number=" + "\(cell?.tag ?? 0)" + "&light_status=" + lightsOn
         lightParams = lightParams + "&percentage=" + String(roomLightsData[0].data![row!].action!.bri!)
-        lightParams = lightParams + "&red=" + "\(r!)" + "&green=" + "\(g!)" + "&blue=" + "\(b!)"
+        lightParams = lightParams + "&x=" + "\(xy.x)" + "&y=" + "\(xy.y)"
         let url = URL(string: AlfredBaseURL + "lights/lightgrouponoff" + AlfredAppKey + lightParams)
         
         URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
