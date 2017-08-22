@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BRYXBanner
 
 class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
 
@@ -18,26 +19,26 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
 
         // Setup camera
         
-        //Add rotation observer
+        // Add rotation observer
         NotificationCenter.default.addObserver(self, selector: #selector(CameraViewController.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         
-        //Setup movieView
+        // Setup movieView
         self.movieView = UIView()
         self.movieView.frame = UIScreen.screens[0].bounds
         self.movieView.backgroundColor = nil
         
-        //Add tap gesture to movieView for play/pause
+        // Add tap gesture to movieView for play/pause
         let gesture = UITapGestureRecognizer(target: self, action: #selector(CameraViewController.movieViewTapped(_:)))
         self.movieView.addGestureRecognizer(gesture)
         
-        //Add movieView to view controller
+        // Add movieView to view controller
         self.view.addSubview(self.movieView)
         
     }
 
     override func viewDidAppear(_ animated: Bool) {
         
-        //Playing RTSP from internet
+        // Playing RTSP from internet
         let camURL = readPlist(item: "CamURL")
         let url = URL(string: camURL)
         
@@ -46,26 +47,39 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
         
         mediaPlayer.delegate = self
         mediaPlayer.drawable = self.movieView
-        
+
+        // Always fill entire screen
+        movieView.frame = self.view.frame
+
+        // Play video
         mediaPlayer.play()
         
     }
 
     func rotated() {
         
-        //Always fill entire screen
+        // Always fill entire screen
         self.movieView.frame = self.view.frame
         
     }
     
     func movieViewTapped(_ sender: UITapGestureRecognizer) {
         
+        var UItxt = ""
+
         if mediaPlayer.isPlaying {
             mediaPlayer.pause()
+            UItxt = "Webcam paused"
         }
         else {
             mediaPlayer.play()
+            UItxt = "Webcam playing"
         }
+        
+        // Inform user of event
+        let banner = Banner(title: UItxt, backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
+        banner.dismissesOnTap = true
+        banner.show(duration: 3.0)
         
     }
     
