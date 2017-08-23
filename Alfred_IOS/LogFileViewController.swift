@@ -22,6 +22,8 @@ class LogFileViewController: UIViewController, UITableViewDataSource, UITableVie
 
         LogFileTableView.backgroundView = UIImageView(image: UIImage(named: "background.jpg"))
         
+        LogFileTableView.addSubview(self.refreshControl) // Add pull to refresh functionality
+        
         self.getData() // Get log info from Alfred
         
     }
@@ -76,6 +78,22 @@ class LogFileViewController: UIViewController, UITableViewDataSource, UITableVie
         }).resume()
     }
     
+    lazy var refreshControl: UIRefreshControl = {
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(LogFileViewController.handleRefresh(_:)), for: UIControlEvents.valueChanged)
+        return refreshControl
+        
+    }()
+    
+    func handleRefresh(_ refreshControl: UIRefreshControl) {
+        
+        logs = [Logs]() // clear the local store
+        self.getData() // Get data
+        refreshControl.endRefreshing() // Stop the pull to refresh UI
+        
+    }
+
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         if (logs.count) > 0 {

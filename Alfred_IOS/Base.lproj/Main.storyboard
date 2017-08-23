@@ -457,7 +457,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4qM-St-86V">
-                                <rect key="frame" x="16" y="70" width="164" height="108"/>
+                                <rect key="frame" x="16" y="85" width="164" height="108"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sunset offset" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pgb-CL-IuX">
@@ -515,7 +515,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pdJ-Rq-iZR">
-                                <rect key="frame" x="195" y="70" width="164" height="108"/>
+                                <rect key="frame" x="195" y="85" width="164" height="108"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Turn off" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZX-ii-Y7G">
@@ -573,7 +573,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7oX-Su-bSI">
-                                <rect key="frame" x="0.0" y="188" width="375" height="416"/>
+                                <rect key="frame" x="0.0" y="200" width="375" height="406"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="r9W-ce-BGb">
@@ -646,6 +646,13 @@
                                     <outlet property="delegate" destination="f1C-gJ-uKM" id="Af8-kZ-GuY"/>
                                 </connections>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sunet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7H-eM-Q7a">
+                                <rect key="frame" x="16" y="60" width="343" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
@@ -655,6 +662,7 @@
                         <outlet property="offsetHRStepper" destination="0do-JN-ia4" id="bIK-QA-mEg"/>
                         <outlet property="offsetMINLabel" destination="JXF-1z-S6o" id="cdN-rw-5Sw"/>
                         <outlet property="offsetMINStepper" destination="wJN-Mf-0D1" id="YEU-Sz-twd"/>
+                        <outlet property="sunsetTimeLabel" destination="i7H-eM-Q7a" id="hUO-TW-2Un"/>
                         <outlet property="turnoffHRLabel" destination="9nR-xI-kQU" id="nAV-s0-UYD"/>
                         <outlet property="turnoffHRStepper" destination="Rew-Gz-fZx" id="KAa-bM-MDe"/>
                         <outlet property="turnoffMINLabel" destination="QeF-Re-oAv" id="XUe-Z2-OQA"/>
@@ -664,7 +672,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mc2-Dx-JPI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3079" y="1357"/>
+            <point key="canvasLocation" x="3077.5999999999999" y="1356.9715142428786"/>
         </scene>
         <!--View Log File-->
         <scene sceneID="eze-ob-QUp">
@@ -707,7 +715,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="dateLabel" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jEr-kg-vjn">
-                                                    <rect key="frame" x="267" y="12" width="100" height="21"/>
+                                                    <rect key="frame" x="267" y="0.0" width="100" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -736,7 +744,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ojO-pZ-aKk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3078" y="2104"/>
+            <point key="canvasLocation" x="3077.5999999999999" y="2103.5982008995502"/>
         </scene>
         <!--Evening TV Lights-->
         <scene sceneID="WP0-XH-jaR">
@@ -1177,10 +1185,10 @@
         <image name="power_button_grey" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="PXd-qe-vgO"/>
+        <segue reference="Gj3-7b-C3a"/>
         <segue reference="iQe-EX-QAu"/>
         <segue reference="Zau-6A-ghY"/>
-        <segue reference="iYm-RY-6IT"/>
         <segue reference="shl-jr-mqR"/>
+        <segue reference="PXd-qe-vgO"/>
     </inferredMetricsTieBreakers>
 </document>

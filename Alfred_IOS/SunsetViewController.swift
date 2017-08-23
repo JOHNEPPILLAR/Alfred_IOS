@@ -44,7 +44,9 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
         turnoffMINLabel.text = Int(sender.value).description
         eveningData[0].offMin = Int(sender.value)
     }
-    
+
+    @IBOutlet weak var sunsetTimeLabel: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -72,8 +74,50 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
         
         let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
         let AlfredAppKey = readPlist(item: "AlfredAppKey")
-        let url = URL(string: AlfredBaseURL + "settings/view" + AlfredAppKey)
+        var url = URL(string: AlfredBaseURL + "weather/sunset" + AlfredAppKey)
+
+        // Get sunset time
+        URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
+            
+            if error != nil {
+                
+                // Update the UI
+                DispatchQueue.main.async() {
+                    
+                    let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to retrieve settings. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
+                    banner.dismissesOnTap = true
+                    banner.show()
+                    
+                }
+                
+            } else {
+                
+                guard let data = data, error == nil else { return }
+                let json = JSON(data: data)
+                let apiStatus = json["code"]
+                let apiStatusString = apiStatus.string!
+                if apiStatusString == "sucess" {
+                    
+                    // Save json to custom classes
+                    let sunSet = json["data"].string!
+                    
+                    DispatchQueue.main.async() {
+                        
+                        // Update the sunset time label
+                        self.sunsetTimeLabel.text = "Today's sunset is at " + sunSet
+                        
+                    }
+                } else {
+                    let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to retrieve settings. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
+                    banner.dismissesOnTap = true
+                    banner.show()
+                }
+                
+            }
+        }).resume()
         
+        // Get settings
+        url = URL(string: AlfredBaseURL + "settings/view" + AlfredAppKey)
         URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
             
             if error != nil {
@@ -167,7 +211,7 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
             var color = UIColor.white
             let xy = eveningData[0].lights?[row].xy
             if xy != nil {
-                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT001")
+                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT007")
             }
             cell.powerButton.backgroundColor = color
         } else {
@@ -183,8 +227,11 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
         cell.powerButton.isUserInteractionEnabled = true
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(powerButtonValueChange(_:)))
         cell.powerButton.addGestureRecognizer(tapRecognizer)
-        let longTapRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPowerButtonPress(_:)))
-        cell.powerButton.addGestureRecognizer(longTapRecognizer)
+        
+        if eveningData[0].lights?[row].type == "color" {
+            let longTapRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPowerButtonPress(_:)))
+            cell.powerButton.addGestureRecognizer(longTapRecognizer)
+        }
         
         return cell
         

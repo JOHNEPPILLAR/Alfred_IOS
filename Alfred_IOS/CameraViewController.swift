@@ -12,8 +12,11 @@ import BRYXBanner
 class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
 
     var movieView: UIView!
-    var mediaPlayer = VLCMediaPlayer()
+    //var mediaPlayer = VLCMediaPlayer()
+    var mediaPlayer = VLCMediaPlayer(options: ["--avi-index=2"])
     
+    let ActivityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.white)
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -43,19 +46,26 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
         let url = URL(string: camURL)
         
         let media = VLCMedia(url: url)
-        mediaPlayer.media = media
+        mediaPlayer!.media = media
+        mediaPlayer!.delegate = self
+        mediaPlayer!.drawable = self.movieView
+
+        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(mediaPlayerStateChanged), userInfo: nil, repeats: true)
         
-        mediaPlayer.delegate = self
-        mediaPlayer.drawable = self.movieView
-
         // Always fill entire screen
-        movieView.frame = self.view.frame
-
+        //movieView.frame = UIScreen.screens[0].bounds
+        //movieView.frame = self.view.frame
+        
         // Play video
-        mediaPlayer.play()
+        mediaPlayer!.play()
+        
+        // Show busy acivity
+        ActivityIndicator.center = view.center;
+        ActivityIndicator.startAnimating();
+        view.addSubview(ActivityIndicator)
         
     }
-
+    
     func rotated() {
         
         // Always fill entire screen
@@ -63,16 +73,34 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
         
     }
     
+    func mediaPlayerStateChanged(aNotification: NSNotification!)
+    {
+        
+        switch mediaPlayer!.state {
+        case .error:
+            let banner = Banner(title: "An error occured playing the stream", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
+            banner.dismissesOnTap = true
+            banner.show(duration: 3.0)
+        case .buffering:
+            break
+        case .playing:
+            ActivityIndicator.stopAnimating();
+            break
+        default: break
+        }
+        
+    }
+    
     func movieViewTapped(_ sender: UITapGestureRecognizer) {
         
         var UItxt = ""
 
-        if mediaPlayer.isPlaying {
-            mediaPlayer.pause()
+        if mediaPlayer!.isPlaying {
+            mediaPlayer!.pause()
             UItxt = "Webcam paused"
         }
         else {
-            mediaPlayer.play()
+            mediaPlayer!.play()
             UItxt = "Webcam playing"
         }
         
