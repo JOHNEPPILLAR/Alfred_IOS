@@ -105,7 +105,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
             var color = UIColor.white
             let xy = roomLightsData[0].data?[row].action?.xy
             if xy != nil {
-                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT001")
+                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT007")
             }
             cell.powerButton.backgroundColor = color
             
@@ -198,7 +198,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
             var color = UIColor.white
             let xy = roomLightsData[0].data?[row!].action?.xy
             if xy != nil {
-                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT001")
+                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT007")
             }
             cell.powerButton.backgroundColor = color
             
@@ -263,7 +263,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
             var color = UIColor.white
             let xy = roomLightsData[0].data?[row!].action?.xy
             if xy != nil {
-                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT001")
+                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT007")
             }
             
             // Open the color picker
@@ -288,7 +288,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
         
         // Update the local data store
         let row = cell?.powerButton.tag
-        let xy = HueColorHelper.calculateXY(newColor!, forModel: "LST001")
+        let xy = HueColorHelper.calculateXY(newColor!, forModel: "LST007")
         roomLightsData[0].data![row!].action!.xy = [Float(xy.x), Float(xy.y)]
        
         var lightsOn = "off"

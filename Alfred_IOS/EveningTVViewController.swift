@@ -143,7 +143,7 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
             var color = UIColor.white
             let xy = eveningTVData[0].lights?[row].xy
             if xy != nil {
-                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT001")
+                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT007")
             }
             cell.powerButton.backgroundColor = color
         } else {
@@ -187,7 +187,7 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
             var color = UIColor.white
             let xy = eveningTVData[0].lights?[row].xy
             if xy != nil {
-                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT001")
+                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT007")
             }
             cell?.powerButton.backgroundColor = color
             
@@ -216,7 +216,7 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
             var color = UIColor.white
             let xy = eveningTVData[0].lights?[row!].xy
             if xy != nil {
-                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT001")
+                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT007")
             }
             cell.powerButton.backgroundColor = color
             
@@ -239,7 +239,7 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
             var color = UIColor.white
             let xy = eveningTVData[0].lights?[row!].xy
             if xy != nil {
-                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT001")
+                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT007")
             }
             
             // Open the color picker
