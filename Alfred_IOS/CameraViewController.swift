@@ -29,6 +29,7 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
         self.movieView = UIView()
         self.movieView.frame = UIScreen.screens[0].bounds
         self.movieView.backgroundColor = nil
+        self.movieView.tag = 100
         
         // Add tap gesture to movieView for play/pause
         let gesture = UITapGestureRecognizer(target: self, action: #selector(CameraViewController.movieViewTapped(_:)))
@@ -64,6 +65,20 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
         ActivityIndicator.startAnimating();
         view.addSubview(ActivityIndicator)
         
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        // Stop video as moving away from view
+        mediaPlayer!.stop()
+        mediaPlayer!.media = nil
+        
+//        if self.isBeingDismissed || self.isMovingFromParentViewController {
+//            mediaPlayer!.stop()
+//            let viewWithTag = self.view.viewWithTag(100)
+//            viewWithTag?.removeFromSuperview()
+//        }
     }
     
     func rotated() {

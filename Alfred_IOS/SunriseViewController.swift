@@ -267,7 +267,7 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
             // Store the color
             var color = UIColor.white
             let xy = morningData[0].lights?[row!].xy
-dump(xy)
+
             if xy != nil {
                 color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT007")
             }
@@ -295,9 +295,8 @@ dump(xy)
         // Update the local data store
         let row = cell?.powerButton.tag
         let xy = HueColorHelper.calculateXY(newColor!, forModel: "LST001")
-dump(xy)
+
         morningData[0].lights![row!].xy = [Float(xy.x), Float(xy.y)]
-dump(morningData[0].lights![row!].xy)
     }
     
     func saveSettingsAction(sender: UIBarButtonItem) {

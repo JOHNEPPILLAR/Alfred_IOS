@@ -268,8 +268,7 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
         eveningTVData[0].lights![row!].xy = [Float(xy.x), Float(xy.y)]
     }
     
-    func saveSettingsAction(sender: UIBarButtonItem)
-    {
+    func saveSettingsAction(sender: UIBarButtonItem) {
         
         // Disable the save button
         self.navigationItem.rightBarButtonItem?.isEnabled = false
