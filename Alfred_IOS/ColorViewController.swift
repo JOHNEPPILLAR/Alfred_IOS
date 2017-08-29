@@ -9,7 +9,7 @@
 import UIKit
 
 protocol colorPickerDelegate: class {
-    func backFromColorPicker(_ color: UIColor?)
+    func backFromColorPicker(_ color: UIColor?, ct: Int?, scene: Bool?)
 }
 
 class ColorViewController: UIViewController {
@@ -18,10 +18,12 @@ class ColorViewController: UIViewController {
     @IBOutlet weak var sceneButton: UIButton!
     @IBOutlet weak var sceneView: UIView!
     @IBOutlet weak var colorView: UIView!
-    @IBOutlet weak var energiseButton: RoundButton!
-    @IBOutlet weak var readingButton: RoundButton!
-    @IBOutlet weak var concentrateButton: RoundButton!
-    @IBOutlet weak var relaxButton: RoundButton!
+
+    @IBOutlet weak var concentrateImage: RoundImage!
+    @IBOutlet weak var energiseImage: RoundImage!
+    @IBOutlet weak var relaxImage: RoundImage!
+    @IBOutlet weak var readImage: RoundImage!
+    
     weak var delegate: colorPickerDelegate?
     var colorID: UIColor?
     var ct: Int?
@@ -36,7 +38,6 @@ class ColorViewController: UIViewController {
         sender.backgroundColor = tmpColor
         sender.setTitleColor(UIColor.black, for: .normal)
         colorView.isHidden = false
-//        self.view.bringSubview(toFront: colorView);
     }
 
     @IBAction func sceneButton(_ sender: UIButton) {
@@ -47,7 +48,38 @@ class ColorViewController: UIViewController {
         sender.backgroundColor = tmpColor
         sender.setTitleColor(UIColor.black, for: .normal)
         sceneView.isHidden = false
-//        self.view.bringSubview(toFront: sceneView);
+    }
+    
+    @IBAction func concentrateTap(_ sender: Any) {
+        ct = 233
+        concentrateImage.layer.borderWidth = 5
+        energiseImage.layer.borderWidth = 0
+        relaxImage.layer.borderWidth = 0
+        readImage.layer.borderWidth = 0
+    }
+    
+    @IBAction func energiseTap(_ sender: Any) {
+        ct = 156
+        concentrateImage.layer.borderWidth = 0
+        energiseImage.layer.borderWidth = 5
+        relaxImage.layer.borderWidth = 0
+        readImage.layer.borderWidth = 0
+    }
+    
+    @IBAction func readTap(_ sender: Any) {
+        ct = 348
+        concentrateImage.layer.borderWidth = 0
+        energiseImage.layer.borderWidth = 0
+        relaxImage.layer.borderWidth = 0
+        readImage.layer.borderWidth = 5
+}
+    
+    @IBAction func relaxTap(_ sender: Any) {
+        ct = 454
+        concentrateImage.layer.borderWidth = 0
+        energiseImage.layer.borderWidth = 0
+        relaxImage.layer.borderWidth = 5
+        readImage.layer.borderWidth = 0
     }
     
     @IBAction func cancelButton(_ sender: RoundButton) {
@@ -55,19 +87,26 @@ class ColorViewController: UIViewController {
     }
     
     @IBAction func SaveButton(_ sender: RoundButton) {
-        delegate?.backFromColorPicker(colorID)
+        if colorViewSelected {
+            delegate?.backFromColorPicker(colorID, ct: nil, scene: false)
+        } else {
+            delegate?.backFromColorPicker(nil, ct: ct, scene: true)
+        }
         self.dismiss(animated: true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Draw the color picker
-        colorView.isHidden = false
-        sceneView.isHidden = true
+        // Show the scene view and hide the color picker view
+        colorView.isHidden = true
+        sceneView.isHidden = false
+        sceneButton.backgroundColor = tmpColor
+        sceneButton.setTitleColor(UIColor.black, for: .normal)
 
+
+        // Draw the color picker
         var i:CGFloat = 1.0
-//        var buttonFrame = CGRect(x: 27, y: 173, width: 26, height: 26)
         var buttonFrame = CGRect(x: 3, y: 0, width: 26, height: 26)
         while i > 0 {
             makeRainbowButtons(buttonFrame: buttonFrame, sat: i ,bright: 1.0)
@@ -75,6 +114,20 @@ class ColorViewController: UIViewController {
             buttonFrame.origin.y = buttonFrame.origin.y + buttonFrame.size.height
         }
         
+        // Set correct background color for scene images
+        concentrateImage.backgroundColor = HueColorHelper.getColorFromScene(233)
+        concentrateImage.layer.borderColor = UIColor.white.cgColor
+        concentrateImage.layer.borderWidth = 0
+        energiseImage.backgroundColor = HueColorHelper.getColorFromScene(156)
+        energiseImage.layer.borderColor = UIColor.white.cgColor
+        energiseImage.layer.borderWidth = 0
+        relaxImage.backgroundColor = HueColorHelper.getColorFromScene(454)
+        relaxImage.layer.borderColor = UIColor.white.cgColor
+        relaxImage.layer.borderWidth = 0
+        readImage.backgroundColor = HueColorHelper.getColorFromScene(348)
+        readImage.layer.borderColor = UIColor.white.cgColor
+        readImage.layer.borderWidth = 0
+
     }
     
     func makeRainbowButtons(buttonFrame: CGRect, sat: CGFloat, bright: CGFloat) {
@@ -96,7 +149,7 @@ class ColorViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func selectColor(_ sender: UIButton){
+    @objc func selectColor(_ sender: UIButton){
         
         // Update the local color store
         colorID = sender.backgroundColor!

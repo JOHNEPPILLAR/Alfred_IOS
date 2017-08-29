@@ -103,9 +103,10 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
             
             // Setup the light bulb colour
             var color = UIColor.white
-            let xy = roomLightsData[0].data?[row].action?.xy
-            if xy != nil {
-                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT007")
+            switch roomLightsData[0].data?[row].action?.colormode {
+                case "ct"?: color = HueColorHelper.getColorFromScene((roomLightsData[0].data?[row].action?.ct)!)
+                case "xy"?: color = HueColorHelper.colorFromXY(CGPoint(x: Double((roomLightsData[0].data?[row].action?.xy![0])!), y: Double((roomLightsData[0].data?[row].action?.xy![1])!)), forModel: "LCT007")
+                default: color = UIColor.white
             }
             cell.powerButton.backgroundColor = color
             
@@ -126,7 +127,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
         return cell
     }
     
-    func brightnessValueChange(_ sender: MTCircularSlider!) {
+    @objc func brightnessValueChange(_ sender: MTCircularSlider!) {
         
         // Figure out which cell is being updated
         let cell = sender.superview?.superview as? LightsCollectionViewCell
@@ -174,7 +175,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
         
     }
     
-    func powerButtonValueChange(_ sender: UITapGestureRecognizer!) {
+    @objc func powerButtonValueChange(_ sender: UITapGestureRecognizer!) {
         
         // Figure out which cell is being updated
         let point : CGPoint = sender.view!.convert(CGPoint.zero, to:LightCollectionViewRooms)
@@ -193,12 +194,13 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
             
             roomLightsData[0].data?[row!].state?.anyOn = true
             lightsOn = "on"
-            
+
             // Setup the light bulb colour
             var color = UIColor.white
-            let xy = roomLightsData[0].data?[row!].action?.xy
-            if xy != nil {
-                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT007")
+            switch roomLightsData[0].data?[row!].action?.colormode {
+                case "ct"?: color = HueColorHelper.getColorFromScene((roomLightsData[0].data?[row!].action?.ct)!)
+                case "xy"?: color = HueColorHelper.colorFromXY(CGPoint(x: Double((roomLightsData[0].data?[row!].action?.xy![0])!), y: Double((roomLightsData[0].data?[row!].action?.xy![1])!)), forModel: "LCT007")
+                default: color = UIColor.white
             }
             cell.powerButton.backgroundColor = color
             
@@ -247,7 +249,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
         
     }
     
-    func longPowerButtonPress(_ sender: UITapGestureRecognizer!) {
+    @objc func longPowerButtonPress(_ sender: UITapGestureRecognizer!) {
         
         // Only do when finished long press
         if sender.state == .ended {
@@ -261,11 +263,12 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
             
             // Store the color
             var color = UIColor.white
-            let xy = roomLightsData[0].data?[row!].action?.xy
-            if xy != nil {
-                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT007")
+            switch roomLightsData[0].data![row!].action?.colormode {
+                case "ct"?: color = HueColorHelper.getColorFromScene((roomLightsData[0].data![row!].action!.ct)!)
+            case "xy"?: color = HueColorHelper.colorFromXY(CGPoint(x: Double((roomLightsData[0].data![row!].action!.xy![0])), y: Double((roomLightsData[0].data![row!].action!.xy![1]))), forModel: "LCT007")
+                default: color = UIColor.white
             }
-            
+
             // Open the color picker
             performSegue(withIdentifier: "roomsShowColor", sender: color)
             
@@ -280,28 +283,38 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
         
     }
     
-    func backFromColorPicker(_ newColor: UIColor?) {
+    func backFromColorPicker(_ newColor: UIColor?, ct: Int?, scene: Bool?) {
         
         // Update the button background
         let cell = cellID.sharedInstance.cell
-        cell?.powerButton.backgroundColor = newColor
         
         // Update the local data store
         let row = cell?.powerButton.tag
-        let xy = HueColorHelper.calculateXY(newColor!, forModel: "LST007")
-        roomLightsData[0].data![row!].action!.xy = [Float(xy.x), Float(xy.y)]
-       
         var lightsOn = "off"
         if (roomLightsData[0].data?[row!].state?.anyOn)! {
             lightsOn = "on"
         }
-        
+        var lightParams: String = "&light_number=" + "\(cell?.tag ?? 0)" + "&light_status=" + lightsOn
+        lightParams = lightParams + "&percentage=" + String(roomLightsData[0].data![row!].action!.bri!)
+
+        if scene! {
+            // Color selected from scene list
+            roomLightsData[0].data![row!].action!.ct = ct
+            roomLightsData[0].data![row!].action!.colormode = "ct"
+            lightParams = lightParams + "&ct=" + "\(ct!)"
+            cell?.powerButton.backgroundColor = HueColorHelper.getColorFromScene(ct!)
+        } else {
+            // Color seclected from color pallet
+            let xy = HueColorHelper.calculateXY(newColor!, forModel: "LST007")
+            roomLightsData[0].data![row!].action!.xy = [Float(xy.x), Float(xy.y)]
+            roomLightsData[0].data![row!].action!.colormode = "xy"
+            lightParams = lightParams + "&x=" + "\(xy.x)" + "&y=" + "\(xy.y)"
+            cell?.powerButton.backgroundColor = newColor
+        }
+
         // Call Alfred to update the light group color
         let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
         let AlfredAppKey: String = readPlist(item: "AlfredAppKey")
-        var lightParams: String = "&light_number=" + "\(cell?.tag ?? 0)" + "&light_status=" + lightsOn
-        lightParams = lightParams + "&percentage=" + String(roomLightsData[0].data![row!].action!.bri!)
-        lightParams = lightParams + "&x=" + "\(xy.x)" + "&y=" + "\(xy.y)"
         let url = URL(string: AlfredBaseURL + "lights/lightgrouponoff" + AlfredAppKey + lightParams)
         
         URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in

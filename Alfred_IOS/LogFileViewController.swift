@@ -86,7 +86,7 @@ class LogFileViewController: UIViewController, UITableViewDataSource, UITableVie
         
     }()
     
-    func handleRefresh(_ refreshControl: UIRefreshControl) {
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         
         logs = [Logs]() // clear the local store
         self.getData() // Get data

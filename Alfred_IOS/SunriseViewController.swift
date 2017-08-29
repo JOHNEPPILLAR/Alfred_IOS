@@ -168,9 +168,10 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
             
             // Setup the light bulb colour
             var color = UIColor.white
-            let xy = morningData[0].lights?[row].xy
-            if xy != nil {
-                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT007")
+            switch morningData[0].lights?[row].colormode {
+                case "ct"?: color = HueColorHelper.getColorFromScene((morningData[0].lights?[row].ct)!)
+                case "xy"?: color = HueColorHelper.colorFromXY(CGPoint(x: Double((morningData[0].lights?[row].xy![0])!), y: Double((morningData[0].lights?[row].xy![1])!)), forModel: "LCT007")
+                default: color = UIColor.white
             }
             cell.powerButton.backgroundColor = color
             
@@ -195,7 +196,7 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
         
     }
     
-    func brightnessValueChange(_ sender: MTCircularSlider!) {
+    @objc func brightnessValueChange(_ sender: MTCircularSlider!) {
         
         // Figure out which cell is being updated
         let cell = sender.superview?.superview as? LightsCollectionViewCell
@@ -214,17 +215,19 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
             
             // Setup the light bulb colour
             var color = UIColor.white
-            let xy = morningData[0].lights?[row].xy
-            if xy != nil {
-                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT007")
+            switch morningData[0].lights?[row].colormode {
+                case "ct"?: color = HueColorHelper.getColorFromScene((morningData[0].lights?[row].ct)!)
+                case "xy"?: color = HueColorHelper.colorFromXY(CGPoint(x: Double((morningData[0].lights?[row].xy![0])!), y: Double((morningData[0].lights?[row].xy![1])!)), forModel: "LCT007")
+                default: color = UIColor.white
             }
+
             cell?.powerButton.backgroundColor = color
             
         }
         
     }
     
-    func powerButtonPress(_ sender: UITapGestureRecognizer!) {
+    @objc func powerButtonPress(_ sender: UITapGestureRecognizer!) {
         
         // Figure out which cell is being updated
         let point : CGPoint = sender.view!.convert(CGPoint.zero, to:LightCollectionView)
@@ -243,16 +246,18 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
             
             // Setup the light bulb colour
             var color = UIColor.white
-            let xy = morningData[0].lights?[row!].xy
-            if xy != nil {
-                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT007")
+            switch morningData[0].lights?[row!].colormode {
+                case "ct"?: color = HueColorHelper.getColorFromScene((morningData[0].lights?[row!].ct)!)
+                case "xy"?: color = HueColorHelper.colorFromXY(CGPoint(x: Double((morningData[0].lights?[row!].xy![0])!), y: Double((morningData[0].lights?[row!].xy![1])!)), forModel: "LCT007")
+                default: color = UIColor.white
             }
+
             cell.powerButton.backgroundColor = color
-            
+
         }
     }
     
-    func longPowerButtonPress(_ sender: UITapGestureRecognizer!) {
+    @objc func longPowerButtonPress(_ sender: UITapGestureRecognizer!) {
         
         // Only do when finished long press
         if sender.state == .ended {
@@ -266,10 +271,10 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
             
             // Store the color
             var color = UIColor.white
-            let xy = morningData[0].lights?[row!].xy
-
-            if xy != nil {
-                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT007")
+            switch morningData[0].lights?[row!].colormode {
+                case "ct"?: color = HueColorHelper.getColorFromScene((morningData[0].lights?[row!].ct)!)
+                case "xy"?: color = HueColorHelper.colorFromXY(CGPoint(x: Double((morningData[0].lights?[row!].xy![0])!), y: Double((morningData[0].lights?[row!].xy![1])!)), forModel: "LCT007")
+                default: color = UIColor.white
             }
             
             // Open the color picker
@@ -286,20 +291,28 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
         
     }
     
-    func backFromColorPicker(_ newColor: UIColor?) {
-        
-        // Update the button background
-        let cell = cellID.sharedInstance.cell
-        cell?.powerButton.backgroundColor = newColor
-        
-        // Update the local data store
-        let row = cell?.powerButton.tag
-        let xy = HueColorHelper.calculateXY(newColor!, forModel: "LST001")
+    func backFromColorPicker(_ newColor: UIColor?, ct: Int?, scene: Bool?) {
 
-        morningData[0].lights![row!].xy = [Float(xy.x), Float(xy.y)]
+        // Update the local data store
+        let cell = cellID.sharedInstance.cell
+        let row = cell?.powerButton.tag
+        
+        if scene! {
+            // Color selected from scene list
+            morningData[0].lights![row!].ct = ct
+            morningData[0].lights![row!].colormode = "ct"
+            cell?.powerButton.backgroundColor = HueColorHelper.getColorFromScene(ct!)
+        } else {
+            // Color seclected from color pallet
+            let xy = HueColorHelper.calculateXY(newColor!, forModel: "LST007")
+            morningData[0].lights![row!].xy = [Float(xy.x), Float(xy.y)]
+            morningData[0].lights![row!].colormode = "xy"
+            cell?.powerButton.backgroundColor = newColor
+        }
+
     }
     
-    func saveSettingsAction(sender: UIBarButtonItem) {
+    @objc func saveSettingsAction(sender: UIBarButtonItem) {
         
         // Disable the save button
         self.navigationItem.rightBarButtonItem?.isEnabled = false

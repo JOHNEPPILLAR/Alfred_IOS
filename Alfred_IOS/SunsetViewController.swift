@@ -209,11 +209,13 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
             
             // Setup the light bulb colour
             var color = UIColor.white
-            let xy = eveningData[0].lights?[row].xy
-            if xy != nil {
-                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT007")
+            switch eveningData[0].lights?[row].colormode {
+                case "ct"?: color = HueColorHelper.getColorFromScene((eveningData[0].lights?[row].ct)!)
+                case "xy"?: color = HueColorHelper.colorFromXY(CGPoint(x: Double((eveningData[0].lights?[row].xy![0])!), y: Double((eveningData[0].lights?[row].xy![1])!)), forModel: "LCT007")
+                default: color = UIColor.white
             }
             cell.powerButton.backgroundColor = color
+            
         } else {
             cell.powerButton.backgroundColor = UIColor.clear
         }
@@ -237,7 +239,7 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
         
     }
     
-    func brightnessValueChange(_ sender: MTCircularSlider!) {
+    @objc func brightnessValueChange(_ sender: MTCircularSlider!) {
         
         // Figure out which cell is being updated
         let cell = sender.superview?.superview as? LightsCollectionViewCell
@@ -256,9 +258,10 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
             
             // Setup the light bulb colour
             var color = UIColor.white
-            let xy = eveningData[0].lights?[row].xy
-            if xy != nil {
-                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT007")
+            switch eveningData[0].lights?[row].colormode {
+                case "ct"?: color = HueColorHelper.getColorFromScene((eveningData[0].lights?[row].ct)!)
+                case "xy"?: color = HueColorHelper.colorFromXY(CGPoint(x: Double((eveningData[0].lights?[row].xy![0])!), y: Double((eveningData[0].lights?[row].xy![1])!)), forModel: "LCT007")
+                default: color = UIColor.white
             }
             cell?.powerButton.backgroundColor = color
             
@@ -266,7 +269,7 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
         
     }
     
-    func powerButtonValueChange(_ sender: UITapGestureRecognizer!) {
+    @objc func powerButtonValueChange(_ sender: UITapGestureRecognizer!) {
         
         // Figure out which cell is being updated
         let point : CGPoint = sender.view!.convert(CGPoint.zero, to:LightCollectionView)
@@ -285,16 +288,17 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
             
             // Setup the light bulb colour
             var color = UIColor.white
-            let xy = eveningData[0].lights?[row!].xy
-            if xy != nil {
-                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT007")
+            switch eveningData[0].lights?[row!].colormode {
+                case "ct"?: color = HueColorHelper.getColorFromScene((eveningData[0].lights?[row!].ct)!)
+                case "xy"?: color = HueColorHelper.colorFromXY(CGPoint(x: Double((eveningData[0].lights?[row!].xy![0])!), y: Double((eveningData[0].lights?[row!].xy![1])!)), forModel: "LCT007")
+                default: color = UIColor.white
             }
             cell.powerButton.backgroundColor = color
             
         }
     }
     
-    func longPowerButtonPress(_ sender: UITapGestureRecognizer!) {
+    @objc func longPowerButtonPress(_ sender: UITapGestureRecognizer!) {
         
         // Only do when finished long press
         if sender.state == .ended {
@@ -306,13 +310,14 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
             let cell = LightCollectionView!.cellForItem(at: indexPath!) as! LightsCollectionViewCell
             cellID.sharedInstance.cell = cell
             
-            // Store the color
+            // Setup the light bulb colour
             var color = UIColor.white
-            let xy = eveningData[0].lights?[row!].xy
-            if xy != nil {
-                color = HueColorHelper.colorFromXY(CGPoint(x: Double((xy?[0])!), y: Double((xy?[1])!)), forModel: "LCT007")
+            switch eveningData[0].lights?[row!].colormode {
+                case "ct"?: color = HueColorHelper.getColorFromScene((eveningData[0].lights?[row!].ct)!)
+                case "xy"?: color = HueColorHelper.colorFromXY(CGPoint(x: Double((eveningData[0].lights?[row!].xy![0])!), y: Double((eveningData[0].lights?[row!].xy![1])!)), forModel: "LCT007")
+                default: color = UIColor.white
             }
-            
+
             // Open the color picker
             performSegue(withIdentifier: "sunsetShowColor", sender: color)
             
@@ -327,19 +332,28 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
         
     }
     
-    func backFromColorPicker(_ newColor: UIColor?) {
-        
-        // Update the button background
-        let cell = cellID.sharedInstance.cell
-        cell?.powerButton.backgroundColor = newColor
-        
+    func backFromColorPicker(_ newColor: UIColor?, ct: Int?, scene: Bool?) {
+
         // Update the local data store
+        let cell = cellID.sharedInstance.cell
         let row = cell?.powerButton.tag
-        let xy = HueColorHelper.calculateXY(newColor!, forModel: "LST001")
-        eveningData[0].lights![row!].xy = [Float(xy.x), Float(xy.y)]
+        
+        if scene! {
+            // Color selected from scene list
+            eveningData[0].lights![row!].ct = ct
+            eveningData[0].lights![row!].colormode = "ct"
+            cell?.powerButton.backgroundColor = HueColorHelper.getColorFromScene(ct!)
+        } else {
+            // Color seclected from color pallet
+            let xy = HueColorHelper.calculateXY(newColor!, forModel: "LST007")
+            eveningData[0].lights![row!].xy = [Float(xy.x), Float(xy.y)]
+            eveningData[0].lights![row!].colormode = "xy"
+            cell?.powerButton.backgroundColor = newColor
+        }
+
     }
     
-    func saveSettingsAction(sender: UIBarButtonItem) {
+    @objc func saveSettingsAction(sender: UIBarButtonItem) {
         
         // Disable the save button
         self.navigationItem.rightBarButtonItem?.isEnabled = false

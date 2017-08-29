@@ -19,6 +19,8 @@ public final class Lights: NSCoding {
         static let onoff = "onoff"
         static let type = "type"
         static let xy = "xy"
+        static let ct = "ct"
+        static let colormode = "colormode"
     }
     
     // MARK: Properties
@@ -28,7 +30,9 @@ public final class Lights: NSCoding {
     public var onoff: String?
     public var type: String?
     public var xy: [Float]?
-    
+    public var ct: Int?
+    public var colormode: String?
+
     // MARK: SwiftyJSON Initializers
     /// Initiates the instance based on the object.
     ///
@@ -50,6 +54,8 @@ public final class Lights: NSCoding {
         if onoff == nil { onoff = "off" }
         type = json[SerializationKeys.type].string
         if let items = json[SerializationKeys.xy].array { xy = items.map { $0.floatValue } }
+        ct = json[SerializationKeys.ct].int
+        colormode = json[SerializationKeys.colormode].string
     }
     
     /// Generates description of the object in the form of a NSDictionary.
@@ -63,6 +69,8 @@ public final class Lights: NSCoding {
         if let value = onoff { dictionary[SerializationKeys.onoff] = value }
         if let value = type { dictionary[SerializationKeys.type] = value }
         if let value = xy { dictionary[SerializationKeys.xy] = value }
+        if let value = ct { dictionary[SerializationKeys.ct] = value }
+        if let value = colormode { dictionary[SerializationKeys.colormode] = value }
         return dictionary
     }
     
@@ -74,6 +82,8 @@ public final class Lights: NSCoding {
         self.onoff = aDecoder.decodeObject(forKey: SerializationKeys.onoff) as? String
         self.type = aDecoder.decodeObject(forKey: SerializationKeys.type) as? String
         self.xy = aDecoder.decodeObject(forKey: SerializationKeys.xy) as? [Float]
+        self.ct = aDecoder.decodeObject(forKey: SerializationKeys.ct) as? Int
+        self.colormode = aDecoder.decodeObject(forKey: SerializationKeys.colormode) as? String
     }
     
     public func encode(with aCoder: NSCoder) {
@@ -83,5 +93,7 @@ public final class Lights: NSCoding {
         aCoder.encode(onoff, forKey: SerializationKeys.onoff)
         aCoder.encode(type, forKey: SerializationKeys.type)
         aCoder.encode(xy, forKey: SerializationKeys.xy)
+        aCoder.encode(ct, forKey: SerializationKeys.ct)
+        aCoder.encode(colormode, forKey: SerializationKeys.colormode)
     }
 }

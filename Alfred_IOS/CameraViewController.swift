@@ -12,8 +12,8 @@ import BRYXBanner
 class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
 
     var movieView: UIView!
-    //var mediaPlayer = VLCMediaPlayer()
-    var mediaPlayer = VLCMediaPlayer(options: ["--avi-index=2"])
+    var mediaPlayer = VLCMediaPlayer()
+    //var mediaPlayer = VLCMediaPlayer(options: ["VLC_VERBOSE])
     
     let ActivityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.white)
 
@@ -47,9 +47,9 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
         let url = URL(string: camURL)
         
         let media = VLCMedia(url: url)
-        mediaPlayer!.media = media
-        mediaPlayer!.delegate = self
-        mediaPlayer!.drawable = self.movieView
+        mediaPlayer.media = media
+        mediaPlayer.delegate = self
+        mediaPlayer.drawable = self.movieView
 
         Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(mediaPlayerStateChanged), userInfo: nil, repeats: true)
         
@@ -58,7 +58,7 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
         //movieView.frame = self.view.frame
         
         // Play video
-        mediaPlayer!.play()
+        mediaPlayer.play()
         
         // Show busy acivity
         ActivityIndicator.center = view.center;
@@ -71,8 +71,8 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
         super.viewWillDisappear(animated)
 
         // Stop video as moving away from view
-        mediaPlayer!.stop()
-        mediaPlayer!.media = nil
+        mediaPlayer.stop()
+        mediaPlayer.media = nil
         
 //        if self.isBeingDismissed || self.isMovingFromParentViewController {
 //            mediaPlayer!.stop()
@@ -81,17 +81,17 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
 //        }
     }
     
-    func rotated() {
+    @objc func rotated() {
         
         // Always fill entire screen
         self.movieView.frame = self.view.frame
         
     }
     
-    func mediaPlayerStateChanged(aNotification: NSNotification!)
+    @objc func mediaPlayerStateChanged(aNotification: NSNotification!)
     {
         
-        switch mediaPlayer!.state {
+        switch mediaPlayer.state {
         case .error:
             let banner = Banner(title: "An error occured playing the stream", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
             banner.dismissesOnTap = true
@@ -99,23 +99,23 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
         case .buffering:
             break
         case .playing:
+            self.movieView.backgroundColor = UIColor.black
             ActivityIndicator.stopAnimating();
             break
         default: break
         }
-        
     }
     
-    func movieViewTapped(_ sender: UITapGestureRecognizer) {
+    @objc func movieViewTapped(_ sender: UITapGestureRecognizer) {
         
         var UItxt = ""
 
-        if mediaPlayer!.isPlaying {
-            mediaPlayer!.pause()
+        if mediaPlayer.isPlaying {
+            mediaPlayer.pause()
             UItxt = "Webcam paused"
         }
         else {
-            mediaPlayer!.play()
+            mediaPlayer.play()
             UItxt = "Webcam playing"
         }
         

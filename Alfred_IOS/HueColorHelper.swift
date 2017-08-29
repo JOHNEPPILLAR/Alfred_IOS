@@ -18,7 +18,19 @@ public struct HueColorHelper {
     static let cptRED = 0
     static let cptGREEN = 1
     static let cptBLUE = 2
-    
+
+    public static func getColorFromScene(_ ct: Int) -> UIColor {
+        
+        switch ct {
+        case 454: return UIColor(red: 1, green: 0.76, blue: 0.29, alpha: 1.00) // Relax
+        case 348: return UIColor(red: 1, green: 0.96, blue: 0.57, alpha: 1.00) // Read
+        case 233: return UIColor(red: 0.28, green: 0.87, blue: 1, alpha: 1.00) // Concentrate
+        case 156: return UIColor(red: 0.74, green: 0.98, blue: 1, alpha: 1.00) // Energise
+        default:
+            return UIColor.white // Default
+        }
+    }
+
     /**
      Generates the color for the given XY values.
      Note: When the exact values cannot be represented, it will return the closest match.

@@ -104,7 +104,6 @@
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="H3W-89-Wrv" appends="YES" id="FIC-aO-2y8"/>
-                                    <outletCollection property="gestureRecognizers" destination="swa-co-q5I" appends="YES" id="lEk-6m-QfC"/>
                                 </connections>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Evening Lights" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RCc-vn-Xlf">
@@ -167,7 +166,7 @@
                         <segue destination="CjV-4A-Cuc" kind="show" identifier="View Log File Controler" id="Ax9-eM-pDA"/>
                         <segue destination="HPF-SI-8H6" kind="show" identifier="Sunrise Lights Controler" id="Wjr-u9-9tp"/>
                         <segue destination="f1C-gJ-uKM" kind="show" identifier="Sunset Lights Controler" id="iQe-EX-QAu"/>
-                        <segue destination="s7J-yo-fmp" kind="show" identifier="Evening TV Lights Controler" id="j6n-gz-Xhy"/>
+                        <segue destination="s7J-yo-fmp" kind="show" identifier="EveningTV" id="mhl-KS-xfb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ZX-V3-Bdj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -181,7 +180,11 @@
                         <segue destination="f1C-gJ-uKM" kind="show" identifier="Sunset Lights" id="6XB-ya-Wyp"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="H3W-89-Wrv" userLabel="Evening TV Tap Gesture Recognizer"/>
+                <tapGestureRecognizer id="H3W-89-Wrv" userLabel="Evening TV Tap Gesture Recognizer">
+                    <connections>
+                        <segue destination="s7J-yo-fmp" kind="show" id="O77-pK-iAH"/>
+                    </connections>
+                </tapGestureRecognizer>
                 <tapGestureRecognizer id="fw5-e5-qUe" userLabel="View Log Tap Gesture Recognizer">
                     <connections>
                         <segue destination="CjV-4A-Cuc" kind="show" identifier="View Log File" id="PXd-qe-vgO"/>
@@ -195,11 +198,6 @@
                 <tapGestureRecognizer id="M94-E0-7w1" userLabel="Restart Tap Gesture Recognizer">
                     <connections>
                         <action selector="RestartAlfred:" destination="mGu-tP-d4K" id="5I3-Gu-xjC"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="swa-co-q5I" userLabel="Evening TV Tap Gesture Recognizer">
-                    <connections>
-                        <segue destination="s7J-yo-fmp" kind="show" identifier="Evening TV Lights" id="shl-jr-mqR"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -982,58 +980,134 @@
                                         <rect key="frame" x="15" y="42" width="329" height="298"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZLG-9T-1Lb" customClass="RoundButton" customModule="Alfred_IOS" customModuleProvider="target">
-                                                <rect key="frame" x="60" y="93" width="210" height="45"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                                <color key="backgroundColor" red="0.28076554985720847" green="0.87430139751688007" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="Concentrate">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Ec-SJ-es0" customClass="RoundImage" customModule="Alfred_IOS" customModuleProvider="target">
+                                                <rect key="frame" x="36" y="15" width="76" height="74"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_concentrate" translatesAutoresizingMaskIntoConstraints="NO" id="5f2-GR-bn3">
+                                                        <rect key="frame" x="10.317010796237355" y="10.167679195593337" width="53.999999999999545" height="54"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <gestureRecognizers/>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.28076554990000002" green="0.87430139750000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <gestureRecognizers/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
-                                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="value" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O5N-gy-Yk4" customClass="RoundButton" customModule="Alfred_IOS" customModuleProvider="target">
-                                                <rect key="frame" x="59" y="160" width="210" height="45"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                                <color key="backgroundColor" red="1" green="0.77049665590982208" blue="0.29009939659393014" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="Relax">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="P2Q-tP-010" appends="YES" id="DiL-4G-ZO4"/>
+                                                </connections>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Concentrate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ih8-yo-7X9">
+                                                <rect key="frame" x="114" y="42" width="107" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fzU-Et-SKa" customClass="RoundImage" customModule="Alfred_IOS" customModuleProvider="target">
+                                                <rect key="frame" x="217" y="216" width="76" height="74"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_energise" translatesAutoresizingMaskIntoConstraints="NO" id="Uqy-HA-LfK">
+                                                        <rect key="frame" x="10.317010796237355" y="10.167679195593337" width="53.999999999999545" height="54"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <gestureRecognizers/>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.28076554990000002" green="0.87430139750000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <gestureRecognizers/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
-                                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="value" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cxO-an-6FH" customClass="RoundButton" customModule="Alfred_IOS" customModuleProvider="target">
-                                                <rect key="frame" x="59" y="227" width="210" height="45"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                                <color key="backgroundColor" red="1" green="0.95996100465921386" blue="0.5779285481185934" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="Reading">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="upc-yE-rJD" appends="YES" id="qBX-wA-ouR"/>
+                                                </connections>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Relax" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8t-0z-SAa">
+                                                <rect key="frame" x="111" y="237" width="107" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SXi-NG-DYd" customClass="RoundImage" customModule="Alfred_IOS" customModuleProvider="target">
+                                                <rect key="frame" x="34" y="145" width="76" height="74"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_read" translatesAutoresizingMaskIntoConstraints="NO" id="dPF-vJ-tg3">
+                                                        <rect key="frame" x="10.317010796237355" y="10.167679195593337" width="53.999999999999545" height="54"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <gestureRecognizers/>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.28076554990000002" green="0.87430139750000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <gestureRecognizers/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
-                                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="value" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="541-Pd-bhB" customClass="RoundButton" customModule="Alfred_IOS" customModuleProvider="target">
-                                                <rect key="frame" x="59" y="24" width="210" height="45"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                                <color key="backgroundColor" red="0.74645097093925572" green="0.98997681238661683" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="Energise">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="l2s-QZ-1d0" appends="YES" id="jbw-37-8aJ"/>
+                                                </connections>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Read" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wyd-rc-XjH">
+                                                <rect key="frame" x="111" y="172" width="107" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BcJ-NT-FGN" customClass="RoundImage" customModule="Alfred_IOS" customModuleProvider="target">
+                                                <rect key="frame" x="216" y="85" width="76" height="74"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_energise" translatesAutoresizingMaskIntoConstraints="NO" id="wB1-XE-5EO">
+                                                        <rect key="frame" x="10.317010796237355" y="10.167679195593337" width="53.999999999999545" height="54"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <gestureRecognizers/>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.28076554990000002" green="0.87430139750000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <gestureRecognizers/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
-                                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="value" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
-                                            </button>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="1KQ-Zx-0qu" appends="YES" id="Xe5-jr-Iwc"/>
+                                                </connections>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Energise" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VYj-wx-87T">
+                                                <rect key="frame" x="111" y="106" width="107" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
@@ -1046,15 +1120,35 @@
                     <connections>
                         <outlet property="colorButton" destination="H6Y-qb-qgm" id="L4M-tB-uKQ"/>
                         <outlet property="colorView" destination="Cm0-mj-LkV" id="1Y9-DF-PH2"/>
-                        <outlet property="concentrateButton" destination="ZLG-9T-1Lb" id="Cjm-ik-2Ls"/>
-                        <outlet property="energiseButton" destination="541-Pd-bhB" id="Quu-Kt-ka1"/>
-                        <outlet property="readingButton" destination="cxO-an-6FH" id="Zk9-ji-Pyv"/>
-                        <outlet property="relaxButton" destination="O5N-gy-Yk4" id="TeZ-B3-04I"/>
+                        <outlet property="concentrateImage" destination="1Ec-SJ-es0" id="TIo-vt-Pzn"/>
+                        <outlet property="energiseImage" destination="BcJ-NT-FGN" id="Q88-DV-DnL"/>
+                        <outlet property="readImage" destination="SXi-NG-DYd" id="Nmf-iM-mVE"/>
+                        <outlet property="relaxImage" destination="fzU-Et-SKa" id="qZ7-w4-Vzc"/>
                         <outlet property="sceneButton" destination="ZVq-09-Obf" id="tem-8G-Ews"/>
                         <outlet property="sceneView" destination="4aK-n7-wZq" id="Dyc-KX-PlP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hgu-L4-Swk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="P2Q-tP-010" userLabel="Concenreate Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="concentrateTap:" destination="1C1-UV-wNr" id="61p-s3-D8g"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="1KQ-Zx-0qu" userLabel="Energise Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="energiseTap:" destination="1C1-UV-wNr" id="jfu-s2-ZQ9"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="l2s-QZ-1d0" userLabel="Read Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="readTap:" destination="1C1-UV-wNr" id="dNw-oA-m6l"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="upc-yE-rJD" userLabel="Relax Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="relaxTap:" destination="1C1-UV-wNr" id="VMu-DA-7ba"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2173.5999999999999" y="1850.824587706147"/>
         </scene>
@@ -1274,8 +1368,11 @@
         <image name="Lights" width="24" height="24"/>
         <image name="Settings" width="25" height="25"/>
         <image name="ic_camera" width="24" height="24"/>
+        <image name="ic_concentrate" width="50" height="50"/>
         <image name="ic_del_log" width="100" height="100"/>
+        <image name="ic_energise" width="50" height="50"/>
         <image name="ic_lights_off" width="80" height="80"/>
+        <image name="ic_read" width="50" height="50"/>
         <image name="ic_restart" width="80" height="80"/>
         <image name="ic_sunrise" width="100" height="100"/>
         <image name="ic_sunset" width="100" height="100"/>
@@ -1284,8 +1381,8 @@
         <image name="power_button_grey" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Gj3-7b-C3a"/>
-        <segue reference="shl-jr-mqR"/>
+        <segue reference="How-IC-abe"/>
+        <segue reference="mhl-KS-xfb"/>
         <segue reference="PXd-qe-vgO"/>
         <segue reference="iQe-EX-QAu"/>
         <segue reference="Zau-6A-ghY"/>
