@@ -66,10 +66,19 @@ func readPlist(item: String) -> String {
     
     func updateRadius() {
         layer.masksToBounds = false
-        //layer.borderWidth = 1
-        //layer.borderColor = UIColor.white.cgColor
         layer.cornerRadius = frame.height/2
         clipsToBounds = true
     }
 }
 
+@IBDesignable class Line: UIView {
+    override func draw(_ rect: CGRect) {
+
+        let context = UIGraphicsGetCurrentContext()
+        context!.setLineWidth(2.0)
+        context!.setStrokeColor(UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1).cgColor)
+        context?.move(to: CGPoint(x: 0, y: self.frame.size.height))
+        context?.addLine(to: CGPoint(x: self.frame.size.width, y: 0))
+        context!.strokePath()
+    }
+}

@@ -921,11 +921,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nT3-IS-AnB">
-                                <rect key="frame" x="5" y="124" width="364" height="382"/>
+                                <rect key="frame" x="5" y="130" width="364" height="419"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VxD-Kr-RxM" customClass="RoundButton" customModule="Alfred_IOS" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="344" width="130" height="30"/>
+                                        <rect key="frame" x="15" y="380" width="130" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Cancel">
@@ -936,7 +936,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hUh-cf-h7s" customClass="RoundButton" customModule="Alfred_IOS" customModuleProvider="target">
-                                        <rect key="frame" x="214" y="344" width="130" height="30"/>
+                                        <rect key="frame" x="214" y="380" width="130" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Done">
@@ -946,25 +946,11 @@
                                             <action selector="SaveButton:" destination="1C1-UV-wNr" eventType="touchUpInside" id="hEN-e5-ASp"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H6Y-qb-qgm">
-                                        <rect key="frame" x="0.0" y="0.0" width="181" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.78548720808055561" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Color">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.borderColor" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="colorButton:" destination="1C1-UV-wNr" eventType="touchUpInside" id="Rry-2S-Ccv"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVq-09-Obf">
-                                        <rect key="frame" x="183" y="0.0" width="181" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVq-09-Obf">
+                                        <rect key="frame" x="95" y="8" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title="Scenes">
+                                        <state key="normal" image="ic_scene">
                                             <color key="titleColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -972,12 +958,12 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="colorView" translatesAutoresizingMaskIntoConstraints="NO" id="Cm0-mj-LkV" userLabel="color View">
-                                        <rect key="frame" x="18" y="42" width="329" height="298"/>
+                                        <rect key="frame" x="18" y="80" width="329" height="298"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                     <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="sceneView" translatesAutoresizingMaskIntoConstraints="NO" id="4aK-n7-wZq">
-                                        <rect key="frame" x="15" y="42" width="329" height="298"/>
+                                        <rect key="frame" x="15" y="70" width="329" height="298"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Ec-SJ-es0" customClass="RoundImage" customModule="Alfred_IOS" customModuleProvider="target">
@@ -1111,6 +1097,24 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qXa-fu-sZ1" customClass="Line" customModule="Alfred_IOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="70" width="364" height="2"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H6Y-qb-qgm">
+                                        <rect key="frame" x="214" y="8" width="94" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="ic_color">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.borderColor" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="colorButton:" destination="1C1-UV-wNr" eventType="touchUpInside" id="Rry-2S-Ccv"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.19215686274509802" green="0.29411764705882354" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -1368,12 +1372,14 @@
         <image name="Lights" width="24" height="24"/>
         <image name="Settings" width="25" height="25"/>
         <image name="ic_camera" width="24" height="24"/>
+        <image name="ic_color" width="50" height="50"/>
         <image name="ic_concentrate" width="50" height="50"/>
         <image name="ic_del_log" width="100" height="100"/>
         <image name="ic_energise" width="50" height="50"/>
         <image name="ic_lights_off" width="80" height="80"/>
         <image name="ic_read" width="50" height="50"/>
         <image name="ic_restart" width="80" height="80"/>
+        <image name="ic_scene" width="50" height="50"/>
         <image name="ic_sunrise" width="100" height="100"/>
         <image name="ic_sunset" width="100" height="100"/>
         <image name="ic_tv" width="100" height="100"/>

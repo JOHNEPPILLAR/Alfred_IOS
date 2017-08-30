@@ -31,22 +31,14 @@ class ColorViewController: UIViewController {
     let tmpColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
     
     @IBAction func colorButton(_ sender: UIButton) {
-        sceneButton.backgroundColor = UIColor.clear
-        sceneButton.setTitleColor(tmpColor, for: .normal)
         sceneView.isHidden = true
         colorViewSelected = true
-        sender.backgroundColor = tmpColor
-        sender.setTitleColor(UIColor.black, for: .normal)
         colorView.isHidden = false
     }
 
     @IBAction func sceneButton(_ sender: UIButton) {
-        colorButton.backgroundColor = UIColor.clear
-        colorButton.setTitleColor(tmpColor, for: .normal)
         colorView.isHidden = true
         colorViewSelected = false
-        sender.backgroundColor = tmpColor
-        sender.setTitleColor(UIColor.black, for: .normal)
         sceneView.isHidden = false
     }
     
@@ -101,9 +93,6 @@ class ColorViewController: UIViewController {
         // Show the scene view and hide the color picker view
         colorView.isHidden = true
         sceneView.isHidden = false
-        sceneButton.backgroundColor = tmpColor
-        sceneButton.setTitleColor(UIColor.black, for: .normal)
-
 
         // Draw the color picker
         var i:CGFloat = 1.0

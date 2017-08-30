@@ -13,7 +13,6 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
 
     var movieView: UIView!
     var mediaPlayer = VLCMediaPlayer()
-    //var mediaPlayer = VLCMediaPlayer(options: ["VLC_VERBOSE])
     
     let ActivityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.white)
 
@@ -37,7 +36,7 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
         
         // Add movieView to view controller
         self.view.addSubview(self.movieView)
-        
+    
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -54,16 +53,16 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
         Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(mediaPlayerStateChanged), userInfo: nil, repeats: true)
         
         // Always fill entire screen
-        //movieView.frame = UIScreen.screens[0].bounds
-        //movieView.frame = self.view.frame
-        
-        // Play video
-        mediaPlayer.play()
+        movieView.frame = UIScreen.screens[0].bounds
+        movieView.frame = self.view.frame
         
         // Show busy acivity
         ActivityIndicator.center = view.center;
         ActivityIndicator.startAnimating();
         view.addSubview(ActivityIndicator)
+        
+        // Play video
+        mediaPlayer.play()
         
     }
     
@@ -74,11 +73,6 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
         mediaPlayer.stop()
         mediaPlayer.media = nil
         
-//        if self.isBeingDismissed || self.isMovingFromParentViewController {
-//            mediaPlayer!.stop()
-//            let viewWithTag = self.view.viewWithTag(100)
-//            viewWithTag?.removeFromSuperview()
-//        }
     }
     
     @objc func rotated() {
@@ -101,7 +95,6 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
         case .playing:
             self.movieView.backgroundColor = UIColor.black
             ActivityIndicator.stopAnimating();
-            break
         default: break
         }
     }
