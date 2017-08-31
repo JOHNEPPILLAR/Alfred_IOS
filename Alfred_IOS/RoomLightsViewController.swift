@@ -24,15 +24,27 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
         // Get room lights configuration info from Alfred
         self.getData()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    
         // Refresh data every 15 seconds
         getDataTimer = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(self.getData), userInfo: nil, repeats: true)
+
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         
+        // Stop the get data timer
+        self.getDataTimer.invalidate()
+
     }
     
     //MARK: Private Methods
     @objc func getData() {
-        roomLightsData = [RoomLights]() // Clear data store
-        
+
         let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
         let AlfredAppKey = readPlist(item: "AlfredAppKey")
         let url = URL(string: AlfredBaseURL + "lights/listlightgroups" + AlfredAppKey)
@@ -72,12 +84,12 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
                     
                 } else {
                     
+                    // Stop the get data timer
+                    self.getDataTimer.invalidate()
+
                     // Update the UI
                     DispatchQueue.main.async() {
-                        
-                        // Stop the get data timer
-                        self.getDataTimer.invalidate()
-
+                    
                         let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to retrieve room lights. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
                         banner.dismissesOnTap = true
                         banner.show()

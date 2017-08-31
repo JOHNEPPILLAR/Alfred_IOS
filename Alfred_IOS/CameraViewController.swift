@@ -11,58 +11,44 @@ import BRYXBanner
 
 class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
 
+    @IBOutlet weak var backgroundImage: UIImageView!
     var movieView: UIView!
     var mediaPlayer = VLCMediaPlayer()
+    var videoTimer: Timer!
     
     let ActivityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.white)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Setup camera
-        
-        // Add rotation observer
-        NotificationCenter.default.addObserver(self, selector: #selector(CameraViewController.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
-        
-        // Setup movieView
-        self.movieView = UIView()
-        self.movieView.frame = UIScreen.screens[0].bounds
-        self.movieView.backgroundColor = nil
-        self.movieView.tag = 100
-        
-        // Add tap gesture to movieView for play/pause
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(CameraViewController.movieViewTapped(_:)))
-        self.movieView.addGestureRecognizer(gesture)
-        
-        // Add movieView to view controller
-        self.view.addSubview(self.movieView)
-    
     }
 
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // Setup camera
+
+        // Add tap gesture for play/pause
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(CameraViewController.movieViewTapped(_:)))
+        self.view.addGestureRecognizer(gesture)
         
-        // Playing RTSP from internet
+        // Playing RTSP stream
         let camURL = readPlist(item: "CamURL")
         let url = URL(string: camURL)
         
         let media = VLCMedia(url: url)
         mediaPlayer.media = media
         mediaPlayer.delegate = self
-        mediaPlayer.drawable = self.movieView
+        mediaPlayer.drawable = self.view
+        
+        videoTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(mediaPlayerStateChanged), userInfo: nil, repeats: true)
+        
+        // Play video
+        mediaPlayer.play()
 
-        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(mediaPlayerStateChanged), userInfo: nil, repeats: true)
-        
-        // Always fill entire screen
-        movieView.frame = UIScreen.screens[0].bounds
-        movieView.frame = self.view.frame
-        
         // Show busy acivity
         ActivityIndicator.center = view.center;
         ActivityIndicator.startAnimating();
         view.addSubview(ActivityIndicator)
-        
-        // Play video
-        mediaPlayer.play()
         
     }
     
@@ -72,14 +58,13 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
         // Stop video as moving away from view
         mediaPlayer.stop()
         mediaPlayer.media = nil
-        
-    }
-    
-    @objc func rotated() {
-        
-        // Always fill entire screen
-        self.movieView.frame = self.view.frame
-        
+
+        // Remove VLC view
+        mediaPlayer.drawable = nil
+
+        // Stop timer
+        videoTimer.invalidate()
+
     }
     
     @objc func mediaPlayerStateChanged(aNotification: NSNotification!)
@@ -93,7 +78,7 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
         case .buffering:
             break
         case .playing:
-            self.movieView.backgroundColor = UIColor.black
+            backgroundImage.image = nil
             ActivityIndicator.stopAnimating();
         default: break
         }
@@ -123,5 +108,4 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 }

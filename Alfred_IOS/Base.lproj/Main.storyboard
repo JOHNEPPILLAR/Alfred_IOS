@@ -1173,9 +1173,12 @@
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Video" image="ic_camera" id="3lw-fI-f3r"/>
+                    <connections>
+                        <outlet property="backgroundImage" destination="Z7P-P5-pf4" id="Zku-wL-E2V"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IDr-Zb-1bz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1203,8 +1206,8 @@
                                 <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_TV_off" translatesAutoresizingMaskIntoConstraints="NO" id="FZE-Fu-fOy">
-                                <rect key="frame" x="52" y="18" width="77" height="92"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="147.5" y="18" width="77" height="92"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="kiL-IJ-i8I" appends="YES" id="4Jx-bk-LCa"/>
@@ -1242,24 +1245,16 @@
                                     <outletCollection property="gestureRecognizers" destination="tQf-ht-IDW" appends="YES" id="AlS-mT-CyE"/>
                                 </connections>
                             </imageView>
-                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_TV_on" translatesAutoresizingMaskIntoConstraints="NO" id="xd8-7C-XxE">
-                                <rect key="frame" x="239" y="18" width="77" height="92"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="IJN-aS-92U" appends="YES" id="Z9L-lK-Yhf"/>
-                                </connections>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Off" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ok5-Fq-t48">
-                                <rect key="frame" x="69" y="118" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="All Off" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ok5-Fq-t48">
+                                <rect key="frame" x="163" y="104" width="48" height="21"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="On" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="veM-cv-oWV">
-                                <rect key="frame" x="256" y="117" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Turn on:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N0b-cC-Aq7">
+                                <rect key="frame" x="155" y="174" width="63" height="21"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1498,7 +1493,6 @@
         <image name="ic_AppleTV" width="50" height="50"/>
         <image name="ic_PlayStation" width="50" height="50"/>
         <image name="ic_TV_off" width="50" height="50"/>
-        <image name="ic_TV_on" width="50" height="50"/>
         <image name="ic_VirginMedia" width="300" height="181"/>
         <image name="ic_camera" width="24" height="24"/>
         <image name="ic_color" width="50" height="50"/>
