@@ -21,7 +21,7 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
@@ -65,7 +65,14 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
         // Stop timer
         videoTimer.invalidate()
 
+        // Reset screen orientation
+        if (self.isMovingFromParentViewController) {
+            UIDevice.current.setValue(Int(UIInterfaceOrientation.portrait.rawValue), forKey: "orientation")
+        }
     }
+    
+    // Allow landscape orientation
+    func canRotate() -> Void {}
     
     @objc func mediaPlayerStateChanged(aNotification: NSNotification!)
     {

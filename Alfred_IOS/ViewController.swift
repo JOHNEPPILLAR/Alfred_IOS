@@ -11,14 +11,23 @@ import SwiftyJSON
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated) // No need for semicolon
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        activityIndicator.activityIndicatorViewStyle  = UIActivityIndicatorViewStyle.whiteLarge
         
         DispatchQueue.main.async {
             self.ping_Aflred_DI() // Make sure Alred is online
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -33,9 +42,12 @@ class ViewController: UIViewController {
         URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
             if error != nil {
                 print ("Start up - Unable to ping Alfred")
+                
                 let alertController = UIAlertController(title: "Alfred", message:
                     "Unable to connect to Alfred. Close the app and try again.", preferredStyle: UIAlertControllerStyle.alert)
+
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: {
+                    self.activityIndicator.stopAnimating()
                     self.present(alertController, animated: true, completion: nil)
                 })
             }
@@ -46,13 +58,19 @@ class ViewController: UIViewController {
             let pingStatusString = pingStatus.string!
                 
             if pingStatusString == "sucess" {
+
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
+                    self.activityIndicator.stopAnimating()
                     self.performSegue(withIdentifier: "home", sender: self)
                 })
             } else {
                 print ("Start up - Ping status returned not a sucess")
+                
+                self.activityIndicator.stopAnimating()
+
                 let alertController = UIAlertController(title: "Alfred", message:
                     "Unable to connect to Alfred. Close the app and try again.", preferredStyle: UIAlertControllerStyle.alert)
+
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: {
                     self.present(alertController, animated: true, completion: nil)
                 })

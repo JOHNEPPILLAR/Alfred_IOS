@@ -66,7 +66,7 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
         self.getData()
         
     }
-    
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

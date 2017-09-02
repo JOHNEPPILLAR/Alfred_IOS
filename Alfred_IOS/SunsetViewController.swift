@@ -64,7 +64,7 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
         // Get sunset configuration info from Alfred
         self.getData()
     }
-    
+ 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

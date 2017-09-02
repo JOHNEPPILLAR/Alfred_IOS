@@ -15,7 +15,7 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+  
     @IBAction func RestartAlfred(_ sender: UITapGestureRecognizer) {
         let alertController = UIAlertController(title: "Alfred", message:
             "Are you sure you want to restart Alfred?", preferredStyle: UIAlertControllerStyle.alert)

@@ -18,6 +18,14 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
     
     @IBOutlet weak var LightCollectionViewRooms: UICollectionView!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // Refresh data every 15 seconds
+        getDataTimer = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(self.getData), userInfo: nil, repeats: true)
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,15 +33,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
         self.getData()
         
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    
-        // Refresh data every 15 seconds
-        getDataTimer = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(self.getData), userInfo: nil, repeats: true)
 
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
@@ -415,5 +415,6 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
         }).resume()
         
     }
-    
 }
+
+
