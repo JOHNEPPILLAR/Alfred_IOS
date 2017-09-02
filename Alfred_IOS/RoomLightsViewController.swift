@@ -226,7 +226,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
             cell.powerButton.backgroundColor = color
             
             if roomLightsData[0].data?[row!].action?.bri == 0 {
-                roomLightsData[0].data?[row!].action?.bri = 128
+                roomLightsData[0].data?[row!].action?.bri = 128/2
                 cell.brightnessSlider.value = 128
             }
             
@@ -237,7 +237,6 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
         let AlfredAppKey = readPlist(item: "AlfredAppKey")
         let lightParams = "&light_number=" + "\(cell.tag)" + "&light_status=" + lightsOn + "&percentage=" + String(roomLightsData[0].data![row!].action!.bri!)
         let url = URL(string: AlfredBaseURL + "lights/lightgrouponoff" + AlfredAppKey + lightParams)
-        
         URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
             if error != nil {
                 
@@ -316,7 +315,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
             lightsOn = "on"
         }
         var lightParams: String = "&light_number=" + "\(cell?.tag ?? 0)" + "&light_status=" + lightsOn
-        lightParams = lightParams + "&percentage=" + String(roomLightsData[0].data![row!].action!.bri!)
+        //lightParams = lightParams + "&percentage=" + String(roomLightsData[0].data![row!].action!.bri!)
 
         if scene! {
             // Color selected from scene list
@@ -337,7 +336,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
         let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
         let AlfredAppKey: String = readPlist(item: "AlfredAppKey")
         let url = URL(string: AlfredBaseURL + "lights/lightgrouponoff" + AlfredAppKey + lightParams)
-        
+    
         URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
             if error != nil {
                 DispatchQueue.main.async() {

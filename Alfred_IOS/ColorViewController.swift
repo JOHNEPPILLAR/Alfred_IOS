@@ -93,6 +93,7 @@ class ColorViewController: UIViewController {
         // Show the scene view and hide the color picker view
         colorView.isHidden = true
         sceneView.isHidden = false
+        colorViewSelected = false
 
         // Draw the color picker
         var i:CGFloat = 1.0
