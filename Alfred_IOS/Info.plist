@@ -26,14 +26,14 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>1885</string>
+	<string>1922</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>johneppillar.synology.me</key>
+			<key>alfred</key>
 			<dict>
 				<key>NSIncludesSubdomains</key>
 				<true/>
@@ -42,7 +42,7 @@
 				<key>NSTemporaryExceptionMinimumTLSVersion</key>
 				<string>TLSv1.1</string>
 			</dict>
-			<key>localhost</key>
+			<key>johneppillar.synology.me</key>
 			<dict>
 				<key>NSIncludesSubdomains</key>
 				<true/>

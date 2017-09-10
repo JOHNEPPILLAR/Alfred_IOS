@@ -75,7 +75,7 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
     //MARK: Private Methods
     func getData() {
         
-        let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+        let AlfredBaseURL = readPlist(item: "AlfredSchedulerURL")
         let AlfredAppKey = readPlist(item: "AlfredAppKey")
         let url = URL(string: AlfredBaseURL + "settings/view" + AlfredAppKey)
         
@@ -318,8 +318,7 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
         self.navigationItem.rightBarButtonItem?.isEnabled = false
         
         // Create post request
-        //let AlfredBaseURL = "http://localhost:3978/"
-        let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+        let AlfredBaseURL = readPlist(item: "AlfredSchedulerURL")
         let AlfredAppKey = readPlist(item: "AlfredAppKey")
         let url = URL(string: AlfredBaseURL + "settings/savemorning" + AlfredAppKey)
         

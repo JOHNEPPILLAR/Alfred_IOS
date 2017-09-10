@@ -31,7 +31,7 @@ class LogFileViewController: UIViewController, UITableViewDataSource, UITableVie
     //MARK: Private Methods
     func getData() {
         
-        let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+        let AlfredBaseURL = readPlist(item: "AlfredSchedulerURL")
         let AlfredAppKey = readPlist(item: "AlfredAppKey")
         let url = URL(string: AlfredBaseURL + "displaylog" + AlfredAppKey + "&page=" + String(viewPage))
         

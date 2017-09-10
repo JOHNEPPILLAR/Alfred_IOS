@@ -29,7 +29,7 @@ class SettingsViewController: UIViewController {
     }
     
     func RestartAflred() {
-        let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+        let AlfredBaseURL = readPlist(item: "AlfredSchedulerURL")
         let AlfredAppKey = readPlist(item: "AlfredAppKey")
         let url = URL(string: AlfredBaseURL + "settings/restart" + AlfredAppKey)
         
@@ -88,7 +88,7 @@ class SettingsViewController: UIViewController {
     }
     
     func DelAflredLog() {
-        let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+        let AlfredBaseURL = readPlist(item: "AlfredSchedulerURL")
         let AlfredAppKey = readPlist(item: "AlfredAppKey")
         let url = URL(string: AlfredBaseURL + "settings/dellog" + AlfredAppKey)
     

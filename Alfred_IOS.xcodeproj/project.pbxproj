@@ -13,7 +13,6 @@
 		0A3B4E7F1F169D500072587A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3B4E7E1F169D500072587A /* SettingsViewController.swift */; };
 		0A420E4A1F140D0500BD2713 /* LogFileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A420E491F140D0500BD2713 /* LogFileTableViewCell.swift */; };
 		0A46C5FB1F56D58300ADB758 /* LightsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A46C5FA1F56D58300ADB758 /* LightsCollectionViewCell.swift */; };
-		0A48A0F51F58581C00B04C09 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A48A0F41F58581C00B04C09 /* VideoViewController.swift */; };
 		0A4986411F42BEBA006979E0 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4986401F42BEBA006979E0 /* CameraViewController.swift */; };
 		0A4986521F437846006979E0 /* MobileVLCKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4986511F437846006979E0 /* MobileVLCKit.framework */; };
 		0A4986551F437BBE006979E0 /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4986541F437BBE006979E0 /* libstdc++.6.tbd */; };
@@ -31,6 +30,7 @@
 		0AA83A721F2CE72500B933A8 /* RoomLights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA83A6E1F2CE72500B933A8 /* RoomLights.swift */; };
 		0AA83A731F2CE72500B933A8 /* RoomLightsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA83A6F1F2CE72500B933A8 /* RoomLightsData.swift */; };
 		0AA83A741F2CE72500B933A8 /* RoomLightsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA83A701F2CE72500B933A8 /* RoomLightsState.swift */; };
+		0AB222F21F5C89700040E58F /* BedHeaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB222F11F5C89700040E58F /* BedHeaterViewController.swift */; };
 		0AD1C1C31F22928E000D899D /* Logs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD1C1C21F22928E000D899D /* Logs.swift */; };
 		0ADDC4D31F29C02000C08F55 /* EveningTVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADDC4D21F29C02000C08F55 /* EveningTVViewController.swift */; };
 		0ADDC4D51F29C09B00C08F55 /* EveningTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADDC4D41F29C09B00C08F55 /* EveningTV.swift */; };
@@ -49,7 +49,6 @@
 		0A3B4E7E1F169D500072587A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0A420E491F140D0500BD2713 /* LogFileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogFileTableViewCell.swift; path = Alfred_IOS/LogFileTableViewCell.swift; sourceTree = "<group>"; };
 		0A46C5FA1F56D58300ADB758 /* LightsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LightsCollectionViewCell.swift; path = Alfred_IOS/LightsCollectionViewCell.swift; sourceTree = "<group>"; };
-		0A48A0F41F58581C00B04C09 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		0A4986401F42BEBA006979E0 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		0A4986511F437846006979E0 /* MobileVLCKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileVLCKit.framework; path = "Pods/MobileVLCKit/MobileVLCKit-binary/MobileVLCKit.framework"; sourceTree = "<group>"; };
 		0A4986531F437A5B006979E0 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
@@ -70,6 +69,7 @@
 		0AA83A6E1F2CE72500B933A8 /* RoomLights.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomLights.swift; sourceTree = "<group>"; };
 		0AA83A6F1F2CE72500B933A8 /* RoomLightsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomLightsData.swift; sourceTree = "<group>"; };
 		0AA83A701F2CE72500B933A8 /* RoomLightsState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomLightsState.swift; sourceTree = "<group>"; };
+		0AB222F11F5C89700040E58F /* BedHeaterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedHeaterViewController.swift; sourceTree = "<group>"; };
 		0AD1C1C21F22928E000D899D /* Logs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logs.swift; sourceTree = "<group>"; };
 		0ADDC4D21F29C02000C08F55 /* EveningTVViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EveningTVViewController.swift; sourceTree = "<group>"; };
 		0ADDC4D41F29C09B00C08F55 /* EveningTV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EveningTV.swift; sourceTree = "<group>"; };
@@ -155,7 +155,6 @@
 		0A69FB9D1F1160C400563A69 /* View Controlers */ = {
 			isa = PBXGroup;
 			children = (
-				0A48A0F41F58581C00B04C09 /* VideoViewController.swift */,
 				0A3B4E7E1F169D500072587A /* SettingsViewController.swift */,
 				0A12B4AA1F193B470012B619 /* SunsetViewController.swift */,
 				0A2D9E2D1F3617EF0037594C /* LogFileViewController.swift */,
@@ -166,6 +165,7 @@
 				0A0463F01F38E99B004A738D /* ColorViewController.swift */,
 				0A4986401F42BEBA006979E0 /* CameraViewController.swift */,
 				0AA19AEC1F57277300CB272F /* TVViewController.swift */,
+				0AB222F11F5C89700040E58F /* BedHeaterViewController.swift */,
 			);
 			name = "View Controlers";
 			sourceTree = "<group>";
@@ -364,6 +364,7 @@
 				0AFCD86B1F22832000FD1C1C /* Evening.swift in Sources */,
 				0A97CCAF1F2B0AEF00E6FF1F /* RoomLightsViewController.swift in Sources */,
 				0AA83A721F2CE72500B933A8 /* RoomLights.swift in Sources */,
+				0AB222F21F5C89700040E58F /* BedHeaterViewController.swift in Sources */,
 				0A420E4A1F140D0500BD2713 /* LogFileTableViewCell.swift in Sources */,
 				0A12B4AB1F193B470012B619 /* SunsetViewController.swift in Sources */,
 				0A69FB811F10C25C00563A69 /* AppDelegate.swift in Sources */,
@@ -374,7 +375,6 @@
 				0AA83A741F2CE72500B933A8 /* RoomLightsState.swift in Sources */,
 				0AA83A731F2CE72500B933A8 /* RoomLightsData.swift in Sources */,
 				0AD1C1C31F22928E000D899D /* Logs.swift in Sources */,
-				0A48A0F51F58581C00B04C09 /* VideoViewController.swift in Sources */,
 				0ADDC4D31F29C02000C08F55 /* EveningTVViewController.swift in Sources */,
 				0AE84DE71F289F120031F6C2 /* SunriseViewController.swift in Sources */,
 				0AA83A711F2CE72500B933A8 /* RoomLightsAction.swift in Sources */,

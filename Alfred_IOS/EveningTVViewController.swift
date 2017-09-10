@@ -54,7 +54,7 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
     //MARK: Private Methods
     func getData() {
         
-        let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+        let AlfredBaseURL = readPlist(item: "AlfredSchedulerURL")
         let AlfredAppKey = readPlist(item: "AlfredAppKey")
         let url = URL(string: AlfredBaseURL + "settings/view" + AlfredAppKey)
         
@@ -288,7 +288,7 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
         self.navigationItem.rightBarButtonItem?.isEnabled = false
         
         // Create post request
-        let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+        let AlfredBaseURL = readPlist(item: "AlfredSchedulerURL")
         let AlfredAppKey = readPlist(item: "AlfredAppKey")
         let url = URL(string: AlfredBaseURL + "settings/saveeveningtv" + AlfredAppKey)
         

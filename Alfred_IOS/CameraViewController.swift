@@ -16,7 +16,7 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
     var mediaPlayer = VLCMediaPlayer()
     var videoTimer: Timer!
     
-    let ActivityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.white)
+    let ActivityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
 
     override func viewDidLoad() {
         super.viewDidLoad()

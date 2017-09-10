@@ -72,7 +72,7 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
     //MARK: Private Methods
     func getData() {
         
-        let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+        var AlfredBaseURL = readPlist(item: "AlfredBaseURL")
         let AlfredAppKey = readPlist(item: "AlfredAppKey")
         var url = URL(string: AlfredBaseURL + "weather/sunset" + AlfredAppKey)
 
@@ -117,6 +117,7 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
         }).resume()
         
         // Get settings
+        AlfredBaseURL = readPlist(item: "AlfredSchedulerURL")
         url = URL(string: AlfredBaseURL + "settings/view" + AlfredAppKey)
         URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
             
@@ -360,7 +361,7 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
         
         // Create post request
         //let AlfredBaseURL = "http://localhost:3978/"
-        let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+        let AlfredBaseURL = readPlist(item: "AlfredSchedulerURL")
         let AlfredAppKey = readPlist(item: "AlfredAppKey")
         let url = URL(string: AlfredBaseURL + "settings/saveevening" + AlfredAppKey)
         
