@@ -3,7 +3,7 @@ use_frameworks!
 
 target 'Alfred_IOS' do
 	pod 'SwiftyJSON'
-    pod 'BRYXBanner'
     pod 'MTCircularSlider'
+    pod 'SVProgressHUD'
     pod 'MobileVLCKit'
 end

@@ -8,7 +8,7 @@
 
 import UIKit
 import SwiftyJSON
-import BRYXBanner
+import SVProgressHUD
 
 class LogFileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -38,10 +38,9 @@ class LogFileViewController: UIViewController, UITableViewDataSource, UITableVie
         URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
             if error != nil {
                 
-                let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to retrieve logfile data. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
-                banner.dismissesOnTap = true
-                banner.show()
-                
+                SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                SVProgressHUD.showError(withStatus: "Network/API connection error")
+
             } else {
                 
                 let data = data
@@ -68,11 +67,9 @@ class LogFileViewController: UIViewController, UITableViewDataSource, UITableVie
                     
                     // Update the UI
                     DispatchQueue.main.async() {
-                        let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to retrieve logfile data. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
-                        banner.dismissesOnTap = true
-                        banner.show()
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showError(withStatus: "NUnable to retrieve logfile data")
                     }
-                    
                 }
             }
         }).resume()

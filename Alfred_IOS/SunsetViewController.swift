@@ -8,8 +8,8 @@
 
 import UIKit
 import SwiftyJSON
-import BRYXBanner
 import MTCircularSlider
+import SVProgressHUD
 
 class SunsetViewController: UIViewController, UICollectionViewDataSource, colorPickerDelegate {
     
@@ -83,13 +83,9 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
                 
                 // Update the UI
                 DispatchQueue.main.async() {
-                    
-                    let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to retrieve settings. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
-                    banner.dismissesOnTap = true
-                    banner.show()
-                    
+                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                    SVProgressHUD.showError(withStatus: "Network/API connection error")
                 }
-                
             } else {
                 
                 guard let data = data, error == nil else { return }
@@ -108,11 +104,12 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
                         
                     }
                 } else {
-                    let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to retrieve settings. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
-                    banner.dismissesOnTap = true
-                    banner.show()
+
+                    DispatchQueue.main.async {
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showError(withStatus: "Unable to retrieve settings")
+                    }
                 }
-                
             }
         }).resume()
         
@@ -124,12 +121,9 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
             if error != nil {
                 
                 // Update the UI
-                DispatchQueue.main.async() {
-                    
-                    let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to retrieve settings. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
-                    banner.dismissesOnTap = true
-                    banner.show()
-                    
+                DispatchQueue.main.async {
+                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                    SVProgressHUD.showError(withStatus: "Network/API connection error")
                 }
                 
             } else {
@@ -174,12 +168,9 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
                 } else {
                     
                     // Update the UI
-                    DispatchQueue.main.async() {
-                        
-                        let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to retrieve settings. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
-                        banner.dismissesOnTap = true
-                        banner.show()
-                        
+                    DispatchQueue.main.async {
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showError(withStatus: "Unable to retrieve settings")
                     }
                 }
             }
@@ -310,7 +301,7 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
             let row = indexPath?.row
             let cell = LightCollectionView!.cellForItem(at: indexPath!) as! LightsCollectionViewCell
             cellID.sharedInstance.cell = cell
-            
+                        
             // Setup the light bulb colour
             var color = UIColor.white
             switch eveningData[0].lights?[row!].colormode {
@@ -360,7 +351,6 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
         self.navigationItem.rightBarButtonItem?.isEnabled = false
         
         // Create post request
-        //let AlfredBaseURL = "http://localhost:3978/"
         let AlfredBaseURL = readPlist(item: "AlfredSchedulerURL")
         let AlfredAppKey = readPlist(item: "AlfredAppKey")
         let url = URL(string: AlfredBaseURL + "settings/saveevening" + AlfredAppKey)
@@ -379,10 +369,9 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
                 guard let data = data, error == nil else { // Check for fundamental networking error
                     print("save data error: " + error.debugDescription)
                     
-                    let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to save data. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
-                    banner.dismissesOnTap = true
-                    banner.show()
-                    
+                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                    SVProgressHUD.showError(withStatus: "Unable to save settings")
+
                     // Re enable the save button
                     self.navigationItem.rightBarButtonItem?.isEnabled = true
                     
@@ -395,15 +384,13 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
                 
                 if apiStatusString == "sucess" {
                     
-                    let banner = Banner(title: "Alfred API Notification", subtitle: "Saved.", backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
-                    banner.dismissesOnTap = true
-                    banner.show(duration: 3.0)
-                    
+                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                    SVProgressHUD.showSuccess(withStatus: "Saved")
+
                 } else {
                     
-                    let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to save data. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
-                    banner.dismissesOnTap = true
-                    banner.show()
+                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                    SVProgressHUD.showError(withStatus: "Unable to save settings")
                     
                 }
                 

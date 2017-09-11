@@ -8,7 +8,7 @@
 
 import UIKit
 import SwiftyJSON
-import BRYXBanner
+import SVProgressHUD
 import MTCircularSlider
 
 class RoomLightsViewController: UIViewController, UICollectionViewDataSource, colorPickerDelegate {
@@ -22,7 +22,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
         super.viewWillAppear(animated)
 
         // Refresh data every 15 seconds
-        getDataTimer = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(self.getData), userInfo: nil, repeats: true)
+        //getDataTimer = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(self.getData), userInfo: nil, repeats: true)
         
     }
     
@@ -38,7 +38,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
         super.viewWillDisappear(animated)
         
         // Stop the get data timer
-        self.getDataTimer.invalidate()
+        //self.getDataTimer.invalidate()
 
     }
     
@@ -57,12 +57,10 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
                 DispatchQueue.main.async() {
                     
                     // Stop the get data timer
-                    self.getDataTimer.invalidate()
+                    //self.getDataTimer.invalidate()
                     
-                    let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to retrieve room lights. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
-                    banner.dismissesOnTap = true
-                    banner.show()
-                    
+                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                    SVProgressHUD.showError(withStatus: "Network/API connection error")
                 }
                 
             } else {
@@ -85,15 +83,12 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
                 } else {
                     
                     // Stop the get data timer
-                    self.getDataTimer.invalidate()
+                    //self.getDataTimer.invalidate()
 
                     // Update the UI
                     DispatchQueue.main.async() {
-                    
-                        let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to retrieve room lights. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
-                        banner.dismissesOnTap = true
-                        banner.show()
-                        
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showError(withStatus: "Unable to retrieve light status")
                     }
                 }
             }
@@ -169,10 +164,8 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
                 
                 // Update the UI
                 DispatchQueue.main.async() {
-                    
-                    let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to update the light group", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
-                    banner.dismissesOnTap = true
-                    banner.show()
+                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                    SVProgressHUD.showError(withStatus: "Network/API connection error")
                 }
             }
             
@@ -185,11 +178,8 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
                 
                 // Update the UI
                 DispatchQueue.main.async() {
-                    
-                    let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to update the light group. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
-                    banner.dismissesOnTap = true
-                    banner.show()
-                    
+                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                    SVProgressHUD.showError(withStatus: "Unable to update the light settings")
                 }
             }
         }).resume()
@@ -242,10 +232,8 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
                 
                 // Update the UI
                 DispatchQueue.main.async() {
-                    
-                    let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to update the light group", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
-                    banner.dismissesOnTap = true
-                    banner.show()
+                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                    SVProgressHUD.showError(withStatus: "Network/API connection error")
                 }
             }
             
@@ -258,11 +246,8 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
                 
                 // Update the UI
                 DispatchQueue.main.async() {
-                    
-                    let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to update the light group. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
-                    banner.dismissesOnTap = true
-                    banner.show()
-                    
+                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                    SVProgressHUD.showError(withStatus: "Unable to update the light settings")
                 }
             }
         }).resume()
@@ -280,7 +265,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
             let row = indexPath?.row
             let cell = LightCollectionViewRooms!.cellForItem(at: indexPath!) as! LightsCollectionViewCell
             cellID.sharedInstance.cell = cell
-            
+
             // Store the color
             var color = UIColor.white
             switch roomLightsData[0].data![row!].action?.colormode {
@@ -307,11 +292,12 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
         
         // Update the button background
         let cell = cellID.sharedInstance.cell
-        
+
         // Update the local data store
-        let row = cell?.powerButton.tag
+        let row = cell!.powerButton.tag
+        
         var lightsOn = "off"
-        if (roomLightsData[0].data?[row!].state?.anyOn)! {
+        if (roomLightsData[0].data?[row].state?.anyOn)! {
             lightsOn = "on"
         }
         var lightParams: String = "&light_number=" + "\(cell?.tag ?? 0)" + "&light_status=" + lightsOn
@@ -319,17 +305,17 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
 
         if scene! {
             // Color selected from scene list
-            roomLightsData[0].data![row!].action!.ct = ct
-            roomLightsData[0].data![row!].action!.colormode = "ct"
+            roomLightsData[0].data![row].action!.ct = ct
+            roomLightsData[0].data![row].action!.colormode = "ct"
             lightParams = lightParams + "&ct=" + "\(ct!)"
-            cell?.powerButton.backgroundColor = HueColorHelper.getColorFromScene(ct!)
+            cell!.powerButton.backgroundColor = HueColorHelper.getColorFromScene(ct!)
         } else {
             // Color seclected from color pallet
             let xy = HueColorHelper.calculateXY(newColor!, forModel: "LST007")
-            roomLightsData[0].data![row!].action!.xy = [Float(xy.x), Float(xy.y)]
-            roomLightsData[0].data![row!].action!.colormode = "xy"
+            roomLightsData[0].data![row].action!.xy = [Float(xy.x), Float(xy.y)]
+            roomLightsData[0].data![row].action!.colormode = "xy"
             lightParams = lightParams + "&x=" + "\(xy.x)" + "&y=" + "\(xy.y)"
-            cell?.powerButton.backgroundColor = newColor
+            cell!.powerButton.backgroundColor = newColor
         }
 
         // Call Alfred to update the light group color
@@ -340,9 +326,8 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
         URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
             if error != nil {
                 DispatchQueue.main.async() {
-                    let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to change the light group color. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
-                    banner.dismissesOnTap = true
-                    banner.show()
+                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                    SVProgressHUD.showError(withStatus: "Network/API connection error")
                 }
             }
             
@@ -354,9 +339,8 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
             if pingStatusString != "sucess" {
                 
                 DispatchQueue.main.async() {
-                    let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to change the light group color. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
-                    banner.dismissesOnTap = true
-                    banner.show()
+                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                    SVProgressHUD.showError(withStatus: "Unable to update the light settings")
                 }
             }
         }).resume()
@@ -371,9 +355,8 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
         URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
             if error != nil {
                 DispatchQueue.main.async() {
-                    let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to turn off all lights. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
-                    banner.dismissesOnTap = true
-                    banner.show()
+                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                    SVProgressHUD.showError(withStatus: "Network/API connection error")
                 }
             }
             
@@ -398,17 +381,15 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
                         i += 1
                     }
                     
-                    let banner = Banner(title: "Alfred API Notification", subtitle: "Turning off all lights.", backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
-                    banner.dismissesOnTap = true
-                    banner.show(duration: 3.0)
-                    
+                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                    SVProgressHUD.showSuccess(withStatus: "Turned off all lights")
+
                 }
                 
             } else {
                 DispatchQueue.main.async() {
-                    let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to turn off all lights. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
-                    banner.dismissesOnTap = true
-                    banner.show()
+                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                    SVProgressHUD.showError(withStatus: "Unable to update the light settings")
                 }
             }
         }).resume()

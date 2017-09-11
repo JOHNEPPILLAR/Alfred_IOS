@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import BRYXBanner
+import SVProgressHUD
 
 class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
 
@@ -16,8 +16,6 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
     var mediaPlayer = VLCMediaPlayer()
     var videoTimer: Timer!
     
-    let ActivityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
-
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -46,9 +44,7 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
         mediaPlayer.play()
 
         // Show busy acivity
-        ActivityIndicator.center = view.center;
-        ActivityIndicator.startAnimating();
-        view.addSubview(ActivityIndicator)
+        SVProgressHUD.show(withStatus: "Connecting")
         
     }
     
@@ -79,14 +75,13 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
         
         switch mediaPlayer.state {
         case .error:
-            let banner = Banner(title: "An error occured playing the stream", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
-            banner.dismissesOnTap = true
-            banner.show(duration: 3.0)
+            SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+            SVProgressHUD.showError(withStatus: "Network/API connection error")
         case .buffering:
             break
         case .playing:
             backgroundImage.image = nil
-            ActivityIndicator.stopAnimating();
+            SVProgressHUD.dismiss()
         default: break
         }
     }
@@ -97,18 +92,17 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
 
         if mediaPlayer.isPlaying {
             mediaPlayer.pause()
-            UItxt = "Webcam paused"
+            UItxt = "Paused"
         }
         else {
             mediaPlayer.play()
-            UItxt = "Webcam playing"
+            UItxt = "Playing"
         }
         
         // Inform user of event
-        let banner = Banner(title: UItxt, backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
-        banner.dismissesOnTap = true
-        banner.show(duration: 3.0)
-        
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+        SVProgressHUD.showInfo(withStatus: UItxt)
+
     }
     
     override func didReceiveMemoryWarning() {

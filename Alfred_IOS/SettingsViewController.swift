@@ -8,7 +8,7 @@
 
 import UIKit
 import SwiftyJSON
-import BRYXBanner
+import SVProgressHUD
 
 class SettingsViewController: UIViewController {
     
@@ -38,10 +38,8 @@ class SettingsViewController: UIViewController {
                 
                 // Update the UI
                 DispatchQueue.main.async() {
-                    
-                    let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to restart Alfred", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
-                    banner.dismissesOnTap = true
-                    banner.show()
+                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                    SVProgressHUD.showError(withStatus: "Network/API connection error")
                 }
             }
             
@@ -54,21 +52,15 @@ class SettingsViewController: UIViewController {
                 
                 // Update the UI
                 DispatchQueue.main.async() {
-                    
-                    let banner = Banner(title: "Alfred API Notification", subtitle: "Alfred is restarting.", backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
-                    banner.dismissesOnTap = true
-                    banner.show(duration: 3.0)
-                    
+                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                    SVProgressHUD.showSuccess(withStatus: "Restarted Alfred")
                 }
             } else {
                 
                 // Update the UI
                 DispatchQueue.main.async() {
-                    
-                    let banner = Banner(title: "Alfred API Notification", subtitle: "There was a problem restarting Alfred.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
-                    banner.dismissesOnTap = true
-                    banner.show()
-                    
+                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                    SVProgressHUD.showError(withStatus: "Unable to restart Alfred")
                 }
             }
         }).resume()
@@ -97,10 +89,8 @@ class SettingsViewController: UIViewController {
                 
                 // Update the UI
                 DispatchQueue.main.async() {
-                    
-                    let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to clear log file data", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
-                    banner.dismissesOnTap = true
-                    banner.show()
+                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                    SVProgressHUD.showError(withStatus: "Unable to clear log file")
                 }
             }
             
@@ -113,21 +103,15 @@ class SettingsViewController: UIViewController {
 
                 // Update the UI
                 DispatchQueue.main.async() {
-                    
-                    let banner = Banner(title: "Alfred API Notification", subtitle: "Alfred's log file was sucesfully cleared.", backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
-                    banner.dismissesOnTap = true
-                    banner.show(duration: 3.0)
-                    
+                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                    SVProgressHUD.showSuccess(withStatus: "Log file was cleared")
                 }
             } else {
                 
                 // Update the UI
                 DispatchQueue.main.async() {
-                    
-                    let banner = Banner(title: "Alfred API Notification", subtitle: "There was a problem clearing the flog file. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
-                    banner.dismissesOnTap = true
-                    banner.show()
-                    
+                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                    SVProgressHUD.showError(withStatus: "There was a problem clearing the flog file")
                 }
             }
         }).resume()

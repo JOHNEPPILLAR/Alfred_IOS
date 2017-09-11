@@ -8,7 +8,7 @@
 
 import UIKit
 import SwiftyJSON
-import BRYXBanner
+import SVProgressHUD
 import MTCircularSlider
 
 class EveningTVViewController: UIViewController, UICollectionViewDataSource, colorPickerDelegate {
@@ -64,11 +64,8 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
                 
                 // Update the UI
                 DispatchQueue.main.async() {
-                    
-                    let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to retrieve settings. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
-                    banner.dismissesOnTap = true
-                    banner.show()
-                    
+                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                    SVProgressHUD.showError(withStatus: "Network/API connection error")
                 }
                 
             } else {
@@ -106,11 +103,8 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
                     
                     // Update the UI
                     DispatchQueue.main.async() {
-                        
-                        let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to retrieve settings. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
-                        banner.dismissesOnTap = true
-                        banner.show()
-                        
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showError(withStatus: "Unable to retrieve settings")
                     }
                 }
             }
@@ -306,10 +300,9 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
                 guard let data = data, error == nil else { // Check for fundamental networking error
                     print("save data error: " + error.debugDescription)
                     
-                    let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to save data. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
-                    banner.dismissesOnTap = true
-                    banner.show()
-                    
+                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                    SVProgressHUD.showError(withStatus: "Network/API connection error")
+
                     // Re enable the save button
                     self.navigationItem.rightBarButtonItem?.isEnabled = true
                     
@@ -322,16 +315,14 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
                 
                 if apiStatusString == "sucess" {
                     
-                    let banner = Banner(title: "Alfred API Notification", subtitle: "Saved.", backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
-                    banner.dismissesOnTap = true
-                    banner.show(duration: 3.0)
-                    
+                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                    SVProgressHUD.showSuccess(withStatus: "Saved")
+
                 } else {
                     
-                    let banner = Banner(title: "Alfred API Notification", subtitle: "Unable to save data. Please try again.", backgroundColor: UIColor(red:198.0/255.0, green:26.00/255.0, blue:27.0/255.0, alpha:1.000))
-                    banner.dismissesOnTap = true
-                    banner.show()
-                    
+                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                    SVProgressHUD.showError(withStatus: "Unable to save settings")
+
                 }
                 
                 // Re enable the save button

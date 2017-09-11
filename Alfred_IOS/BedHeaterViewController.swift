@@ -8,7 +8,7 @@
 
 import UIKit
 import SwiftyJSON
-import BRYXBanner
+import SVProgressHUD
 
 class BedHeaterViewController: UIViewController {
 
