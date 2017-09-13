@@ -331,4 +331,12 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
         }
         task.resume()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Stop spinner
+        SVProgressHUD.dismiss()
+    }
+
 }

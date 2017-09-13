@@ -361,4 +361,12 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
         }
         task.resume()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Stop spinner
+        SVProgressHUD.dismiss()
+    }
+
 }

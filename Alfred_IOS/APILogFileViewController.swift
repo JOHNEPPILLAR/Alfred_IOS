@@ -1,8 +1,8 @@
 //
-//  LogFileViewController.swift
+//  APILogFileViewController.swift
 //  Alfred_IOS
 //
-//  Created by John Pillar on 05/08/2017.
+//  Created by John Pillar on 12/09/2017.
 //  Copyright © 2017 John Pillar. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 import SVProgressHUD
 
-class LogFileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class APILogFileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var LogFileTableView: UITableView!
     
@@ -19,7 +19,7 @@ class LogFileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         LogFileTableView.backgroundView = UIImageView(image: UIImage(named: "background.jpg"))
         
         LogFileTableView.addSubview(self.refreshControl) // Add pull to refresh functionality
@@ -27,11 +27,11 @@ class LogFileViewController: UIViewController, UITableViewDataSource, UITableVie
         self.getData() // Get log info from Alfred
         
     }
-
+    
     //MARK: Private Methods
     func getData() {
         
-        let AlfredBaseURL = readPlist(item: "AlfredSchedulerURL")
+        let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
         let AlfredAppKey = readPlist(item: "AlfredAppKey")
         let url = URL(string: AlfredBaseURL + "displaylog" + AlfredAppKey + "&page=" + String(viewPage))
         
@@ -40,7 +40,7 @@ class LogFileViewController: UIViewController, UITableViewDataSource, UITableVie
                 
                 SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
                 SVProgressHUD.showError(withStatus: "Network/API connection error")
-
+                
             } else {
                 
                 let data = data
@@ -90,7 +90,7 @@ class LogFileViewController: UIViewController, UITableViewDataSource, UITableVie
         refreshControl.endRefreshing() // Stop the pull to refresh UI
         
     }
-
+    
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         if (logs.count) > 0 {
@@ -119,7 +119,7 @@ class LogFileViewController: UIViewController, UITableViewDataSource, UITableVie
             self.viewPage += 1
             getData() // Load more data
         }
-    
+        
         return cell
     }
     
@@ -136,3 +136,6 @@ class LogFileViewController: UIViewController, UITableViewDataSource, UITableVie
     }
 
 }
+
+    
+    

@@ -24,6 +24,7 @@
 		0A7DADE11F4A2BF9002FEE9F /* HueColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DADE01F4A2BF9002FEE9F /* HueColorHelper.swift */; };
 		0A80C09C1F24812E0082F77C /* Alfred.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A80C09B1F24812E0082F77C /* Alfred.plist */; };
 		0A8AF14A1F24EF030064894F /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8AF1491F24EF030064894F /* Helpers.swift */; };
+		0A93796B1F67A8DE004FFC3B /* APILogFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A93796A1F67A8DE004FFC3B /* APILogFileViewController.swift */; };
 		0A97CCAF1F2B0AEF00E6FF1F /* RoomLightsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A97CCAE1F2B0AEF00E6FF1F /* RoomLightsViewController.swift */; };
 		0AA19AED1F57277300CB272F /* TVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA19AEC1F57277300CB272F /* TVViewController.swift */; };
 		0AA83A711F2CE72500B933A8 /* RoomLightsAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA83A6D1F2CE72500B933A8 /* RoomLightsAction.swift */; };
@@ -63,6 +64,7 @@
 		0A7DADE01F4A2BF9002FEE9F /* HueColorHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HueColorHelper.swift; sourceTree = "<group>"; };
 		0A80C09B1F24812E0082F77C /* Alfred.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Alfred.plist; sourceTree = "<group>"; };
 		0A8AF1491F24EF030064894F /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		0A93796A1F67A8DE004FFC3B /* APILogFileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILogFileViewController.swift; sourceTree = "<group>"; };
 		0A97CCAE1F2B0AEF00E6FF1F /* RoomLightsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomLightsViewController.swift; sourceTree = "<group>"; };
 		0AA19AEC1F57277300CB272F /* TVViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVViewController.swift; sourceTree = "<group>"; };
 		0AA83A6D1F2CE72500B933A8 /* RoomLightsAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomLightsAction.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				0A4986401F42BEBA006979E0 /* CameraViewController.swift */,
 				0AA19AEC1F57277300CB272F /* TVViewController.swift */,
 				0AB222F11F5C89700040E58F /* BedHeaterViewController.swift */,
+				0A93796A1F67A8DE004FFC3B /* APILogFileViewController.swift */,
 			);
 			name = "View Controlers";
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				0A97CCAF1F2B0AEF00E6FF1F /* RoomLightsViewController.swift in Sources */,
 				0AA83A721F2CE72500B933A8 /* RoomLights.swift in Sources */,
 				0AB222F21F5C89700040E58F /* BedHeaterViewController.swift in Sources */,
+				0A93796B1F67A8DE004FFC3B /* APILogFileViewController.swift in Sources */,
 				0A420E4A1F140D0500BD2713 /* LogFileTableViewCell.swift in Sources */,
 				0A12B4AB1F193B470012B619 /* SunsetViewController.swift in Sources */,
 				0A69FB811F10C25C00563A69 /* AppDelegate.swift in Sources */,

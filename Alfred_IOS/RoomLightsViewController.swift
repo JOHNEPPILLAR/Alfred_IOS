@@ -37,6 +37,9 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+        // Stop spinner
+        SVProgressHUD.dismiss()
+        
         // Stop the get data timer
         //self.getDataTimer.invalidate()
 
@@ -393,8 +396,8 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
                 }
             }
         }).resume()
-        
     }
+
 }
 
 

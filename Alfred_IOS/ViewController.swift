@@ -13,11 +13,6 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated) // No need for semicolon
-
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

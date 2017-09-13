@@ -18,6 +18,13 @@ class BedHeaterViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Stop spinner
+        SVProgressHUD.dismiss()
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

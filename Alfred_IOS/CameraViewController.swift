@@ -51,6 +51,9 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
+        // Stop spinner
+        SVProgressHUD.dismiss()
+        
         // Stop video as moving away from view
         mediaPlayer.stop()
         mediaPlayer.media = nil

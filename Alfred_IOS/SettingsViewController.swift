@@ -117,6 +117,13 @@ class SettingsViewController: UIViewController {
         }).resume()
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Stop spinner
+        SVProgressHUD.dismiss()
+    }
+        
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

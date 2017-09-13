@@ -400,4 +400,12 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
         }
         task.resume()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Stop spinner
+        SVProgressHUD.dismiss()
+    }
+
 }
