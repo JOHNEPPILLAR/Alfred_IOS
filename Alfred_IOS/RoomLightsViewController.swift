@@ -21,9 +21,6 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        // Refresh data every 15 seconds
-        //getDataTimer = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(self.getData), userInfo: nil, repeats: true)
-        
     }
     
     override func viewDidLoad() {
@@ -39,36 +36,29 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
         
         // Stop spinner
         SVProgressHUD.dismiss()
-        
-        // Stop the get data timer
-        //self.getDataTimer.invalidate()
 
     }
     
     //MARK: Private Methods
     @objc func getData() {
 
-        let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
-        let AlfredAppKey = readPlist(item: "AlfredAppKey")
-        let url = URL(string: AlfredBaseURL + "lights/listlightgroups" + AlfredAppKey)
-        
-        URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
+        DispatchQueue.global(qos: .userInitiated).async {
             
-            if error != nil {
+            let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+            let AlfredAppKey = readPlist(item: "AlfredAppKey")
+            let url = URL(string: AlfredBaseURL + "lights/listlightgroups" + AlfredAppKey)!
+            let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
+            let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
                 
-                // Update the UI
-                DispatchQueue.main.async() {
-                    
-                    // Stop the get data timer
-                    //self.getDataTimer.invalidate()
-                    
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showError(withStatus: "Network/API connection error")
+                guard let data = data, error == nil else { // Check for fundamental networking error
+                    DispatchQueue.main.async {
+                        // Show error
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showError(withStatus: "Network/API connection error")
+                    }
+                    return
                 }
-                
-            } else {
-                
-                guard let data = data, error == nil else { return }
+
                 let json = JSON(data: data)
                 let apiStatus = json["code"]
                 let apiStatusString = apiStatus.string!
@@ -78,24 +68,20 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
                     // Save json to custom classes
                     let jsonData = json
                     self.roomLightsData = [RoomLights(json: jsonData)]
-                    
-                    DispatchQueue.main.async() {
+                   
+                    DispatchQueue.main.async {
                         self.LightCollectionViewRooms.reloadData() // Refresh the colection view
                     }
-                    
                 } else {
-                    
-                    // Stop the get data timer
-                    //self.getDataTimer.invalidate()
-
-                    // Update the UI
-                    DispatchQueue.main.async() {
+                    DispatchQueue.main.async {
+                        // Show error
                         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
                         SVProgressHUD.showError(withStatus: "Unable to retrieve light status")
                     }
                 }
-            }
-        }).resume()
+            })
+            task.resume()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -155,38 +141,40 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
         // Update local data store
         roomLightsData[0].data?[row].action?.bri = Int(sender.value)
         
-        // Call Alfred to update the light group
-        let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
-        let AlfredAppKey = readPlist(item: "AlfredAppKey")
-        
-        let lightParams = "&light_number=" + "\(cell!.tag)" + "&percentage=" + String(roomLightsData[0].data![row].action!.bri!)
-        let url = URL(string: AlfredBaseURL + "lights/brightenlightgroup" + AlfredAppKey + lightParams)
-        
-        URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
-            if error != nil {
-                
-                // Update the UI
-                DispatchQueue.main.async() {
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showError(withStatus: "Network/API connection error")
-                }
-            }
+        DispatchQueue.global(qos: .userInitiated).async {
             
-            guard let data = data, error == nil else { return }
-            let json = JSON(data: data)
-            let apiStatus = json["code"]
-            let apiStatusString = apiStatus.string!
-            
-            if apiStatusString != "sucess" {
+            // Call Alfred to update the light group
+            let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+            let AlfredAppKey = readPlist(item: "AlfredAppKey")
+            let lightParams = "&light_number=" + "\(cell!.tag)" + "&percentage=" + String(self.roomLightsData[0].data![row].action!.bri!)
+            let url = URL(string: AlfredBaseURL + "lights/brightenlightgroup" + AlfredAppKey + lightParams)!
+            let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
+            let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
                 
-                // Update the UI
-                DispatchQueue.main.async() {
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showError(withStatus: "Unable to update the light settings")
+                guard let data = data, error == nil else { // Check for fundamental networking error
+                    DispatchQueue.main.async {
+                        // Show error
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showError(withStatus: "Network/API connection error")
+                    }
+                    return
                 }
-            }
-        }).resume()
-        
+
+                let json = JSON(data: data)
+                let apiStatus = json["code"]
+                let apiStatusString = apiStatus.string!
+                
+                if apiStatusString != "sucess" {
+                    
+                    DispatchQueue.main.async {
+                        // Show error
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showError(withStatus: "Unable to update the light settings")
+                    }
+                }
+            })
+            task.resume()
+    }
     }
     
     @objc func powerButtonValueChange(_ sender: UITapGestureRecognizer!) {
@@ -225,36 +213,39 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
             
         }
         
-        // Call Alfred to update the light group
-        let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
-        let AlfredAppKey = readPlist(item: "AlfredAppKey")
-        let lightParams = "&light_number=" + "\(cell.tag)" + "&light_status=" + lightsOn + "&percentage=" + String(roomLightsData[0].data![row!].action!.bri!)
-        let url = URL(string: AlfredBaseURL + "lights/lightgrouponoff" + AlfredAppKey + lightParams)
-        URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
-            if error != nil {
-                
-                // Update the UI
-                DispatchQueue.main.async() {
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showError(withStatus: "Network/API connection error")
-                }
-            }
+        DispatchQueue.global(qos: .userInitiated).async {
             
-            guard let data = data, error == nil else { return }
-            let json = JSON(data: data)
-            let apiStatus = json["code"]
-            let apiStatusString = apiStatus.string!
-            
-            if apiStatusString != "sucess" {
+            // Call Alfred to update the light group
+            let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+            let AlfredAppKey = readPlist(item: "AlfredAppKey")
+            let lightParams = "&light_number=" + "\(cell.tag)" + "&light_status=" + lightsOn + "&percentage=" + String(self.roomLightsData[0].data![row!].action!.bri!)
+            let url = URL(string: AlfredBaseURL + "lights/lightgrouponoff" + AlfredAppKey + lightParams)!
+            let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
+            let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
                 
-                // Update the UI
-                DispatchQueue.main.async() {
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showError(withStatus: "Unable to update the light settings")
+                guard let data = data, error == nil else { // Check for fundamental networking error
+                    DispatchQueue.main.async {
+                        // Show error
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showError(withStatus: "Network/API connection error")
+                    }
+                    return
                 }
-            }
-        }).resume()
-        
+
+                let json = JSON(data: data)
+                let apiStatus = json["code"]
+                let apiStatusString = apiStatus.string!
+                
+                if apiStatusString != "sucess" {
+                    DispatchQueue.main.async {
+                        // Shoe error
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showError(withStatus: "Unable to update the light settings")
+                    }
+                }
+            })
+            task.resume()
+        }
     }
     
     @objc func longPowerButtonPress(_ sender: UITapGestureRecognizer!) {
@@ -320,58 +311,63 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
             lightParams = lightParams + "&x=" + "\(xy.x)" + "&y=" + "\(xy.y)"
             cell!.powerButton.backgroundColor = newColor
         }
-
-        // Call Alfred to update the light group color
-        let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
-        let AlfredAppKey: String = readPlist(item: "AlfredAppKey")
-        let url = URL(string: AlfredBaseURL + "lights/lightgrouponoff" + AlfredAppKey + lightParams)
-    
-        URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
-            if error != nil {
-                DispatchQueue.main.async() {
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showError(withStatus: "Network/API connection error")
-                }
-            }
-            
-            guard let data = data, error == nil else { return }
-            let json = JSON(data: data)
-            let pingStatus = json["code"]
-            let pingStatusString = pingStatus.string!
-            
-            if pingStatusString != "sucess" {
-                
-                DispatchQueue.main.async() {
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showError(withStatus: "Unable to update the light settings")
-                }
-            }
-        }).resume()
         
+        DispatchQueue.global(qos: .userInitiated).async {
+        
+            // Call Alfred to update the light group color
+            let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+            let AlfredAppKey: String = readPlist(item: "AlfredAppKey")
+            let url = URL(string: AlfredBaseURL + "lights/lightgrouponoff" + AlfredAppKey + lightParams)!
+            let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
+            let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+                
+                guard let data = data, error == nil else { // Check for fundamental networking error
+                    DispatchQueue.main.async {
+                        // Show error
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showError(withStatus: "Network/API connection error")
+                    }
+                    return
+                }
+            
+                let json = JSON(data: data)
+                let apiStatus = json["code"]
+                let apiStatusString = apiStatus.string!
+                
+                if apiStatusString != "sucess" {
+                    DispatchQueue.main.async {
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showError(withStatus: "Unable to update the light settings")
+                    }
+                }
+            })
+            task.resume()
+        }
     }
     
     @IBAction func turnOffAllLights(recognizer:UIPanGestureRecognizer) {
-        let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
-        let AlfredAppKey = readPlist(item: "AlfredAppKey")
-        let url = URL(string: AlfredBaseURL + "lights/alloff" + AlfredAppKey)
-        
-        URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
-            if error != nil {
-                DispatchQueue.main.async() {
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showError(withStatus: "Network/API connection error")
-                }
-            }
-            
-            guard let data = data, error == nil else { return }
-            let json = JSON(data: data)
-            let pingStatus = json["code"]
-            let pingStatusString = pingStatus.string!
-            
-            if pingStatusString == "sucess" {
+
+        DispatchQueue.global(qos: .userInitiated).async {
+            let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+            let AlfredAppKey = readPlist(item: "AlfredAppKey")
+            let url = URL(string: AlfredBaseURL + "lights/alloff" + AlfredAppKey)!
+            let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
+            let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
                 
-                // Update the UI
-                DispatchQueue.main.async() {
+                guard let data = data, error == nil else { // Check for fundamental networking error
+                    DispatchQueue.main.async {
+                        // Show error
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showError(withStatus: "Network/API connection error")
+                    }
+                    return
+                }
+
+                let json = JSON(data: data)
+                let pingStatus = json["code"]
+                let pingStatusString = pingStatus.string!
+                
+                if pingStatusString == "sucess" {
                     
                     // Update local data & UI and turn off all light groups
                     for var i in (0..<self.roomLightsData[0].data!.count){
@@ -379,25 +375,25 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
                         
                         let indexPath = IndexPath(row: i, section: 0)
                         let cell = self.LightCollectionViewRooms!.cellForItem(at: indexPath) as! LightsCollectionViewCell
-                        cell.powerButton.backgroundColor = UIColor.clear
-                        
+                        DispatchQueue.main.async {
+                            cell.powerButton.backgroundColor = UIColor.clear
+                        }
                         i += 1
                     }
                     
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showSuccess(withStatus: "Turned off all lights")
-
+                    DispatchQueue.main.async {
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showSuccess(withStatus: "Turned off all lights")
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        // Show error
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showError(withStatus: "Unable to update the light settings")
+                    }
                 }
-                
-            } else {
-                DispatchQueue.main.async() {
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showError(withStatus: "Unable to update the light settings")
-                }
-            }
-        }).resume()
+            })
+            task.resume()
+        }
     }
-
 }
-
-

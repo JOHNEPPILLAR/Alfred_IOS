@@ -18,208 +18,242 @@ class TVViewController: UIViewController {
         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
         SVProgressHUD.show(withStatus: "Connecting")
 
-        // Call Alfred
-        let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
-        let AlfredAppKey = readPlist(item: "AlfredAppKey")
-        let url = URL(string: AlfredBaseURL + "tv/turnoff" + AlfredAppKey)
-        URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
-       
-            // Stop busy acivity
-            SVProgressHUD.dismiss()
+        DispatchQueue.global(qos: .userInitiated).async {
 
-            // Update the UI
-            if error != nil {
-                DispatchQueue.main.async {
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showError(withStatus: "Network/API connection error")
+            // Call Alfred
+            let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+            let AlfredAppKey = readPlist(item: "AlfredAppKey")
+            let url = URL(string: AlfredBaseURL + "tv/turnoff" + AlfredAppKey)!
+            let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
+            let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+                
+                guard let data = data, error == nil else { // Check for fundamental networking error
+                    
+                    DispatchQueue.main.async {
+                        // Stop busy acivity
+                        SVProgressHUD.dismiss()
+
+                        // Show error
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showError(withStatus: "Network/API connection error")
+                    }
+                    return
                 }
-            }
-            
-            guard let data = data, error == nil else { return }
-            let json = JSON(data: data)
-            let apiStatus = json["code"]
-            let apiStatusString = apiStatus.string!
-            
-            if apiStatusString == "sucess" {
-                DispatchQueue.main.async {
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showSuccess(withStatus: "Turned off TV")
+           
+                let json = JSON(data: data)
+                let apiStatus = json["code"]
+                let apiStatusString = apiStatus.string!
+                
+                if apiStatusString == "sucess" {
+                    DispatchQueue.main.async {
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showSuccess(withStatus: "Turned off TV")
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showError(withStatus: "Unable to turn off TV")
+                    }
                 }
-            } else {
-                DispatchQueue.main.async {
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showError(withStatus: "Unable to turn off TV")
-                }
-            }
-        }).resume()
+            })
+            task.resume()
+        }
     }
     
     @IBAction func Fire_tv(_ sender: Any) {
 
         // Show busy acivity
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
         SVProgressHUD.show(withStatus: "Connecting")
 
-        // Call Alfred
-        let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
-        let AlfredAppKey = readPlist(item: "AlfredAppKey")
-        let url = URL(string: AlfredBaseURL + "tv/watchfiretv" + AlfredAppKey)
+        DispatchQueue.global(qos: .userInitiated).async {
 
-        URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
-            
-            // Stop busy acivity
-            SVProgressHUD.dismiss()
+            // Call Alfred
+            let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+            let AlfredAppKey = readPlist(item: "AlfredAppKey")
+            let url = URL(string: AlfredBaseURL + "tv/watchfiretv" + AlfredAppKey)!
+            let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
+            let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+                
+                guard let data = data, error == nil else { // Check for fundamental networking error
+                    
+                    DispatchQueue.main.async {
+                        // Stop busy acivity
+                        SVProgressHUD.dismiss()
+                        
+                        // Show error
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showError(withStatus: "Network/API connection error")
+                    }
+                    return
+                }
 
-            // Update the UI
-            if error != nil {
-                DispatchQueue.main.async {
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showError(withStatus: "Network/API connection error")
+                let json = JSON(data: data)
+                let apiStatus = json["code"]
+                let apiStatusString = apiStatus.string!
+                
+                if apiStatusString == "sucess" {
+                    DispatchQueue.main.async {
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showSuccess(withStatus: "Turned on Fire TV")
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showError(withStatus: "Unable to turn off Fire TV")
+                    }
                 }
-            }
-            
-            guard let data = data, error == nil else { return }
-            let json = JSON(data: data)
-            let apiStatus = json["code"]
-            let apiStatusString = apiStatus.string!
-            
-            if apiStatusString == "sucess" {
-                DispatchQueue.main.async {
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showSuccess(withStatus: "Turned on Fire TV")
-                }
-            } else {
-                DispatchQueue.main.async {
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showError(withStatus: "Unable to turn off Fire TV")
-                }
-            }
-        }).resume()
+            })
+            task.resume()
+        }
     }
     
     @IBAction func Virgin_tv(_ sender: Any) {
 
         // Show busy acivity
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
         SVProgressHUD.show(withStatus: "Connecting")
 
-        // Call Alfred
-        let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
-        let AlfredAppKey = readPlist(item: "AlfredAppKey")
-        let url = URL(string: AlfredBaseURL + "tv/watchvirgintv" + AlfredAppKey)
-        
-        URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
-            
-            // Stop busy acivity
-            SVProgressHUD.dismiss()
-            
-            // Update the UI
-            if error != nil {
-                DispatchQueue.main.async {
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showError(withStatus: "Network/API connection error")
+        DispatchQueue.global(qos: .userInitiated).async {
+
+            // Call Alfred
+            let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+            let AlfredAppKey = readPlist(item: "AlfredAppKey")
+            let url = URL(string: AlfredBaseURL + "tv/watchvirgintv" + AlfredAppKey)!
+            let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
+            let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+                
+                guard let data = data, error == nil else { // Check for fundamental networking error
+                 
+                    DispatchQueue.main.async {
+
+                        // Stop busy acivity
+                        SVProgressHUD.dismiss()
+                        
+                        // Show error
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showError(withStatus: "Network/API connection error")
+                    }
+                    return
                 }
-            }
-            
-            guard let data = data, error == nil else { return }
-            let json = JSON(data: data)
-            let apiStatus = json["code"]
-            let apiStatusString = apiStatus.string!
-            
-            if apiStatusString == "sucess" {
-                DispatchQueue.main.async {
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showSuccess(withStatus: "Turned on Virgin TV")
+
+                let json = JSON(data: data)
+                let apiStatus = json["code"]
+                let apiStatusString = apiStatus.string!
+                
+                if apiStatusString == "sucess" {
+                    DispatchQueue.main.async {
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showSuccess(withStatus: "Turned on Virgin TV")
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showError(withStatus: "Unable to turn off Virgin TV")
+                    }
                 }
-            } else {
-                DispatchQueue.main.async {
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showError(withStatus: "Unable to turn off Virgin TV")
-                }
-            }
-        }).resume()
+            })
+            task.resume()
+        }
     }
     
     @IBAction func Apple_tv(_ sender: Any) {
         
         // Show busy acivity
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
         SVProgressHUD.show(withStatus: "Connecting")
 
-        // Call Alfred
-        let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
-        let AlfredAppKey = readPlist(item: "AlfredAppKey")
-        let url = URL(string: AlfredBaseURL + "tv/watchappletv" + AlfredAppKey)
-        
-        URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
+        DispatchQueue.global(qos: .userInitiated).async {
             
-            // Stop busy acivity
-            SVProgressHUD.dismiss()
+            // Call Alfred
+            let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+            let AlfredAppKey = readPlist(item: "AlfredAppKey")
+            let url = URL(string: AlfredBaseURL + "tv/watchappletv" + AlfredAppKey)!
+            let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
+            let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+                
+                guard let data = data, error == nil else { // Check for fundamental networking error
+                    
+                    DispatchQueue.main.async {
+                        // Stop busy acivity
+                        SVProgressHUD.dismiss()
+                        
+                        // Show error
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showError(withStatus: "Network/API connection error")
+                    }
+                    return
+                }
 
-            // Update the UI
-            if error != nil {
-                DispatchQueue.main.async {
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showError(withStatus: "Network/API connection error")
+                let json = JSON(data: data)
+                let apiStatus = json["code"]
+                let apiStatusString = apiStatus.string!
+                
+                if apiStatusString == "sucess" {
+                    
+                    DispatchQueue.main.async {
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showSuccess(withStatus: "Turned on Apple TV")
+                    }
+                    
+                } else {
+                    
+                    DispatchQueue.main.async {
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showError(withStatus: "Unable to turn off Apple TV")
+                    }
+                    
                 }
-            }
-            
-            guard let data = data, error == nil else { return }
-            let json = JSON(data: data)
-            let apiStatus = json["code"]
-            let apiStatusString = apiStatus.string!
-            
-            if apiStatusString == "sucess" {
-                DispatchQueue.main.async {
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showSuccess(withStatus: "Turned on Apple TV")
-                }
-            } else {
-                DispatchQueue.main.async {
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showError(withStatus: "Unable to turn off Apple TV")
-                }
-            }
-        }).resume()
+            })
+            task.resume()
+        }
     }
     
     @IBAction func Playstation(_ sender: Any) {
     
         // Show busy acivity
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
         SVProgressHUD.show(withStatus: "Connecting")
 
-        // Call Alfred
-        let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
-        let AlfredAppKey = readPlist(item: "AlfredAppKey")
-        let url = URL(string: AlfredBaseURL + "tv/playps4" + AlfredAppKey)
-        
-        URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
-            
-            // Stop busy acivity
-            SVProgressHUD.dismiss()
+        DispatchQueue.global(qos: .userInitiated).async {
 
-            // Update the UI
-            if error != nil {
-                DispatchQueue.main.async {
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showError(withStatus: "Network/API connection error")
+            // Call Alfred
+            let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+            let AlfredAppKey = readPlist(item: "AlfredAppKey")
+            let url = URL(string: AlfredBaseURL + "tv/playps4" + AlfredAppKey)!
+            let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
+            let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+                
+                guard let data = data, error == nil else { // Check for fundamental networking error
+                    DispatchQueue.main.async {
+                        // Stop busy acivity
+                        SVProgressHUD.dismiss()
+                        
+                        // Show error
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showError(withStatus: "Network/API connection error")
+                    }
+                    return
                 }
-            }
-            
-            guard let data = data, error == nil else { return }
-            let json = JSON(data: data)
-            let apiStatus = json["code"]
-            let apiStatusString = apiStatus.string!
-            
-            if apiStatusString == "sucess" {
-                DispatchQueue.main.async {
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showSuccess(withStatus: "Turned on Playstation")
+
+                let json = JSON(data: data)
+                let apiStatus = json["code"]
+                let apiStatusString = apiStatus.string!
+                
+                if apiStatusString == "sucess" {
+                    DispatchQueue.main.async {
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showSuccess(withStatus: "Turned on Playstation")
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showError(withStatus: "Unable to turn off Playstation")
+                    }
                 }
-            } else {
-                DispatchQueue.main.async {
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showError(withStatus: "Unable to turn off Playstation")
-                }
-            }
-        }).resume()
+            })
+            task.resume()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

@@ -31,39 +31,38 @@ class SettingsViewController: UIViewController {
     func RestartAflred() {
         let AlfredBaseURL = readPlist(item: "AlfredSchedulerURL")
         let AlfredAppKey = readPlist(item: "AlfredAppKey")
-        let url = URL(string: AlfredBaseURL + "settings/restart" + AlfredAppKey)
+        let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
+        let url = URL(string: AlfredBaseURL + "settings/restart" + AlfredAppKey)!
+        let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
         
-        URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
-            if error != nil {
+            guard let data = data, error == nil else { // Check for fundamental networking error
                 
-                // Update the UI
-                DispatchQueue.main.async() {
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showError(withStatus: "Network/API connection error")
-                }
+                // Show error
+                SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                SVProgressHUD.showError(withStatus: "Network/API connection error")
+                
+                return
             }
             
-            guard let data = data, error == nil else { return }
             let json = JSON(data: data)
             let apiStatus = json["code"]
             let apiStatusString = apiStatus.string!
             
             if apiStatusString == "sucess" {
                 
-                // Update the UI
-                DispatchQueue.main.async() {
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showSuccess(withStatus: "Restarted Alfred")
-                }
+                // Show msg
+                SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                SVProgressHUD.showSuccess(withStatus: "Restarted Alfred")
+
             } else {
                 
-                // Update the UI
-                DispatchQueue.main.async() {
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showError(withStatus: "Unable to restart Alfred")
-                }
+                // Show error
+                SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                SVProgressHUD.showError(withStatus: "Unable to restart Alfred")
+                
             }
-        }).resume()
+        })
+        task.resume()
     }
     
     @IBAction func DelLogFileTap(_ sender: UITapGestureRecognizer) {
@@ -82,39 +81,37 @@ class SettingsViewController: UIViewController {
     func DelAflredLog() {
         let AlfredBaseURL = readPlist(item: "AlfredSchedulerURL")
         let AlfredAppKey = readPlist(item: "AlfredAppKey")
-        let url = URL(string: AlfredBaseURL + "settings/dellog" + AlfredAppKey)
-    
-        URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
-            if error != nil {
-                
-                // Update the UI
-                DispatchQueue.main.async() {
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showError(withStatus: "Unable to clear log file")
-                }
-            }
+
+        let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
+        let url = URL(string: AlfredBaseURL + "settings/dellog" + AlfredAppKey)!
+        let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             
-            guard let data = data, error == nil else { return }
+            guard let data = data, error == nil else { // Check for fundamental networking error
+                
+                // Show error
+                SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                SVProgressHUD.showError(withStatus: "Network/API connection error")
+                
+                return
+            }
+
             let json = JSON(data: data)
             let apiStatus = json["code"]
             let apiStatusString = apiStatus.string!
             
             if apiStatusString == "sucess" {
 
-                // Update the UI
-                DispatchQueue.main.async() {
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showSuccess(withStatus: "Log file was cleared")
-                }
+                // Show msg
+                SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                SVProgressHUD.showSuccess(withStatus: "Log file was cleared")
             } else {
                 
-                // Update the UI
-                DispatchQueue.main.async() {
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showError(withStatus: "There was a problem clearing the flog file")
-                }
+                // Show error
+                SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                SVProgressHUD.showError(withStatus: "There was a problem clearing the log file")
             }
-        }).resume()
+        })
+        task.resume()
     }
 
     override func viewWillDisappear(_ animated: Bool) {

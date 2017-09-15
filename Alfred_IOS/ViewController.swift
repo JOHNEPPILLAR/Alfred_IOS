@@ -18,9 +18,8 @@ class ViewController: UIViewController {
         
         activityIndicator.activityIndicatorViewStyle  = UIActivityIndicatorViewStyle.whiteLarge
         
-        DispatchQueue.main.async {
-            self.ping_Aflred_DI() // Make sure Alred is online
-        }
+        self.ping_Aflred_DI() // Make sure Alred is online
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -30,47 +29,46 @@ class ViewController: UIViewController {
     
     func ping_Aflred_DI() {
         
-        let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
-        let AlfredAppKey = readPlist(item: "AlfredAppKey")
-        let url = URL(string: AlfredBaseURL + "ping" + AlfredAppKey)
-        
-        URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
-            if error != nil {
-                print ("Start up - Unable to ping Alfred")
+        DispatchQueue.global(qos: .userInitiated).async {
+            let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+            let AlfredAppKey = readPlist(item: "AlfredAppKey")
+            let url = URL(string: AlfredBaseURL + "ping" + AlfredAppKey)!
+            let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
+            let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
                 
-                let alertController = UIAlertController(title: "Alfred", message:
-                    "Unable to connect to Alfred. Close the app and try again.", preferredStyle: UIAlertControllerStyle.alert)
+                guard let data = data, error == nil else { // Check for fundamental networking error
 
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: {
-                    self.activityIndicator.stopAnimating()
-                    self.present(alertController, animated: true, completion: nil)
-                })
-            }
-            
-            guard let data = data, error == nil else { return }
-            let json = JSON(data: data)
-            let pingStatus = json["code"]
-            let pingStatusString = pingStatus.string!
-                
-            if pingStatusString == "sucess" {
+                    let alertController = UIAlertController(title: "Alfred", message:
+                        "Unable to connect to Alfred. Close the app and try again.", preferredStyle: UIAlertControllerStyle.alert)
+                    DispatchQueue.main.async {
+                        self.activityIndicator.stopAnimating()
+                        self.present(alertController, animated: true, completion: nil)
+                    }
+                    return
+                }
 
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
-                    self.activityIndicator.stopAnimating()
-                    self.performSegue(withIdentifier: "home", sender: self)
-                })
-            } else {
-                print ("Start up - Ping status returned not a sucess")
-                
-                self.activityIndicator.stopAnimating()
+                let json = JSON(data: data)
+                let pingStatus = json["code"]
+                let pingStatusString = pingStatus.string!
 
-                let alertController = UIAlertController(title: "Alfred", message:
-                    "Unable to connect to Alfred. Close the app and try again.", preferredStyle: UIAlertControllerStyle.alert)
+                if pingStatusString == "sucess" {
 
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: {
-                    self.present(alertController, animated: true, completion: nil)
-                })
-            }
-        }).resume()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
+                        self.activityIndicator.stopAnimating()
+                        self.performSegue(withIdentifier: "home", sender: self)
+                    })
+                    
+                } else {
+
+                    let alertController = UIAlertController(title: "Alfred", message:
+                        "Unable to connect to Alfred. Close the app and try again.", preferredStyle: UIAlertControllerStyle.alert)
+                    DispatchQueue.main.async {
+                        self.activityIndicator.stopAnimating()
+                        self.present(alertController, animated: true, completion: nil)
+                    }
+                }
+            })
+            task.resume()
+        }
     }
 }
-

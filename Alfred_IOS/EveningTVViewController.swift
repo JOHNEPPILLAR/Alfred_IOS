@@ -54,23 +54,23 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
     //MARK: Private Methods
     func getData() {
         
-        let AlfredBaseURL = readPlist(item: "AlfredSchedulerURL")
-        let AlfredAppKey = readPlist(item: "AlfredAppKey")
-        let url = URL(string: AlfredBaseURL + "settings/view" + AlfredAppKey)
-        
-        URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
-            
-            if error != nil {
+        DispatchQueue.global(qos: .userInitiated).async {
+
+            let AlfredBaseURL = readPlist(item: "AlfredSchedulerURL")
+            let AlfredAppKey = readPlist(item: "AlfredAppKey")
+            let url = URL(string: AlfredBaseURL + "settings/view" + AlfredAppKey)!
+            let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
+            let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
                 
-                // Update the UI
-                DispatchQueue.main.async() {
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showError(withStatus: "Network/API connection error")
+                guard let data = data, error == nil else { // Check for fundamental networking error
+                    DispatchQueue.main.async {
+                        // Show error
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showError(withStatus: "Network/API connection error")
+                    }
+                    return
                 }
                 
-            } else {
-                
-                guard let data = data, error == nil else { return }
                 let json = JSON(data: data)
                 let apiStatus = json["code"]
                 let apiStatusString = apiStatus.string!
@@ -81,8 +81,7 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
                     let jsonData = json["data"]["eveningtv"]
                     self.eveningTVData = [EveningTV(json: jsonData)]
                     
-                    DispatchQueue.main.async() {
-                        
+                    DispatchQueue.main.async {
                         // Setup the offset and off timer settings
                         self.turnOnHRLabel.text = String(self.eveningTVData[0].onHr!)
                         self.turnOnHRStepper.value = Double(self.eveningTVData[0].onHr!)
@@ -97,18 +96,17 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
                         
                         // Refresh the table view
                         self.LightCollectionView.reloadData()
-                        
                     }
                 } else {
-                    
-                    // Update the UI
-                    DispatchQueue.main.async() {
+                    DispatchQueue.main.async {
+                        // Show error
                         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
                         SVProgressHUD.showError(withStatus: "Unable to retrieve settings")
                     }
                 }
-            }
-        }).resume()
+            })
+            task.resume()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -189,7 +187,6 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
             cell?.powerButton.backgroundColor = color
 
         }
-        
     }
     
     @objc func powerButtonValueChange(_ sender: UITapGestureRecognizer!) {
@@ -273,7 +270,6 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
             eveningTVData[0].lights![row!].colormode = "xy"
             cell?.powerButton.backgroundColor = newColor
         }
-
     }
     
     @objc func saveSettingsAction(sender: UIBarButtonItem) {
@@ -281,31 +277,31 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
         // Disable the save button
         self.navigationItem.rightBarButtonItem?.isEnabled = false
         
-        // Create post request
-        let AlfredBaseURL = readPlist(item: "AlfredSchedulerURL")
-        let AlfredAppKey = readPlist(item: "AlfredAppKey")
-        let url = URL(string: AlfredBaseURL + "settings/saveeveningtv" + AlfredAppKey)
-        
-        var request = URLRequest(url: url!)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.httpBody = try! JSONSerialization.data(withJSONObject: eveningTVData[0].dictionaryRepresentation(), options: [])
-        
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+        DispatchQueue.global(qos: .userInitiated).async {
             
-            // Update the UI
-            DispatchQueue.main.async() {
+            // Create post request
+            let AlfredBaseURL = readPlist(item: "AlfredSchedulerURL")
+            let AlfredAppKey = readPlist(item: "AlfredAppKey")
+            let url = URL(string: AlfredBaseURL + "settings/saveeveningtv" + AlfredAppKey)
+        
+            var request = URLRequest(url: url!)
+            request.httpMethod = "POST"
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            request.httpBody = try! JSONSerialization.data(withJSONObject: self.eveningTVData[0].dictionaryRepresentation(), options: [])
+        
+            let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
+            let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
                 
                 guard let data = data, error == nil else { // Check for fundamental networking error
-                    print("save data error: " + error.debugDescription)
-                    
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showError(withStatus: "Network/API connection error")
-
-                    // Re enable the save button
-                    self.navigationItem.rightBarButtonItem?.isEnabled = true
-                    
+                    DispatchQueue.main.async {
+                        // Show error
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showError(withStatus: "Network/API connection error")
+                        
+                        // Re enable the save button
+                        self.navigationItem.rightBarButtonItem?.isEnabled = true
+                    }
                     return
                 }
                 
@@ -314,22 +310,22 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
                 let apiStatusString = apiStatus.string!
                 
                 if apiStatusString == "sucess" {
-                    
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showSuccess(withStatus: "Saved")
-
+                    DispatchQueue.main.async {
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showSuccess(withStatus: "Saved")
+                    }
                 } else {
-                    
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showError(withStatus: "Unable to save settings")
-
+                    DispatchQueue.main.async {
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showError(withStatus: "Unable to save settings")
+                    }
                 }
                 
                 // Re enable the save button
                 self.navigationItem.rightBarButtonItem?.isEnabled = true
-            }
+            })
+            task.resume()
         }
-        task.resume()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

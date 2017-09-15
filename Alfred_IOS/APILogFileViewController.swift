@@ -31,20 +31,24 @@ class APILogFileViewController: UIViewController, UITableViewDataSource, UITable
     //MARK: Private Methods
     func getData() {
         
-        let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
-        let AlfredAppKey = readPlist(item: "AlfredAppKey")
-        let url = URL(string: AlfredBaseURL + "displaylog" + AlfredAppKey + "&page=" + String(viewPage))
-        
-        URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
-            if error != nil {
+        DispatchQueue.global(qos: .userInitiated).async {
+
+            let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+            let AlfredAppKey = readPlist(item: "AlfredAppKey")
+            let url = URL(string: AlfredBaseURL + "displaylog" + AlfredAppKey + "&page=" + String(self.viewPage))!
+            let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
+            let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
                 
-                SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                SVProgressHUD.showError(withStatus: "Network/API connection error")
-                
-            } else {
-                
-                let data = data
-                let json = JSON(data: data!)
+                guard let data = data, error == nil else { // Check for fundamental networking error
+                     DispatchQueue.main.async {
+                        // Show error
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showError(withStatus: "Network/API connection error")
+                    }
+                    return
+                }
+
+                let json = JSON(data: data)
                 let apiStatus = json["code"]
                 let apiStatusString = apiStatus.string!
                 
@@ -59,20 +63,19 @@ class APILogFileViewController: UIViewController, UITableViewDataSource, UITable
                     }
                     
                     // Update the UI
-                    DispatchQueue.main.async() {
+                     DispatchQueue.main.async {
                         self.LogFileTableView.reloadData() // Refresh the table view
                     }
-                    
                 } else {
-                    
-                    // Update the UI
-                    DispatchQueue.main.async() {
+                     DispatchQueue.main.async {
+                        // Update the UI
                         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
                         SVProgressHUD.showError(withStatus: "NUnable to retrieve logfile data")
                     }
                 }
-            }
-        }).resume()
+            })
+            task.resume()
+        }
     }
     
     lazy var refreshControl: UIRefreshControl = {
@@ -134,7 +137,6 @@ class APILogFileViewController: UIViewController, UITableViewDataSource, UITable
         // Stop spinner
         SVProgressHUD.dismiss()
     }
-
 }
 
     

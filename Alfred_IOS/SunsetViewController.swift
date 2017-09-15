@@ -72,23 +72,25 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
     //MARK: Private Methods
     func getData() {
         
-        var AlfredBaseURL = readPlist(item: "AlfredBaseURL")
-        let AlfredAppKey = readPlist(item: "AlfredAppKey")
-        var url = URL(string: AlfredBaseURL + "weather/sunset" + AlfredAppKey)
+        let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
 
-        // Get sunset time
-        URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
-            
-            if error != nil {
-                
-                // Update the UI
-                DispatchQueue.main.async() {
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showError(withStatus: "Network/API connection error")
+        DispatchQueue.global(qos: .userInitiated).async {
+        
+            // Get sunset time
+            let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+            let AlfredAppKey = readPlist(item: "AlfredAppKey")
+            let url = URL(string: AlfredBaseURL + "weather/sunset" + AlfredAppKey)!
+            let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+
+                guard let data = data, error == nil else { // Check for fundamental networking error
+                    DispatchQueue.main.async {
+                        // Show error
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showError(withStatus: "Network/API connection error")
+                    }
+                    return
                 }
-            } else {
                 
-                guard let data = data, error == nil else { return }
                 let json = JSON(data: data)
                 let apiStatus = json["code"]
                 let apiStatusString = apiStatus.string!
@@ -97,38 +99,40 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
                     // Save json to custom classes
                     let sunSet = json["data"].string!
                     
-                    DispatchQueue.main.async() {
-                        
-                        // Update the sunset time label
-                        self.sunsetTimeLabel.text = "Today's sunset is at " + sunSet
-                        
-                    }
-                } else {
-
+                    // Update the sunset time label
                     DispatchQueue.main.async {
+                        self.sunsetTimeLabel.text = "Today's sunset is at " + sunSet
+                    }
+            
+                } else {
+                    DispatchQueue.main.async {
+                        // Show error
                         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
                         SVProgressHUD.showError(withStatus: "Unable to retrieve settings")
                     }
                 }
-            }
-        }).resume()
+            
+            })
+            task.resume()
+        }
         
         // Get settings
-        AlfredBaseURL = readPlist(item: "AlfredSchedulerURL")
-        url = URL(string: AlfredBaseURL + "settings/view" + AlfredAppKey)
-        URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
-            
-            if error != nil {
-                
-                // Update the UI
-                DispatchQueue.main.async {
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showError(withStatus: "Network/API connection error")
+        DispatchQueue.global(qos: .userInitiated).async {
+
+            let AlfredBaseURL = readPlist(item: "AlfredSchedulerURL")
+            let AlfredAppKey = readPlist(item: "AlfredAppKey")
+            let url = URL(string: AlfredBaseURL + "settings/view" + AlfredAppKey)!
+            let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+
+                guard let data = data, error == nil else { // Check for fundamental networking error
+                    DispatchQueue.main.async {
+                        // Show error
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showError(withStatus: "Network/API connection error")
+                    }
+                    return
                 }
                 
-            } else {
-                
-                guard let data = data, error == nil else { return }
                 let json = JSON(data: data)
                 let apiStatus = json["code"]
                 let apiStatusString = apiStatus.string!
@@ -138,43 +142,42 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
                     // Save json to custom classes
                     let jsonData = json["data"]["evening"]
                     self.eveningData = [Evening(json: jsonData)]
-                                        
-                    DispatchQueue.main.async() {
-                        
-                        // Setup the offset and off timer settings
-                        self.offsetHRLabel.text = String(self.eveningData[0].offsetHr!)
-                        self.offsetHRStepper.value = Double(self.eveningData[0].offsetHr!)
-                        
-                        self.offsetMINLabel.text = String(self.eveningData[0].offsetMin!)
-                        self.offsetMINStepper.value = Double(self.eveningData[0].offsetMin!)
-                        
-                        self.turnoffHRLabel.text = String(self.eveningData[0].offHr!)
-                        self.turnoffHRStepper.value = Double(self.eveningData[0].offHr!)
-                        
-                        self.turnoffMINLabel.text = String(self.eveningData[0].offMin!)
-                        self.turnoffMINStepper.value = Double(self.eveningData[0].offMin!)
-                        
-                        // Enable UI controls
-                        self.offsetHRStepper.isEnabled = true
-                        self.offsetMINStepper.isEnabled = true
-                        self.turnoffHRStepper.isEnabled = true
-                        self.turnoffMINStepper.isEnabled = true
-                        self.navigationItem.rightBarButtonItem?.isEnabled = true
-                        
-                        // Refresh the table view
-                        self.LightCollectionView.reloadData()
-                        
-                    }
-                } else {
                     
-                    // Update the UI
+                    // Setup the offset and off timer settings
+                    self.offsetHRLabel.text = String(self.eveningData[0].offsetHr!)
+                    self.offsetHRStepper.value = Double(self.eveningData[0].offsetHr!)
+                    
+                    self.offsetMINLabel.text = String(self.eveningData[0].offsetMin!)
+                    self.offsetMINStepper.value = Double(self.eveningData[0].offsetMin!)
+                    
+                    self.turnoffHRLabel.text = String(self.eveningData[0].offHr!)
+                    self.turnoffHRStepper.value = Double(self.eveningData[0].offHr!)
+                    
+                    self.turnoffMINLabel.text = String(self.eveningData[0].offMin!)
+                    self.turnoffMINStepper.value = Double(self.eveningData[0].offMin!)
+                    
+                    // Enable UI controls
+                    self.offsetHRStepper.isEnabled = true
+                    self.offsetMINStepper.isEnabled = true
+                    self.turnoffHRStepper.isEnabled = true
+                    self.turnoffMINStepper.isEnabled = true
+                    self.navigationItem.rightBarButtonItem?.isEnabled = true
+                    
+                    // Refresh the table view
                     DispatchQueue.main.async {
+                        self.LightCollectionView.reloadData()
+                    }
+                    
+                } else {
+                    DispatchQueue.main.async {
+                        // Show error
                         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
                         SVProgressHUD.showError(withStatus: "Unable to retrieve settings")
                     }
                 }
-            }
-        }).resume()
+            })
+            task.resume()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -256,9 +259,7 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
                 default: color = UIColor.white
             }
             cell?.powerButton.backgroundColor = color
-            
         }
-        
     }
     
     @objc func powerButtonValueChange(_ sender: UITapGestureRecognizer!) {
@@ -349,32 +350,33 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
         
         // Disable the save button
         self.navigationItem.rightBarButtonItem?.isEnabled = false
-        
-        // Create post request
-        let AlfredBaseURL = readPlist(item: "AlfredSchedulerURL")
-        let AlfredAppKey = readPlist(item: "AlfredAppKey")
-        let url = URL(string: AlfredBaseURL + "settings/saveevening" + AlfredAppKey)
-        
-        var request = URLRequest(url: url!)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.httpBody = try! JSONSerialization.data(withJSONObject: eveningData[0].dictionaryRepresentation(), options: [])
-        
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            
-            // Update the UI
-            DispatchQueue.main.async() {
-                
-                guard let data = data, error == nil else { // Check for fundamental networking error
-                    print("save data error: " + error.debugDescription)
-                    
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showError(withStatus: "Unable to save settings")
 
-                    // Re enable the save button
-                    self.navigationItem.rightBarButtonItem?.isEnabled = true
-                    
+        DispatchQueue.global(qos: .userInitiated).async {
+            
+            // Create post request
+            let AlfredBaseURL = readPlist(item: "AlfredSchedulerURL")
+            let AlfredAppKey = readPlist(item: "AlfredAppKey")
+            let url = URL(string: AlfredBaseURL + "settings/saveevening" + AlfredAppKey)
+            
+            var request = URLRequest(url: url!)
+            request.httpMethod = "POST"
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            request.httpBody = try! JSONSerialization.data(withJSONObject: self.eveningData[0].dictionaryRepresentation(), options: [])
+         
+            let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
+            let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+
+                // Update the UI
+                guard let data = data, error == nil else { // Check for fundamental networking error
+                   DispatchQueue.main.async {
+                        // Show error
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showError(withStatus: "Unable to save settings")
+
+                        // Re enable the save button
+                        self.navigationItem.rightBarButtonItem?.isEnabled = true
+                    }
                     return
                 }
                 
@@ -383,22 +385,24 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
                 let apiStatusString = apiStatus.string!
                 
                 if apiStatusString == "sucess" {
-                    
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showSuccess(withStatus: "Saved")
-
+                    DispatchQueue.main.async {
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showSuccess(withStatus: "Saved")
+                    }
                 } else {
-                    
-                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                    SVProgressHUD.showError(withStatus: "Unable to save settings")
-                    
+                    DispatchQueue.main.async {
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showError(withStatus: "Unable to save settings")
+                    }
                 }
                 
                 // Re enable the save button
-                self.navigationItem.rightBarButtonItem?.isEnabled = true
-            }
+                DispatchQueue.main.async {
+                    self.navigationItem.rightBarButtonItem?.isEnabled = true
+                }
+            })
+            task.resume()
         }
-        task.resume()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -407,5 +411,4 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
         // Stop spinner
         SVProgressHUD.dismiss()
     }
-
 }

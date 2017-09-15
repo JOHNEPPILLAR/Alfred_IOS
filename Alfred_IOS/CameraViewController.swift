@@ -11,25 +11,26 @@ import SVProgressHUD
 
 class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
 
-    @IBOutlet weak var backgroundImage: UIImageView!
     var movieView: UIView!
     var mediaPlayer = VLCMediaPlayer()
     var videoTimer: Timer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        // Setup camera
+        // Setup event timers to see what the player is doing
+        videoTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(mediaPlayerStateChanged), userInfo: nil, repeats: true)
 
         // Add tap gesture for play/pause
         let gesture = UITapGestureRecognizer(target: self, action: #selector(CameraViewController.movieViewTapped(_:)))
         self.view.addGestureRecognizer(gesture)
-        
-        // Playing RTSP stream
+
+        // Play RTSP stream
         let camURL = readPlist(item: "CamURL")
         let url = URL(string: camURL)
         
@@ -37,14 +38,13 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
         mediaPlayer.media = media
         mediaPlayer.delegate = self
         mediaPlayer.drawable = self.view
-        
-        videoTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(mediaPlayerStateChanged), userInfo: nil, repeats: true)
-        
-        // Play video
-        mediaPlayer.play()
 
         // Show busy acivity
-        SVProgressHUD.show(withStatus: "Connecting")
+        //SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+        //SVProgressHUD.show(withStatus: "Connecting")
+
+        // Play video
+        mediaPlayer.play()
         
     }
     
@@ -52,7 +52,7 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
         super.viewWillDisappear(animated)
 
         // Stop spinner
-        SVProgressHUD.dismiss()
+        //SVProgressHUD.dismiss()
         
         // Stop video as moving away from view
         mediaPlayer.stop()
@@ -78,12 +78,12 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
         
         switch mediaPlayer.state {
         case .error:
+            print ("error")
             SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
             SVProgressHUD.showError(withStatus: "Network/API connection error")
         case .buffering:
             break
         case .playing:
-            backgroundImage.image = nil
             SVProgressHUD.dismiss()
         default: break
         }

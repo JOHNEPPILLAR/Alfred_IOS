@@ -1617,18 +1617,9 @@
                     <view key="view" contentMode="scaleToFill" id="pif-U6-RAA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="Z7P-P5-pf4">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Video" image="ic_camera" id="3lw-fI-f3r"/>
-                    <connections>
-                        <outlet property="backgroundImage" destination="Z7P-P5-pf4" id="Zku-wL-E2V"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IDr-Zb-1bz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
