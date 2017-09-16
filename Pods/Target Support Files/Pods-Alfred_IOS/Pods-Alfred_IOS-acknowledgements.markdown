@@ -40,7 +40,7 @@ SOFTWARE.
 >>>>>>> 1c4acaba914c1bcb2c9abf6ae49ca07b1dea1f02
 
 
-## MobileVLCKit
+## MobileVLCKit-unstable
 
                   GNU LESSER GENERAL PUBLIC LICENSE
                        Version 2.1, February 1999

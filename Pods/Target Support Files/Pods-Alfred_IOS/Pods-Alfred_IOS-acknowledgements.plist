@@ -565,7 +565,7 @@ That's all there is to it!
 			<key>License</key>
 			<string>LGPL v2.1</string>
 			<key>Title</key>
-			<string>MobileVLCKit</string>
+			<string>MobileVLCKit-unstable</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>

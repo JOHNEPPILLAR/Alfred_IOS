@@ -213,14 +213,15 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
             
         }
         
+        // Call Alfred to update the light group
+        let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+        let AlfredAppKey = readPlist(item: "AlfredAppKey")
+        let lightParams = "&light_number=" + "\(cell.tag)" + "&light_status=" + lightsOn + "&percentage=" + String(self.roomLightsData[0].data![row!].action!.bri!)
+        let url = URL(string: AlfredBaseURL + "lights/lightgrouponoff" + AlfredAppKey + lightParams)!
+        let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
+        
         DispatchQueue.global(qos: .userInitiated).async {
-            
-            // Call Alfred to update the light group
-            let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
-            let AlfredAppKey = readPlist(item: "AlfredAppKey")
-            let lightParams = "&light_number=" + "\(cell.tag)" + "&light_status=" + lightsOn + "&percentage=" + String(self.roomLightsData[0].data![row!].action!.bri!)
-            let url = URL(string: AlfredBaseURL + "lights/lightgrouponoff" + AlfredAppKey + lightParams)!
-            let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
+
             let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
                 
                 guard let data = data, error == nil else { // Check for fundamental networking error

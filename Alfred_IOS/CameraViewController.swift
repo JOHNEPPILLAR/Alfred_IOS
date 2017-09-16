@@ -10,14 +10,32 @@ import UIKit
 import SVProgressHUD
 
 class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
-
+   
+    @IBOutlet weak var videoStateLabel: UILabel!
+    
+    var videoTimer: Timer!
     var movieView: UIView!
     var mediaPlayer = VLCMediaPlayer()
-    var videoTimer: Timer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Add rotation observer
+        NotificationCenter.default.addObserver(self, selector: #selector(CameraViewController.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+
+        // Setup movieView
+        self.movieView = UIView()
+        self.movieView.frame = UIScreen.screens[0].bounds
+        
+        // Add tap gesture for play/pause
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(CameraViewController.movieViewTapped(_:)))
+        self.movieView.addGestureRecognizer(gesture)
+        
+        // Add movieView to view controller
+        view.addSubview(self.movieView)
+
+        // Set video state label
+        videoStateLabel.text = "Connecting..."
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -26,34 +44,24 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
         // Setup event timers to see what the player is doing
         videoTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(mediaPlayerStateChanged), userInfo: nil, repeats: true)
 
-        // Add tap gesture for play/pause
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(CameraViewController.movieViewTapped(_:)))
-        self.view.addGestureRecognizer(gesture)
-
         // Play RTSP stream
         let camURL = readPlist(item: "CamURL")
         let url = URL(string: camURL)
         
-        let media = VLCMedia(url: url)
+        let media = VLCMedia(url: url!)
         mediaPlayer.media = media
         mediaPlayer.delegate = self
-        mediaPlayer.drawable = self.view
-
-        // Show busy acivity
-        //SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-        //SVProgressHUD.show(withStatus: "Connecting")
-
-        // Play video
+        mediaPlayer.drawable = self.movieView
         mediaPlayer.play()
         
+        // Bring video state label to front
+        view.bringSubview(toFront: videoStateLabel)
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
-        // Stop spinner
-        //SVProgressHUD.dismiss()
-        
         // Stop video as moving away from view
         mediaPlayer.stop()
         mediaPlayer.media = nil
@@ -70,6 +78,11 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
         }
     }
     
+    @objc func rotated() {
+        // Always fill entire screen
+        self.movieView.frame = self.view.frame
+    }
+    
     // Allow landscape orientation
     func canRotate() -> Void {}
     
@@ -78,13 +91,15 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
         
         switch mediaPlayer.state {
         case .error:
-            print ("error")
             SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
             SVProgressHUD.showError(withStatus: "Network/API connection error")
-        case .buffering:
             break
         case .playing:
-            SVProgressHUD.dismiss()
+            videoStateLabel.text = "Live streaming"
+            break
+        case .paused:
+            videoStateLabel.text = "Paused"
+            break
         default: break
         }
     }
@@ -99,7 +114,7 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
         }
         else {
             mediaPlayer.play()
-            UItxt = "Playing"
+            UItxt = "Live streaming"
         }
         
         // Inform user of event
