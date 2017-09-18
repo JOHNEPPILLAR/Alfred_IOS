@@ -42,27 +42,35 @@ class BedHeaterViewController: UIViewController {
         if let theLabel = self.view.viewWithTag(Int(sender.value)+90) as? UILabel {
             theLabel.isHidden = false;
         }
+        self.bedData[0].bedTemp = Int(sender.value)
     }
 
     @IBOutlet weak var onHR: UILabel!
     @IBOutlet weak var onHRStepper: UIStepper!
     @IBAction func onHRTrigger(_ sender: UIStepper) {
         onHR.text = Int(sender.value).description
+        self.bedData[0].onHR = Int(sender.value)
     }
     
     @IBOutlet weak var onMin: UILabel!
     @IBOutlet weak var onMinStepper: UIStepper!
     @IBAction func onMinTrigger(_ sender: UIStepper) {
+        onMin.text = Int(sender.value).description
+        self.bedData[0].onMin = Int(sender.value)
     }
     
     @IBOutlet weak var offHR: UILabel!
     @IBOutlet weak var offHRStepper: UIStepper!
     @IBAction func offHRTrigger(_ sender: UIStepper) {
+        offHR.text = Int(sender.value).description
+        self.bedData[0].offHR = Int(sender.value)
     }
 
     @IBOutlet weak var offMin: UILabel!
     @IBOutlet weak var offMinStepper: UIStepper!
     @IBAction func ofMinTrigger(_ sender: UIStepper) {
+        offMin.text = Int(sender.value).description
+        self.bedData[0].offMin = Int(sender.value)
     }
     
     override func viewDidLoad() {
