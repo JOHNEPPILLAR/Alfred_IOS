@@ -13,6 +13,7 @@ public final class Bed: NSCoding {
     
     // MARK: Declaration for string constants to be used to decode and also serialize.
     private struct SerializationKeys {
+        static let on = "on"
         static let onMin = "onMin"
         static let onHR = "onHR"
         static let offMin = "offMin"
@@ -24,6 +25,7 @@ public final class Bed: NSCoding {
     }
     
     // MARK: Properties
+    public var on: Bool? = false
     public var onMin: Int?
     public var onHR: Int?
     public var offMin: Int?
@@ -46,6 +48,7 @@ public final class Bed: NSCoding {
     ///
     /// - parameter json: JSON object from SwiftyJSON.
     public required init(json: JSON) {
+        on = json[SerializationKeys.on].boolValue
         onMin = json[SerializationKeys.onMin].int
         onHR = json[SerializationKeys.onHR].int
         offMin = json[SerializationKeys.offMin].int
@@ -61,6 +64,7 @@ public final class Bed: NSCoding {
     /// - returns: A Key value pair containing all valid values in the object.
     public func dictionaryRepresentation() -> [String: Any] {
         var dictionary: [String: Any] = [:]
+        dictionary[SerializationKeys.on] = on
         if let value = onMin { dictionary[SerializationKeys.onMin] = value }
         if let value = onHR { dictionary[SerializationKeys.onHR] = value }
         if let value = offMin { dictionary[SerializationKeys.offMin] = value }
@@ -74,6 +78,7 @@ public final class Bed: NSCoding {
     
     // MARK: NSCoding Protocol
     required public init(coder aDecoder: NSCoder) {
+        self.on = aDecoder.decodeBool(forKey: SerializationKeys.on)
         self.onMin = aDecoder.decodeObject(forKey: SerializationKeys.onMin) as? Int
         self.onHR = aDecoder.decodeObject(forKey: SerializationKeys.onHR) as? Int
         self.offMin = aDecoder.decodeObject(forKey: SerializationKeys.offMin) as? Int
@@ -85,6 +90,7 @@ public final class Bed: NSCoding {
     }
     
     public func encode(with aCoder: NSCoder) {
+        aCoder.encode(on, forKey: SerializationKeys.on)
         aCoder.encode(onMin, forKey: SerializationKeys.onMin)
         aCoder.encode(onHR, forKey: SerializationKeys.onHR)
         aCoder.encode(offMin, forKey: SerializationKeys.offMin)

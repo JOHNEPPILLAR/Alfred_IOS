@@ -14,18 +14,11 @@ class BedHeaterViewController: UIViewController {
 
     var bedData = [Bed]()
     
-    @IBOutlet weak var tempSlider: UISlider!
-    @IBAction func tempSliderValue(_ sender: UISlider) {
-        for i in 0...10 {
-            if let theLabel = self.view.viewWithTag(Int(i)+90) as? UILabel {
-                theLabel.isHidden = true;
-            }
-        }
-        if let theLabel = self.view.viewWithTag(Int(sender.value)+90) as? UILabel {
-            theLabel.isHidden = false;
-        }
+    @IBOutlet weak var masterOn: UISwitch!
+    @IBAction func masterOnOff(_ sender: UISwitch) {
+        self.bedData[0].on = sender.isOn
     }
-
+    
     @IBOutlet weak var sideLabel: UILabel!
     @IBOutlet weak var useDI: UISwitch!
     @IBAction func useDI(_ sender: UISwitch) {
@@ -39,6 +32,18 @@ class BedHeaterViewController: UIViewController {
         self.bedData[0].trigger = Int(sender.value)
     }
     
+    @IBOutlet weak var tempSlider: UISlider!
+    @IBAction func tempSliderValue(_ sender: UISlider) {
+        for i in 0...10 {
+            if let theLabel = self.view.viewWithTag(Int(i)+90) as? UILabel {
+                theLabel.isHidden = true;
+            }
+        }
+        if let theLabel = self.view.viewWithTag(Int(sender.value)+90) as? UILabel {
+            theLabel.isHidden = false;
+        }
+    }
+
     @IBOutlet weak var onHR: UILabel!
     @IBOutlet weak var onHRStepper: UIStepper!
     @IBAction func onHRTrigger(_ sender: UIStepper) {
@@ -82,7 +87,7 @@ class BedHeaterViewController: UIViewController {
             }
         }
         
-        // Position slider
+        // Position slider vertical
         tempSlider.transform = CGAffineTransform(rotationAngle: -CGFloat.pi/2)
         tempSlider.frame = CGRect(x: 59, y: 70, width: tempSlider.frame.size.width, height: 200)
         
@@ -136,6 +141,12 @@ class BedHeaterViewController: UIViewController {
                     //}
                         
                     // Setup UI from settings
+                    if self.bedData[0].on == true {
+                        self.masterOn.setOn(true, animated: true)
+                    } else {
+                        self.masterOn.setOn(false, animated: true)
+                    }
+
                     if self.bedData[0].useDI == true {
                         self.useDI.setOn(true, animated: true)
                     } else {
@@ -163,7 +174,6 @@ class BedHeaterViewController: UIViewController {
 
                     self.tempSlider.value = Float(self.bedData[0].bedTemp!)
                     
-                    
                     // Enable UI controls
                     self.triggerStepper.isEnabled = true
                     self.onMinStepper.isEnabled = true
@@ -188,9 +198,57 @@ class BedHeaterViewController: UIViewController {
         
         // Disable the save button
         self.navigationItem.rightBarButtonItem?.isEnabled = false
-     
         
-        
+        DispatchQueue.global(qos: .userInitiated).async {
+            
+            // Create post request
+            let AlfredBaseURL = readPlist(item: "AlfredSchedulerURL")
+            let AlfredAppKey = readPlist(item: "AlfredAppKey")
+            let url = URL(string: AlfredBaseURL + "settings/savebed" + AlfredAppKey)
+            
+            var request = URLRequest(url: url!)
+            request.httpMethod = "POST"
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            request.httpBody = try! JSONSerialization.data(withJSONObject: self.bedData[0].dictionaryRepresentation(), options: [])
+            let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
+            let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+                
+                guard let data = data, error == nil else { // Check for fundamental networking error
+                    DispatchQueue.main.async {
+                        // Show error
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showError(withStatus: "Network/API connection error")
+                        
+                        // Re enable the save button
+                        self.navigationItem.rightBarButtonItem?.isEnabled = true
+                    }
+                    return
+                }
+                
+                let json = JSON(data: data)
+                let apiStatus = json["code"]
+                let apiStatusString = apiStatus.string!
+                
+                if apiStatusString == "sucess" {
+                    DispatchQueue.main.async {
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showSuccess(withStatus: "Saved")
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                        SVProgressHUD.showError(withStatus: "Unable to save settings")
+                    }
+                }
+                
+                // Re enable the save button
+                DispatchQueue.main.async {
+                    self.navigationItem.rightBarButtonItem?.isEnabled = true
+                }
+            })
+            task.resume()
+        }
     }
     
     override func didReceiveMemoryWarning() {

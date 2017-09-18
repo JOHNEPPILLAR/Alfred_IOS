@@ -940,6 +940,7 @@
                                                         <rect key="frame" x="279" y="19" width="49" height="31"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <connections>
+                                                            <action selector="masterOnOff:" destination="ClN-Ks-vZU" eventType="valueChanged" id="Yt0-IS-u4u"/>
                                                             <action selector="useDI:" destination="ClN-Ks-vZU" eventType="valueChanged" id="ue5-MY-N4g"/>
                                                         </connections>
                                                     </switch>
@@ -1181,6 +1182,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Bed Heater" id="76W-mE-aFX"/>
                     <connections>
+                        <outlet property="masterOn" destination="3ZX-yz-2Mr" id="qJU-c1-43V"/>
                         <outlet property="offHR" destination="9Wl-T3-2yw" id="WzJ-ni-GuO"/>
                         <outlet property="offHRStepper" destination="7QA-6u-jRk" id="gk9-wS-DSZ"/>
                         <outlet property="offMin" destination="WgU-Q4-cYm" id="eCW-Bd-C4q"/>
