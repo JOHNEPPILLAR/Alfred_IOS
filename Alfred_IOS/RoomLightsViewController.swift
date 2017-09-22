@@ -11,7 +11,11 @@ import SwiftyJSON
 import SVProgressHUD
 import MTCircularSlider
 
-class RoomLightsViewController: UIViewController, UICollectionViewDataSource, colorPickerDelegate {
+class RoomLightsViewController: UIViewController, UICollectionViewDataSource, colorPickerDelegate, URLSessionDelegate {
+    
+    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        completionHandler(URLSession.AuthChallengeDisposition.useCredential, URLCredential(trust: challenge.protectionSpace.serverTrust!) )
+    }
     
     var roomLightsData = [RoomLights]()
     var getDataTimer: Timer!
@@ -47,7 +51,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
             let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
             let AlfredAppKey = readPlist(item: "AlfredAppKey")
             let url = URL(string: AlfredBaseURL + "lights/listlightgroups" + AlfredAppKey)!
-            let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
+            let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
             let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
                 
                 guard let data = data, error == nil else { // Check for fundamental networking error
@@ -148,7 +152,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
             let AlfredAppKey = readPlist(item: "AlfredAppKey")
             let lightParams = "&light_number=" + "\(cell!.tag)" + "&percentage=" + String(self.roomLightsData[0].data![row].action!.bri!)
             let url = URL(string: AlfredBaseURL + "lights/brightenlightgroup" + AlfredAppKey + lightParams)!
-            let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
+            let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
             let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
                 
                 guard let data = data, error == nil else { // Check for fundamental networking error
@@ -218,8 +222,8 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
         let AlfredAppKey = readPlist(item: "AlfredAppKey")
         let lightParams = "&light_number=" + "\(cell.tag)" + "&light_status=" + lightsOn + "&percentage=" + String(self.roomLightsData[0].data![row!].action!.bri!)
         let url = URL(string: AlfredBaseURL + "lights/lightgrouponoff" + AlfredAppKey + lightParams)!
-        let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
-        
+        let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
+
         DispatchQueue.global(qos: .userInitiated).async {
 
             let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
@@ -319,7 +323,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
             let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
             let AlfredAppKey: String = readPlist(item: "AlfredAppKey")
             let url = URL(string: AlfredBaseURL + "lights/lightgrouponoff" + AlfredAppKey + lightParams)!
-            let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
+            let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
             let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
                 
                 guard let data = data, error == nil else { // Check for fundamental networking error
@@ -352,7 +356,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
             let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
             let AlfredAppKey = readPlist(item: "AlfredAppKey")
             let url = URL(string: AlfredBaseURL + "lights/alloff" + AlfredAppKey)!
-            let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
+            let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
             let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
                 
                 guard let data = data, error == nil else { // Check for fundamental networking error

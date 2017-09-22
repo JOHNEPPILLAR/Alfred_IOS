@@ -10,7 +10,11 @@ import UIKit
 import SwiftyJSON
 import SVProgressHUD
 
-class BedHeaterViewController: UIViewController {
+class BedHeaterViewController: UIViewController, URLSessionDelegate {
+    
+    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        completionHandler(URLSession.AuthChallengeDisposition.useCredential, URLCredential(trust: challenge.protectionSpace.serverTrust!) )
+    }
 
     var bedData = [Bed]()
     
@@ -110,10 +114,15 @@ class BedHeaterViewController: UIViewController {
         SVProgressHUD.dismiss()
     }
 
+    func registerSettingsBundle(){
+        let appDefaults = [String:AnyObject]()
+        UserDefaults.standard.register(defaults: appDefaults)
+    }
+    
     func getData() {
         
-        let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
-        
+        let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
+
         DispatchQueue.global(qos: .userInitiated).async {
             
             let AlfredBaseURL = readPlist(item: "AlfredSchedulerURL")
@@ -139,14 +148,18 @@ class BedHeaterViewController: UIViewController {
                     // Save json to custom classes
                     let jsonData = json["data"]["bed"]
                     
-                    // If JP then map JP's settings
-                    //if true {
+                    // Check the defaults
+                    let userDefaults = UserDefaults.standard
+                    UserDefaults.standard.register(defaults: [String : Any]())
+                    let whoIsThis = userDefaults.string(forKey: "WHO_IS_THIS")
+                    
+                    if whoIsThis == "Fran" {
+                        self.bedData = [Bed(json: jsonData[1])]
+                        self.sideLabel.text = "Fran's Side"
+                    } else {
                         self.bedData = [Bed(json: jsonData[0])]
                         self.sideLabel.text = "JP's Side"
-                    //} else {
-                    //    self.bedData = [Bed(json: jsonData[1])]
-                    //    self.sideLabel.text = "Fran's Side"
-                    //}
+                    }
                         
                     // Setup UI from settings
                     if self.bedData[0].on == true {
@@ -219,7 +232,7 @@ class BedHeaterViewController: UIViewController {
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.addValue("application/json", forHTTPHeaderField: "Accept")
             request.httpBody = try! JSONSerialization.data(withJSONObject: self.bedData[0].dictionaryRepresentation(), options: [])
-            let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
+            let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
             let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
                 
                 guard let data = data, error == nil else { // Check for fundamental networking error

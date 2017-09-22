@@ -10,7 +10,11 @@ import UIKit
 import SwiftyJSON
 import SVProgressHUD
 
-class TVViewController: UIViewController {
+class TVViewController: UIViewController, URLSessionDelegate {
+    
+    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        completionHandler(URLSession.AuthChallengeDisposition.useCredential, URLCredential(trust: challenge.protectionSpace.serverTrust!) )
+    }
 
     @IBAction func TV_off(_ sender: Any) {
     
@@ -24,7 +28,7 @@ class TVViewController: UIViewController {
             let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
             let AlfredAppKey = readPlist(item: "AlfredAppKey")
             let url = URL(string: AlfredBaseURL + "tv/turnoff" + AlfredAppKey)!
-            let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
+            let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
             let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
                 
                 guard let data = data, error == nil else { // Check for fundamental networking error
@@ -72,7 +76,7 @@ class TVViewController: UIViewController {
             let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
             let AlfredAppKey = readPlist(item: "AlfredAppKey")
             let url = URL(string: AlfredBaseURL + "tv/watchfiretv" + AlfredAppKey)!
-            let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
+            let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
             let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
                 
                 guard let data = data, error == nil else { // Check for fundamental networking error
@@ -120,7 +124,7 @@ class TVViewController: UIViewController {
             let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
             let AlfredAppKey = readPlist(item: "AlfredAppKey")
             let url = URL(string: AlfredBaseURL + "tv/watchvirgintv" + AlfredAppKey)!
-            let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
+            let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
             let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
                 
                 guard let data = data, error == nil else { // Check for fundamental networking error
@@ -169,7 +173,7 @@ class TVViewController: UIViewController {
             let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
             let AlfredAppKey = readPlist(item: "AlfredAppKey")
             let url = URL(string: AlfredBaseURL + "tv/watchappletv" + AlfredAppKey)!
-            let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
+            let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
             let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
                 
                 guard let data = data, error == nil else { // Check for fundamental networking error
@@ -221,7 +225,7 @@ class TVViewController: UIViewController {
             let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
             let AlfredAppKey = readPlist(item: "AlfredAppKey")
             let url = URL(string: AlfredBaseURL + "tv/playps4" + AlfredAppKey)!
-            let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
+            let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
             let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
                 
                 guard let data = data, error == nil else { // Check for fundamental networking error

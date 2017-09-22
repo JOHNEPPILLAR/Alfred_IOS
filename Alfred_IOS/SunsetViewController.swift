@@ -11,7 +11,11 @@ import SwiftyJSON
 import MTCircularSlider
 import SVProgressHUD
 
-class SunsetViewController: UIViewController, UICollectionViewDataSource, colorPickerDelegate {
+class SunsetViewController: UIViewController, UICollectionViewDataSource, colorPickerDelegate, URLSessionDelegate {
+    
+    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        completionHandler(URLSession.AuthChallengeDisposition.useCredential, URLCredential(trust: challenge.protectionSpace.serverTrust!) )
+    }
     
     var eveningData = [Evening]()
     
@@ -72,7 +76,7 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
     //MARK: Private Methods
     func getData() {
         
-        let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
+        let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
 
         DispatchQueue.global(qos: .userInitiated).async {
         
@@ -364,7 +368,7 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
             request.addValue("application/json", forHTTPHeaderField: "Accept")
             request.httpBody = try! JSONSerialization.data(withJSONObject: self.eveningData[0].dictionaryRepresentation(), options: [])
          
-            let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
+            let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
             let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
 
                 // Update the UI

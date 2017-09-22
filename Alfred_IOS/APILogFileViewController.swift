@@ -10,7 +10,11 @@ import UIKit
 import SwiftyJSON
 import SVProgressHUD
 
-class APILogFileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class APILogFileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, URLSessionDelegate {
+    
+    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        completionHandler(URLSession.AuthChallengeDisposition.useCredential, URLCredential(trust: challenge.protectionSpace.serverTrust!) )
+    }
     
     @IBOutlet weak var LogFileTableView: UITableView!
     
@@ -36,7 +40,7 @@ class APILogFileViewController: UIViewController, UITableViewDataSource, UITable
             let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
             let AlfredAppKey = readPlist(item: "AlfredAppKey")
             let url = URL(string: AlfredBaseURL + "displaylog" + AlfredAppKey + "&page=" + String(self.viewPage))!
-            let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
+            let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
             let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
                 
                 guard let data = data, error == nil else { // Check for fundamental networking error
