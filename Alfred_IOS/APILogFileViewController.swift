@@ -74,7 +74,7 @@ class APILogFileViewController: UIViewController, UITableViewDataSource, UITable
                      DispatchQueue.main.async {
                         // Update the UI
                         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                        SVProgressHUD.showError(withStatus: "NUnable to retrieve logfile data")
+                        SVProgressHUD.showError(withStatus: "Unable to retrieve logfile data")
                     }
                 }
             })

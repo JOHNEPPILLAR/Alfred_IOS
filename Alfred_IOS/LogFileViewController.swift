@@ -55,7 +55,7 @@ class LogFileViewController: UIViewController, UITableViewDataSource, UITableVie
                 let apiStatus = json["code"]
                 let apiStatusString = apiStatus.string!
                 
-                if apiStatusString == "sucess" {
+                if apiStatusString == "true" {
                     
                     let logData = json["data"]
                     let currentpagejson = logData["currentpage"]

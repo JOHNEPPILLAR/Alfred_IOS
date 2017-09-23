@@ -52,7 +52,7 @@ class SettingsViewController: UIViewController, URLSessionDelegate {
             let apiStatus = json["code"]
             let apiStatusString = apiStatus.string!
             
-            if apiStatusString == "sucess" {
+            if apiStatusString == "true" {
                 
                 // Show msg
                 SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
@@ -103,7 +103,7 @@ class SettingsViewController: UIViewController, URLSessionDelegate {
             let apiStatus = json["code"]
             let apiStatusString = apiStatus.string!
             
-            if apiStatusString == "sucess" {
+            if apiStatusString == "true" {
 
                 // Show msg
                 SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)

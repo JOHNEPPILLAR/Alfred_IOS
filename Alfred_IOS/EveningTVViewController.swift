@@ -79,7 +79,7 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
                 let apiStatus = json["code"]
                 let apiStatusString = apiStatus.string!
                 
-                if apiStatusString == "sucess" {
+                if apiStatusString == "true" {
                     
                     // Save json to custom classes
                     let jsonData = json["data"]["eveningtv"]
@@ -313,7 +313,7 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
                 let apiStatus = json["code"]
                 let apiStatusString = apiStatus.string!
                 
-                if apiStatusString == "sucess" {
+                if apiStatusString == "true" {
                     DispatchQueue.main.async {
                         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
                         SVProgressHUD.showSuccess(withStatus: "Saved")
