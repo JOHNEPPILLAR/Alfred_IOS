@@ -67,7 +67,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
                 let apiStatus = json["code"]
                 let apiStatusString = apiStatus.string!
                 
-                if apiStatusString == "sucess" {
+                if apiStatusString == "true" {
                     
                     // Save json to custom classes
                     let jsonData = json
@@ -168,7 +168,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
                 let apiStatus = json["code"]
                 let apiStatusString = apiStatus.string!
                 
-                if apiStatusString != "sucess" {
+                if apiStatusString != "true" {
                     
                     DispatchQueue.main.async {
                         // Show error
@@ -241,7 +241,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
                 let apiStatus = json["code"]
                 let apiStatusString = apiStatus.string!
                 
-                if apiStatusString != "sucess" {
+                if apiStatusString != "true" {
                     DispatchQueue.main.async {
                         // Shoe error
                         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
@@ -339,7 +339,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
                 let apiStatus = json["code"]
                 let apiStatusString = apiStatus.string!
                 
-                if apiStatusString != "sucess" {
+                if apiStatusString != "true" {
                     DispatchQueue.main.async {
                         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
                         SVProgressHUD.showError(withStatus: "Unable to update the light settings")
@@ -372,7 +372,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
                 let pingStatus = json["code"]
                 let pingStatusString = pingStatus.string!
                 
-                if pingStatusString == "sucess" {
+                if pingStatusString == "true" {
                     
                     // Update local data & UI and turn off all light groups
                     for var i in (0..<self.roomLightsData[0].data!.count){

@@ -98,7 +98,7 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
                 let json = JSON(data: data)
                 let apiStatus = json["code"]
                 let apiStatusString = apiStatus.string!
-                if apiStatusString == "sucess" {
+                if apiStatusString == "true" {
                     
                     // Save json to custom classes
                     let sunSet = json["data"].string!

@@ -55,7 +55,7 @@ class ViewController: UIViewController, URLSessionDelegate {
                 let pingStatus = json["code"]
                 let pingStatusString = pingStatus.string!
 
-                if pingStatusString == "sucess" {
+                if pingStatusString == "true" {
 
                     DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
                         self.activityIndicator.stopAnimating()

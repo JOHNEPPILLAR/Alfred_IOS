@@ -48,7 +48,7 @@ class TVViewController: UIViewController, URLSessionDelegate {
                 let apiStatus = json["code"]
                 let apiStatusString = apiStatus.string!
                 
-                if apiStatusString == "sucess" {
+                if apiStatusString == "true" {
                     DispatchQueue.main.async {
                         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
                         SVProgressHUD.showSuccess(withStatus: "Turned off TV")
@@ -96,7 +96,7 @@ class TVViewController: UIViewController, URLSessionDelegate {
                 let apiStatus = json["code"]
                 let apiStatusString = apiStatus.string!
                 
-                if apiStatusString == "sucess" {
+                if apiStatusString == "true" {
                     DispatchQueue.main.async {
                         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
                         SVProgressHUD.showSuccess(withStatus: "Turned on Fire TV")
@@ -145,7 +145,7 @@ class TVViewController: UIViewController, URLSessionDelegate {
                 let apiStatus = json["code"]
                 let apiStatusString = apiStatus.string!
                 
-                if apiStatusString == "sucess" {
+                if apiStatusString == "true" {
                     DispatchQueue.main.async {
                         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
                         SVProgressHUD.showSuccess(withStatus: "Turned on Virgin TV")
@@ -193,7 +193,7 @@ class TVViewController: UIViewController, URLSessionDelegate {
                 let apiStatus = json["code"]
                 let apiStatusString = apiStatus.string!
                 
-                if apiStatusString == "sucess" {
+                if apiStatusString == "true" {
                     
                     DispatchQueue.main.async {
                         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
@@ -244,7 +244,7 @@ class TVViewController: UIViewController, URLSessionDelegate {
                 let apiStatus = json["code"]
                 let apiStatusString = apiStatus.string!
                 
-                if apiStatusString == "sucess" {
+                if apiStatusString == "true" {
                     DispatchQueue.main.async {
                         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
                         SVProgressHUD.showSuccess(withStatus: "Turned on Playstation")

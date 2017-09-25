@@ -42,7 +42,6 @@ class APILogFileViewController: UIViewController, UITableViewDataSource, UITable
             let url = URL(string: AlfredBaseURL + "displaylog" + AlfredAppKey + "&page=" + String(self.viewPage))!
             let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
             let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
-                
                 guard let data = data, error == nil else { // Check for fundamental networking error
                      DispatchQueue.main.async {
                         // Show error
@@ -56,7 +55,7 @@ class APILogFileViewController: UIViewController, UITableViewDataSource, UITable
                 let apiStatus = json["code"]
                 let apiStatusString = apiStatus.string!
                 
-                if apiStatusString == "sucess" {
+                if apiStatusString == "true" {
                     
                     let logData = json["data"]
                     let currentpagejson = logData["currentpage"]
