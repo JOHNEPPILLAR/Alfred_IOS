@@ -312,7 +312,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n/usr/libexec/PlistBuddy -c \"Set :PreferenceSpecifiers:4:DefaultValue '$buildNumber'\" \"$SRCROOT/Alfred_IOS/Settings.bundle/Root.plist\"\nVERSION_NUMBER=\"`$PLISTBUDDY -c \\\"Print CFBundleShortVersionString\\\" \\\"$INFO_PLIST\\\"`\"\n/usr/libexec/PlistBuddy -c \"Set :PreferenceSpecifiers:3:DefaultValue '$VERSION_NUMBER'\" \"$SRCROOT/Alfred_IOS/Settings.bundle/Root.plist\"\n\n\n\n";
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n/usr/libexec/PlistBuddy -c \"Set :PreferenceSpecifiers:4:DefaultValue '$buildNumber'\" \"$SRCROOT/Alfred_IOS/Settings.bundle/Root.plist\"\nVERSION_NUMBER=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\n/usr/libexec/PlistBuddy -c \"Set :PreferenceSpecifiers:3:DefaultValue '$VERSION_NUMBER'\" \"$SRCROOT/Alfred_IOS/Settings.bundle/Root.plist\"\n\n\n\n";
 		};
 		33939A752062C08C0AC9EE9D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
