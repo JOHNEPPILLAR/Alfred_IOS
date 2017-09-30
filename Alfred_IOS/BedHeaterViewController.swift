@@ -20,13 +20,21 @@ class BedHeaterViewController: UIViewController, URLSessionDelegate {
     
     @IBOutlet weak var masterOn: UISwitch!
     @IBAction func masterOnOff(_ sender: UISwitch) {
-        self.bedData[0].on = sender.isOn
+        if sender.isOn {
+            self.bedData[0].on = "true"
+        } else {
+            self.bedData[0].on = "false"
+        }
     }
     
     @IBOutlet weak var sideLabel: UILabel!
     @IBOutlet weak var useDI: UISwitch!
     @IBAction func useDI(_ sender: UISwitch) {
-        self.bedData[0].useDI = sender.isOn
+        if sender.isOn {
+            self.bedData[0].useDI = "true"
+        } else {
+            self.bedData[0].useDI = "false"
+        }
     }
     
     @IBOutlet weak var triggerTemp: UILabel!
@@ -162,13 +170,13 @@ class BedHeaterViewController: UIViewController, URLSessionDelegate {
                     }
                         
                     // Setup UI from settings
-                    if self.bedData[0].on == true {
+                    if self.bedData[0].on == "true" {
                         self.masterOn.setOn(true, animated: true)
                     } else {
                         self.masterOn.setOn(false, animated: true)
                     }
 
-                    if self.bedData[0].useDI == true {
+                    if self.bedData[0].useDI == "true" {
                         self.useDI.setOn(true, animated: true)
                     } else {
                         self.useDI.setOn(false, animated: true)

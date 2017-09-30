@@ -25,13 +25,13 @@ public final class Bed: NSCoding {
     }
     
     // MARK: Properties
-    public var on: Bool? = false
+    public var on: String?
     public var onMin: Int?
     public var onHR: Int?
     public var offMin: Int?
     public var side: String?
     public var trigger: Int?
-    public var useDI: Bool? = false
+    public var useDI: String?
     public var offHR: Int?
     public var bedTemp: Int?
     
@@ -48,13 +48,13 @@ public final class Bed: NSCoding {
     ///
     /// - parameter json: JSON object from SwiftyJSON.
     public required init(json: JSON) {
-        on = json[SerializationKeys.on].boolValue
+        on = json[SerializationKeys.on].string
         onMin = json[SerializationKeys.onMin].int
         onHR = json[SerializationKeys.onHR].int
         offMin = json[SerializationKeys.offMin].int
         side = json[SerializationKeys.side].string
         trigger = json[SerializationKeys.trigger].int
-        useDI = json[SerializationKeys.useDI].boolValue
+        useDI = json[SerializationKeys.useDI].string
         offHR = json[SerializationKeys.offHR].int
         bedTemp = json[SerializationKeys.bedTemp].int
     }
@@ -64,13 +64,13 @@ public final class Bed: NSCoding {
     /// - returns: A Key value pair containing all valid values in the object.
     public func dictionaryRepresentation() -> [String: Any] {
         var dictionary: [String: Any] = [:]
-        dictionary[SerializationKeys.on] = on
+        if let value = on { dictionary[SerializationKeys.on] = value }
         if let value = onMin { dictionary[SerializationKeys.onMin] = value }
         if let value = onHR { dictionary[SerializationKeys.onHR] = value }
         if let value = offMin { dictionary[SerializationKeys.offMin] = value }
         if let value = side { dictionary[SerializationKeys.side] = value }
         if let value = trigger { dictionary[SerializationKeys.trigger] = value }
-        dictionary[SerializationKeys.useDI] = useDI
+        if let value = useDI { dictionary[SerializationKeys.useDI] = value }
         if let value = offHR { dictionary[SerializationKeys.offHR] = value }
         if let value = bedTemp { dictionary[SerializationKeys.bedTemp] = value }
         return dictionary
@@ -78,13 +78,13 @@ public final class Bed: NSCoding {
     
     // MARK: NSCoding Protocol
     required public init(coder aDecoder: NSCoder) {
-        self.on = aDecoder.decodeBool(forKey: SerializationKeys.on)
+        self.on = aDecoder.decodeObject(forKey: SerializationKeys.on) as? String
         self.onMin = aDecoder.decodeObject(forKey: SerializationKeys.onMin) as? Int
         self.onHR = aDecoder.decodeObject(forKey: SerializationKeys.onHR) as? Int
         self.offMin = aDecoder.decodeObject(forKey: SerializationKeys.offMin) as? Int
         self.side = aDecoder.decodeObject(forKey: SerializationKeys.side) as? String
         self.trigger = aDecoder.decodeObject(forKey: SerializationKeys.trigger) as? Int
-        self.useDI = aDecoder.decodeBool(forKey: SerializationKeys.useDI)
+        self.useDI = aDecoder.decodeObject(forKey: SerializationKeys.useDI) as? String
         self.offHR = aDecoder.decodeObject(forKey: SerializationKeys.offHR) as? Int
         self.bedTemp = aDecoder.decodeObject(forKey: SerializationKeys.bedTemp) as? Int
     }
