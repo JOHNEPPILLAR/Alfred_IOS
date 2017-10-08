@@ -76,69 +76,46 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
         // Dispose of any resources that can be recreated.
     }
     
-    //MARK: Private Methods
     func getData() {
-        
-        DispatchQueue.global(qos: .userInitiated).async {
-            let AlfredBaseURL = readPlist(item: "AlfredSchedulerURL")
-            let AlfredAppKey = readPlist(item: "AlfredAppKey")
-            let url = URL(string: AlfredBaseURL + "settings/view" + AlfredAppKey)!
-            let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
-            let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
-                
-                guard let data = data, error == nil else { // Check for fundamental networking error
-                    DispatchQueue.main.async {
-                        // Show error
-                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                        SVProgressHUD.showError(withStatus: "Network/API connection error")
-                    }
-                    return
-                }
 
-                let json = JSON(data: data)
-                let apiStatus = json["code"]
-                let apiStatusString = apiStatus.string!
+        // Get settings
+        let request = getAPIHeaderData(url: "settings/view", useScheduler: true)
+        let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
+        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+            if checkAPIData(apiData: data, response: response, error: error) {
                 
-                if apiStatusString == "true" {
-                    
-                    // Save json to custom classes
-                    let jsonData = json["data"]["morning"]
-                    self.morningData = [Morning(json: jsonData)]
-                    
-                    DispatchQueue.main.async {
-                        // Setup the offset and off timer settings
-                        self.turnOnHRLabel.text = String(self.morningData[0].onHr!)
-                        self.turnOnHRStepper.value = Double(self.morningData[0].onHr!)
-                        self.turnOnMINLabel.text = String(self.morningData[0].onMin!)
-                        self.turnOnMINStepper.value = Double(self.morningData[0].onMin!)
+                // Save json to custom classes
+                let json = JSON(data: data!)
+                let jsonData = json["data"]["morning"]
+                self.morningData = [Morning(json: jsonData)]
+                
+                DispatchQueue.main.async {
+                    // Setup the offset and off timer settings
+                    self.turnOnHRLabel.text = String(self.morningData[0].onHr!)
+                    self.turnOnHRStepper.value = Double(self.morningData[0].onHr!)
+                    self.turnOnMINLabel.text = String(self.morningData[0].onMin!)
+                    self.turnOnMINStepper.value = Double(self.morningData[0].onMin!)
                         
-                        self.turnOffHRLabel.text = String(self.morningData[0].offHr!)
-                        self.turnOffHRStepper.value = Double(self.morningData[0].offHr!)
+                    self.turnOffHRLabel.text = String(self.morningData[0].offHr!)
+                    self.turnOffHRStepper.value = Double(self.morningData[0].offHr!)
                         
-                        self.turnOffMINLabel.text = String(self.morningData[0].offMin!)
-                        self.turnOffMINStepper.value = Double(self.morningData[0].offMin!)
+                    self.turnOffMINLabel.text = String(self.morningData[0].offMin!)
+                    self.turnOffMINStepper.value = Double(self.morningData[0].offMin!)
                         
-                        // Enable UI controls
-                        self.turnOnHRStepper.isEnabled = true
-                        self.turnOnMINStepper.isEnabled = true
-                        self.turnOffHRStepper.isEnabled = true
-                        self.turnOffMINStepper.isEnabled = true
-                        self.navigationItem.rightBarButtonItem?.isEnabled = true
+                    // Enable UI controls
+                    self.turnOnHRStepper.isEnabled = true
+                    self.turnOnMINStepper.isEnabled = true
+                    self.turnOffHRStepper.isEnabled = true
+                    self.turnOffMINStepper.isEnabled = true
+                    self.navigationItem.rightBarButtonItem?.isEnabled = true
                         
-                        // Refresh the table view
-                        self.LightCollectionView.reloadData()
-                    }
-                } else {
-                    DispatchQueue.main.async {
-                        // Show error
-                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                        SVProgressHUD.showError(withStatus: "Unable to retrieve settings")
-                    }
+                    // Refresh the table view
+                    self.LightCollectionView.reloadData()
                 }
+            }
         })
         task.resume()
     }
-}
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         

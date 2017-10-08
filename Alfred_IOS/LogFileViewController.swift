@@ -23,77 +23,45 @@ class LogFileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         LogFileTableView.backgroundView = UIImageView(image: UIImage(named: "background.jpg"))
-        
         LogFileTableView.addSubview(self.refreshControl) // Add pull to refresh functionality
-        
         self.getData() // Get log info from Alfred
-        
     }
 
-    //MARK: Private Methods
-    func getData() {
-        
-        DispatchQueue.global(qos: .userInitiated).async {
-            let AlfredBaseURL = readPlist(item: "AlfredSchedulerURL")
-            let AlfredAppKey = readPlist(item: "AlfredAppKey")
-            let url = URL(string: AlfredBaseURL + "displaylog" + AlfredAppKey + "&page=" + String(self.viewPage))!
-            let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
-            let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+    func getData() {        
+        // Call Alfred to get log file contents
+        let request = getAPIHeaderData(url: "displaylog?page=" + String(self.viewPage), useScheduler: true)
+        let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
+        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+            if checkAPIData(apiData: data, response: response, error: error) {
                 
-                guard let data = data, error == nil else { // Check for fundamental networking error
-                    DispatchQueue.main.async {
-                        // Show error
-                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                        SVProgressHUD.showError(withStatus: "Network/API connection error")
-                    }
-                    return
+                let json = JSON(data: data!)
+                let logData = json["data"]
+                let currentpagejson = logData["currentpage"]
+                self.viewPage = currentpagejson.int!
+                
+                for item in logData["logs"] {
+                    self.logs.append(Logs(json: item.1))
                 }
                 
-                let json = JSON(data: data)
-                let apiStatus = json["code"]
-                let apiStatusString = apiStatus.string!
-                
-                if apiStatusString == "true" {
-                    
-                    let logData = json["data"]
-                    let currentpagejson = logData["currentpage"]
-                    self.viewPage = currentpagejson.int!
-                    
-                    for item in logData["logs"] {
-                        self.logs.append(Logs(json: item.1))
-                    }
-                    
-                    DispatchQueue.main.async {
-                        self.LogFileTableView.reloadData() // Refresh the table view
-                    }
-                    
-                } else {
-                    DispatchQueue.main.async {
-                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                        SVProgressHUD.showError(withStatus: "NUnable to retrieve logfile data")
-                    }
+                DispatchQueue.main.async {
+                    self.LogFileTableView.reloadData() // Refresh the table view
                 }
-            })
-            task.resume()
-        }
+            }
+        })
+        task.resume()
     }
     
     lazy var refreshControl: UIRefreshControl = {
-        
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(LogFileViewController.handleRefresh(_:)), for: UIControlEvents.valueChanged)
         return refreshControl
-        
     }()
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-        
         logs = [Logs]() // clear the local store
         self.getData() // Get data
         refreshControl.endRefreshing() // Stop the pull to refresh UI
-        
     }
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -106,12 +74,10 @@ class LogFileViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "LogFileTableViewCell") as! LogFileTableViewCell
         let row = indexPath.row
         
         cell.backgroundColor = .clear
-        
         if logs[row].level == "info" {
             cell.infoImage.image = UIImage(named: "Information-icon.png")
         } else {
@@ -124,7 +90,6 @@ class LogFileViewController: UIViewController, UITableViewDataSource, UITableVie
             self.viewPage += 1
             getData() // Load more data
         }
-    
         return cell
     }
     
@@ -135,9 +100,6 @@ class LogFileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        // Stop spinner
-        SVProgressHUD.dismiss()
+        SVProgressHUD.dismiss() // Stop spinner
     }
-
 }

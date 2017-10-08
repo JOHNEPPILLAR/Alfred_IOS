@@ -16,112 +16,69 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
     func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
         completionHandler(URLSession.AuthChallengeDisposition.useCredential, URLCredential(trust: challenge.protectionSpace.serverTrust!) )
     }
-    
-    var roomLightsData = [RoomLights]()
+
+    var roomLightsData = [RoomLightsBaseClass]()
     var getDataTimer: Timer!
     
     @IBOutlet weak var LightCollectionViewRooms: UICollectionView!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Get room lights configuration info from Alfred
-        self.getData()
-        
+        self.getData() // Get room lights configuration info from Alfred
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        // Stop spinner
-        SVProgressHUD.dismiss()
-
+        SVProgressHUD.dismiss() // Stop spinner
     }
     
-    //MARK: Private Methods
-    @objc func getData() {
-
-        DispatchQueue.global(qos: .userInitiated).async {
-            
-            let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
-            let AlfredAppKey = readPlist(item: "AlfredAppKey")
-            let url = URL(string: AlfredBaseURL + "lights/listlightgroups" + AlfredAppKey)!
-            let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
-            let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
-                
-                guard let data = data, error == nil else { // Check for fundamental networking error
-                    DispatchQueue.main.async {
-                        // Show error
-                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                        SVProgressHUD.showError(withStatus: "Network/API connection error")
-                    }
-                    return
+    func getData() {
+        let request = getAPIHeaderData(url: "lights/listlightgroups", useScheduler: false)
+        let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
+        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+            if checkAPIData(apiData: data, response: response, error: error) {
+                let responseJSON = JSON(data: data!)
+                self.roomLightsData = [RoomLightsBaseClass(json: responseJSON)]
+                DispatchQueue.main.async {
+                    self.LightCollectionViewRooms.reloadData() // Refresh the colection view
                 }
-
-                let json = JSON(data: data)
-                let apiStatus = json["code"]
-                let apiStatusString = apiStatus.string!
-                
-                if apiStatusString == "true" {
-                    
-                    // Save json to custom classes
-                    let jsonData = json
-                    self.roomLightsData = [RoomLights(json: jsonData)]
-                   
-                    DispatchQueue.main.async {
-                        self.LightCollectionViewRooms.reloadData() // Refresh the colection view
-                    }
-                } else {
-                    DispatchQueue.main.async {
-                        // Show error
-                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                        SVProgressHUD.showError(withStatus: "Unable to retrieve light status")
-                    }
-                }
-            })
-            task.resume()
-        }
+            }
+        })
+        task.resume()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         if (roomLightsData.count) > 0 {
             return (roomLightsData[0].data!.count)
         } else {
             return 0
         }
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "lightCell", for: indexPath) as! LightsCollectionViewCell
         let row = indexPath.row
-        
-        cell.tag = Int((roomLightsData[0].data?[row].id)!)!
-        
-        cell.lightName.setTitle(roomLightsData[0].data?[row].name, for: .normal)
+        cell.tag = Int((roomLightsData[0].data![row].id)!)!
+        cell.lightName.setTitle(roomLightsData[0].data![row].name, for: .normal)
         
         // Work out light group color
-        if (roomLightsData[0].data?[row].state?.anyOn)! {
+        if (roomLightsData[0].data![row].state?.anyOn)! {
             
             // Setup the light bulb colour
             var color = UIColor.white
-            switch roomLightsData[0].data?[row].action?.colormode {
-                case "ct"?: color = HueColorHelper.getColorFromScene((roomLightsData[0].data?[row].action?.ct)!)
-                case "xy"?: color = HueColorHelper.colorFromXY(CGPoint(x: Double((roomLightsData[0].data?[row].action?.xy![0])!), y: Double((roomLightsData[0].data?[row].action?.xy![1])!)), forModel: "LCT007")
+            switch roomLightsData[0].data![row].action?.colormode {
+            case "ct"?: color = HueColorHelper.getColorFromScene((roomLightsData[0].data![row].action?.ct)!)
+            case "xy"?: color = HueColorHelper.colorFromXY(CGPoint(x: Double((roomLightsData[0].data![row].action?.xy![0])!), y: Double((roomLightsData[0].data![row].action?.xy![1])!)), forModel: "LCT007")
                 default: color = UIColor.white
             }
             cell.powerButton.backgroundColor = color
             
         }
-        
-        cell.brightnessSlider.value = Float((roomLightsData[0].data?[row].action?.bri)!)
+        cell.brightnessSlider.value = Float((roomLightsData[0].data![row].action?.bri)!)
         cell.brightnessSlider.tag = row
         cell.brightnessSlider?.addTarget(self, action: #selector(brightnessValueChange(_:)), for: .touchUpInside)
         
@@ -132,7 +89,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
         cell.powerButton.addGestureRecognizer(tapRecognizer)
         let longTapRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPowerButtonPress(_:)))
         cell.powerButton.addGestureRecognizer(longTapRecognizer)
-        
+
         return cell
     }
     
@@ -141,44 +98,28 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
         // Figure out which cell is being updated
         let cell = sender.superview?.superview as? LightsCollectionViewCell
         let row = sender.tag
+        var lightsOn: String
         
         // Update local data store
-        roomLightsData[0].data?[row].action?.bri = Int(sender.value)
+        roomLightsData[0].data![row].action?.bri = Int(sender.value)
+        lightsOn = "off"
+        if (roomLightsData[0].data![row].state?.anyOn)! { lightsOn = "on" }
         
-        DispatchQueue.global(qos: .userInitiated).async {
-            
-            // Call Alfred to update the light group
-            let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
-            let AlfredAppKey = readPlist(item: "AlfredAppKey")
-            let lightParams = "&light_number=" + "\(cell!.tag)" + "&percentage=" + String(self.roomLightsData[0].data![row].action!.bri!)
-            let url = URL(string: AlfredBaseURL + "lights/brightenlightgroup" + AlfredAppKey + lightParams)!
-            let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
-            let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
-                
-                guard let data = data, error == nil else { // Check for fundamental networking error
-                    DispatchQueue.main.async {
-                        // Show error
-                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                        SVProgressHUD.showError(withStatus: "Network/API connection error")
-                    }
-                    return
+        // Call Alfred to update the light group
+        let body: [String: Any] = ["light_number": cell!.tag, "light_status": lightsOn, "brightness": self.roomLightsData[0].data![row].action!.bri!]
+        let APIbody: Data = try! JSONSerialization.data(withJSONObject: body, options: [])
+        let request = putAPIHeaderData(url: "lights/lightgrouponoff", body: APIbody, useScheduler: false)
+        let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
+        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+            if !checkAPIData(apiData: data, response: response, error: error) {
+                // Show error
+                DispatchQueue.main.async {
+                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                    SVProgressHUD.showError(withStatus: "Unable to update the light settings")
                 }
-
-                let json = JSON(data: data)
-                let apiStatus = json["code"]
-                let apiStatusString = apiStatus.string!
-                
-                if apiStatusString != "true" {
-                    
-                    DispatchQueue.main.async {
-                        // Show error
-                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                        SVProgressHUD.showError(withStatus: "Unable to update the light settings")
-                    }
-                }
-            })
-            task.resume()
-    }
+            }
+        })
+        task.resume()
     }
     
     @objc func powerButtonValueChange(_ sender: UITapGestureRecognizer!) {
@@ -190,67 +131,48 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
         let row = indexPath?.row
         var lightsOn: String
         
-        if (roomLightsData[0].data?[row!].state?.anyOn)! {
+        if (roomLightsData[0].data![row!].state?.anyOn)! {
             
-            roomLightsData[0].data?[row!].state?.anyOn = false
+            roomLightsData[0].data![row!].state?.anyOn = false
             cell.powerButton.backgroundColor = UIColor.clear
             lightsOn = "off"
             
         } else {
             
-            roomLightsData[0].data?[row!].state?.anyOn = true
+            roomLightsData[0].data![row!].state?.anyOn = true
             lightsOn = "on"
 
             // Setup the light bulb colour
             var color = UIColor.white
-            switch roomLightsData[0].data?[row!].action?.colormode {
-                case "ct"?: color = HueColorHelper.getColorFromScene((roomLightsData[0].data?[row!].action?.ct)!)
-                case "xy"?: color = HueColorHelper.colorFromXY(CGPoint(x: Double((roomLightsData[0].data?[row!].action?.xy![0])!), y: Double((roomLightsData[0].data?[row!].action?.xy![1])!)), forModel: "LCT007")
+            switch roomLightsData[0].data![row!].action?.colormode {
+            case "ct"?: color = HueColorHelper.getColorFromScene((roomLightsData[0].data![row!].action?.ct)!)
+            case "xy"?: color = HueColorHelper.colorFromXY(CGPoint(x: Double((roomLightsData[0].data![row!].action?.xy![0])!), y: Double((roomLightsData[0].data![row!].action?.xy![1])!)), forModel: "LCT007")
                 default: color = UIColor.white
             }
             cell.powerButton.backgroundColor = color
             
-            if roomLightsData[0].data?[row!].action?.bri == 0 {
-                roomLightsData[0].data?[row!].action?.bri = 128/2
-                cell.brightnessSlider.value = 128
+            if roomLightsData[0].data![row!].action?.bri == 0 {
+                roomLightsData[0].data![row!].action?.bri = 100
+                cell.brightnessSlider.value = 100
             }
             
         }
         
         // Call Alfred to update the light group
-        let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
-        let AlfredAppKey = readPlist(item: "AlfredAppKey")
-        let lightParams = "&light_number=" + "\(cell.tag)" + "&light_status=" + lightsOn + "&percentage=" + String(self.roomLightsData[0].data![row!].action!.bri!)
-        let url = URL(string: AlfredBaseURL + "lights/lightgrouponoff" + AlfredAppKey + lightParams)!
+        let body: [String: Any] = ["light_number": cell.tag, "light_status": lightsOn, "brightness": self.roomLightsData[0].data![row!].action!.bri!]
+        let APIbody: Data = try! JSONSerialization.data(withJSONObject: body, options: [])
+        let request = putAPIHeaderData(url: "lights/lightgrouponoff", body: APIbody, useScheduler: false)
         let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
-
-        DispatchQueue.global(qos: .userInitiated).async {
-
-            let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
-                
-                guard let data = data, error == nil else { // Check for fundamental networking error
-                    DispatchQueue.main.async {
-                        // Show error
-                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                        SVProgressHUD.showError(withStatus: "Network/API connection error")
-                    }
-                    return
+        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+            if !checkAPIData(apiData: data, response: response, error: error) {
+                // Show error
+                DispatchQueue.main.async {
+                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                    SVProgressHUD.showError(withStatus: "Unable to update the light settings")
                 }
-
-                let json = JSON(data: data)
-                let apiStatus = json["code"]
-                let apiStatusString = apiStatus.string!
-                
-                if apiStatusString != "true" {
-                    DispatchQueue.main.async {
-                        // Shoe error
-                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                        SVProgressHUD.showError(withStatus: "Unable to update the light settings")
-                    }
-                }
-            })
-            task.resume()
-        }
+            }
+        })
+        task.resume()
     }
     
     @objc func longPowerButtonPress(_ sender: UITapGestureRecognizer!) {
@@ -268,7 +190,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
             // Store the color
             var color = UIColor.white
             switch roomLightsData[0].data![row!].action?.colormode {
-                case "ct"?: color = HueColorHelper.getColorFromScene((roomLightsData[0].data![row!].action!.ct)!)
+            case "ct"?: color = HueColorHelper.getColorFromScene((roomLightsData[0].data![row!].action!.ct)!)
             case "xy"?: color = HueColorHelper.colorFromXY(CGPoint(x: Double((roomLightsData[0].data![row!].action!.xy![0])), y: Double((roomLightsData[0].data![row!].action!.xy![1]))), forModel: "LCT007")
                 default: color = UIColor.white
             }
@@ -280,125 +202,85 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         let secondViewController = segue.destination as! ColorViewController
         secondViewController.delegate = self
         secondViewController.colorID = sender as? UIColor
-        
     }
     
     func backFromColorPicker(_ newColor: UIColor?, ct: Int?, scene: Bool?) {
         
-        // Update the button background
-        let cell = cellID.sharedInstance.cell
-
-        // Update the local data store
+        let cell = cellID.sharedInstance.cell // Update the button background
         let row = cell!.powerButton.tag
         
+        // Setup the local vars and the post to api data
         var lightsOn = "off"
-        if (roomLightsData[0].data?[row].state?.anyOn)! {
+        if (roomLightsData[0].data![row].state?.anyOn)! {
             lightsOn = "on"
         }
-        var lightParams: String = "&light_number=" + "\(cell?.tag ?? 0)" + "&light_status=" + lightsOn
-        //lightParams = lightParams + "&percentage=" + String(roomLightsData[0].data![row!].action!.bri!)
+        var body: [String: Any] = ["light_number": cell?.tag as Any, "light_status": lightsOn, "brightness": self.roomLightsData[0].data![row].action!.bri!]
 
         if scene! {
             // Color selected from scene list
             roomLightsData[0].data![row].action!.ct = ct
             roomLightsData[0].data![row].action!.colormode = "ct"
-            lightParams = lightParams + "&ct=" + "\(ct!)"
             cell!.powerButton.backgroundColor = HueColorHelper.getColorFromScene(ct!)
+            body["ct"] = ct!
         } else {
             // Color seclected from color pallet
             let xy = HueColorHelper.calculateXY(newColor!, forModel: "LST007")
             roomLightsData[0].data![row].action!.xy = [Float(xy.x), Float(xy.y)]
             roomLightsData[0].data![row].action!.colormode = "xy"
-            lightParams = lightParams + "&x=" + "\(xy.x)" + "&y=" + "\(xy.y)"
             cell!.powerButton.backgroundColor = newColor
+            body["x"] = xy.x
+            body["y"] = xy.y
         }
-        
-        DispatchQueue.global(qos: .userInitiated).async {
-        
-            // Call Alfred to update the light group color
-            let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
-            let AlfredAppKey: String = readPlist(item: "AlfredAppKey")
-            let url = URL(string: AlfredBaseURL + "lights/lightgrouponoff" + AlfredAppKey + lightParams)!
-            let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
-            let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
-                
-                guard let data = data, error == nil else { // Check for fundamental networking error
-                    DispatchQueue.main.async {
-                        // Show error
-                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                        SVProgressHUD.showError(withStatus: "Network/API connection error")
-                    }
-                    return
+
+        // Call API
+        let APIbody: Data = try! JSONSerialization.data(withJSONObject: body, options: [])
+        let request = putAPIHeaderData(url: "lights/lightgrouponoff", body: APIbody, useScheduler: false)
+        let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
+        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+            if !checkAPIData(apiData: data, response: response, error: error) {
+                DispatchQueue.main.async {
+                    // Show error
+                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                    SVProgressHUD.showError(withStatus: "Unable to update the light settings")
                 }
-            
-                let json = JSON(data: data)
-                let apiStatus = json["code"]
-                let apiStatusString = apiStatus.string!
-                
-                if apiStatusString != "true" {
-                    DispatchQueue.main.async {
-                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                        SVProgressHUD.showError(withStatus: "Unable to update the light settings")
-                    }
-                }
-            })
-            task.resume()
-        }
+            }
+        })
+        task.resume()
     }
     
     @IBAction func turnOffAllLights(recognizer:UIPanGestureRecognizer) {
-
-        DispatchQueue.global(qos: .userInitiated).async {
-            let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
-            let AlfredAppKey = readPlist(item: "AlfredAppKey")
-            let url = URL(string: AlfredBaseURL + "lights/alloff" + AlfredAppKey)!
-            let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
-            let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
-                
-                guard let data = data, error == nil else { // Check for fundamental networking error
-                    DispatchQueue.main.async {
-                        // Show error
-                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                        SVProgressHUD.showError(withStatus: "Network/API connection error")
-                    }
-                    return
+        // Call API
+        let request = getAPIHeaderData(url: "lights/alloff", useScheduler: false)
+        let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
+        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+            if !checkAPIData(apiData: data, response: response, error: error) {
+                // Show error
+                DispatchQueue.main.async {
+                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                    SVProgressHUD.showError(withStatus: "Unable to update the light settings")
                 }
-
-                let json = JSON(data: data)
-                let pingStatus = json["code"]
-                let pingStatusString = pingStatus.string!
-                
-                if pingStatusString == "true" {
+            } else {
+                // Update local data & UI and turn off all light groups
+                for var i in (0..<self.roomLightsData.count){
+                    self.roomLightsData[0].data![i].state?.anyOn = false
                     
-                    // Update local data & UI and turn off all light groups
-                    for var i in (0..<self.roomLightsData[0].data!.count){
-                        self.roomLightsData[0].data?[i].state?.anyOn = false
-                        
-                        let indexPath = IndexPath(row: i, section: 0)
-                        let cell = self.LightCollectionViewRooms!.cellForItem(at: indexPath) as! LightsCollectionViewCell
-                        DispatchQueue.main.async {
-                            cell.powerButton.backgroundColor = UIColor.clear
-                        }
-                        i += 1
-                    }
-                    
+                    let indexPath = IndexPath(row: i, section: 0)
+                    let cell = self.LightCollectionViewRooms!.cellForItem(at: indexPath) as! LightsCollectionViewCell
                     DispatchQueue.main.async {
-                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                        SVProgressHUD.showSuccess(withStatus: "Turned off all lights")
+                        cell.powerButton.backgroundColor = UIColor.clear
                     }
-                } else {
-                    DispatchQueue.main.async {
-                        // Show error
-                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                        SVProgressHUD.showError(withStatus: "Unable to update the light settings")
-                    }
+                    i += 1
                 }
-            })
-            task.resume()
-        }
+                // Show sucess msg
+                DispatchQueue.main.async {
+                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                    SVProgressHUD.showSuccess(withStatus: "Turned off all lights")
+                }
+            }
+        })
+        task.resume()
     }
 }

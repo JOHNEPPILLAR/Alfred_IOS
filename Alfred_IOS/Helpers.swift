@@ -9,12 +9,75 @@
 import Foundation
 import UIKit
 import SpriteKit
+import SVProgressHUD
+import SwiftyJSON
 
 class cellID {
     static var sharedInstance = cellID()
     private init() {}
     
     var cell: LightsCollectionViewCell?
+}
+
+func putAPIHeaderData(url: String, body: Data, useScheduler: Bool) -> URLRequest {
+    var AlfredBaseURL = "https://localhost:3979/" //readPlist(item: "AlfredBaseURL")
+    if (useScheduler) { AlfredBaseURL = readPlist(item: "AlfredSchedulerURL") }
+    let AlfredAppKey = readPlist(item: "AlfredAppKey")
+    let url = URL(string: AlfredBaseURL + url)!
+    var request = URLRequest(url: url)
+    request.httpMethod = "PUT"
+    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.addValue("application/json", forHTTPHeaderField: "Accept")
+    request.addValue(AlfredAppKey, forHTTPHeaderField: "app_key")
+    request.httpBody = body
+    return request
+}
+
+func getAPIHeaderData(url: String, useScheduler: Bool) -> URLRequest {
+    var AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+    if (useScheduler) { AlfredBaseURL = readPlist(item: "AlfredSchedulerURL") }
+    let AlfredAppKey = readPlist(item: "AlfredAppKey")
+    let url = URL(string: AlfredBaseURL + url)!
+    var request = URLRequest(url: url)
+    request.httpMethod = "GET"
+    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.addValue(AlfredAppKey, forHTTPHeaderField: "app_key")
+    return request
+}
+
+func checkAPIData(apiData: Data?, response: URLResponse?, error: Error?) -> Bool {
+
+    if apiData == nil || error != nil { // Check for fundamental networking error
+        DispatchQueue.main.async {
+            // Show error
+            SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+            SVProgressHUD.showError(withStatus: "Network/API connection error")
+        }
+        return false
+    }
+        
+    if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
+        DispatchQueue.main.async {
+            // Show error
+            SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+            SVProgressHUD.showError(withStatus: "Invalid API request")
+        }
+        return false
+    }
+        
+    let json = JSON(data: apiData!)
+    let apiStatus = json["sucess"]
+    let apiStatusString = apiStatus.string!
+    if apiStatusString == "true" {
+         return true
+    } else {
+        DispatchQueue.main.async {
+            // Show error
+            SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+            SVProgressHUD.showError(withStatus: "Invalid API request")
+        }
+        return false
+    }
 }
 
 func readPlist(item: String) -> String {

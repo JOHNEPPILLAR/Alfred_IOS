@@ -55,76 +55,49 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
         super.didReceiveMemoryWarning()
     }
     
-    //MARK: Private Methods
     func getData() {
-        
-        DispatchQueue.global(qos: .userInitiated).async {
 
-            let AlfredBaseURL = readPlist(item: "AlfredSchedulerURL")
-            let AlfredAppKey = readPlist(item: "AlfredAppKey")
-            let url = URL(string: AlfredBaseURL + "settings/view" + AlfredAppKey)!
-            let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
-            let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+        // Get settings
+        let request = getAPIHeaderData(url: "settings/view", useScheduler: true)
+        let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
+        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+            if checkAPIData(apiData: data, response: response, error: error) {
                 
-                guard let data = data, error == nil else { // Check for fundamental networking error
-                    DispatchQueue.main.async {
-                        // Show error
-                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                        SVProgressHUD.showError(withStatus: "Network/API connection error")
-                    }
-                    return
+                // Save json to custom classes
+                let json = JSON(data: data!)
+                let jsonData = json["data"]["eveningtv"]
+                self.eveningTVData = [EveningTV(json: jsonData)]
+                DispatchQueue.main.async {
+                    // Setup the offset and off timer settings
+                    self.turnOnHRLabel.text = String(self.eveningTVData[0].onHr!)
+                    self.turnOnHRStepper.value = Double(self.eveningTVData[0].onHr!)
+                        
+                    self.turnOnMINLabel.text = String(self.eveningTVData[0].onMin!)
+                    self.turnOnMINStepper.value = Double(self.eveningTVData[0].onMin!)
+                        
+                    // Enable UI controls
+                    self.turnOnHRStepper.isEnabled = true
+                    self.turnOnMINStepper.isEnabled = true
+                    self.navigationItem.rightBarButtonItem?.isEnabled = true
+                        
+                    // Refresh the table view
+                    self.LightCollectionView.reloadData()
                 }
-                
-                let json = JSON(data: data)
-                let apiStatus = json["code"]
-                let apiStatusString = apiStatus.string!
-                
-                if apiStatusString == "true" {
-                    
-                    // Save json to custom classes
-                    let jsonData = json["data"]["eveningtv"]
-                    self.eveningTVData = [EveningTV(json: jsonData)]
-                    
-                    DispatchQueue.main.async {
-                        // Setup the offset and off timer settings
-                        self.turnOnHRLabel.text = String(self.eveningTVData[0].onHr!)
-                        self.turnOnHRStepper.value = Double(self.eveningTVData[0].onHr!)
-                        
-                        self.turnOnMINLabel.text = String(self.eveningTVData[0].onMin!)
-                        self.turnOnMINStepper.value = Double(self.eveningTVData[0].onMin!)
-                        
-                        // Enable UI controls
-                        self.turnOnHRStepper.isEnabled = true
-                        self.turnOnMINStepper.isEnabled = true
-                        self.navigationItem.rightBarButtonItem?.isEnabled = true
-                        
-                        // Refresh the table view
-                        self.LightCollectionView.reloadData()
-                    }
-                } else {
-                    DispatchQueue.main.async {
-                        // Show error
-                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                        SVProgressHUD.showError(withStatus: "Unable to retrieve settings")
-                    }
-                }
-            })
-            task.resume()
-        }
+            }
+        })
+        task.resume()
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         if (eveningTVData.count) > 0 {
             return (eveningTVData[0].lights?.count)!
         } else {
             return 0
         }
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "lightCell", for: indexPath) as! LightsCollectionViewCell
         let row = indexPath.row
         
@@ -289,9 +262,10 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
             let url = URL(string: AlfredBaseURL + "settings/saveeveningtv" + AlfredAppKey)
         
             var request = URLRequest(url: url!)
-            request.httpMethod = "POST"
+            request.httpMethod = "PUT"
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.addValue("application/json", forHTTPHeaderField: "Accept")
+
             request.httpBody = try! JSONSerialization.data(withJSONObject: self.eveningTVData[0].dictionaryRepresentation(), options: [])
         
             let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)

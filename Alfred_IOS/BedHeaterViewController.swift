@@ -128,101 +128,73 @@ class BedHeaterViewController: UIViewController, URLSessionDelegate {
     }
     
     func getData() {
-        
+       
+        // Get settings
+        let request = getAPIHeaderData(url: "settings/view", useScheduler: true)
         let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
-
-        DispatchQueue.global(qos: .userInitiated).async {
-            
-            let AlfredBaseURL = readPlist(item: "AlfredSchedulerURL")
-            let AlfredAppKey = readPlist(item: "AlfredAppKey")
-            let url = URL(string: AlfredBaseURL + "settings/view" + AlfredAppKey)!
-            let task = session.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+            if checkAPIData(apiData: data, response: response, error: error) {
                 
-                guard let data = data, error == nil else { // Check for fundamental networking error
-                    DispatchQueue.main.async {
-                        // Show error
-                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                        SVProgressHUD.showError(withStatus: "Network/API connection error")
-                    }
-                    return
-                }
-                
-                let json = JSON(data: data)
-                let apiStatus = json["code"]
-                let apiStatusString = apiStatus.string!
-                
-                if apiStatusString == "true" {
-                    
-                    // Save json to custom classes
-                    let jsonData = json["data"]["bed"]
-                    
-                    // Check the defaults
-                    let userDefaults = UserDefaults.standard
-                    UserDefaults.standard.register(defaults: [String : Any]())
-                    let whoIsThis = userDefaults.string(forKey: "WHO_IS_THIS")
-                    
-                    if whoIsThis == "Fran" {
-                        self.bedData = [Bed(json: jsonData[1])]
-                        self.sideLabel.text = "Fran's Side"
-                    } else {
-                        self.bedData = [Bed(json: jsonData[0])]
-                        self.sideLabel.text = "JP's Side"
-                    }
-                        
-                    // Setup UI from settings
-                    if self.bedData[0].on == "true" {
-                        self.masterOn.setOn(true, animated: true)
-                    } else {
-                        self.masterOn.setOn(false, animated: true)
-                    }
+                // Save json to custom classes
+                let json = JSON(data: data!)
+                let jsonData = json["data"]["bed"]
+                self.bedData = [Bed(json: jsonData)]
 
-                    if self.bedData[0].useDI == "true" {
-                        self.useDI.setOn(true, animated: true)
-                    } else {
-                        self.useDI.setOn(false, animated: true)
-                    }
+                // Check the defaults
+                let userDefaults = UserDefaults.standard
+                UserDefaults.standard.register(defaults: [String : Any]())
+                let whoIsThis = userDefaults.string(forKey: "WHO_IS_THIS")
                     
-                    self.triggerTemp.text = String(self.bedData[0].trigger!)
-                    self.triggerStepper.value = Double(self.bedData[0].trigger!)
-                    
-                    if let theLabel = self.view.viewWithTag(Int(self.bedData[0].bedTemp!)+90) as? UILabel {
-                        theLabel.isHidden = false;
-                    }
-                    
-                    self.onHR.text = String(self.bedData[0].onHR!)
-                    self.onHRStepper.value = Double(self.bedData[0].onHR!)
-
-                    self.onMin.text = String(self.bedData[0].onMin!)
-                    self.onMinStepper.value = Double(self.bedData[0].onMin!)
-
-                    self.offHR.text = String(self.bedData[0].offHR!)
-                    self.offHRStepper.value = Double(self.bedData[0].offHR!)
-                    
-                    self.offMin.text = String(self.bedData[0].offMin!)
-                    self.offMinStepper.value = Double(self.bedData[0].offMin!)
-
-                    self.tempSlider.value = Float(self.bedData[0].bedTemp!)
-                    
-                    // Enable UI controls
-                    self.triggerStepper.isEnabled = true
-                    self.onMinStepper.isEnabled = true
-                    self.offHRStepper.isEnabled = true
-                    self.offMinStepper.isEnabled = true
-                    self.tempSlider.isEnabled = true
-                    self.navigationItem.rightBarButtonItem?.isEnabled = true
-                    
+                if whoIsThis == "Fran" {
+                    self.bedData = [Bed(json: jsonData[1])]
+                    self.sideLabel.text = "Fran's Side"
                 } else {
-                    DispatchQueue.main.async {
-                        // Show error
-                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                        SVProgressHUD.showError(withStatus: "Unable to retrieve settings")
-                    }
+                    self.bedData = [Bed(json: jsonData[0])]
+                    self.sideLabel.text = "JP's Side"
                 }
-            })
-            task.resume()
-        }
+                        
+                // Setup UI from settings
+                if self.bedData[0].on == "true" {
+                    self.masterOn.setOn(true, animated: true)
+                } else {
+                    self.masterOn.setOn(false, animated: true)
+                }
+
+                if self.bedData[0].useDI == "true" {
+                    self.useDI.setOn(true, animated: true)
+                } else {
+                    self.useDI.setOn(false, animated: true)
+                }
+                    
+                self.triggerTemp.text = String(self.bedData[0].trigger!)
+                self.triggerStepper.value = Double(self.bedData[0].trigger!)
+                    
+                if let theLabel = self.view.viewWithTag(Int(self.bedData[0].bedTemp!)+90) as? UILabel {
+                    theLabel.isHidden = false;
+                }
+                    
+                self.onHR.text = String(self.bedData[0].onHR!)
+                self.onHRStepper.value = Double(self.bedData[0].onHR!)
+                self.onMin.text = String(self.bedData[0].onMin!)
+                self.onMinStepper.value = Double(self.bedData[0].onMin!)
+                self.offHR.text = String(self.bedData[0].offHR!)
+                self.offHRStepper.value = Double(self.bedData[0].offHR!)
+                self.offMin.text = String(self.bedData[0].offMin!)
+                self.offMinStepper.value = Double(self.bedData[0].offMin!)
+                self.tempSlider.value = Float(self.bedData[0].bedTemp!)
+                    
+                // Enable UI controls
+                self.triggerStepper.isEnabled = true
+                self.onMinStepper.isEnabled = true
+                self.offHRStepper.isEnabled = true
+                self.offMinStepper.isEnabled = true
+                self.tempSlider.isEnabled = true
+                self.navigationItem.rightBarButtonItem?.isEnabled = true
+            }
+        })
+        task.resume()
     }
-    
+
     @objc func saveSettingsAction(sender: UIBarButtonItem) {
         
         // Disable the save button
