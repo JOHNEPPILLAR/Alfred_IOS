@@ -254,56 +254,29 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
         // Disable the save button
         self.navigationItem.rightBarButtonItem?.isEnabled = false
         
-        DispatchQueue.global(qos: .userInitiated).async {
+        // Call API
+        let APIbody: Data = try! JSONSerialization.data(withJSONObject: self.eveningTVData[0].dictionaryRepresentation(), options: [])
+        let request = putAPIHeaderData(url: "settings/saveeveningtv", body: APIbody, useScheduler: true)
+        let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
+        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+            if checkAPIData(apiData: data, response: response, error: error) {
+                DispatchQueue.main.async {
+                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                    SVProgressHUD.showSuccess(withStatus: "Saved")
+                }
+            } else {
+                DispatchQueue.main.async {
+                    SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+                    SVProgressHUD.showError(withStatus: "Unable to save settings")
+                }
+            }
             
-            // Create post request
-            let AlfredBaseURL = readPlist(item: "AlfredSchedulerURL")
-            let AlfredAppKey = readPlist(item: "AlfredAppKey")
-            let url = URL(string: AlfredBaseURL + "settings/saveeveningtv" + AlfredAppKey)
-        
-            var request = URLRequest(url: url!)
-            request.httpMethod = "PUT"
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.addValue("application/json", forHTTPHeaderField: "Accept")
-
-            request.httpBody = try! JSONSerialization.data(withJSONObject: self.eveningTVData[0].dictionaryRepresentation(), options: [])
-        
-            let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
-            let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
-                
-                guard let data = data, error == nil else { // Check for fundamental networking error
-                    DispatchQueue.main.async {
-                        // Show error
-                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                        SVProgressHUD.showError(withStatus: "Network/API connection error")
-                        
-                        // Re enable the save button
-                        self.navigationItem.rightBarButtonItem?.isEnabled = true
-                    }
-                    return
-                }
-                
-                let json = JSON(data: data)
-                let apiStatus = json["code"]
-                let apiStatusString = apiStatus.string!
-                
-                if apiStatusString == "true" {
-                    DispatchQueue.main.async {
-                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                        SVProgressHUD.showSuccess(withStatus: "Saved")
-                    }
-                } else {
-                    DispatchQueue.main.async {
-                        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-                        SVProgressHUD.showError(withStatus: "Unable to save settings")
-                    }
-                }
-                
-                // Re enable the save button
+            // Re enable the save button
+            DispatchQueue.main.async {
                 self.navigationItem.rightBarButtonItem?.isEnabled = true
-            })
-            task.resume()
-        }
+            }
+        })
+        task.resume()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

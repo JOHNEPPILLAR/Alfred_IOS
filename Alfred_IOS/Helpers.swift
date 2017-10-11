@@ -20,7 +20,7 @@ class cellID {
 }
 
 func putAPIHeaderData(url: String, body: Data, useScheduler: Bool) -> URLRequest {
-    var AlfredBaseURL = "https://localhost:3979/" //readPlist(item: "AlfredBaseURL")
+    var AlfredBaseURL = readPlist(item: "AlfredBaseURL")
     if (useScheduler) { AlfredBaseURL = readPlist(item: "AlfredSchedulerURL") }
     let AlfredAppKey = readPlist(item: "AlfredAppKey")
     let url = URL(string: AlfredBaseURL + url)!
