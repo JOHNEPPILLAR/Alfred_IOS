@@ -21,6 +21,14 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
     
     @IBOutlet weak var LightCollectionView: UICollectionView!
     
+    @IBOutlet weak var masterSwitch: UISwitch!
+    @IBAction func masterSwitchAction(_ sender: UISwitch) {
+        if sender.isOn {
+            self.morningData[0].master_on = "true"
+        } else {
+            self.morningData[0].master_on = "false"
+        }
+    }
     @IBOutlet weak var TableView: UITableView!
     @IBAction func turnOnHRStepper(_ sender: UIStepper) {
         turnOnHRLabel.text = Int(sender.value).description
@@ -91,6 +99,11 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
                 
                 DispatchQueue.main.async {
                     // Setup the offset and off timer settings
+                    if self.morningData[0].master_on == "true" {
+                        self.masterSwitch.setOn(true, animated: true)
+                    } else {
+                        self.masterSwitch.setOn(false, animated: true)
+                    }
                     self.turnOnHRLabel.text = String(self.morningData[0].onHr!)
                     self.turnOnHRStepper.value = Double(self.morningData[0].onHr!)
                     self.turnOnMINLabel.text = String(self.morningData[0].onMin!)

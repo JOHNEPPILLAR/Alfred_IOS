@@ -13,6 +13,7 @@ public final class Morning: NSCoding {
     
     // MARK: Declaration for string constants to be used to decode and also serialize.
     private struct SerializationKeys {
+        static let master_on = "master_on"
         static let onMin = "on_min"
         static let onHr = "on_hr"
         static let offHr = "off_hr"
@@ -21,6 +22,7 @@ public final class Morning: NSCoding {
     }
     
     // MARK: Properties
+    public var master_on: String?
     public var onMin: Int?
     public var onHr: Int?
     public var offHr: Int?
@@ -40,6 +42,7 @@ public final class Morning: NSCoding {
     ///
     /// - parameter json: JSON object from SwiftyJSON.
     public required init(json: JSON) {
+        master_on = json[SerializationKeys.master_on].string
         onMin = json[SerializationKeys.onMin].int
         onHr = json[SerializationKeys.onHr].int
         offHr = json[SerializationKeys.offHr].int
@@ -52,6 +55,7 @@ public final class Morning: NSCoding {
     /// - returns: A Key value pair containing all valid values in the object.
     public func dictionaryRepresentation() -> [String: Any] {
         var dictionary: [String: Any] = [:]
+        if let value = master_on { dictionary[SerializationKeys.master_on] = value }
         if let value = onMin { dictionary[SerializationKeys.onMin] = value }
         if let value = onHr { dictionary[SerializationKeys.onHr] = value }
         if let value = offHr { dictionary[SerializationKeys.offHr] = value }
@@ -62,6 +66,7 @@ public final class Morning: NSCoding {
     
     // MARK: NSCoding Protocol
     required public init(coder aDecoder: NSCoder) {
+        self.master_on = aDecoder.decodeObject(forKey: SerializationKeys.master_on) as? String
         self.onMin = aDecoder.decodeObject(forKey: SerializationKeys.onMin) as? Int
         self.onHr = aDecoder.decodeObject(forKey: SerializationKeys.onHr) as? Int
         self.offHr = aDecoder.decodeObject(forKey: SerializationKeys.offHr) as? Int
@@ -70,6 +75,7 @@ public final class Morning: NSCoding {
     }
     
     public func encode(with aCoder: NSCoder) {
+        aCoder.encode(master_on, forKey: SerializationKeys.master_on)
         aCoder.encode(onMin, forKey: SerializationKeys.onMin)
         aCoder.encode(onHr, forKey: SerializationKeys.onHr)
         aCoder.encode(offHr, forKey: SerializationKeys.offHr)

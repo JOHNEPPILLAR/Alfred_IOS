@@ -20,7 +20,14 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
     var eveningTVData = [EveningTV]()
     
     @IBOutlet weak var LightCollectionView: UICollectionView!
-    
+    @IBOutlet weak var masterSwitch: UISwitch!
+    @IBAction func masterSwitchAction(_ sender: UISwitch) {
+        if sender.isOn {
+            self.eveningTVData[0].master_on = "true"
+        } else {
+            self.eveningTVData[0].master_on = "false"
+        }
+    }
     @IBOutlet weak var turnOnHRLabel: UILabel!
     @IBOutlet weak var turnOnHRStepper: UIStepper!
     @IBAction func turnOnHRStepper(_ sender: UIStepper) {
@@ -69,6 +76,11 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
                 self.eveningTVData = [EveningTV(json: jsonData)]
                 DispatchQueue.main.async {
                     // Setup the offset and off timer settings
+                    if self.eveningTVData[0].master_on == "true" {
+                        self.masterSwitch.setOn(true, animated: true)
+                    } else {
+                        self.masterSwitch.setOn(false, animated: true)
+                    }
                     self.turnOnHRLabel.text = String(self.eveningTVData[0].onHr!)
                     self.turnOnHRStepper.value = Double(self.eveningTVData[0].onHr!)
                         

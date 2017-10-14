@@ -13,6 +13,7 @@ public final class Evening: NSCoding {
     
     // MARK: Declaration for string constants to be used to decode and also serialize.
     private struct SerializationKeys {
+        static let master_on = "master_on"
         static let offsetMin = "offset_min"
         static let offsetHr = "offset_hr"
         static let offHr = "off_hr"
@@ -21,6 +22,7 @@ public final class Evening: NSCoding {
     }
     
     // MARK: Properties
+    public var master_on: String?
     public var offsetMin: Int?
     public var offsetHr: Int?
     public var offHr: Int?
@@ -40,6 +42,7 @@ public final class Evening: NSCoding {
     ///
     /// - parameter json: JSON object from SwiftyJSON.
     public required init(json: JSON) {
+        master_on = json[SerializationKeys.master_on].string
         offsetMin = json[SerializationKeys.offsetMin].int
         offsetHr = json[SerializationKeys.offsetHr].int
         offHr = json[SerializationKeys.offHr].int
@@ -52,6 +55,7 @@ public final class Evening: NSCoding {
     /// - returns: A Key value pair containing all valid values in the object.
     public func dictionaryRepresentation() -> [String: Any] {
         var dictionary: [String: Any] = [:]
+        if let value = master_on { dictionary[SerializationKeys.master_on] = value }
         if let value = offsetMin { dictionary[SerializationKeys.offsetMin] = value }
         if let value = offsetHr { dictionary[SerializationKeys.offsetHr] = value }
         if let value = offHr { dictionary[SerializationKeys.offHr] = value }
@@ -62,6 +66,7 @@ public final class Evening: NSCoding {
     
     // MARK: NSCoding Protocol
     required public init(coder aDecoder: NSCoder) {
+        self.master_on = aDecoder.decodeObject(forKey: SerializationKeys.master_on) as? String
         self.offsetMin = aDecoder.decodeObject(forKey: SerializationKeys.offsetMin) as? Int
         self.offsetHr = aDecoder.decodeObject(forKey: SerializationKeys.offsetHr) as? Int
         self.offHr = aDecoder.decodeObject(forKey: SerializationKeys.offHr) as? Int
@@ -70,6 +75,7 @@ public final class Evening: NSCoding {
     }
     
     public func encode(with aCoder: NSCoder) {
+        aCoder.encode(master_on, forKey: SerializationKeys.master_on)
         aCoder.encode(offsetMin, forKey: SerializationKeys.offsetMin)
         aCoder.encode(offsetHr, forKey: SerializationKeys.offsetHr)
         aCoder.encode(offHr, forKey: SerializationKeys.offHr)

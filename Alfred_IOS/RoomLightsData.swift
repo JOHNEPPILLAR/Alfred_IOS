@@ -95,4 +95,3 @@ public final class RoomLightsData: NSCoding {
     }
     
 }
-

@@ -134,6 +134,26 @@ func readPlist(item: String) -> String {
     }
 }
 
+@IBDesignable class HighlightImage: UIImageView {
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        updateCornerRadius()
+    }
+    
+    @IBInspectable var rounded: Bool = false {
+        didSet {
+            updateCornerRadius()
+        }
+    }
+    
+    func updateCornerRadius() {
+        layer.cornerRadius = 5
+        layer.borderWidth = 2
+        layer.borderColor = UIColor.lightGray.cgColor
+    }
+}
+
 @IBDesignable class Line: UIView {
     override func draw(_ rect: CGRect) {
 

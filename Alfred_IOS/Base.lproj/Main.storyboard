@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -32,15 +31,18 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Alfred_Logo" translatesAutoresizingMaskIntoConstraints="NO" id="SQQ-pR-Udj">
-                                <rect key="frame" x="112" y="216" width="148" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <activityIndicatorView opaque="NO" contentMode="center" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="SVd-s1-H3f">
                                 <rect key="frame" x="177" y="443" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </activityIndicatorView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Alfred_Logo" translatesAutoresizingMaskIntoConstraints="NO" id="SQQ-pR-Udj" customClass="HighlightImage" customModule="Alfred_IOS" customModuleProvider="target">
+                                <rect key="frame" x="122" y="215" width="131" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
@@ -309,7 +311,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3Qf-yn-fan">
-                                                        <rect key="frame" x="0.0" y="139" width="375" height="416"/>
+                                                        <rect key="frame" x="0.0" y="154" width="375" height="401"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="UlV-SS-PLp">
@@ -384,7 +386,7 @@
                                                         </connections>
                                                     </collectionView>
                                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9hS-Pv-BdJ">
-                                                        <rect key="frame" x="195" y="19" width="164" height="110"/>
+                                                        <rect key="frame" x="195" y="45" width="164" height="110"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Turn off" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pY8-DR-0er">
@@ -449,7 +451,7 @@
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     </view>
                                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t7Y-gz-w6a">
-                                                        <rect key="frame" x="16" y="19" width="164" height="110"/>
+                                                        <rect key="frame" x="16" y="45" width="164" height="110"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Turn on" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1R8-uC-7Ru">
@@ -508,6 +510,21 @@
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     </view>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QmE-71-fmb">
+                                                        <rect key="frame" x="221" y="9" width="49" height="31"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <connections>
+                                                            <action selector="masterSwitchAction:" destination="HPF-SI-8H6" eventType="valueChanged" id="bXM-NM-3ce"/>
+                                                            <action selector="useDI:" destination="ClN-Ks-vZU" eventType="valueChanged" id="s7S-kr-8rA"/>
+                                                        </connections>
+                                                    </switch>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Master on/off" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lxx-WG-MKA">
+                                                        <rect key="frame" x="106" y="15" width="103" height="21"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
@@ -536,6 +553,7 @@
                     </view>
                     <connections>
                         <outlet property="LightCollectionView" destination="3Qf-yn-fan" id="zeZ-Sj-NrM"/>
+                        <outlet property="masterSwitch" destination="QmE-71-fmb" id="ddp-eW-Yog"/>
                         <outlet property="turnOffHRLabel" destination="bmv-PT-bDR" id="Int-Ml-dSE"/>
                         <outlet property="turnOffHRStepper" destination="KWk-iX-Y3p" id="NQv-yn-9zT"/>
                         <outlet property="turnOffMINLabel" destination="Vyh-no-O8Q" id="cuB-Bi-oaZ"/>
@@ -578,7 +596,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7oX-Su-bSI">
-                                                        <rect key="frame" x="0.0" y="150" width="375" height="395"/>
+                                                        <rect key="frame" x="0.0" y="190" width="375" height="355"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="r9W-ce-BGb">
@@ -652,7 +670,7 @@
                                                         </connections>
                                                     </collectionView>
                                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pdJ-Rq-iZR">
-                                                        <rect key="frame" x="195" y="30" width="164" height="152"/>
+                                                        <rect key="frame" x="195" y="79" width="164" height="152"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Turn off" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZX-ii-Y7G">
@@ -710,7 +728,7 @@
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     </view>
                                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4qM-St-86V">
-                                                        <rect key="frame" x="16" y="30" width="164" height="152"/>
+                                                        <rect key="frame" x="16" y="79" width="164" height="152"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sunset offset" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pgb-CL-IuX">
@@ -767,8 +785,30 @@
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sunet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7H-eM-Q7a">
-                                                        <rect key="frame" x="16" y="3" width="343" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="is at " textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7H-eM-Q7a">
+                                                        <rect key="frame" x="221" y="42" width="113" height="21"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ptc-mj-yfb">
+                                                        <rect key="frame" x="75" y="40" width="49" height="31"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <connections>
+                                                            <action selector="masterSwitchAction:" destination="f1C-gJ-uKM" eventType="valueChanged" id="6Hl-Yc-PZ9"/>
+                                                            <action selector="useDI:" destination="ClN-Ks-vZU" eventType="valueChanged" id="122-d2-D8S"/>
+                                                        </connections>
+                                                    </switch>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Master on/off" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cb4-a9-npp">
+                                                        <rect key="frame" x="47" y="8" width="103" height="21"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Today's sunset" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdt-Fb-8mj">
+                                                        <rect key="frame" x="221" y="8" width="113" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -812,6 +852,7 @@
                     </view>
                     <connections>
                         <outlet property="LightCollectionView" destination="7oX-Su-bSI" id="SSs-Il-Zje"/>
+                        <outlet property="masterSwitch" destination="Ptc-mj-yfb" id="P6R-Qx-IeU"/>
                         <outlet property="offsetHRLabel" destination="TqT-NY-KVm" id="B8d-xZ-cZq"/>
                         <outlet property="offsetHRStepper" destination="0do-JN-ia4" id="bIK-QA-mEg"/>
                         <outlet property="offsetMINLabel" destination="JXF-1z-S6o" id="cdN-rw-5Sw"/>
@@ -1300,7 +1341,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="k2h-Ru-BiL">
-                                                        <rect key="frame" x="0.0" y="136" width="375" height="469"/>
+                                                        <rect key="frame" x="0.0" y="127" width="375" height="478"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qiQ-IO-jmA">
@@ -1374,7 +1415,7 @@
                                                         </connections>
                                                     </collectionView>
                                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eVQ-tT-S7m">
-                                                        <rect key="frame" x="95" y="17" width="184" height="124"/>
+                                                        <rect key="frame" x="183" y="8" width="184" height="124"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Turn on" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcU-oL-ZZG">
@@ -1431,6 +1472,21 @@
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Master on/off" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Sj-xF-OjZ">
+                                                        <rect key="frame" x="48" y="16" width="103" height="21"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BZi-2P-gn8">
+                                                        <rect key="frame" x="76" y="55" width="49" height="31"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <connections>
+                                                            <action selector="masterSwitchAction:" destination="s7J-yo-fmp" eventType="valueChanged" id="XSu-M5-VIL"/>
+                                                            <action selector="useDI:" destination="ClN-Ks-vZU" eventType="valueChanged" id="WnJ-Cw-FRd"/>
+                                                        </connections>
+                                                    </switch>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
@@ -1460,6 +1516,7 @@
                     </view>
                     <connections>
                         <outlet property="LightCollectionView" destination="k2h-Ru-BiL" id="c5o-uC-EdF"/>
+                        <outlet property="masterSwitch" destination="BZi-2P-gn8" id="ceJ-le-bQx"/>
                         <outlet property="turnOnHRLabel" destination="uFw-Y2-Vfc" id="EeX-wk-P5a"/>
                         <outlet property="turnOnHRStepper" destination="cbW-Og-AZX" id="qeC-xQ-lvV"/>
                         <outlet property="turnOnMINLabel" destination="TlZ-yo-ob3" id="q0a-4M-thk"/>
@@ -2214,7 +2271,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Alfred_Logo" width="512" height="512"/>
+        <image name="Alfred_Logo" width="57" height="57"/>
         <image name="Background" width="640" height="960"/>
         <image name="Lights" width="24" height="24"/>
         <image name="Settings" width="25" height="25"/>
@@ -2242,7 +2299,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Yxf-CY-gGx"/>
-        <segue reference="43U-s2-kp5"/>
+        <segue reference="Gj3-7b-C3a"/>
         <segue reference="mhl-KS-xfb"/>
         <segue reference="PXd-qe-vgO"/>
         <segue reference="Uga-H5-5lR"/>

@@ -21,6 +21,14 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
     
     @IBOutlet weak var LightCollectionView: UICollectionView!
     
+    @IBOutlet weak var masterSwitch: UISwitch!
+    @IBAction func masterSwitchAction(_ sender: UISwitch) {
+        if sender.isOn {
+            self.eveningData[0].master_on = "true"
+        } else {
+            self.eveningData[0].master_on = "false"
+        }
+    }
     @IBOutlet weak var offsetHRLabel: UILabel!
     @IBOutlet weak var offsetHRStepper: UIStepper!
     @IBAction func offsetHRStepper(_ sender: UIStepper) {
@@ -84,7 +92,7 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
                 let sunSet = json["data"].string! // Save json to custom classes
                 // Update the sunset time label
                 DispatchQueue.main.async {
-                    self.sunsetTimeLabel.text = "Today's sunset is at " + sunSet
+                    self.sunsetTimeLabel.text =  sunSet
                 }
             }
         })
@@ -102,6 +110,11 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
                 self.eveningData = [Evening(json: jsonData)]
                 
                 // Setup the offset and off timer settings
+                if self.eveningData[0].master_on == "true" {
+                    self.masterSwitch.setOn(true, animated: true)
+                } else {
+                    self.masterSwitch.setOn(false, animated: true)
+                }
                 self.offsetHRLabel.text = String(self.eveningData[0].offsetHr!)
                 self.offsetHRStepper.value = Double(self.eveningData[0].offsetHr!)
                 
