@@ -72,7 +72,7 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
                 
                 // Save json to custom classes
                 let json = JSON(data: data!)
-                let jsonData = json["data"]["eveningtv"]
+                let jsonData = json["data"]["on"]["eveningtv"]
                 self.eveningTVData = [EveningTV(json: jsonData)]
                 DispatchQueue.main.async {
                     // Setup the offset and off timer settings

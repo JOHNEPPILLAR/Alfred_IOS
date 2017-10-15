@@ -16,8 +16,8 @@ public final class Morning: NSCoding {
         static let master_on = "master_on"
         static let onMin = "on_min"
         static let onHr = "on_hr"
-        static let offHr = "off_hr"
-        static let offMin = "off_min"
+        //static let offHr = "off_hr"
+        //static let offMin = "off_min"
         static let lights = "lights"
     }
     
@@ -25,8 +25,8 @@ public final class Morning: NSCoding {
     public var master_on: String?
     public var onMin: Int?
     public var onHr: Int?
-    public var offHr: Int?
-    public var offMin: Int?
+    //public var offHr: Int?
+    //public var offMin: Int?
     public var lights: [Lights]?
     
     // MARK: SwiftyJSON Initializers
@@ -45,8 +45,8 @@ public final class Morning: NSCoding {
         master_on = json[SerializationKeys.master_on].string
         onMin = json[SerializationKeys.onMin].int
         onHr = json[SerializationKeys.onHr].int
-        offHr = json[SerializationKeys.offHr].int
-        offMin = json[SerializationKeys.offMin].int
+        //offHr = json[SerializationKeys.offHr].int
+        //offMin = json[SerializationKeys.offMin].int
         if let items = json[SerializationKeys.lights].array { lights = items.map { Lights(json: $0) } }
     }
     
@@ -58,8 +58,8 @@ public final class Morning: NSCoding {
         if let value = master_on { dictionary[SerializationKeys.master_on] = value }
         if let value = onMin { dictionary[SerializationKeys.onMin] = value }
         if let value = onHr { dictionary[SerializationKeys.onHr] = value }
-        if let value = offHr { dictionary[SerializationKeys.offHr] = value }
-        if let value = offMin { dictionary[SerializationKeys.offMin] = value }
+        //if let value = offHr { dictionary[SerializationKeys.offHr] = value }
+        //if let value = offMin { dictionary[SerializationKeys.offMin] = value }
         if let value = lights { dictionary[SerializationKeys.lights] = value.map { $0.dictionaryRepresentation() } }
         return dictionary
     }
@@ -69,8 +69,8 @@ public final class Morning: NSCoding {
         self.master_on = aDecoder.decodeObject(forKey: SerializationKeys.master_on) as? String
         self.onMin = aDecoder.decodeObject(forKey: SerializationKeys.onMin) as? Int
         self.onHr = aDecoder.decodeObject(forKey: SerializationKeys.onHr) as? Int
-        self.offHr = aDecoder.decodeObject(forKey: SerializationKeys.offHr) as? Int
-        self.offMin = aDecoder.decodeObject(forKey: SerializationKeys.offMin) as? Int
+        //self.offHr = aDecoder.decodeObject(forKey: SerializationKeys.offHr) as? Int
+        //self.offMin = aDecoder.decodeObject(forKey: SerializationKeys.offMin) as? Int
         self.lights = aDecoder.decodeObject(forKey: SerializationKeys.lights) as? [Lights]
     }
     
@@ -78,8 +78,8 @@ public final class Morning: NSCoding {
         aCoder.encode(master_on, forKey: SerializationKeys.master_on)
         aCoder.encode(onMin, forKey: SerializationKeys.onMin)
         aCoder.encode(onHr, forKey: SerializationKeys.onHr)
-        aCoder.encode(offHr, forKey: SerializationKeys.offHr)
-        aCoder.encode(offMin, forKey: SerializationKeys.offMin)
+        //aCoder.encode(offHr, forKey: SerializationKeys.offHr)
+        //aCoder.encode(offMin, forKey: SerializationKeys.offMin)
         aCoder.encode(lights, forKey: SerializationKeys.lights)
     }
 }

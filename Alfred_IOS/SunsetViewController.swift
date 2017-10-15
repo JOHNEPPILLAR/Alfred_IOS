@@ -43,20 +43,6 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
         eveningData[0].offsetMin = Int(sender.value)
     }
     
-    @IBOutlet weak var turnoffHRLabel: UILabel!
-    @IBOutlet weak var turnoffHRStepper: UIStepper!
-    @IBAction func turnoffHRStepper(_ sender: UIStepper) {
-        turnoffHRLabel.text = Int(sender.value).description
-        eveningData[0].offHr = Int(sender.value)
-    }
-    
-    @IBOutlet weak var turnoffMINLabel: UILabel!
-    @IBOutlet weak var turnoffMINStepper: UIStepper!
-    @IBAction func turnoffMINStepper(_ sender: UIStepper) {
-        turnoffMINLabel.text = Int(sender.value).description
-        eveningData[0].offMin = Int(sender.value)
-    }
-
     @IBOutlet weak var sunsetTimeLabel: UILabel!
 
     override func viewDidLoad() {
@@ -70,9 +56,8 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
         navigationItem.rightBarButtonItem?.isEnabled = false
         self.offsetHRStepper.isEnabled = false
         self.offsetMINStepper.isEnabled = false
-        self.turnoffHRStepper.isEnabled = false
-        self.turnoffMINStepper.isEnabled = false
-        
+        self.masterSwitch.isEnabled = false
+
         // Get sunset configuration info from Alfred
         self.getData()
     }
@@ -92,7 +77,7 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
                 let sunSet = json["data"].string! // Save json to custom classes
                 // Update the sunset time label
                 DispatchQueue.main.async {
-                    self.sunsetTimeLabel.text =  sunSet
+                    self.sunsetTimeLabel.text =  "Today's sunset: " + sunSet
                 }
             }
         })
@@ -106,7 +91,7 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
                 
                 let json = JSON(data: data!)
                 // Save json to custom classes
-                let jsonData = json["data"]["evening"]
+                let jsonData = json["data"]["on"]["evening"]
                 self.eveningData = [Evening(json: jsonData)]
                 
                 // Setup the offset and off timer settings
@@ -117,21 +102,13 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
                 }
                 self.offsetHRLabel.text = String(self.eveningData[0].offsetHr!)
                 self.offsetHRStepper.value = Double(self.eveningData[0].offsetHr!)
-                
                 self.offsetMINLabel.text = String(self.eveningData[0].offsetMin!)
                 self.offsetMINStepper.value = Double(self.eveningData[0].offsetMin!)
-                
-                self.turnoffHRLabel.text = String(self.eveningData[0].offHr!)
-                self.turnoffHRStepper.value = Double(self.eveningData[0].offHr!)
-                
-                self.turnoffMINLabel.text = String(self.eveningData[0].offMin!)
-                self.turnoffMINStepper.value = Double(self.eveningData[0].offMin!)
                 
                 // Enable UI controls
                 self.offsetHRStepper.isEnabled = true
                 self.offsetMINStepper.isEnabled = true
-                self.turnoffHRStepper.isEnabled = true
-                self.turnoffMINStepper.isEnabled = true
+                self.masterSwitch.isEnabled = true
                 self.navigationItem.rightBarButtonItem?.isEnabled = true
                 
                 // Refresh the table view

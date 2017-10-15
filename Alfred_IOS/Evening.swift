@@ -16,8 +16,8 @@ public final class Evening: NSCoding {
         static let master_on = "master_on"
         static let offsetMin = "offset_min"
         static let offsetHr = "offset_hr"
-        static let offHr = "off_hr"
-        static let offMin = "off_min"
+        //static let offHr = "off_hr"
+        //static let offMin = "off_min"
         static let lights = "lights"
     }
     
@@ -25,8 +25,8 @@ public final class Evening: NSCoding {
     public var master_on: String?
     public var offsetMin: Int?
     public var offsetHr: Int?
-    public var offHr: Int?
-    public var offMin: Int?
+    //public var offHr: Int?
+    //public var offMin: Int?
     public var lights: [Lights]?
     
     // MARK: SwiftyJSON Initializers
@@ -45,8 +45,8 @@ public final class Evening: NSCoding {
         master_on = json[SerializationKeys.master_on].string
         offsetMin = json[SerializationKeys.offsetMin].int
         offsetHr = json[SerializationKeys.offsetHr].int
-        offHr = json[SerializationKeys.offHr].int
-        offMin = json[SerializationKeys.offMin].int
+        //offHr = json[SerializationKeys.offHr].int
+        //offMin = json[SerializationKeys.offMin].int
         if let items = json[SerializationKeys.lights].array { lights = items.map { Lights(json: $0) } }
     }
     
@@ -58,8 +58,8 @@ public final class Evening: NSCoding {
         if let value = master_on { dictionary[SerializationKeys.master_on] = value }
         if let value = offsetMin { dictionary[SerializationKeys.offsetMin] = value }
         if let value = offsetHr { dictionary[SerializationKeys.offsetHr] = value }
-        if let value = offHr { dictionary[SerializationKeys.offHr] = value }
-        if let value = offMin { dictionary[SerializationKeys.offMin] = value }
+        //if let value = offHr { dictionary[SerializationKeys.offHr] = value }
+        //if let value = offMin { dictionary[SerializationKeys.offMin] = value }
         if let value = lights { dictionary[SerializationKeys.lights] = value.map { $0.dictionaryRepresentation() } }
         return dictionary
     }
@@ -69,8 +69,8 @@ public final class Evening: NSCoding {
         self.master_on = aDecoder.decodeObject(forKey: SerializationKeys.master_on) as? String
         self.offsetMin = aDecoder.decodeObject(forKey: SerializationKeys.offsetMin) as? Int
         self.offsetHr = aDecoder.decodeObject(forKey: SerializationKeys.offsetHr) as? Int
-        self.offHr = aDecoder.decodeObject(forKey: SerializationKeys.offHr) as? Int
-        self.offMin = aDecoder.decodeObject(forKey: SerializationKeys.offMin) as? Int
+        //self.offHr = aDecoder.decodeObject(forKey: SerializationKeys.offHr) as? Int
+        //self.offMin = aDecoder.decodeObject(forKey: SerializationKeys.offMin) as? Int
         self.lights = aDecoder.decodeObject(forKey: SerializationKeys.lights) as? [Lights]
     }
     
@@ -78,8 +78,8 @@ public final class Evening: NSCoding {
         aCoder.encode(master_on, forKey: SerializationKeys.master_on)
         aCoder.encode(offsetMin, forKey: SerializationKeys.offsetMin)
         aCoder.encode(offsetHr, forKey: SerializationKeys.offsetHr)
-        aCoder.encode(offHr, forKey: SerializationKeys.offHr)
-        aCoder.encode(offMin, forKey: SerializationKeys.offMin)
+        //aCoder.encode(offHr, forKey: SerializationKeys.offHr)
+        //aCoder.encode(offMin, forKey: SerializationKeys.offMin)
         aCoder.encode(lights, forKey: SerializationKeys.lights)
     }
 }

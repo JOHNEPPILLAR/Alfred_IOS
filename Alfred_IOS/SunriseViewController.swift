@@ -44,20 +44,6 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
     @IBOutlet weak var turnOnMINStepper: UIStepper!
     @IBOutlet weak var turnOnMINLabel: UILabel!
     
-    @IBAction func turnOffHRStepper(_ sender: UIStepper) {
-        turnOffHRLabel.text = Int(sender.value).description
-        morningData[0].offHr = Int(sender.value)
-    }
-    @IBOutlet weak var turnOffHRStepper: UIStepper!
-    @IBOutlet weak var turnOffHRLabel: UILabel!
-    
-    @IBAction func turnOffMINStepper(_ sender: UIStepper) {
-        turnOffMINLabel.text = Int(sender.value).description
-        morningData[0].offMin = Int(sender.value)
-    }
-    @IBOutlet weak var turnOffMINStepper: UIStepper!
-    @IBOutlet weak var turnOffMINLabel: UILabel!
-    
     var colorPickerView: ColorViewController?
     
     override func viewDidLoad() {
@@ -70,9 +56,8 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
         // Disable UI controls untill data is loaded
         navigationItem.rightBarButtonItem?.isEnabled = false
         self.turnOnHRStepper.isEnabled = false
-        self.turnOnHRStepper.isEnabled = false
-        self.turnOnHRStepper.isEnabled = false
-        self.turnOffHRStepper.isEnabled = false
+        self.turnOnMINStepper.isEnabled = false
+        self.masterSwitch.isEnabled = false
         
         // Get sunrise configuration info from Alfred
         self.getData()
@@ -94,7 +79,7 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
                 
                 // Save json to custom classes
                 let json = JSON(data: data!)
-                let jsonData = json["data"]["morning"]
+                let jsonData = json["data"]["on"]["morning"]
                 self.morningData = [Morning(json: jsonData)]
                 
                 DispatchQueue.main.async {
@@ -108,18 +93,11 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
                     self.turnOnHRStepper.value = Double(self.morningData[0].onHr!)
                     self.turnOnMINLabel.text = String(self.morningData[0].onMin!)
                     self.turnOnMINStepper.value = Double(self.morningData[0].onMin!)
-                        
-                    self.turnOffHRLabel.text = String(self.morningData[0].offHr!)
-                    self.turnOffHRStepper.value = Double(self.morningData[0].offHr!)
-                        
-                    self.turnOffMINLabel.text = String(self.morningData[0].offMin!)
-                    self.turnOffMINStepper.value = Double(self.morningData[0].offMin!)
-                        
+                    
                     // Enable UI controls
                     self.turnOnHRStepper.isEnabled = true
                     self.turnOnMINStepper.isEnabled = true
-                    self.turnOffHRStepper.isEnabled = true
-                    self.turnOffMINStepper.isEnabled = true
+                    self.masterSwitch.isEnabled = true
                     self.navigationItem.rightBarButtonItem?.isEnabled = true
                         
                     // Refresh the table view
