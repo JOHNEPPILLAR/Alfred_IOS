@@ -21,6 +21,9 @@
 		0A69FB891F10C25C00563A69 /* Alfred_IOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0A69FB871F10C25C00563A69 /* Alfred_IOS.xcdatamodeld */; };
 		0A69FB8B1F10C25C00563A69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A69FB8A1F10C25C00563A69 /* Assets.xcassets */; };
 		0A69FB9F1F1160F500563A69 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A69FB9E1F1160F500563A69 /* ViewController.swift */; };
+		0A791EDE1F93E1E300765DF9 /* LightsOff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A791EDD1F93E1E300765DF9 /* LightsOff.swift */; };
+		0A791EE01F93E2C300765DF9 /* LightsOffData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A791EDF1F93E2C300765DF9 /* LightsOffData.swift */; };
+		0A791EE51F93E43200765DF9 /* LightsOffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A791EE41F93E43200765DF9 /* LightsOffViewController.swift */; };
 		0A7DADE11F4A2BF9002FEE9F /* HueColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DADE01F4A2BF9002FEE9F /* HueColorHelper.swift */; };
 		0A80C09C1F24812E0082F77C /* Alfred.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A80C09B1F24812E0082F77C /* Alfred.plist */; };
 		0A8AF14A1F24EF030064894F /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8AF1491F24EF030064894F /* Helpers.swift */; };
@@ -64,6 +67,9 @@
 		0A69FB8A1F10C25C00563A69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A69FB8F1F10C25C00563A69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A69FB9E1F1160F500563A69 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0A791EDD1F93E1E300765DF9 /* LightsOff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsOff.swift; sourceTree = "<group>"; };
+		0A791EDF1F93E2C300765DF9 /* LightsOffData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsOffData.swift; sourceTree = "<group>"; };
+		0A791EE41F93E43200765DF9 /* LightsOffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsOffViewController.swift; sourceTree = "<group>"; };
 		0A7DADE01F4A2BF9002FEE9F /* HueColorHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HueColorHelper.swift; sourceTree = "<group>"; };
 		0A80C09B1F24812E0082F77C /* Alfred.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Alfred.plist; sourceTree = "<group>"; };
 		0A8AF1491F24EF030064894F /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
@@ -177,8 +183,18 @@
 				0AA19AEC1F57277300CB272F /* TVViewController.swift */,
 				0AB222F11F5C89700040E58F /* BedHeaterViewController.swift */,
 				0A93796A1F67A8DE004FFC3B /* APILogFileViewController.swift */,
+				0A791EE41F93E43200765DF9 /* LightsOffViewController.swift */,
 			);
 			name = "View Controlers";
+			sourceTree = "<group>";
+		};
+		0A791EE11F93E2E800765DF9 /* LightsOff */ = {
+			isa = PBXGroup;
+			children = (
+				0A791EDF1F93E2C300765DF9 /* LightsOffData.swift */,
+				0A791EDD1F93E1E300765DF9 /* LightsOff.swift */,
+			);
+			name = LightsOff;
 			sourceTree = "<group>";
 		};
 		0A80C09D1F2481380082F77C /* Property List */ = {
@@ -204,6 +220,7 @@
 		0AF938DE1F1A321900B5B247 /* Data Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0A791EE11F93E2E800765DF9 /* LightsOff */,
 				0A97EE2E1F8A56A60059268B /* RoomLights */,
 				0AFCD86A1F22832000FD1C1C /* Evening.swift */,
 				0AE740241F28C54B00B8ABB1 /* Morning.swift */,
@@ -401,12 +418,15 @@
 				0A12B4AB1F193B470012B619 /* SunsetViewController.swift in Sources */,
 				0A69FB811F10C25C00563A69 /* AppDelegate.swift in Sources */,
 				0AA19AED1F57277300CB272F /* TVViewController.swift in Sources */,
+				0A791EE01F93E2C300765DF9 /* LightsOffData.swift in Sources */,
 				0A2D9E2E1F3617EF0037594C /* LogFileViewController.swift in Sources */,
 				0A8AF14A1F24EF030064894F /* Helpers.swift in Sources */,
+				0A791EDE1F93E1E300765DF9 /* LightsOff.swift in Sources */,
 				0A0463F11F38E99B004A738D /* ColorViewController.swift in Sources */,
 				0AA83A741F2CE72500B933A8 /* RoomLightsState.swift in Sources */,
 				0AE259001F6E80D6002C6922 /* Bed.swift in Sources */,
 				0AD1C1C31F22928E000D899D /* Logs.swift in Sources */,
+				0A791EE51F93E43200765DF9 /* LightsOffViewController.swift in Sources */,
 				0ADDC4D31F29C02000C08F55 /* EveningTVViewController.swift in Sources */,
 				0AE84DE71F289F120031F6C2 /* SunriseViewController.swift in Sources */,
 				0AA83A711F2CE72500B933A8 /* RoomLightsAction.swift in Sources */,
