@@ -1965,19 +1965,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egQ-WE-ymM">
-                                <rect key="frame" x="122" y="40" width="131" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d0s-br-xMd">
+                                <rect key="frame" x="0.0" y="556" width="375" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_pause" translatesAutoresizingMaskIntoConstraints="NO" id="WPT-Qg-wmS">
+                                        <rect key="frame" x="172" y="21" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
+                                    </imageView>
+                                    <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_mute" translatesAutoresizingMaskIntoConstraints="NO" id="T0D-ef-sPX">
+                                        <rect key="frame" x="319" y="21" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Video" image="ic_camera" id="3lw-fI-f3r"/>
                     <connections>
-                        <outlet property="videoStateLabel" destination="egQ-WE-ymM" id="cQ1-oB-uXI"/>
+                        <outlet property="pausePlayIcon" destination="WPT-Qg-wmS" id="xN4-hW-uX7"/>
+                        <outlet property="playerControls" destination="d0s-br-xMd" id="oT9-bE-iH1"/>
+                        <outlet property="volumeIcon" destination="T0D-ef-sPX" id="e2Y-kM-pjl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IDr-Zb-1bz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2448,6 +2460,8 @@
         <image name="ic_del_log" width="100" height="100"/>
         <image name="ic_energise" width="50" height="50"/>
         <image name="ic_lights_off" width="100" height="100"/>
+        <image name="ic_mute" width="24" height="24"/>
+        <image name="ic_pause" width="24" height="24"/>
         <image name="ic_read" width="50" height="50"/>
         <image name="ic_restart" width="80" height="80"/>
         <image name="ic_scene" width="50" height="50"/>
@@ -2460,7 +2474,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Yxf-CY-gGx"/>
-        <segue reference="How-IC-abe"/>
+        <segue reference="43U-s2-kp5"/>
         <segue reference="mhl-KS-xfb"/>
         <segue reference="PXd-qe-vgO"/>
         <segue reference="Uga-H5-5lR"/>

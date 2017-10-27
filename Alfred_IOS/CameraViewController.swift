@@ -11,7 +11,9 @@ import SVProgressHUD
 
 class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
    
-    @IBOutlet weak var videoStateLabel: UILabel!
+    @IBOutlet weak var playerControls: UIView!
+    @IBOutlet weak var pausePlayIcon: UIImageView!
+    @IBOutlet weak var volumeIcon: UIImageView!
     
     var videoTimer: Timer!
     var movieView: UIView!
@@ -27,15 +29,9 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
         self.movieView = UIView()
         self.movieView.frame = UIScreen.screens[0].bounds
         
-        // Add tap gesture for play/pause
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(CameraViewController.movieViewTapped(_:)))
-        self.movieView.addGestureRecognizer(gesture)
-        
         // Add movieView to view controller
         view.addSubview(self.movieView)
-
-        // Set video state label
-        videoStateLabel.text = "Connecting..."
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,11 +48,40 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
         mediaPlayer.media = media
         mediaPlayer.delegate = self
         mediaPlayer.drawable = self.movieView
+        mediaPlayer.audioChannel = -1
         mediaPlayer.play()
         
-        // Bring video state label to front
-        view.bringSubview(toFront: videoStateLabel)
+        // Bring video control bar to front
+        view.bringSubview(toFront: playerControls)
+        
+        // Add play/pause tap gesture
+        let playPauseTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(playPauseImageTapped))
+        pausePlayIcon.addGestureRecognizer(playPauseTapRecognizer)
 
+        // Add mute tap gesture
+        let muteTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(muteImageTapped))
+        volumeIcon.addGestureRecognizer(muteTapRecognizer)
+
+    }
+    
+    @objc func playPauseImageTapped(gestureRecognizer: UITapGestureRecognizer) {
+        if (pausePlayIcon.image == #imageLiteral(resourceName: "ic_play")) {
+            mediaPlayer.play()
+            pausePlayIcon.image = #imageLiteral(resourceName: "ic_pause")
+        } else {
+            mediaPlayer.pause()
+            pausePlayIcon.image = #imageLiteral(resourceName: "ic_play")
+        }
+    }
+
+    @objc func muteImageTapped(gestureRecognizer: UITapGestureRecognizer) {
+        if (volumeIcon.image == #imageLiteral(resourceName: "ic_mute")) {
+            mediaPlayer.audioChannel = 1
+            volumeIcon.image = #imageLiteral(resourceName: "ic_audio")
+        } else {
+            mediaPlayer.audioChannel = -1
+            volumeIcon.image = #imageLiteral(resourceName: "ic_mute")
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -88,41 +113,22 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
     
     @objc func mediaPlayerStateChanged(aNotification: NSNotification!)
     {
-        
         switch mediaPlayer.state {
         case .error:
             SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
             SVProgressHUD.showError(withStatus: "Network/API connection error")
             break
         case .playing:
-            videoStateLabel.text = "Live streaming"
+            pausePlayIcon.isUserInteractionEnabled = true
+            pausePlayIcon.image = #imageLiteral(resourceName: "ic_pause")
             break
         case .paused:
-            videoStateLabel.text = "Paused"
+            pausePlayIcon.image = #imageLiteral(resourceName: "ic_play")
             break
         default: break
         }
     }
-    
-    @objc func movieViewTapped(_ sender: UITapGestureRecognizer) {
-        
-        var UItxt = ""
 
-        if mediaPlayer.isPlaying {
-            mediaPlayer.pause()
-            UItxt = "Paused"
-        }
-        else {
-            mediaPlayer.play()
-            UItxt = "Live streaming"
-        }
-        
-        // Inform user of event
-        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-        SVProgressHUD.showInfo(withStatus: UItxt)
-
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
