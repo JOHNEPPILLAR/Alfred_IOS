@@ -48,7 +48,7 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
         mediaPlayer.media = media
         mediaPlayer.delegate = self
         mediaPlayer.drawable = self.movieView
-        mediaPlayer.audioChannel = -1
+
         mediaPlayer.play()
         
         // Bring video control bar to front
@@ -76,11 +76,8 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
 
     @objc func muteImageTapped(gestureRecognizer: UITapGestureRecognizer) {
         if (volumeIcon.image == #imageLiteral(resourceName: "ic_mute")) {
-            mediaPlayer.audioChannel = 1
-            volumeIcon.image = #imageLiteral(resourceName: "ic_audio")
-        } else {
-            mediaPlayer.audioChannel = -1
-            volumeIcon.image = #imageLiteral(resourceName: "ic_mute")
+            mediaPlayer.currentAudioTrackIndex = -1
+            volumeIcon.isHidden = true
         }
     }
     
@@ -88,9 +85,12 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
         super.viewWillDisappear(animated)
 
         // Stop video as moving away from view
+        pausePlayIcon.image = #imageLiteral(resourceName: "ic_pause")
+        volumeIcon.image = #imageLiteral(resourceName: "ic_mute")
+        volumeIcon.isHidden = false
         mediaPlayer.stop()
         mediaPlayer.media = nil
-
+        
         // Remove VLC view
         mediaPlayer.drawable = nil
 
@@ -117,13 +117,6 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
         case .error:
             SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
             SVProgressHUD.showError(withStatus: "Network/API connection error")
-            break
-        case .playing:
-            pausePlayIcon.isUserInteractionEnabled = true
-            pausePlayIcon.image = #imageLiteral(resourceName: "ic_pause")
-            break
-        case .paused:
-            pausePlayIcon.image = #imageLiteral(resourceName: "ic_play")
             break
         default: break
         }
