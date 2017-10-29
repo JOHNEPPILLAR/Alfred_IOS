@@ -130,7 +130,7 @@ class LightsOffViewController: UIViewController, URLSessionDelegate {
         
         // Call API
         let APIbody: Data = try! JSONSerialization.data(withJSONObject: self.lightsOffData[0].dictionaryRepresentation(), options: [])
-        let request = putAPIHeaderData(url: "settings/lightsoff", body: APIbody, useScheduler: true)
+        let request = putAPIHeaderData(url: "settings/savelightsoff", body: APIbody, useScheduler: true)
         let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
