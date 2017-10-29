@@ -40,23 +40,25 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
         // Setup event timers to see what the player is doing
         videoTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(mediaPlayerStateChanged), userInfo: nil, repeats: true)
 
-        // Play RTSP stream
-        let camURL = readPlist(item: "CamURL")
-        let url = URL(string: camURL)
-        
-        let media = VLCMedia(url: url!)
-        mediaPlayer.media = media
+        // Setup the media player
         mediaPlayer.delegate = self
         mediaPlayer.drawable = self.movieView
 
+        // Setup the RTSP stream
+        let camURL = readPlist(item: "CamURL")
+        let url = URL(string: camURL)
+        let media = VLCMedia(url: url!)
+        mediaPlayer.media = media
+
+        // Play the steeam
         mediaPlayer.play()
-        
+
         // Bring video control bar to front
         view.bringSubview(toFront: playerControls)
         
         // Add play/pause tap gesture
-        let playPauseTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(playPauseImageTapped))
-        pausePlayIcon.addGestureRecognizer(playPauseTapRecognizer)
+        //let playPauseTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(playPauseImageTapped))
+        //pausePlayIcon.addGestureRecognizer(playPauseTapRecognizer)
 
         // Add mute tap gesture
         let muteTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(muteImageTapped))
@@ -64,7 +66,8 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
 
     }
     
-    @objc func playPauseImageTapped(gestureRecognizer: UITapGestureRecognizer) {
+    /*
+     @objc func playPauseImageTapped(gestureRecognizer: UITapGestureRecognizer) {
         if (pausePlayIcon.image == #imageLiteral(resourceName: "ic_play")) {
             mediaPlayer.play()
             pausePlayIcon.image = #imageLiteral(resourceName: "ic_pause")
@@ -73,11 +76,16 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
             pausePlayIcon.image = #imageLiteral(resourceName: "ic_play")
         }
     }
+    */
 
     @objc func muteImageTapped(gestureRecognizer: UITapGestureRecognizer) {
         if (volumeIcon.image == #imageLiteral(resourceName: "ic_mute")) {
             mediaPlayer.currentAudioTrackIndex = -1
             volumeIcon.isHidden = true
+            //volumeIcon.image = #imageLiteral(resourceName: "ic_audio")
+        //} else {
+        //    mediaPlayer.currentAudioTrackIndex = 0
+        //    volumeIcon.image = #imageLiteral(resourceName: "ic_mute")
         }
     }
     
