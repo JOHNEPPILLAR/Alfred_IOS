@@ -141,10 +141,11 @@ class BedHeaterViewController: UIViewController, URLSessionDelegate {
                 self.bedData = [Bed(json: jsonData)]
 
                 // Check the defaults
-                let userDefaults = UserDefaults.standard
-                UserDefaults.standard.register(defaults: [String : Any]())
-                let whoIsThis = userDefaults.string(forKey: "WHO_IS_THIS")
-                    
+                let appDefaults = [String:AnyObject]()
+                UserDefaults.standard.register(defaults: appDefaults)
+                let defaults = UserDefaults.standard
+                let whoIsThis = defaults.string(forKey: "who_is_this")
+
                 if whoIsThis == "Fran" {
                     self.bedData = [Bed(json: jsonData[1])]
                     self.sideLabel.text = "Fran's Side"

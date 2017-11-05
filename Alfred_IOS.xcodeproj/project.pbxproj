@@ -25,6 +25,7 @@
 		0A791EE01F93E2C300765DF9 /* LightsOffData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A791EDF1F93E2C300765DF9 /* LightsOffData.swift */; };
 		0A791EE51F93E43200765DF9 /* LightsOffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A791EE41F93E43200765DF9 /* LightsOffViewController.swift */; };
 		0A7DADE11F4A2BF9002FEE9F /* HueColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DADE01F4A2BF9002FEE9F /* HueColorHelper.swift */; };
+		0A7ECE1F1FAE437B002AF233 /* CommuteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7ECE1E1FAE437B002AF233 /* CommuteViewController.swift */; };
 		0A80C09C1F24812E0082F77C /* Alfred.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A80C09B1F24812E0082F77C /* Alfred.plist */; };
 		0A8AF14A1F24EF030064894F /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8AF1491F24EF030064894F /* Helpers.swift */; };
 		0A93796B1F67A8DE004FFC3B /* APILogFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A93796A1F67A8DE004FFC3B /* APILogFileViewController.swift */; };
@@ -71,6 +72,7 @@
 		0A791EDF1F93E2C300765DF9 /* LightsOffData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsOffData.swift; sourceTree = "<group>"; };
 		0A791EE41F93E43200765DF9 /* LightsOffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsOffViewController.swift; sourceTree = "<group>"; };
 		0A7DADE01F4A2BF9002FEE9F /* HueColorHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HueColorHelper.swift; sourceTree = "<group>"; };
+		0A7ECE1E1FAE437B002AF233 /* CommuteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteViewController.swift; sourceTree = "<group>"; };
 		0A80C09B1F24812E0082F77C /* Alfred.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Alfred.plist; sourceTree = "<group>"; };
 		0A8AF1491F24EF030064894F /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		0A93796A1F67A8DE004FFC3B /* APILogFileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILogFileViewController.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				0AB222F11F5C89700040E58F /* BedHeaterViewController.swift */,
 				0A93796A1F67A8DE004FFC3B /* APILogFileViewController.swift */,
 				0A791EE41F93E43200765DF9 /* LightsOffViewController.swift */,
+				0A7ECE1E1FAE437B002AF233 /* CommuteViewController.swift */,
 			);
 			name = "View Controlers";
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				0A4986411F42BEBA006979E0 /* CameraViewController.swift in Sources */,
 				0A69FB9F1F1160F500563A69 /* ViewController.swift in Sources */,
 				0A46C5FB1F56D58300ADB758 /* LightsCollectionViewCell.swift in Sources */,
+				0A7ECE1F1FAE437B002AF233 /* CommuteViewController.swift in Sources */,
 				0AFCD86D1F2283CC00FD1C1C /* Lights.swift in Sources */,
 				0AFCD86B1F22832000FD1C1C /* Evening.swift in Sources */,
 				0A97CCAF1F2B0AEF00E6FF1F /* RoomLightsViewController.swift in Sources */,
@@ -580,7 +584,11 @@
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/MobileVLCKit\"",
 				);
-				"HEADER_SEARCH_PATHS[arch=*]" = "$(inherited) \"${PODS_ROOT}/Headers/Public\" \"${PODS_ROOT}/Headers/Public/MobileVLCKit\"";
+				"HEADER_SEARCH_PATHS[arch=*]" = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/MobileVLCKit\"",
+				);
 				INFOPLIST_FILE = Alfred_IOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -610,7 +618,11 @@
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/MobileVLCKit\"",
 				);
-				"HEADER_SEARCH_PATHS[arch=*]" = "$(inherited) \"${PODS_ROOT}/Headers/Public\" \"${PODS_ROOT}/Headers/Public/MobileVLCKit\"";
+				"HEADER_SEARCH_PATHS[arch=*]" = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/MobileVLCKit\"",
+				);
 				INFOPLIST_FILE = Alfred_IOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

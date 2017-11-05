@@ -14,9 +14,9 @@
 			<key>DefaultValue</key>
 			<string>JP</string>
 			<key>Key</key>
-			<string>WHO_IS_THIS</string>
+			<string>who_is_this</string>
 			<key>Title</key>
-			<string>Who is this</string>
+			<string>Main user</string>
 			<key>Titles</key>
 			<array>
 				<string>JP</string>
@@ -48,7 +48,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>97</string>
+			<string>123</string>
 			<key>Key</key>
 			<string>BUILD_NUMBER</string>
 			<key>Title</key>
