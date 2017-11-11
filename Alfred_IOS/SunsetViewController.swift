@@ -45,8 +45,11 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
     
     @IBOutlet weak var sunsetTimeLabel: UILabel!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+        SVProgressHUD.show(withStatus: "Loading")
         
         // Add save button to navigation bar
         let saveButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(saveSettingsAction(sender:)))
@@ -89,6 +92,8 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
         task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
                 
+                SVProgressHUD.dismiss() // Dismiss loading HUD
+
                 let json = JSON(data: data!)
                 // Save json to custom classes
                 let jsonData = json["data"]["on"]["evening"]

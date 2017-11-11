@@ -21,11 +21,17 @@ class APILogFileViewController: UIViewController, UITableViewDataSource, UITable
     var logs = [Logs]()
     var viewPage = 1 as Int
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         LogFileTableView.backgroundView = UIImageView(image: UIImage(named: "background.jpg"))
         LogFileTableView.addSubview(self.refreshControl) // Add pull to refresh functionality
-        self.getData() // Get log info from Alfred
+        
+        // Get configuration info from Alfred
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+        SVProgressHUD.show(withStatus: "Loading")
+        
+        self.getData()
     }
     
     func getData() {
@@ -45,6 +51,7 @@ class APILogFileViewController: UIViewController, UITableViewDataSource, UITable
                 }
                 
                 DispatchQueue.main.async {
+                    SVProgressHUD.dismiss() // Dismiss the loading HUD
                     self.LogFileTableView.reloadData() // Refresh the table view
                 }
             }

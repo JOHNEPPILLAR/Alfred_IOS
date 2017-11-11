@@ -30,11 +30,19 @@ class CommuteViewController: UIViewController, URLSessionDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Get configuration info from Alfred
-        self.getData()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+        SVProgressHUD.show(withStatus: "Loading")
+
+        // Get configuration info from Alfred
+        self.getData()
+
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -44,24 +52,26 @@ class CommuteViewController: UIViewController, URLSessionDelegate {
     }
     
     func getData() {
-    
+        
         // Get who is using the app
         let appDefaults = [String:AnyObject]()
         UserDefaults.standard.register(defaults: appDefaults)
         let defaults = UserDefaults.standard
-        let whoIsThis = defaults.string(forKey: "who_is_this")
-
+        var whoIsThis = defaults.string(forKey: "who_is_this")
+        if whoIsThis == nil { whoIsThis = "JP" }
+        
         // Get commute information
         let request = getAPIHeaderData(url: "/travel/getcommute?user=" + whoIsThis!, useScheduler: false)
         let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
-                
+        
                 let json = JSON(data: data!)
                 var jsonData = json["data"]
                 DispatchQueue.main.async {
 
-                    // Update UI
+                    SVProgressHUD.dismiss() // Dismiss the loading HUD
+                    
                     // First commute option
                     switch jsonData["part1"]["mode"].string! {
                     case "train"  :

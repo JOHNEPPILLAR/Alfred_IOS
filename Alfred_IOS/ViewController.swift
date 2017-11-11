@@ -33,9 +33,14 @@ class ViewController: UIViewController, URLSessionDelegate {
         let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
                     self.activityIndicator.stopAnimating()
                     self.performSegue(withIdentifier: "home", sender: self)
+                })
+            } else {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
+                    let alert = UIAlertController(title: "Unable to connect to Alfred", message: "Please check your internet connection. Close the app and try again", preferredStyle: UIAlertControllerStyle.alert)
+                    self.present(alert, animated: true, completion: nil)
                 })
             }
         })

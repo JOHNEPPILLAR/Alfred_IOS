@@ -46,8 +46,11 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
     
     var colorPickerView: ColorViewController?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+        SVProgressHUD.show(withStatus: "Loading")
         
         // Add save button to navigation bar
         let saveButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(saveSettingsAction(sender:)))
@@ -83,6 +86,9 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
                 self.morningData = [Morning(json: jsonData)]
                 
                 DispatchQueue.main.async {
+                    
+                    SVProgressHUD.dismiss() // Dismiss the loading HUD
+                    
                     // Setup the offset and off timer settings
                     if self.morningData[0].master_on == "true" {
                         self.masterSwitch.setOn(true, animated: true)

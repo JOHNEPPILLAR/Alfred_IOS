@@ -19,12 +19,15 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
     var movieView: UIView!
     var mediaPlayer = VLCMediaPlayer()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+        SVProgressHUD.show(withStatus: "Buffering")
 
         // Add rotation observer
         NotificationCenter.default.addObserver(self, selector: #selector(CameraViewController.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
-
+        
         // Setup movieView
         self.movieView = UIView()
         self.movieView.frame = UIScreen.screens[0].bounds
@@ -32,11 +35,6 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
         // Add movieView to view controller
         view.addSubview(self.movieView)
         
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
         // Setup event timers to see what the player is doing
         videoTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(mediaPlayerStateChanged), userInfo: nil, repeats: true)
 
@@ -81,19 +79,21 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
     @objc func muteImageTapped(gestureRecognizer: UITapGestureRecognizer) {
         if (volumeIcon.image == #imageLiteral(resourceName: "ic_mute")) {
             mediaPlayer.currentAudioTrackIndex = -1
-            volumeIcon.isHidden = true
-            //volumeIcon.image = #imageLiteral(resourceName: "ic_audio")
-        //} else {
-        //    mediaPlayer.currentAudioTrackIndex = 0
-        //    volumeIcon.image = #imageLiteral(resourceName: "ic_mute")
+            //volumeIcon.isHidden = true
+            volumeIcon.image = #imageLiteral(resourceName: "ic_audio")
+        } else {
+            mediaPlayer.currentAudioTrackIndex = 0
+            volumeIcon.image = #imageLiteral(resourceName: "ic_mute")
         }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
+        SVProgressHUD.dismiss() // Dismiss any active HUD
+        
         // Stop video as moving away from view
-        pausePlayIcon.image = #imageLiteral(resourceName: "ic_pause")
+        //pausePlayIcon.image = #imageLiteral(resourceName: "ic_pause")
         volumeIcon.image = #imageLiteral(resourceName: "ic_mute")
         volumeIcon.isHidden = false
         mediaPlayer.stop()
@@ -126,6 +126,8 @@ class CameraViewController: UIViewController, VLCMediaPlayerDelegate {
             SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
             SVProgressHUD.showError(withStatus: "Network/API connection error")
             break
+        case .buffering:
+            SVProgressHUD.dismiss() // Dismiss the loading HUD
         default: break
         }
     }

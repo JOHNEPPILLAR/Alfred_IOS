@@ -44,7 +44,6 @@
 		0AE259041F704A0A002C6922 /* SettingsBundleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE259031F704A0A002C6922 /* SettingsBundleHelper.swift */; };
 		0AE740251F28C54B00B8ABB1 /* Morning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE740241F28C54B00B8ABB1 /* Morning.swift */; };
 		0AE84DE71F289F120031F6C2 /* SunriseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE84DE61F289F120031F6C2 /* SunriseViewController.swift */; };
-		0AF938DD1F1A2A4F00B5B247 /* EZLoadingActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF938DC1F1A2A4F00B5B247 /* EZLoadingActivity.swift */; };
 		0AFCD86B1F22832000FD1C1C /* Evening.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFCD86A1F22832000FD1C1C /* Evening.swift */; };
 		0AFCD86D1F2283CC00FD1C1C /* Lights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFCD86C1F2283CC00FD1C1C /* Lights.swift */; };
 		A5CB0541EC331A4BFEF71AD8 /* Pods_Alfred_IOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2D4C3A3EE9E0D17B56318E /* Pods_Alfred_IOS.framework */; };
@@ -91,7 +90,6 @@
 		0AE259031F704A0A002C6922 /* SettingsBundleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBundleHelper.swift; sourceTree = "<group>"; };
 		0AE740241F28C54B00B8ABB1 /* Morning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Morning.swift; sourceTree = "<group>"; };
 		0AE84DE61F289F120031F6C2 /* SunriseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SunriseViewController.swift; sourceTree = "<group>"; };
-		0AF938DC1F1A2A4F00B5B247 /* EZLoadingActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZLoadingActivity.swift; sourceTree = "<group>"; };
 		0AFCD86A1F22832000FD1C1C /* Evening.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Evening.swift; sourceTree = "<group>"; };
 		0AFCD86C1F2283CC00FD1C1C /* Lights.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lights.swift; sourceTree = "<group>"; };
 		252CE001F08C2663E6B7452E /* Pods-Alfred_IOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alfred_IOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Alfred_IOS/Pods-Alfred_IOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -126,7 +124,6 @@
 		0A48AD8A1F2376E7008922C9 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				0AF938DC1F1A2A4F00B5B247 /* EZLoadingActivity.swift */,
 				0A8AF1491F24EF030064894F /* Helpers.swift */,
 				0A7DADE01F4A2BF9002FEE9F /* HueColorHelper.swift */,
 			);
@@ -437,7 +434,6 @@
 				0A7DADE11F4A2BF9002FEE9F /* HueColorHelper.swift in Sources */,
 				0A97EE301F8A5B400059268B /* RoomLightsData.swift in Sources */,
 				0AE259041F704A0A002C6922 /* SettingsBundleHelper.swift in Sources */,
-				0AF938DD1F1A2A4F00B5B247 /* EZLoadingActivity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

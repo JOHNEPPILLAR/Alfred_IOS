@@ -21,10 +21,15 @@ class LogFileViewController: UIViewController, UITableViewDataSource, UITableVie
     var logs = [Logs]()
     var viewPage = 1 as Int
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+        SVProgressHUD.show(withStatus: "Loading")
+
         LogFileTableView.backgroundView = UIImageView(image: UIImage(named: "background.jpg"))
         LogFileTableView.addSubview(self.refreshControl) // Add pull to refresh functionality
+        
         self.getData() // Get log info from Alfred
     }
 
@@ -45,6 +50,7 @@ class LogFileViewController: UIViewController, UITableViewDataSource, UITableVie
                 }
                 
                 DispatchQueue.main.async {
+                    SVProgressHUD.dismiss() // Dismiss the loading HUD
                     self.LogFileTableView.reloadData() // Refresh the table view
                 }
             }

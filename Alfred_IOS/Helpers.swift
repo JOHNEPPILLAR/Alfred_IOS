@@ -59,6 +59,7 @@ func checkAPIData(apiData: Data?, response: URLResponse?, error: Error?) -> Bool
     if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
         DispatchQueue.main.async {
             // Show error
+            SVProgressHUD.dismiss() // Dismiss any active HUD
             SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
             SVProgressHUD.showError(withStatus: "Invalid API request")
         }
@@ -73,6 +74,7 @@ func checkAPIData(apiData: Data?, response: URLResponse?, error: Error?) -> Bool
     } else {
         DispatchQueue.main.async {
             // Show error
+            SVProgressHUD.dismiss() // Dismiss any active HUD
             SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
             SVProgressHUD.showError(withStatus: "Invalid API request")
         }

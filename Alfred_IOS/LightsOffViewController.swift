@@ -59,9 +59,9 @@ class LightsOffViewController: UIViewController, URLSessionDelegate {
     
     var lightsOffData = [LightsOff]()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
         // Add save button to navigation bar
         let saveButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(saveSettingsAction(sender:)))
         navigationItem.rightBarButtonItem = saveButton
@@ -75,6 +75,8 @@ class LightsOffViewController: UIViewController, URLSessionDelegate {
         self.EveningMinStep.isEnabled = false
         
         // Get configuration info from Alfred
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+        SVProgressHUD.show(withStatus: "Loading")
         self.getData()
         
     }
@@ -92,6 +94,9 @@ class LightsOffViewController: UIViewController, URLSessionDelegate {
                 let jsonData = json["data"]["off"]
                 self.lightsOffData = [LightsOff(json: jsonData)]
                 DispatchQueue.main.async {
+                    
+                    SVProgressHUD.dismiss() // Dismiss the loading HUD
+
                     // Setup the offset and off timer settings
                     if self.lightsOffData[0].morning?.masterOn == "true" {
                         self.MorningOnOff.setOn(true, animated: true)
@@ -114,7 +119,6 @@ class LightsOffViewController: UIViewController, URLSessionDelegate {
                     self.MorningMinStep.isEnabled = true
                     self.EveningHrStep.isEnabled = true
                     self.EveningMinStep.isEnabled = true
-                    
                     self.navigationItem.rightBarButtonItem?.isEnabled = true
                     
                 }

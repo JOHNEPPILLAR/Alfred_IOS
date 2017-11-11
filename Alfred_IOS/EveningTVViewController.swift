@@ -42,9 +42,9 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
         eveningTVData[0].onMin = Int(sender.value)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
         // Add save button to navigation bar
         let saveButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(saveSettingsAction(sender:)))
         navigationItem.rightBarButtonItem = saveButton
@@ -53,7 +53,10 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
         navigationItem.rightBarButtonItem?.isEnabled = false
         self.turnOnHRStepper.isEnabled = false
         self.turnOnMINStepper.isEnabled = false
-        
+    
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+        SVProgressHUD.show(withStatus: "Loading")
+
         // Get evening TV lights configuration info from Alfred
         self.getData()
     }
@@ -75,6 +78,9 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
                 let jsonData = json["data"]["on"]["eveningtv"]
                 self.eveningTVData = [EveningTV(json: jsonData)]
                 DispatchQueue.main.async {
+                    
+                    SVProgressHUD.dismiss() // Dismiss the loading HUD
+                    
                     // Setup the offset and off timer settings
                     if self.eveningTVData[0].master_on == "true" {
                         self.masterSwitch.setOn(true, animated: true)

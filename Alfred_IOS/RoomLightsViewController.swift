@@ -22,15 +22,16 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
     
     @IBOutlet weak var LightCollectionViewRooms: UICollectionView!
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+        SVProgressHUD.show(withStatus: "Loading")
+
+        self.getData() // Get room lights configuration info from Alfred
+
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.getData() // Get room lights configuration info from Alfred
-    }
-
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         SVProgressHUD.dismiss() // Stop spinner
@@ -44,6 +45,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
                 let responseJSON = JSON(data: data!)
                 self.roomLightsData = [RoomLightsBaseClass(json: responseJSON)]
                 DispatchQueue.main.async {
+                    SVProgressHUD.dismiss() // Dismiss the loading HUD
                     self.LightCollectionViewRooms.reloadData() // Refresh the colection view
                 }
             }

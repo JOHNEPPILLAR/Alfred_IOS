@@ -1972,16 +1972,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d0s-br-xMd">
-                                <rect key="frame" x="0.0" y="605" width="375" height="62"/>
+                                <rect key="frame" x="0.0" y="570" width="375" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
-                                    <imageView hidden="YES" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_pause" translatesAutoresizingMaskIntoConstraints="NO" id="WPT-Qg-wmS">
-                                        <rect key="frame" x="172" y="21" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <gestureRecognizers/>
-                                    </imageView>
                                     <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_mute" translatesAutoresizingMaskIntoConstraints="NO" id="T0D-ef-sPX">
-                                        <rect key="frame" x="319" y="21" width="30" height="30"/>
+                                        <rect key="frame" x="317" y="0.0" width="32" height="36"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <gestureRecognizers/>
                                     </imageView>
@@ -1993,7 +1988,6 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Video" image="ic_camera" id="3lw-fI-f3r"/>
                     <connections>
-                        <outlet property="pausePlayIcon" destination="WPT-Qg-wmS" id="xN4-hW-uX7"/>
                         <outlet property="playerControls" destination="d0s-br-xMd" id="oT9-bE-iH1"/>
                         <outlet property="volumeIcon" destination="T0D-ef-sPX" id="e2Y-kM-pjl"/>
                     </connections>
@@ -2633,7 +2627,6 @@
         <image name="ic_energise" width="50" height="50"/>
         <image name="ic_lights_off" width="100" height="100"/>
         <image name="ic_mute" width="24" height="24"/>
-        <image name="ic_pause" width="24" height="24"/>
         <image name="ic_read" width="50" height="50"/>
         <image name="ic_restart" width="80" height="80"/>
         <image name="ic_scene" width="50" height="50"/>

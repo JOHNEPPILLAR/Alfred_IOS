@@ -85,8 +85,8 @@ class BedHeaterViewController: UIViewController, URLSessionDelegate {
         self.bedData[0].offMin = Int(sender.value)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 
         // Add save button to navigation bar
         let saveButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(saveSettingsAction(sender:)))
@@ -112,6 +112,8 @@ class BedHeaterViewController: UIViewController, URLSessionDelegate {
         tempSlider.frame = CGRect(x: 59, y: 70, width: tempSlider.frame.size.width, height: 200)
         
         // Get configuration info from Alfred
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+        SVProgressHUD.show(withStatus: "Loading")
         self.getData()
     }
 
@@ -134,6 +136,8 @@ class BedHeaterViewController: UIViewController, URLSessionDelegate {
         let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
+                
+                SVProgressHUD.dismiss() // Dismiss the loading HUD
                 
                 // Save json to custom classes
                 let json = JSON(data: data!)
