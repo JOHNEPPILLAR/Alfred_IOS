@@ -12,15 +12,22 @@ import SVProgressHUD
 
 class CommuteViewController: UIViewController, URLSessionDelegate {
 
-    @IBOutlet weak var destination: UILabel!
-    @IBOutlet weak var firstTime: UILabel!
-    @IBOutlet weak var firstNotes: UILabel!
-    @IBOutlet weak var secondTime: UILabel!
-    @IBOutlet weak var secondNotes: UILabel!
-    @IBOutlet weak var tubeLine: UILabel!
-    @IBOutlet weak var tubeDelays: UILabel!
-    @IBOutlet weak var backupTubeLine: UILabel!
-    @IBOutlet weak var backupTubeDelays: UILabel!
+    @IBOutlet weak var part1Image: UIImageView!
+    @IBOutlet weak var part1Line: UILabel!
+    @IBOutlet weak var part1Time: UILabel!
+
+    @IBOutlet weak var part2Image: UIImageView!
+    @IBOutlet weak var part2Line: UILabel!
+    @IBOutlet weak var part2Time: UILabel!
+
+    @IBOutlet weak var part3Image: UIImageView!
+    @IBOutlet weak var part3Line: UILabel!
+    @IBOutlet weak var part3Time: UILabel!
+    
+    @IBOutlet weak var part4Image: UIImageView!
+    @IBOutlet weak var part4Line: UILabel!
+    @IBOutlet weak var part4Time: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,31 +62,97 @@ class CommuteViewController: UIViewController, URLSessionDelegate {
                 DispatchQueue.main.async {
 
                     // Update UI
-                    
-                    self.destination.text = jsonData["train"]["firstDestination"].string!
-                    self.firstTime.text = jsonData["train"]["firstTrainTime"].string!
-                    self.firstNotes.text = "( " + jsonData["train"]["firstTrainNotes"].string! + " )"
-                    self.secondTime.text = jsonData["train"]["secondTrainTime"].string!
-                    self.secondNotes.text = "( " + jsonData["train"]["secondTrainNotes"].string! + " )"
+                    // First commute option
+                    switch jsonData["part1"]["mode"].string! {
+                    case "train"  :
+                        self.part1Image.image = UIImage(named: "ic_train")
+                        self.part1Line.text = jsonData["part1"]["destination"].string!
+                        self.part1Time.text = jsonData["part1"]["firstTime"].string! + " - " + jsonData["part1"]["secondTime"].string!
+                    case "bus"  :
+                        self.part1Image.image = UIImage(named: "ic_bus")
+                        self.part1Line.text = jsonData["part1"]["line"].string! + " to " + jsonData["part1"]["destination"].string!
+                        self.part1Time.text = jsonData["part1"]["firstTime"].string! + " - " + jsonData["part1"]["secondTime"].string!
+                    case "tube"  :
+                        self.part1Image.image = UIImage(named: "ic_tube")
+                        self.part1Line.text = jsonData["part1"]["line"].string! + " Line"
+                        self.part1Time.text = "No disruptions"
+                    default :
+                        self.part1Image.image = nil
+                    }
+                    if jsonData["part1"]["disruptions"].string != "false" {
+                        self.part1Line.textColor = UIColor.red
+                        self.part1Time.textColor = UIColor.red
+                        self.part1Time.text = "Disruptions"
+                    }
 
-                    if jsonData["train"]["disruptions"].string != "false" {
-                        self.destination.textColor = UIColor.red
-                        self.firstTime.textColor = UIColor.red
-                        self.firstNotes.textColor = UIColor.red
-                        self.secondTime.textColor = UIColor.red
-                        self.secondNotes.textColor = UIColor.red
+                    // Second commute option
+                    switch jsonData["part2"]["mode"].string! {
+                    case "train"  :
+                        self.part2Image.image = UIImage(named: "ic_train")
+                        self.part2Line.text = jsonData["part2"]["destination"].string!
+                        self.part2Time.text = jsonData["part2"]["firstTime"].string! + " - " + jsonData["part2"]["secondTime"].string!
+                    case "bus"  :
+                        self.part2Image.image = UIImage(named: "ic_bus")
+                        self.part2Line.text = jsonData["part2"]["line"].string! + " to " + jsonData["part2"]["destination"].string!
+                        self.part2Time.text = jsonData["part2"]["firstTime"].string! + " - " + jsonData["part2"]["secondTime"].string!
+                    case "tube"  :
+                        self.part2Image.image = UIImage(named: "ic_tube")
+                        self.part2Line.text = jsonData["part2"]["line"].string! + " Line"
+                        self.part2Time.text = "No disruptions"
+                    default :
+                        self.part2Image.image = nil
                     }
-                    
-                    self.tubeLine.text = jsonData["tube"]["line"].string! + " line"
-                    if jsonData["tube"]["disruptions"].string == "false" {
-                        self.tubeDelays.text = "No delays reported"
-                    } else {
-                        self.tubeDelays.text = "Delays reported"
-                        self.tubeDelays.textColor = UIColor.red
-                        self.tubeLine.textColor = UIColor.red
+                    if jsonData["part2"]["disruptions"].string != "false" {
+                        self.part2Line.textColor = UIColor.red
+                        self.part2Time.textColor = UIColor.red
+                        self.part2Time.text = "Disruptions"
                     }
-                    
-                    // TODO Second commute option
+
+                    // Third commute option
+                    switch jsonData["part3"]["mode"].string! {
+                    case "train"  :
+                        self.part3Image.image = UIImage(named: "ic_train")
+                        self.part3Line.text = jsonData["part3"]["destination"].string!
+                        self.part3Time.text = jsonData["part3"]["firstTime"].string! + " - " + jsonData["part3"]["secondTime"].string!
+                    case "bus"  :
+                        self.part3Image.image = UIImage(named: "ic_bus")
+                        self.part3Line.text = jsonData["part3"]["line"].string! + " to " + jsonData["part3"]["destination"].string!
+                        self.part3Time.text = jsonData["part3"]["firstTime"].string! + " - " + jsonData["part3"]["secondTime"].string!
+                    case "tube"  :
+                        self.part3Image.image = UIImage(named: "ic_tube")
+                        self.part3Line.text = jsonData["part3"]["line"].string! + " Line"
+                        self.part3Time.text = "No disruptions"
+                    default :
+                        self.part3Image.image = nil
+                    }
+                    if jsonData["part3"]["disruptions"].string != "false" {
+                        self.part3Line.textColor = UIColor.red
+                        self.part3Time.textColor = UIColor.red
+                        self.part3Time.text = "Disruptions"
+                    }
+
+                    // Forth commute option
+                    switch jsonData["part4"]["mode"].string! {
+                    case "train"  :
+                        self.part4Image.image = UIImage(named: "ic_train")
+                        self.part4Line.text = jsonData["part4"]["destination"].string!
+                        self.part4Time.text = jsonData["part4"]["firstTime"].string! + " - " + jsonData["part4"]["secondTime"].string!
+                    case "bus"  :
+                        self.part4Image.image = UIImage(named: "ic_bus")
+                        self.part4Line.text = jsonData["part4"]["line"].string! + " to " + jsonData["part4"]["destination"].string!
+                        self.part4Time.text = jsonData["part4"]["firstTime"].string! + " - " + jsonData["part4"]["secondTime"].string!
+                    case "tube"  :
+                        self.part4Image.image = UIImage(named: "ic_tube")
+                        self.part4Line.text = jsonData["part4"]["line"].string! + " Line"
+                        self.part4Time.text = "No disruptions"
+                    default :
+                        self.part4Image.image = nil
+                    }
+                    if jsonData["part4"]["disruptions"].string != "false" {
+                        self.part4Line.textColor = UIColor.red
+                        self.part4Time.textColor = UIColor.red
+                        self.part4Time.text = "Disruptions"
+                    }
                 }
             }
         })
