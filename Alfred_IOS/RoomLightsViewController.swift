@@ -80,6 +80,11 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
             cell.powerButton.backgroundColor = color
             
         }
+        
+        cell.brightnessSlider.isHidden = true
+        if (roomLightsData[0].data![row].state?.anyOn)! {
+            cell.brightnessSlider.isHidden = false
+        }
         cell.brightnessSlider.value = Float((roomLightsData[0].data![row].action?.bri)!)
         cell.brightnessSlider.tag = row
         cell.brightnessSlider?.addTarget(self, action: #selector(brightnessValueChange(_:)), for: .touchUpInside)
@@ -137,11 +142,13 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
             
             roomLightsData[0].data![row!].state?.anyOn = false
             cell.powerButton.backgroundColor = UIColor.clear
+            cell.brightnessSlider.isHidden = true
             lightsOn = "off"
             
         } else {
             
             roomLightsData[0].data![row!].state?.anyOn = true
+            cell.brightnessSlider.isHidden = false
             lightsOn = "on"
 
             // Setup the light bulb colour
@@ -153,10 +160,10 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
             }
             cell.powerButton.backgroundColor = color
             
-            if roomLightsData[0].data![row!].action?.bri == 0 {
-                roomLightsData[0].data![row!].action?.bri = 100
-                cell.brightnessSlider.value = 100
-            }
+            //if roomLightsData[0].data![row!].action?.bri == 0 {
+            //    roomLightsData[0].data![row!].action?.bri = 100
+            //    cell.brightnessSlider.value = 100
+            //}
             
         }
         

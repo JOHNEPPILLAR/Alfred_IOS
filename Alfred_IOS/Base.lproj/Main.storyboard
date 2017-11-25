@@ -616,7 +616,7 @@
                                                                                     <real key="value" value="0.0"/>
                                                                                 </userDefinedRuntimeAttribute>
                                                                                 <userDefinedRuntimeAttribute type="number" keyPath="valueMaximum">
-                                                                                    <real key="value" value="255"/>
+                                                                                    <real key="value" value="127"/>
                                                                                 </userDefinedRuntimeAttribute>
                                                                                 <userDefinedRuntimeAttribute type="number" keyPath="trackMinAngle">
                                                                                     <real key="value" value="330"/>
@@ -1528,7 +1528,7 @@
                                                                                     <real key="value" value="0.0"/>
                                                                                 </userDefinedRuntimeAttribute>
                                                                                 <userDefinedRuntimeAttribute type="number" keyPath="valueMaximum">
-                                                                                    <real key="value" value="255"/>
+                                                                                    <real key="value" value="127"/>
                                                                                 </userDefinedRuntimeAttribute>
                                                                                 <userDefinedRuntimeAttribute type="number" keyPath="trackMinAngle">
                                                                                     <real key="value" value="330"/>
@@ -1697,7 +1697,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fbn-e5-3oa">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t1v-13-51s">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
@@ -2360,15 +2360,6 @@
                                                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2nN-c8-JlC" customClass="MTCircularSlider" customModule="MTCircularSlider">
                                                                             <rect key="frame" x="0.0" y="0.0" width="170" height="125"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                            <subviews>
-                                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="power_button_grey" translatesAutoresizingMaskIntoConstraints="NO" id="ePP-Zb-K8h" customClass="RoundImage" customModule="Alfred_IOS" customModuleProvider="target">
-                                                                                    <rect key="frame" x="51" y="27" width="70" height="70"/>
-                                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                                    <userDefinedRuntimeAttributes>
-                                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
-                                                                                    </userDefinedRuntimeAttributes>
-                                                                                </imageView>
-                                                                            </subviews>
                                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <userDefinedRuntimeAttributes>
                                                                                 <userDefinedRuntimeAttribute type="number" keyPath="trackWidth">
@@ -2382,7 +2373,7 @@
                                                                                     <real key="value" value="0.0"/>
                                                                                 </userDefinedRuntimeAttribute>
                                                                                 <userDefinedRuntimeAttribute type="number" keyPath="valueMaximum">
-                                                                                    <real key="value" value="255"/>
+                                                                                    <real key="value" value="127"/>
                                                                                 </userDefinedRuntimeAttribute>
                                                                                 <userDefinedRuntimeAttribute type="number" keyPath="trackMinAngle">
                                                                                     <real key="value" value="330"/>
@@ -2401,6 +2392,13 @@
                                                                                 </userDefinedRuntimeAttribute>
                                                                             </userDefinedRuntimeAttributes>
                                                                         </view>
+                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="power_button_grey" translatesAutoresizingMaskIntoConstraints="NO" id="ePP-Zb-K8h" customClass="RoundImage" customModule="Alfred_IOS" customModuleProvider="target">
+                                                                            <rect key="frame" x="50" y="27" width="70" height="70"/>
+                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                            <userDefinedRuntimeAttributes>
+                                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                                                                            </userDefinedRuntimeAttributes>
+                                                                        </imageView>
                                                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="OWD-Zn-pjn">
                                                                             <rect key="frame" x="0.0" y="95" width="170" height="30"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2641,7 +2639,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Yxf-CY-gGx"/>
-        <segue reference="43U-s2-kp5"/>
+        <segue reference="How-IC-abe"/>
         <segue reference="mhl-KS-xfb"/>
         <segue reference="PXd-qe-vgO"/>
         <segue reference="Uga-H5-5lR"/>

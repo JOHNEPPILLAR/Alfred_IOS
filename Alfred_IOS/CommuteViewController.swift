@@ -76,12 +76,12 @@ class CommuteViewController: UIViewController, URLSessionDelegate {
                     switch jsonData["part1"]["mode"].string! {
                     case "train"  :
                         self.part1Image.image = UIImage(named: "ic_train")
-                        self.part1Line.text = jsonData["part1"]["destination"].string!
-                        self.part1Time.text = jsonData["part1"]["firstTime"].string! + " - " + jsonData["part1"]["secondTime"].string!
+                        self.part1Line.text = jsonData["part1"]["destination"].string
+                        self.part1Time.text = jsonData["part1"]["firstTime"].string! + " & " + jsonData["part1"]["secondTime"].string!
                     case "bus"  :
                         self.part1Image.image = UIImage(named: "ic_bus")
                         self.part1Line.text = jsonData["part1"]["line"].string! + " to " + jsonData["part1"]["destination"].string!
-                        self.part1Time.text = jsonData["part1"]["firstTime"].string! + " - " + jsonData["part1"]["secondTime"].string!
+                        self.part1Time.text = jsonData["part1"]["firstTime"].string! + " & " + jsonData["part1"]["secondTime"].string!
                     case "tube"  :
                         self.part1Image.image = UIImage(named: "ic_tube")
                         self.part1Line.text = jsonData["part1"]["line"].string! + " Line"
@@ -100,11 +100,11 @@ class CommuteViewController: UIViewController, URLSessionDelegate {
                     case "train"  :
                         self.part2Image.image = UIImage(named: "ic_train")
                         self.part2Line.text = jsonData["part2"]["destination"].string!
-                        self.part2Time.text = jsonData["part2"]["firstTime"].string! + " - " + jsonData["part2"]["secondTime"].string!
+                        self.part2Time.text = jsonData["part2"]["firstTime"].string! + " & " + jsonData["part2"]["secondTime"].string!
                     case "bus"  :
                         self.part2Image.image = UIImage(named: "ic_bus")
                         self.part2Line.text = jsonData["part2"]["line"].string! + " to " + jsonData["part2"]["destination"].string!
-                        self.part2Time.text = jsonData["part2"]["firstTime"].string! + " - " + jsonData["part2"]["secondTime"].string!
+                        self.part2Time.text = jsonData["part2"]["firstTime"].string! + " & " + jsonData["part2"]["secondTime"].string!
                     case "tube"  :
                         self.part2Image.image = UIImage(named: "ic_tube")
                         self.part2Line.text = jsonData["part2"]["line"].string! + " Line"
@@ -123,11 +123,11 @@ class CommuteViewController: UIViewController, URLSessionDelegate {
                     case "train"  :
                         self.part3Image.image = UIImage(named: "ic_train")
                         self.part3Line.text = jsonData["part3"]["destination"].string!
-                        self.part3Time.text = jsonData["part3"]["firstTime"].string! + " - " + jsonData["part3"]["secondTime"].string!
+                        self.part3Time.text = jsonData["part3"]["firstTime"].string! + " & " + jsonData["part3"]["secondTime"].string!
                     case "bus"  :
                         self.part3Image.image = UIImage(named: "ic_bus")
                         self.part3Line.text = jsonData["part3"]["line"].string! + " to " + jsonData["part3"]["destination"].string!
-                        self.part3Time.text = jsonData["part3"]["firstTime"].string! + " - " + jsonData["part3"]["secondTime"].string!
+                        self.part3Time.text = jsonData["part3"]["firstTime"].string! + " & " + jsonData["part3"]["secondTime"].string!
                     case "tube"  :
                         self.part3Image.image = UIImage(named: "ic_tube")
                         self.part3Line.text = jsonData["part3"]["line"].string! + " Line"
@@ -146,11 +146,11 @@ class CommuteViewController: UIViewController, URLSessionDelegate {
                     case "train"  :
                         self.part4Image.image = UIImage(named: "ic_train")
                         self.part4Line.text = jsonData["part4"]["destination"].string!
-                        self.part4Time.text = jsonData["part4"]["firstTime"].string! + " - " + jsonData["part4"]["secondTime"].string!
+                        self.part4Time.text = jsonData["part4"]["firstTime"].string! + " & " + jsonData["part4"]["secondTime"].string!
                     case "bus"  :
                         self.part4Image.image = UIImage(named: "ic_bus")
                         self.part4Line.text = jsonData["part4"]["line"].string! + " to " + jsonData["part4"]["destination"].string!
-                        self.part4Time.text = jsonData["part4"]["firstTime"].string! + " - " + jsonData["part4"]["secondTime"].string!
+                        self.part4Time.text = jsonData["part4"]["firstTime"].string! + " & " + jsonData["part4"]["secondTime"].string!
                     case "tube"  :
                         self.part4Image.image = UIImage(named: "ic_tube")
                         self.part4Line.text = jsonData["part4"]["line"].string! + " Line"
