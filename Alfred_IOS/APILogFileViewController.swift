@@ -95,10 +95,10 @@ class APILogFileViewController: UIViewController, UITableViewDataSource, UITable
         cell.messagelabel.text = logs[row].message
         cell.datelabel.text = logs[row].timestamp
         
-        if indexPath.row == logs.count - 1 { // if last cell check if there is more data to load
-            self.viewPage += 1
-            getData() // Load more data
-        }
+        //if indexPath.row == logs.count - 1 { // if last cell check if there is more data to load
+        //    self.viewPage += 1
+        //    getData() // Load more data
+        //}
         
         return cell
     }
