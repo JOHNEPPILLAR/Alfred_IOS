@@ -20,6 +20,8 @@ class LogFileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     var logs = [Logs]()
     var viewPage = 1 as Int
+    var onLastPage = false as Bool
+
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -34,28 +36,36 @@ class LogFileViewController: UIViewController, UITableViewDataSource, UITableVie
     }
 
     func getData() {        
-        // Call Alfred to get log file contents
-        let request = getAPIHeaderData(url: "displaylog?page=" + String(self.viewPage), useScheduler: true)
-        let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
-        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
-            if checkAPIData(apiData: data, response: response, error: error) {
-                
-                let json = JSON(data: data!)
-                let logData = json["data"]
-                let currentpagejson = logData["currentpage"]
-                self.viewPage = currentpagejson.int!
-                
-                for item in logData["logs"] {
-                    self.logs.append(Logs(json: item.1))
+
+        if !self.onLastPage {
+
+            // Call Alfred to get log file contents
+            let request = getAPIHeaderData(url: "displaylog?page=" + String(self.viewPage), useScheduler: true)
+            let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
+            let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+                if checkAPIData(apiData: data, response: response, error: error) {
+                    
+                    let json = JSON(data: data!)
+                    let logData = json["data"]
+                    let currentpagejson = logData["currentpage"]
+                    self.viewPage = currentpagejson.int!
+                    let lastpagejson = logData["lastpage"]
+                    if currentpagejson == lastpagejson {
+                        self.onLastPage = true
+                    }
+                    
+                    for item in logData["logs"] {
+                        self.logs.append(Logs(json: item.1))
+                    }
+                    
+                    DispatchQueue.main.async {
+                        SVProgressHUD.dismiss() // Dismiss the loading HUD
+                        self.LogFileTableView.reloadData() // Refresh the table view
+                    }
                 }
-                
-                DispatchQueue.main.async {
-                    SVProgressHUD.dismiss() // Dismiss the loading HUD
-                    self.LogFileTableView.reloadData() // Refresh the table view
-                }
-            }
-        })
-        task.resume()
+            })
+            task.resume()
+        }
     }
     
     lazy var refreshControl: UIRefreshControl = {
