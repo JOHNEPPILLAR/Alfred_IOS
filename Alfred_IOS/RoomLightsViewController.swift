@@ -9,26 +9,22 @@
 import UIKit
 import SwiftyJSON
 import SVProgressHUD
-import MTCircularSlider
 
 class RoomLightsViewController: UIViewController, UICollectionViewDataSource, colorPickerDelegate, URLSessionDelegate {
-    
     func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
         completionHandler(URLSession.AuthChallengeDisposition.useCredential, URLCredential(trust: challenge.protectionSpace.serverTrust!) )
     }
-
     var roomLightsData = [RoomLightsBaseClass]()
     var getDataTimer: Timer!
     
     @IBOutlet weak var LightCollectionViewRooms: UICollectionView!
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
         SVProgressHUD.show(withStatus: "Loading")
 
-        self.getData() // Get room lights configuration info from Alfred
+        self.initialDataLoad() // Get room lights configuration info from Alfred
 
     }
     
@@ -37,9 +33,10 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
         SVProgressHUD.dismiss() // Stop spinner
     }
     
-    func getData() {
+    func initialDataLoad() {
         let request = getAPIHeaderData(url: "lights/listlightgroups", useScheduler: false)
         let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
+        
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
                 let responseJSON = JSON(data: data!)
@@ -81,11 +78,11 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
             
         }
         
-        cell.brightnessSlider.isHidden = true
         if (roomLightsData[0].data![row].state?.anyOn)! {
-            cell.brightnessSlider.isHidden = false
+            cell.brightnessSlider.value = Float((roomLightsData[0].data![row].action?.bri)!)
+        } else {
+            cell.brightnessSlider.value = 0
         }
-        cell.brightnessSlider.value = Float((roomLightsData[0].data![row].action?.bri)!)
         cell.brightnessSlider.tag = row
         cell.brightnessSlider?.addTarget(self, action: #selector(brightnessValueChange(_:)), for: .touchUpInside)
         
@@ -100,7 +97,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
         return cell
     }
     
-    @objc func brightnessValueChange(_ sender: MTCircularSlider!) {
+    @objc func brightnessValueChange(_ sender: UISlider!) {
         
         // Figure out which cell is being updated
         let cell = sender.superview?.superview as? LightsCollectionViewCell
@@ -139,16 +136,11 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
         var lightsOn: String
         
         if (roomLightsData[0].data![row!].state?.anyOn)! {
-            
             roomLightsData[0].data![row!].state?.anyOn = false
             cell.powerButton.backgroundColor = UIColor.clear
-            cell.brightnessSlider.isHidden = true
             lightsOn = "off"
-            
         } else {
-            
             roomLightsData[0].data![row!].state?.anyOn = true
-            cell.brightnessSlider.isHidden = false
             lightsOn = "on"
 
             // Setup the light bulb colour
@@ -159,12 +151,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
                 default: color = UIColor.white
             }
             cell.powerButton.backgroundColor = color
-            
-            //if roomLightsData[0].data![row!].action?.bri == 0 {
-            //    roomLightsData[0].data![row!].action?.bri = 100
-            //    cell.brightnessSlider.value = 100
-            //}
-            
+
         }
         
         // Call Alfred to update the light group
@@ -181,7 +168,7 @@ class RoomLightsViewController: UIViewController, UICollectionViewDataSource, co
                 }
             }
         })
-        task.resume()
+        task.resume()        
     }
     
     @objc func longPowerButtonPress(_ sender: UITapGestureRecognizer!) {

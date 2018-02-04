@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MTCircularSlider
 
 class LightsCollectionViewCell: UICollectionViewCell {
     
@@ -15,6 +14,6 @@ class LightsCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var lightName: RoundButton!
     
-    @IBOutlet weak var brightnessSlider: MTCircularSlider!
+    @IBOutlet weak var brightnessSlider: UISlider!
     
 }

@@ -9,7 +9,6 @@
 import UIKit
 import SwiftyJSON
 import SVProgressHUD
-import MTCircularSlider
 
 class EveningTVViewController: UIViewController, UICollectionViewDataSource, colorPickerDelegate, URLSessionDelegate {
     
@@ -155,7 +154,7 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
         
     }
     
-    @objc func brightnessValueChange(_ sender: MTCircularSlider!) {
+    @objc func brightnessValueChange(_ sender: UISlider!) {
         
         // Figure out which cell is being updated
         let cell = sender.superview?.superview as? LightsCollectionViewCell
