@@ -19,7 +19,6 @@ class ViewController: UIViewController, URLSessionDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        activityIndicator.activityIndicatorViewStyle  = UIActivityIndicatorViewStyle.whiteLarge
         self.ping_Aflred_DI() // Make sure Alred is online
     }
     
@@ -34,11 +33,10 @@ class ViewController: UIViewController, URLSessionDelegate {
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-                    self.activityIndicator.stopAnimating()
                     self.performSegue(withIdentifier: "home", sender: self)
                 })
             } else {
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                     let alert = UIAlertController(title: "Unable to connect to Alfred", message: "Please check your internet connection. Close the app and try again", preferredStyle: UIAlertControllerStyle.alert)
                     self.present(alert, animated: true, completion: nil)
                 })
