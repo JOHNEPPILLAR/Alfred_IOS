@@ -13,9 +13,6 @@
 		0A3B4E7F1F169D500072587A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3B4E7E1F169D500072587A /* SettingsViewController.swift */; };
 		0A420E4A1F140D0500BD2713 /* LogFileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A420E491F140D0500BD2713 /* LogFileTableViewCell.swift */; };
 		0A46C5FB1F56D58300ADB758 /* LightsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A46C5FA1F56D58300ADB758 /* LightsCollectionViewCell.swift */; };
-		0A4986411F42BEBA006979E0 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4986401F42BEBA006979E0 /* CameraViewController.swift */; };
-		0A4986521F437846006979E0 /* MobileVLCKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4986511F437846006979E0 /* MobileVLCKit.framework */; };
-		0A4986551F437BBE006979E0 /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4986541F437BBE006979E0 /* libstdc++.6.tbd */; };
 		0A69FB811F10C25C00563A69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A69FB801F10C25C00563A69 /* AppDelegate.swift */; };
 		0A69FB861F10C25C00563A69 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A69FB841F10C25C00563A69 /* Main.storyboard */; };
 		0A69FB891F10C25C00563A69 /* Alfred_IOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0A69FB871F10C25C00563A69 /* Alfred_IOS.xcdatamodeld */; };
@@ -28,6 +25,7 @@
 		0A7ECE1F1FAE437B002AF233 /* CommuteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7ECE1E1FAE437B002AF233 /* CommuteViewController.swift */; };
 		0A80C09C1F24812E0082F77C /* Alfred.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A80C09B1F24812E0082F77C /* Alfred.plist */; };
 		0A8AF14A1F24EF030064894F /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8AF1491F24EF030064894F /* Helpers.swift */; };
+		0A932CC720385CD400A01DD7 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A932CC620385CD400A01DD7 /* VideoViewController.swift */; };
 		0A93796B1F67A8DE004FFC3B /* APILogFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A93796A1F67A8DE004FFC3B /* APILogFileViewController.swift */; };
 		0A97CCAF1F2B0AEF00E6FF1F /* RoomLightsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A97CCAE1F2B0AEF00E6FF1F /* RoomLightsViewController.swift */; };
 		0A97EE301F8A5B400059268B /* RoomLightsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A97EE2F1F8A5B400059268B /* RoomLightsData.swift */; };
@@ -56,9 +54,7 @@
 		0A3B4E7E1F169D500072587A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0A420E491F140D0500BD2713 /* LogFileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogFileTableViewCell.swift; path = Alfred_IOS/LogFileTableViewCell.swift; sourceTree = "<group>"; };
 		0A46C5FA1F56D58300ADB758 /* LightsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LightsCollectionViewCell.swift; path = Alfred_IOS/LightsCollectionViewCell.swift; sourceTree = "<group>"; };
-		0A4986401F42BEBA006979E0 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		0A4986511F437846006979E0 /* MobileVLCKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileVLCKit.framework; path = "Pods/MobileVLCKit/MobileVLCKit-binary/MobileVLCKit.framework"; sourceTree = "<group>"; };
-		0A4986531F437A5B006979E0 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		0A4986541F437BBE006979E0 /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
 		0A69FB7D1F10C25C00563A69 /* Alfred_IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alfred_IOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A69FB801F10C25C00563A69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +70,7 @@
 		0A7ECE1E1FAE437B002AF233 /* CommuteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteViewController.swift; sourceTree = "<group>"; };
 		0A80C09B1F24812E0082F77C /* Alfred.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Alfred.plist; sourceTree = "<group>"; };
 		0A8AF1491F24EF030064894F /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		0A932CC620385CD400A01DD7 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		0A93796A1F67A8DE004FFC3B /* APILogFileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILogFileViewController.swift; sourceTree = "<group>"; };
 		0A97CCAE1F2B0AEF00E6FF1F /* RoomLightsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomLightsViewController.swift; sourceTree = "<group>"; };
 		0A97EE2F1F8A5B400059268B /* RoomLightsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomLightsData.swift; sourceTree = "<group>"; };
@@ -102,8 +99,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A4986551F437BBE006979E0 /* libstdc++.6.tbd in Frameworks */,
-				0A4986521F437846006979E0 /* MobileVLCKit.framework in Frameworks */,
 				A5CB0541EC331A4BFEF71AD8 /* Pods_Alfred_IOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -160,7 +155,6 @@
 				0A69FB841F10C25C00563A69 /* Main.storyboard */,
 				0A69FB8A1F10C25C00563A69 /* Assets.xcassets */,
 				0A69FB871F10C25C00563A69 /* Alfred_IOS.xcdatamodeld */,
-				0A4986531F437A5B006979E0 /* Bridging-Header.h */,
 				0AE259011F70476D002C6922 /* Settings.bundle */,
 				0AE259031F704A0A002C6922 /* SettingsBundleHelper.swift */,
 			);
@@ -178,9 +172,9 @@
 				0ADDC4D21F29C02000C08F55 /* EveningTVViewController.swift */,
 				0A97CCAE1F2B0AEF00E6FF1F /* RoomLightsViewController.swift */,
 				0A0463F01F38E99B004A738D /* ColorViewController.swift */,
-				0A4986401F42BEBA006979E0 /* CameraViewController.swift */,
 				0AA19AEC1F57277300CB272F /* TVViewController.swift */,
 				0AB222F11F5C89700040E58F /* BedHeaterViewController.swift */,
+				0A932CC620385CD400A01DD7 /* VideoViewController.swift */,
 				0A93796A1F67A8DE004FFC3B /* APILogFileViewController.swift */,
 				0A791EE41F93E43200765DF9 /* LightsOffViewController.swift */,
 				0A7ECE1E1FAE437B002AF233 /* CommuteViewController.swift */,
@@ -403,7 +397,6 @@
 				0A69FB891F10C25C00563A69 /* Alfred_IOS.xcdatamodeld in Sources */,
 				0ADDC4D51F29C09B00C08F55 /* EveningTV.swift in Sources */,
 				0A3B4E7F1F169D500072587A /* SettingsViewController.swift in Sources */,
-				0A4986411F42BEBA006979E0 /* CameraViewController.swift in Sources */,
 				0A69FB9F1F1160F500563A69 /* ViewController.swift in Sources */,
 				0A46C5FB1F56D58300ADB758 /* LightsCollectionViewCell.swift in Sources */,
 				0A7ECE1F1FAE437B002AF233 /* CommuteViewController.swift in Sources */,
@@ -417,6 +410,7 @@
 				0A12B4AB1F193B470012B619 /* SunsetViewController.swift in Sources */,
 				0A69FB811F10C25C00563A69 /* AppDelegate.swift in Sources */,
 				0AA19AED1F57277300CB272F /* TVViewController.swift in Sources */,
+				0A932CC720385CD400A01DD7 /* VideoViewController.swift in Sources */,
 				0A791EE01F93E2C300765DF9 /* LightsOffData.swift in Sources */,
 				0A2D9E2E1F3617EF0037594C /* LogFileViewController.swift in Sources */,
 				0A8AF14A1F24EF030064894F /* Helpers.swift in Sources */,
@@ -569,22 +563,20 @@
 				CLANG_CXX_LIBRARY = "compiler-default";
 				DEVELOPMENT_TEAM = P5E7TWCV9X;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Pods/MobileVLCKit-unstable/MobileVLCKit-binary",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/MobileVLCKit\"",
 				);
-				"HEADER_SEARCH_PATHS[arch=*]" = "$(inherited) \"${PODS_ROOT}/Headers/Public\" \"${PODS_ROOT}/Headers/Public/MobileVLCKit\"";
+				"HEADER_SEARCH_PATHS[arch=*]" = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+				);
 				INFOPLIST_FILE = Alfred_IOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "JP.Alfred-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Alfred_IOS/Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -599,22 +591,20 @@
 				CLANG_CXX_LIBRARY = "compiler-default";
 				DEVELOPMENT_TEAM = P5E7TWCV9X;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Pods/MobileVLCKit-unstable/MobileVLCKit-binary",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/MobileVLCKit\"",
 				);
-				"HEADER_SEARCH_PATHS[arch=*]" = "$(inherited) \"${PODS_ROOT}/Headers/Public\" \"${PODS_ROOT}/Headers/Public/MobileVLCKit\"";
+				"HEADER_SEARCH_PATHS[arch=*]" = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+				);
 				INFOPLIST_FILE = Alfred_IOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "JP.Alfred-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Alfred_IOS/Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
