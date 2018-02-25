@@ -16,7 +16,7 @@ class cellID {
     static var sharedInstance = cellID()
     private init() {}
     
-    var cell: LightsCollectionViewCell?
+    var cell: LightsTableViewCell?
 }
 
 func putAPIHeaderData(url: String, body: Data, useScheduler: Bool) -> URLRequest {
@@ -119,7 +119,6 @@ func readPlist(item: String) -> String {
 @IBDesignable class RoundImage: UIImageView {
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         updateRadius()
     }
     
@@ -139,7 +138,6 @@ func readPlist(item: String) -> String {
 @IBDesignable class HighlightImage: UIImageView {
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         updateCornerRadius()
     }
     

@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 import SVProgressHUD
 
-class EveningTVViewController: UIViewController, UICollectionViewDataSource, colorPickerDelegate, URLSessionDelegate {
+class EveningTVViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, colorPickerDelegate, URLSessionDelegate {
     
     func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
         completionHandler(URLSession.AuthChallengeDisposition.useCredential, URLCredential(trust: challenge.protectionSpace.serverTrust!) )
@@ -18,7 +18,7 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
     
     var eveningTVData = [EveningTV]()
     
-    @IBOutlet weak var LightCollectionView: UICollectionView!
+    @IBOutlet weak var LightTableView: UITableView!
     @IBOutlet weak var masterSwitch: UISwitch!
     @IBAction func masterSwitchAction(_ sender: UISwitch) {
         if sender.isOn {
@@ -98,14 +98,16 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
                     self.navigationItem.rightBarButtonItem?.isEnabled = true
                         
                     // Refresh the table view
-                    self.LightCollectionView.reloadData()
+                    self.LightTableView.reloadData()
+                    self.LightTableView.rowHeight = 80.0
+
                 }
             }
         })
         task.resume()
     }
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (eveningTVData.count) > 0 {
             return (eveningTVData[0].lights?.count)!
         } else {
@@ -113,14 +115,14 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "lightCell", for: indexPath) as! LightsCollectionViewCell
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "lightCell", for: indexPath) as! LightsTableViewCell
         let row = indexPath.row
         
         cell.tag = (eveningTVData[0].lights?[row].lightID)!
         
-        cell.lightName.setTitle(eveningTVData[0].lights?[row].lightName, for: .normal)
+        cell.lightName.text = eveningTVData[0].lights?[row].lightName
         
         // Work out light group color
         if (eveningTVData[0].lights?[row].onoff == "on") {
@@ -155,9 +157,10 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
     }
     
     @objc func brightnessValueChange(_ sender: UISlider!) {
-        
+        sender.setValue(sender.value.rounded(.down), animated: true)
+
         // Figure out which cell is being updated
-        let cell = sender.superview?.superview as? LightsCollectionViewCell
+        let cell = sender.superview?.superview as? LightsTableViewCell
         let row = sender.tag
         
         // Update local data store
@@ -186,11 +189,11 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
     @objc func powerButtonValueChange(_ sender: UITapGestureRecognizer!) {
         
         // Figure out which cell is being updated
-        let point : CGPoint = sender.view!.convert(CGPoint.zero, to:LightCollectionView)
-        let indexPath = LightCollectionView!.indexPathForItem(at: point)
-        let cell = LightCollectionView!.cellForItem(at: indexPath!) as! LightsCollectionViewCell
+        let touch = sender.location(in: LightTableView)
+        let indexPath = LightTableView.indexPathForRow(at: touch)
         let row = indexPath?.row
-        
+        let cell = LightTableView.cellForRow(at: indexPath!) as! LightsTableViewCell
+
         if (eveningTVData[0].lights?[row!].onoff == "on") {
             
             eveningTVData[0].lights?[row!].onoff = "off"
@@ -218,10 +221,10 @@ class EveningTVViewController: UIViewController, UICollectionViewDataSource, col
         if sender.state == .ended {
             
             // Figure out which cell is being updated
-            let point : CGPoint = sender.view!.convert(CGPoint.zero, to:LightCollectionView)
-            let indexPath = LightCollectionView!.indexPathForItem(at: point)
+            let touch = sender.location(in: LightTableView)
+            let indexPath = LightTableView.indexPathForRow(at: touch)
             let row = indexPath?.row
-            let cell = LightCollectionView!.cellForItem(at: indexPath!) as! LightsCollectionViewCell
+            let cell = LightTableView.cellForRow(at: indexPath!) as! LightsTableViewCell
             cellID.sharedInstance.cell = cell
             
             // Store the color

@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 import SVProgressHUD
 
-class SunriseViewController: UIViewController, UICollectionViewDataSource, colorPickerDelegate, URLSessionDelegate {
+class SunriseViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, colorPickerDelegate, URLSessionDelegate  {
     
     func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
         completionHandler(URLSession.AuthChallengeDisposition.useCredential, URLCredential(trust: challenge.protectionSpace.serverTrust!) )
@@ -18,7 +18,7 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
     
     var morningData = [Morning]()
     
-    @IBOutlet weak var LightCollectionView: UICollectionView!
+    @IBOutlet weak var LightTableView: UITableView!
     
     @IBOutlet weak var masterSwitch: UISwitch!
     @IBAction func masterSwitchAction(_ sender: UISwitch) {
@@ -106,30 +106,29 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
                     self.navigationItem.rightBarButtonItem?.isEnabled = true
                         
                     // Refresh the table view
-                    self.LightCollectionView.reloadData()
+                    self.LightTableView.reloadData()
+                    self.LightTableView.rowHeight = 80.0
                 }
             }
         })
         task.resume()
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (morningData.count) > 0 {
-            return (morningData[0].lights?.count)!
+            return (morningData[0].lights!.count)
         } else {
             return 0
         }
-        
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "lightCell", for: indexPath) as! LightsCollectionViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "lightCell", for: indexPath) as! LightsTableViewCell
         let row = indexPath.row
-        cell.tag = (morningData[0].lights?[row].lightID)!
-
-        cell.lightName.setTitle(morningData[0].lights?[row].lightName, for: .normal)
+        
+        cell.tag = morningData[0].lights![row].lightID!
+        cell.lightName.text = morningData[0].lights?[row].lightName
         
         // Work out light color
         if (morningData[0].lights?[row].onoff == "on") {
@@ -161,13 +160,14 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
         cell.powerButton.addGestureRecognizer(longTapRecognizer)
         
         return cell
-        
+
     }
     
     @objc func brightnessValueChange(_ sender: UISlider!) {
-        
+        sender.setValue(sender.value.rounded(.down), animated: true)
+
         // Figure out which cell is being updated
-        let cell = sender.superview?.superview as? LightsCollectionViewCell
+        let cell = sender.superview?.superview as? LightsTableViewCell
         let row = sender.tag
         
         // Update local data store
@@ -197,11 +197,11 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
     @objc func powerButtonPress(_ sender: UITapGestureRecognizer!) {
         
         // Figure out which cell is being updated
-        let point : CGPoint = sender.view!.convert(CGPoint.zero, to:LightCollectionView)
-        let indexPath = LightCollectionView!.indexPathForItem(at: point)
-        let cell = LightCollectionView!.cellForItem(at: indexPath!) as! LightsCollectionViewCell
+        let touch = sender.location(in: LightTableView)
+        let indexPath = LightTableView.indexPathForRow(at: touch)
         let row = indexPath?.row
-        
+        let cell = LightTableView.cellForRow(at: indexPath!) as! LightsTableViewCell
+
         if (morningData[0].lights?[row!].onoff == "on") {
             
             morningData[0].lights?[row!].onoff = "off"
@@ -230,12 +230,12 @@ class SunriseViewController: UIViewController, UICollectionViewDataSource, color
         if sender.state == .ended {
             
             // Figure out which cell is being updated
-            let point : CGPoint = sender.view!.convert(CGPoint.zero, to:LightCollectionView)
-            let indexPath = LightCollectionView!.indexPathForItem(at: point)
+            let touch = sender.location(in: LightTableView)
+            let indexPath = LightTableView.indexPathForRow(at: touch)
             let row = indexPath?.row
-            let cell = LightCollectionView!.cellForItem(at: indexPath!) as! LightsCollectionViewCell
+            let cell = LightTableView.cellForRow(at: indexPath!) as! LightsTableViewCell
             cellID.sharedInstance.cell = cell
-            
+
             // Store the color
             var color = UIColor.white
             switch morningData[0].lights?[row!].colormode {

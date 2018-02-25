@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 import SVProgressHUD
 
-class SunsetViewController: UIViewController, UICollectionViewDataSource, colorPickerDelegate, URLSessionDelegate {
+class SunsetViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, colorPickerDelegate, URLSessionDelegate {
     
     func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
         completionHandler(URLSession.AuthChallengeDisposition.useCredential, URLCredential(trust: challenge.protectionSpace.serverTrust!) )
@@ -18,7 +18,7 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
     
     var eveningData = [Evening]()
     
-    @IBOutlet weak var LightCollectionView: UICollectionView!
+    @IBOutlet weak var LightTableView: UITableView!
     
     @IBOutlet weak var masterSwitch: UISwitch!
     @IBAction func masterSwitchAction(_ sender: UISwitch) {
@@ -117,14 +117,15 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
                 
                 // Refresh the table view
                 DispatchQueue.main.async {
-                    self.LightCollectionView.reloadData()
+                    self.LightTableView.reloadData()
+                    self.LightTableView.rowHeight = 80.0
                 }
             }
         })
         task.resume()
     }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (eveningData.count) > 0 {
             return (eveningData[0].lights?.count)!
         } else {
@@ -132,14 +133,14 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "lightCell", for: indexPath) as! LightsCollectionViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "lightCell", for: indexPath) as! LightsTableViewCell
         let row = indexPath.row
         
         cell.tag = (eveningData[0].lights?[row].lightID)!
         
-        cell.lightName.setTitle(eveningData[0].lights?[row].lightName, for: .normal)
+        cell.lightName.text = eveningData[0].lights?[row].lightName
         
         // Work out light color
         if (eveningData[0].lights?[row].onoff == "on") {
@@ -177,9 +178,10 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
     }
     
     @objc func brightnessValueChange(_ sender: UISlider!) {
-        
+        sender.setValue(sender.value.rounded(.down), animated: true)
+
         // Figure out which cell is being updated
-        let cell = sender.superview?.superview as? LightsCollectionViewCell
+        let cell = sender.superview?.superview as? LightsTableViewCell
         let row = sender.tag
         
         // Update local data store
@@ -207,11 +209,11 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
     @objc func powerButtonValueChange(_ sender: UITapGestureRecognizer!) {
         
         // Figure out which cell is being updated
-        let point : CGPoint = sender.view!.convert(CGPoint.zero, to:LightCollectionView)
-        let indexPath = LightCollectionView!.indexPathForItem(at: point)
-        let cell = LightCollectionView!.cellForItem(at: indexPath!) as! LightsCollectionViewCell
+        let touch = sender.location(in: LightTableView)
+        let indexPath = LightTableView.indexPathForRow(at: touch)
         let row = indexPath?.row
-        
+        let cell = LightTableView.cellForRow(at: indexPath!) as! LightsTableViewCell
+
         if (eveningData[0].lights?[row!].onoff == "on") {
             
             eveningData[0].lights?[row!].onoff = "off"
@@ -239,10 +241,10 @@ class SunsetViewController: UIViewController, UICollectionViewDataSource, colorP
         if sender.state == .ended {
             
             // Figure out which cell is being updated
-            let point : CGPoint = sender.view!.convert(CGPoint.zero, to:LightCollectionView)
-            let indexPath = LightCollectionView!.indexPathForItem(at: point)
+            let touch = sender.location(in: LightTableView)
+            let indexPath = LightTableView.indexPathForRow(at: touch)
             let row = indexPath?.row
-            let cell = LightCollectionView!.cellForItem(at: indexPath!) as! LightsCollectionViewCell
+            let cell = LightTableView.cellForRow(at: indexPath!) as! LightsTableViewCell
             cellID.sharedInstance.cell = cell
                         
             // Setup the light bulb colour

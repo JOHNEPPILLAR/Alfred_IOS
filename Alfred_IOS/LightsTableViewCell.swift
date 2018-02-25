@@ -8,12 +8,8 @@
 
 import UIKit
 
-class LightsCollectionViewCell: UICollectionViewCell {
-    
+class LightsTableViewCell: UITableViewCell {
     @IBOutlet weak var powerButton: UIImageView!
-    
-    @IBOutlet weak var lightName: RoundButton!
-    
+    @IBOutlet weak var lightName: UITextField!
     @IBOutlet weak var brightnessSlider: UISlider!
-    
 }
