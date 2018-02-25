@@ -39,6 +39,7 @@ func getAPIHeaderData(url: String, useScheduler: Bool) -> URLRequest {
     let AlfredAppKey = readPlist(item: "AlfredAppKey")
     let url = URL(string: AlfredBaseURL + url)!
     var request = URLRequest(url: url)
+    request.cachePolicy = URLRequest.CachePolicy.reloadIgnoringLocalCacheData
     request.httpMethod = "GET"
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
     request.addValue(AlfredAppKey, forHTTPHeaderField: "app_key")

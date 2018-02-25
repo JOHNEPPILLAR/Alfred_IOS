@@ -15,6 +15,7 @@ class RoomLightsViewController: UIViewController, UITableViewDataSource, UITable
     func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
         completionHandler(URLSession.AuthChallengeDisposition.useCredential, URLCredential(trust: challenge.protectionSpace.serverTrust!) )
     }
+    
     var roomLightsData = [RoomLightsBaseClass]()
     var refreshDataTimer: Timer!
     let timerInterval = 5
@@ -107,6 +108,7 @@ class RoomLightsViewController: UIViewController, UITableViewDataSource, UITable
                 let APIbody: Data = try! JSONSerialization.data(withJSONObject: body, options: [])
                 let request = putAPIHeaderData(url: "lights/lightgroupbrightness", body: APIbody, useScheduler: false)
                 let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
+
                 let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
                     if !checkAPIData(apiData: data, response: response, error: error) {
                         // Show error
@@ -273,6 +275,7 @@ class RoomLightsViewController: UIViewController, UITableViewDataSource, UITable
                     SVProgressHUD.showError(withStatus: "Unable to update the light settings")
                 }
             } else {
+                self.refreshDataLoad()
                 self.refreshDataTimer = Timer.scheduledTimer(timeInterval: TimeInterval(self.timerInterval), target: self, selector: (#selector(self.refreshDataLoad)), userInfo: nil, repeats: true)
             }
         })
@@ -282,7 +285,6 @@ class RoomLightsViewController: UIViewController, UITableViewDataSource, UITable
     @objc func refreshDataLoad() {
         let request = getAPIHeaderData(url: "lights/listlightgroups", useScheduler: false)
         let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue:OperationQueue.main)
-        
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
                 let responseJSON = JSON(data: data!)

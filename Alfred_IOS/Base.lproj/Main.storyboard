@@ -1491,7 +1491,7 @@
                                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
                                                                             </userDefinedRuntimeAttributes>
                                                                         </imageView>
-                                                                        <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="254" translatesAutoresizingMaskIntoConstraints="NO" id="VXf-sK-8FG">
+                                                                        <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="VXf-sK-8FG">
                                                                             <rect key="frame" x="89" y="26" width="257" height="30"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                             <color key="minimumTrackTintColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1872,15 +1872,30 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_camera" translatesAutoresizingMaskIntoConstraints="NO" id="v1M-p4-Pkx">
-                                                        <rect key="frame" x="149" y="90" width="77" height="92"/>
+                                                        <rect key="frame" x="149" y="133" width="77" height="92"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <gestureRecognizers/>
                                                         <connections>
-                                                            <outletCollection property="gestureRecognizers" destination="yGS-m5-pTU" appends="YES" id="9lr-0m-v5s"/>
+                                                            <outletCollection property="gestureRecognizers" destination="Lor-p4-XeC" appends="YES" id="CIZ-E5-k1u"/>
                                                         </connections>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lottie" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="whk-eE-rL6">
-                                                        <rect key="frame" x="96" y="181" width="183" height="21"/>
+                                                        <rect key="frame" x="96" y="224" width="183" height="21"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_camera" translatesAutoresizingMaskIntoConstraints="NO" id="6Sa-l6-nFh">
+                                                        <rect key="frame" x="149" y="391" width="77" height="92"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <gestureRecognizers/>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="Gg7-p1-T8f" appends="YES" id="YpN-js-Fmn"/>
+                                                        </connections>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Harriet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="67v-Sc-nZM">
+                                                        <rect key="frame" x="96" y="482" width="183" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -1916,9 +1931,14 @@
                     <tabBarItem key="tabBarItem" title="Video" image="ic_camera" id="wHY-RW-Jh4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7SI-x0-nJE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="yGS-m5-pTU">
+                <tapGestureRecognizer id="Lor-p4-XeC" userLabel="Lottie Tap Gesture Recognizer">
                     <connections>
-                        <segue destination="Wpo-kA-wrB" kind="show" id="O7s-2K-paR"/>
+                        <segue destination="Wpo-kA-wrB" kind="show" identifier="lottieVideo" id="Tyw-gE-fZ8"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Gg7-p1-T8f" userLabel="Harriet Tap Gesture Recognizer">
+                    <connections>
+                        <segue destination="Wpo-kA-wrB" kind="show" identifier="harrietVideo" id="gu9-LM-sH3"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -2526,6 +2546,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Yxf-CY-gGx"/>
+        <segue reference="gu9-LM-sH3"/>
         <segue reference="How-IC-abe"/>
         <segue reference="mhl-KS-xfb"/>
         <segue reference="PXd-qe-vgO"/>
