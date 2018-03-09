@@ -49,21 +49,20 @@ func getAPIHeaderData(url: String, useScheduler: Bool) -> URLRequest {
 func checkAPIData(apiData: Data?, response: URLResponse?, error: Error?) -> Bool {
 
     if apiData == nil || error != nil { // Check for fundamental networking error
-        DispatchQueue.main.async {
+        //DispatchQueue.main.async {
             // Show error
-            SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-            SVProgressHUD.showError(withStatus: "Network/API connection error")
-        }
+            //SVProgressHUD.dismiss() // Dismiss any active HUD
+            //SVProgressHUD.showError(withStatus: "Network/API connection error")
+        //}
         return false
     }
         
     if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
-        DispatchQueue.main.async {
+        //DispatchQueue.main.async {
             // Show error
-            SVProgressHUD.dismiss() // Dismiss any active HUD
-            SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-            SVProgressHUD.showError(withStatus: "Invalid API request")
-        }
+            //SVProgressHUD.dismiss() // Dismiss any active HUD
+            //SVProgressHUD.showError(withStatus: "Invalid API request")
+        //}
         return false
     }
         
@@ -73,12 +72,11 @@ func checkAPIData(apiData: Data?, response: URLResponse?, error: Error?) -> Bool
     if apiStatusString == "true" {
          return true
     } else {
-        DispatchQueue.main.async {
+        //DispatchQueue.main.async {
             // Show error
-            SVProgressHUD.dismiss() // Dismiss any active HUD
-            SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-            SVProgressHUD.showError(withStatus: "Invalid API request")
-        }
+            //SVProgressHUD.dismiss() // Dismiss any active HUD
+            //SVProgressHUD.showError(withStatus: "Invalid API request")
+        //}
         return false
     }
 }

@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		0A0463F11F38E99B004A738D /* ColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0463F01F38E99B004A738D /* ColorViewController.swift */; };
 		0A12B4AB1F193B470012B619 /* SunsetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A12B4AA1F193B470012B619 /* SunsetViewController.swift */; };
+		0A1BFDA32052DCAA00B729F8 /* CommutePart4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BFD9E2052DCAA00B729F8 /* CommutePart4.swift */; };
+		0A1BFDA42052DCAA00B729F8 /* CommutePart2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BFD9F2052DCAA00B729F8 /* CommutePart2.swift */; };
+		0A1BFDA52052DCAA00B729F8 /* CommuteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BFDA02052DCAA00B729F8 /* CommuteData.swift */; };
+		0A1BFDA62052DCAA00B729F8 /* CommutePart1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BFDA12052DCAA00B729F8 /* CommutePart1.swift */; };
+		0A1BFDA72052DCAA00B729F8 /* CommutePart3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BFDA22052DCAA00B729F8 /* CommutePart3.swift */; };
+		0A1BFDA92052DCB800B729F8 /* CommuteCommuteBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BFDA82052DCB800B729F8 /* CommuteCommuteBaseClass.swift */; };
+		0A1BFDAE2052EFF900B729F8 /* SplashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BFDAD2052EFF900B729F8 /* SplashController.swift */; };
 		0A2D9E2E1F3617EF0037594C /* LogFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2D9E2D1F3617EF0037594C /* LogFileViewController.swift */; };
 		0A3B4E7F1F169D500072587A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3B4E7E1F169D500072587A /* SettingsViewController.swift */; };
 		0A420E4A1F140D0500BD2713 /* LogFileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A420E491F140D0500BD2713 /* LogFileTableViewCell.swift */; };
@@ -17,7 +24,7 @@
 		0A69FB861F10C25C00563A69 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A69FB841F10C25C00563A69 /* Main.storyboard */; };
 		0A69FB891F10C25C00563A69 /* Alfred_IOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0A69FB871F10C25C00563A69 /* Alfred_IOS.xcdatamodeld */; };
 		0A69FB8B1F10C25C00563A69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A69FB8A1F10C25C00563A69 /* Assets.xcassets */; };
-		0A69FB9F1F1160F500563A69 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A69FB9E1F1160F500563A69 /* ViewController.swift */; };
+		0A69FB9F1F1160F500563A69 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A69FB9E1F1160F500563A69 /* SplashViewController.swift */; };
 		0A6A5F9B204C53D100314ECE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6A5F9A204C53D100314ECE /* HomeViewController.swift */; };
 		0A6A5F9F204C6A5800314ECE /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6A5F9E204C6A5800314ECE /* HomeController.swift */; };
 		0A791EDE1F93E1E300765DF9 /* LightsOff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A791EDD1F93E1E300765DF9 /* LightsOff.swift */; };
@@ -53,6 +60,13 @@
 /* Begin PBXFileReference section */
 		0A0463F01F38E99B004A738D /* ColorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorViewController.swift; sourceTree = "<group>"; };
 		0A12B4AA1F193B470012B619 /* SunsetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SunsetViewController.swift; sourceTree = "<group>"; };
+		0A1BFD9E2052DCAA00B729F8 /* CommutePart4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommutePart4.swift; sourceTree = "<group>"; };
+		0A1BFD9F2052DCAA00B729F8 /* CommutePart2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommutePart2.swift; sourceTree = "<group>"; };
+		0A1BFDA02052DCAA00B729F8 /* CommuteData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteData.swift; sourceTree = "<group>"; };
+		0A1BFDA12052DCAA00B729F8 /* CommutePart1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommutePart1.swift; sourceTree = "<group>"; };
+		0A1BFDA22052DCAA00B729F8 /* CommutePart3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommutePart3.swift; sourceTree = "<group>"; };
+		0A1BFDA82052DCB800B729F8 /* CommuteCommuteBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteCommuteBaseClass.swift; sourceTree = "<group>"; };
+		0A1BFDAD2052EFF900B729F8 /* SplashController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashController.swift; sourceTree = "<group>"; };
 		0A2D9E2D1F3617EF0037594C /* LogFileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogFileViewController.swift; sourceTree = "<group>"; };
 		0A3B4E7E1F169D500072587A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0A420E491F140D0500BD2713 /* LogFileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogFileTableViewCell.swift; path = Alfred_IOS/LogFileTableViewCell.swift; sourceTree = "<group>"; };
@@ -65,7 +79,7 @@
 		0A69FB881F10C25C00563A69 /* Alfred_IOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Alfred_IOS.xcdatamodel; sourceTree = "<group>"; };
 		0A69FB8A1F10C25C00563A69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A69FB8F1F10C25C00563A69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0A69FB9E1F1160F500563A69 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0A69FB9E1F1160F500563A69 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		0A6A5F9A204C53D100314ECE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0A6A5F9E204C6A5800314ECE /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		0A791EDD1F93E1E300765DF9 /* LightsOff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsOff.swift; sourceTree = "<group>"; };
@@ -122,6 +136,64 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		0A1BFD9B2052DC6600B729F8 /* Room Lights */ = {
+			isa = PBXGroup;
+			children = (
+				0AA83A6E1F2CE72500B933A8 /* RoomLightsBaseClass.swift */,
+				0AA83A701F2CE72500B933A8 /* RoomLightsState.swift */,
+				0AA83A6D1F2CE72500B933A8 /* RoomLightsAction.swift */,
+				0A97EE2F1F8A5B400059268B /* RoomLightsData.swift */,
+			);
+			path = "Room Lights";
+			sourceTree = "<group>";
+		};
+		0A1BFD9C2052DC7800B729F8 /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				0A9EDC652052639C001277EC /* CurrentWeatherBaseClass.swift */,
+				0A9EDC67205263E5001277EC /* CurrentWeatherData.swift */,
+			);
+			path = Weather;
+			sourceTree = "<group>";
+		};
+		0A1BFD9D2052DC8700B729F8 /* Commute */ = {
+			isa = PBXGroup;
+			children = (
+				0A1BFDA82052DCB800B729F8 /* CommuteCommuteBaseClass.swift */,
+				0A1BFDA02052DCAA00B729F8 /* CommuteData.swift */,
+				0A1BFDA12052DCAA00B729F8 /* CommutePart1.swift */,
+				0A1BFD9F2052DCAA00B729F8 /* CommutePart2.swift */,
+				0A1BFDA22052DCAA00B729F8 /* CommutePart3.swift */,
+				0A1BFD9E2052DCAA00B729F8 /* CommutePart4.swift */,
+			);
+			path = Commute;
+			sourceTree = "<group>";
+		};
+		0A1BFDAA2052EF8C00B729F8 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				0A1BFDAC2052EF9E00B729F8 /* Controller */,
+				0A1BFDAB2052EF9800B729F8 /* View */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		0A1BFDAB2052EF9800B729F8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0A69FB9E1F1160F500563A69 /* SplashViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0A1BFDAC2052EF9E00B729F8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0A1BFDAD2052EFF900B729F8 /* SplashController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		0A48AD8A1F2376E7008922C9 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,6 +242,7 @@
 		0A69FB9D1F1160C400563A69 /* View Controlers */ = {
 			isa = PBXGroup;
 			children = (
+				0A1BFDAA2052EF8C00B729F8 /* Splash */,
 				0A6A5FA1204D21E500314ECE /* other */,
 				0A6A5F9D204C683C00314ECE /* Home */,
 			);
@@ -189,12 +262,9 @@
 		0A6A5FA0204C6AA100314ECE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0AA83A6E1F2CE72500B933A8 /* RoomLightsBaseClass.swift */,
-				0AA83A701F2CE72500B933A8 /* RoomLightsState.swift */,
-				0AA83A6D1F2CE72500B933A8 /* RoomLightsAction.swift */,
-				0A97EE2F1F8A5B400059268B /* RoomLightsData.swift */,
-				0A9EDC652052639C001277EC /* CurrentWeatherBaseClass.swift */,
-				0A9EDC67205263E5001277EC /* CurrentWeatherData.swift */,
+				0A1BFD9D2052DC8700B729F8 /* Commute */,
+				0A1BFD9C2052DC7800B729F8 /* Weather */,
+				0A1BFD9B2052DC6600B729F8 /* Room Lights */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -205,7 +275,6 @@
 				0A3B4E7E1F169D500072587A /* SettingsViewController.swift */,
 				0A12B4AA1F193B470012B619 /* SunsetViewController.swift */,
 				0A2D9E2D1F3617EF0037594C /* LogFileViewController.swift */,
-				0A69FB9E1F1160F500563A69 /* ViewController.swift */,
 				0AE84DE61F289F120031F6C2 /* SunriseViewController.swift */,
 				0ADDC4D21F29C02000C08F55 /* EveningTVViewController.swift */,
 				0A0463F01F38E99B004A738D /* ColorViewController.swift */,
@@ -439,8 +508,10 @@
 				0ADDC4D51F29C09B00C08F55 /* EveningTV.swift in Sources */,
 				0A6A5F9B204C53D100314ECE /* HomeViewController.swift in Sources */,
 				0A3B4E7F1F169D500072587A /* SettingsViewController.swift in Sources */,
-				0A69FB9F1F1160F500563A69 /* ViewController.swift in Sources */,
+				0A69FB9F1F1160F500563A69 /* SplashViewController.swift in Sources */,
 				0A46C5FB1F56D58300ADB758 /* LightsTableViewCell.swift in Sources */,
+				0A1BFDAE2052EFF900B729F8 /* SplashController.swift in Sources */,
+				0A1BFDA72052DCAA00B729F8 /* CommutePart3.swift in Sources */,
 				0A7ECE1F1FAE437B002AF233 /* CommuteViewController.swift in Sources */,
 				0AFCD86D1F2283CC00FD1C1C /* Lights.swift in Sources */,
 				0AFCD86B1F22832000FD1C1C /* Evening.swift in Sources */,
@@ -458,16 +529,21 @@
 				0A8AF14A1F24EF030064894F /* Helpers.swift in Sources */,
 				0A791EDE1F93E1E300765DF9 /* LightsOff.swift in Sources */,
 				0A0463F11F38E99B004A738D /* ColorViewController.swift in Sources */,
+				0A1BFDA42052DCAA00B729F8 /* CommutePart2.swift in Sources */,
 				0AA83A741F2CE72500B933A8 /* RoomLightsState.swift in Sources */,
 				0AE259001F6E80D6002C6922 /* Bed.swift in Sources */,
 				0AD1C1C31F22928E000D899D /* Logs.swift in Sources */,
 				0A791EE51F93E43200765DF9 /* LightsOffViewController.swift in Sources */,
 				0A6A5F9F204C6A5800314ECE /* HomeController.swift in Sources */,
 				0ADDC4D31F29C02000C08F55 /* EveningTVViewController.swift in Sources */,
+				0A1BFDA62052DCAA00B729F8 /* CommutePart1.swift in Sources */,
 				0AE84DE71F289F120031F6C2 /* SunriseViewController.swift in Sources */,
 				0AA83A711F2CE72500B933A8 /* RoomLightsAction.swift in Sources */,
 				0A9EDC68205263E5001277EC /* CurrentWeatherData.swift in Sources */,
+				0A1BFDA32052DCAA00B729F8 /* CommutePart4.swift in Sources */,
+				0A1BFDA52052DCAA00B729F8 /* CommuteData.swift in Sources */,
 				0A7DADE11F4A2BF9002FEE9F /* HueColorHelper.swift in Sources */,
+				0A1BFDA92052DCB800B729F8 /* CommuteCommuteBaseClass.swift in Sources */,
 				0A97EE301F8A5B400059268B /* RoomLightsData.swift in Sources */,
 				0AE259041F704A0A002C6922 /* SettingsBundleHelper.swift in Sources */,
 			);
