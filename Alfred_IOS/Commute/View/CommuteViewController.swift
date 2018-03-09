@@ -68,8 +68,7 @@ extension CommuteViewController: CommuteViewControllerDelegate {
     }
 
     func cummuteDidRecieveDataUpdate(data: [CommuteData]) {
-        SVProgressHUD.dismiss() // Dismiss the loading HUD
-                    
+        
         // First commute option
         switch data[0].part1?.mode {
         case "train"?  :
@@ -166,6 +165,7 @@ extension CommuteViewController: CommuteViewControllerDelegate {
             self.part4Time.textColor = UIColor.red
             self.part4Time.text = "Disruptions"
         }
+        SVProgressHUD.dismiss() // Dismiss the loading HUD
     }
 
 }

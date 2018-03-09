@@ -2297,13 +2297,6 @@
                                         <rect key="frame" x="137" y="151" width="100" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="O" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="3Ca-vN-hZl">
-                                                <rect key="frame" x="58" y="25" width="27" height="15"/>
-                                                <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
-                                                <color key="textColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="PFM-dJ-FBz" userLabel="Inside Temp">
                                                 <rect key="frame" x="8" y="25" width="53" height="46"/>
                                                 <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
@@ -2318,6 +2311,20 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="C" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="tXq-mB-Ba9">
+                                                <rect key="frame" x="76" y="21" width="16" height="24"/>
+                                                <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
+                                                <color key="textColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="O" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="3Ca-vN-hZl">
+                                                <rect key="frame" x="68" y="21" width="8" height="15"/>
+                                                <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
+                                                <color key="textColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
                                         </subviews>
                                         <color key="backgroundColor" red="0.1166001037" green="0.13493388889999999" blue="0.2344644666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2326,11 +2333,11 @@
                                         <rect key="frame" x="137" y="43" width="100" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="O" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="Dn4-Gg-C3B">
-                                                <rect key="frame" x="58" y="25" width="27" height="15"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="C" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="L3t-yB-5W7">
+                                                <rect key="frame" x="76" y="21" width="16" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                                 <color key="textColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="Gpw-nN-cHc" userLabel="Outside Temp">
@@ -2345,6 +2352,13 @@
                                                 <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                                 <color key="textColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="O" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="Dn4-Gg-C3B">
+                                                <rect key="frame" x="68" y="21" width="8" height="15"/>
+                                                <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
+                                                <color key="textColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
@@ -2516,7 +2530,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="436" y="-54"/>
+            <point key="canvasLocation" x="436" y="-54.422788605697157"/>
         </scene>
         <!--Settings-->
         <scene sceneID="AFd-o2-5Ac">
