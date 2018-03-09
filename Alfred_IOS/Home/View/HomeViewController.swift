@@ -9,9 +9,27 @@
 import UIKit
 import SVProgressHUD
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UIScrollViewDelegate {
 
     private let homeController = HomeController()
+    
+    @IBOutlet weak var videoView: UIView!
+    @IBOutlet weak var lightRoomView: UIScrollView!
+    @IBOutlet weak var pageControl: UIPageControl!
+    @IBAction func pageChange(_ sender: UIPageControl) {
+        if (sender.currentPage == 0) {
+            videoView.isHidden = true
+            lightRoomView.isHidden = false
+        }
+
+        
+        if (sender.currentPage == 1) {
+            videoView.isHidden = false
+            lightRoomView.isHidden = true
+        }
+
+        
+    }
     
     // table view refresh timer
     var refreshDataTimer: Timer!
