@@ -11,7 +11,7 @@ import SVProgressHUD
 
 class HomeViewController: UIViewController {
 
-    private let roomLightsController = RoomLightsController()
+    private let homeController = HomeController()
     
     // table view refresh timer
     var refreshDataTimer: Timer!
@@ -26,10 +26,16 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var lightRoomsTableView: UITableView?
 
     // MARK: Quick Glance Tiles
+    @IBOutlet weak var Greeting: UITextField!
+    @IBOutlet weak var weatherIcon: UIImageView!
+    @IBOutlet weak var outSideTemp: UITextField!
+    @IBOutlet weak var outSideTempMax: UITextField!
+    @IBOutlet weak var commuteStatus: UIImageView!
     @IBAction func LightsOffPress(_ sender: UITapGestureRecognizer) {
-        roomLightsController.turnOffLights()
+        homeController.turnOffLights()
     }
-
+    @IBOutlet weak var inSideTemp: UITextField!
+    
     
     // MARK: override functions
     override func viewWillAppear(_ animated: Bool) {
@@ -39,15 +45,30 @@ class HomeViewController: UIViewController {
         SVProgressHUD.show(withStatus: "Loading")
 
         // Setup quick glance area
+
+        // Check the defaults
+        let appDefaults = [String:AnyObject]()
+        UserDefaults.standard.register(defaults: appDefaults)
+        let defaults = UserDefaults.standard
+        let whoIsThis = defaults.string(forKey: "who_is_this")
         
-        // Weather Summary
-        // Outside Temp
+        // Calc which part of day it is and set greeting message
+        let hour = Calendar.current.component(.hour, from: Date())
+        if (hour >= 0 && hour <= 12) {
+            Greeting.text = "Good Morning " + whoIsThis!;
+        } else if (hour > 12 && hour <= 17) {
+            Greeting.text = "Good Afternoon " + whoIsThis!;
+        } else {
+            Greeting.text = "Good Evening " + whoIsThis!;
+        }
+
+        homeController.getCurrentWeatherData() // Weather Summary
         // Commute Summary
         // Inside Temp
 
         // Setup lights room table
         self.lightRoomsTableView?.rowHeight = 80.0
-        roomLightsController.requestData() // Get data for light rooms table view
+        homeController.getLightRoomData() // Get data for light rooms table view
     }
     
     override func viewDidLoad() {
@@ -55,7 +76,7 @@ class HomeViewController: UIViewController {
         
         lightRoomsTableView?.delegate = self
         lightRoomsTableView?.dataSource = self
-        roomLightsController.delegate = self
+        homeController.delegate = self
 
     }
     
@@ -80,7 +101,7 @@ class HomeViewController: UIViewController {
                     refreshDataTimer = nil
                 }
             case .ended:
-                roomLightsController.UpdateLightBrightness(lightID: slider.tag, brightness: Int(slider.value))
+                homeController.UpdateLightBrightness(lightID: slider.tag, brightness: Int(slider.value))
             default:
                 break
             }
@@ -97,7 +118,7 @@ class HomeViewController: UIViewController {
         let tapLocation = sender.location(in: self.lightRoomsTableView)
         let tapIndexPath = self.lightRoomsTableView?.indexPathForRow(at: tapLocation)
         let tappedCell = self.lightRoomsTableView?.cellForRow(at: tapIndexPath!) as? LightsTableViewCell
-        roomLightsController.UpdatePowerButtonValueChange(lightID: (tappedCell?.lightID.text)!, lightState: (tappedCell?.lightState.isOn)!)
+        homeController.UpdatePowerButtonValueChange(lightID: (tappedCell?.lightID.text)!, lightState: (tappedCell?.lightState.isOn)!)
     }
     
 }
@@ -125,7 +146,7 @@ extension HomeViewController: UITableViewDataSource {
     }
 }
 
-extension HomeViewController: RoomLightsControllerDelegate {
+extension HomeViewController: HomeControllerDelegate {
     func didFailDataUpdateWithError(displayMsg: Bool) {
         if displayMsg {
             SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
@@ -138,13 +159,36 @@ extension HomeViewController: RoomLightsControllerDelegate {
         }
     }
     
-    func didRecieveDataUpdate(data: [RoomLightsData]) {
+    // Light room table callback function
+    func lightRoomTableDidRecieveDataUpdate(data: [RoomLightsData]) {
         RoomLightsDataArray = data
         SVProgressHUD.dismiss() // Stop spinner
         if refreshDataTimer == nil { // Set up data refresh timer
             refreshDataTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(timerInterval), repeats: true){_ in
-                self.roomLightsController.requestData()
+                self.homeController.getLightRoomData()
             }
         }
     }
+    
+    func currentWeatherDidRecieveDataUpdate(data: [CurrentWeatherData]) {
+
+        switch data[0].icon {
+        case "clear-day"?: weatherIcon.image = #imageLiteral(resourceName: "Weather-clear-day")
+        case "clear-night"?: weatherIcon.image = #imageLiteral(resourceName: "Weather-clear-night")
+        case "rain"?: weatherIcon.image = #imageLiteral(resourceName: "Weather-rain")
+        case "snow"?: weatherIcon.image = #imageLiteral(resourceName: "Weather-snow")
+        case "sleet"?: weatherIcon.image = #imageLiteral(resourceName: "Weather-snow")
+        case "wind"?: weatherIcon.image = #imageLiteral(resourceName: "Weather-wind")
+        case "fog"?: weatherIcon.image = nil
+        case "cloudy"?: weatherIcon.image = #imageLiteral(resourceName: "Weather-cloudy")
+        case "partly-cloudy-day"?: weatherIcon.image = #imageLiteral(resourceName: "Weather-cloudy-day")
+        case "partly-cloudy-night"?: weatherIcon.image = #imageLiteral(resourceName: "Weather-partly-cloudy-night")
+
+        case .none: weatherIcon.image = #imageLiteral(resourceName: "Weather-unknown")
+        case .some(_): weatherIcon.image = nil
+        }
+        outSideTemp.text = "\(data[0].temperature ?? 0)"
+        outSideTempMax.text = "Max \(data[0].temperatureHigh ?? 0)"
+    }
+
 }

@@ -2297,7 +2297,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="21" textAlignment="right" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="PFM-dJ-FBz" userLabel="Inside Temp">
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="PFM-dJ-FBz" userLabel="Inside Temp">
                                                 <rect key="frame" x="8" y="25" width="53" height="46"/>
                                                 <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                                 <color key="textColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2326,7 +2326,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="-3" textAlignment="right" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="Gpw-nN-cHc" userLabel="Outside Temp">
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="Gpw-nN-cHc" userLabel="Outside Temp">
                                                 <rect key="frame" x="8" y="25" width="53" height="46"/>
                                                 <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                                 <color key="textColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2349,7 +2349,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Good" translatesAutoresizingMaskIntoConstraints="NO" id="JuX-O5-rtd" userLabel="commute icon">
-                                                <rect key="frame" x="22" y="23" width="55" height="55"/>
+                                                <rect key="frame" x="22" y="24" width="55" height="55"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                         </subviews>
@@ -2387,9 +2387,9 @@
                                         <rect key="frame" x="16" y="43" width="100" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Weather-partly-cloudy" translatesAutoresizingMaskIntoConstraints="NO" id="jrf-LX-Ryf" userLabel="Weather icon">
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tgO-dK-Ptk">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                                <autoresizingMask key="autoresizingMask"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.1166001037" green="0.13493388889999999" blue="0.2344644666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2487,7 +2487,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <connections>
+                        <outlet property="Greeting" destination="ag6-0L-6q4" id="dAh-TC-nAq"/>
+                        <outlet property="commuteStatus" destination="JuX-O5-rtd" id="4Gk-hC-Ehd"/>
+                        <outlet property="inSideTemp" destination="PFM-dJ-FBz" id="ABO-IH-m0w"/>
                         <outlet property="lightRoomsTableView" destination="Gwl-uX-T3h" id="BND-8x-DQO"/>
+                        <outlet property="outSideTemp" destination="Gpw-nN-cHc" id="klA-ae-A3J"/>
+                        <outlet property="outSideTempMax" destination="9jG-XQ-Tdg" id="V0Y-hb-Wiv"/>
+                        <outlet property="weatherIcon" destination="tgO-dK-Ptk" id="lgh-Fg-4fH"/>
                         <segue destination="1C1-UV-wNr" kind="show" identifier="ShowColorPicker" id="zOf-EV-4KC"/>
                     </connections>
                 </viewController>
@@ -2609,7 +2615,6 @@
     <resources>
         <image name="Alfred_Logo" width="57" height="57"/>
         <image name="Good" width="500" height="500"/>
-        <image name="Weather-partly-cloudy" width="52" height="52"/>
         <image name="background" width="410" height="674"/>
         <image name="ic_Amazon_Fire_TV" width="703" height="148"/>
         <image name="ic_AppleTV" width="50" height="50"/>
