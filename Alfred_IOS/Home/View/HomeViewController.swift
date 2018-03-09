@@ -162,7 +162,6 @@ extension HomeViewController: UITableViewDataSource {
 extension HomeViewController: HomeControllerDelegate {
     func didFailDataUpdateWithError(displayMsg: Bool) {
         if displayMsg {
-            SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
             SVProgressHUD.showError(withStatus: "Network/API error")
         } else {
             if refreshDataTimer != nil {

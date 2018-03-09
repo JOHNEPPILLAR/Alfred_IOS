@@ -16,6 +16,7 @@
 		0A1BFDA72052DCAA00B729F8 /* CommutePart3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BFDA22052DCAA00B729F8 /* CommutePart3.swift */; };
 		0A1BFDA92052DCB800B729F8 /* CommuteCommuteBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BFDA82052DCB800B729F8 /* CommuteCommuteBaseClass.swift */; };
 		0A1BFDAE2052EFF900B729F8 /* SplashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BFDAD2052EFF900B729F8 /* SplashController.swift */; };
+		0A1BFDB3205315B400B729F8 /* CommuteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BFDB2205315B400B729F8 /* CommuteController.swift */; };
 		0A2D9E2E1F3617EF0037594C /* LogFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2D9E2D1F3617EF0037594C /* LogFileViewController.swift */; };
 		0A3B4E7F1F169D500072587A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3B4E7E1F169D500072587A /* SettingsViewController.swift */; };
 		0A420E4A1F140D0500BD2713 /* LogFileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A420E491F140D0500BD2713 /* LogFileTableViewCell.swift */; };
@@ -67,6 +68,7 @@
 		0A1BFDA22052DCAA00B729F8 /* CommutePart3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommutePart3.swift; sourceTree = "<group>"; };
 		0A1BFDA82052DCB800B729F8 /* CommuteCommuteBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteCommuteBaseClass.swift; sourceTree = "<group>"; };
 		0A1BFDAD2052EFF900B729F8 /* SplashController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashController.swift; sourceTree = "<group>"; };
+		0A1BFDB2205315B400B729F8 /* CommuteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteController.swift; sourceTree = "<group>"; };
 		0A2D9E2D1F3617EF0037594C /* LogFileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogFileViewController.swift; sourceTree = "<group>"; };
 		0A3B4E7E1F169D500072587A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0A420E491F140D0500BD2713 /* LogFileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogFileTableViewCell.swift; path = Alfred_IOS/LogFileTableViewCell.swift; sourceTree = "<group>"; };
@@ -172,8 +174,8 @@
 		0A1BFDAA2052EF8C00B729F8 /* Splash */ = {
 			isa = PBXGroup;
 			children = (
-				0A1BFDAC2052EF9E00B729F8 /* Controller */,
 				0A1BFDAB2052EF9800B729F8 /* View */,
+				0A1BFDAC2052EF9E00B729F8 /* Controller */,
 			);
 			path = Splash;
 			sourceTree = "<group>";
@@ -192,6 +194,31 @@
 				0A1BFDAD2052EFF900B729F8 /* SplashController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		0A1BFDAF20530C2F00B729F8 /* Commute */ = {
+			isa = PBXGroup;
+			children = (
+				0A1BFDB120530C4400B729F8 /* View */,
+				0A1BFDB020530C3D00B729F8 /* Controller */,
+			);
+			path = Commute;
+			sourceTree = "<group>";
+		};
+		0A1BFDB020530C3D00B729F8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0A1BFDB2205315B400B729F8 /* CommuteController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0A1BFDB120530C4400B729F8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0A7ECE1E1FAE437B002AF233 /* CommuteViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		0A48AD8A1F2376E7008922C9 /* Helpers */ = {
@@ -229,7 +256,7 @@
 				0A48AD8A1F2376E7008922C9 /* Helpers */,
 				0AF938DE1F1A321900B5B247 /* Data */,
 				0A69FB801F10C25C00563A69 /* AppDelegate.swift */,
-				0A69FB9D1F1160C400563A69 /* View Controlers */,
+				0A69FB9D1F1160C400563A69 /* MVC */,
 				0A69FB841F10C25C00563A69 /* Main.storyboard */,
 				0A69FB8A1F10C25C00563A69 /* Assets.xcassets */,
 				0A69FB871F10C25C00563A69 /* Alfred_IOS.xcdatamodeld */,
@@ -239,14 +266,15 @@
 			path = Alfred_IOS;
 			sourceTree = "<group>";
 		};
-		0A69FB9D1F1160C400563A69 /* View Controlers */ = {
+		0A69FB9D1F1160C400563A69 /* MVC */ = {
 			isa = PBXGroup;
 			children = (
+				0A1BFDAF20530C2F00B729F8 /* Commute */,
 				0A1BFDAA2052EF8C00B729F8 /* Splash */,
 				0A6A5FA1204D21E500314ECE /* other */,
 				0A6A5F9D204C683C00314ECE /* Home */,
 			);
-			name = "View Controlers";
+			name = MVC;
 			sourceTree = "<group>";
 		};
 		0A6A5F9D204C683C00314ECE /* Home */ = {
@@ -283,7 +311,6 @@
 				0A932CC620385CD400A01DD7 /* VideoViewController.swift */,
 				0A93796A1F67A8DE004FFC3B /* APILogFileViewController.swift */,
 				0A791EE41F93E43200765DF9 /* LightsOffViewController.swift */,
-				0A7ECE1E1FAE437B002AF233 /* CommuteViewController.swift */,
 			);
 			path = other;
 			sourceTree = "<group>";
@@ -535,6 +562,7 @@
 				0AD1C1C31F22928E000D899D /* Logs.swift in Sources */,
 				0A791EE51F93E43200765DF9 /* LightsOffViewController.swift in Sources */,
 				0A6A5F9F204C6A5800314ECE /* HomeController.swift in Sources */,
+				0A1BFDB3205315B400B729F8 /* CommuteController.swift in Sources */,
 				0ADDC4D31F29C02000C08F55 /* EveningTVViewController.swift in Sources */,
 				0A1BFDA62052DCAA00B729F8 /* CommutePart1.swift in Sources */,
 				0AE84DE71F289F120031F6C2 /* SunriseViewController.swift in Sources */,
