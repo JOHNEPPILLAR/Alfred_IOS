@@ -8,6 +8,8 @@
 
 import UIKit
 import SVProgressHUD
+import AVKit
+import AVFoundation;
 
 class HomeViewController: UIViewController, UIScrollViewDelegate {
 
@@ -21,14 +23,10 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
             videoView.isHidden = true
             lightRoomView.isHidden = false
         }
-
-        
         if (sender.currentPage == 1) {
             videoView.isHidden = false
             lightRoomView.isHidden = true
         }
-
-        
     }
     
     // table view refresh timer
@@ -62,6 +60,28 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var inSideTemp: UITextField!
     
     // MARK: override functions
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        switch segue.identifier {
+        case "lottieVideo"?:
+            let destination = segue.destination as! AVPlayerViewController
+            let url = URL(string: readPlist(item: "LottieCamURL"))
+            if let movieURL = url {
+                destination.player = AVPlayer(url: movieURL)
+            }
+        case "harrietVideo"?:
+            let destination = segue.destination as! AVPlayerViewController
+            let url = URL(string: readPlist(item: "HarrietCamURL"))
+            if let movieURL = url {
+                destination.player = AVPlayer(url: movieURL)
+            }
+        case .none:
+            return
+        case .some(_):
+            return
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
 
@@ -69,7 +89,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
         SVProgressHUD.show(withStatus: "Loading")
 
         // Setup quick glance area
-
+        
         // Check the user defaults
         let appDefaults = [String:AnyObject]()
         UserDefaults.standard.register(defaults: appDefaults)
@@ -96,6 +116,10 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
 
         // ** TODO **
         // Inside Temp
+
+        // Setup feature area
+        videoView.isHidden = true
+        lightRoomView.isHidden = false
 
         // Setup lights room table
         self.lightRoomsTableView?.rowHeight = 80.0
