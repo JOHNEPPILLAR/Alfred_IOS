@@ -14,19 +14,13 @@ import AVFoundation;
 class HomeViewController: UIViewController, UIScrollViewDelegate {
 
     private let homeController = HomeController()
+    private var currentFeaturePage = 0;
     
     @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var lightRoomView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBAction func pageChange(_ sender: UIPageControl) {
-        if (sender.currentPage == 0) {
-            videoView.isHidden = true
-            lightRoomView.isHidden = false
-        }
-        if (sender.currentPage == 1) {
-            videoView.isHidden = false
-            lightRoomView.isHidden = true
-        }
+        showFeaturePage(page: sender.currentPage)
     }
     
     // table view refresh timer
@@ -118,12 +112,8 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
         // Inside Temp
 
         // Setup feature area
-        videoView.isHidden = true
-        lightRoomView.isHidden = false
-
-        // Setup lights room table
         self.lightRoomsTableView?.rowHeight = 80.0
-        homeController.getLightRoomData() // Get data for light rooms table view
+        showFeaturePage(page: currentFeaturePage) // Set the starting feature page
     }
     
     override func viewDidLoad() {
@@ -263,6 +253,29 @@ extension HomeViewController: HomeControllerDelegate {
 //        if (currentWeatherDone && commuteDone && lightRoomTableViewDone && inSideTempDone) {
         if (currentWeatherDone && commuteDone && lightRoomTableViewDone) {
             SVProgressHUD.dismiss() // Stop spinner
+        }
+    }
+    
+    func showFeaturePage(page: Int) {
+        currentFeaturePage = page // Update so returning from a view can display the correct feature page
+        pageControl.currentPage = page
+
+        switch page {
+        case 0:
+            videoView.isHidden = true
+            lightRoomView.isHidden = false
+            homeController.getLightRoomData() // Get data for light rooms table view
+        case 1:
+            if refreshDataTimer != nil {
+                refreshDataTimer.invalidate() // Stop the refresh data timer
+                refreshDataTimer = nil
+            }
+            videoView.isHidden = false
+            lightRoomView.isHidden = true
+        default:
+            videoView.isHidden = true
+            lightRoomView.isHidden = false
+            homeController.getLightRoomData() // Get data for light rooms table view
         }
     }
     

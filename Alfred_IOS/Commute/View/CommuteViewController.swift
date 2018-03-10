@@ -15,7 +15,7 @@ class CommuteViewController: UIViewController {
     private let commuteController = CommuteController()
 
     @IBAction func returnToPreviousView(_ sender: UIButton) {
-        self.dismiss(animated: true)
+        self.dismiss(animated: true, completion:nil)
     }
     
     @IBOutlet weak var part1Image: UIImageView!

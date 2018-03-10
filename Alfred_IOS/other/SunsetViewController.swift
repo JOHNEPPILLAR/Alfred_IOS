@@ -236,7 +236,7 @@ class SunsetViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     @objc func longPowerButtonPress(_ sender: UITapGestureRecognizer!) {
-        
+   /*
         // Only do when finished long press
         if sender.state == .ended {
             
@@ -245,7 +245,7 @@ class SunsetViewController: UIViewController, UITableViewDataSource, UITableView
             let indexPath = LightTableView.indexPathForRow(at: touch)
             let row = indexPath?.row
             let cell = LightTableView.cellForRow(at: indexPath!) as! LightsTableViewCell
-            cellID.sharedInstance.cell = cell
+            //cellID.sharedInstance.cell = cell
                         
             // Setup the light bulb colour
             var color = UIColor.white
@@ -258,6 +258,7 @@ class SunsetViewController: UIViewController, UITableViewDataSource, UITableView
             performSegue(withIdentifier: "sunsetShowColor", sender: color) // Open the color picker
             
         }
+ */
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -267,9 +268,9 @@ class SunsetViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func backFromColorPicker(_ newColor: UIColor?, ct: Int?, scene: Bool?) {
-
+/*
         // Update the local data store
-        let cell = cellID.sharedInstance.cell
+        let cell = nil //cellID.sharedInstance.cell
         let row = cell?.powerButton.tag
         
         if scene! {
@@ -284,7 +285,7 @@ class SunsetViewController: UIViewController, UITableViewDataSource, UITableView
             eveningData[0].lights![row!].colormode = "xy"
             cell?.powerButton.backgroundColor = newColor
         }
-
+*/
     }
     
     @objc func saveSettingsAction(sender: UIBarButtonItem) {

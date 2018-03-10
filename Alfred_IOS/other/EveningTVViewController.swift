@@ -216,7 +216,7 @@ class EveningTVViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     @objc func longPowerButtonPress(_ sender: UITapGestureRecognizer!) {
-        
+   /*
         // Only do when finished long press
         if sender.state == .ended {
             
@@ -225,7 +225,7 @@ class EveningTVViewController: UIViewController, UITableViewDataSource, UITableV
             let indexPath = LightTableView.indexPathForRow(at: touch)
             let row = indexPath?.row
             let cell = LightTableView.cellForRow(at: indexPath!) as! LightsTableViewCell
-            cellID.sharedInstance.cell = cell
+            //cellID.sharedInstance.cell = cell
             
             // Store the color
             var color = UIColor.white
@@ -239,7 +239,8 @@ class EveningTVViewController: UIViewController, UITableViewDataSource, UITableV
             performSegue(withIdentifier: "eveningTVShowColor", sender: color)
             
         }
-    }
+ */
+ }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -250,7 +251,7 @@ class EveningTVViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func backFromColorPicker(_ newColor: UIColor?, ct: Int?, scene: Bool?) {
-
+/*
         // Update the local data store
         let cell = cellID.sharedInstance.cell
         let row = cell?.powerButton.tag
@@ -267,8 +268,9 @@ class EveningTVViewController: UIViewController, UITableViewDataSource, UITableV
             eveningTVData[0].lights![row!].colormode = "xy"
             cell?.powerButton.backgroundColor = newColor
         }
+         */
     }
-    
+
     @objc func saveSettingsAction(sender: UIBarButtonItem) {
         
         // Disable the save button

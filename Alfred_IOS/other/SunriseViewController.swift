@@ -225,7 +225,7 @@ class SunriseViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     @objc func longPowerButtonPress(_ sender: UITapGestureRecognizer!) {
-        
+    /*
         // Only do when finished long press
         if sender.state == .ended {
             
@@ -234,7 +234,7 @@ class SunriseViewController: UIViewController, UITableViewDataSource, UITableVie
             let indexPath = LightTableView.indexPathForRow(at: touch)
             let row = indexPath?.row
             let cell = LightTableView.cellForRow(at: indexPath!) as! LightsTableViewCell
-            cellID.sharedInstance.cell = cell
+            //cellID.sharedInstance.cell = cell
 
             // Store the color
             var color = UIColor.white
@@ -248,6 +248,7 @@ class SunriseViewController: UIViewController, UITableViewDataSource, UITableVie
             performSegue(withIdentifier: "sunriseShowColor", sender: color)
             
         }
+ */
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -259,7 +260,7 @@ class SunriseViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func backFromColorPicker(_ newColor: UIColor?, ct: Int?, scene: Bool?) {
-
+/*
         // Update the local data store
         let cell = cellID.sharedInstance.cell
         let row = cell?.powerButton.tag
@@ -276,7 +277,7 @@ class SunriseViewController: UIViewController, UITableViewDataSource, UITableVie
             morningData[0].lights![row!].colormode = "xy"
             cell?.powerButton.backgroundColor = newColor
         }
-
+*/
     }
     
     @objc func saveSettingsAction(sender: UIBarButtonItem) {

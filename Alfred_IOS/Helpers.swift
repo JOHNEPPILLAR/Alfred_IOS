@@ -7,17 +7,8 @@
 //
 
 import Foundation
-import UIKit
-import SpriteKit
-import SVProgressHUD
+//import UIKit
 import SwiftyJSON
-
-class cellID {
-    static var sharedInstance = cellID()
-    private init() {}
-    
-    var cell: LightsTableViewCell?
-}
 
 func putAPIHeaderData(url: String, body: Data, useScheduler: Bool) -> URLRequest {
     var AlfredBaseURL = readPlist(item: "AlfredBaseURL")
