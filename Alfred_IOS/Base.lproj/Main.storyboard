@@ -2018,7 +2018,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kwk-xh-0TI">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="713-co-zbt">
+                                            <view contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="713-co-zbt">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="671"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
@@ -2113,14 +2113,22 @@
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     </view>
-                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FrU-bx-gV6">
-                                                        <rect key="frame" x="327" y="28" width="40" height="30"/>
+                                                    <view contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BnJ-ct-4a2" userLabel="Return View">
+                                                        <rect key="frame" x="20" y="27" width="28" height="28"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <state key="normal" image="ic-arrow-down"/>
-                                                        <connections>
-                                                            <action selector="returnToPreviousView:" destination="GyY-n8-eYN" eventType="touchUpInside" id="qnr-N9-M47"/>
-                                                        </connections>
-                                                    </button>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FrU-bx-gV6">
+                                                                <rect key="frame" x="0.0" y="0.0" width="28" height="28"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <state key="normal" image="ic-close"/>
+                                                                <connections>
+                                                                    <action selector="returnToPreviousView:" destination="GyY-n8-eYN" eventType="touchUpInside" id="qnr-N9-M47"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <color key="backgroundColor" red="0.1166001037" green="0.13493388889999999" blue="0.2344644666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
@@ -2166,7 +2174,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OB8-eR-DxE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="436" y="-775"/>
+            <point key="canvasLocation" x="436" y="-775.86206896551732"/>
         </scene>
         <!--Home-->
         <scene sceneID="fwW-3D-Lm4">
@@ -2591,7 +2599,7 @@
     <resources>
         <image name="Alfred_Logo" width="57" height="57"/>
         <image name="background" width="410" height="674"/>
-        <image name="ic-arrow-down" width="50" height="50"/>
+        <image name="ic-close" width="128" height="128"/>
         <image name="ic_Amazon_Fire_TV" width="703" height="148"/>
         <image name="ic_AppleTV" width="50" height="50"/>
         <image name="ic_PlayStation" width="50" height="50"/>
