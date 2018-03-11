@@ -2203,42 +2203,42 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="38"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="5Dh-it-vVl" userLabel="Inside Temp">
+                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="5Dh-it-vVl" userLabel="Inside Temp">
                                         <rect key="frame" x="21" y="56" width="45" height="23"/>
                                         <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                         <color key="textColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Inside" textAlignment="center" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Yz4-FS-trW">
+                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Inside" textAlignment="center" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Yz4-FS-trW">
                                         <rect key="frame" x="8" y="77" width="84" height="15"/>
                                         <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                         <color key="textColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="C" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="tXq-mB-Ba9">
+                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="C" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="tXq-mB-Ba9">
                                         <rect key="frame" x="67" y="12" width="16" height="24"/>
                                         <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                         <color key="textColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="O" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="3Ca-vN-hZl">
+                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="O" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="3Ca-vN-hZl">
                                         <rect key="frame" x="59" y="12" width="8" height="15"/>
                                         <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                         <color key="textColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="co" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="9Ku-NF-6S5">
+                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="co" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="9Ku-NF-6S5">
                                         <rect key="frame" x="63" y="54" width="20" height="15"/>
                                         <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                         <color key="textColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="2" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="5Ib-en-odN">
+                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="2" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="5Ib-en-odN">
                                         <rect key="frame" x="72" y="59" width="20" height="15"/>
                                         <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                         <color key="textColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2336,7 +2336,7 @@
                                                                     <color key="maximumTrackTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <color key="thumbTintColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </slider>
-                                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YE3-u0-tgI">
+                                                                <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YE3-u0-tgI">
                                                                     <rect key="frame" x="91" y="4" width="253" height="30"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <color key="textColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2389,7 +2389,7 @@
                                 <rect key="frame" x="16" y="20" width="343" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Good morning John" textAlignment="center" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="ag6-0L-6q4">
+                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Good morning John" textAlignment="center" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="ag6-0L-6q4">
                                         <rect key="frame" x="8" y="5" width="327" height="13"/>
                                         <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                         <color key="textColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2443,28 +2443,28 @@
                                 <rect key="frame" x="137" y="51" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="C" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="L3t-yB-5W7">
+                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="C" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="L3t-yB-5W7">
                                         <rect key="frame" x="67" y="29" width="16" height="24"/>
                                         <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                         <color key="textColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="Gpw-nN-cHc" userLabel="Outside Temp">
+                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="Gpw-nN-cHc" userLabel="Outside Temp">
                                         <rect key="frame" x="8" y="25" width="53" height="46"/>
                                         <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                         <color key="textColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="38"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Max" textAlignment="center" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="9jG-XQ-Tdg">
+                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Max" textAlignment="center" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="9jG-XQ-Tdg">
                                         <rect key="frame" x="8" y="77" width="84" height="15"/>
                                         <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                         <color key="textColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="O" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="Dn4-Gg-C3B">
+                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="O" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="Dn4-Gg-C3B">
                                         <rect key="frame" x="59" y="29" width="8" height="15"/>
                                         <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                         <color key="textColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
