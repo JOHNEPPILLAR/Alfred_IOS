@@ -14,7 +14,7 @@ protocol HomeControllerDelegate: class {
     func lightRoomTableDidRecieveDataUpdate(data: [RoomLightsData])
     func currentWeatherDidRecieveDataUpdate(data: [CurrentWeatherData])
     func cummuteDidRecieveDataUpdate(data: [CommuteData])
-    
+    func insideWeatherDidRecieveDataUpdate(data: [InsideWeatherData])
     func didFailDataUpdateWithError(displayMsg: Bool)
 }
 
@@ -61,7 +61,7 @@ class HomeController: NSObject {
         let request = getAPIHeaderData(url: "lights/alloff", useScheduler: false)
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
-                self.getLightRoomData() // Refresh the data and UI
+                self.getLightRoomData()
             } else {
                 self.delegate?.didFailDataUpdateWithError(displayMsg: true) // Let the View controller know there was an error
             }
@@ -69,6 +69,22 @@ class HomeController: NSObject {
         task.resume()
     }
 
+    func getInsideWeatherData() {
+        let configuration = URLSessionConfiguration.ephemeral
+        let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
+        let request = getAPIHeaderData(url: "weather/inside", useScheduler: false)
+        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+            if checkAPIData(apiData: data, response: response, error: error) {
+                let responseJSON = JSON(data: data!)
+                let data = [InsideWeatherBaseClass(json: responseJSON)] // Update data store
+                self.delegate?.insideWeatherDidRecieveDataUpdate(data: [data[0].data!]) // Refresh the data and UI
+            } else {
+                self.delegate?.didFailDataUpdateWithError(displayMsg: true) // Let the View controller know there was an error
+            }
+        })
+        task.resume()
+    }
+    
     // Light room table
     func getLightRoomData() {
         let configuration = URLSessionConfiguration.ephemeral

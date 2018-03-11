@@ -17,6 +17,8 @@
 		0A1BFDA92052DCB800B729F8 /* CommuteCommuteBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BFDA82052DCB800B729F8 /* CommuteCommuteBaseClass.swift */; };
 		0A1BFDAE2052EFF900B729F8 /* SplashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BFDAD2052EFF900B729F8 /* SplashController.swift */; };
 		0A1BFDB3205315B400B729F8 /* CommuteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BFDB2205315B400B729F8 /* CommuteController.swift */; };
+		0A29F7BC20551AA100111C50 /* InsideWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29F7BB20551AA100111C50 /* InsideWeatherData.swift */; };
+		0A29F7BE20551AA600111C50 /* InsideWeatherInsideWeatherBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29F7BD20551AA600111C50 /* InsideWeatherInsideWeatherBaseClass.swift */; };
 		0A2D9E2E1F3617EF0037594C /* LogFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2D9E2D1F3617EF0037594C /* LogFileViewController.swift */; };
 		0A3B4E7F1F169D500072587A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3B4E7E1F169D500072587A /* SettingsViewController.swift */; };
 		0A420E4A1F140D0500BD2713 /* LogFileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A420E491F140D0500BD2713 /* LogFileTableViewCell.swift */; };
@@ -68,6 +70,8 @@
 		0A1BFDA82052DCB800B729F8 /* CommuteCommuteBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteCommuteBaseClass.swift; sourceTree = "<group>"; };
 		0A1BFDAD2052EFF900B729F8 /* SplashController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashController.swift; sourceTree = "<group>"; };
 		0A1BFDB2205315B400B729F8 /* CommuteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteController.swift; sourceTree = "<group>"; };
+		0A29F7BB20551AA100111C50 /* InsideWeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsideWeatherData.swift; sourceTree = "<group>"; };
+		0A29F7BD20551AA600111C50 /* InsideWeatherInsideWeatherBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsideWeatherInsideWeatherBaseClass.swift; sourceTree = "<group>"; };
 		0A2D9E2D1F3617EF0037594C /* LogFileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogFileViewController.swift; sourceTree = "<group>"; };
 		0A3B4E7E1F169D500072587A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0A420E491F140D0500BD2713 /* LogFileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogFileTableViewCell.swift; path = Alfred_IOS/LogFileTableViewCell.swift; sourceTree = "<group>"; };
@@ -150,6 +154,8 @@
 		0A1BFD9C2052DC7800B729F8 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
+				0A29F7BD20551AA600111C50 /* InsideWeatherInsideWeatherBaseClass.swift */,
+				0A29F7BB20551AA100111C50 /* InsideWeatherData.swift */,
 				0A9EDC652052639C001277EC /* CurrentWeatherBaseClass.swift */,
 				0A9EDC67205263E5001277EC /* CurrentWeatherData.swift */,
 			);
@@ -542,6 +548,7 @@
 				0AA83A721F2CE72500B933A8 /* RoomLightsBaseClass.swift in Sources */,
 				0AB222F21F5C89700040E58F /* BedHeaterViewController.swift in Sources */,
 				0A93796B1F67A8DE004FFC3B /* APILogFileViewController.swift in Sources */,
+				0A29F7BE20551AA600111C50 /* InsideWeatherInsideWeatherBaseClass.swift in Sources */,
 				0A9EDC662052639C001277EC /* CurrentWeatherBaseClass.swift in Sources */,
 				0A420E4A1F140D0500BD2713 /* LogFileTableViewCell.swift in Sources */,
 				0A12B4AB1F193B470012B619 /* SunsetViewController.swift in Sources */,
@@ -551,6 +558,7 @@
 				0A2D9E2E1F3617EF0037594C /* LogFileViewController.swift in Sources */,
 				0A8AF14A1F24EF030064894F /* Helpers.swift in Sources */,
 				0A791EDE1F93E1E300765DF9 /* LightsOff.swift in Sources */,
+				0A29F7BC20551AA100111C50 /* InsideWeatherData.swift in Sources */,
 				0A0463F11F38E99B004A738D /* ColorViewController.swift in Sources */,
 				0A1BFDA42052DCAA00B729F8 /* CommutePart2.swift in Sources */,
 				0AA83A741F2CE72500B933A8 /* RoomLightsState.swift in Sources */,

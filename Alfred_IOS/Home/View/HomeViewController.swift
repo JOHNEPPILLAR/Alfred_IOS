@@ -52,7 +52,8 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
         homeController.turnOffLights()
     }
     @IBOutlet weak var inSideTemp: UITextField!
-    
+    @IBOutlet weak var insideCO2: UITextField!
+
     // MARK: override functions
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -106,10 +107,8 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
             Greeting.text = "Good Evening " + whoIsThis!;
         }
 
-        homeController.getCurrentWeatherData() // Weather Summary
-
-        // ** TODO **
-        // Inside Temp
+        homeController.getCurrentWeatherData() // Weather summary
+        homeController.getInsideWeatherData() // Inside weather summary
 
         // Setup feature area
         self.lightRoomsTableView?.rowHeight = 80.0
@@ -242,6 +241,12 @@ extension HomeViewController: HomeControllerDelegate {
         stopLoadingMessage(caller: "commuteDone")
     }
     
+    func insideWeatherDidRecieveDataUpdate(data: [InsideWeatherData]) {
+        inSideTemp.text = "\(data[0].insideTemp ?? 0)"
+        insideCO2.text = "\(data[0].insideCO2 ?? 0)"
+        stopLoadingMessage(caller: "inSideTempDone")
+    }
+    
     func stopLoadingMessage(caller: String) {
         switch caller {
             case "currentWeatherDone": currentWeatherDone = true
@@ -250,8 +255,7 @@ extension HomeViewController: HomeControllerDelegate {
             case "lightRoomTableViewDone": lightRoomTableViewDone = true
             default: return
         }
-//        if (currentWeatherDone && commuteDone && lightRoomTableViewDone && inSideTempDone) {
-        if (currentWeatherDone && commuteDone && lightRoomTableViewDone) {
+        if (currentWeatherDone && commuteDone && lightRoomTableViewDone && inSideTempDone) {
             SVProgressHUD.dismiss() // Stop spinner
         }
     }
