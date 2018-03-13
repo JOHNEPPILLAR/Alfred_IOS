@@ -13,6 +13,11 @@ import AVFoundation;
 
 class HomeViewController: UIViewController, UIScrollViewDelegate {
 
+    @IBOutlet weak var ActivityWeather: UIActivityIndicatorView!
+    @IBOutlet weak var ActivityOutsideTemp: UIActivityIndicatorView!
+    @IBOutlet weak var ActivityCommute: UIActivityIndicatorView!
+    @IBOutlet weak var ActivityInsideTemp: UIActivityIndicatorView!
+    @IBOutlet weak var ActivityRoomLightTableView: UIActivityIndicatorView!
     private let homeController = HomeController()
     private var currentFeaturePage = 0;
     
@@ -27,16 +32,10 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
     var refreshDataTimer: Timer!
     let timerInterval = 5
     
-    // Request data status
-    var currentWeatherDone = false
-    var commuteDone = false
-    var lightRoomTableViewDone = false
-    var inSideTempDone = false
-    
     fileprivate var RoomLightsDataArray = [RoomLightsData]() {
         didSet {
             lightRoomsTableView?.reloadData()
-            stopLoadingMessage(caller: "lightRoomTableViewDone")
+            ActivityRoomLightTableView.stopAnimating()
         }
     }
     
@@ -80,9 +79,6 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
 
-        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-        SVProgressHUD.show(withStatus: "Loading")
-
         // Setup quick glance area
         
         // Check the user defaults
@@ -125,7 +121,6 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        SVProgressHUD.dismiss() // Stop spinner
         if refreshDataTimer != nil {
             refreshDataTimer.invalidate() // Stop the refresh data timer
             refreshDataTimer = nil
@@ -229,7 +224,8 @@ extension HomeViewController: HomeControllerDelegate {
         }
         outSideTemp.text = "\(data[0].temperature ?? 0)"
         outSideTempMax.text = "Max \(data[0].temperatureHigh ?? 0)"
-        stopLoadingMessage(caller: "currentWeatherDone")
+        ActivityWeather.stopAnimating()
+        ActivityOutsideTemp.stopAnimating()
     }
 
     func cummuteDidRecieveDataUpdate(data: [CommuteData]) {
@@ -238,26 +234,13 @@ extension HomeViewController: HomeControllerDelegate {
         } else {
             commuteStatus.image = #imageLiteral(resourceName: "Bad")
         }
-        stopLoadingMessage(caller: "commuteDone")
+        ActivityCommute.stopAnimating()
     }
     
     func insideWeatherDidRecieveDataUpdate(data: [InsideWeatherData]) {
         inSideTemp.text = "\(data[0].insideTemp ?? 0)"
         insideCO2.text = "\(data[0].insideCO2 ?? 0)"
-        stopLoadingMessage(caller: "inSideTempDone")
-    }
-    
-    func stopLoadingMessage(caller: String) {
-        switch caller {
-            case "currentWeatherDone": currentWeatherDone = true
-            case "commuteDone": commuteDone = true
-            case "inSideTempDone": inSideTempDone = true
-            case "lightRoomTableViewDone": lightRoomTableViewDone = true
-            default: return
-        }
-        if (currentWeatherDone && commuteDone && lightRoomTableViewDone && inSideTempDone) {
-            SVProgressHUD.dismiss() // Stop spinner
-        }
+        ActivityInsideTemp.stopAnimating()
     }
     
     func showFeaturePage(page: Int) {
