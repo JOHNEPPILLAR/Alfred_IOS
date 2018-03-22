@@ -25,7 +25,8 @@ class LightsTableViewCell: UITableViewCell {
         lightName.text = item.name
         
         brightnessSlider.value = Float((item.action?.bri)!)
-
+        brightnessSlider.tag = Int(item.id!)!
+        
         // Configure the power button
         if (item.state?.anyOn)! {
             

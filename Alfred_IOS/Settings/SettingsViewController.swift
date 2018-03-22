@@ -10,11 +10,7 @@ import UIKit
 import SwiftyJSON
 import SVProgressHUD
 
-class SettingsViewController: UIViewController, URLSessionDelegate {
-    
-    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-        completionHandler(URLSession.AuthChallengeDisposition.useCredential, URLCredential(trust: challenge.protectionSpace.serverTrust!) )
-    }
+class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +19,6 @@ class SettingsViewController: UIViewController, URLSessionDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        // Stop spinner
-        SVProgressHUD.dismiss()
     }
         
     override func didReceiveMemoryWarning() {
