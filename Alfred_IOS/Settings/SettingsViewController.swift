@@ -14,6 +14,14 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Add close button
+        let button: UIButton = UIButton(type: UIButtonType.custom)
+        button.setImage(UIImage(named: "ic-close"), for: .normal)
+        button.addTarget(self, action: #selector(closeViewControler), for: .touchUpInside)
+        button.imageView?.contentMode = .scaleAspectFit
+        let barButton = UIBarButtonItem(customView: button)
+        self.navigationItem.leftBarButtonItem = barButton
     }
    
     override func viewWillDisappear(_ animated: Bool) {
@@ -24,4 +32,9 @@ class SettingsViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    @objc func closeViewControler() {
+         self.dismiss(animated: true, completion:nil)
+    }
+    
 }

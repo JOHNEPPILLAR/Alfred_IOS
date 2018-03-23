@@ -195,38 +195,38 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="iq8-gV-VUF"/>
-                    <connections>
-                        <segue destination="CjV-4A-Cuc" kind="show" identifier="View Log File Controler" id="Ax9-eM-pDA"/>
-                        <segue destination="s7J-yo-fmp" kind="show" identifier="EveningTV" id="mhl-KS-xfb"/>
-                        <segue destination="Mjf-y9-ci1" kind="show" identifier="APILogFile" id="Yxf-CY-gGx"/>
-                        <segue destination="qUi-fZ-b1P" kind="show" identifier="light off" id="qpv-nc-CHg"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ZX-V3-Bdj" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="KWP-eR-RjK" userLabel="Sunrise Tap Gesture Recognizer">
                     <connections>
-                        <segue destination="HPF-SI-8H6" kind="show" identifier="Sunrise Lights" id="Zau-6A-ghY"/>
+                        <segue destination="HPF-SI-8H6" kind="show" id="OE9-4e-0io"/>
                     </connections>
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="ew9-nO-cvN" userLabel="Sunset Tap Gesture Recognizer">
                     <connections>
-                        <segue destination="f1C-gJ-uKM" kind="show" identifier="Sunset Lights" id="6XB-ya-Wyp"/>
+                        <segue destination="f1C-gJ-uKM" kind="show" id="B1d-cI-3N9"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="H3W-89-Wrv" userLabel="Evening TV Tap Gesture Recognizer"/>
-                <tapGestureRecognizer id="fw5-e5-qUe" userLabel="View Log Tap Gesture Recognizer"/>
-                <tapGestureRecognizer id="SPZ-Rk-BxK" userLabel="Del Log Tap Gesture Recognizer">
+                <tapGestureRecognizer id="H3W-89-Wrv" userLabel="Evening TV Tap Gesture Recognizer">
                     <connections>
-                        <action selector="DelLogFileTap:" destination="mGu-tP-d4K" id="Ksk-AY-a74"/>
+                        <segue destination="s7J-yo-fmp" kind="show" id="ElS-8H-3gE"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="M94-E0-7w1" userLabel="Restart Tap Gesture Recognizer">
+                <tapGestureRecognizer id="fw5-e5-qUe" userLabel="View Log Tap Gesture Recognizer">
                     <connections>
-                        <action selector="RestartAlfred:" destination="mGu-tP-d4K" id="5I3-Gu-xjC"/>
+                        <segue destination="CjV-4A-Cuc" kind="show" id="csf-qU-ufx"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="sea-O0-A8X" userLabel="View API Log Tap Gesture Recognizer"/>
-                <tapGestureRecognizer id="8uo-FX-Sjs" userLabel="Lights off Tap Gesture Recognizer"/>
+                <tapGestureRecognizer id="sea-O0-A8X" userLabel="View API Log Tap Gesture Recognizer">
+                    <connections>
+                        <segue destination="Mjf-y9-ci1" kind="show" id="wvY-j0-zzc"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="8uo-FX-Sjs" userLabel="Lights off Tap Gesture Recognizer">
+                    <connections>
+                        <segue destination="qUi-fZ-b1P" kind="show" id="I8q-kX-2yM"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1237.5999999999999" y="714.69265367316348"/>
         </scene>
@@ -874,7 +874,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mc2-Dx-JPI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2238" y="715"/>
+            <point key="canvasLocation" x="2300" y="1496"/>
         </scene>
         <!--Scheduler Log File-->
         <scene sceneID="eze-ob-QUp">
@@ -947,7 +947,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ojO-pZ-aKk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="454" y="715"/>
+            <point key="canvasLocation" x="134" y="715"/>
         </scene>
         <!--Evening TV Lights-->
         <scene sceneID="WP0-XH-jaR">
@@ -1604,7 +1604,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="671"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WqH-2Q-btt">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WqH-2Q-btt">
                                                         <rect key="frame" x="34" y="90" width="80" height="80"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
@@ -1622,7 +1622,7 @@
                                                         <color key="textColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TzK-N0-NfA" userLabel="part2 Image">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TzK-N0-NfA" userLabel="part2 Image">
                                                         <rect key="frame" x="32" y="204" width="80" height="80"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
@@ -1640,7 +1640,7 @@
                                                         <color key="textColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mYO-mV-N4u" userLabel="part3 Image">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mYO-mV-N4u" userLabel="part3 Image">
                                                         <rect key="frame" x="34" y="403" width="80" height="80"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
@@ -1658,7 +1658,7 @@
                                                         <color key="textColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CLj-br-UXi" userLabel="part4 Image">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CLj-br-UXi" userLabel="part4 Image">
                                                         <rect key="frame" x="34" y="513" width="80" height="80"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
@@ -1677,7 +1677,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Main Commute" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozU-2H-HJ1">
-                                                        <rect key="frame" x="34" y="45" width="310" height="21"/>
+                                                        <rect key="frame" x="34" y="38" width="310" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1695,22 +1695,14 @@
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     </view>
-                                                    <view contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BnJ-ct-4a2" userLabel="Return View">
-                                                        <rect key="frame" x="20" y="27" width="28" height="28"/>
+                                                    <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FrU-bx-gV6">
+                                                        <rect key="frame" x="18" y="28" width="40" height="40"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FrU-bx-gV6">
-                                                                <rect key="frame" x="0.0" y="0.0" width="28" height="28"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <state key="normal" image="ic-close"/>
-                                                                <connections>
-                                                                    <action selector="returnToPreviousView:" destination="GyY-n8-eYN" eventType="touchUpInside" id="qnr-N9-M47"/>
-                                                                </connections>
-                                                            </button>
-                                                        </subviews>
-                                                        <color key="backgroundColor" red="0.1166001037" green="0.13493388889999999" blue="0.2344644666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </view>
+                                                        <state key="normal" image="ic-close"/>
+                                                        <connections>
+                                                            <action selector="returnToPreviousView:" destination="GyY-n8-eYN" eventType="touchUpInside" id="qnr-N9-M47"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
@@ -2238,13 +2230,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2pL-qL-8l6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2238" y="1496"/>
+            <point key="canvasLocation" x="2300" y="715"/>
         </scene>
     </scenes>
     <resources>
         <image name="Alfred_Logo" width="57" height="57"/>
         <image name="background" width="410" height="674"/>
-        <image name="ic-close" width="128" height="128"/>
+        <image name="ic-close" width="50" height="50"/>
         <image name="ic_Amazon_Fire_TV" width="703" height="148"/>
         <image name="ic_AppleTV" width="50" height="50"/>
         <image name="ic_PlayStation" width="50" height="50"/>
@@ -2268,6 +2260,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="NZQ-os-cDn"/>
-        <segue reference="How-IC-abe"/>
+        <segue reference="Gj3-7b-C3a"/>
     </inferredMetricsTieBreakers>
 </document>
