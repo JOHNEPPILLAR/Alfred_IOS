@@ -107,6 +107,9 @@ extension ViewLogsController: LogsControllerDelegate {
         default:
             self.title = "API Logs"
         }
+        // Reposition view to top of table
+        super.viewWillAppear(true)
+        LogFileTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableViewScrollPosition.top, animated: false)
     }
     
 }

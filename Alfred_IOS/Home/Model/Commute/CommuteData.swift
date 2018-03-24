@@ -22,7 +22,7 @@ public final class CommuteData: NSCoding {
   // MARK: Properties
   public var part4: CommutePart4?
   public var part1: CommutePart1?
-  public var anyDisruptions: Bool? = false
+  public var anyDisruptions: String?
   public var part3: CommutePart3?
   public var part2: CommutePart2?
 
@@ -41,7 +41,7 @@ public final class CommuteData: NSCoding {
   public required init(json: JSON) {
     part4 = CommutePart4(json: json[SerializationKeys.part4])
     part1 = CommutePart1(json: json[SerializationKeys.part1])
-    anyDisruptions = json[SerializationKeys.anyDisruptions].boolValue
+    anyDisruptions = json[SerializationKeys.anyDisruptions].string
     part3 = CommutePart3(json: json[SerializationKeys.part3])
     part2 = CommutePart2(json: json[SerializationKeys.part2])
   }
@@ -53,7 +53,7 @@ public final class CommuteData: NSCoding {
     var dictionary: [String: Any] = [:]
     if let value = part4 { dictionary[SerializationKeys.part4] = value.dictionaryRepresentation() }
     if let value = part1 { dictionary[SerializationKeys.part1] = value.dictionaryRepresentation() }
-    dictionary[SerializationKeys.anyDisruptions] = anyDisruptions
+    if let value = anyDisruptions { dictionary[SerializationKeys.anyDisruptions] = value }
     if let value = part3 { dictionary[SerializationKeys.part3] = value.dictionaryRepresentation() }
     if let value = part2 { dictionary[SerializationKeys.part2] = value.dictionaryRepresentation() }
     return dictionary
@@ -63,7 +63,7 @@ public final class CommuteData: NSCoding {
   required public init(coder aDecoder: NSCoder) {
     self.part4 = aDecoder.decodeObject(forKey: SerializationKeys.part4) as? CommutePart4
     self.part1 = aDecoder.decodeObject(forKey: SerializationKeys.part1) as? CommutePart1
-    self.anyDisruptions = aDecoder.decodeBool(forKey: SerializationKeys.anyDisruptions)
+    self.anyDisruptions = aDecoder.decodeObject(forKey: SerializationKeys.anyDisruptions) as? String
     self.part3 = aDecoder.decodeObject(forKey: SerializationKeys.part3) as? CommutePart3
     self.part2 = aDecoder.decodeObject(forKey: SerializationKeys.part2) as? CommutePart2
   }

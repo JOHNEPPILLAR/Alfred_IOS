@@ -229,7 +229,7 @@ extension HomeViewController: HomeControllerDelegate {
     }
 
     func cummuteDidRecieveDataUpdate(data: [CommuteData]) {
-        if (data[0].anyDisruptions)! {
+        if (data[0].anyDisruptions == "false") {
             commuteStatus.image = #imageLiteral(resourceName: "Good")
         } else {
             commuteStatus.image = #imageLiteral(resourceName: "Bad")

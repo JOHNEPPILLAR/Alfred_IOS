@@ -26,14 +26,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Alfred" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9WM-xp-8kz">
-                                <rect key="frame" x="146" y="410" width="83" height="21"/>
+                                <rect key="frame" x="146" y="386" width="83" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Alfred_Logo" translatesAutoresizingMaskIntoConstraints="NO" id="SQQ-pR-Udj" customClass="HighlightImage" customModule="Alfred_IOS" customModuleProvider="target">
-                                <rect key="frame" x="122" y="269" width="131" height="128"/>
+                                <rect key="frame" x="122" y="211" width="131" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
@@ -1049,7 +1049,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zjx-XO-rD9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="134" y="1496"/>
+            <point key="canvasLocation" x="41" y="1496"/>
         </scene>
         <!--colorPicker-->
         <scene sceneID="pX0-GH-gBv">
@@ -2180,6 +2180,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="NZQ-os-cDn"/>
-        <segue reference="Gj3-7b-C3a"/>
+        <segue reference="How-IC-abe"/>
     </inferredMetricsTieBreakers>
 </document>
