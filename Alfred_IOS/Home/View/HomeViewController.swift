@@ -62,12 +62,14 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
             let url = URL(string: readPlist(item: "LottieCamURL"))
             if let movieURL = url {
                 destination.player = AVPlayer(url: movieURL)
+                destination.player?.play()
             }
         case "harrietVideo"?:
             let destination = segue.destination as! AVPlayerViewController
             let url = URL(string: readPlist(item: "HarrietCamURL"))
             if let movieURL = url {
                 destination.player = AVPlayer(url: movieURL)
+                destination.player?.play()
             }
         case .none:
             return
