@@ -20,21 +20,21 @@ class LightsTableViewCell: UITableViewCell {
     
     func configureWithItem(item: RoomLightsData) {
         
-        lightID.text = item.id
-        lightState.isOn = (item.state?.anyOn)!
-        lightName.text = item.name
+        lightID.text = item.attributes?.attributes?.id
+        lightState.isOn = (item.state?.attributes?.anyOn)!
+        lightName.text = item.attributes?.attributes?.name
         
-        brightnessSlider.value = Float((item.action?.bri)!)
-        brightnessSlider.tag = Int(item.id!)!
+        brightnessSlider.value = Float((item.action?.attributes?.bri)!)
+        brightnessSlider.tag = Int((item.attributes?.attributes?.id)!)!
         
         // Configure the power button
-        if (item.state?.anyOn)! {
+        if (item.state?.attributes?.anyOn)! {
             
             // Setup the light bulb colour
             var color = UIColor.white
-            switch item.action?.colormode {
-                case "ct"?: color = HueColorHelper.getColorFromScene((item.action?.ct)!)
-                case "xy"?: color = HueColorHelper.colorFromXY(CGPoint(x: Double((item.action?.xy![0])!), y: Double((item.action?.xy![1])!)), forModel: "LCT007")
+            switch item.action?.attributes?.colormode {
+            case "ct"?: color = HueColorHelper.getColorFromScene((item.action?.attributes?.ct)!)
+            case "xy"?: color = HueColorHelper.colorFromXY(CGPoint(x: Double((item.action?.attributes?.xy![0])!), y: Double((item.action?.attributes?.xy![1])!)), forModel: "LCT007")
                 default: color = UIColor.white
             }
             powerButton.backgroundColor = color
