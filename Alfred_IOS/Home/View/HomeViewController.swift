@@ -92,7 +92,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
             whoIsThis = ""
             SVProgressHUD.showInfo(withStatus: "Please setup the app user defaults in settings")
         } else {
-            homeController.getCommuteData(whiIsThis: whoIsThis!) // Commute Summary
+            homeController.getCommuteData(whoIsThis: whoIsThis!) // Commute Summary
         }
 
         // Calc which part of day it is and set greeting message
@@ -231,10 +231,10 @@ extension HomeViewController: HomeControllerDelegate {
     }
 
     func cummuteDidRecieveDataUpdate(data: [CommuteData]) {
-        if (!data[0].anyDisruptions!) {
-            commuteStatus.image = #imageLiteral(resourceName: "Good")
-        } else {
+        if (data[0].anyDisruptions!) {
             commuteStatus.image = #imageLiteral(resourceName: "Bad")
+        } else {
+            commuteStatus.image = #imageLiteral(resourceName: "Good")
         }
         ActivityCommute.stopAnimating()
     }

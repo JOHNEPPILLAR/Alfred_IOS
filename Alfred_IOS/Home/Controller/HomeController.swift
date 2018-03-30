@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 import SwiftyJSON
 
 // MARK: Delegate callback functions
@@ -18,10 +19,12 @@ protocol HomeControllerDelegate: class {
     func didFailDataUpdateWithError(displayMsg: Bool)
 }
 
-class HomeController: NSObject {
+class HomeController: NSObject, CLLocationManagerDelegate {
     
     weak var delegate: HomeControllerDelegate?
-
+    var locationManager:CLLocationManager!
+    var whoIs:String!
+    
     // Quick Glance Tiles
     func getCurrentWeatherData() {
         let configuration = URLSessionConfiguration.ephemeral
@@ -39,10 +42,28 @@ class HomeController: NSObject {
         task.resume()
     }
 
-    func getCommuteData(whiIsThis: String) {
+    func getCommuteData(whoIsThis: String) {
+       
+        whoIs = whoIsThis
+        
+        // Get current location
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.startUpdatingLocation()
+        }
+    }
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let userLocation:CLLocation = locations[0] as CLLocation
+        manager.stopUpdatingLocation()
+            
+        // Call Alfred API
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
-        let request = getAPIHeaderData(url: "travel/getcommute?user=" + whiIsThis, useScheduler: false)
+        let request = getAPIHeaderData(url: "travel/getcommute?user=" + whoIs + "&lat=" + "\(userLocation.coordinate.latitude)" + "&long=" + "\(userLocation.coordinate.longitude)", useScheduler: false)
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
                 let responseJSON = JSON(data: data!)
