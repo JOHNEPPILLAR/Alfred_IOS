@@ -1,31 +1,37 @@
 //
-//  CommutePart1.swift
+//  CommuteCommuteResults.swift
 //
-//  Created by John Pillar on 09/03/2018
+//  Created by John Pillar on 30/03/2018
 //  Copyright (c) . All rights reserved.
 //
 
 import Foundation
 import SwiftyJSON
 
-public final class CommutePart1: NSCoding {
+public final class CommuteCommuteResults: NSCoding {
 
   // MARK: Declaration for string constants to be used to decode and also serialize.
   private struct SerializationKeys {
     static let firstTime = "firstTime"
-    static let mode = "mode"
     static let destination = "destination"
     static let secondTime = "secondTime"
+    static let firstNotes = "firstNotes"
     static let disruptions = "disruptions"
+    static let mode = "mode"
+    static let secondNotes = "secondNotes"
+    static let order = "order"
     static let line = "line"
   }
 
   // MARK: Properties
   public var firstTime: String?
-  public var mode: String?
   public var destination: String?
   public var secondTime: String?
+  public var firstNotes: String?
   public var disruptions: String?
+  public var mode: String?
+  public var secondNotes: String?
+  public var order: Int?
   public var line: String?
 
   // MARK: SwiftyJSON Initializers
@@ -42,10 +48,13 @@ public final class CommutePart1: NSCoding {
   /// - parameter json: JSON object from SwiftyJSON.
   public required init(json: JSON) {
     firstTime = json[SerializationKeys.firstTime].string
-    mode = json[SerializationKeys.mode].string
     destination = json[SerializationKeys.destination].string
     secondTime = json[SerializationKeys.secondTime].string
+    firstNotes = json[SerializationKeys.firstNotes].string
     disruptions = json[SerializationKeys.disruptions].string
+    mode = json[SerializationKeys.mode].string
+    secondNotes = json[SerializationKeys.secondNotes].string
+    order = json[SerializationKeys.order].int
     line = json[SerializationKeys.line].string
   }
 
@@ -55,10 +64,13 @@ public final class CommutePart1: NSCoding {
   public func dictionaryRepresentation() -> [String: Any] {
     var dictionary: [String: Any] = [:]
     if let value = firstTime { dictionary[SerializationKeys.firstTime] = value }
-    if let value = mode { dictionary[SerializationKeys.mode] = value }
     if let value = destination { dictionary[SerializationKeys.destination] = value }
     if let value = secondTime { dictionary[SerializationKeys.secondTime] = value }
+    if let value = firstNotes { dictionary[SerializationKeys.firstNotes] = value }
     if let value = disruptions { dictionary[SerializationKeys.disruptions] = value }
+    if let value = mode { dictionary[SerializationKeys.mode] = value }
+    if let value = secondNotes { dictionary[SerializationKeys.secondNotes] = value }
+    if let value = order { dictionary[SerializationKeys.order] = value }
     if let value = line { dictionary[SerializationKeys.line] = value }
     return dictionary
   }
@@ -66,19 +78,25 @@ public final class CommutePart1: NSCoding {
   // MARK: NSCoding Protocol
   required public init(coder aDecoder: NSCoder) {
     self.firstTime = aDecoder.decodeObject(forKey: SerializationKeys.firstTime) as? String
-    self.mode = aDecoder.decodeObject(forKey: SerializationKeys.mode) as? String
     self.destination = aDecoder.decodeObject(forKey: SerializationKeys.destination) as? String
     self.secondTime = aDecoder.decodeObject(forKey: SerializationKeys.secondTime) as? String
+    self.firstNotes = aDecoder.decodeObject(forKey: SerializationKeys.firstNotes) as? String
     self.disruptions = aDecoder.decodeObject(forKey: SerializationKeys.disruptions) as? String
+    self.mode = aDecoder.decodeObject(forKey: SerializationKeys.mode) as? String
+    self.secondNotes = aDecoder.decodeObject(forKey: SerializationKeys.secondNotes) as? String
+    self.order = aDecoder.decodeObject(forKey: SerializationKeys.order) as? Int
     self.line = aDecoder.decodeObject(forKey: SerializationKeys.line) as? String
   }
 
   public func encode(with aCoder: NSCoder) {
     aCoder.encode(firstTime, forKey: SerializationKeys.firstTime)
-    aCoder.encode(mode, forKey: SerializationKeys.mode)
     aCoder.encode(destination, forKey: SerializationKeys.destination)
     aCoder.encode(secondTime, forKey: SerializationKeys.secondTime)
+    aCoder.encode(firstNotes, forKey: SerializationKeys.firstNotes)
     aCoder.encode(disruptions, forKey: SerializationKeys.disruptions)
+    aCoder.encode(mode, forKey: SerializationKeys.mode)
+    aCoder.encode(secondNotes, forKey: SerializationKeys.secondNotes)
+    aCoder.encode(order, forKey: SerializationKeys.order)
     aCoder.encode(line, forKey: SerializationKeys.line)
   }
 

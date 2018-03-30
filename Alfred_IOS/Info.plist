@@ -26,7 +26,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>2</string>
 	<key>CFBundleVersion</key>
-	<string>950</string>
+	<string>995</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -36,6 +36,10 @@
 		<key>NSAllowsLocalNetworking</key>
 		<true/>
 	</dict>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Loocation data is used to figure out the starting point for your commute</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Loocation data is used to figure out the starting point for your commute</string>
 	<key>UILaunchStoryboardName</key>
 	<string>Main</string>
 	<key>UIMainStoryboardFile</key>

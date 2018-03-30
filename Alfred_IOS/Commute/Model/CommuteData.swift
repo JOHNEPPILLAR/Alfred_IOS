@@ -1,24 +1,24 @@
 //
-//  CommuteCommuteBaseClass.swift
+//  CommuteData.swift
 //
-//  Created by John Pillar on 09/03/2018
+//  Created by John Pillar on 30/03/2018
 //  Copyright (c) . All rights reserved.
 //
 
 import Foundation
 import SwiftyJSON
 
-public final class CommuteBaseData: NSCoding {
+public final class CommuteData: NSCoding {
 
   // MARK: Declaration for string constants to be used to decode and also serialize.
   private struct SerializationKeys {
-    static let data = "data"
-    static let sucess = "sucess"
+    static let anyDisruptions = "anyDisruptions"
+    static let commuteResults = "commuteResults"
   }
 
   // MARK: Properties
-  public var data: CommuteData?
-  public var sucess: String?
+  public var anyDisruptions: Bool? = false
+  public var commuteResults: [CommuteCommuteResults]?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -33,8 +33,8 @@ public final class CommuteBaseData: NSCoding {
   ///
   /// - parameter json: JSON object from SwiftyJSON.
   public required init(json: JSON) {
-    data = CommuteData(json: json[SerializationKeys.data])
-    sucess = json[SerializationKeys.sucess].string
+    anyDisruptions = json[SerializationKeys.anyDisruptions].boolValue
+    if let items = json[SerializationKeys.commuteResults].array { commuteResults = items.map { CommuteCommuteResults(json: $0) } }
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -42,20 +42,20 @@ public final class CommuteBaseData: NSCoding {
   /// - returns: A Key value pair containing all valid values in the object.
   public func dictionaryRepresentation() -> [String: Any] {
     var dictionary: [String: Any] = [:]
-    if let value = data { dictionary[SerializationKeys.data] = value.dictionaryRepresentation() }
-    if let value = sucess { dictionary[SerializationKeys.sucess] = value }
+    dictionary[SerializationKeys.anyDisruptions] = anyDisruptions
+    if let value = commuteResults { dictionary[SerializationKeys.commuteResults] = value.map { $0.dictionaryRepresentation() } }
     return dictionary
   }
 
   // MARK: NSCoding Protocol
   required public init(coder aDecoder: NSCoder) {
-    self.data = aDecoder.decodeObject(forKey: SerializationKeys.data) as? CommuteData
-    self.sucess = aDecoder.decodeObject(forKey: SerializationKeys.sucess) as? String
+    self.anyDisruptions = aDecoder.decodeBool(forKey: SerializationKeys.anyDisruptions)
+    self.commuteResults = aDecoder.decodeObject(forKey: SerializationKeys.commuteResults) as? [CommuteCommuteResults]
   }
 
   public func encode(with aCoder: NSCoder) {
-    aCoder.encode(data, forKey: SerializationKeys.data)
-    aCoder.encode(sucess, forKey: SerializationKeys.sucess)
+    aCoder.encode(anyDisruptions, forKey: SerializationKeys.anyDisruptions)
+    aCoder.encode(commuteResults, forKey: SerializationKeys.commuteResults)
   }
 
 }
