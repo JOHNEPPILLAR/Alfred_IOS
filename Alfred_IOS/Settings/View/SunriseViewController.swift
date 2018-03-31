@@ -199,149 +199,10 @@ extension SunriseViewController: SunriseControllerDelegate {
     
 }
 
-
-
-
+// ** TODO **
     /*
-    
-                    // Setup the offset and off timer settings
-                    if self.morningData[0].master_on == "true" {
-                        self.masterSwitch.setOn(true, animated: true)
-                    } else {
-                        self.masterSwitch.setOn(false, animated: true)
-                    }
-                    self.turnOnHRLabel.text = String(self.morningData[0].onHr!)
-                    self.turnOnHRStepper.value = Double(self.morningData[0].onHr!)
-                    self.turnOnMINLabel.text = String(self.morningData[0].onMin!)
-                    self.turnOnMINStepper.value = Double(self.morningData[0].onMin!)
-                    
-                    // Enable UI controls
-                    self.turnOnHRStepper.isEnabled = true
-                    self.turnOnMINStepper.isEnabled = true
-                    self.masterSwitch.isEnabled = true
-                    self.navigationItem.rightBarButtonItem?.isEnabled = true
-                        
-                    // Refresh the table view
-                    self.LightTableView.reloadData()
-                    self.LightTableView.rowHeight = 80.0
-                }
-            }
-        })
-        task.resume()
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (morningData.count) > 0 {
-            return (morningData[0].lights!.count)
-        } else {
-            return 0
-        }
-    }
-    
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "lightCell", for: indexPath) as! LightsTableViewCell
-        let row = indexPath.row
-        
-        cell.tag = morningData[0].lights![row].lightID!
-        cell.lightName.text = morningData[0].lights?[row].lightName
-        
-        // Work out light color
-        if (morningData[0].lights?[row].onoff == "on") {
-            
-            // Setup the light bulb colour
-            var color = UIColor.white
-            switch morningData[0].lights?[row].colormode {
-                case "ct"?: color = HueColorHelper.getColorFromScene((morningData[0].lights?[row].ct)!)
-                case "xy"?: color = HueColorHelper.colorFromXY(CGPoint(x: Double((morningData[0].lights?[row].xy![0])!), y: Double((morningData[0].lights?[row].xy![1])!)), forModel: "LCT007")
-                default: color = UIColor.white
-            }
-            cell.powerButton.backgroundColor = color
-            
-        } else {
-            cell.powerButton.backgroundColor = UIColor.clear
-        }
-        
-        // Set brightness slider
-        cell.brightnessSlider.tag = row
-        cell.brightnessSlider.value = Float((morningData[0].lights?[row].brightness)!)
-        cell.brightnessSlider?.addTarget(self, action: #selector(brightnessValueChange(_:)), for: .touchUpInside)
-        
-        // Configure the power button
-        cell.powerButton.tag = row
-        cell.powerButton.isUserInteractionEnabled = true
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(powerButtonPress(_:)))
-        cell.powerButton.addGestureRecognizer(tapRecognizer)
-        let longTapRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPowerButtonPress(_:)))
-        cell.powerButton.addGestureRecognizer(longTapRecognizer)
-        
-        return cell
-
-    }
-    
-    @objc func brightnessValueChange(_ sender: UISlider!) {
-        sender.setValue(sender.value.rounded(.down), animated: true)
-
-        // Figure out which cell is being updated
-        let cell = sender.superview?.superview as? LightsTableViewCell
-        let row = sender.tag
-        
-        // Update local data store
-        morningData[0].lights?[row].brightness = Int(sender.value)
-        if sender.value == 0 {
-            
-            morningData[0].lights?[row].onoff = "off"
-            cell?.powerButton.backgroundColor = UIColor.clear
-            
-        } else {
-            
-            morningData[0].lights?[row].onoff = "on"
-            
-            // Setup the light bulb colour
-            var color = UIColor.white
-            switch morningData[0].lights?[row].colormode {
-                case "ct"?: color = HueColorHelper.getColorFromScene((morningData[0].lights?[row].ct)!)
-                case "xy"?: color = HueColorHelper.colorFromXY(CGPoint(x: Double((morningData[0].lights?[row].xy![0])!), y: Double((morningData[0].lights?[row].xy![1])!)), forModel: "LCT007")
-                default: color = UIColor.white
-            }
-
-            cell?.powerButton.backgroundColor = color
-            
-        }
-    }
-    
-    @objc func powerButtonPress(_ sender: UITapGestureRecognizer!) {
-        
-        // Figure out which cell is being updated
-        let touch = sender.location(in: LightTableView)
-        let indexPath = LightTableView.indexPathForRow(at: touch)
-        let row = indexPath?.row
-        let cell = LightTableView.cellForRow(at: indexPath!) as! LightsTableViewCell
-
-        if (morningData[0].lights?[row!].onoff == "on") {
-            
-            morningData[0].lights?[row!].onoff = "off"
-            cell.powerButton.backgroundColor = UIColor.clear
-            
-        } else {
-            
-            morningData[0].lights?[row!].onoff = "on"
-            
-            // Setup the light bulb colour
-            var color = UIColor.white
-            switch morningData[0].lights?[row!].colormode {
-                case "ct"?: color = HueColorHelper.getColorFromScene((morningData[0].lights?[row!].ct)!)
-                case "xy"?: color = HueColorHelper.colorFromXY(CGPoint(x: Double((morningData[0].lights?[row!].xy![0])!), y: Double((morningData[0].lights?[row!].xy![1])!)), forModel: "LCT007")
-                default: color = UIColor.white
-            }
-
-            cell.powerButton.backgroundColor = color
-
-        }
-    }
-    
     @objc func longPowerButtonPress(_ sender: UITapGestureRecognizer!) {
-    /*
+
         // Only do when finished long press
         if sender.state == .ended {
             
@@ -364,7 +225,6 @@ extension SunriseViewController: SunriseControllerDelegate {
             performSegue(withIdentifier: "sunriseShowColor", sender: color)
             
         }
- */
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -376,7 +236,6 @@ extension SunriseViewController: SunriseControllerDelegate {
     }
     
     func backFromColorPicker(_ newColor: UIColor?, ct: Int?, scene: Bool?) {
-/*
         // Update the local data store
         let cell = cellID.sharedInstance.cell
         let row = cell?.powerButton.tag
@@ -393,7 +252,6 @@ extension SunriseViewController: SunriseControllerDelegate {
             morningData[0].lights![row!].colormode = "xy"
             cell?.powerButton.backgroundColor = newColor
         }
-*/
     }
     
     @objc func saveSettingsAction(sender: UIBarButtonItem) {
