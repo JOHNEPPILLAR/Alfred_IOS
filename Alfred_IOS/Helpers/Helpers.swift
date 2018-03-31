@@ -10,6 +10,12 @@ import Foundation
 //import UIKit
 import SwiftyJSON
 
+extension Int {
+    var stringValue:String {
+        return "\(self)"
+    }
+}
+
 func putAPIHeaderData(url: String, body: Data, useScheduler: Bool) -> URLRequest {
     var AlfredBaseURL = readPlist(item: "AlfredBaseURL")
     if (useScheduler) { AlfredBaseURL = readPlist(item: "AlfredSchedulerURL") }
