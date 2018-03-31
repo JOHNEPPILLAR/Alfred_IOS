@@ -48,8 +48,6 @@
 		0A6AD7A9206E613800491B3E /* CommuteBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6AD7A6206E613800491B3E /* CommuteBaseClass.swift */; };
 		0A6AD7AA206E613800491B3E /* CommuteCommuteResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6AD7A7206E613800491B3E /* CommuteCommuteResults.swift */; };
 		0A6AD7AC206E65C200491B3E /* CommuteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6AD7AB206E65C200491B3E /* CommuteTableViewCell.swift */; };
-		0A791EDE1F93E1E300765DF9 /* LightsOff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A791EDD1F93E1E300765DF9 /* LightsOff.swift */; };
-		0A791EE01F93E2C300765DF9 /* LightsOffData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A791EDF1F93E2C300765DF9 /* LightsOffData.swift */; };
 		0A791EE51F93E43200765DF9 /* LightsOffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A791EE41F93E43200765DF9 /* LightsOffViewController.swift */; };
 		0A7DADE11F4A2BF9002FEE9F /* HueColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DADE01F4A2BF9002FEE9F /* HueColorHelper.swift */; };
 		0A7ECE1F1FAE437B002AF233 /* CommuteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7ECE1E1FAE437B002AF233 /* CommuteViewController.swift */; };
@@ -57,6 +55,9 @@
 		0A8AF14A1F24EF030064894F /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8AF1491F24EF030064894F /* Helpers.swift */; };
 		0A95AECC206FF4070038D583 /* SunRiseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95AECB206FF4070038D583 /* SunRiseController.swift */; };
 		0A95AECE2070151A0038D583 /* EveningTVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95AECD2070151A0038D583 /* EveningTVController.swift */; };
+		0A95AED0207024740038D583 /* LightsOffController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95AECF207024740038D583 /* LightsOffController.swift */; };
+		0A95AED3207026940038D583 /* SettingsOffEvening.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95AED1207026940038D583 /* SettingsOffEvening.swift */; };
+		0A95AED4207026940038D583 /* SettingsOffMorning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95AED2207026940038D583 /* SettingsOffMorning.swift */; };
 		0A9EDC662052639C001277EC /* CurrentWeatherBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9EDC652052639C001277EC /* CurrentWeatherBaseClass.swift */; };
 		0A9EDC68205263E5001277EC /* CurrentWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9EDC67205263E5001277EC /* CurrentWeatherData.swift */; };
 		0ADDC4D31F29C02000C08F55 /* EveningTVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADDC4D21F29C02000C08F55 /* EveningTVViewController.swift */; };
@@ -117,8 +118,6 @@
 		0A6AD7A6206E613800491B3E /* CommuteBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteBaseClass.swift; sourceTree = "<group>"; };
 		0A6AD7A7206E613800491B3E /* CommuteCommuteResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteCommuteResults.swift; sourceTree = "<group>"; };
 		0A6AD7AB206E65C200491B3E /* CommuteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteTableViewCell.swift; sourceTree = "<group>"; };
-		0A791EDD1F93E1E300765DF9 /* LightsOff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsOff.swift; sourceTree = "<group>"; };
-		0A791EDF1F93E2C300765DF9 /* LightsOffData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsOffData.swift; sourceTree = "<group>"; };
 		0A791EE41F93E43200765DF9 /* LightsOffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsOffViewController.swift; sourceTree = "<group>"; };
 		0A7DADE01F4A2BF9002FEE9F /* HueColorHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HueColorHelper.swift; sourceTree = "<group>"; };
 		0A7ECE1E1FAE437B002AF233 /* CommuteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +125,9 @@
 		0A8AF1491F24EF030064894F /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		0A95AECB206FF4070038D583 /* SunRiseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunRiseController.swift; sourceTree = "<group>"; };
 		0A95AECD2070151A0038D583 /* EveningTVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EveningTVController.swift; sourceTree = "<group>"; };
+		0A95AECF207024740038D583 /* LightsOffController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsOffController.swift; sourceTree = "<group>"; };
+		0A95AED1207026940038D583 /* SettingsOffEvening.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsOffEvening.swift; sourceTree = "<group>"; };
+		0A95AED2207026940038D583 /* SettingsOffMorning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsOffMorning.swift; sourceTree = "<group>"; };
 		0A9EDC652052639C001277EC /* CurrentWeatherBaseClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherBaseClass.swift; sourceTree = "<group>"; };
 		0A9EDC67205263E5001277EC /* CurrentWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherData.swift; sourceTree = "<group>"; };
 		0ADDC4D21F29C02000C08F55 /* EveningTVViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EveningTVViewController.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 		0A256EC4206F93C3008C5283 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0A791EE41F93E43200765DF9 /* LightsOffViewController.swift */,
 				0ADDC4D21F29C02000C08F55 /* EveningTVViewController.swift */,
 				0AE84DE61F289F120031F6C2 /* SunriseViewController.swift */,
 				0A12B4AA1F193B470012B619 /* SunsetViewController.swift */,
@@ -290,20 +293,9 @@
 		0A256EC5206F942D008C5283 /* To Do */ = {
 			isa = PBXGroup;
 			children = (
-				0A256EC6206F9456008C5283 /* Data */,
 				0A0463F01F38E99B004A738D /* ColorViewController.swift */,
-				0A791EE41F93E43200765DF9 /* LightsOffViewController.swift */,
 			);
 			path = "To Do";
-			sourceTree = "<group>";
-		};
-		0A256EC6206F9456008C5283 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				0A791EDD1F93E1E300765DF9 /* LightsOff.swift */,
-				0A791EDF1F93E2C300765DF9 /* LightsOffData.swift */,
-			);
-			path = Data;
 			sourceTree = "<group>";
 		};
 		0A256EC8206F94BF008C5283 /* TableCells */ = {
@@ -323,6 +315,7 @@
 				0A256ECF206F9728008C5283 /* SunSetController.swift */,
 				0A95AECB206FF4070038D583 /* SunRiseController.swift */,
 				0A95AECD2070151A0038D583 /* EveningTVController.swift */,
+				0A95AECF207024740038D583 /* LightsOffController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -330,6 +323,8 @@
 		0A256ED1206FA530008C5283 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0A95AED1207026940038D583 /* SettingsOffEvening.swift */,
+				0A95AED2207026940038D583 /* SettingsOffMorning.swift */,
 				0A256EE6206FAE08008C5283 /* SettingsBaseClass.swift */,
 				0A256EEA206FAE08008C5283 /* SettingsData.swift */,
 				0A256EEB206FAE08008C5283 /* SettingsEvening.swift */,
@@ -615,6 +610,7 @@
 				0A69FB891F10C25C00563A69 /* Alfred_IOS.xcdatamodeld in Sources */,
 				0A6A5F9B204C53D100314ECE /* HomeViewController.swift in Sources */,
 				0A3B4E7F1F169D500072587A /* SettingsViewController.swift in Sources */,
+				0A95AED0207024740038D583 /* LightsOffController.swift in Sources */,
 				0A69FB9F1F1160F500563A69 /* SplashViewController.swift in Sources */,
 				0A256EF6206FAE08008C5283 /* SettingsOff.swift in Sources */,
 				0A256ED0206F9728008C5283 /* SunSetController.swift in Sources */,
@@ -624,6 +620,7 @@
 				0A647EE22067E8CF00F7CD1E /* RoomLightsActionAttributes.swift in Sources */,
 				0A1BFDAE2052EFF900B729F8 /* SplashController.swift in Sources */,
 				0A7ECE1F1FAE437B002AF233 /* CommuteViewController.swift in Sources */,
+				0A95AED4207026940038D583 /* SettingsOffMorning.swift in Sources */,
 				0A29F7BE20551AA600111C50 /* InsideWeatherInsideWeatherBaseClass.swift in Sources */,
 				0A9EDC662052639C001277EC /* CurrentWeatherBaseClass.swift in Sources */,
 				0A6AD7A8206E613800491B3E /* CommuteData.swift in Sources */,
@@ -632,13 +629,11 @@
 				0A12B4AB1F193B470012B619 /* SunsetViewController.swift in Sources */,
 				0A256EF5206FAE08008C5283 /* SettingsEveningtv.swift in Sources */,
 				0A69FB811F10C25C00563A69 /* AppDelegate.swift in Sources */,
-				0A791EE01F93E2C300765DF9 /* LightsOffData.swift in Sources */,
 				0A8AF14A1F24EF030064894F /* Helpers.swift in Sources */,
 				0A256EF1206FAE08008C5283 /* SettingsMorning.swift in Sources */,
 				0AE3279E20665D9B00C288E8 /* LogLogs.swift in Sources */,
 				0A647EE62067E8CF00F7CD1E /* RoomLightsState.swift in Sources */,
 				0AE3279C20665D9B00C288E8 /* LogBaseClass.swift in Sources */,
-				0A791EDE1F93E1E300765DF9 /* LightsOff.swift in Sources */,
 				0A256ED3206FA74E008C5283 /* LightSettingsTableViewCell.swift in Sources */,
 				0A256EF4206FAE08008C5283 /* SettingsEvening.swift in Sources */,
 				0ADF19B920658C5F008057DB /* ViewLogsController.swift in Sources */,
@@ -649,6 +644,7 @@
 				0A256EF7206FAE08008C5283 /* SettingsOn.swift in Sources */,
 				0A791EE51F93E43200765DF9 /* LightsOffViewController.swift in Sources */,
 				0A6A5F9F204C6A5800314ECE /* HomeController.swift in Sources */,
+				0A95AED3207026940038D583 /* SettingsOffEvening.swift in Sources */,
 				0A1BFDB3205315B400B729F8 /* CommuteController.swift in Sources */,
 				0A6AD7AA206E613800491B3E /* CommuteCommuteResults.swift in Sources */,
 				0ADDC4D31F29C02000C08F55 /* EveningTVViewController.swift in Sources */,
