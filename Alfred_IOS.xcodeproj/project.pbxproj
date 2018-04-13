@@ -130,6 +130,7 @@
 		0A95AED2207026940038D583 /* SettingsOffMorning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsOffMorning.swift; sourceTree = "<group>"; };
 		0A9EDC652052639C001277EC /* CurrentWeatherBaseClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherBaseClass.swift; sourceTree = "<group>"; };
 		0A9EDC67205263E5001277EC /* CurrentWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherData.swift; sourceTree = "<group>"; };
+		0AAD1023207D5564006B410C /* Alfred_IOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Alfred_IOS.entitlements; sourceTree = "<group>"; };
 		0ADDC4D21F29C02000C08F55 /* EveningTVViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EveningTVViewController.swift; sourceTree = "<group>"; };
 		0ADF19B820658C5F008057DB /* ViewLogsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLogsController.swift; sourceTree = "<group>"; };
 		0AE259011F70476D002C6922 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -360,6 +361,7 @@
 		0A69FB7F1F10C25C00563A69 /* Alfred_IOS */ = {
 			isa = PBXGroup;
 			children = (
+				0AAD1023207D5564006B410C /* Alfred_IOS.entitlements */,
 				0A256EC8206F94BF008C5283 /* TableCells */,
 				0A256EC5206F942D008C5283 /* To Do */,
 				0A1BFDAF20530C2F00B729F8 /* Commute */,
@@ -494,6 +496,11 @@
 						DevelopmentTeam = P5E7TWCV9X;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -800,6 +807,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LIBRARY = "compiler-default";
+				CODE_SIGN_ENTITLEMENTS = Alfred_IOS/Alfred_IOS.entitlements;
 				DEVELOPMENT_TEAM = P5E7TWCV9X;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -828,6 +836,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LIBRARY = "compiler-default";
+				CODE_SIGN_ENTITLEMENTS = Alfred_IOS/Alfred_IOS.entitlements;
 				DEVELOPMENT_TEAM = P5E7TWCV9X;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";

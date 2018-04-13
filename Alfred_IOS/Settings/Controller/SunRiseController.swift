@@ -24,7 +24,7 @@ class SunriseController: NSObject {
     func getSunRiseTime() {
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
-        let request = getAPIHeaderData(url: "weather/sunset", useScheduler: false)
+        let request = getAPIHeaderData(url: "weather/sunrise", useScheduler: false)
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
                 let json = JSON(data: data!)
