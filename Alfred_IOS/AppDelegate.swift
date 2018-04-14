@@ -30,35 +30,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().isTranslucent = true
         UINavigationBar.appearance().tintColor = naxTexrColor;
         
-        UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .alert, .sound], completionHandler: {(granted, error) in })
-             application.registerForRemoteNotifications()
+        registerForPushNotifications()
         
         return true
     }
 
     // Push notifications
+    func registerForPushNotifications() {
+        UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
+            (granted, error) in
+            print("Permission granted: \(granted)")
+            // 1. Check if permission granted
+            guard granted else { return }
+            // 2. Attempt registration for remote notifications on the main thread
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+            }
+        }
+    }
+
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
+        // 1. Convert device token to string
+        let tokenParts = deviceToken.map { data -> String in
+            return String(format: "%02.2hhx", data)
+        }
+        let token = tokenParts.joined()
+        let dict = ["device": token] as [String: Any]
+        let jsonData = try? JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
         
+        // 2. Print device token to use for PNs payloads
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
-        let body = deviceTokenString.data(using: String.Encoding.utf8)
-        let request = putAPIHeaderData(url: "notifications/register", body: body!, useScheduler: false)
-        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in })
+        let request = putAPIHeaderData(url: "notifications/register", body: jsonData!, useScheduler: false)
+        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+            if checkAPIData(apiData: data, response: response, error: error) {
+                print("Device Token: \(token)")
+            }
+        })
         task.resume()
-        
-        print("success in registering for remote notifications with token \(deviceTokenString)")
-        
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        print("failed to register for remote notifications: \(error.localizedDescription)")
-    }
-    
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-        print("Received push notification: \(userInfo)")
-        let aps = userInfo["aps"] as! [String: Any]
-        print("\(aps)")
+        // 1. Print out error if PNs registration not successful
+        print("Failed to register for remote notifications with error: \(error)")
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

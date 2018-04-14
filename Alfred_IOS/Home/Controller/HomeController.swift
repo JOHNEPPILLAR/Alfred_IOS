@@ -45,6 +45,7 @@ class HomeController: NSObject, CLLocationManagerDelegate {
     func getCommuteData(whoIsThis: String) {
        
         whoIs = whoIsThis
+        if whoIs == nil { whoIs = "JP"}
         
         // Get current location
         locationManager = CLLocationManager()
