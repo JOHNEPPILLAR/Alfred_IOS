@@ -32,8 +32,8 @@ class HomeController: NSObject, CLLocationManagerDelegate {
         let request = getAPIHeaderData(url: "weather/today", useScheduler: false)
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
-                let responseJSON = JSON(data: data!)
-                let data = [CurrentWeatherBaseData(json: responseJSON)] // Update data store
+                let responseJSON = try? JSON(data: data!)
+                let data = [CurrentWeatherBaseData(json: responseJSON!)] // Update data store
                 self.delegate?.currentWeatherDidRecieveDataUpdate(data: [data[0].data!]) // Let the View controller know to show the data
             } else {
                 self.delegate?.didFailDataUpdateWithError(displayMsg: true) // Let the View controller know there was an error
@@ -67,8 +67,8 @@ class HomeController: NSObject, CLLocationManagerDelegate {
         let request = getAPIHeaderData(url: "travel/getcommute?user=" + whoIs + "&lat=" + "\(userLocation.coordinate.latitude)" + "&long=" + "\(userLocation.coordinate.longitude)", useScheduler: false)
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
-                let responseJSON = JSON(data: data!)
-                let data = [CommuteData(json: responseJSON)] // Update data store
+                let responseJSON = try? JSON(data: data!)
+                let data = [CommuteData(json: responseJSON!)] // Update data store
                 self.delegate?.cummuteDidRecieveDataUpdate(data: [data[0]]) // Let the View controller know to show the data
             } else {
                 self.delegate?.didFailDataUpdateWithError(displayMsg: true) // Let the View controller know there was an error
@@ -97,8 +97,8 @@ class HomeController: NSObject, CLLocationManagerDelegate {
         let request = getAPIHeaderData(url: "weather/inside", useScheduler: false)
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
-                let responseJSON = JSON(data: data!)
-                let data = [InsideWeatherBaseClass(json: responseJSON)] // Update data store
+                let responseJSON = try? JSON(data: data!)
+                let data = [InsideWeatherBaseClass(json: responseJSON!)] // Update data store
                 self.delegate?.insideWeatherDidRecieveDataUpdate(data: [data[0].data!]) // Refresh the data and UI
             } else {
                 self.delegate?.didFailDataUpdateWithError(displayMsg: true) // Let the View controller know there was an error
@@ -114,8 +114,8 @@ class HomeController: NSObject, CLLocationManagerDelegate {
         let request = getAPIHeaderData(url: "lights/listlightgroups", useScheduler: false)
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
-                let responseJSON = JSON(data: data!)
-                let data = [RoomLightsBaseData(json: responseJSON)] // Update data store
+                let responseJSON = try? JSON(data: data!)
+                let data = [RoomLightsBaseData(json: responseJSON!)] // Update data store
                 self.delegate?.lightRoomTableDidRecieveDataUpdate(data: data[0].data!) // Let the View controller know to show the data
             } else {
                 self.delegate?.didFailDataUpdateWithError(displayMsg: false) // Let the View controller know there was an error

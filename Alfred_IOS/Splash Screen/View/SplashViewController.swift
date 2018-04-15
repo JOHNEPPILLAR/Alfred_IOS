@@ -17,6 +17,8 @@ class SplashViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
 
+        UIApplication.shared.applicationIconBadgeNumber = 0 // Clear badges
+        
         splashController.ping() // Make sure Alred is online
     }
     

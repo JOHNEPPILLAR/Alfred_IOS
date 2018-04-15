@@ -26,8 +26,8 @@ class LightsOffController: NSObject {
         let request = getAPIHeaderData(url: "settings/view", useScheduler: true)
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
-                let responseJSON = JSON(data: data!)
-                let baseData = [SettingsBaseClass(json: responseJSON)] // Update data store
+                let responseJSON = try? JSON(data: data!)
+                let baseData = [SettingsBaseClass(json: responseJSON!)] // Update data store
                 let data = baseData[0].data?.off
                 self.delegate?.didRecieveLightsOffDataUpdate(data: [data!]) // Let the View controller know to update screen
             } else {

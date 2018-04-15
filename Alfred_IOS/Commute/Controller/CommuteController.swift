@@ -48,8 +48,8 @@ class CommuteController: NSObject, CLLocationManagerDelegate {
         let request = getAPIHeaderData(url: "travel/getcommute?user=" + whoIs + "&lat=" + "\(userLocation.coordinate.latitude)" + "&long=" + "\(userLocation.coordinate.longitude)", useScheduler: false)
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
-                let responseJSON = JSON(data: data!)
-                let baseData = [CommuteBaseClass(json: responseJSON)] // Update data store
+                let responseJSON = try? JSON(data: data!)
+                let baseData = [CommuteBaseClass(json: responseJSON!)] // Update data store
                 let data = baseData[0].data
                 self.delegate?.cummuteDidRecieveDataUpdate(data: [data!]) // Let the View controller know to show the data
             } else {

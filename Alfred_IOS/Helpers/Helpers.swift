@@ -63,8 +63,8 @@ func checkAPIData(apiData: Data?, response: URLResponse?, error: Error?) -> Bool
         return false
     }
         
-    let json = JSON(data: apiData!)
-    let apiStatus = json["sucess"]
+    let json = try? JSON(data: apiData!)
+    let apiStatus = json!["sucess"]
     let apiStatusString = apiStatus.string!
     if apiStatusString == "true" {
          return true

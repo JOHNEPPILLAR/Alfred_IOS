@@ -40,26 +40,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
             (granted, error) in
-            print("Permission granted: \(granted)")
-            // 1. Check if permission granted
             guard granted else { return }
-            // 2. Attempt registration for remote notifications on the main thread
             DispatchQueue.main.async {
-                UIApplication.shared.registerForRemoteNotifications()
+                UIApplication.shared.registerForRemoteNotifications() // Attempt registration for remote notifications on the main thread
             }
         }
     }
-
+    
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        // 1. Convert device token to string
+        // Convert device token to string
         let tokenParts = deviceToken.map { data -> String in
             return String(format: "%02.2hhx", data)
         }
         let token = tokenParts.joined()
-        let dict = ["device": token] as [String: Any]
+
+        // Get main user
+        let appDefaults = [String:AnyObject]()
+        UserDefaults.standard.register(defaults: appDefaults)
+        let defaults = UserDefaults.standard
+        let whoIsThis = defaults.string(forKey: "who_is_this")
+        
+        let dict = ["device": token, "user": whoIsThis as Any] as [String: Any]
         let jsonData = try? JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
         
-        // 2. Print device token to use for PNs payloads
+        // Save device token and user to api data store to use for PNs payloads
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
         let request = putAPIHeaderData(url: "notifications/register", body: jsonData!, useScheduler: false)

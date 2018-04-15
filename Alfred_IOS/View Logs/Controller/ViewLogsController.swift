@@ -35,8 +35,8 @@ class LogsController: NSObject {
         }
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
-                let responseJSON = JSON(data: data!)
-                let data = [LogBaseClass(json: responseJSON)] // Update data store
+                let responseJSON = try? JSON(data: data!)
+                let data = [LogBaseClass(json: responseJSON!)] // Update data store
                 self.delegate?.logsDidRecieveDataUpdate(data: [data[0].data!]) // Let the View controller know to show the data
             } else {
                 self.delegate?.didFailDataUpdateWithError() // Let the View controller know there was an error

@@ -27,8 +27,8 @@ class SunriseController: NSObject {
         let request = getAPIHeaderData(url: "weather/sunrise", useScheduler: false)
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
-                let json = JSON(data: data!)
-                let Sunset = json["data"].string! // Save json to custom classes
+                let json = try? JSON(data: data!)
+                let Sunset = json!["data"].string! // Save json to custom classes
                 self.delegate?.didRecieveSunriseTimeUpdate(data: Sunset) // Let the View controller know to update screen
             } else {
                 self.delegate?.didFailDataUpdateWithError(displayMsg: false) // Let the View controller know there was an error
@@ -43,8 +43,8 @@ class SunriseController: NSObject {
         let request = getAPIHeaderData(url: "settings/view", useScheduler: true)
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
-                let responseJSON = JSON(data: data!)
-                let baseData = [SettingsBaseClass(json: responseJSON)] // Update data store
+                let responseJSON = try? JSON(data: data!)
+                let baseData = [SettingsBaseClass(json: responseJSON!)] // Update data store
                 let data = baseData[0].data?.on?.morning
                 self.delegate?.didRecieveSunriseDataUpdate(data: [data!]) // Let the View controller know to update screen
             } else {
