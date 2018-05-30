@@ -26,17 +26,17 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Alfred" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9WM-xp-8kz">
-                                <rect key="frame" x="146" y="386" width="83" height="21"/>
+                                <rect key="frame" x="146" y="371" width="83" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Digital Brain" translatesAutoresizingMaskIntoConstraints="NO" id="SQQ-pR-Udj" customClass="HighlightImage" customModule="Alfred_IOS" customModuleProvider="target">
-                                <rect key="frame" x="122" y="211" width="131" height="128"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="digital_brain" translatesAutoresizingMaskIntoConstraints="NO" id="SQQ-pR-Udj">
+                                <rect key="frame" x="122" y="250" width="131" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                         </subviews>
@@ -1768,7 +1768,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" red="0.1166001037" green="0.13493388889999999" blue="0.2344644666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.11764705882352941" green="0.13333333333333333" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -1982,8 +1982,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Digital Brain" width="441" height="379"/>
-        <image name="background" width="410" height="674"/>
+        <image name="background" width="2136" height="2136"/>
+        <image name="digital_brain" width="323" height="266"/>
         <image name="ic-close" width="50" height="50"/>
         <image name="ic_camera" width="24" height="24"/>
         <image name="ic_color" width="50" height="50"/>

@@ -20,7 +20,6 @@ protocol HomeControllerDelegate: class {
 }
 
 class HomeController: NSObject, CLLocationManagerDelegate {
-    
     weak var delegate: HomeControllerDelegate?
     var locationManager:CLLocationManager!
     var whoIs:String!
@@ -43,10 +42,9 @@ class HomeController: NSObject, CLLocationManagerDelegate {
     }
 
     func getCommuteData(whoIsThis: String) {
-       
         whoIs = whoIsThis
         if whoIs == nil { whoIs = "JP"}
-        
+
         // Get current location
         locationManager = CLLocationManager()
         locationManager.delegate = self
@@ -141,12 +139,10 @@ class HomeController: NSObject, CLLocationManagerDelegate {
     }
     
     func UpdatePowerButtonValueChange(lightID: String, lightState: Bool) {
-
         var lightsStatus = "off"
         if !lightState {
             lightsStatus = "on"
         }
-        
         let configuration = URLSessionConfiguration.ephemeral
         let body: [String: Any] = ["light_number": lightID, "light_status": lightsStatus]
         let APIbody: Data = try! JSONSerialization.data(withJSONObject: body, options: [])
@@ -161,7 +157,6 @@ class HomeController: NSObject, CLLocationManagerDelegate {
         })
         task.resume()
     }
-    
 }
 
 

@@ -18,16 +18,17 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var ActivityCommute: UIActivityIndicatorView!
     @IBOutlet weak var ActivityInsideTemp: UIActivityIndicatorView!
     @IBOutlet weak var ActivityRoomLightTableView: UIActivityIndicatorView!
-    private let homeController = HomeController()
-    private var currentFeaturePage = 0;
-    
     @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var lightRoomView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBAction func pageChange(_ sender: UIPageControl) {
         showFeaturePage(page: sender.currentPage)
     }
-    
+    @IBOutlet weak var lightRoomsTableView: UITableView?
+
+    private let homeController = HomeController()
+    private var currentFeaturePage = 0;
+
     // table view refresh timer
     var refreshDataTimer: Timer!
     let timerInterval = 5
@@ -39,8 +40,6 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    @IBOutlet weak var lightRoomsTableView: UITableView?
-
     // MARK: Quick Glance Tiles
     @IBOutlet weak var Greeting: UITextField!
     @IBOutlet weak var weatherIcon: UIImageView!
@@ -55,7 +54,6 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
 
     // MARK: override functions
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         switch segue.identifier {
         case "lottieVideo"?:
             let destination = segue.destination as! AVPlayerViewController
