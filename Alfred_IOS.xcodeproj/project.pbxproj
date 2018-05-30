@@ -469,7 +469,6 @@
 				0A69FB7A1F10C25C00563A69 /* Frameworks */,
 				0A69FB7B1F10C25C00563A69 /* Resources */,
 				A4AEDECA746A6EA48899C944 /* [CP] Embed Pods Frameworks */,
-				91A4BBAA1F90F0478AFA2D4C /* [CP] Copy Pods Resources */,
 				0A5F145C1F402567003CDE38 /* ShellScript */,
 			);
 			buildRules = (
@@ -549,7 +548,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n/usr/libexec/PlistBuddy -c \"Set :PreferenceSpecifiers:4:DefaultValue '$buildNumber'\" \"$SRCROOT/Alfred_IOS/Settings.bundle/Root.plist\"\nVERSION_NUMBER=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\n/usr/libexec/PlistBuddy -c \"Set :PreferenceSpecifiers:3:DefaultValue '$VERSION_NUMBER'\" \"$SRCROOT/Alfred_IOS/Settings.bundle/Root.plist\"\n\n\n\n";
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n/usr/libexec/PlistBuddy -c \"Set :PreferenceSpecifiers:4:DefaultValue '$buildNumber'\" \"$SRCROOT/Alfred_IOS/Settings.bundle/Root.plist\"\nVERSION_NUMBER=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\n/usr/libexec/PlistBuddy -c \"Set :PreferenceSpecifiers:3:DefaultValue '$VERSION_NUMBER'\" \"$SRCROOT/Alfred_IOS/Settings.bundle/Root.plist\"\n\n";
 		};
 		33939A752062C08C0AC9EE9D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -567,21 +566,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		91A4BBAA1F90F0478AFA2D4C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Alfred_IOS/Pods-Alfred_IOS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A4AEDECA746A6EA48899C944 /* [CP] Embed Pods Frameworks */ = {

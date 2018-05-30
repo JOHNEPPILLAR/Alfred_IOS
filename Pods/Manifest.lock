@@ -1,15 +1,20 @@
 PODS:
   - SVProgressHUD (2.2.5)
-  - SwiftyJSON (4.0.0)
+  - SwiftyJSON (4.1.0)
 
 DEPENDENCIES:
   - SVProgressHUD
   - SwiftyJSON
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - SVProgressHUD
+    - SwiftyJSON
+
 SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
+  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
 
 PODFILE CHECKSUM: 9bb03ea426fd5b6ee88de618601db7de5ed4db67
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.2

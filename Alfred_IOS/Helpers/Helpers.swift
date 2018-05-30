@@ -7,7 +7,6 @@
 //
 
 import Foundation
-//import UIKit
 import SwiftyJSON
 
 extension Int {
@@ -25,7 +24,7 @@ func putAPIHeaderData(url: String, body: Data, useScheduler: Bool) -> URLRequest
     request.httpMethod = "PUT"
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
     request.addValue("application/json", forHTTPHeaderField: "Accept")
-    request.addValue(AlfredAppKey, forHTTPHeaderField: "app_key")
+    request.addValue(AlfredAppKey, forHTTPHeaderField: "client-access-key")
     request.httpBody = body
     return request
 }
@@ -39,49 +38,29 @@ func getAPIHeaderData(url: String, useScheduler: Bool) -> URLRequest {
     request.cachePolicy = URLRequest.CachePolicy.reloadIgnoringLocalCacheData
     request.httpMethod = "GET"
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-    request.addValue(AlfredAppKey, forHTTPHeaderField: "app_key")
+    request.addValue(AlfredAppKey, forHTTPHeaderField: "client-access-key")
     return request
 }
 
 func checkAPIData(apiData: Data?, response: URLResponse?, error: Error?) -> Bool {
-
     if apiData == nil || error != nil { // Check for fundamental networking error
-        //DispatchQueue.main.async {
-            // Show error
-            //SVProgressHUD.dismiss() // Dismiss any active HUD
-            //SVProgressHUD.showError(withStatus: "Network/API connection error")
-        //}
         return false
     }
-        
     if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
-        //DispatchQueue.main.async {
-            // Show error
-            //SVProgressHUD.dismiss() // Dismiss any active HUD
-            //SVProgressHUD.showError(withStatus: "Invalid API request")
-        //}
         return false
     }
-        
     let json = try? JSON(data: apiData!)
     let apiStatus = json!["sucess"]
     let apiStatusString = apiStatus.string!
     if apiStatusString == "true" {
          return true
     } else {
-        //DispatchQueue.main.async {
-            // Show error
-            //SVProgressHUD.dismiss() // Dismiss any active HUD
-            //SVProgressHUD.showError(withStatus: "Invalid API request")
-        //}
         return false
     }
 }
 
 func readPlist(item: String) -> String {
-    
     var plistItem: String = ""
-    
     if let path = Bundle.main.path(forResource: "Alfred", ofType: "plist") {
         let dictRoot = NSDictionary(contentsOfFile: path)
         if let dict = dictRoot {
@@ -89,22 +68,18 @@ func readPlist(item: String) -> String {
         }
     }
     return plistItem
-    
 }
 
 @IBDesignable class RoundButton: UIButton {
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         updateCornerRadius()
     }
-    
     @IBInspectable var rounded: Bool = false {
         didSet {
             updateCornerRadius()
         }
     }
-    
     func updateCornerRadius() {
         layer.cornerRadius = 5
         layer.borderWidth = 1
@@ -117,13 +92,11 @@ func readPlist(item: String) -> String {
         super.layoutSubviews()
         updateRadius()
     }
-    
     @IBInspectable var rounded: Bool = false {
         didSet {
             updateRadius()
         }
     }
-    
     func updateRadius() {
         layer.masksToBounds = false
         layer.cornerRadius = frame.height/2
@@ -136,13 +109,11 @@ func readPlist(item: String) -> String {
         super.layoutSubviews()
         updateCornerRadius()
     }
-    
     @IBInspectable var rounded: Bool = false {
         didSet {
             updateCornerRadius()
         }
     }
-    
     func updateCornerRadius() {
         layer.cornerRadius = 5
         layer.borderWidth = 2
@@ -152,7 +123,6 @@ func readPlist(item: String) -> String {
 
 @IBDesignable class Line: UIView {
     override func draw(_ rect: CGRect) {
-
         let context = UIGraphicsGetCurrentContext()
         context!.setLineWidth(2.0)
         context!.setStrokeColor(UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1).cgColor)
