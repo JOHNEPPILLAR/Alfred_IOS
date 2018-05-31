@@ -32,7 +32,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="digital_brain" translatesAutoresizingMaskIntoConstraints="NO" id="SQQ-pR-Udj">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="start_screen_logo" translatesAutoresizingMaskIntoConstraints="NO" id="SQQ-pR-Udj">
                                 <rect key="frame" x="122" y="250" width="131" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <userDefinedRuntimeAttributes>
@@ -1983,7 +1983,6 @@
     </scenes>
     <resources>
         <image name="background" width="2136" height="2136"/>
-        <image name="digital_brain" width="323" height="266"/>
         <image name="ic-close" width="50" height="50"/>
         <image name="ic_camera" width="24" height="24"/>
         <image name="ic_color" width="50" height="50"/>
@@ -1999,6 +1998,7 @@
         <image name="ic_view_log" width="100" height="100"/>
         <image name="power_button_grey" width="512" height="512"/>
         <image name="settings" width="64" height="64"/>
+        <image name="start_screen_logo" width="778" height="659"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="2fU-gX-aYs"/>
