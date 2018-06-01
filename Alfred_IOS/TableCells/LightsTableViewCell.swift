@@ -12,11 +12,11 @@ class LightsTableViewCell: UITableViewCell {
     
     class var identifier: String { return String(describing: self) }
     
-    @IBOutlet weak var powerButton: UIImageView!
     @IBOutlet weak var lightName: UITextField!
     @IBOutlet weak var brightnessSlider: UISlider!
     @IBOutlet weak var lightID: UITextField!
     @IBOutlet weak var lightState: UISwitch!
+    @IBOutlet weak var cellBackgroundView: RoundCornersView!
     
     func configureWithItem(item: RoomLightsData) {
         
@@ -27,22 +27,34 @@ class LightsTableViewCell: UITableViewCell {
         brightnessSlider.value = Float((item.action?.attributes?.bri)!)
         brightnessSlider.tag = Int((item.attributes?.attributes?.id)!)!
         
-        // Configure the power button
+        // Configure the light color        
         if (item.state?.attributes?.anyOn)! {
             
             // Setup the light bulb colour
             var color = UIColor.white
             switch item.action?.attributes?.colormode {
-            case "ct"?: color = HueColorHelper.getColorFromScene((item.action?.attributes?.ct)!)
-            case "xy"?: color = HueColorHelper.colorFromXY(CGPoint(x: Double((item.action?.attributes?.xy![0])!), y: Double((item.action?.attributes?.xy![1])!)), forModel: "LCT007")
+                case "ct"?: color = HueColorHelper.getColorFromScene((item.action?.attributes?.ct)!)
+                case "xy"?: color = HueColorHelper.colorFromXY(CGPoint(x: Double((item.action?.attributes?.xy![0])!), y: Double((item.action?.attributes?.xy![1])!)), forModel: "LCT007")
+                case "hs"?: color = HueColorHelper.colorFromXY(CGPoint(x: Double((item.action?.attributes?.xy![0])!), y: Double((item.action?.attributes?.xy![1])!)), forModel: "LCT007")
                 default: color = UIColor.white
             }
-            powerButton.backgroundColor = color
+            
+            let darkerColor = color.darker(by: -15)
+            lightState.onTintColor = darkerColor
+            brightnessSlider.maximumTrackTintColor = darkerColor
+            cellBackgroundView.backgroundColor = color
+            
+            brightnessSlider.setMinimumTrackImage(startColor: darkerColor!,
+                                            endColor: UIColor.white,
+                                            startPoint: CGPoint.init(x: 0, y: 0),
+                                            endPoint: CGPoint.init(x: 1, y: 1))
+            brightnessSlider.layer.cornerRadius = 12.0;
+            
             brightnessSlider.isHidden = false
         } else {
-            powerButton.backgroundColor = UIColor.clear
+            let color = UIColor(red: 30/255, green: 34/255, blue: 60/255, alpha: 0.5)
+            cellBackgroundView.backgroundColor = color
             brightnessSlider.isHidden = true
         }
-        powerButton.isUserInteractionEnabled = true
     }
 }

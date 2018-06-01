@@ -90,7 +90,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
             whoIsThis = ""
             SVProgressHUD.showInfo(withStatus: "Please setup the app user defaults in settings")
         } else {
-            homeController.getCommuteData(whoIsThis: whoIsThis!) // Commute Summary
+            // homeController.getCommuteData(whoIsThis: whoIsThis!) // Commute Summary
         }
 
         // Calc which part of day it is and set greeting message
@@ -107,7 +107,8 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
         homeController.getInsideWeatherData() // Inside weather summary
 
         // Setup feature area
-        self.lightRoomsTableView?.rowHeight = 80.0
+        // self.lightRoomsTableView?.rowHeight = 80.0
+        
         showFeaturePage(page: currentFeaturePage) // Set the starting feature page
     }
     
@@ -146,6 +147,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
+    /*
     @objc func lightPowerButtonValueChange(_ sender: UITapGestureRecognizer!) {
         if refreshDataTimer != nil {
             refreshDataTimer.invalidate() // Stop the refresh data timer
@@ -157,7 +159,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
         let tapIndexPath = self.lightRoomsTableView?.indexPathForRow(at: tapLocation)
         let tappedCell = self.lightRoomsTableView?.cellForRow(at: tapIndexPath!) as? LightsTableViewCell
         homeController.UpdatePowerButtonValueChange(lightID: (tappedCell?.lightID.text)!, lightState: (tappedCell?.lightState.isOn)!)
-    }
+    }*/
 }
 
 extension HomeViewController: UITableViewDelegate {
@@ -170,13 +172,14 @@ extension HomeViewController: UITableViewDataSource {
         
         // Add UI actions
         cell.brightnessSlider?.addTarget(self, action: #selector(lightbrightnessValueChange(slider:event:)), for: .valueChanged)
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(lightPowerButtonValueChange(_:)))
-        cell.powerButton?.addGestureRecognizer(tapRecognizer)
+        // let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(lightPowerButtonValueChange(_:)))
+        // cell.powerButton?.addGestureRecognizer(tapRecognizer)
 
         // ** TODO **
         //let longTapRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPowerButtonPress(_:)))
         //powerButton.addGestureRecognizer(longTapRecognizer)
 
+        
         return cell
     }
     
