@@ -88,7 +88,15 @@ extension UIColor {
             return nil
         }
     }
+    var isDarkColor: Bool {
+        var r, g, b, a: CGFloat
+        (r, g, b, a) = (0, 0, 0, 0)
+        self.getRed(&r, green: &g, blue: &b, alpha: &a)
+        let lum = 0.2126 * r + 0.7152 * g + 0.0722 * b
+        return  lum < 0.60 ? true : false
+    }
 }
+
 
 @IBDesignable class RoundButton: UIButton {
     override func layoutSubviews() {
@@ -139,6 +147,7 @@ extension UIColor {
         clipsToBounds = true
     }
 }
+
 @IBDesignable class HighlightImage: UIImageView {
     override func layoutSubviews() {
         super.layoutSubviews()

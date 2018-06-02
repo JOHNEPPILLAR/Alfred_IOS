@@ -18,16 +18,10 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var ActivityCommute: UIActivityIndicatorView!
     @IBOutlet weak var ActivityInsideTemp: UIActivityIndicatorView!
     @IBOutlet weak var ActivityRoomLightTableView: UIActivityIndicatorView!
-    @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var lightRoomView: UIScrollView!
-    @IBOutlet weak var pageControl: UIPageControl!
-    @IBAction func pageChange(_ sender: UIPageControl) {
-        showFeaturePage(page: sender.currentPage)
-    }
     @IBOutlet weak var lightRoomsTableView: UITableView?
 
     private let homeController = HomeController()
-    private var currentFeaturePage = 0;
 
     // table view refresh timer
     var refreshDataTimer: Timer!
@@ -53,7 +47,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var insideCO2: UITextField!
 
     // MARK: override functions
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "lottieVideo"?:
             let destination = segue.destination as! AVPlayerViewController
@@ -74,7 +68,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
         case .some(_):
             return
         }
-    }
+    }*/
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -89,6 +83,8 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
         if (whoIsThis == nil){
             whoIsThis = ""
             SVProgressHUD.showInfo(withStatus: "Please setup the app user defaults in settings")
+            commuteStatus.image = #imageLiteral(resourceName: "question_mark")
+            ActivityCommute.stopAnimating()
         } else {
             // homeController.getCommuteData(whoIsThis: whoIsThis!) // Commute Summary
         }
@@ -96,20 +92,22 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
         // Calc which part of day it is and set greeting message
         let hour = Calendar.current.component(.hour, from: Date())
         if (hour >= 0 && hour <= 12) {
-            Greeting.text = "Good Morning " + whoIsThis!;
+            Greeting.text = "Good Morning " + whoIsThis!
         } else if (hour > 12 && hour <= 17) {
-            Greeting.text = "Good Afternoon " + whoIsThis!;
+            Greeting.text = "Good Afternoon " + whoIsThis!
         } else {
-            Greeting.text = "Good Evening " + whoIsThis!;
+            Greeting.text = "Good Evening " + whoIsThis!
         }
 
         homeController.getCurrentWeatherData() // Weather summary
         homeController.getInsideWeatherData() // Inside weather summary
 
         // Setup feature area
-        // self.lightRoomsTableView?.rowHeight = 80.0
+        self.lightRoomsTableView?.rowHeight = UITableViewAutomaticDimension
+        self.lightRoomsTableView?.estimatedRowHeight = 80
         
-        showFeaturePage(page: currentFeaturePage) // Set the starting feature page
+        homeController.getLightRoomData() // Get data for light rooms table view
+
     }
     
     override func viewDidLoad() {
@@ -186,6 +184,21 @@ extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return RoomLightsDataArray.count
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let cell = self.lightRoomsTableView?.cellForRow(at: indexPath) as? LightsTableViewCell
+        var cellHeight = 80.0
+        var uiViewHeight = 67
+        if (cell?.lightState != nil) {
+            if (!(cell?.lightState.isOn)!) {
+                cellHeight = 55.0
+                uiViewHeight = 42
+            }
+        } else {
+        }
+        cell?.cellBackgroundView.frame.size.height = CGFloat(uiViewHeight)
+        return CGFloat(cellHeight)
+    }
 }
 
 extension HomeViewController: HomeControllerDelegate {
@@ -245,28 +258,4 @@ extension HomeViewController: HomeControllerDelegate {
         insideCO2.text = "\(data[0].insideCO2 ?? 0)"
         ActivityInsideTemp.stopAnimating()
     }
-    
-    func showFeaturePage(page: Int) {
-        currentFeaturePage = page // Update so returning from a view can display the correct feature page
-        pageControl.currentPage = page
-
-        switch page {
-        case 0:
-            videoView.isHidden = true
-            lightRoomView.isHidden = false
-            homeController.getLightRoomData() // Get data for light rooms table view
-        case 1:
-            if refreshDataTimer != nil {
-                refreshDataTimer.invalidate() // Stop the refresh data timer
-                refreshDataTimer = nil
-            }
-            videoView.isHidden = false
-            lightRoomView.isHidden = true
-        default:
-            videoView.isHidden = true
-            lightRoomView.isHidden = false
-            homeController.getLightRoomData() // Get data for light rooms table view
-        }
-    }
-    
 }
