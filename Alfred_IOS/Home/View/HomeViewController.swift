@@ -187,12 +187,12 @@ extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let cell = self.lightRoomsTableView?.cellForRow(at: indexPath) as? LightsTableViewCell
-        var cellHeight = 80.0
-        var uiViewHeight = 67
+        var cellHeight = 80
+        var uiViewHeight = 70
         if (cell?.lightState != nil) {
             if (!(cell?.lightState.isOn)!) {
-                cellHeight = 55.0
-                uiViewHeight = 42
+                cellHeight = 51
+                uiViewHeight = 41
             }
         } else {
         }
