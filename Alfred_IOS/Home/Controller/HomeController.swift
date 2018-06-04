@@ -124,7 +124,7 @@ class HomeController: NSObject, CLLocationManagerDelegate {
     
     func UpdateLightBrightness(lightID: Int, brightness: Int) {
         let configuration = URLSessionConfiguration.ephemeral
-        let body: [String: Any] = ["light_number": lightID, "brightness": brightness]
+        let body: [String: Any] = ["lightGroupNumber": lightID, "brightness": brightness]
         let APIbody: Data = try! JSONSerialization.data(withJSONObject: body, options: [])
         let request = putAPIHeaderData(url: "lights/lightgroupbrightness", body: APIbody, useScheduler: false)
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
@@ -138,13 +138,13 @@ class HomeController: NSObject, CLLocationManagerDelegate {
         task.resume()
     }
     
-    func UpdatePowerButtonValueChange(lightID: String, lightState: Bool) {
+    func UpdateLightStateValueChange(lightID: Int, lightState: Bool) {
         var lightsStatus = "off"
-        if !lightState {
+        if lightState {
             lightsStatus = "on"
         }
         let configuration = URLSessionConfiguration.ephemeral
-        let body: [String: Any] = ["light_number": lightID, "light_status": lightsStatus]
+        let body: [String: Any] = ["lightGroupNumber": lightID, "lightAction": lightsStatus]        
         let APIbody: Data = try! JSONSerialization.data(withJSONObject: body, options: [])
         let request = putAPIHeaderData(url: "lights/lightgrouponoff", body: APIbody, useScheduler: false)
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)

@@ -22,6 +22,7 @@ class LightsTableViewCell: UITableViewCell {
         var color = UIColor(red: 30/255, green: 34/255, blue: 60/255, alpha: 0.5)
         lightID.text = item.attributes?.attributes?.id
         lightState.isOn = (item.state?.attributes?.anyOn)!
+        lightState.tag = Int((item.attributes?.attributes?.id)!)!
         lightName.text = item.attributes?.attributes?.name
         
         brightnessSlider.value = Float((item.action?.attributes?.bri)!)

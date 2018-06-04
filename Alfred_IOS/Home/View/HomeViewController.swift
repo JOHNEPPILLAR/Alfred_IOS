@@ -46,6 +46,8 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var inSideTemp: UITextField!
     @IBOutlet weak var insideCO2: UITextField!
 
+    
+    
     // MARK: override functions
     /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
@@ -127,7 +129,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
     }
     
     // Light room events
-    @objc func lightbrightnessValueChange(slider: UISlider, event: UIEvent) {
+    @objc func lightBrightnessValueChange(slider: UISlider, event: UIEvent) {
         slider.setValue(slider.value.rounded(.down), animated: true)
        
         if let touchEvent = event.allTouches?.first {
@@ -144,20 +146,14 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
             }
         }
     }
-    
-    /*
-    @objc func lightPowerButtonValueChange(_ sender: UITapGestureRecognizer!) {
+ 
+    @objc func lightStateValueChange(_ sender: UISwitch) {
         if refreshDataTimer != nil {
             refreshDataTimer.invalidate() // Stop the refresh data timer
             refreshDataTimer = nil
         }
-        
-        // Find out tapped cell
-        let tapLocation = sender.location(in: self.lightRoomsTableView)
-        let tapIndexPath = self.lightRoomsTableView?.indexPathForRow(at: tapLocation)
-        let tappedCell = self.lightRoomsTableView?.cellForRow(at: tapIndexPath!) as? LightsTableViewCell
-        homeController.UpdatePowerButtonValueChange(lightID: (tappedCell?.lightID.text)!, lightState: (tappedCell?.lightState.isOn)!)
-    }*/
+        homeController.UpdateLightStateValueChange(lightID: (sender.tag), lightState: (sender.isOn))
+    }
 }
 
 extension HomeViewController: UITableViewDelegate {
@@ -169,9 +165,8 @@ extension HomeViewController: UITableViewDataSource {
         cell.configureWithItem(item: RoomLightsDataArray[indexPath.item])
         
         // Add UI actions
-        cell.brightnessSlider?.addTarget(self, action: #selector(lightbrightnessValueChange(slider:event:)), for: .valueChanged)
-        // let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(lightPowerButtonValueChange(_:)))
-        // cell.powerButton?.addGestureRecognizer(tapRecognizer)
+        cell.brightnessSlider?.addTarget(self, action: #selector(lightBrightnessValueChange(slider:event:)), for: .valueChanged)
+        cell.lightState?.addTarget(self, action: #selector(lightStateValueChange(_:)), for: .valueChanged)
 
         // ** TODO **
         //let longTapRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPowerButtonPress(_:)))
