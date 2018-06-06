@@ -26,6 +26,7 @@
 		0A256EF7206FAE08008C5283 /* SettingsOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A256EEE206FAE08008C5283 /* SettingsOn.swift */; };
 		0A29F7BC20551AA100111C50 /* InsideWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29F7BB20551AA100111C50 /* InsideWeatherData.swift */; };
 		0A29F7BE20551AA600111C50 /* InsideWeatherInsideWeatherBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29F7BD20551AA600111C50 /* InsideWeatherInsideWeatherBaseClass.swift */; };
+		0A385C2C20C8685F00CD312D /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A385C2B20C8685F00CD312D /* VideoViewController.swift */; };
 		0A3B4E7F1F169D500072587A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3B4E7E1F169D500072587A /* SettingsViewController.swift */; };
 		0A420E4A1F140D0500BD2713 /* LogFileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A420E491F140D0500BD2713 /* LogFileTableViewCell.swift */; };
 		0A46C5FB1F56D58300ADB758 /* LightsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A46C5FA1F56D58300ADB758 /* LightsTableViewCell.swift */; };
@@ -94,6 +95,7 @@
 		0A256EEE206FAE08008C5283 /* SettingsOn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsOn.swift; sourceTree = "<group>"; };
 		0A29F7BB20551AA100111C50 /* InsideWeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsideWeatherData.swift; sourceTree = "<group>"; };
 		0A29F7BD20551AA600111C50 /* InsideWeatherInsideWeatherBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsideWeatherInsideWeatherBaseClass.swift; sourceTree = "<group>"; };
+		0A385C2B20C8685F00CD312D /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		0A3B4E7E1F169D500072587A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0A420E491F140D0500BD2713 /* LogFileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogFileTableViewCell.swift; sourceTree = "<group>"; };
 		0A46C5FA1F56D58300ADB758 /* LightsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightsTableViewCell.swift; sourceTree = "<group>"; };
@@ -342,6 +344,22 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		0A385C2920C8680E00CD312D /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				0A385C2A20C8682800CD312D /* View */,
+			);
+			path = Video;
+			sourceTree = "<group>";
+		};
+		0A385C2A20C8682800CD312D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0A385C2B20C8685F00CD312D /* VideoViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		0A69FB741F10C25B00563A69 = {
 			isa = PBXGroup;
 			children = (
@@ -364,6 +382,7 @@
 		0A69FB7F1F10C25C00563A69 /* Alfred_IOS */ = {
 			isa = PBXGroup;
 			children = (
+				0A385C2920C8680E00CD312D /* Video */,
 				0AAD1023207D5564006B410C /* Alfred_IOS.entitlements */,
 				0A256EC8206F94BF008C5283 /* TableCells */,
 				0A256EC5206F942D008C5283 /* To Do */,
@@ -652,6 +671,7 @@
 				0A647EE42067E8CF00F7CD1E /* RoomLightsStateAttributes.swift in Sources */,
 				0A647EE02067E8CF00F7CD1E /* RoomLightsAttributes.swift in Sources */,
 				0A7DADE11F4A2BF9002FEE9F /* HueColorHelper.swift in Sources */,
+				0A385C2C20C8685F00CD312D /* VideoViewController.swift in Sources */,
 				0A6AD7A9206E613800491B3E /* CommuteBaseClass.swift in Sources */,
 				0A647EE12067E8CF00F7CD1E /* RoomLightsData.swift in Sources */,
 				0AE259041F704A0A002C6922 /* SettingsBundleHelper.swift in Sources */,

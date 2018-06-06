@@ -1488,7 +1488,7 @@
         <!--Video Selection-->
         <scene sceneID="8fx-Gw-Lrg">
             <objects>
-                <viewController title="Video Selection" id="Cd5-7t-uYJ" sceneMemberID="viewController">
+                <viewController title="Video Selection" id="Cd5-7t-uYJ" customClass="VideoViewController" customModule="Alfred_IOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="I8y-y3-ASW"/>
                         <viewControllerLayoutGuide type="bottom" id="E4k-0s-wvL"/>
@@ -1509,6 +1509,9 @@
                                         <rect key="frame" x="149" y="338" width="77" height="92"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="705-0D-tVS" appends="YES" id="V2I-lr-SjS"/>
+                                        </connections>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lottie" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YmH-4h-5Xq">
                                         <rect key="frame" x="8" y="255" width="359" height="21"/>
@@ -1528,18 +1531,43 @@
                                         <rect key="frame" x="149" y="166" width="77" height="92"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="4Og-9p-9WO" appends="YES" id="7A0-bT-TZn"/>
+                                        </connections>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Video Streams" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJv-xL-g5R">
+                                <rect key="frame" x="8" y="38" width="359" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQs-zC-D8Z">
+                                <rect key="frame" x="18" y="28" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="ic-close"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <connections>
-                        <segue destination="Wpo-kA-wrB" kind="show" identifier="VideoSelector" id="CZ1-Ud-8AI"/>
+                        <outlet property="closeButton" destination="nQs-zC-D8Z" id="qbB-Cc-lsg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Es-CQ-RH8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="4Og-9p-9WO" userLabel="Lottie Tap Gesture Recognizer">
+                    <connections>
+                        <segue destination="Wpo-kA-wrB" kind="show" identifier="LottieVideo" id="FPj-Ud-2Sc"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="705-0D-tVS" userLabel="Harriet Tap Gesture Recognizer">
+                    <connections>
+                        <segue destination="Wpo-kA-wrB" kind="show" identifier="HarrietVideo" id="E3I-Yx-1Ry"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1237.5999999999999" y="-777.66116941529242"/>
         </scene>
@@ -1617,7 +1645,7 @@
                                 <rect key="frame" x="259" y="159" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView hidden="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="video-camera" translatesAutoresizingMaskIntoConstraints="NO" id="r4f-7R-R2K">
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="video-camera" translatesAutoresizingMaskIntoConstraints="NO" id="r4f-7R-R2K">
                                         <rect key="frame" x="21" y="12" width="59" height="76"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <gestureRecognizers/>
@@ -2016,6 +2044,7 @@
         <image name="video-camera" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="E3I-Yx-1Ry"/>
         <segue reference="How-IC-abe"/>
     </inferredMetricsTieBreakers>
 </document>

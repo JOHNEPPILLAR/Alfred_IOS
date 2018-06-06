@@ -8,8 +8,6 @@
 
 import UIKit
 import SVProgressHUD
-import AVKit
-import AVFoundation;
 
 class HomeViewController: UIViewController, UIScrollViewDelegate {
 
@@ -46,32 +44,6 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
     }
     @IBOutlet weak var inSideTemp: UITextField!
     @IBOutlet weak var insideCO2: UITextField!
-
-    
-    
-    // MARK: override functions
-    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier {
-        case "lottieVideo"?:
-            let destination = segue.destination as! AVPlayerViewController
-            let url = URL(string: readPlist(item: "LottieCamURL"))
-            if let movieURL = url {
-                destination.player = AVPlayer(url: movieURL)
-                destination.player?.play()
-            }
-        case "harrietVideo"?:
-            let destination = segue.destination as! AVPlayerViewController
-            let url = URL(string: readPlist(item: "HarrietCamURL"))
-            if let movieURL = url {
-                destination.player = AVPlayer(url: movieURL)
-                destination.player?.play()
-            }
-        case .none:
-            return
-        case .some(_):
-            return
-        }
-    }*/
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
