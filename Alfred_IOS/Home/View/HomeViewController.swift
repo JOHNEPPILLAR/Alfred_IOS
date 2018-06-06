@@ -82,13 +82,11 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
         UserDefaults.standard.register(defaults: appDefaults)
         let defaults = UserDefaults.standard
         var whoIsThis = defaults.string(forKey: "who_is_this")
-        if (whoIsThis == nil){
+        if (whoIsThis == nil) {
             whoIsThis = ""
             SVProgressHUD.showInfo(withStatus: "Please setup the app user defaults in settings")
             commuteStatus.image = #imageLiteral(resourceName: "question_mark")
             ActivityCommute.stopAnimating()
-        } else {
-            // homeController.getCommuteData(whoIsThis: whoIsThis!) // Commute Summary
         }
 
         // Calc which part of day it is and set greeting message
@@ -101,7 +99,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
             Greeting.text = "Good Evening " + whoIsThis!
         }
 
-        homeController.getCurrentWeatherData() // Weather summary
+        homeController.getCurrentLocation(whoIsThis: whoIsThis!) // Weather & commute summary
         homeController.getInsideWeatherData() // Inside weather summary
 
         // Setup feature area
@@ -233,24 +231,30 @@ extension HomeViewController: HomeControllerDelegate {
             case .none: weatherIcon.image = #imageLiteral(resourceName: "Weather-unknown")
             case .some(_): weatherIcon.image = nil
         }
-        outSideTemp.text = "\(data[0].temperature ?? 0)"
-        outSideTempMax.text = "Max \(data[0].temperatureHigh ?? 0)"
-        ActivityWeather.stopAnimating()
-        ActivityOutsideTemp.stopAnimating()
+        DispatchQueue.main.async {
+            self.outSideTemp.text = "\(data[0].temperature ?? 0)"
+            self.outSideTempMax.text = "Max \(data[0].temperatureHigh ?? 0)"
+            self.ActivityWeather.stopAnimating()
+            self.ActivityOutsideTemp.stopAnimating()
+        }
     }
 
     func cummuteDidRecieveDataUpdate(data: [CommuteData]) {
-        if (data[0].anyDisruptions!) {
-            commuteStatus.image = #imageLiteral(resourceName: "Bad")
-        } else {
-            commuteStatus.image = #imageLiteral(resourceName: "Good")
+        DispatchQueue.main.async {
+            if (data[0].anyDisruptions!) {
+                self.commuteStatus.image = #imageLiteral(resourceName: "Bad")
+            } else {
+                self.commuteStatus.image = #imageLiteral(resourceName: "Good")
+            }
+            self.ActivityCommute.stopAnimating()
         }
-        ActivityCommute.stopAnimating()
     }
     
     func insideWeatherDidRecieveDataUpdate(data: [InsideWeatherData]) {
-        inSideTemp.text = "\(data[0].insideTemp ?? 0)"
-        insideCO2.text = "\(data[0].insideCO2 ?? 0)"
-        ActivityInsideTemp.stopAnimating()
+        DispatchQueue.main.async {
+            self.inSideTemp.text = "\(data[0].insideTemp ?? 0)"
+            self.insideCO2.text = "\(data[0].insideCO2 ?? 0)"
+            self.ActivityInsideTemp.stopAnimating()
+        }
     }
 }

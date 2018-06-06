@@ -24,12 +24,31 @@ class HomeController: NSObject, CLLocationManagerDelegate {
     var locationManager:CLLocationManager!
     var whoIs:String!
     
-    // Quick Glance Tiles
-    func getCurrentWeatherData() {
-        let configuration = URLSessionConfiguration.ephemeral
-        let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
-        let request = getAPIHeaderData(url: "weather/today", useScheduler: false)
-        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+    // Get current location
+    func getCurrentLocation(whoIsThis: String) {
+        whoIs = whoIsThis
+        // if whoIs == nil { whoIs = "JP"}
+
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let userLocation = locations[0] as CLLocation
+        manager.stopUpdatingLocation()
+        
+        // Get current weather data
+        var configuration = URLSessionConfiguration.ephemeral
+        var body: [String: Any] = ["lat": userLocation.coordinate.latitude, "long": userLocation.coordinate.longitude]
+        var APIbody: Data = try! JSONSerialization.data(withJSONObject: body, options: [])
+        var request = putAPIHeaderData(url: "weather/today", body: APIbody, useScheduler: false)
+        var session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
+        var task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
                 let responseJSON = try? JSON(data: data!)
                 let data = [CurrentWeatherBaseData(json: responseJSON!)] // Update data store
@@ -39,40 +58,25 @@ class HomeController: NSObject, CLLocationManagerDelegate {
             }
         })
         task.resume()
-    }
-
-    func getCommuteData(whoIsThis: String) {
-        whoIs = whoIsThis
-        if whoIs == nil { whoIs = "JP"}
-
-        // Get current location
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.startUpdatingLocation()
+      
+        // Get commute data
+        if (whoIs != "") {
+            configuration = URLSessionConfiguration.ephemeral
+            body = ["user": whoIs, "lat": userLocation.coordinate.latitude, "long": userLocation.coordinate.longitude ]
+            APIbody = try! JSONSerialization.data(withJSONObject: body, options: [])
+            request = putAPIHeaderData(url: "travel/getcommute", body: APIbody, useScheduler: false)
+            session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
+            task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+                if checkAPIData(apiData: data, response: response, error: error) {
+                    let responseJSON = try? JSON(data: data!)
+                    let data = [CommuteData(json: responseJSON!)] // Update data store
+                    self.delegate?.cummuteDidRecieveDataUpdate(data: [data[0]]) // Let the View controller know to show the data
+                } else {
+                    self.delegate?.didFailDataUpdateWithError(displayMsg: true) // Let the View controller know there was an error
+                }
+            })
+            task.resume()
         }
-    }
-
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let userLocation:CLLocation = locations[0] as CLLocation
-        manager.stopUpdatingLocation()
-            
-        // Call Alfred API
-        let configuration = URLSessionConfiguration.ephemeral
-        let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
-        let request = getAPIHeaderData(url: "travel/getcommute?user=" + whoIs + "&lat=" + "\(userLocation.coordinate.latitude)" + "&long=" + "\(userLocation.coordinate.longitude)", useScheduler: false)
-        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
-            if checkAPIData(apiData: data, response: response, error: error) {
-                let responseJSON = try? JSON(data: data!)
-                let data = [CommuteData(json: responseJSON!)] // Update data store
-                self.delegate?.cummuteDidRecieveDataUpdate(data: [data[0]]) // Let the View controller know to show the data
-            } else {
-                self.delegate?.didFailDataUpdateWithError(displayMsg: true) // Let the View controller know there was an error
-            }
-        })
-        task.resume()
     }
 
     func turnOffLights() {
