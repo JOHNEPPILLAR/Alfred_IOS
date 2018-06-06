@@ -38,7 +38,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>2.1</string>
+			<string>3</string>
 			<key>Key</key>
 			<string>version_preferance</string>
 			<key>Title</key>
@@ -48,7 +48,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>1345</string>
+			<string>1357</string>
 			<key>Key</key>
 			<string>BUILD_NUMBER</string>
 			<key>Title</key>

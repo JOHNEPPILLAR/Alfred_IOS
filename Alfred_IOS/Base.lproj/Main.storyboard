@@ -1853,6 +1853,7 @@
                         <outlet property="lightRoomsTableView" destination="Gwl-uX-T3h" id="BND-8x-DQO"/>
                         <outlet property="outSideTemp" destination="Gpw-nN-cHc" id="klA-ae-A3J"/>
                         <outlet property="outSideTempMax" destination="9jG-XQ-Tdg" id="V0Y-hb-Wiv"/>
+                        <outlet property="settingsIcon" destination="kG5-Y5-MlE" id="RJL-S3-qFE"/>
                         <outlet property="weatherIcon" destination="tgO-dK-Ptk" id="lgh-Fg-4fH"/>
                     </connections>
                 </viewController>

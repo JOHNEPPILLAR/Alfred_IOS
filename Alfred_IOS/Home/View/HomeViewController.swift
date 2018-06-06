@@ -20,7 +20,8 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var ActivityRoomLightTableView: UIActivityIndicatorView!
     @IBOutlet weak var lightRoomView: UIScrollView!
     @IBOutlet weak var lightRoomsTableView: UITableView?
-
+    @IBOutlet weak var settingsIcon: UIImageView!
+    
     private let homeController = HomeController()
 
     // table view refresh timer
@@ -81,12 +82,16 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
         let appDefaults = [String:AnyObject]()
         UserDefaults.standard.register(defaults: appDefaults)
         let defaults = UserDefaults.standard
+        settingsIcon.isHidden = true
         var whoIsThis = defaults.string(forKey: "who_is_this")
         if (whoIsThis == nil) {
             whoIsThis = ""
             SVProgressHUD.showInfo(withStatus: "Please setup the app user defaults in settings")
             commuteStatus.image = #imageLiteral(resourceName: "question_mark")
             ActivityCommute.stopAnimating()
+        }
+        if (whoIsThis == "JP") {
+            settingsIcon.isHidden = false
         }
 
         // Calc which part of day it is and set greeting message
