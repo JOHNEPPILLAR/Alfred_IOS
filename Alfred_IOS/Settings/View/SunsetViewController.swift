@@ -55,7 +55,7 @@ class SunsetViewController: UIViewController {
         SVProgressHUD.show(withStatus: "Loading")
 
         // Add save button to navigation bar
-        let saveButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(saveSettingsAction(sender:)))
+        let saveButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveSettingsAction(sender:)))
         navigationItem.rightBarButtonItem = saveButton
         
         // Disable UI controls untill data is loaded
@@ -136,7 +136,7 @@ extension SunsetViewController: UITableViewDataSource {
         cell.configureWithItem(row: indexPath.row, item: eveningData[0].lights![indexPath.row])
         
         // Add UI actions
-        cell.brightnessSlider?.addTarget(self, action: #selector(lightbrightnessValueChange(slider:event:)), for: .valueChanged)
+        cell.brightnessSlider?.addTarget(self, action: #selector(lightbrightnessValueChange(slider:event:)), for: UIControl.Event.valueChanged)
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(powerButtonValueChange(_:)))
         cell.powerButton?.addGestureRecognizer(tapRecognizer)
         

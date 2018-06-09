@@ -80,7 +80,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
         homeController.getInsideWeatherData() // Inside weather summary
 
         // Setup feature area
-        self.lightRoomsTableView?.rowHeight = UITableViewAutomaticDimension
+        self.lightRoomsTableView?.rowHeight = UITableView.automaticDimension
         self.lightRoomsTableView?.estimatedRowHeight = 80
         
         homeController.getLightRoomData() // Get data for light rooms table view
@@ -140,8 +140,8 @@ extension HomeViewController: UITableViewDataSource {
         cell.configureWithItem(item: RoomLightsDataArray[indexPath.item])
         
         // Add UI actions
-        cell.brightnessSlider?.addTarget(self, action: #selector(lightBrightnessValueChange(slider:event:)), for: .valueChanged)
-        cell.lightState?.addTarget(self, action: #selector(lightStateValueChange(_:)), for: .valueChanged)
+        cell.brightnessSlider?.addTarget(self, action: #selector(lightBrightnessValueChange(slider:event:)), for: UIControl.Event.valueChanged)
+        cell.lightState?.addTarget(self, action: #selector(lightStateValueChange(_:)), for: UIControl.Event.valueChanged)
 
         // ** TODO **
         //let longTapRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPowerButtonPress(_:)))

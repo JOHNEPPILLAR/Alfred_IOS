@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         let barColor = UIColor(red: 34/255, green: 39/255, blue: 69/255, alpha: 1.0)
         let naxTexrColor = UIColor(red: 214/255, green: 214/255, blue: 214/255, alpha: 1.0)

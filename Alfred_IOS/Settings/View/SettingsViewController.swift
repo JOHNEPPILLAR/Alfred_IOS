@@ -16,9 +16,9 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
 
         // Add close button
-        let button: UIButton = UIButton(type: UIButtonType.custom)
-        button.setImage(UIImage(named: "ic-close"), for: .normal)
-        button.addTarget(self, action: #selector(closeViewControler), for: .touchUpInside)
+        let button: UIButton = UIButton(type: UIButton.ButtonType.custom)
+        button.setImage(UIImage(named: "ic-close"), for: UIControl.State.normal)
+        button.addTarget(self, action: #selector(closeViewControler), for: UIControl.Event.touchUpInside)
         button.imageView?.contentMode = .scaleAspectFit
         let barButton = UIBarButtonItem(customView: button)
         self.navigationItem.leftBarButtonItem = barButton

@@ -47,7 +47,7 @@ extension UISlider {
         let context = CIContext.init(options: nil)
         let resultCGImage = context.createCGImage(ciImage!, from: CGRect.init(origin: CGPoint.zero, size: size))
         let image = UIImage.init(cgImage: resultCGImage!)
-        self.setMinimumTrackImage(image, for: UIControlState.normal)
-        self.setMinimumTrackImage(image, for: UIControlState.highlighted)
+        self.setMinimumTrackImage(image, for: UIControl.State.normal)
+        self.setMinimumTrackImage(image, for: UIControl.State.highlighted)
     }
 }
