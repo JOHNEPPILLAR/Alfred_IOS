@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>HarrietCamURL</key>
+	<string>https://johnpillar.me:3980/streams/h/cam.m3u8?app_key=f77539cc-285f-4f0f-8160-9bb69bc785ab</string>
+	<key>AlfredSchedulerURL</key>
+	<string>https://johnpillar.me:3979/</string>
+	<key>LottieCamURL</key>
+	<string>https://johnpillar.me:3980/streams/l/cam.m3u8?app_key=f77539cc-285f-4f0f-8160-9bb69bc785ab</string>
+	<key>AlfredAppKey</key>
+	<string>eb16e778-e243-4932-8f4d-19f36e1e4ab9</string>
+	<key>AlfredBaseURL</key>
+	<string>https://johnpillar.me:3978/</string>
+</dict>
+</plist>

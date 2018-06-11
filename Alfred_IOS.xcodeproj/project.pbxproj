@@ -12,7 +12,6 @@
 		0A12B4AB1F193B470012B619 /* SunsetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A12B4AA1F193B470012B619 /* SunsetViewController.swift */; };
 		0A1BFDAE2052EFF900B729F8 /* SplashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BFDAD2052EFF900B729F8 /* SplashController.swift */; };
 		0A1BFDB3205315B400B729F8 /* CommuteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BFDB2205315B400B729F8 /* CommuteController.swift */; };
-		0A256ECA206F957C008C5283 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A256EC9206F957C008C5283 /* Default-568h@2x.png */; };
 		0A256ED0206F9728008C5283 /* SunSetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A256ECF206F9728008C5283 /* SunSetController.swift */; };
 		0A256ED3206FA74E008C5283 /* LightSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A256ED2206FA74E008C5283 /* LightSettingsTableViewCell.swift */; };
 		0A256EEF206FAE08008C5283 /* SettingsBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A256EE6206FAE08008C5283 /* SettingsBaseClass.swift */; };
@@ -80,7 +79,6 @@
 		0A12B4AA1F193B470012B619 /* SunsetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SunsetViewController.swift; sourceTree = "<group>"; };
 		0A1BFDAD2052EFF900B729F8 /* SplashController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashController.swift; sourceTree = "<group>"; };
 		0A1BFDB2205315B400B729F8 /* CommuteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteController.swift; sourceTree = "<group>"; };
-		0A256EC9206F957C008C5283 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		0A256ECC206F964F008C5283 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A256ECF206F9728008C5283 /* SunSetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunSetController.swift; sourceTree = "<group>"; };
 		0A256ED2206FA74E008C5283 /* LightSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightSettingsTableViewCell.swift; sourceTree = "<group>"; };
@@ -363,7 +361,6 @@
 		0A69FB741F10C25B00563A69 = {
 			isa = PBXGroup;
 			children = (
-				0A256EC9206F957C008C5283 /* Default-568h@2x.png */,
 				0A69FB7F1F10C25C00563A69 /* Alfred_IOS */,
 				0A69FB7E1F10C25C00563A69 /* Products */,
 				A661620EC33CBC8FF6D18124 /* Pods */,
@@ -551,7 +548,6 @@
 				0AE259021F70476D002C6922 /* Settings.bundle in Resources */,
 				0A80C09C1F24812E0082F77C /* Alfred.plist in Resources */,
 				0A69FB8B1F10C25C00563A69 /* Assets.xcassets in Resources */,
-				0A256ECA206F957C008C5283 /* Default-568h@2x.png in Resources */,
 				0A69FB861F10C25C00563A69 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

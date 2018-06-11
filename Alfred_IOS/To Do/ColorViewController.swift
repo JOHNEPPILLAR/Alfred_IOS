@@ -130,7 +130,7 @@ class ColorViewController: UIViewController {
             myButtonFrame.origin.x = myButtonFrame.size.width + myButtonFrame.origin.x
             aButton.backgroundColor = color
             colorView.addSubview(aButton)
-            aButton.addTarget(self, action: #selector(selectColor(_:)), for: UIControl.Event.touchUpInside)
+            aButton.addTarget(self, action: #selector(selectColor(_:)), for: .touchUpInside)
         }
     }
     

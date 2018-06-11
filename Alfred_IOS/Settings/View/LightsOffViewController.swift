@@ -68,7 +68,7 @@ class LightsOffViewController: UIViewController, URLSessionDelegate {
         SVProgressHUD.show(withStatus: "Loading")
         
         // Add save button to navigation bar
-        let saveButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveSettingsAction(sender:)))
+        let saveButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(saveSettingsAction(sender:)))
         navigationItem.rightBarButtonItem = saveButton
         
         // Disable UI controls untill data is loaded

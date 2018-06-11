@@ -48,7 +48,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>1370</string>
+			<string>1375</string>
 			<key>Key</key>
 			<string>BUILD_NUMBER</string>
 			<key>Title</key>

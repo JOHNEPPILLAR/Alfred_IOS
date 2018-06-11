@@ -19,8 +19,8 @@ class VideoViewController: UIViewController {
         super.viewDidLoad()
         
         // Add close button action
-        closeButton.setImage(UIImage(named: "ic-close"), for: UIControl.State.normal)
-        closeButton.addTarget(self, action: #selector(closeViewControler), for: UIControl.Event.touchUpInside)
+        closeButton.setImage(UIImage(named: "ic-close"), for: UIControlState.normal)
+        closeButton.addTarget(self, action: #selector(closeViewControler), for: .touchUpInside)
         closeButton.imageView?.contentMode = .scaleAspectFit
     }
     
