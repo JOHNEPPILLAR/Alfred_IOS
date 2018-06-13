@@ -46,8 +46,11 @@ class CommuteViewController: UIViewController {
         let appDefaults = [String:AnyObject]()
         UserDefaults.standard.register(defaults: appDefaults)
         let defaults = UserDefaults.standard
-        let whoIsThis = defaults.string(forKey: "who_is_this")
-        if (whoIsThis != nil){
+        var whoIsThis = defaults.string(forKey: "who_is_this")
+        if (whoIsThis == nil) {
+            whoIsThis = ""
+            SVProgressHUD.showInfo(withStatus: "Please setup the app user defaults in settings")
+        } else {
             commuteController.getCommuteData(whoIsThis: whoIsThis!) // Commute data
         }
     }

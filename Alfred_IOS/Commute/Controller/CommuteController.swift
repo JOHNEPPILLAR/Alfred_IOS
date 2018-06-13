@@ -44,8 +44,10 @@ class CommuteController: NSObject, CLLocationManagerDelegate {
 
         // Call Alfred API
         let configuration = URLSessionConfiguration.ephemeral
+        let body = ["user": whoIs, "lat": userLocation.coordinate.latitude, "long": userLocation.coordinate.longitude ] as [String : Any]
+        let APIbody = try! JSONSerialization.data(withJSONObject: body, options: [])
+        let request = putAPIHeaderData(url: "travel/getcommute", body: APIbody, useScheduler: false)
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
-        let request = getAPIHeaderData(url: "travel/getcommute?user=" + whoIs + "&lat=" + "\(userLocation.coordinate.latitude)" + "&long=" + "\(userLocation.coordinate.longitude)", useScheduler: false)
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
                 let responseJSON = try? JSON(data: data!)
