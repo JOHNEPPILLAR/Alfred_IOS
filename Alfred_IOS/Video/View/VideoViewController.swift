@@ -69,8 +69,17 @@ class VideoViewController: UIViewController {
     }
 
     @objc func reStartStreams() {
-        reStartStreamButton.isEnabled = false
-        videoController.reStartStreams()
+        let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to re-start the streams?", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+            self.reStartStreamButton.isEnabled = false
+            self.videoController.reStartStreams()
+        })
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
+        }
+        dialogMessage.addAction(ok)
+        dialogMessage.addAction(cancel)
+        
+        self.present(dialogMessage, animated: true, completion: nil)
     }
 }
 
