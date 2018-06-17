@@ -23,7 +23,7 @@ class EveningTVController: NSObject {
     func getData() {
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
-        let request = getAPIHeaderData(url: "settings/view", useScheduler: true)
+        let request = getAPIHeaderData(url: "settings/view")
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
                 let responseJSON = try? JSON(data: data!)
@@ -43,7 +43,7 @@ class EveningTVController: NSObject {
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
         let body = try! JSONSerialization.data(withJSONObject: data[0].dictionaryRepresentation(), options: [])
-        let request = putAPIHeaderData(url: "settings/saveeveningtv", body: body, useScheduler: true)
+        let request = putAPIHeaderData(url: "settings/saveeveningtv", body: body)
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
                 self.delegate?.didSaveEveningTVDataUpdate() // Let the View controller know to update screen

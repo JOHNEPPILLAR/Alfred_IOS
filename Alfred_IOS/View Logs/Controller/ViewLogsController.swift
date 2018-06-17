@@ -25,13 +25,13 @@ class LogsController: NSObject {
         let request: URLRequest
         switch type {
         case 0:
-            request = getAPIHeaderData(url: "displaylog?page=" + String(page), useScheduler: false)
+            request = getAPIHeaderData(url: "displaylog?page=" + String(page))
         case 1:
-            request = getAPIHeaderData(url: "displaylog?page=" + String(page), useScheduler: true)
+            request = getAPIHeaderData(url: "displaylog?page=" + String(page))
         //case 2:
-        //    request = getAPIHeaderData(url: "displaylog?page=" + String(page), useScheduler: false)
+        //    request = getAPIHeaderData(url: "displaylog?page=" + String(page))
         default:
-            request = getAPIHeaderData(url: "displaylog?page=" + String(page), useScheduler: false)
+            request = getAPIHeaderData(url: "displaylog?page=" + String(page))
         }
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {

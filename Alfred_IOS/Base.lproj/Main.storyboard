@@ -1550,11 +1550,20 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJK-hk-7CP">
+                                <rect key="frame" x="329" y="33" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button" image="reStart">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <connections>
                         <outlet property="closeButton" destination="nQs-zC-D8Z" id="qbB-Cc-lsg"/>
+                        <outlet property="reStartStreamButton" destination="gJK-hk-7CP" id="BqR-Ft-bKt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Es-CQ-RH8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2075,6 +2084,7 @@
         <image name="ic_tv" width="100" height="100"/>
         <image name="ic_view_log" width="100" height="100"/>
         <image name="power_button_grey" width="512" height="512"/>
+        <image name="reStart" width="64" height="64"/>
         <image name="settings" width="64" height="64"/>
         <image name="video-camera" width="512" height="512"/>
     </resources>

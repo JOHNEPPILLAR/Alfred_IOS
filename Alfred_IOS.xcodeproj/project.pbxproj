@@ -71,6 +71,7 @@
 		0AE327A22066622E00C288E8 /* LogFileViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE327A12066622E00C288E8 /* LogFileViewControler.swift */; };
 		0AE84DE71F289F120031F6C2 /* SunriseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE84DE61F289F120031F6C2 /* SunriseViewController.swift */; };
 		A5CB0541EC331A4BFEF71AD8 /* Pods_Alfred_IOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2D4C3A3EE9E0D17B56318E /* Pods_Alfred_IOS.framework */; };
+		E89D443820D4EFB000F6F142 /* VideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89D443720D4EFB000F6F142 /* VideoController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -145,6 +146,7 @@
 		252CE001F08C2663E6B7452E /* Pods-Alfred_IOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alfred_IOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Alfred_IOS/Pods-Alfred_IOS.release.xcconfig"; sourceTree = "<group>"; };
 		BC2D4C3A3EE9E0D17B56318E /* Pods_Alfred_IOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Alfred_IOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA1CFC04806CB58D802C73D7 /* Pods-Alfred_IOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alfred_IOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Alfred_IOS/Pods-Alfred_IOS.debug.xcconfig"; sourceTree = "<group>"; };
+		E89D443720D4EFB000F6F142 /* VideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -346,6 +348,7 @@
 			isa = PBXGroup;
 			children = (
 				0A385C2A20C8682800CD312D /* View */,
+				E89D443620D4EF7E00F6F142 /* Controller */,
 			);
 			path = Video;
 			sourceTree = "<group>";
@@ -474,6 +477,14 @@
 				252CE001F08C2663E6B7452E /* Pods-Alfred_IOS.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		E89D443620D4EF7E00F6F142 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E89D443720D4EFB000F6F142 /* VideoController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -668,6 +679,7 @@
 				0A647EE02067E8CF00F7CD1E /* RoomLightsAttributes.swift in Sources */,
 				0A7DADE11F4A2BF9002FEE9F /* HueColorHelper.swift in Sources */,
 				0A385C2C20C8685F00CD312D /* VideoViewController.swift in Sources */,
+				E89D443820D4EFB000F6F142 /* VideoController.swift in Sources */,
 				0A6AD7A9206E613800491B3E /* CommuteBaseClass.swift in Sources */,
 				0A647EE12067E8CF00F7CD1E /* RoomLightsData.swift in Sources */,
 				0AE259041F704A0A002C6922 /* SettingsBundleHelper.swift in Sources */,

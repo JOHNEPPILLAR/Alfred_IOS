@@ -1,5 +1,5 @@
 //
-//  SplashController.swift
+//  CommuteController.swift
 //  Alfred_IOS
 //
 //  Created by John Pillar on 09/03/2018.
@@ -10,29 +10,27 @@ import UIKit
 import SwiftyJSON
 
 // MARK: Delegate callback functions
-protocol SplashControllerDelegate: class {
-    func didRecieveDataUpdate()
+protocol VideoControllerDelegate: class {
+    func reStartDidRecieveDataUpdate()
     func didFailDataUpdateWithError()
 }
 
-class SplashController: NSObject {
-    weak var delegate: SplashControllerDelegate?
-    func ping() {
+class VideoController: NSObject {
+    
+    weak var delegate: VideoControllerDelegate?
+    
+    func reStartStreams() {
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
-        let request = getAPIHeaderData(url: "ping")
+        let request = getHLSAPIHeaderData(url: "restart")
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
-                self.delegate?.didRecieveDataUpdate() // Let the View controller know to show the main screen
+                self.delegate?.reStartDidRecieveDataUpdate()
             } else {
                 self.delegate?.didFailDataUpdateWithError() // Let the View controller know there was an error
             }
         })
-        task.resume()        
+        task.resume()
     }
 }
-
-
-
-
 

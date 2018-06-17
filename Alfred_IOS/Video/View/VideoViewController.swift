@@ -8,20 +8,33 @@
 
 import UIKit
 import AVKit
+import SVProgressHUD
 import AVFoundation;
-
 
 class VideoViewController: UIViewController {
     
+    private let videoController = VideoController()
+
     @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var reStartStreamButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        videoController.delegate = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         // Add close button action
         closeButton.setImage(UIImage(named: "ic-close"), for: UIControlState.normal)
         closeButton.addTarget(self, action: #selector(closeViewControler), for: .touchUpInside)
         closeButton.imageView?.contentMode = .scaleAspectFit
+
+        // Add reStart stream button action
+        reStartStreamButton.setImage(UIImage(named: "reStart"), for: UIControlState.normal)
+        reStartStreamButton.addTarget(self, action: #selector(reStartStreams), for: .touchUpInside)
+        reStartStreamButton.imageView?.contentMode = .scaleAspectFit
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -51,11 +64,25 @@ class VideoViewController: UIViewController {
         super.viewWillDisappear(animated)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     @objc func closeViewControler() {
         self.dismiss(animated: true, completion:nil)
     }
+
+    @objc func reStartStreams() {
+        reStartStreamButton.isEnabled = false
+        videoController.reStartStreams()
+    }
+}
+
+extension VideoViewController: VideoControllerDelegate {
+    func didFailDataUpdateWithError() {
+        reStartStreamButton.isEnabled = false
+        SVProgressHUD.showError(withStatus: "Network/API error")
+    }
+    
+    func reStartDidRecieveDataUpdate() {
+        reStartStreamButton.isEnabled = false
+        SVProgressHUD.showSuccess(withStatus: "re-starting streams, please wait a minute before retrying")
+    }
+    
 }

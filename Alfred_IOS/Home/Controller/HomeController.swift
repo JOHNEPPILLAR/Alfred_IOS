@@ -46,7 +46,7 @@ class HomeController: NSObject, CLLocationManagerDelegate {
         var configuration = URLSessionConfiguration.ephemeral
         var body: [String: Any] = ["lat": userLocation.coordinate.latitude, "long": userLocation.coordinate.longitude]
         var APIbody: Data = try! JSONSerialization.data(withJSONObject: body, options: [])
-        var request = putAPIHeaderData(url: "weather/today", body: APIbody, useScheduler: false)
+        var request = putAPIHeaderData(url: "weather/today", body: APIbody)
         var session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
         var task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
@@ -64,7 +64,7 @@ class HomeController: NSObject, CLLocationManagerDelegate {
             configuration = URLSessionConfiguration.ephemeral
             body = ["user": whoIs, "lat": userLocation.coordinate.latitude, "long": userLocation.coordinate.longitude ]
             APIbody = try! JSONSerialization.data(withJSONObject: body, options: [])
-            request = putAPIHeaderData(url: "travel/getcommute", body: APIbody, useScheduler: false)
+            request = putAPIHeaderData(url: "travel/getcommute", body: APIbody)
             session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
             task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
                 if checkAPIData(apiData: data, response: response, error: error) {
@@ -82,7 +82,7 @@ class HomeController: NSObject, CLLocationManagerDelegate {
     func turnOffLights() {
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
-        let request = getAPIHeaderData(url: "lights/alloff", useScheduler: false)
+        let request = getAPIHeaderData(url: "lights/alloff")
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
                 self.getLightRoomData()
@@ -96,7 +96,7 @@ class HomeController: NSObject, CLLocationManagerDelegate {
     func getInsideWeatherData() {
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
-        let request = getAPIHeaderData(url: "weather/inside", useScheduler: false)
+        let request = getAPIHeaderData(url: "weather/inside")
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
                 let responseJSON = try? JSON(data: data!)
@@ -113,7 +113,7 @@ class HomeController: NSObject, CLLocationManagerDelegate {
     func getLightRoomData() {
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
-        let request = getAPIHeaderData(url: "lights/listlightgroups", useScheduler: false)
+        let request = getAPIHeaderData(url: "lights/listlightgroups")
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
                 let responseJSON = try? JSON(data: data!)
@@ -130,7 +130,7 @@ class HomeController: NSObject, CLLocationManagerDelegate {
         let configuration = URLSessionConfiguration.ephemeral
         let body: [String: Any] = ["lightGroupNumber": lightID, "brightness": brightness]
         let APIbody: Data = try! JSONSerialization.data(withJSONObject: body, options: [])
-        let request = putAPIHeaderData(url: "lights/lightgroupbrightness", body: APIbody, useScheduler: false)
+        let request = putAPIHeaderData(url: "lights/lightgroupbrightness", body: APIbody)
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
@@ -150,7 +150,7 @@ class HomeController: NSObject, CLLocationManagerDelegate {
         let configuration = URLSessionConfiguration.ephemeral
         let body: [String: Any] = ["lightGroupNumber": lightID, "lightAction": lightsStatus]        
         let APIbody: Data = try! JSONSerialization.data(withJSONObject: body, options: [])
-        let request = putAPIHeaderData(url: "lights/lightgrouponoff", body: APIbody, useScheduler: false)
+        let request = putAPIHeaderData(url: "lights/lightgrouponoff", body: APIbody)
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {

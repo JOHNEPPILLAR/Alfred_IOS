@@ -24,7 +24,7 @@ class SunsetController: NSObject {
     func getSunSetTime() {
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
-        let request = getAPIHeaderData(url: "weather/sunset", useScheduler: false)
+        let request = getAPIHeaderData(url: "weather/sunset")
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
                 let json = try? JSON(data: data!)
@@ -40,7 +40,7 @@ class SunsetController: NSObject {
     func getSunSetData() {
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
-        let request = getAPIHeaderData(url: "settings/view", useScheduler: true)
+        let request = getAPIHeaderData(url: "settings/view")
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
                 let responseJSON = try? JSON(data: data!)
@@ -60,7 +60,7 @@ class SunsetController: NSObject {
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
         let body = try! JSONSerialization.data(withJSONObject: data[0].dictionaryRepresentation(), options: [])
-        let request = putAPIHeaderData(url: "settings/saveevening", body: body, useScheduler: true)
+        let request = putAPIHeaderData(url: "settings/saveevening", body: body)
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
                 self.delegate?.didSaveSunSetDataUpdate() // Let the View controller know to update screen
