@@ -59,7 +59,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
         if (whoIsThis == nil) {
             whoIsThis = ""
             SVProgressHUD.showInfo(withStatus: "Please setup the app user defaults in settings")
-            commuteStatus.image = #imageLiteral(resourceName: "question_mark")
+            commuteStatus.image = #imageLiteral(resourceName: "ic_question_mark")
             ActivityCommute.stopAnimating()
         }
         if (whoIsThis == "JP") {
