@@ -195,17 +195,17 @@ extension HomeViewController: HomeControllerDelegate {
     
     func currentWeatherDidRecieveDataUpdate(data: [CurrentWeatherData]) {
         switch data[0].icon {
-            case "clear-day"?: weatherIcon.image = #imageLiteral(resourceName: "Weather-clear-day")
-            case "clear-night"?: weatherIcon.image = #imageLiteral(resourceName: "Weather-clear-night")
-            case "rain"?: weatherIcon.image = #imageLiteral(resourceName: "Weather-rain")
-            case "snow"?: weatherIcon.image = #imageLiteral(resourceName: "Weather-snow")
-            case "sleet"?: weatherIcon.image = #imageLiteral(resourceName: "Weather-snow")
-            case "wind"?: weatherIcon.image = #imageLiteral(resourceName: "Weather-wind")
-            case "fog"?: weatherIcon.image = nil
-            case "cloudy"?: weatherIcon.image = #imageLiteral(resourceName: "Weather-cloudy")
-            case "partly-cloudy-day"?: weatherIcon.image = #imageLiteral(resourceName: "Weather-cloudy-day")
-            case "partly-cloudy-night"?: weatherIcon.image = #imageLiteral(resourceName: "Weather-partly-cloudy-night")
-            case .none: weatherIcon.image = #imageLiteral(resourceName: "Weather-unknown")
+            case "clear-day"?: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-clear-day")
+            case "clear-night"?: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-clear-night")
+            case "rain"?: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-rain")
+            case "snow"?: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-snow")
+            case "sleet"?: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-snow")
+            case "wind"?: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-wind")
+            case "fog"?: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-unknown")
+            case "cloudy"?: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-cloudy")
+            case "partly-cloudy-day"?: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-cloudy-day")
+            case "partly-cloudy-night"?: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-partly-cloudy-night")
+            case .none: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-unknown")
             case .some(_): weatherIcon.image = nil
         }
         DispatchQueue.main.async {
@@ -219,9 +219,9 @@ extension HomeViewController: HomeControllerDelegate {
     func cummuteDidRecieveDataUpdate(data: [CommuteData]) {
         DispatchQueue.main.async {
             if (data[0].anyDisruptions!) {
-                self.commuteStatus.image = #imageLiteral(resourceName: "Bad")
+                self.commuteStatus.image = #imageLiteral(resourceName: "ic_bad")
             } else {
-                self.commuteStatus.image = #imageLiteral(resourceName: "Good")
+                self.commuteStatus.image = #imageLiteral(resourceName: "ic_good")
             }
             self.ActivityCommute.stopAnimating()
         }

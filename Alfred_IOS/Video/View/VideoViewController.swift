@@ -27,12 +27,10 @@ class VideoViewController: UIViewController {
         super.viewWillAppear(animated)
         
         // Add close button action
-        closeButton.setImage(UIImage(named: "ic-close"), for: UIControlState.normal)
         closeButton.addTarget(self, action: #selector(closeViewControler), for: .touchUpInside)
-        closeButton.imageView?.contentMode = .scaleAspectFit
 
         // Add reStart stream button action
-        reStartStreamButton.setImage(UIImage(named: "reStart"), for: UIControlState.normal)
+        reStartStreamButton.setImage(UIImage(named: "ic_reStart"), for: UIControlState.normal)
         reStartStreamButton.addTarget(self, action: #selector(reStartStreams), for: .touchUpInside)
         reStartStreamButton.imageView?.contentMode = .scaleAspectFit
     }
@@ -78,7 +76,6 @@ class VideoViewController: UIViewController {
         }
         dialogMessage.addAction(ok)
         dialogMessage.addAction(cancel)
-        
         self.present(dialogMessage, animated: true, completion: nil)
     }
 }

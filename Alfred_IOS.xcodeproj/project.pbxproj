@@ -45,9 +45,6 @@
 		0A69FB9F1F1160F500563A69 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A69FB9E1F1160F500563A69 /* SplashViewController.swift */; };
 		0A6A5F9B204C53D100314ECE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6A5F9A204C53D100314ECE /* HomeViewController.swift */; };
 		0A6A5F9F204C6A5800314ECE /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6A5F9E204C6A5800314ECE /* HomeController.swift */; };
-		0A6AD7A8206E613800491B3E /* CommuteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6AD7A5206E613800491B3E /* CommuteData.swift */; };
-		0A6AD7A9206E613800491B3E /* CommuteBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6AD7A6206E613800491B3E /* CommuteBaseClass.swift */; };
-		0A6AD7AA206E613800491B3E /* CommuteCommuteResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6AD7A7206E613800491B3E /* CommuteCommuteResults.swift */; };
 		0A6AD7AC206E65C200491B3E /* CommuteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6AD7AB206E65C200491B3E /* CommuteTableViewCell.swift */; };
 		0A791EE51F93E43200765DF9 /* LightsOffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A791EE41F93E43200765DF9 /* LightsOffViewController.swift */; };
 		0A7DADE11F4A2BF9002FEE9F /* HueColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DADE01F4A2BF9002FEE9F /* HueColorHelper.swift */; };
@@ -72,6 +69,16 @@
 		0AE84DE71F289F120031F6C2 /* SunriseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE84DE61F289F120031F6C2 /* SunriseViewController.swift */; };
 		A5CB0541EC331A4BFEF71AD8 /* Pods_Alfred_IOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2D4C3A3EE9E0D17B56318E /* Pods_Alfred_IOS.framework */; };
 		E89D443820D4EFB000F6F142 /* VideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89D443720D4EFB000F6F142 /* VideoController.swift */; };
+		E8BF1FFA20D7D7670046D0DD /* CommuteArrivalPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BF1FE520D7D7660046D0DD /* CommuteArrivalPoint.swift */; };
+		E8BF1FFB20D7D7670046D0DD /* CommuteResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BF1FE620D7D7660046D0DD /* CommuteResults.swift */; };
+		E8BF200220D7D7670046D0DD /* CommuteMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BF1FED20D7D7660046D0DD /* CommuteMode.swift */; };
+		E8BF200320D7D7670046D0DD /* CommuteRouteOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BF1FEE20D7D7660046D0DD /* CommuteRouteOptions.swift */; };
+		E8BF200620D7D7670046D0DD /* CommuteDeparturePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BF1FF120D7D7660046D0DD /* CommuteDeparturePoint.swift */; };
+		E8BF200820D7D7670046D0DD /* CommuteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BF1FF320D7D7670046D0DD /* CommuteData.swift */; };
+		E8BF200920D7D7670046D0DD /* CommuteJourneys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BF1FF420D7D7670046D0DD /* CommuteJourneys.swift */; };
+		E8BF200A20D7D7670046D0DD /* CommuteInstruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BF1FF520D7D7670046D0DD /* CommuteInstruction.swift */; };
+		E8BF200B20D7D7670046D0DD /* CommuteLegs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BF1FF620D7D7670046D0DD /* CommuteLegs.swift */; };
+		E8BF200D20D7D7670046D0DD /* CommuteBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BF1FF820D7D7670046D0DD /* CommuteBaseClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -117,9 +124,6 @@
 		0A69FB9E1F1160F500563A69 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		0A6A5F9A204C53D100314ECE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0A6A5F9E204C6A5800314ECE /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
-		0A6AD7A5206E613800491B3E /* CommuteData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteData.swift; sourceTree = "<group>"; };
-		0A6AD7A6206E613800491B3E /* CommuteBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteBaseClass.swift; sourceTree = "<group>"; };
-		0A6AD7A7206E613800491B3E /* CommuteCommuteResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteCommuteResults.swift; sourceTree = "<group>"; };
 		0A6AD7AB206E65C200491B3E /* CommuteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteTableViewCell.swift; sourceTree = "<group>"; };
 		0A791EE41F93E43200765DF9 /* LightsOffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsOffViewController.swift; sourceTree = "<group>"; };
 		0A7DADE01F4A2BF9002FEE9F /* HueColorHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HueColorHelper.swift; sourceTree = "<group>"; };
@@ -147,6 +151,16 @@
 		BC2D4C3A3EE9E0D17B56318E /* Pods_Alfred_IOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Alfred_IOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA1CFC04806CB58D802C73D7 /* Pods-Alfred_IOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alfred_IOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Alfred_IOS/Pods-Alfred_IOS.debug.xcconfig"; sourceTree = "<group>"; };
 		E89D443720D4EFB000F6F142 /* VideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoController.swift; sourceTree = "<group>"; };
+		E8BF1FE520D7D7660046D0DD /* CommuteArrivalPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteArrivalPoint.swift; sourceTree = "<group>"; };
+		E8BF1FE620D7D7660046D0DD /* CommuteResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteResults.swift; sourceTree = "<group>"; };
+		E8BF1FED20D7D7660046D0DD /* CommuteMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteMode.swift; sourceTree = "<group>"; };
+		E8BF1FEE20D7D7660046D0DD /* CommuteRouteOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteRouteOptions.swift; sourceTree = "<group>"; };
+		E8BF1FF120D7D7660046D0DD /* CommuteDeparturePoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteDeparturePoint.swift; sourceTree = "<group>"; };
+		E8BF1FF320D7D7670046D0DD /* CommuteData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteData.swift; sourceTree = "<group>"; };
+		E8BF1FF420D7D7670046D0DD /* CommuteJourneys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteJourneys.swift; sourceTree = "<group>"; };
+		E8BF1FF520D7D7670046D0DD /* CommuteInstruction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteInstruction.swift; sourceTree = "<group>"; };
+		E8BF1FF620D7D7670046D0DD /* CommuteLegs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteLegs.swift; sourceTree = "<group>"; };
+		E8BF1FF820D7D7670046D0DD /* CommuteBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteBaseClass.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -407,9 +421,16 @@
 		0A6AD7A4206E60DC00491B3E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0A6AD7A6206E613800491B3E /* CommuteBaseClass.swift */,
-				0A6AD7A7206E613800491B3E /* CommuteCommuteResults.swift */,
-				0A6AD7A5206E613800491B3E /* CommuteData.swift */,
+				E8BF1FE520D7D7660046D0DD /* CommuteArrivalPoint.swift */,
+				E8BF1FF820D7D7670046D0DD /* CommuteBaseClass.swift */,
+				E8BF1FE620D7D7660046D0DD /* CommuteResults.swift */,
+				E8BF1FF320D7D7670046D0DD /* CommuteData.swift */,
+				E8BF1FF120D7D7660046D0DD /* CommuteDeparturePoint.swift */,
+				E8BF1FF520D7D7670046D0DD /* CommuteInstruction.swift */,
+				E8BF1FF420D7D7670046D0DD /* CommuteJourneys.swift */,
+				E8BF1FF620D7D7670046D0DD /* CommuteLegs.swift */,
+				E8BF1FED20D7D7660046D0DD /* CommuteMode.swift */,
+				E8BF1FEE20D7D7660046D0DD /* CommuteRouteOptions.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -625,6 +646,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A04167D20C1CBDC009B47ED /* ColorSlider.swift in Sources */,
+				E8BF200320D7D7670046D0DD /* CommuteRouteOptions.swift in Sources */,
 				0A647EE72067E8CF00F7CD1E /* RoomLightsChanged.swift in Sources */,
 				0A256EF2206FAE08008C5283 /* SettingsMotionSensorLights.swift in Sources */,
 				0A95AECC206FF4070038D583 /* SunRiseController.swift in Sources */,
@@ -643,8 +665,10 @@
 				0A7ECE1F1FAE437B002AF233 /* CommuteViewController.swift in Sources */,
 				0A95AED4207026940038D583 /* SettingsOffMorning.swift in Sources */,
 				0A29F7BE20551AA600111C50 /* InsideWeatherInsideWeatherBaseClass.swift in Sources */,
+				E8BF200620D7D7670046D0DD /* CommuteDeparturePoint.swift in Sources */,
+				E8BF200D20D7D7670046D0DD /* CommuteBaseClass.swift in Sources */,
+				E8BF200220D7D7670046D0DD /* CommuteMode.swift in Sources */,
 				0A9EDC662052639C001277EC /* CurrentWeatherBaseClass.swift in Sources */,
-				0A6AD7A8206E613800491B3E /* CommuteData.swift in Sources */,
 				0A420E4A1F140D0500BD2713 /* LogFileTableViewCell.swift in Sources */,
 				0A6AD7AC206E65C200491B3E /* CommuteTableViewCell.swift in Sources */,
 				0A12B4AB1F193B470012B619 /* SunsetViewController.swift in Sources */,
@@ -652,26 +676,31 @@
 				0A69FB811F10C25C00563A69 /* AppDelegate.swift in Sources */,
 				0A8AF14A1F24EF030064894F /* Helpers.swift in Sources */,
 				0A256EF1206FAE08008C5283 /* SettingsMorning.swift in Sources */,
+				E8BF1FFB20D7D7670046D0DD /* CommuteResults.swift in Sources */,
 				0AE3279E20665D9B00C288E8 /* LogLogs.swift in Sources */,
 				0A647EE62067E8CF00F7CD1E /* RoomLightsState.swift in Sources */,
 				0AE3279C20665D9B00C288E8 /* LogBaseClass.swift in Sources */,
+				E8BF200A20D7D7670046D0DD /* CommuteInstruction.swift in Sources */,
 				0A256ED3206FA74E008C5283 /* LightSettingsTableViewCell.swift in Sources */,
 				0A256EF4206FAE08008C5283 /* SettingsEvening.swift in Sources */,
 				0ADF19B920658C5F008057DB /* ViewLogsController.swift in Sources */,
+				E8BF200B20D7D7670046D0DD /* CommuteLegs.swift in Sources */,
 				0A29F7BC20551AA100111C50 /* InsideWeatherData.swift in Sources */,
 				0AE327A22066622E00C288E8 /* LogFileViewControler.swift in Sources */,
 				0A256EEF206FAE08008C5283 /* SettingsBaseClass.swift in Sources */,
 				0A0463F11F38E99B004A738D /* ColorViewController.swift in Sources */,
+				E8BF200820D7D7670046D0DD /* CommuteData.swift in Sources */,
 				0A256EF7206FAE08008C5283 /* SettingsOn.swift in Sources */,
 				0A791EE51F93E43200765DF9 /* LightsOffViewController.swift in Sources */,
 				0A6A5F9F204C6A5800314ECE /* HomeController.swift in Sources */,
 				0A95AED3207026940038D583 /* SettingsOffEvening.swift in Sources */,
 				0A1BFDB3205315B400B729F8 /* CommuteController.swift in Sources */,
-				0A6AD7AA206E613800491B3E /* CommuteCommuteResults.swift in Sources */,
+				E8BF200920D7D7670046D0DD /* CommuteJourneys.swift in Sources */,
 				0ADDC4D31F29C02000C08F55 /* EveningTVViewController.swift in Sources */,
 				0A647EDF2067E8CF00F7CD1E /* RoomLightsAction.swift in Sources */,
 				0A647EE32067E8CF00F7CD1E /* RoomLightsBaseClass.swift in Sources */,
 				0AE84DE71F289F120031F6C2 /* SunriseViewController.swift in Sources */,
+				E8BF1FFA20D7D7670046D0DD /* CommuteArrivalPoint.swift in Sources */,
 				0A256EF0206FAE08008C5283 /* SettingsLights.swift in Sources */,
 				0A9EDC68205263E5001277EC /* CurrentWeatherData.swift in Sources */,
 				0A647EE52067E8CF00F7CD1E /* RoomLightsAttributesAttributes.swift in Sources */,
@@ -680,7 +709,6 @@
 				0A7DADE11F4A2BF9002FEE9F /* HueColorHelper.swift in Sources */,
 				0A385C2C20C8685F00CD312D /* VideoViewController.swift in Sources */,
 				E89D443820D4EFB000F6F142 /* VideoController.swift in Sources */,
-				0A6AD7A9206E613800491B3E /* CommuteBaseClass.swift in Sources */,
 				0A647EE12067E8CF00F7CD1E /* RoomLightsData.swift in Sources */,
 				0AE259041F704A0A002C6922 /* SettingsBundleHelper.swift in Sources */,
 				0A95AECE2070151A0038D583 /* EveningTVController.swift in Sources */,

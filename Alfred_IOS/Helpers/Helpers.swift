@@ -21,6 +21,7 @@ func putAPIHeaderData(url: String, body: Data) -> URLRequest {
     let url = URL(string: AlfredBaseURL + url)!
     var request = URLRequest(url: url)
     request.httpMethod = "PUT"
+    request.cachePolicy = URLRequest.CachePolicy.reloadIgnoringLocalAndRemoteCacheData
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
     request.addValue("application/json", forHTTPHeaderField: "Accept")
     request.addValue(AlfredAppKey, forHTTPHeaderField: "client-access-key")
@@ -33,7 +34,7 @@ func getAPIHeaderData(url: String) -> URLRequest {
     let AlfredAppKey = readPlist(item: "AlfredAppKey")
     let url = URL(string: AlfredBaseURL + url)!
     var request = URLRequest(url: url)
-    request.cachePolicy = URLRequest.CachePolicy.reloadIgnoringLocalCacheData
+    request.cachePolicy = URLRequest.CachePolicy.reloadIgnoringLocalAndRemoteCacheData
     request.httpMethod = "GET"
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
     request.addValue(AlfredAppKey, forHTTPHeaderField: "client-access-key")
@@ -45,7 +46,7 @@ func getHLSAPIHeaderData(url: String) -> URLRequest {
     let AlfredAppKey = readPlist(item: "AlfredAppKey")
     let url = URL(string: AlfredBaseURL + url + "?clientaccesskey=" + AlfredAppKey)!
     var request = URLRequest(url: url)
-    request.cachePolicy = URLRequest.CachePolicy.reloadIgnoringLocalCacheData
+    request.cachePolicy = URLRequest.CachePolicy.reloadIgnoringLocalAndRemoteCacheData
     request.httpMethod = "GET"
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
     request.addValue(AlfredAppKey, forHTTPHeaderField: "client-access-key")
