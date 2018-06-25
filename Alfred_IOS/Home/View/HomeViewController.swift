@@ -9,7 +9,7 @@
 import UIKit
 import SVProgressHUD
 
-class HomeViewController: UIViewController, UIScrollViewDelegate {
+class HomeViewController: UIViewController {
 
     @IBOutlet weak var ActivityWeather: UIActivityIndicatorView!
     @IBOutlet weak var ActivityOutsideTemp: UIActivityIndicatorView!

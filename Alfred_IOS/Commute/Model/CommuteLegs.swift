@@ -38,7 +38,7 @@ public final class CommuteLegs: NSCoding {
   public var instruction: CommuteInstruction?
   public var departureTime: String?
   public var routeOptions: [CommuteRouteOptions]?
-  public var disruptions: [Any]?
+  public var disruptions: [CummuteDisruptions]?
   public var duration: Int?
   public var departurePoint: CommuteDeparturePoint?
 
@@ -65,7 +65,7 @@ public final class CommuteLegs: NSCoding {
     instruction = CommuteInstruction(json: json[SerializationKeys.instruction])
     departureTime = json[SerializationKeys.departureTime].string
     if let items = json[SerializationKeys.routeOptions].array { routeOptions = items.map { CommuteRouteOptions(json: $0) } }
-    if let items = json[SerializationKeys.disruptions].array { disruptions = items.map { $0.object} }
+    if let items = json[SerializationKeys.disruptions].array { disruptions = items.map { CummuteDisruptions(json: $0) } }
     duration = json[SerializationKeys.duration].int
     departurePoint = CommuteDeparturePoint(json: json[SerializationKeys.departurePoint])
   }
@@ -85,7 +85,7 @@ public final class CommuteLegs: NSCoding {
     if let value = instruction { dictionary[SerializationKeys.instruction] = value.dictionaryRepresentation() }
     if let value = departureTime { dictionary[SerializationKeys.departureTime] = value }
     if let value = routeOptions { dictionary[SerializationKeys.routeOptions] = value.map { $0.dictionaryRepresentation() } }
-    if let value = disruptions { dictionary[SerializationKeys.disruptions] = value }
+    if let value = disruptions { dictionary[SerializationKeys.disruptions] = value.map { $0.dictionaryRepresentation() } }
     if let value = duration { dictionary[SerializationKeys.duration] = value }
     if let value = departurePoint { dictionary[SerializationKeys.departurePoint] = value.dictionaryRepresentation() }
     return dictionary
@@ -103,7 +103,7 @@ public final class CommuteLegs: NSCoding {
     self.instruction = aDecoder.decodeObject(forKey: SerializationKeys.instruction) as? CommuteInstruction
     self.departureTime = aDecoder.decodeObject(forKey: SerializationKeys.departureTime) as? String
     self.routeOptions = aDecoder.decodeObject(forKey: SerializationKeys.routeOptions) as? [CommuteRouteOptions]
-    self.disruptions = aDecoder.decodeObject(forKey: SerializationKeys.disruptions) as? [Any]
+    self.disruptions = aDecoder.decodeObject(forKey: SerializationKeys.disruptions) as? [CummuteDisruptions]
     self.duration = aDecoder.decodeObject(forKey: SerializationKeys.duration) as? Int
     self.departurePoint = aDecoder.decodeObject(forKey: SerializationKeys.departurePoint) as? CommuteDeparturePoint
   }

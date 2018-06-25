@@ -38,8 +38,8 @@ class CommuteViewController: UIViewController {
         commuteController.delegate = self
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
 
         self.commuteTableView?.rowHeight = 120.0
         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
@@ -108,7 +108,6 @@ extension CommuteViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
         var StartDatetime = CommuteDataArray[0].journeys![section].startDateTime!
         var tempStartDatetime = StartDatetime.dropLast(3)
         StartDatetime = String(tempStartDatetime)
@@ -125,17 +124,16 @@ extension CommuteViewController: UITableViewDataSource {
             titleText = titleText + ": " + tempStartDatetime
             titleText = titleText + " - " + tempEndDatetime
             titleText = titleText + " (" + String(CommuteDataArray[0].journeys![section].duration!) + " minutes)"
-
         return titleText
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "commuteCell", for: indexPath) as! CommuteTableViewCell
-        
         let item = CommuteDataArray[0].journeys![indexPath.section].legs![indexPath.item]
         cell.configureWithItem(item: item)
         return cell
     }
+
 }
 
 extension CommuteViewController: CommuteViewControllerDelegate {

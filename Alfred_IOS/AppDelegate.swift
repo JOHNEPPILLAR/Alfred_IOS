@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         let barColor = UIColor(red: 34/255, green: 39/255, blue: 69/255, alpha: 1.0)
-        let naxTexrColor = UIColor(red: 214/255, green: 214/255, blue: 214/255, alpha: 1.0)
+        // let naxTexrColor = UIColor(red: 214/255, green: 214/255, blue: 214/255, alpha: 1.0)
 
         // Override tab bar color
         UITabBar.appearance().barTintColor = barColor
@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().barTintColor = UIColor.clear
         UINavigationBar.appearance().isTranslucent = true
-        UINavigationBar.appearance().tintColor = naxTexrColor;
+        // UINavigationBar.appearance().tintColor = naxTexrColor;
         
         registerForPushNotifications()
         
