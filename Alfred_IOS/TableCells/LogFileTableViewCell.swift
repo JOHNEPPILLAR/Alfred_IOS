@@ -14,14 +14,14 @@ class LogFileTableViewCell: UITableViewCell {
     @IBOutlet weak var datelabel: UILabel!
     @IBOutlet weak var infoImage: UIImageView!
     
-    func configureWithItem(item: LogLogs) {
-        if item.level == "info" {
-            infoImage.image = UIImage(named: "Information-icon.png")
+    func configureWithItem(item: LogsData) {
+        if item.type == "error" {
+            infoImage.image = #imageLiteral(resourceName: "ic_error")
         } else {
-            infoImage.image = UIImage(named: "error-icon.png")
+            infoImage.image = #imageLiteral(resourceName: "ic_info")
         }
         messagelabel.text = item.message
-        datelabel.text = item.timestamp
+        datelabel.text = item.time
     }
     
 }

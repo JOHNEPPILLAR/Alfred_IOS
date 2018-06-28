@@ -1,26 +1,30 @@
 //
-//  LogLogs.swift
+//  Data.swift
 //
-//  Created by John Pillar on 24/03/2018
+//  Created by John Pillar on 27/06/2018
 //  Copyright (c) . All rights reserved.
 //
 
 import Foundation
 import SwiftyJSON
 
-public final class LogLogs: NSCoding {
+public final class LogsData: NSCoding {
 
   // MARK: Declaration for string constants to be used to decode and also serialize.
   private struct SerializationKeys {
-    static let timestamp = "timestamp"
+    static let service = "service"
     static let message = "message"
-    static let level = "level"
+    static let type = "type"
+    static let time = "time"
+    static let functionName = "function_name"
   }
 
   // MARK: Properties
-  public var timestamp: String?
+  public var service: String?
   public var message: String?
-  public var level: String?
+  public var type: String?
+  public var time: String?
+  public var functionName: String?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -35,9 +39,11 @@ public final class LogLogs: NSCoding {
   ///
   /// - parameter json: JSON object from SwiftyJSON.
   public required init(json: JSON) {
-    timestamp = json[SerializationKeys.timestamp].string
+    service = json[SerializationKeys.service].string
     message = json[SerializationKeys.message].string
-    level = json[SerializationKeys.level].string
+    type = json[SerializationKeys.type].string
+    time = json[SerializationKeys.time].string
+    functionName = json[SerializationKeys.functionName].string
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -45,23 +51,29 @@ public final class LogLogs: NSCoding {
   /// - returns: A Key value pair containing all valid values in the object.
   public func dictionaryRepresentation() -> [String: Any] {
     var dictionary: [String: Any] = [:]
-    if let value = timestamp { dictionary[SerializationKeys.timestamp] = value }
+    if let value = service { dictionary[SerializationKeys.service] = value }
     if let value = message { dictionary[SerializationKeys.message] = value }
-    if let value = level { dictionary[SerializationKeys.level] = value }
+    if let value = type { dictionary[SerializationKeys.type] = value }
+    if let value = time { dictionary[SerializationKeys.time] = value }
+    if let value = functionName { dictionary[SerializationKeys.functionName] = value }
     return dictionary
   }
 
   // MARK: NSCoding Protocol
   required public init(coder aDecoder: NSCoder) {
-    self.timestamp = aDecoder.decodeObject(forKey: SerializationKeys.timestamp) as? String
+    self.service = aDecoder.decodeObject(forKey: SerializationKeys.service) as? String
     self.message = aDecoder.decodeObject(forKey: SerializationKeys.message) as? String
-    self.level = aDecoder.decodeObject(forKey: SerializationKeys.level) as? String
+    self.type = aDecoder.decodeObject(forKey: SerializationKeys.type) as? String
+    self.time = aDecoder.decodeObject(forKey: SerializationKeys.time) as? String
+    self.functionName = aDecoder.decodeObject(forKey: SerializationKeys.functionName) as? String
   }
 
   public func encode(with aCoder: NSCoder) {
-    aCoder.encode(timestamp, forKey: SerializationKeys.timestamp)
+    aCoder.encode(service, forKey: SerializationKeys.service)
     aCoder.encode(message, forKey: SerializationKeys.message)
-    aCoder.encode(level, forKey: SerializationKeys.level)
+    aCoder.encode(type, forKey: SerializationKeys.type)
+    aCoder.encode(time, forKey: SerializationKeys.time)
+    aCoder.encode(functionName, forKey: SerializationKeys.functionName)
   }
 
 }

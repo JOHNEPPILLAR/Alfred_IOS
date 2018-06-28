@@ -1,14 +1,14 @@
 //
-//  LogBaseClass.swift
+//  LogsBaseClass.swift
 //
-//  Created by John Pillar on 24/03/2018
+//  Created by John Pillar on 27/06/2018
 //  Copyright (c) . All rights reserved.
 //
 
 import Foundation
 import SwiftyJSON
 
-public final class LogBaseClass: NSCoding {
+public final class LogsBaseClass: NSCoding {
 
   // MARK: Declaration for string constants to be used to decode and also serialize.
   private struct SerializationKeys {
@@ -17,7 +17,7 @@ public final class LogBaseClass: NSCoding {
   }
 
   // MARK: Properties
-  public var data: LogData?
+  public var data: [LogsData]?
   public var sucess: String?
 
   // MARK: SwiftyJSON Initializers
@@ -33,7 +33,7 @@ public final class LogBaseClass: NSCoding {
   ///
   /// - parameter json: JSON object from SwiftyJSON.
   public required init(json: JSON) {
-    data = LogData(json: json[SerializationKeys.data])
+    if let items = json[SerializationKeys.data].array { data = items.map { LogsData(json: $0) } }
     sucess = json[SerializationKeys.sucess].string
   }
 
@@ -42,14 +42,14 @@ public final class LogBaseClass: NSCoding {
   /// - returns: A Key value pair containing all valid values in the object.
   public func dictionaryRepresentation() -> [String: Any] {
     var dictionary: [String: Any] = [:]
-    if let value = data { dictionary[SerializationKeys.data] = value.dictionaryRepresentation() }
+    if let value = data { dictionary[SerializationKeys.data] = value.map { $0.dictionaryRepresentation() } }
     if let value = sucess { dictionary[SerializationKeys.sucess] = value }
     return dictionary
   }
 
   // MARK: NSCoding Protocol
   required public init(coder aDecoder: NSCoder) {
-    self.data = aDecoder.decodeObject(forKey: SerializationKeys.data) as? LogData
+    self.data = aDecoder.decodeObject(forKey: SerializationKeys.data) as? [LogsData]
     self.sucess = aDecoder.decodeObject(forKey: SerializationKeys.sucess) as? String
   }
 

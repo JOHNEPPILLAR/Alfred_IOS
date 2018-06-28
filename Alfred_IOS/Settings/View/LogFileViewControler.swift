@@ -15,12 +15,8 @@ class ViewLogsController: UIViewController {
     private let logsController = LogsController()
     
     @IBOutlet weak var LogFileTableView: UITableView!
-    @IBAction func pageChange(_ sender: UIPageControl) {
-        logType = sender.currentPage // Change log file
-        logsController.getLogData(page: viewPage, type: logType) // Get new log file contents
-    }
 
-    fileprivate var LogsDataArray = [LogLogs]() {
+    fileprivate var LogsDataArray = [LogsData]() {
         didSet {
             LogFileTableView?.reloadData()
             SVProgressHUD.dismiss() // Stop spinner
@@ -29,7 +25,6 @@ class ViewLogsController: UIViewController {
     
     var viewPage = 1 as Int
     var onLastPage = false as Bool
-    var logType = 0 as Int
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +41,7 @@ class ViewLogsController: UIViewController {
         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
         SVProgressHUD.show(withStatus: "Loading")
         
-        logsController.getLogData(page: viewPage, type: logType) // log data
+        logsController.getLogData(page: viewPage)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -61,7 +56,7 @@ class ViewLogsController: UIViewController {
     }()
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-        logsController.getLogData(page: viewPage, type: logType) // Get data
+        logsController.getLogData(page: viewPage) // Get data
         refreshControl.endRefreshing() // Stop the pull to refresh UI
     }
 }
@@ -95,18 +90,9 @@ extension ViewLogsController: LogsControllerDelegate {
         SVProgressHUD.showError(withStatus: "Network/API error")
     }
     
-    func logsDidRecieveDataUpdate(data: [LogData]) {
-        LogsDataArray = data[0].logs!
-        switch logType { // Set page title
-        case 0:
-            self.title = "API Logs"
-        case 1:
-            self.title = "Scheduler Logs"
-        case 2:
-            self.title = "HLS Logs"
-        default:
-            self.title = "API Logs"
-        }
+    func logsDidRecieveDataUpdate(data: [LogsData]) {
+        LogsDataArray = data
+      
         // Reposition view to top of table
         super.viewWillAppear(true)
         LogFileTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableViewScrollPosition.top, animated: false)

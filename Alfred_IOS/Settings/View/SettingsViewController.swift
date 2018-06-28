@@ -73,9 +73,10 @@ extension SettingsViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("You selected cell #\(indexPath.item)!")
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            self.performSegue(withIdentifier: self.SettingsDataArray[indexPath.item]["segue"].string!, sender: self)
+        })        
     }
-
 }
 
 extension SettingsViewController: SettingsViewControllerDelegate {

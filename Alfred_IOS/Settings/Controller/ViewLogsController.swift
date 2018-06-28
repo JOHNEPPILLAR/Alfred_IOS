@@ -11,7 +11,7 @@ import SwiftyJSON
 
 // MARK: Delegate callback functions
 protocol LogsControllerDelegate: class {
-    func logsDidRecieveDataUpdate(data: [LogData])
+    func logsDidRecieveDataUpdate(data: [LogsData])
     func didFailDataUpdateWithError()
 }
 
@@ -19,25 +19,16 @@ class LogsController: NSObject {
     
     weak var delegate: LogsControllerDelegate?
     
-    func getLogData(page: Int, type: Int) {
+    func getLogData(page: Int) {
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
-        let request: URLRequest
-        switch type {
-        case 0:
-            request = getAPIHeaderData(url: "displaylog?page=" + String(page))
-        case 1:
-            request = getAPIHeaderData(url: "displaylog?page=" + String(page))
-        //case 2:
-        //    request = getAPIHeaderData(url: "displaylog?page=" + String(page))
-        default:
-            request = getAPIHeaderData(url: "displaylog?page=" + String(page))
-        }
+        let request = getAPIHeaderData(url: "display")
+        //        let request = getAPIHeaderData(url: "display?page=" + String(page))
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
                 let responseJSON = try? JSON(data: data!)
-                let data = [LogBaseClass(json: responseJSON!)] // Update data store
-                self.delegate?.logsDidRecieveDataUpdate(data: [data[0].data!]) // Let the View controller know to show the data
+                let data = [LogsBaseClass(json: responseJSON!)] // Update data store
+                self.delegate?.logsDidRecieveDataUpdate(data: data[0].data!) // Let the View controller know to show the data
             } else {
                 self.delegate?.didFailDataUpdateWithError() // Let the View controller know there was an error
             }

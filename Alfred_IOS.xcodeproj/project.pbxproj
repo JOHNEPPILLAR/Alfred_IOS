@@ -44,16 +44,14 @@
 		0ADF19B920658C5F008057DB /* ViewLogsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADF19B820658C5F008057DB /* ViewLogsController.swift */; };
 		0AE259021F70476D002C6922 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0AE259011F70476D002C6922 /* Settings.bundle */; };
 		0AE259041F704A0A002C6922 /* SettingsBundleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE259031F704A0A002C6922 /* SettingsBundleHelper.swift */; };
-		0AE3279C20665D9B00C288E8 /* LogBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE3279920665D9B00C288E8 /* LogBaseClass.swift */; };
-		0AE3279D20665D9B00C288E8 /* LogData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE3279A20665D9B00C288E8 /* LogData.swift */; };
-		0AE3279E20665D9B00C288E8 /* LogLogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE3279B20665D9B00C288E8 /* LogLogs.swift */; };
 		0AE327A22066622E00C288E8 /* LogFileViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE327A12066622E00C288E8 /* LogFileViewControler.swift */; };
 		A5CB0541EC331A4BFEF71AD8 /* Pods_Alfred_IOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2D4C3A3EE9E0D17B56318E /* Pods_Alfred_IOS.framework */; };
 		E811EB0620DFB47C00C3B62E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E811EB0520DFB47C00C3B62E /* SettingsViewController.swift */; };
 		E811EB0820DFC78000C3B62E /* SettingsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E811EB0720DFC78000C3B62E /* SettingsCollectionViewCell.swift */; };
 		E811EB0A20DFCDF200C3B62E /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E811EB0920DFCDF200C3B62E /* SettingsController.swift */; };
-		E811EB0C20E01A0500C3B62E /* SettingsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E811EB0B20E01A0500C3B62E /* SettingsData.swift */; };
 		E811EB0E20E0355400C3B62E /* SettingsViewController.json in Resources */ = {isa = PBXBuildFile; fileRef = E811EB0D20E0355400C3B62E /* SettingsViewController.json */; };
+		E848524220E42E22001DC4F2 /* LogsBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E848524020E42E22001DC4F2 /* LogsBaseClass.swift */; };
+		E848524320E42E22001DC4F2 /* LogsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E848524120E42E22001DC4F2 /* LogsData.swift */; };
 		E89D443820D4EFB000F6F142 /* VideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89D443720D4EFB000F6F142 /* VideoController.swift */; };
 		E8BF1FFA20D7D7670046D0DD /* CommuteArrivalPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BF1FE520D7D7660046D0DD /* CommuteArrivalPoint.swift */; };
 		E8BF1FFB20D7D7670046D0DD /* CommuteResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BF1FE620D7D7660046D0DD /* CommuteResults.swift */; };
@@ -111,9 +109,6 @@
 		0ADF19B820658C5F008057DB /* ViewLogsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLogsController.swift; sourceTree = "<group>"; };
 		0AE259011F70476D002C6922 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		0AE259031F704A0A002C6922 /* SettingsBundleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBundleHelper.swift; sourceTree = "<group>"; };
-		0AE3279920665D9B00C288E8 /* LogBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogBaseClass.swift; sourceTree = "<group>"; };
-		0AE3279A20665D9B00C288E8 /* LogData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogData.swift; sourceTree = "<group>"; };
-		0AE3279B20665D9B00C288E8 /* LogLogs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogLogs.swift; sourceTree = "<group>"; };
 		0AE327A12066622E00C288E8 /* LogFileViewControler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogFileViewControler.swift; sourceTree = "<group>"; };
 		252CE001F08C2663E6B7452E /* Pods-Alfred_IOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alfred_IOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Alfred_IOS/Pods-Alfred_IOS.release.xcconfig"; sourceTree = "<group>"; };
 		BC2D4C3A3EE9E0D17B56318E /* Pods_Alfred_IOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Alfred_IOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,8 +116,9 @@
 		E811EB0520DFB47C00C3B62E /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E811EB0720DFC78000C3B62E /* SettingsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCollectionViewCell.swift; sourceTree = "<group>"; };
 		E811EB0920DFCDF200C3B62E /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
-		E811EB0B20E01A0500C3B62E /* SettingsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsData.swift; sourceTree = "<group>"; };
 		E811EB0D20E0355400C3B62E /* SettingsViewController.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SettingsViewController.json; sourceTree = "<group>"; };
+		E848524020E42E22001DC4F2 /* LogsBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogsBaseClass.swift; sourceTree = "<group>"; };
+		E848524120E42E22001DC4F2 /* LogsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogsData.swift; sourceTree = "<group>"; };
 		E89D443720D4EFB000F6F142 /* VideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoController.swift; sourceTree = "<group>"; };
 		E8BF1FE520D7D7660046D0DD /* CommuteArrivalPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteArrivalPoint.swift; sourceTree = "<group>"; };
 		E8BF1FE620D7D7660046D0DD /* CommuteResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteResults.swift; sourceTree = "<group>"; };
@@ -275,6 +271,7 @@
 		0A256EC4206F93C3008C5283 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0AE327A12066622E00C288E8 /* LogFileViewControler.swift */,
 				E811EB0520DFB47C00C3B62E /* SettingsViewController.swift */,
 				0A791EE41F93E43200765DF9 /* old_LightsOffViewController.swift */,
 			);
@@ -303,18 +300,11 @@
 		0A256ECE206F96DB008C5283 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0ADF19B820658C5F008057DB /* ViewLogsController.swift */,
 				0A95AECF207024740038D583 /* old_LightsOffController.swift */,
 				E811EB0920DFCDF200C3B62E /* SettingsController.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		0A256ED1206FA530008C5283 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				E811EB0B20E01A0500C3B62E /* SettingsData.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		0A385C2920C8680E00CD312D /* Video */ = {
@@ -361,7 +351,6 @@
 				0A256EC8206F94BF008C5283 /* TableCells */,
 				0A256EC5206F942D008C5283 /* To Do */,
 				0A1BFDAF20530C2F00B729F8 /* Commute */,
-				0ADF19B520658BB5008057DB /* View Logs */,
 				0A7F509D2064401E0080445B /* Settings */,
 				0A1BFDAA2052EF8C00B729F8 /* Splash Screen */,
 				0A256EC1206F9340008C5283 /* Home */,
@@ -399,47 +388,11 @@
 		0A7F509D2064401E0080445B /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				E8BC4F7C20E2C384002C25DC /* Model */,
 				0A256EC4206F93C3008C5283 /* View */,
 				0A256ECE206F96DB008C5283 /* Controller */,
-				0A256ED1206FA530008C5283 /* Model */,
 			);
 			path = Settings;
-			sourceTree = "<group>";
-		};
-		0ADF19B520658BB5008057DB /* View Logs */ = {
-			isa = PBXGroup;
-			children = (
-				0ADF19B620658C06008057DB /* View */,
-				0ADF19B720658C11008057DB /* Controller */,
-				0AE327982065940500C288E8 /* Model */,
-			);
-			path = "View Logs";
-			sourceTree = "<group>";
-		};
-		0ADF19B620658C06008057DB /* View */ = {
-			isa = PBXGroup;
-			children = (
-				0AE327A12066622E00C288E8 /* LogFileViewControler.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		0ADF19B720658C11008057DB /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				0ADF19B820658C5F008057DB /* ViewLogsController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		0AE327982065940500C288E8 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				0AE3279920665D9B00C288E8 /* LogBaseClass.swift */,
-				0AE3279A20665D9B00C288E8 /* LogData.swift */,
-				0AE3279B20665D9B00C288E8 /* LogLogs.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		17082966A7C3C836DD16EAE4 /* Frameworks */ = {
@@ -467,6 +420,15 @@
 				E89D443720D4EFB000F6F142 /* VideoController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		E8BC4F7C20E2C384002C25DC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E848524120E42E22001DC4F2 /* LogsData.swift */,
+				E848524020E42E22001DC4F2 /* LogsBaseClass.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -615,13 +577,12 @@
 				0A6A5F9B204C53D100314ECE /* HomeViewController.swift in Sources */,
 				0A95AED0207024740038D583 /* old_LightsOffController.swift in Sources */,
 				0A69FB9F1F1160F500563A69 /* SplashViewController.swift in Sources */,
-				0AE3279D20665D9B00C288E8 /* LogData.swift in Sources */,
 				0A46C5FB1F56D58300ADB758 /* LightsTableViewCell.swift in Sources */,
 				0A647EE22067E8CF00F7CD1E /* RoomLightsActionAttributes.swift in Sources */,
-				E811EB0C20E01A0500C3B62E /* SettingsData.swift in Sources */,
 				0A1BFDAE2052EFF900B729F8 /* SplashController.swift in Sources */,
 				0A7ECE1F1FAE437B002AF233 /* CommuteViewController.swift in Sources */,
 				0A29F7BE20551AA600111C50 /* InsideWeatherInsideWeatherBaseClass.swift in Sources */,
+				E848524320E42E22001DC4F2 /* LogsData.swift in Sources */,
 				E8BF200620D7D7670046D0DD /* CommuteDeparturePoint.swift in Sources */,
 				E8BF200D20D7D7670046D0DD /* CommuteBaseClass.swift in Sources */,
 				E8BF200220D7D7670046D0DD /* CommuteMode.swift in Sources */,
@@ -631,14 +592,13 @@
 				0A69FB811F10C25C00563A69 /* AppDelegate.swift in Sources */,
 				0A8AF14A1F24EF030064894F /* Helpers.swift in Sources */,
 				E8BF1FFB20D7D7670046D0DD /* CommuteResults.swift in Sources */,
-				0AE3279E20665D9B00C288E8 /* LogLogs.swift in Sources */,
 				0A647EE62067E8CF00F7CD1E /* RoomLightsState.swift in Sources */,
-				0AE3279C20665D9B00C288E8 /* LogBaseClass.swift in Sources */,
 				E8BF200A20D7D7670046D0DD /* CommuteInstruction.swift in Sources */,
 				0ADF19B920658C5F008057DB /* ViewLogsController.swift in Sources */,
 				E8BF200B20D7D7670046D0DD /* CommuteLegs.swift in Sources */,
 				0A29F7BC20551AA100111C50 /* InsideWeatherData.swift in Sources */,
 				0AE327A22066622E00C288E8 /* LogFileViewControler.swift in Sources */,
+				E848524220E42E22001DC4F2 /* LogsBaseClass.swift in Sources */,
 				0A0463F11F38E99B004A738D /* ColorViewController.swift in Sources */,
 				E8BF200820D7D7670046D0DD /* CommuteData.swift in Sources */,
 				0A791EE51F93E43200765DF9 /* old_LightsOffViewController.swift in Sources */,
