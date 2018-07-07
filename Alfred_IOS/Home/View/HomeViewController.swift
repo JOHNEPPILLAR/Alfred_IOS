@@ -216,7 +216,7 @@ extension HomeViewController: HomeControllerDelegate {
         }
     }
 
-    func cummuteDidRecieveDataUpdate(data: [CommuteData]) {
+    func cummuteDidRecieveDataUpdate(data: [CommuteStatusData]) {
         DispatchQueue.main.async {
             if (data[0].anyDisruptions!) {
                 self.commuteStatus.image = #imageLiteral(resourceName: "ic_bad")

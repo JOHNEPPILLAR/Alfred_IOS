@@ -1,24 +1,22 @@
 //
-//  RoomLightsStateAttributes.swift
+//  CommuteStatusData.swift
 //
-//  Created by John Pillar on 25/03/2018
+//  Created by John Pillar on 07/07/2018
 //  Copyright (c) . All rights reserved.
 //
 
 import Foundation
 import SwiftyJSON
 
-public final class RoomLightsStateAttributes: NSCoding {
+public final class CommuteStatusData: NSCoding {
 
   // MARK: Declaration for string constants to be used to decode and also serialize.
   private struct SerializationKeys {
-    static let allOn = "all_on"
-    static let anyOn = "any_on"
+    static let anyDisruptions = "anyDisruptions"
   }
 
   // MARK: Properties
-  public var allOn: Bool? = false
-  public var anyOn: Bool? = false
+  public var anyDisruptions: Bool? = false
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -33,8 +31,7 @@ public final class RoomLightsStateAttributes: NSCoding {
   ///
   /// - parameter json: JSON object from SwiftyJSON.
   public required init(json: JSON) {
-    allOn = json[SerializationKeys.allOn].boolValue
-    anyOn = json[SerializationKeys.anyOn].boolValue
+    anyDisruptions = json[SerializationKeys.anyDisruptions].boolValue
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -42,20 +39,17 @@ public final class RoomLightsStateAttributes: NSCoding {
   /// - returns: A Key value pair containing all valid values in the object.
   public func dictionaryRepresentation() -> [String: Any] {
     var dictionary: [String: Any] = [:]
-    dictionary[SerializationKeys.allOn] = allOn
-    dictionary[SerializationKeys.anyOn] = anyOn
+    dictionary[SerializationKeys.anyDisruptions] = anyDisruptions
     return dictionary
   }
 
   // MARK: NSCoding Protocol
   required public init(coder aDecoder: NSCoder) {
-    self.allOn = aDecoder.decodeBool(forKey: SerializationKeys.allOn)
-    self.anyOn = aDecoder.decodeBool(forKey: SerializationKeys.anyOn)
+    self.anyDisruptions = aDecoder.decodeBool(forKey: SerializationKeys.anyDisruptions)
   }
 
   public func encode(with aCoder: NSCoder) {
-    aCoder.encode(allOn, forKey: SerializationKeys.allOn)
-    aCoder.encode(anyOn, forKey: SerializationKeys.anyOn)
+    aCoder.encode(anyDisruptions, forKey: SerializationKeys.anyDisruptions)
   }
 
 }

@@ -21,23 +21,20 @@ class CommuteTableViewCell: UITableViewCell {
     
     func configureWithItem(item: CommuteLegs) {
     
-        switch(item.mode?.id) {
-            case "tfl-rail" :
-                lineType.image = #imageLiteral(resourceName: "ic_travel_tflrail")
-                break;
-            case "national-rail" :
+        switch(item.mode!) {
+            //case "train" :
+            //    lineType.image = #imageLiteral(resourceName: "ic_travel_tflrail")
+            //    break;
+            case "train" :
                 lineType.image = #imageLiteral(resourceName: "ic_travel_train")
                 break;
             case "tube" :
                 lineType.image = #imageLiteral(resourceName: "ic_travel_underground")
                 break;
-            case "replacement-bus" :
-                lineType.image = #imageLiteral(resourceName: "ic_travel_bus")
-                break;
             case "bus" :
                 lineType.image = #imageLiteral(resourceName: "ic_travel_bus")
                 break;
-            case "walking" :
+            case "walk" :
                 lineType.image = #imageLiteral(resourceName: "ic_walk")
                 break;
             case "dlr" :
@@ -58,27 +55,22 @@ class CommuteTableViewCell: UITableViewCell {
             default:
                 lineType.image = #imageLiteral(resourceName: "ic_question_mark")
         }
-        Summary.text = item.instruction?.summary
-        var Datetime = item.departureTime
-        var tempDatetime = Datetime?.dropLast(3)
-        Datetime = String(tempDatetime!)
-        tempDatetime = Datetime?.dropFirst(11)
-        Datetime = String(tempDatetime!)
-        DepartTime.text = Datetime
+        //Summary.text = item.instruction?.summary
+        DepartTime.text = item.departureTime
         Duration.text = "(" +  "\(item.duration!)" + " min)"
         
-        if item.disruptions?.count != 0 {
-            Distruptions.image = #imageLiteral(resourceName: "ic_info")
-            dump(item.disruptions)
+        //if item.disruptions?.count != 0 {
+        //    Distruptions.image = #imageLiteral(resourceName: "ic_info")
+        //    dump(item.disruptions)
 
             //let tap = UITapGestureRecognizer(target: self, action: #selector(showDistruptionInfo))
             //Distruptions.addGestureRecognizer(tap)
             //Distruptions.isUserInteractionEnabled = true
-        }
+        //}
     }
 
     @objc func showDistruptionInfo(sender : UITapGestureRecognizer) {
-print(DistruptionText)
+        print(DistruptionText)
         // SVProgressHUD.show(withStatus: cell.DistruptionText.text)
     }
 }

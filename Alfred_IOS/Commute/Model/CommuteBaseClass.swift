@@ -1,7 +1,7 @@
 //
 //  CommuteBaseClass.swift
 //
-//  Created by John Pillar on 18/06/2018
+//  Created by John Pillar on 07/07/2018
 //  Copyright (c) . All rights reserved.
 //
 
@@ -13,12 +13,12 @@ public final class CommuteBaseClass: NSCoding {
   // MARK: Declaration for string constants to be used to decode and also serialize.
   private struct SerializationKeys {
     static let data = "data"
-    static let sucess = "sucess"
+    static let success = "success"
   }
 
   // MARK: Properties
   public var data: CommuteData?
-  public var sucess: String?
+  public var success: String?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -34,7 +34,7 @@ public final class CommuteBaseClass: NSCoding {
   /// - parameter json: JSON object from SwiftyJSON.
   public required init(json: JSON) {
     data = CommuteData(json: json[SerializationKeys.data])
-    sucess = json[SerializationKeys.sucess].string
+    success = json[SerializationKeys.success].string
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -43,19 +43,19 @@ public final class CommuteBaseClass: NSCoding {
   public func dictionaryRepresentation() -> [String: Any] {
     var dictionary: [String: Any] = [:]
     if let value = data { dictionary[SerializationKeys.data] = value.dictionaryRepresentation() }
-    if let value = sucess { dictionary[SerializationKeys.sucess] = value }
+    if let value = success { dictionary[SerializationKeys.success] = value }
     return dictionary
   }
 
   // MARK: NSCoding Protocol
   required public init(coder aDecoder: NSCoder) {
     self.data = aDecoder.decodeObject(forKey: SerializationKeys.data) as? CommuteData
-    self.sucess = aDecoder.decodeObject(forKey: SerializationKeys.sucess) as? String
+    self.success = aDecoder.decodeObject(forKey: SerializationKeys.success) as? String
   }
 
   public func encode(with aCoder: NSCoder) {
     aCoder.encode(data, forKey: SerializationKeys.data)
-    aCoder.encode(sucess, forKey: SerializationKeys.sucess)
+    aCoder.encode(success, forKey: SerializationKeys.success)
   }
 
 }

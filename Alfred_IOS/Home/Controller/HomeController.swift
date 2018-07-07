@@ -14,7 +14,7 @@ import SwiftyJSON
 protocol HomeControllerDelegate: class {
     func lightRoomTableDidRecieveDataUpdate(data: [RoomLightsData])
     func currentWeatherDidRecieveDataUpdate(data: [CurrentWeatherData])
-    func cummuteDidRecieveDataUpdate(data: [CommuteData])
+    func cummuteDidRecieveDataUpdate(data: [CommuteStatusData])
     func insideWeatherDidRecieveDataUpdate(data: [InsideWeatherData])
     func didFailDataUpdateWithError(displayMsg: Bool)
 }
@@ -64,13 +64,13 @@ class HomeController: NSObject, CLLocationManagerDelegate {
             configuration = URLSessionConfiguration.ephemeral
             body = ["user": whoIs, "lat": userLocation.coordinate.latitude, "long": userLocation.coordinate.longitude ]
             APIbody = try! JSONSerialization.data(withJSONObject: body, options: [])
-            request = putAPIHeaderData(url: "travel/getcommute", body: APIbody)
+            request = putAPIHeaderData(url: "travel/getcommutestatus", body: APIbody)
             session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
             task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
                 if checkAPIData(apiData: data, response: response, error: error) {
                     let responseJSON = try? JSON(data: data!)
-                    let data = [CommuteData(json: responseJSON!)] // Update data store
-                    self.delegate?.cummuteDidRecieveDataUpdate(data: [data[0]]) // Let the View controller know to show the data
+                    let baseData = [CommuteStatusBaseClass(json: responseJSON!)] // Update data store
+                    self.delegate?.cummuteDidRecieveDataUpdate(data: [baseData[0].data!]) // Let the View controller know to show the data
                 } else {
                     self.delegate?.didFailDataUpdateWithError(displayMsg: true) // Let the View controller know there was an error
                 }

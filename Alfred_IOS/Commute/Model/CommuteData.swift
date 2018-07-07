@@ -1,7 +1,7 @@
 //
 //  CommuteData.swift
 //
-//  Created by John Pillar on 18/06/2018
+//  Created by John Pillar on 07/07/2018
 //  Copyright (c) . All rights reserved.
 //
 
@@ -12,13 +12,11 @@ public final class CommuteData: NSCoding {
 
   // MARK: Declaration for string constants to be used to decode and also serialize.
   private struct SerializationKeys {
-    static let anyDisruptions = "anyDisruptions"
-    static let commuteResults = "commuteResults"
+    static let journeys = "journeys"
   }
 
   // MARK: Properties
-  public var anyDisruptions: Bool? = false
-  public var commuteResults: [CommuteResults]?
+  public var journeys: [CommuteJourneys]?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -33,8 +31,7 @@ public final class CommuteData: NSCoding {
   ///
   /// - parameter json: JSON object from SwiftyJSON.
   public required init(json: JSON) {
-    anyDisruptions = json[SerializationKeys.anyDisruptions].boolValue
-    if let items = json[SerializationKeys.commuteResults].array { commuteResults = items.map { CommuteResults(json: $0) } }
+    if let items = json[SerializationKeys.journeys].array { journeys = items.map { CommuteJourneys(json: $0) } }
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -42,20 +39,17 @@ public final class CommuteData: NSCoding {
   /// - returns: A Key value pair containing all valid values in the object.
   public func dictionaryRepresentation() -> [String: Any] {
     var dictionary: [String: Any] = [:]
-    dictionary[SerializationKeys.anyDisruptions] = anyDisruptions
-    if let value = commuteResults { dictionary[SerializationKeys.commuteResults] = value.map { $0.dictionaryRepresentation() } }
+    if let value = journeys { dictionary[SerializationKeys.journeys] = value.map { $0.dictionaryRepresentation() } }
     return dictionary
   }
 
   // MARK: NSCoding Protocol
   required public init(coder aDecoder: NSCoder) {
-    self.anyDisruptions = aDecoder.decodeBool(forKey: SerializationKeys.anyDisruptions)
-    self.commuteResults = aDecoder.decodeObject(forKey: SerializationKeys.commuteResults) as? [CommuteResults]
+    self.journeys = aDecoder.decodeObject(forKey: SerializationKeys.journeys) as? [CommuteJourneys]
   }
 
   public func encode(with aCoder: NSCoder) {
-    aCoder.encode(anyDisruptions, forKey: SerializationKeys.anyDisruptions)
-    aCoder.encode(commuteResults, forKey: SerializationKeys.commuteResults)
+    aCoder.encode(journeys, forKey: SerializationKeys.journeys)
   }
 
 }

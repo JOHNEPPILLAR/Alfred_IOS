@@ -1,24 +1,24 @@
 //
-//  RoomLightsStateAttributes.swift
+//  CommuteStatusBaseClass.swift
 //
-//  Created by John Pillar on 25/03/2018
+//  Created by John Pillar on 07/07/2018
 //  Copyright (c) . All rights reserved.
 //
 
 import Foundation
 import SwiftyJSON
 
-public final class RoomLightsStateAttributes: NSCoding {
+public final class CommuteStatusBaseClass: NSCoding {
 
   // MARK: Declaration for string constants to be used to decode and also serialize.
   private struct SerializationKeys {
-    static let allOn = "all_on"
-    static let anyOn = "any_on"
+    static let data = "data"
+    static let success = "success"
   }
 
   // MARK: Properties
-  public var allOn: Bool? = false
-  public var anyOn: Bool? = false
+  public var data: CommuteStatusData?
+  public var success: String?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -33,8 +33,8 @@ public final class RoomLightsStateAttributes: NSCoding {
   ///
   /// - parameter json: JSON object from SwiftyJSON.
   public required init(json: JSON) {
-    allOn = json[SerializationKeys.allOn].boolValue
-    anyOn = json[SerializationKeys.anyOn].boolValue
+    data = CommuteStatusData(json: json[SerializationKeys.data])
+    success = json[SerializationKeys.success].string
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -42,20 +42,20 @@ public final class RoomLightsStateAttributes: NSCoding {
   /// - returns: A Key value pair containing all valid values in the object.
   public func dictionaryRepresentation() -> [String: Any] {
     var dictionary: [String: Any] = [:]
-    dictionary[SerializationKeys.allOn] = allOn
-    dictionary[SerializationKeys.anyOn] = anyOn
+    if let value = data { dictionary[SerializationKeys.data] = value.dictionaryRepresentation() }
+    if let value = success { dictionary[SerializationKeys.success] = value }
     return dictionary
   }
 
   // MARK: NSCoding Protocol
   required public init(coder aDecoder: NSCoder) {
-    self.allOn = aDecoder.decodeBool(forKey: SerializationKeys.allOn)
-    self.anyOn = aDecoder.decodeBool(forKey: SerializationKeys.anyOn)
+    self.data = aDecoder.decodeObject(forKey: SerializationKeys.data) as? CommuteStatusData
+    self.success = aDecoder.decodeObject(forKey: SerializationKeys.success) as? String
   }
 
   public func encode(with aCoder: NSCoder) {
-    aCoder.encode(allOn, forKey: SerializationKeys.allOn)
-    aCoder.encode(anyOn, forKey: SerializationKeys.anyOn)
+    aCoder.encode(data, forKey: SerializationKeys.data)
+    aCoder.encode(success, forKey: SerializationKeys.success)
   }
 
 }

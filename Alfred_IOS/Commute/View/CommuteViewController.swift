@@ -19,7 +19,7 @@ class CommuteViewController: UIViewController {
     @IBOutlet weak var walkButton: UIButton!
     @IBOutlet weak var commuteTableView: UITableView!
     
-    fileprivate var CommuteDataArray = [CommuteResults]() {
+    fileprivate var CommuteDataArray = [CommuteData]() {
         didSet {
             commuteTableView?.reloadData()
             SVProgressHUD.dismiss() // Stop spinner
@@ -108,22 +108,19 @@ extension CommuteViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        var StartDatetime = CommuteDataArray[0].journeys![section].startDateTime!
-        var tempStartDatetime = StartDatetime.dropLast(3)
-        StartDatetime = String(tempStartDatetime)
-        tempStartDatetime = StartDatetime.dropFirst(11)
-        StartDatetime = String(tempStartDatetime)
+        let StartDatetime = CommuteDataArray[0].journeys![section].legs![0].departureTime!
+        var endLeg = CommuteDataArray[0].journeys![section].legs!.count
+        if endLeg > 0 { endLeg = endLeg - 1 }
+        let EndDatetime = CommuteDataArray[0].journeys![section].legs![endLeg].arrivalTime!
 
-        var EndDatetime = CommuteDataArray[0].journeys![section].arrivalDateTime!
-        var tempEndDatetime = EndDatetime.dropLast(3)
-        StartDatetime = String(tempEndDatetime)
-        tempEndDatetime = StartDatetime.dropFirst(11)
-        EndDatetime = String(tempEndDatetime)
-
-        var titleText = "Journey " + "\(section + 1)"
-            titleText = titleText + ": " + tempStartDatetime
-            titleText = titleText + " - " + tempEndDatetime
-            titleText = titleText + " (" + String(CommuteDataArray[0].journeys![section].duration!) + " minutes)"
+        var titleText = ""
+        if section == 0 {
+            titleText = "Primary"
+        } else {
+            titleText = "Backup #" + "\(section)"
+        }
+        titleText = titleText + ": " + StartDatetime
+        titleText = titleText + " - " + EndDatetime
         return titleText
     }
     
@@ -141,7 +138,7 @@ extension CommuteViewController: CommuteViewControllerDelegate {
         SVProgressHUD.showError(withStatus: "Network/API error")
     }
 
-    func cummuteDidRecieveDataUpdate(data: [CommuteResults]) {
+    func cummuteDidRecieveDataUpdate(data: [CommuteData]) {
         CommuteDataArray = data
     }
 }
