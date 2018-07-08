@@ -108,19 +108,20 @@ extension CommuteViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let StartDatetime = CommuteDataArray[0].journeys![section].legs![0].departureTime!
-        var endLeg = CommuteDataArray[0].journeys![section].legs!.count
-        if endLeg > 0 { endLeg = endLeg - 1 }
-        let EndDatetime = CommuteDataArray[0].journeys![section].legs![endLeg].arrivalTime!
-
         var titleText = ""
         if section == 0 {
             titleText = "Primary"
         } else {
-            titleText = "Backup #" + "\(section)"
+            titleText = "Alternative #" + "\(section)"
         }
-        titleText = titleText + ": " + StartDatetime
-        titleText = titleText + " - " + EndDatetime
+
+        if CommuteDataArray[0].journeys![section].legs![0].status != "No trains running" {
+            let StartDatetime = CommuteDataArray[0].journeys![section].legs![0].departureTime!
+            var endLeg = CommuteDataArray[0].journeys![section].legs!.count
+            if endLeg > 0 { endLeg = endLeg - 1 }
+            let EndDatetime = CommuteDataArray[0].journeys![section].legs![endLeg].arrivalTime!
+            titleText = titleText + ": " + StartDatetime + " - " + EndDatetime
+        }
         return titleText
     }
     
