@@ -86,6 +86,6 @@ class CommuteTableViewCell: UITableViewCell {
                 Summary2.text = ""
             }
         
-        if disruptions == "true" { Distruptions.image = #imageLiteral(resourceName: "ic_info") }
+        if disruptions == "true" { Distruptions.image = #imageLiteral(resourceName: "ic_error") }
     }
 }
