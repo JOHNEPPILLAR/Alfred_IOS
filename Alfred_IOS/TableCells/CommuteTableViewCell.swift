@@ -30,7 +30,7 @@ class CommuteTableViewCell: UITableViewCell {
         let line = (item.line != nil) ? item.line! : ""
         
         // If no results then alert and exit function
-        if mode == "train" && status == "No trains running" {
+        if (mode == "train" && status == "No trains running") || mode == "error" {
             lineType.image = #imageLiteral(resourceName: "ic_travel_train")
             Summary1.isHidden = true
             Summary2.frame.origin = CGPoint(x: 54, y: 25)

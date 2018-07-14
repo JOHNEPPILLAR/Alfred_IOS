@@ -115,12 +115,20 @@ extension CommuteViewController: UITableViewDataSource {
             titleText = "Alternative #" + "\(section)"
         }
 
+        if CommuteDataArray[0].journeys![section].legs![0].status != "error" {
+            titleText = "No train data available"
+            return titleText
+        }
+        
         if CommuteDataArray[0].journeys![section].legs![0].status != "No trains running" {
-            let StartDatetime = CommuteDataArray[0].journeys![section].legs![0].departureTime!
-            var endLeg = CommuteDataArray[0].journeys![section].legs!.count
-            if endLeg > 0 { endLeg = endLeg - 1 }
-            let EndDatetime = CommuteDataArray[0].journeys![section].legs![endLeg].arrivalTime!
-            titleText = titleText + ": " + StartDatetime + " - " + EndDatetime
+            let StartDatetime = (CommuteDataArray[0].journeys![section].legs![0].departureTime != nil) ? CommuteDataArray[0].journeys![section].legs![0].departureTime : "N/A"
+
+            var endLeg = (CommuteDataArray[0].journeys![section].legs![0].departureTime?.count != nil) ? CommuteDataArray[0].journeys![section].legs![0].departureTime?.count : 0
+            if endLeg! > 0 { endLeg = endLeg! - 1 }
+            
+            let EndDatetime = (CommuteDataArray[0].journeys![section].legs![endLeg!].arrivalTime != nil) ? CommuteDataArray[0].journeys![section].legs![endLeg!].arrivalTime : "N/A"
+            
+            titleText = titleText + ": " + StartDatetime! + " - " + EndDatetime!
         }
         return titleText
     }
