@@ -64,7 +64,7 @@ class HomeController: NSObject, CLLocationManagerDelegate {
             configuration = URLSessionConfiguration.ephemeral
             body = ["user": whoIs, "lat": userLocation.coordinate.latitude, "long": userLocation.coordinate.longitude ]
             APIbody = try! JSONSerialization.data(withJSONObject: body, options: [])
-            request = putAPIHeaderData(url: "travel/getcommutestatus", body: APIbody)
+            request = putAPIHeaderData(url: "commute/getcommutestatus", body: APIbody)
             session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
             task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
                 if checkAPIData(apiData: data, response: response, error: error) {
