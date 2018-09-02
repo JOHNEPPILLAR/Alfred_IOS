@@ -117,11 +117,16 @@ extension CommuteViewController: UITableViewDataSource {
 
         let status = (CommuteDataArray[0].journeys![section].legs![0].status != nil) ? CommuteDataArray[0].journeys![section].legs![0].status! : "error"
 
-        if status == "error" || status == "No trains running" {
+        if status == "error" {
             titleText = "No train data available"
             return titleText
         }
-        
+
+        if status == "No trains running" {
+            titleText = "No trains are running"
+            return titleText
+        }
+
         let StartDatetime = (CommuteDataArray[0].journeys![section].legs![0].departureTime != nil) ? CommuteDataArray[0].journeys![section].legs![0].departureTime : "N/A"
 
         var endLeg = CommuteDataArray[0].journeys![section].legs?.count != nil ? CommuteDataArray[0].journeys![section].legs?.count : 0
