@@ -58,7 +58,13 @@
 		E82C11CA20F1615B00A53A63 /* CommuteJourneys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82C11C820F1615B00A53A63 /* CommuteJourneys.swift */; };
 		E848524220E42E22001DC4F2 /* LogsBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E848524020E42E22001DC4F2 /* LogsBaseClass.swift */; };
 		E848524320E42E22001DC4F2 /* LogsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E848524120E42E22001DC4F2 /* LogsData.swift */; };
+		E87277B52145AD7600FE3FC3 /* TimersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87277B42145AD7600FE3FC3 /* TimersTableViewCell.swift */; };
+		E87277B72145AEA000FE3FC3 /* TimersViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87277B62145AEA000FE3FC3 /* TimersViewControler.swift */; };
+		E87277B92145AF4A00FE3FC3 /* ViewTimersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87277B82145AF4A00FE3FC3 /* ViewTimersController.swift */; };
 		E89D443820D4EFB000F6F142 /* VideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89D443720D4EFB000F6F142 /* VideoController.swift */; };
+		E89FDE47214460CC00C2FB62 /* TimersBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89FDE46214460CC00C2FB62 /* TimersBaseClass.swift */; };
+		E89FDE49214460EB00C2FB62 /* TimersData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89FDE48214460EB00C2FB62 /* TimersData.swift */; };
+		E89FDE4B2144611B00C2FB62 /* TimersRows.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89FDE4A2144611B00C2FB62 /* TimersRows.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,7 +126,13 @@
 		E82C11C820F1615B00A53A63 /* CommuteJourneys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteJourneys.swift; sourceTree = "<group>"; };
 		E848524020E42E22001DC4F2 /* LogsBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogsBaseClass.swift; sourceTree = "<group>"; };
 		E848524120E42E22001DC4F2 /* LogsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogsData.swift; sourceTree = "<group>"; };
+		E87277B42145AD7600FE3FC3 /* TimersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimersTableViewCell.swift; sourceTree = "<group>"; };
+		E87277B62145AEA000FE3FC3 /* TimersViewControler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimersViewControler.swift; sourceTree = "<group>"; };
+		E87277B82145AF4A00FE3FC3 /* ViewTimersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTimersController.swift; sourceTree = "<group>"; };
 		E89D443720D4EFB000F6F142 /* VideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoController.swift; sourceTree = "<group>"; };
+		E89FDE46214460CC00C2FB62 /* TimersBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimersBaseClass.swift; sourceTree = "<group>"; };
+		E89FDE48214460EB00C2FB62 /* TimersData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimersData.swift; sourceTree = "<group>"; };
+		E89FDE4A2144611B00C2FB62 /* TimersRows.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimersRows.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,6 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				0AE327A12066622E00C288E8 /* LogFileViewControler.swift */,
+				E87277B62145AEA000FE3FC3 /* TimersViewControler.swift */,
 				E811EB0520DFB47C00C3B62E /* SettingsViewController.swift */,
 				0A791EE41F93E43200765DF9 /* old_LightsOffViewController.swift */,
 			);
@@ -281,6 +294,7 @@
 			isa = PBXGroup;
 			children = (
 				0A420E491F140D0500BD2713 /* LogFileTableViewCell.swift */,
+				E87277B42145AD7600FE3FC3 /* TimersTableViewCell.swift */,
 				0A46C5FA1F56D58300ADB758 /* LightsTableViewCell.swift */,
 				0A6AD7AB206E65C200491B3E /* CommuteTableViewCell.swift */,
 				E811EB0720DFC78000C3B62E /* SettingsCollectionViewCell.swift */,
@@ -292,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				0ADF19B820658C5F008057DB /* ViewLogsController.swift */,
+				E87277B82145AF4A00FE3FC3 /* ViewTimersController.swift */,
 				0A95AECF207024740038D583 /* old_LightsOffController.swift */,
 				E811EB0920DFCDF200C3B62E /* SettingsController.swift */,
 			);
@@ -415,11 +430,30 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		E8BC4F7C20E2C384002C25DC /* Model */ = {
+		E89FDE442144600B00C2FB62 /* Logs */ = {
 			isa = PBXGroup;
 			children = (
 				E848524120E42E22001DC4F2 /* LogsData.swift */,
 				E848524020E42E22001DC4F2 /* LogsBaseClass.swift */,
+			);
+			path = Logs;
+			sourceTree = "<group>";
+		};
+		E89FDE452144601D00C2FB62 /* Timers */ = {
+			isa = PBXGroup;
+			children = (
+				E89FDE4A2144611B00C2FB62 /* TimersRows.swift */,
+				E89FDE48214460EB00C2FB62 /* TimersData.swift */,
+				E89FDE46214460CC00C2FB62 /* TimersBaseClass.swift */,
+			);
+			path = Timers;
+			sourceTree = "<group>";
+		};
+		E8BC4F7C20E2C384002C25DC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E89FDE452144601D00C2FB62 /* Timers */,
+				E89FDE442144600B00C2FB62 /* Logs */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -562,6 +596,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E89FDE47214460CC00C2FB62 /* TimersBaseClass.swift in Sources */,
 				E811EB0820DFC78000C3B62E /* SettingsCollectionViewCell.swift in Sources */,
 				0A04167D20C1CBDC009B47ED /* ColorSlider.swift in Sources */,
 				0A647EE72067E8CF00F7CD1E /* RoomLightsChanged.swift in Sources */,
@@ -573,6 +608,7 @@
 				0A647EE22067E8CF00F7CD1E /* RoomLightsActionAttributes.swift in Sources */,
 				0A1BFDAE2052EFF900B729F8 /* SplashController.swift in Sources */,
 				0A7ECE1F1FAE437B002AF233 /* CommuteViewController.swift in Sources */,
+				E87277B92145AF4A00FE3FC3 /* ViewTimersController.swift in Sources */,
 				E82C11CA20F1615B00A53A63 /* CommuteJourneys.swift in Sources */,
 				0A29F7BE20551AA600111C50 /* InsideWeatherInsideWeatherBaseClass.swift in Sources */,
 				E82C11C620F1614E00A53A63 /* CommuteBaseClass.swift in Sources */,
@@ -586,11 +622,13 @@
 				0A8AF14A1F24EF030064894F /* Helpers.swift in Sources */,
 				0A647EE62067E8CF00F7CD1E /* RoomLightsState.swift in Sources */,
 				0ADF19B920658C5F008057DB /* ViewLogsController.swift in Sources */,
+				E89FDE49214460EB00C2FB62 /* TimersData.swift in Sources */,
 				E82C11C120F1548C00A53A63 /* CommuteStatusData.swift in Sources */,
 				0A29F7BC20551AA100111C50 /* InsideWeatherData.swift in Sources */,
 				0AE327A22066622E00C288E8 /* LogFileViewControler.swift in Sources */,
 				E848524220E42E22001DC4F2 /* LogsBaseClass.swift in Sources */,
 				0A0463F11F38E99B004A738D /* ColorViewController.swift in Sources */,
+				E87277B52145AD7600FE3FC3 /* TimersTableViewCell.swift in Sources */,
 				0A791EE51F93E43200765DF9 /* old_LightsOffViewController.swift in Sources */,
 				0A6A5F9F204C6A5800314ECE /* HomeController.swift in Sources */,
 				E811EB0620DFB47C00C3B62E /* SettingsViewController.swift in Sources */,
@@ -601,11 +639,13 @@
 				0A647EE32067E8CF00F7CD1E /* RoomLightsBaseClass.swift in Sources */,
 				0A9EDC68205263E5001277EC /* CurrentWeatherData.swift in Sources */,
 				0A647EE52067E8CF00F7CD1E /* RoomLightsAttributesAttributes.swift in Sources */,
+				E87277B72145AEA000FE3FC3 /* TimersViewControler.swift in Sources */,
 				0A647EE42067E8CF00F7CD1E /* RoomLightsStateAttributes.swift in Sources */,
 				0A647EE02067E8CF00F7CD1E /* RoomLightsAttributes.swift in Sources */,
 				0A7DADE11F4A2BF9002FEE9F /* HueColorHelper.swift in Sources */,
 				0A385C2C20C8685F00CD312D /* VideoViewController.swift in Sources */,
 				E89D443820D4EFB000F6F142 /* VideoController.swift in Sources */,
+				E89FDE4B2144611B00C2FB62 /* TimersRows.swift in Sources */,
 				0A647EE12067E8CF00F7CD1E /* RoomLightsData.swift in Sources */,
 				0AE259041F704A0A002C6922 /* SettingsBundleHelper.swift in Sources */,
 			);

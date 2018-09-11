@@ -51,7 +51,6 @@ class CommuteController: NSObject, CLLocationManagerDelegate {
         let body = ["user": whoIs!, "lat": userLocation.coordinate.latitude, "long": userLocation.coordinate.longitude, "walk": walking! ] as [String : Any]
         let APIbody = try! JSONSerialization.data(withJSONObject: body, options: [])
         let request = putAPIHeaderData(url: "commute/getcommute", body: APIbody)
-
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {

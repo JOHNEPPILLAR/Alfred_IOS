@@ -1,5 +1,5 @@
 //
-//  APILogFileViewController.swift
+//  LogFileViewController.swift
 //  Alfred_IOS
 //
 //  Created by John Pillar on 12/09/2017.
