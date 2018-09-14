@@ -18,7 +18,12 @@ class TimersTableViewCell: UITableViewCell {
     func configureWithItem(item: TimersRows) {
 
         timerNameLabel.text = item.name
-        timerLabel.text = "\(item.hour ?? 0)" + ":" + "\(item.minute ?? 0)"
+
+        let paddedHour =  String(format: "%02d", item.hour!)
+        let minute =  "\(item.minute ?? 0)"
+        let paddedMinute = minute.padding(toLength: 2, withPad: "0", startingAt: 0)
+
+        timerLabel.text = paddedHour + ":" + paddedMinute
         
         ai_image.isHidden = false
         if !(item.aiOverride)! { ai_image.isHidden = true }
