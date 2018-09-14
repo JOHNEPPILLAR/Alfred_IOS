@@ -51,7 +51,7 @@ class ViewLogsController: UIViewController {
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: UIControlEvents.valueChanged)
+        refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: UIControl.Event.valueChanged)
         return refreshControl
     }()
     
@@ -95,7 +95,7 @@ extension ViewLogsController: LogsControllerDelegate {
       
         // Reposition view to top of table
         super.viewWillAppear(true)
-        LogFileTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableViewScrollPosition.top, animated: false)
+        LogFileTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableView.ScrollPosition.top, animated: false)
     }
     
 }

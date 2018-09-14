@@ -67,10 +67,10 @@ class CommuteViewController: UIViewController {
     @objc func getCommuteData() {
         if walking {
             walking = false
-            walkButton.setImage(UIImage(named: "ic_walk_red"), for: UIControlState.normal)
+            walkButton.setImage(UIImage(named: "ic_walk_red"), for: UIControl.State.normal)
         } else {
             walking = true
-            walkButton.setImage(UIImage(named: "ic_walk_green"), for: UIControlState.normal)
+            walkButton.setImage(UIImage(named: "ic_walk_green"), for: UIControl.State.normal)
         }
         SVProgressHUD.show(withStatus: "Loading")
         commuteController.getCommuteData(whoIsThis: whoIsThis!, walk: walking)

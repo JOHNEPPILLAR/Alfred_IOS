@@ -27,7 +27,7 @@ extension UISlider {
     open func setMinimumTrackImage(startColor: UIColor, endColor: UIColor, startPoint: CGPoint, endPoint: CGPoint) -> Void {
     
         let size = CGSize.init(width: self.bounds.width, height: 29)
-        let gradient = CIFilter(name: "CILinearGradient", withInputParameters: [:])
+        let gradient = CIFilter(name: "CILinearGradient", parameters: [:])
 
         guard gradient != nil else {
             return
@@ -47,7 +47,7 @@ extension UISlider {
         let context = CIContext.init(options: nil)
         let resultCGImage = context.createCGImage(ciImage!, from: CGRect.init(origin: CGPoint.zero, size: size))
         let image = UIImage.init(cgImage: resultCGImage!)
-        self.setMinimumTrackImage(image, for: UIControlState.normal)
-        self.setMinimumTrackImage(image, for: UIControlState.highlighted)
+        self.setMinimumTrackImage(image, for: UIControl.State.normal)
+        self.setMinimumTrackImage(image, for: UIControl.State.highlighted)
     }
 }

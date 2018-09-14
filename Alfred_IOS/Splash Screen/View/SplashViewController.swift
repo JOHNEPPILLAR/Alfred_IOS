@@ -31,7 +31,7 @@ class SplashViewController: UIViewController {
 
 extension SplashViewController: SplashControllerDelegate {
     func didFailDataUpdateWithError() {
-        let alert = UIAlertController(title: "Unable to connect to Alfred", message: "Please check your internet connection. Close the app and try again", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Unable to connect to Alfred", message: "Please check your internet connection. Close the app and try again", preferredStyle: UIAlertController.Style.alert)
         self.present(alert, animated: true, completion: nil)
     }
 

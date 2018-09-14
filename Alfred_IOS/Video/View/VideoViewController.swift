@@ -30,7 +30,7 @@ class VideoViewController: UIViewController {
         closeButton.addTarget(self, action: #selector(closeViewControler), for: .touchUpInside)
 
         // Add reStart stream button action
-        reStartStreamButton.setImage(UIImage(named: "ic_reStart"), for: UIControlState.normal)
+        reStartStreamButton.setImage(UIImage(named: "ic_reStart"), for: UIControl.State.normal)
         reStartStreamButton.addTarget(self, action: #selector(reStartStreams), for: .touchUpInside)
         reStartStreamButton.imageView?.contentMode = .scaleAspectFit
     }

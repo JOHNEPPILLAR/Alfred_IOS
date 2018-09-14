@@ -80,7 +80,7 @@ class HomeViewController: UIViewController {
         homeController.getInsideWeatherData() // Inside weather summary
 
         // Setup feature area
-        self.lightRoomsTableView?.rowHeight = UITableViewAutomaticDimension
+        self.lightRoomsTableView?.rowHeight = UITableView.automaticDimension
         self.lightRoomsTableView?.estimatedRowHeight = 80
         
         homeController.getLightRoomData() // Get data for light rooms table view
