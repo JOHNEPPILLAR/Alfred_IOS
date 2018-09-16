@@ -83,6 +83,10 @@ extension ViewLogsController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return LogsDataArray.count
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(80)
+    }
 }
 
 extension ViewLogsController: LogsControllerDelegate {
@@ -94,7 +98,7 @@ extension ViewLogsController: LogsControllerDelegate {
         LogsDataArray = data
       
         // Reposition view to top of table
-        super.viewWillAppear(true)
+        //super.viewWillAppear(true)
         LogFileTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableView.ScrollPosition.top, animated: false)
     }
     

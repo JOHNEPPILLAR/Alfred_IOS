@@ -14,6 +14,8 @@ class ViewTimersController: UIViewController {
     
     private let timersController = TimersController()
     
+    var timerID:Int = 0
+    
     @IBOutlet weak var TimersTableView: UITableView!
     
     fileprivate var TimersDataArray = [TimersData]() {
@@ -56,6 +58,14 @@ class ViewTimersController: UIViewController {
         timersController.getTimerData() // Get data
         refreshControl.endRefreshing() // Stop the pull to refresh UI
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if let vc = segue.destination as? ViewTimerController
+        {
+            vc.timerID = timerID
+        }
+    }
 }
 
 extension ViewTimersController: UITableViewDelegate {
@@ -79,6 +89,21 @@ extension ViewTimersController: UITableViewDataSource {
             return TimersDataArray[0].rowCount!
         } else { return 0 }
     }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {
+        let edit = UITableViewRowAction(style: .normal, title: "Edit") { action, index in
+            self.timerID = editActionsForRowAt.row
+            self.performSegue(withIdentifier: "timer", sender: self)
+        }
+        edit.backgroundColor = .lightGray
+        
+        return [edit]
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
 }
 
 extension ViewTimersController: TimersControllerDelegate {
@@ -90,7 +115,7 @@ extension ViewTimersController: TimersControllerDelegate {
         TimersDataArray = data
         
         // Reposition view to top of table
-        super.viewWillAppear(true)
+        //super.viewWillAppear(true)
         TimersTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableView.ScrollPosition.top, animated: false)
     }
     

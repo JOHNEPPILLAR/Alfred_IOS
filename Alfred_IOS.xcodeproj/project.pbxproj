@@ -41,10 +41,10 @@
 		0A95AED0207024740038D583 /* old_LightsOffController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95AECF207024740038D583 /* old_LightsOffController.swift */; };
 		0A9EDC662052639C001277EC /* CurrentWeatherBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9EDC652052639C001277EC /* CurrentWeatherBaseClass.swift */; };
 		0A9EDC68205263E5001277EC /* CurrentWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9EDC67205263E5001277EC /* CurrentWeatherData.swift */; };
-		0ADF19B920658C5F008057DB /* ViewLogsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADF19B820658C5F008057DB /* ViewLogsController.swift */; };
+		0ADF19B920658C5F008057DB /* LogsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADF19B820658C5F008057DB /* LogsController.swift */; };
 		0AE259021F70476D002C6922 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0AE259011F70476D002C6922 /* Settings.bundle */; };
 		0AE259041F704A0A002C6922 /* SettingsBundleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE259031F704A0A002C6922 /* SettingsBundleHelper.swift */; };
-		0AE327A22066622E00C288E8 /* LogFileViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE327A12066622E00C288E8 /* LogFileViewControler.swift */; };
+		0AE327A22066622E00C288E8 /* LogFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE327A12066622E00C288E8 /* LogFileViewController.swift */; };
 		A5CB0541EC331A4BFEF71AD8 /* Pods_Alfred_IOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2D4C3A3EE9E0D17B56318E /* Pods_Alfred_IOS.framework */; };
 		E811EB0620DFB47C00C3B62E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E811EB0520DFB47C00C3B62E /* SettingsViewController.swift */; };
 		E811EB0820DFC78000C3B62E /* SettingsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E811EB0720DFC78000C3B62E /* SettingsCollectionViewCell.swift */; };
@@ -60,11 +60,13 @@
 		E848524320E42E22001DC4F2 /* LogsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E848524120E42E22001DC4F2 /* LogsData.swift */; };
 		E87277B52145AD7600FE3FC3 /* TimersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87277B42145AD7600FE3FC3 /* TimersTableViewCell.swift */; };
 		E87277B72145AEA000FE3FC3 /* TimersViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87277B62145AEA000FE3FC3 /* TimersViewControler.swift */; };
-		E87277B92145AF4A00FE3FC3 /* ViewTimersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87277B82145AF4A00FE3FC3 /* ViewTimersController.swift */; };
+		E87277B92145AF4A00FE3FC3 /* TimersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87277B82145AF4A00FE3FC3 /* TimersController.swift */; };
 		E89D443820D4EFB000F6F142 /* VideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89D443720D4EFB000F6F142 /* VideoController.swift */; };
 		E89FDE47214460CC00C2FB62 /* TimersBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89FDE46214460CC00C2FB62 /* TimersBaseClass.swift */; };
 		E89FDE49214460EB00C2FB62 /* TimersData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89FDE48214460EB00C2FB62 /* TimersData.swift */; };
 		E89FDE4B2144611B00C2FB62 /* TimersRows.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89FDE4A2144611B00C2FB62 /* TimersRows.swift */; };
+		E8B63AB9214D96DA00EBF1A1 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B63AB8214D96DA00EBF1A1 /* TimerViewController.swift */; };
+		E8B63ABB214D980800EBF1A1 /* TimerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B63ABA214D980800EBF1A1 /* TimerController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,10 +109,10 @@
 		0A9EDC652052639C001277EC /* CurrentWeatherBaseClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherBaseClass.swift; sourceTree = "<group>"; };
 		0A9EDC67205263E5001277EC /* CurrentWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherData.swift; sourceTree = "<group>"; };
 		0AAD1023207D5564006B410C /* Alfred_IOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Alfred_IOS.entitlements; sourceTree = "<group>"; };
-		0ADF19B820658C5F008057DB /* ViewLogsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLogsController.swift; sourceTree = "<group>"; };
+		0ADF19B820658C5F008057DB /* LogsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogsController.swift; sourceTree = "<group>"; };
 		0AE259011F70476D002C6922 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		0AE259031F704A0A002C6922 /* SettingsBundleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBundleHelper.swift; sourceTree = "<group>"; };
-		0AE327A12066622E00C288E8 /* LogFileViewControler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogFileViewControler.swift; sourceTree = "<group>"; };
+		0AE327A12066622E00C288E8 /* LogFileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogFileViewController.swift; sourceTree = "<group>"; };
 		252CE001F08C2663E6B7452E /* Pods-Alfred_IOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alfred_IOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Alfred_IOS/Pods-Alfred_IOS.release.xcconfig"; sourceTree = "<group>"; };
 		BC2D4C3A3EE9E0D17B56318E /* Pods_Alfred_IOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Alfred_IOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA1CFC04806CB58D802C73D7 /* Pods-Alfred_IOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alfred_IOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Alfred_IOS/Pods-Alfred_IOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -128,11 +130,13 @@
 		E848524120E42E22001DC4F2 /* LogsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogsData.swift; sourceTree = "<group>"; };
 		E87277B42145AD7600FE3FC3 /* TimersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimersTableViewCell.swift; sourceTree = "<group>"; };
 		E87277B62145AEA000FE3FC3 /* TimersViewControler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimersViewControler.swift; sourceTree = "<group>"; };
-		E87277B82145AF4A00FE3FC3 /* ViewTimersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTimersController.swift; sourceTree = "<group>"; };
+		E87277B82145AF4A00FE3FC3 /* TimersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimersController.swift; sourceTree = "<group>"; };
 		E89D443720D4EFB000F6F142 /* VideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoController.swift; sourceTree = "<group>"; };
 		E89FDE46214460CC00C2FB62 /* TimersBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimersBaseClass.swift; sourceTree = "<group>"; };
 		E89FDE48214460EB00C2FB62 /* TimersData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimersData.swift; sourceTree = "<group>"; };
 		E89FDE4A2144611B00C2FB62 /* TimersRows.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimersRows.swift; sourceTree = "<group>"; };
+		E8B63AB8214D96DA00EBF1A1 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		E8B63ABA214D980800EBF1A1 /* TimerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,8 +278,9 @@
 		0A256EC4206F93C3008C5283 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0AE327A12066622E00C288E8 /* LogFileViewControler.swift */,
+				0AE327A12066622E00C288E8 /* LogFileViewController.swift */,
 				E87277B62145AEA000FE3FC3 /* TimersViewControler.swift */,
+				E8B63AB8214D96DA00EBF1A1 /* TimerViewController.swift */,
 				E811EB0520DFB47C00C3B62E /* SettingsViewController.swift */,
 				0A791EE41F93E43200765DF9 /* old_LightsOffViewController.swift */,
 			);
@@ -305,8 +310,9 @@
 		0A256ECE206F96DB008C5283 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				0ADF19B820658C5F008057DB /* ViewLogsController.swift */,
-				E87277B82145AF4A00FE3FC3 /* ViewTimersController.swift */,
+				0ADF19B820658C5F008057DB /* LogsController.swift */,
+				E87277B82145AF4A00FE3FC3 /* TimersController.swift */,
+				E8B63ABA214D980800EBF1A1 /* TimerController.swift */,
 				0A95AECF207024740038D583 /* old_LightsOffController.swift */,
 				E811EB0920DFCDF200C3B62E /* SettingsController.swift */,
 			);
@@ -606,9 +612,10 @@
 				0A69FB9F1F1160F500563A69 /* SplashViewController.swift in Sources */,
 				0A46C5FB1F56D58300ADB758 /* LightsTableViewCell.swift in Sources */,
 				0A647EE22067E8CF00F7CD1E /* RoomLightsActionAttributes.swift in Sources */,
+				E8B63ABB214D980800EBF1A1 /* TimerController.swift in Sources */,
 				0A1BFDAE2052EFF900B729F8 /* SplashController.swift in Sources */,
 				0A7ECE1F1FAE437B002AF233 /* CommuteViewController.swift in Sources */,
-				E87277B92145AF4A00FE3FC3 /* ViewTimersController.swift in Sources */,
+				E87277B92145AF4A00FE3FC3 /* TimersController.swift in Sources */,
 				E82C11CA20F1615B00A53A63 /* CommuteJourneys.swift in Sources */,
 				0A29F7BE20551AA600111C50 /* InsideWeatherInsideWeatherBaseClass.swift in Sources */,
 				E82C11C620F1614E00A53A63 /* CommuteBaseClass.swift in Sources */,
@@ -621,11 +628,11 @@
 				0A69FB811F10C25C00563A69 /* AppDelegate.swift in Sources */,
 				0A8AF14A1F24EF030064894F /* Helpers.swift in Sources */,
 				0A647EE62067E8CF00F7CD1E /* RoomLightsState.swift in Sources */,
-				0ADF19B920658C5F008057DB /* ViewLogsController.swift in Sources */,
+				0ADF19B920658C5F008057DB /* LogsController.swift in Sources */,
 				E89FDE49214460EB00C2FB62 /* TimersData.swift in Sources */,
 				E82C11C120F1548C00A53A63 /* CommuteStatusData.swift in Sources */,
 				0A29F7BC20551AA100111C50 /* InsideWeatherData.swift in Sources */,
-				0AE327A22066622E00C288E8 /* LogFileViewControler.swift in Sources */,
+				0AE327A22066622E00C288E8 /* LogFileViewController.swift in Sources */,
 				E848524220E42E22001DC4F2 /* LogsBaseClass.swift in Sources */,
 				0A0463F11F38E99B004A738D /* ColorViewController.swift in Sources */,
 				E87277B52145AD7600FE3FC3 /* TimersTableViewCell.swift in Sources */,
@@ -642,6 +649,7 @@
 				E87277B72145AEA000FE3FC3 /* TimersViewControler.swift in Sources */,
 				0A647EE42067E8CF00F7CD1E /* RoomLightsStateAttributes.swift in Sources */,
 				0A647EE02067E8CF00F7CD1E /* RoomLightsAttributes.swift in Sources */,
+				E8B63AB9214D96DA00EBF1A1 /* TimerViewController.swift in Sources */,
 				0A7DADE11F4A2BF9002FEE9F /* HueColorHelper.swift in Sources */,
 				0A385C2C20C8685F00CD312D /* VideoViewController.swift in Sources */,
 				E89D443820D4EFB000F6F142 /* VideoController.swift in Sources */,
@@ -800,7 +808,7 @@
 					"\"${PODS_ROOT}/Headers/Public\"",
 				);
 				INFOPLIST_FILE = Alfred_IOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "JP.Alfred-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -828,7 +836,7 @@
 					"\"${PODS_ROOT}/Headers/Public\"",
 				);
 				INFOPLIST_FILE = Alfred_IOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "JP.Alfred-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";

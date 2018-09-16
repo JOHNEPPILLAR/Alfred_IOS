@@ -11,10 +11,8 @@ import UIKit
 class LogFileTableViewCell: UITableViewCell {
 
     @IBOutlet weak var messageLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var infoImage: UIImageView!
     @IBOutlet weak var serviceLabel: UILabel!
-    @IBOutlet weak var functionLabel: UILabel!
     
     func configureWithItem(item: LogsData) {
         if item.type == "error" {
@@ -23,9 +21,7 @@ class LogFileTableViewCell: UITableViewCell {
             infoImage.image = #imageLiteral(resourceName: "ic_info")
         }
         messageLabel.text = item.message
-        dateLabel.text = item.time
-        serviceLabel.text = item.service
-        functionLabel.text = item.functionName
+        serviceLabel.text = item.service! + " (" + item.functionName! + ")"
     }
     
 }

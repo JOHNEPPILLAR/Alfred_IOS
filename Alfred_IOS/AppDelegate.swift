@@ -26,8 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().barTintColor = UIColor.clear
         UINavigationBar.appearance().isTranslucent = true
-        // let naxTexrColor = UIColor(red: 214/255, green: 214/255, blue: 214/255, alpha: 1.0)
-        // UINavigationBar.appearance().tintColor = naxTexrColor;
+        let naxTexrColor = UIColor.white
+        UINavigationBar.appearance().tintColor = naxTexrColor;
         
         registerForPushNotifications()
         
