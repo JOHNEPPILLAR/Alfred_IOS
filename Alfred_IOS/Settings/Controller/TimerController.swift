@@ -13,6 +13,7 @@ import SwiftyJSON
 protocol TimerControllerDelegate: class {
     func timerDidRecieveDataUpdate(data: [TimersData])
     func didFailDataUpdateWithError(displayMsg: Bool)
+    func timerSaved()
 }
 
 class TimerController: NSObject {
@@ -42,7 +43,7 @@ class TimerController: NSObject {
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
-                //self.delegate?.timerSaved() // Let the View controller know to show the data
+                self.delegate?.timerSaved()
             } else {
                 self.delegate?.didFailDataUpdateWithError(displayMsg: true) // Let the View controller know there was an error
             }

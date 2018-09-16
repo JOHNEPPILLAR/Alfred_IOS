@@ -90,7 +90,7 @@ class ViewTimerController: UIViewController {
         let components = Calendar.current.dateComponents([.hour, .minute], from: date)
         let hour = components.hour!
         let minute = components.minute!
-        let body = ["id": timerID, "name": name.text!, "hour": hour, "minute": minute, "ai_override": aiEnabled.isOn, "active": active.isOn ] as [String : Any]
+        let body = ["id": TimersDataArray[0].rows![timerID].id!, "name": name.text!, "hour": hour, "minute": minute, "ai_override": aiEnabled.isOn, "active": active.isOn ] as [String : Any]
         timerController.saveTimerData(body: body)
     }
 }
@@ -108,5 +108,9 @@ extension ViewTimerController: TimerControllerDelegate {
     func timerDidRecieveDataUpdate(data: [TimersData]) {
         TimersDataArray = data
     }
-    
+
+    func timerSaved() {
+        SVProgressHUD.showSuccess(withStatus: "Saved timer")
+        navigationItem.rightBarButtonItem!.isEnabled = true
+    }
 }
