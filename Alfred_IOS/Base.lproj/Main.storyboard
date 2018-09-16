@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -37,7 +36,6 @@
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.20000000000000001" green="0.3294117647" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="18V-ke-TWh"/>
                     </view>
                     <connections>
                         <segue destination="ma0-Ta-44m" kind="show" identifier="home" id="AdB-iZ-0HC"/>
@@ -120,7 +118,6 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="ZA6-6W-wya"/>
                     </view>
                     <connections>
                         <outlet property="active" destination="uc3-RC-xnX" id="1qr-4n-iOE"/>
@@ -186,7 +183,6 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="PR4-wo-KgD"/>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="iq8-gV-VUF">
                         <barButtonItem key="backBarButtonItem" title="Back" id="814-kp-VcC"/>
@@ -330,10 +326,9 @@
                             <constraint firstAttribute="bottom" secondItem="v5r-In-2lr" secondAttribute="bottom" id="PUX-xb-xSp"/>
                             <constraint firstItem="v5r-In-2lr" firstAttribute="top" secondItem="Lzy-gp-lRc" secondAttribute="top" id="QZh-BE-kUH"/>
                             <constraint firstItem="kwk-xh-0TI" firstAttribute="width" secondItem="Lzy-gp-lRc" secondAttribute="width" id="fpC-1V-ZLf"/>
-                            <constraint firstItem="v5r-In-2lr" firstAttribute="leading" secondItem="dfT-Fa-3JX" secondAttribute="leading" id="pB5-lx-ZGF"/>
-                            <constraint firstItem="dfT-Fa-3JX" firstAttribute="trailing" secondItem="v5r-In-2lr" secondAttribute="trailing" id="yL1-qv-xWu"/>
+                            <constraint firstItem="v5r-In-2lr" firstAttribute="leading" secondItem="Lzy-gp-lRc" secondAttribute="leading" id="pB5-lx-ZGF"/>
+                            <constraint firstAttribute="trailing" secondItem="v5r-In-2lr" secondAttribute="trailing" id="yL1-qv-xWu"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="dfT-Fa-3JX"/>
                     </view>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -416,7 +411,6 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="OpI-Za-QHs"/>
                     </view>
                     <connections>
                         <outlet property="closeButton" destination="nQs-zC-D8Z" id="qbB-Cc-lsg"/>
@@ -748,7 +742,6 @@
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="6gG-LP-43x"/>
                     </view>
                     <connections>
                         <outlet property="ActivityCommute" destination="wpv-A7-LgA" id="vhp-Yi-cVy"/>
@@ -881,7 +874,6 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="HmE-4o-EHq"/>
                     </view>
                     <connections>
                         <outlet property="LogFileTableView" destination="gYY-OB-bxq" id="9B3-Jx-hu9"/>
@@ -895,7 +887,7 @@
         <scene sceneID="N7j-u8-HUu">
             <objects>
                 <viewController title="Timers" id="lh9-HP-sfp" customClass="ViewTimersController" customModule="Alfred_IOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="nLl-QK-4He">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nLl-QK-4He">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -903,7 +895,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qWf-c5-EIo">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qWf-c5-EIo">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -955,7 +947,6 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="bmA-MW-XH1"/>
                     </view>
                     <connections>
                         <outlet property="TimersTableView" destination="qWf-c5-EIo" id="Swk-Ey-pg1"/>
