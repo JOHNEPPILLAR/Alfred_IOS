@@ -51,6 +51,7 @@ class ViewTimerController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         timerController.delegate = self
         timePicker.setValue(UIColor.white, forKey: "textColor")
         
@@ -83,19 +84,29 @@ class ViewTimerController: UIViewController {
 
     @objc func saveSettingsAction(sender: UIBarButtonItem) {
         self.navigationItem.rightBarButtonItem?.isEnabled = false // Disable the save button
+        
         // Call save function
+        let date = timePicker.date
+        let components = Calendar.current.dateComponents([.hour, .minute], from: date)
+        let hour = components.hour!
+        let minute = components.minute!
+        let body = ["id": timerID, "name": name.text!, "hour": hour, "minute": minute, "ai_override": aiEnabled.isOn, "active": active.isOn ] as [String : Any]
+        timerController.saveTimerData(body: body)
     }
-   
 }
 
 extension ViewTimerController: TimerControllerDelegate {
-    func didFailDataUpdateWithError() {
-        SVProgressHUD.showError(withStatus: "Network/API error")
+    func didFailDataUpdateWithError(displayMsg: Bool) {
+        if displayMsg {
+            SVProgressHUD.showError(withStatus: "Unable to save data")
+            navigationItem.rightBarButtonItem!.isEnabled = true
+        } else {
+            SVProgressHUD.showError(withStatus: "Network/API error")
+        }
     }
     
     func timerDidRecieveDataUpdate(data: [TimersData]) {
         TimersDataArray = data
-        //super.viewWillAppear(true)
     }
     
 }

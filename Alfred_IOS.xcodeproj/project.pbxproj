@@ -32,12 +32,10 @@
 		0A6A5F9B204C53D100314ECE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6A5F9A204C53D100314ECE /* HomeViewController.swift */; };
 		0A6A5F9F204C6A5800314ECE /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6A5F9E204C6A5800314ECE /* HomeController.swift */; };
 		0A6AD7AC206E65C200491B3E /* CommuteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6AD7AB206E65C200491B3E /* CommuteTableViewCell.swift */; };
-		0A791EE51F93E43200765DF9 /* old_LightsOffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A791EE41F93E43200765DF9 /* old_LightsOffViewController.swift */; };
 		0A7DADE11F4A2BF9002FEE9F /* HueColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DADE01F4A2BF9002FEE9F /* HueColorHelper.swift */; };
 		0A7ECE1F1FAE437B002AF233 /* CommuteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7ECE1E1FAE437B002AF233 /* CommuteViewController.swift */; };
 		0A80C09C1F24812E0082F77C /* Alfred.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A80C09B1F24812E0082F77C /* Alfred.plist */; };
 		0A8AF14A1F24EF030064894F /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8AF1491F24EF030064894F /* Helpers.swift */; };
-		0A95AED0207024740038D583 /* old_LightsOffController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95AECF207024740038D583 /* old_LightsOffController.swift */; };
 		0A9EDC662052639C001277EC /* CurrentWeatherBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9EDC652052639C001277EC /* CurrentWeatherBaseClass.swift */; };
 		0A9EDC68205263E5001277EC /* CurrentWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9EDC67205263E5001277EC /* CurrentWeatherData.swift */; };
 		0ADF19B920658C5F008057DB /* LogsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADF19B820658C5F008057DB /* LogsController.swift */; };
@@ -99,12 +97,10 @@
 		0A6A5F9A204C53D100314ECE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0A6A5F9E204C6A5800314ECE /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		0A6AD7AB206E65C200491B3E /* CommuteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteTableViewCell.swift; sourceTree = "<group>"; };
-		0A791EE41F93E43200765DF9 /* old_LightsOffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = old_LightsOffViewController.swift; sourceTree = "<group>"; };
 		0A7DADE01F4A2BF9002FEE9F /* HueColorHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HueColorHelper.swift; sourceTree = "<group>"; };
 		0A7ECE1E1FAE437B002AF233 /* CommuteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteViewController.swift; sourceTree = "<group>"; };
 		0A80C09B1F24812E0082F77C /* Alfred.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Alfred.plist; sourceTree = "<group>"; };
 		0A8AF1491F24EF030064894F /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
-		0A95AECF207024740038D583 /* old_LightsOffController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = old_LightsOffController.swift; sourceTree = "<group>"; };
 		0A9EDC652052639C001277EC /* CurrentWeatherBaseClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherBaseClass.swift; sourceTree = "<group>"; };
 		0A9EDC67205263E5001277EC /* CurrentWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherData.swift; sourceTree = "<group>"; };
 		0AAD1023207D5564006B410C /* Alfred_IOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Alfred_IOS.entitlements; sourceTree = "<group>"; };
@@ -282,7 +278,6 @@
 				E87277B62145AEA000FE3FC3 /* TimersViewControler.swift */,
 				E8B63AB8214D96DA00EBF1A1 /* TimerViewController.swift */,
 				E811EB0520DFB47C00C3B62E /* SettingsViewController.swift */,
-				0A791EE41F93E43200765DF9 /* old_LightsOffViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -313,7 +308,6 @@
 				0ADF19B820658C5F008057DB /* LogsController.swift */,
 				E87277B82145AF4A00FE3FC3 /* TimersController.swift */,
 				E8B63ABA214D980800EBF1A1 /* TimerController.swift */,
-				0A95AECF207024740038D583 /* old_LightsOffController.swift */,
 				E811EB0920DFCDF200C3B62E /* SettingsController.swift */,
 			);
 			path = Controller;
@@ -608,7 +602,6 @@
 				0A647EE72067E8CF00F7CD1E /* RoomLightsChanged.swift in Sources */,
 				0A69FB891F10C25C00563A69 /* Alfred_IOS.xcdatamodeld in Sources */,
 				0A6A5F9B204C53D100314ECE /* HomeViewController.swift in Sources */,
-				0A95AED0207024740038D583 /* old_LightsOffController.swift in Sources */,
 				0A69FB9F1F1160F500563A69 /* SplashViewController.swift in Sources */,
 				0A46C5FB1F56D58300ADB758 /* LightsTableViewCell.swift in Sources */,
 				0A647EE22067E8CF00F7CD1E /* RoomLightsActionAttributes.swift in Sources */,
@@ -636,7 +629,6 @@
 				E848524220E42E22001DC4F2 /* LogsBaseClass.swift in Sources */,
 				0A0463F11F38E99B004A738D /* ColorViewController.swift in Sources */,
 				E87277B52145AD7600FE3FC3 /* TimersTableViewCell.swift in Sources */,
-				0A791EE51F93E43200765DF9 /* old_LightsOffViewController.swift in Sources */,
 				0A6A5F9F204C6A5800314ECE /* HomeController.swift in Sources */,
 				E811EB0620DFB47C00C3B62E /* SettingsViewController.swift in Sources */,
 				0A1BFDB3205315B400B729F8 /* CommuteController.swift in Sources */,

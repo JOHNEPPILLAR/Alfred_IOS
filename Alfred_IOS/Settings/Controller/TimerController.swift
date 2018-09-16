@@ -12,7 +12,7 @@ import SwiftyJSON
 // MARK: Delegate callback functions
 protocol TimerControllerDelegate: class {
     func timerDidRecieveDataUpdate(data: [TimersData])
-    func didFailDataUpdateWithError()
+    func didFailDataUpdateWithError(displayMsg: Bool)
 }
 
 class TimerController: NSObject {
@@ -29,12 +29,26 @@ class TimerController: NSObject {
                 let data = [TimersBaseClass(json: responseJSON!)] // Update data store
                 self.delegate?.timerDidRecieveDataUpdate(data: [data[0].data!]) // Let the View controller know to show the data
             } else {
-                self.delegate?.didFailDataUpdateWithError() // Let the View controller know there was an error
+                self.delegate?.didFailDataUpdateWithError(displayMsg: false) // Let the View controller know there was an error
             }
         })
         task.resume()
     }
     
+    func saveTimerData(body: [String : Any]) {
+        let configuration = URLSessionConfiguration.ephemeral
+        let APIbody: Data = try! JSONSerialization.data(withJSONObject: body, options: [])
+        let request = putAPIHeaderData(url: "settings/saveSchedule", body: APIbody)
+        let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
+        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+            if checkAPIData(apiData: data, response: response, error: error) {
+                //self.delegate?.timerSaved() // Let the View controller know to show the data
+            } else {
+                self.delegate?.didFailDataUpdateWithError(displayMsg: true) // Let the View controller know there was an error
+            }
+        })
+        task.resume()
+    }
 }
 
 
