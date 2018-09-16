@@ -10,7 +10,7 @@
 </key>
 	<string></string>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<string>en_GB</string>
 	<key>CFBundleDisplayName</key>
 	<string>Alfred</string>
 	<key>CFBundleExecutable</key>
@@ -26,7 +26,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>3.1</string>
 	<key>CFBundleVersion</key>
-	<string>2126</string>
+	<string>2133</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>

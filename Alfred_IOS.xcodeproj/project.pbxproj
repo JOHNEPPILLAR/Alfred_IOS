@@ -26,7 +26,6 @@
 		0A647EE62067E8CF00F7CD1E /* RoomLightsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A647EDD2067E8CF00F7CD1E /* RoomLightsState.swift */; };
 		0A647EE72067E8CF00F7CD1E /* RoomLightsChanged.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A647EDE2067E8CF00F7CD1E /* RoomLightsChanged.swift */; };
 		0A69FB811F10C25C00563A69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A69FB801F10C25C00563A69 /* AppDelegate.swift */; };
-		0A69FB861F10C25C00563A69 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A69FB841F10C25C00563A69 /* Main.storyboard */; };
 		0A69FB891F10C25C00563A69 /* Alfred_IOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0A69FB871F10C25C00563A69 /* Alfred_IOS.xcdatamodeld */; };
 		0A69FB8B1F10C25C00563A69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A69FB8A1F10C25C00563A69 /* Assets.xcassets */; };
 		0A69FB9F1F1160F500563A69 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A69FB9E1F1160F500563A69 /* SplashViewController.swift */; };
@@ -56,6 +55,7 @@
 		E82C11C620F1614E00A53A63 /* CommuteBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82C11C420F1614E00A53A63 /* CommuteBaseClass.swift */; };
 		E82C11C920F1615B00A53A63 /* CommuteLegs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82C11C720F1615B00A53A63 /* CommuteLegs.swift */; };
 		E82C11CA20F1615B00A53A63 /* CommuteJourneys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82C11C820F1615B00A53A63 /* CommuteJourneys.swift */; };
+		E845B9C1214E980900A75D96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E845B9C0214E980900A75D96 /* Main.storyboard */; };
 		E848524220E42E22001DC4F2 /* LogsBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E848524020E42E22001DC4F2 /* LogsBaseClass.swift */; };
 		E848524320E42E22001DC4F2 /* LogsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E848524120E42E22001DC4F2 /* LogsData.swift */; };
 		E87277B52145AD7600FE3FC3 /* TimersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87277B42145AD7600FE3FC3 /* TimersTableViewCell.swift */; };
@@ -93,7 +93,6 @@
 		0A647EDE2067E8CF00F7CD1E /* RoomLightsChanged.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomLightsChanged.swift; sourceTree = "<group>"; };
 		0A69FB7D1F10C25C00563A69 /* Alfred_IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alfred_IOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A69FB801F10C25C00563A69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0A69FB851F10C25C00563A69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0A69FB881F10C25C00563A69 /* Alfred_IOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Alfred_IOS.xcdatamodel; sourceTree = "<group>"; };
 		0A69FB8A1F10C25C00563A69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A69FB9E1F1160F500563A69 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +125,7 @@
 		E82C11C420F1614E00A53A63 /* CommuteBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteBaseClass.swift; sourceTree = "<group>"; };
 		E82C11C720F1615B00A53A63 /* CommuteLegs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteLegs.swift; sourceTree = "<group>"; };
 		E82C11C820F1615B00A53A63 /* CommuteJourneys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteJourneys.swift; sourceTree = "<group>"; };
+		E845B9C0214E980900A75D96 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E848524020E42E22001DC4F2 /* LogsBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogsBaseClass.swift; sourceTree = "<group>"; };
 		E848524120E42E22001DC4F2 /* LogsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogsData.swift; sourceTree = "<group>"; };
 		E87277B42145AD7600FE3FC3 /* TimersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimersTableViewCell.swift; sourceTree = "<group>"; };
@@ -357,6 +357,7 @@
 		0A69FB7F1F10C25C00563A69 /* Alfred_IOS */ = {
 			isa = PBXGroup;
 			children = (
+				E845B9C0214E980900A75D96 /* Main.storyboard */,
 				E811EB0D20E0355400C3B62E /* SettingsViewController.json */,
 				0A385C2920C8680E00CD312D /* Video */,
 				0AAD1023207D5564006B410C /* Alfred_IOS.entitlements */,
@@ -368,7 +369,6 @@
 				0A256EC1206F9340008C5283 /* Home */,
 				0A256EB8206F922E008C5283 /* Helpers */,
 				0A69FB801F10C25C00563A69 /* AppDelegate.swift */,
-				0A69FB841F10C25C00563A69 /* Main.storyboard */,
 				0A80C09B1F24812E0082F77C /* Alfred.plist */,
 				0A256ECC206F964F008C5283 /* Info.plist */,
 				0A69FB8A1F10C25C00563A69 /* Assets.xcassets */,
@@ -534,10 +534,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AE259021F70476D002C6922 /* Settings.bundle in Resources */,
+				E845B9C1214E980900A75D96 /* Main.storyboard in Resources */,
 				0A80C09C1F24812E0082F77C /* Alfred.plist in Resources */,
 				E811EB0E20E0355400C3B62E /* SettingsViewController.json in Resources */,
 				0A69FB8B1F10C25C00563A69 /* Assets.xcassets in Resources */,
-				0A69FB861F10C25C00563A69 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -660,17 +660,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		0A69FB841F10C25C00563A69 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0A69FB851F10C25C00563A69 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		0A69FB901F10C25C00563A69 /* Debug */ = {
