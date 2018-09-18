@@ -26,9 +26,9 @@ class TimersTableViewCell: UITableViewCell {
         timerLabel.text = paddedHour + ":" + paddedMinute
         
         ai_image.isHidden = false
-        if !(item.aiOverride)! { ai_image.isHidden = true }
+        if !item.aiOverride! { ai_image.isHidden = true }
         
         active_image.image = #imageLiteral(resourceName: "ic_good")
-        if !(item.active)! { ai_image.image = #imageLiteral(resourceName: "ic_bad") }
+        if !item.active! { active_image.image = #imageLiteral(resourceName: "ic_bad") }
     }
 }

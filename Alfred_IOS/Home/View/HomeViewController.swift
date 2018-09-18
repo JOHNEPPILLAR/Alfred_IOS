@@ -28,7 +28,7 @@ class HomeViewController: UIViewController {
     
     fileprivate var RoomLightsDataArray = [RoomLightsData]() {
         didSet {
-            lightRoomsTableView?.reloadData()
+            lightRoomsTableView!.reloadData()
             ActivityRoomLightTableView.stopAnimating()
         }
     }
