@@ -29,8 +29,11 @@ class ViewTimerController: UIViewController {
     @IBAction func ChangeColorLoop(_ sender: UISwitch) {
         if (sender.isOn) {
             sceneMoreButton.isHidden = true
+            sceneText.textColor = UIColor.gray
+            
         } else {
             sceneMoreButton.isHidden = false
+            sceneText.textColor = UIColor.white
         }
 
     
@@ -54,7 +57,7 @@ class ViewTimerController: UIViewController {
             self.timePicker.datePickerMode = .time
             self.timePicker.setDate(date!, animated: false)
             
-            // Enable edit ui untill data is loaded
+            // Enable edit of data
             name.isEnabled = true
             active.isEnabled = true
             aiEnabled.isEnabled = true
@@ -62,11 +65,14 @@ class ViewTimerController: UIViewController {
             self.navigationItem.rightBarButtonItem?.isEnabled = true // Enable the save button
             
             switch TimersDataArray[0].rows![timerID].type {
-            case 4,5,6?: moreDetailsView.isHidden = false
-            if (TimersDataArray[0].rows![timerID].color_loop!) { colorLoopSwitch.isOn = true } else { colorLoopSwitch.isOn = false }
-            brightness.value = Float(TimersDataArray[0].rows![timerID].brightness!)
-            sceneText.text = TimersDataArray[0].rows![timerID].scene
-            lightGroupText.text = "\(TimersDataArray[0].rows![timerID].light_group_number ?? 0)"
+            case 4,5,6?:
+                moreDetailsView.isHidden = false
+                sceneID.text = TimersDataArray[0].rows![timerID].scene
+                lightGroupID.text = "\(TimersDataArray[0].rows![timerID].light_group_number ?? 0)"
+                if (TimersDataArray[0].rows![timerID].color_loop!) { colorLoopSwitch.isOn = true } else { colorLoopSwitch.isOn = false }
+                brightness.value = Float(TimersDataArray[0].rows![timerID].brightness!)
+                sceneText.text = TimersDataArray[0].rows![timerID].scene
+                lightGroupText.text = "\(TimersDataArray[0].rows![timerID].light_group_number ?? 0)"
                 
             default: moreDetailsView.isHidden = true
             }
