@@ -35,8 +35,6 @@ class ViewTimerController: UIViewController {
             sceneMoreButton.isHidden = false
             sceneText.textColor = UIColor.white
         }
-
-    
     }
     
     private let timerController = TimerController()
@@ -67,16 +65,29 @@ class ViewTimerController: UIViewController {
             switch TimersDataArray[0].rows![timerID].type {
             case 4,5,6?:
                 moreDetailsView.isHidden = false
-                sceneID.text = TimersDataArray[0].rows![timerID].scene
-                lightGroupID.text = "\(TimersDataArray[0].rows![timerID].light_group_number ?? 0)"
                 if (TimersDataArray[0].rows![timerID].color_loop!) { colorLoopSwitch.isOn = true } else { colorLoopSwitch.isOn = false }
                 brightness.value = Float(TimersDataArray[0].rows![timerID].brightness!)
                 sceneText.text = TimersDataArray[0].rows![timerID].scene
-                lightGroupText.text = "\(TimersDataArray[0].rows![timerID].light_group_number ?? 0)"
+
+                // Get light group data
+                timerController.getLightRoomData()
                 
             default: moreDetailsView.isHidden = true
             }
             
+            if (moreDetailsView.isHidden) {
+                SVProgressHUD.dismiss() // Stop spinner
+            }
+        }
+    }
+    
+    fileprivate var RoomLightsDataArray = [RoomLightsData]() {
+        didSet {
+            for item in RoomLightsDataArray {
+                if (item.attributes?.attributes?.id == "\(TimersDataArray[0].rows![timerID].light_group_number ?? 0)") {
+                 lightGroupText.text = item.attributes?.attributes?.name
+                }
+            }
             SVProgressHUD.dismiss() // Stop spinner
         }
     }
@@ -144,5 +155,9 @@ extension ViewTimerController: TimerControllerDelegate {
     func timerSaved() {
         SVProgressHUD.showSuccess(withStatus: "Saved timer")
         navigationItem.rightBarButtonItem!.isEnabled = true
+    }
+    
+    func lightRoomDidRecieveDataUpdate(data: [RoomLightsData]) {
+        RoomLightsDataArray = data
     }
 }
