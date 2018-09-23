@@ -18,7 +18,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var ActivityRoomLightTableView: UIActivityIndicatorView!
     @IBOutlet weak var lightRoomView: UIScrollView!
     @IBOutlet weak var lightRoomsTableView: UITableView?
-    @IBOutlet weak var settingsIcon: UIImageView!
+    @IBOutlet weak var menuIcon: UIImageView!
     
     private let homeController = HomeController()
 
@@ -54,7 +54,7 @@ class HomeViewController: UIViewController {
         let appDefaults = [String:AnyObject]()
         UserDefaults.standard.register(defaults: appDefaults)
         let defaults = UserDefaults.standard
-        settingsIcon.isHidden = true
+        menuIcon.isHidden = true
         var whoIsThis = defaults.string(forKey: "who_is_this")
         if (whoIsThis == nil) {
             whoIsThis = ""
@@ -63,7 +63,7 @@ class HomeViewController: UIViewController {
             ActivityCommute.stopAnimating()
         }
         if (whoIsThis == "JP") {
-            settingsIcon.isHidden = false
+            menuIcon.isHidden = false
         }
 
         // Calc which part of day it is and set greeting message

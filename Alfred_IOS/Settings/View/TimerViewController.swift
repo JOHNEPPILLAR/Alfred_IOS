@@ -18,7 +18,23 @@ class ViewTimerController: UIViewController {
     @IBOutlet weak var aiEnabled: UISwitch!
     @IBOutlet weak var active: UISwitch!
     @IBOutlet weak var timePicker: UIDatePicker!
-    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var moreDetailsView: UIView!
+    @IBOutlet weak var colorLoopSwitch: UISwitch!
+    @IBOutlet weak var brightness: UISlider!
+    @IBOutlet weak var sceneText: UITextField!
+    @IBOutlet weak var lightGroupText: UITextField!
+    @IBOutlet weak var sceneID: UILabel!
+    @IBOutlet weak var lightGroupID: UILabel!
+    @IBOutlet weak var sceneMoreButton: UIView!
+    @IBAction func ChangeColorLoop(_ sender: UISwitch) {
+        if (sender.isOn) {
+            sceneMoreButton.isHidden = true
+        } else {
+            sceneMoreButton.isHidden = false
+        }
+
+    
+    }
     
     private let timerController = TimerController()
     
@@ -44,6 +60,16 @@ class ViewTimerController: UIViewController {
             aiEnabled.isEnabled = true
             timePicker.isEnabled = true
             self.navigationItem.rightBarButtonItem?.isEnabled = true // Enable the save button
+            
+            switch TimersDataArray[0].rows![timerID].type {
+            case 4,5,6?: moreDetailsView.isHidden = false
+            if (TimersDataArray[0].rows![timerID].color_loop!) { colorLoopSwitch.isOn = true } else { colorLoopSwitch.isOn = false }
+            brightness.value = Float(TimersDataArray[0].rows![timerID].brightness!)
+            sceneText.text = TimersDataArray[0].rows![timerID].scene
+            lightGroupText.text = "\(TimersDataArray[0].rows![timerID].light_group_number ?? 0)"
+                
+            default: moreDetailsView.isHidden = true
+            }
             
             SVProgressHUD.dismiss() // Stop spinner
         }
