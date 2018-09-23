@@ -17,24 +17,25 @@ class ViewTimerController: UIViewController {
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var aiEnabled: UISwitch!
     @IBOutlet weak var active: UISwitch!
-    @IBOutlet weak var timePicker: UIDatePicker!
+    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var moreDetailsView: UIView!
     @IBOutlet weak var colorLoopSwitch: UISwitch!
     @IBOutlet weak var brightness: UISlider!
+    @IBOutlet weak var sceneLabel: UILabel!
     @IBOutlet weak var sceneText: UITextField!
     @IBOutlet weak var lightGroupText: UITextField!
-    @IBOutlet weak var sceneID: UILabel!
-    @IBOutlet weak var lightGroupID: UILabel!
     @IBOutlet weak var sceneMoreButton: UIView!
     @IBAction func ChangeColorLoop(_ sender: UISwitch) {
         if (sender.isOn) {
             sceneMoreButton.isHidden = true
-            sceneText.textColor = UIColor.gray
-            
+            sceneText.isHidden = true
+            sceneLabel.isHidden = true
         } else {
             sceneMoreButton.isHidden = false
-            sceneText.textColor = UIColor.white
+            sceneText.isHidden = false
+            sceneLabel.isHidden = false
         }
+        TimersDataArray[0].rows![timerID].color_loop = sender.isOn
     }
     
     private let timerController = TimerController()
@@ -45,21 +46,16 @@ class ViewTimerController: UIViewController {
             if (TimersDataArray[0].rows![timerID].aiOverride!) { aiEnabled.isOn = true } else { aiEnabled.isOn = false }
             if (TimersDataArray[0].rows![timerID].active!) { active.isOn = true } else { active.isOn = false }
 
-            let hour =  "\(TimersDataArray[0].rows![timerID].hour ?? 0)"
+            let paddedHour =  String(format: "%02d", TimersDataArray[0].rows![timerID].hour!)
             let minute =  "\(TimersDataArray[0].rows![timerID].minute ?? 0)"
-            
-            let strDate = hour + ":" + minute
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "HH:mm"
-            let date = dateFormatter.date(from: strDate)
-            self.timePicker.datePickerMode = .time
-            self.timePicker.setDate(date!, animated: false)
+            let paddedMinute = minute.padding(toLength: 2, withPad: "0", startingAt: 0)
+            let strTime = paddedHour + ":" + paddedMinute
+            timeLabel.text = strTime
             
             // Enable edit of data
             name.isEnabled = true
             active.isEnabled = true
             aiEnabled.isEnabled = true
-            timePicker.isEnabled = true
             self.navigationItem.rightBarButtonItem?.isEnabled = true // Enable the save button
             
             switch TimersDataArray[0].rows![timerID].type {
@@ -96,13 +92,11 @@ class ViewTimerController: UIViewController {
         super.viewDidLoad()
         
         timerController.delegate = self
-        timePicker.setValue(UIColor.white, forKey: "textColor")
         
         // Disable edit ui untill data is loaded
         name.isEnabled = false
         active.isEnabled = false
         aiEnabled.isEnabled = false
-        timePicker.isEnabled = false
         self.navigationItem.rightBarButtonItem?.isEnabled = false // Disable the save button
     }
     
@@ -129,11 +123,9 @@ class ViewTimerController: UIViewController {
         self.navigationItem.rightBarButtonItem?.isEnabled = false // Disable the save button
         
         // Call save function
-        let date = timePicker.date
-        let components = Calendar.current.dateComponents([.hour, .minute], from: date)
-        let hour = components.hour!
-        let minute = components.minute!
-        let body = ["id": TimersDataArray[0].rows![timerID].id!, "name": name.text!, "hour": hour, "minute": minute, "ai_override": aiEnabled.isOn, "active": active.isOn ] as [String : Any]
+        let hour = TimersDataArray[0].rows![timerID].hour
+        let minute = TimersDataArray[0].rows![timerID].minute
+        let body = ["id": TimersDataArray[0].rows![timerID].id!, "name": name.text!, "hour": hour!, "minute": minute!, "ai_override": aiEnabled.isOn, "active": active.isOn ] as [String : Any]
         timerController.saveTimerData(body: body)
     }
 }
