@@ -37,6 +37,45 @@ class ViewTimerController: UIViewController {
         }
         TimersDataArray[0].rows![timerID].color_loop = sender.isOn
     }
+  
+    @IBAction func ChangeTimeTap(_ sender: Any) {
+        let dateChooserAlert = UIAlertController(title: "Seelct a time...", message: nil, preferredStyle: .actionSheet)
+        
+        let datePicker: UIDatePicker = UIDatePicker()
+        // Posiiton date picket within a view
+        datePicker.frame = CGRect(x: 10, y: 30, width: self.view.frame.width, height: 150)
+        datePicker.datePickerMode = .time
+        
+        let hour =  "\(TimersDataArray[0].rows![timerID].hour ?? 0)"
+        let minute =  "\(TimersDataArray[0].rows![timerID].minute ?? 0)"
+        let strDate = hour + ":" + minute
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        let date = dateFormatter.date(from: strDate)
+        datePicker.setDate(date!, animated: false)
+        
+        //datePicker.date =
+        dateChooserAlert.view.addSubview(datePicker)
+        
+        dateChooserAlert.addAction(UIAlertAction(title: "Done", style: .cancel, handler: { action in
+
+            let date = datePicker.date
+            let components = Calendar.current.dateComponents([.hour, .minute], from: date)
+            self.TimersDataArray[0].rows![self.timerID].hour = components.hour!
+            self.TimersDataArray[0].rows![self.timerID].minute = components.minute!
+
+            let paddedHour =  String(format: "%02d", self.TimersDataArray[0].rows![self.timerID].hour!)
+            let minute =  "\(self.TimersDataArray[0].rows![self.timerID].minute ?? 0)"
+            let paddedMinute = minute.padding(toLength: 2, withPad: "0", startingAt: 0)
+            let strTime = paddedHour + ":" + paddedMinute
+            self.timeLabel.text = strTime
+            
+        }))
+        dateChooserAlert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
+        let height: NSLayoutConstraint = NSLayoutConstraint(item: dateChooserAlert.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.1, constant: 300)
+        dateChooserAlert.view.addConstraint(height)
+        self.present(dateChooserAlert, animated: true, completion: nil)
+    }
     
     private let timerController = TimerController()
     
