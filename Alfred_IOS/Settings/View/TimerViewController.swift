@@ -80,8 +80,9 @@ class ViewTimerController: UIViewController {
         roomPicker.dataSource = self
         roomPicker.delegate = self
         
-        //var defaultRowIndex = find(RoomLightsDataArray,itemAtDefaultPosition!)
-        //roomPicker.selectRow(defaultRowIndex!, inComponent: 0, animated: false)
+        var selectedRoomIndex = RoomLightsDataArray.index(where: { $0.attributes?.attributes!.id == "\(self.TimersDataArray[0].rows![self.timerID].light_group_number ?? 0)" })
+        if(selectedRoomIndex == nil) { selectedRoomIndex = 0 }
+        roomPicker.selectRow(selectedRoomIndex!, inComponent: 0, animated: false)
         
         roomChooserAlert.view.addSubview(roomPicker);
         roomChooserAlert.addAction(UIAlertAction(title: "Done", style: .cancel, handler: { action in
