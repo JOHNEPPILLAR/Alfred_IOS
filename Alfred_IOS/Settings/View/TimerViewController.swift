@@ -38,11 +38,10 @@ class ViewTimerController: UIViewController {
         TimersDataArray[0].rows![timerID].color_loop = sender.isOn
     }
   
-    @IBAction func ChangeTimeTap(_ sender: Any) {
-        let dateChooserAlert = UIAlertController(title: "Seelct a time...", message: nil, preferredStyle: .actionSheet)
-        
+    @IBAction func ChangeTimeTap(_ sender: UITapGestureRecognizer) {
+        let dateChooserAlert = UIAlertController(title: "Select a time...", message: nil, preferredStyle: .actionSheet)
+        let pickerHeight: NSLayoutConstraint = NSLayoutConstraint(item: dateChooserAlert.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.1, constant: 300)
         let datePicker: UIDatePicker = UIDatePicker()
-        // Posiiton date picket within a view
         datePicker.frame = CGRect(x: 10, y: 30, width: self.view.frame.width, height: 150)
         datePicker.datePickerMode = .time
         
@@ -53,17 +52,14 @@ class ViewTimerController: UIViewController {
         dateFormatter.dateFormat = "HH:mm"
         let date = dateFormatter.date(from: strDate)
         datePicker.setDate(date!, animated: false)
-        
-        //datePicker.date =
         dateChooserAlert.view.addSubview(datePicker)
         
         dateChooserAlert.addAction(UIAlertAction(title: "Done", style: .cancel, handler: { action in
-
             let date = datePicker.date
             let components = Calendar.current.dateComponents([.hour, .minute], from: date)
             self.TimersDataArray[0].rows![self.timerID].hour = components.hour!
             self.TimersDataArray[0].rows![self.timerID].minute = components.minute!
-
+            
             let paddedHour =  String(format: "%02d", self.TimersDataArray[0].rows![self.timerID].hour!)
             let minute =  "\(self.TimersDataArray[0].rows![self.timerID].minute ?? 0)"
             let paddedMinute = minute.padding(toLength: 2, withPad: "0", startingAt: 0)
@@ -72,9 +68,29 @@ class ViewTimerController: UIViewController {
             
         }))
         dateChooserAlert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
-        let height: NSLayoutConstraint = NSLayoutConstraint(item: dateChooserAlert.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.1, constant: 300)
-        dateChooserAlert.view.addConstraint(height)
+        dateChooserAlert.view.addConstraint(pickerHeight)
         self.present(dateChooserAlert, animated: true, completion: nil)
+    }
+    
+    @IBAction func RoomChangeTap(_ sender: UITapGestureRecognizer) {
+        let roomChooserAlert = UIAlertController(title: "Select a room...", message: nil, preferredStyle: .actionSheet)
+        let pickerHeight: NSLayoutConstraint = NSLayoutConstraint(item: roomChooserAlert.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.1, constant: 300)
+        let pickerFrame = CGRect(x: 0, y: 30, width: self.view.frame.width, height: 160)
+        let roomPicker: UIPickerView = UIPickerView(frame: pickerFrame);
+        roomPicker.dataSource = self
+        roomPicker.delegate = self
+        
+        //var defaultRowIndex = find(RoomLightsDataArray,itemAtDefaultPosition!)
+        //roomPicker.selectRow(defaultRowIndex!, inComponent: 0, animated: false)
+        
+        roomChooserAlert.view.addSubview(roomPicker);
+        roomChooserAlert.addAction(UIAlertAction(title: "Done", style: .cancel, handler: { action in
+            let selectedRoom = self.RoomLightsDataArray.compactMap({ $0 }).filter { (($0.attributes?.attributes?.id!.contains("\(self.TimersDataArray[0].rows![self.timerID].light_group_number ?? 0)" ))!) }
+            self.lightGroupText.text = selectedRoom[0].attributes?.attributes?.name
+        }))
+        roomChooserAlert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
+        roomChooserAlert.view.addConstraint(pickerHeight)
+        self.present(roomChooserAlert, animated: true, completion: nil)
     }
     
     private let timerController = TimerController()
@@ -101,7 +117,7 @@ class ViewTimerController: UIViewController {
             case 4,5,6?:
                 moreDetailsView.isHidden = false
                 if (TimersDataArray[0].rows![timerID].color_loop!) { colorLoopSwitch.isOn = true } else { colorLoopSwitch.isOn = false }
-                brightness.value = Float(TimersDataArray[0].rows![timerID].brightness!)
+                //brightness.value = Float(TimersDataArray[0].rows![timerID].brightness!)
                 sceneText.text = TimersDataArray[0].rows![timerID].scene
 
                 // Get light group data
@@ -123,6 +139,7 @@ class ViewTimerController: UIViewController {
                  lightGroupText.text = item.attributes?.attributes?.name
                 }
             }
+            
             SVProgressHUD.dismiss() // Stop spinner
         }
     }
@@ -151,6 +168,7 @@ class ViewTimerController: UIViewController {
         navigationItem.rightBarButtonItem!.isEnabled = false
 
         timerController.getTimerData()
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -166,6 +184,25 @@ class ViewTimerController: UIViewController {
         let minute = TimersDataArray[0].rows![timerID].minute
         let body = ["id": TimersDataArray[0].rows![timerID].id!, "name": name.text!, "hour": hour!, "minute": minute!, "ai_override": aiEnabled.isOn, "active": active.isOn ] as [String : Any]
         timerController.saveTimerData(body: body)
+    }
+    
+}
+
+extension ViewTimerController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in picker: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ picker: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return RoomLightsDataArray.count
+    }
+    
+    func pickerView(_ picker: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return RoomLightsDataArray[row].attributes?.attributes?.name
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        TimersDataArray[0].rows![timerID].light_group_number = Int((RoomLightsDataArray[row].attributes?.attributes?.id)!)
     }
 }
 

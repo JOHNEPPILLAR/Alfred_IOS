@@ -219,9 +219,9 @@ extension HomeViewController: HomeControllerDelegate {
     func cummuteDidRecieveDataUpdate(data: [CommuteStatusData]) {
         DispatchQueue.main.async {
             if (data[0].anyDisruptions!) {
-                self.commuteStatus.image = #imageLiteral(resourceName: "ic_bad")
+                self.commuteStatus.image = #imageLiteral(resourceName: "ic_error")
             } else {
-                self.commuteStatus.image = #imageLiteral(resourceName: "ic_good")
+                self.commuteStatus.image = #imageLiteral(resourceName: "ic_success")
             }
             self.ActivityCommute.stopAnimating()
         }

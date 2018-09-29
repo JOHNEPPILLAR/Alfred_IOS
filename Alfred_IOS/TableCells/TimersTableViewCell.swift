@@ -28,7 +28,7 @@ class TimersTableViewCell: UITableViewCell {
         ai_image.isHidden = false
         if !item.aiOverride! { ai_image.isHidden = true }
         
-        active_image.image = #imageLiteral(resourceName: "ic_good")
-        if !item.active! { active_image.image = #imageLiteral(resourceName: "ic_bad") }
+        active_image.image = #imageLiteral(resourceName: "ic_success")
+        if !item.active! { active_image.image = #imageLiteral(resourceName: "ic_error") }
     }
 }

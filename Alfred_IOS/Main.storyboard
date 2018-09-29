@@ -125,17 +125,21 @@
                                                 <color key="backgroundColor" red="0.1166001037" green="0.13493388889999999" blue="0.2344644666" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QyD-IN-Y1e" userLabel="Light Group View">
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QyD-IN-Y1e" userLabel="Room View">
                                                 <rect key="frame" x="325" y="127" width="36" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_more" translatesAutoresizingMaskIntoConstraints="NO" id="g64-ci-vYA" userLabel="Light Group">
                                                         <rect key="frame" x="0.0" y="0.0" width="36" height="30"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <gestureRecognizers/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.11764705882352941" green="0.13333333333333333" blue="0.23529411764705882" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="JLf-d3-Fue" appends="YES" id="XgM-w3-c1H"/>
+                                                </connections>
                                             </view>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vsa-RS-cUo" userLabel="Spacer">
                                                 <rect key="frame" x="67" y="8" width="240" height="1"/>
@@ -172,13 +176,6 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <slider opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="xEj-Hw-3HS">
-                                                <rect key="frame" x="109" y="78" width="206" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="minimumTrackTintColor" red="0.1176470588" green="0.1333333333" blue="0.23529411759999999" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <color key="maximumTrackTintColor" red="0.1176470588" green="0.1333333333" blue="0.23529411759999999" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </slider>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="zFz-GE-dQm">
                                                 <rect key="frame" x="310" y="29" width="49" height="31"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -186,8 +183,13 @@
                                                     <action selector="ChangeColorLoop:" destination="hBN-xu-fck" eventType="valueChanged" id="wrS-tu-qc1"/>
                                                 </connections>
                                             </switch>
+                                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="zjh-sZ-hlc" userLabel="Brightness Slider">
+                                                <rect key="frame" x="107" y="78" width="208" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="minimumTrackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </slider>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <gestureRecognizers/>
                                     </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hZd-J6-Yxx" userLabel="Light Group View">
                                         <rect key="frame" x="139" y="74" width="36" height="30"/>
@@ -232,7 +234,6 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                             </view>
                         </subviews>
@@ -248,7 +249,7 @@
                     <connections>
                         <outlet property="active" destination="uc3-RC-xnX" id="1qr-4n-iOE"/>
                         <outlet property="aiEnabled" destination="g1o-pG-tXB" id="ejf-QR-kns"/>
-                        <outlet property="brightness" destination="xEj-Hw-3HS" id="O2t-Iy-Qge"/>
+                        <outlet property="brightness" destination="zjh-sZ-hlc" id="cin-N3-RZq"/>
                         <outlet property="colorLoopSwitch" destination="zFz-GE-dQm" id="SzI-9y-1n4"/>
                         <outlet property="lightGroupText" destination="u27-bB-fFh" id="HBt-bT-1aU"/>
                         <outlet property="moreDetailsView" destination="byG-4y-8BQ" id="6DU-yF-fVl"/>
@@ -263,6 +264,11 @@
                 <tapGestureRecognizer id="RmE-Sn-rIR" userLabel="Change Time Tap Gesture Recognizer">
                     <connections>
                         <action selector="ChangeTimeTap:" destination="hBN-xu-fck" id="P3z-Ga-6sn"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="JLf-d3-Fue" userLabel="Room Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="RoomChangeTap:" destination="hBN-xu-fck" id="hyv-al-Ems"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -291,9 +297,9 @@
                                     <inset key="sectionInset" minX="15" minY="15" maxX="15" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="cell" id="1bK-S4-Kvr" customClass="SettingsCollectionViewCell" customModule="Alfred_IOS" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="1bK-S4-Kvr" customClass="SettingsCollectionViewCell" customModule="Alfred_IOS" customModuleProvider="target">
                                         <rect key="frame" x="15" y="15" width="100" height="100"/>
-                                        <autoresizingMask key="autoresizingMask"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
@@ -312,7 +318,7 @@
                                                 </imageView>
                                             </subviews>
                                         </view>
-                                        <size key="customSize" width="100" height="100"/>
+                                        <viewLayoutGuide key="safeArea" id="KLJ-Y3-uHo"/>
                                         <connections>
                                             <outlet property="callImage" destination="LxS-nx-iUe" id="nOG-BZ-jCF"/>
                                             <outlet property="cellLabel" destination="W5h-H5-kvj" id="23b-8W-SRw"/>
@@ -892,7 +898,7 @@
         <scene sceneID="AFd-o2-5Ac">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mB2-T5-fal" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="ic_settings" id="hqB-Kw-GbM"/>
+                    <tabBarItem key="tabBarItem" title="Settings" id="hqB-Kw-GbM"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" translucent="NO" id="07W-xP-OVQ">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -1022,10 +1028,6 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_ai" translatesAutoresizingMaskIntoConstraints="NO" id="mBt-E4-4vj" userLabel="InfoType">
-                                                    <rect key="frame" x="291" y="7" width="30" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="timerNameLabel" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WZA-wt-ovU">
                                                     <rect key="frame" x="22" y="7" width="200" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -1033,8 +1035,12 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_good" translatesAutoresizingMaskIntoConstraints="NO" id="Cme-jd-pKE" userLabel="InfoType">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_success" translatesAutoresizingMaskIntoConstraints="NO" id="Cme-jd-pKE" userLabel="InfoType">
                                                     <rect key="frame" x="338" y="9" width="25" height="25"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_ai" translatesAutoresizingMaskIntoConstraints="NO" id="mBt-E4-4vj" userLabel="InfoType">
+                                                    <rect key="frame" x="289" y="8" width="25" height="26"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -1070,20 +1076,19 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Be-CX-WX9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2033" y="1456"/>
+            <point key="canvasLocation" x="2032.8" y="1455.6650246305419"/>
         </scene>
     </scenes>
     <resources>
         <image name="ic-close" width="40" height="40"/>
         <image name="ic_Background" width="2136" height="2136"/>
-        <image name="ic_ai" width="96" height="96"/>
-        <image name="ic_good" width="500" height="500"/>
+        <image name="ic_ai" width="64" height="64"/>
         <image name="ic_lights_off" width="37.5" height="37.5"/>
         <image name="ic_logo" width="1080" height="809"/>
-        <image name="ic_menu" width="375" height="375"/>
+        <image name="ic_menu" width="128" height="128"/>
         <image name="ic_more" width="72" height="72"/>
         <image name="ic_reStart" width="51.200000762939453" height="51.200000762939453"/>
-        <image name="ic_settings" width="329.14285278320312" height="329.14285278320312"/>
+        <image name="ic_success" width="40.069564819335938" height="40.069564819335938"/>
         <image name="ic_video_screens" width="418.90908813476562" height="418.90908813476562"/>
         <image name="ic_walk_green" width="51.200000762939453" height="51.200000762939453"/>
         <image name="ic_webcam" width="418.90908813476562" height="418.90908813476562"/>
