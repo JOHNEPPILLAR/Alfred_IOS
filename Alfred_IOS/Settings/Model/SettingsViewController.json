@@ -1,5 +1,0 @@
-[
- { "settingslabel": "Logs", "settingsimage": "ic_logFile", "settingssegue": "logs" },
- { "settingslabel": "Lights Off", "settingsimage": "ic_lightsOff", "settingssegue": "lightsOff" },
- { "settingslabel": "Lights On", "settingsimage": "ic_lightsOn", "settingssegue": "lightsOn" },
-]

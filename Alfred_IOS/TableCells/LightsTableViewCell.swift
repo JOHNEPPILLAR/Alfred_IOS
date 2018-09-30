@@ -24,7 +24,7 @@ class LightsTableViewCell: UITableViewCell {
         lightState.isOn = (item.state?.attributes?.anyOn)!
         lightState.tag = Int((item.attributes?.attributes?.id)!)!
         lightName.text = item.attributes?.attributes?.name
-        
+   
         brightnessSlider.value = Float((item.action?.attributes?.bri)!)
         brightnessSlider.tag = Int((item.attributes?.attributes?.id)!)!
 
@@ -48,6 +48,7 @@ class LightsTableViewCell: UITableViewCell {
         } else {
             brightnessSlider.isHidden = true
         }
+        
         cellBackgroundView.backgroundColor = color
         lightName.textColor = cellBackgroundView.backgroundColor?.isDarkColor == true ? .white : .black
     }

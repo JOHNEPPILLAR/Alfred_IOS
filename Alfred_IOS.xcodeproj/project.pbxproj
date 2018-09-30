@@ -46,7 +46,6 @@
 		E811EB0620DFB47C00C3B62E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E811EB0520DFB47C00C3B62E /* SettingsViewController.swift */; };
 		E811EB0820DFC78000C3B62E /* SettingsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E811EB0720DFC78000C3B62E /* SettingsCollectionViewCell.swift */; };
 		E811EB0A20DFCDF200C3B62E /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E811EB0920DFCDF200C3B62E /* SettingsController.swift */; };
-		E811EB0E20E0355400C3B62E /* SettingsViewController.json in Resources */ = {isa = PBXBuildFile; fileRef = E811EB0D20E0355400C3B62E /* SettingsViewController.json */; };
 		E82C11C120F1548C00A53A63 /* CommuteStatusData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82C11BF20F1548C00A53A63 /* CommuteStatusData.swift */; };
 		E82C11C220F1548C00A53A63 /* CommuteStatusBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82C11C020F1548C00A53A63 /* CommuteStatusBaseClass.swift */; };
 		E82C11C520F1614E00A53A63 /* CommuteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82C11C320F1614E00A53A63 /* CommuteData.swift */; };
@@ -114,7 +113,6 @@
 		E811EB0520DFB47C00C3B62E /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E811EB0720DFC78000C3B62E /* SettingsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCollectionViewCell.swift; sourceTree = "<group>"; };
 		E811EB0920DFCDF200C3B62E /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
-		E811EB0D20E0355400C3B62E /* SettingsViewController.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SettingsViewController.json; sourceTree = "<group>"; };
 		E82C11BF20F1548C00A53A63 /* CommuteStatusData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteStatusData.swift; sourceTree = "<group>"; };
 		E82C11C020F1548C00A53A63 /* CommuteStatusBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteStatusBaseClass.swift; sourceTree = "<group>"; };
 		E82C11C320F1614E00A53A63 /* CommuteData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteData.swift; sourceTree = "<group>"; };
@@ -451,7 +449,6 @@
 		E8BC4F7C20E2C384002C25DC /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E811EB0D20E0355400C3B62E /* SettingsViewController.json */,
 				E89FDE452144601D00C2FB62 /* Timers */,
 				E89FDE442144600B00C2FB62 /* Logs */,
 			);
@@ -530,7 +527,6 @@
 				0AE259021F70476D002C6922 /* Settings.bundle in Resources */,
 				E845B9C1214E980900A75D96 /* Main.storyboard in Resources */,
 				0A80C09C1F24812E0082F77C /* Alfred.plist in Resources */,
-				E811EB0E20E0355400C3B62E /* SettingsViewController.json in Resources */,
 				0A69FB8B1F10C25C00563A69 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

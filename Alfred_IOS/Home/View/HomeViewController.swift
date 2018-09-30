@@ -28,7 +28,9 @@ class HomeViewController: UIViewController {
     
     fileprivate var RoomLightsDataArray = [RoomLightsData]() {
         didSet {
-            lightRoomsTableView!.reloadData()
+            DispatchQueue.main.async {
+                self.lightRoomsTableView?.reloadData()
+            }
             ActivityRoomLightTableView.stopAnimating()
         }
     }
@@ -142,11 +144,6 @@ extension HomeViewController: UITableViewDataSource {
         // Add UI actions
         cell.brightnessSlider?.addTarget(self, action: #selector(lightBrightnessValueChange(slider:event:)), for: .valueChanged)
         cell.lightState?.addTarget(self, action: #selector(lightStateValueChange(_:)), for: .valueChanged)
-
-        // ** TODO **
-        //let longTapRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPowerButtonPress(_:)))
-        //powerButton.addGestureRecognizer(longTapRecognizer)
-
         
         return cell
     }
