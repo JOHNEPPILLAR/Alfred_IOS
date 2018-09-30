@@ -38,9 +38,10 @@ class TimerController: NSObject {
         task.resume()
     }
     
-    func saveTimerData(body: [String : Any]) {
+    func saveTimerData(body: TimersRows) {
         let configuration = URLSessionConfiguration.ephemeral
-        let APIbody: Data = try! JSONSerialization.data(withJSONObject: body, options: [])
+        let bodyDictionary = body.dictionaryRepresentation()
+        let APIbody = try! JSONSerialization.data(withJSONObject: bodyDictionary)
         let request = putAPIHeaderData(url: "settings/saveSchedule", body: APIbody)
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in

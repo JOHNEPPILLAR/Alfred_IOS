@@ -9,6 +9,7 @@
 import UIKit
 import SwiftyJSON
 import SVProgressHUD
+import MaterialComponents.MaterialSlider
 
 class ViewTimerController: UIViewController {
 
@@ -20,21 +21,18 @@ class ViewTimerController: UIViewController {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var moreDetailsView: UIView!
     @IBOutlet weak var colorLoopSwitch: UISwitch!
-    @IBOutlet weak var brightness: UISlider!
     @IBOutlet weak var sceneLabel: UILabel!
-    @IBOutlet weak var sceneText: UITextField!
     @IBOutlet weak var lightGroupText: UITextField!
-    @IBOutlet weak var sceneMoreButton: UIView!
     @IBAction func ChangeColorLoop(_ sender: UISwitch) {
-        if (sender.isOn) {
-            sceneMoreButton.isHidden = true
-            sceneText.isHidden = true
-            sceneLabel.isHidden = true
-        } else {
-            sceneMoreButton.isHidden = false
-            sceneText.isHidden = false
-            sceneLabel.isHidden = false
-        }
+        //if (sender.isOn) {
+        //    sceneMoreButton.isHidden = true
+        //    sceneText.isHidden = true
+        //    sceneLabel.isHidden = true
+        //} else {
+        //    sceneMoreButton.isHidden = false
+        //    sceneText.isHidden = false
+        //    sceneLabel.isHidden = false
+        //}
         TimersDataArray[0].rows![timerID].color_loop = sender.isOn
     }
   
@@ -108,19 +106,23 @@ class ViewTimerController: UIViewController {
             let strTime = paddedHour + ":" + paddedMinute
             timeLabel.text = strTime
             
-            // Enable edit of data
-            name.isEnabled = true
-            active.isEnabled = true
-            aiEnabled.isEnabled = true
-            self.navigationItem.rightBarButtonItem?.isEnabled = true // Enable the save button
-            
             switch TimersDataArray[0].rows![timerID].type {
             case 4,5,6?:
                 moreDetailsView.isHidden = false
                 if (TimersDataArray[0].rows![timerID].color_loop!) { colorLoopSwitch.isOn = true } else { colorLoopSwitch.isOn = false }
-                //brightness.value = Float(TimersDataArray[0].rows![timerID].brightness!)
-                sceneText.text = TimersDataArray[0].rows![timerID].scene
+                //sceneText.text = TimersDataArray[0].rows![timerID].scene
 
+                let brightnessSlider = MDCSlider(frame: CGRect(x: 107, y: 82, width: 204, height: 27))
+                brightnessSlider.minimumValue = 0
+                brightnessSlider.maximumValue = 255
+                brightnessSlider.color = UIColor(red: 118/255.0, green: 214/255.0, blue: 114/255.0, alpha: 1.0)
+                brightnessSlider.value = CGFloat(Float(TimersDataArray[0].rows![timerID].brightness!))
+                //slider.addTarget(self,
+                //                 action: #selector(didChangeSliderValue(senderSlider:)),
+                //                 for: .valueChanged)
+                moreDetailsView.addSubview(brightnessSlider)
+                
+                
                 // Get light group data
                 timerController.getLightRoomData()
                 
@@ -129,6 +131,10 @@ class ViewTimerController: UIViewController {
             
             if (moreDetailsView.isHidden) {
                 SVProgressHUD.dismiss() // Stop spinner
+                name.isEnabled = true
+                active.isEnabled = true
+                aiEnabled.isEnabled = true
+                self.navigationItem.rightBarButtonItem?.isEnabled = true // Enable the save button
             }
         }
     }
@@ -141,6 +147,10 @@ class ViewTimerController: UIViewController {
                 }
             }
             
+            name.isEnabled = true
+            active.isEnabled = true
+            aiEnabled.isEnabled = true
+            self.navigationItem.rightBarButtonItem?.isEnabled = true // Enable the save button
             SVProgressHUD.dismiss() // Stop spinner
         }
     }
@@ -179,11 +189,7 @@ class ViewTimerController: UIViewController {
 
     @objc func saveSettingsAction(sender: UIBarButtonItem) {
         self.navigationItem.rightBarButtonItem?.isEnabled = false // Disable the save button
-        
-        // Call save function
-        let hour = TimersDataArray[0].rows![timerID].hour
-        let minute = TimersDataArray[0].rows![timerID].minute
-        let body = ["id": TimersDataArray[0].rows![timerID].id!, "name": name.text!, "hour": hour!, "minute": minute!, "ai_override": aiEnabled.isOn, "active": active.isOn ] as [String : Any]
+        let body = TimersDataArray[0].rows![timerID]
         timerController.saveTimerData(body: body)
     }
     
@@ -223,6 +229,9 @@ extension ViewTimerController: TimerControllerDelegate {
 
     func timerSaved() {
         SVProgressHUD.showSuccess(withStatus: "Saved timer")
+        name.isEnabled = true
+        active.isEnabled = true
+        aiEnabled.isEnabled = true
         navigationItem.rightBarButtonItem!.isEnabled = true
     }
     
