@@ -352,7 +352,6 @@
 			isa = PBXGroup;
 			children = (
 				E845B9C0214E980900A75D96 /* Main.storyboard */,
-				E811EB0D20E0355400C3B62E /* SettingsViewController.json */,
 				0A385C2920C8680E00CD312D /* Video */,
 				0AAD1023207D5564006B410C /* Alfred_IOS.entitlements */,
 				0A256EC8206F94BF008C5283 /* TableCells */,
@@ -452,6 +451,7 @@
 		E8BC4F7C20E2C384002C25DC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E811EB0D20E0355400C3B62E /* SettingsViewController.json */,
 				E89FDE452144601D00C2FB62 /* Timers */,
 				E89FDE442144600B00C2FB62 /* Logs */,
 			);
@@ -788,7 +788,10 @@
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
 				);
-				"HEADER_SEARCH_PATHS[arch=*]" = "$(inherited) \"${PODS_ROOT}/Headers/Public\"";
+				"HEADER_SEARCH_PATHS[arch=*]" = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+				);
 				INFOPLIST_FILE = Alfred_IOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -813,7 +816,10 @@
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
 				);
-				"HEADER_SEARCH_PATHS[arch=*]" = "$(inherited) \"${PODS_ROOT}/Headers/Public\"";
+				"HEADER_SEARCH_PATHS[arch=*]" = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+				);
 				INFOPLIST_FILE = Alfred_IOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

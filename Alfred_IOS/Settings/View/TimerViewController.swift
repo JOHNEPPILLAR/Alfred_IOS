@@ -22,17 +22,26 @@ class ViewTimerController: UIViewController {
     @IBOutlet weak var moreDetailsView: UIView!
     @IBOutlet weak var colorLoopSwitch: UISwitch!
     @IBOutlet weak var sceneLabel: UILabel!
+    @IBOutlet weak var sceneView: UIView!
     @IBOutlet weak var lightGroupText: UITextField!
-    @IBAction func ChangeColorLoop(_ sender: UISwitch) {
-        //if (sender.isOn) {
-        //    sceneMoreButton.isHidden = true
-        //    sceneText.isHidden = true
-        //    sceneLabel.isHidden = true
-        //} else {
-        //    sceneMoreButton.isHidden = false
-        //    sceneText.isHidden = false
-        //    sceneLabel.isHidden = false
-        //}
+    @IBOutlet weak var sunRiseLabel: UILabel!
+    @IBOutlet weak var dayTimeLabel: UILabel!
+    @IBOutlet weak var sunSetLabel: UILabel!
+    @IBOutlet weak var eveningLabel: UILabel!
+    @IBOutlet weak var nightTimeLabel: UILabel!
+    
+    @IBAction func activeChange(_ sender: UISwitch) {
+        TimersDataArray[0].rows![timerID].active = sender.isOn
+    }
+    @IBAction func AIEnabledChange(_ sender: UISwitch) {
+        TimersDataArray[0].rows![timerID].aiOverride = sender.isOn
+    }
+    @IBAction func ColorLoopChange(_ sender: UISwitch) {
+        if (sender.isOn) {
+            sceneView.isHidden = true
+        } else {
+            sceneView.isHidden = false
+        }
         TimersDataArray[0].rows![timerID].color_loop = sender.isOn
     }
   
@@ -92,6 +101,48 @@ class ViewTimerController: UIViewController {
         self.present(roomChooserAlert, animated: true, completion: nil)
     }
     
+    @IBAction func sunRiseSceneTap(_ sender: UITapGestureRecognizer) {
+        sunRiseLabel.textColor = UIColor(red: 118/255.0, green: 214/255.0, blue: 114/255.0, alpha: 1.0)
+        dayTimeLabel.textColor = UIColor.white
+        sunSetLabel.textColor = UIColor.white
+        eveningLabel.textColor = UIColor.white
+        nightTimeLabel.textColor = UIColor.white
+        TimersDataArray[0].rows![timerID].scene = 1
+    }
+    
+    @IBAction func dayTimeSceneTap(_ sender: UITapGestureRecognizer) {
+        sunRiseLabel.textColor = UIColor.white
+        dayTimeLabel.textColor = UIColor(red: 118/255.0, green: 214/255.0, blue: 114/255.0, alpha: 1.0)
+        sunSetLabel.textColor = UIColor.white
+        eveningLabel.textColor = UIColor.white
+        nightTimeLabel.textColor = UIColor.white
+        TimersDataArray[0].rows![timerID].scene = 2
+    }
+    @IBAction func sunSetSceneTap(_ sender: UITapGestureRecognizer) {
+        sunRiseLabel.textColor = UIColor.white
+        dayTimeLabel.textColor = UIColor.white
+        sunSetLabel.textColor = UIColor(red: 118/255.0, green: 214/255.0, blue: 114/255.0, alpha: 1.0)
+        eveningLabel.textColor = UIColor.white
+        nightTimeLabel.textColor = UIColor.white
+        TimersDataArray[0].rows![timerID].scene = 3
+    }
+    @IBAction func eveningSceneTap(_ sender: UITapGestureRecognizer) {
+        sunRiseLabel.textColor = UIColor.white
+        dayTimeLabel.textColor = UIColor.white
+        sunSetLabel.textColor = UIColor.white
+        eveningLabel.textColor = UIColor(red: 118/255.0, green: 214/255.0, blue: 114/255.0, alpha: 1.0)
+        nightTimeLabel.textColor = UIColor.white
+        TimersDataArray[0].rows![timerID].scene = 4
+    }
+    @IBAction func nightTimeSceneTap(_ sender: UITapGestureRecognizer) {
+        sunRiseLabel.textColor = UIColor.white
+        dayTimeLabel.textColor = UIColor.white
+        sunSetLabel.textColor = UIColor.white
+        eveningLabel.textColor = UIColor.white
+        nightTimeLabel.textColor = UIColor(red: 118/255.0, green: 214/255.0, blue: 114/255.0, alpha: 1.0)
+        TimersDataArray[0].rows![timerID].scene = 5
+    }
+    
     private let timerController = TimerController()
     
     fileprivate var TimersDataArray = [TimersData]() {
@@ -109,19 +160,37 @@ class ViewTimerController: UIViewController {
             switch TimersDataArray[0].rows![timerID].type {
             case 4,5,6?:
                 moreDetailsView.isHidden = false
-                if (TimersDataArray[0].rows![timerID].color_loop!) { colorLoopSwitch.isOn = true } else { colorLoopSwitch.isOn = false }
-                //sceneText.text = TimersDataArray[0].rows![timerID].scene
+                if (TimersDataArray[0].rows![timerID].color_loop!) {
+                    colorLoopSwitch.isOn = true
+                    sceneView.isHidden = true
+                } else {
+                    colorLoopSwitch.isOn = false
+                    sceneView.isHidden = false
+                }
 
                 let brightnessSlider = MDCSlider(frame: CGRect(x: 107, y: 82, width: 204, height: 27))
                 brightnessSlider.minimumValue = 0
                 brightnessSlider.maximumValue = 255
                 brightnessSlider.color = UIColor(red: 118/255.0, green: 214/255.0, blue: 114/255.0, alpha: 1.0)
                 brightnessSlider.value = CGFloat(Float(TimersDataArray[0].rows![timerID].brightness!))
-                //slider.addTarget(self,
-                //                 action: #selector(didChangeSliderValue(senderSlider:)),
-                //                 for: .valueChanged)
+                brightnessSlider.addTarget(self, action: #selector(roomSliderChange(senderSlider:)), for: .valueChanged)
                 moreDetailsView.addSubview(brightnessSlider)
                 
+                switch TimersDataArray[0].rows![timerID].scene {
+                case 1:
+                    sunRiseLabel.textColor = UIColor(red: 118/255.0, green: 214/255.0, blue: 114/255.0, alpha: 1.0)
+                case 2:
+                    dayTimeLabel.textColor = UIColor(red: 118/255.0, green: 214/255.0, blue: 114/255.0, alpha: 1.0)
+                case 3:
+                    sunSetLabel.textColor = UIColor(red: 118/255.0, green: 214/255.0, blue: 114/255.0, alpha: 1.0)
+                case 4:
+                    eveningLabel.textColor = UIColor(red: 118/255.0, green: 214/255.0, blue: 114/255.0, alpha: 1.0)
+                case 5:
+                    nightTimeLabel.textColor = UIColor(red: 118/255.0, green: 214/255.0, blue: 114/255.0, alpha: 1.0)
+                default:
+                    dayTimeLabel.textColor = UIColor(red: 118/255.0, green: 214/255.0, blue: 114/255.0, alpha: 1.0)
+                    TimersDataArray[0].rows![timerID].scene = 2
+                }
                 
                 // Get light group data
                 timerController.getLightRoomData()
@@ -133,7 +202,6 @@ class ViewTimerController: UIViewController {
                 SVProgressHUD.dismiss() // Stop spinner
                 name.isEnabled = true
                 active.isEnabled = true
-                aiEnabled.isEnabled = true
                 self.navigationItem.rightBarButtonItem?.isEnabled = true // Enable the save button
             }
         }
@@ -149,7 +217,6 @@ class ViewTimerController: UIViewController {
             
             name.isEnabled = true
             active.isEnabled = true
-            aiEnabled.isEnabled = true
             self.navigationItem.rightBarButtonItem?.isEnabled = true // Enable the save button
             SVProgressHUD.dismiss() // Stop spinner
         }
@@ -163,7 +230,6 @@ class ViewTimerController: UIViewController {
         // Disable edit ui untill data is loaded
         name.isEnabled = false
         active.isEnabled = false
-        aiEnabled.isEnabled = false
         self.navigationItem.rightBarButtonItem?.isEnabled = false // Disable the save button
     }
     
@@ -189,10 +255,12 @@ class ViewTimerController: UIViewController {
 
     @objc func saveSettingsAction(sender: UIBarButtonItem) {
         self.navigationItem.rightBarButtonItem?.isEnabled = false // Disable the save button
-        let body = TimersDataArray[0].rows![timerID]
-        timerController.saveTimerData(body: body)
+        timerController.saveTimerData(body: TimersDataArray[0].rows![timerID])
     }
     
+    @objc func roomSliderChange(senderSlider:MDCSlider) {
+        TimersDataArray[0].rows![timerID].brightness = Int(senderSlider.value)
+    }
 }
 
 extension ViewTimerController: UIPickerViewDelegate, UIPickerViewDataSource {
@@ -231,7 +299,6 @@ extension ViewTimerController: TimerControllerDelegate {
         SVProgressHUD.showSuccess(withStatus: "Saved timer")
         name.isEnabled = true
         active.isEnabled = true
-        aiEnabled.isEnabled = true
         navigationItem.rightBarButtonItem!.isEnabled = true
     }
     

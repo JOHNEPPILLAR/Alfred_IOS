@@ -37,7 +37,7 @@ public final class TimersRows: NSCoding {
   public var light_timers_id: Int?
   public var light_group_number: Int?
   public var brightness: Int?
-  public var scene: String?
+  public var scene: Int?
   public var color_loop: Bool? = false
 
   // MARK: SwiftyJSON Initializers
@@ -63,7 +63,7 @@ public final class TimersRows: NSCoding {
     light_timers_id = json[SerializationKeys.light_timers_id].int
     light_group_number = json[SerializationKeys.light_group_number].int
     brightness = json[SerializationKeys.brightness].int
-    scene = json[SerializationKeys.scene].string
+    scene = json[SerializationKeys.scene].int
     color_loop = json[SerializationKeys.color_loop].boolValue
     }
 
@@ -83,7 +83,7 @@ public final class TimersRows: NSCoding {
     if let value = light_group_number { dictionary[SerializationKeys.light_group_number] = value }
     if let value = brightness { dictionary[SerializationKeys.brightness] = value }
     if let value = scene { dictionary[SerializationKeys.scene] = value }
-    dictionary[SerializationKeys.active] = color_loop
+    dictionary[SerializationKeys.color_loop] = color_loop
     return dictionary
   }
 
@@ -99,7 +99,7 @@ public final class TimersRows: NSCoding {
     self.light_timers_id = aDecoder.decodeObject(forKey: SerializationKeys.light_timers_id) as? Int
     self.light_group_number = aDecoder.decodeObject(forKey: SerializationKeys.light_group_number) as? Int
     self.brightness = aDecoder.decodeObject(forKey: SerializationKeys.brightness) as? Int
-    self.scene = aDecoder.decodeObject(forKey: SerializationKeys.scene) as? String
+    self.scene = aDecoder.decodeObject(forKey: SerializationKeys.scene) as? Int
     self.color_loop = aDecoder.decodeBool(forKey: SerializationKeys.color_loop)
   }
 
