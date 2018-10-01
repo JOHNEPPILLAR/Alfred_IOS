@@ -398,7 +398,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2871.1999999999998" y="1454.1871921182267"/>
+            <point key="canvasLocation" x="3825" y="-55"/>
         </scene>
         <!--Settings-->
         <scene sceneID="58L-9D-qBQ">
@@ -469,7 +469,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ZX-V3-Bdj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1236" y="713.79310344827593"/>
+            <point key="canvasLocation" x="2073" y="-55"/>
         </scene>
         <!--VideoPlayer-->
         <scene sceneID="hpE-Mu-fmm">
@@ -586,7 +586,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OB8-eR-DxE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="436" y="-775.86206896551732"/>
+            <point key="canvasLocation" x="436" y="683"/>
         </scene>
         <!--Video Selection-->
         <scene sceneID="8fx-Gw-Lrg">
@@ -1124,7 +1124,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2pL-qL-8l6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2032.8" y="714.69265367316348"/>
+            <point key="canvasLocation" x="2073" y="683"/>
         </scene>
         <!--Timers-->
         <scene sceneID="N7j-u8-HUu">
@@ -1204,7 +1204,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Be-CX-WX9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2032.8" y="1455.6650246305419"/>
+            <point key="canvasLocation" x="2972" y="-55"/>
         </scene>
         <!--Sensors-->
         <scene sceneID="705-T8-M92">
@@ -1279,7 +1279,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bE7-Af-eHN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="436" y="714.53201970443354"/>
+            <point key="canvasLocation" x="2972" y="683"/>
         </scene>
     </scenes>
     <resources>
