@@ -55,6 +55,12 @@
 		E845B9C1214E980900A75D96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E845B9C0214E980900A75D96 /* Main.storyboard */; };
 		E848524220E42E22001DC4F2 /* LogsBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E848524020E42E22001DC4F2 /* LogsBaseClass.swift */; };
 		E848524320E42E22001DC4F2 /* LogsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E848524120E42E22001DC4F2 /* LogsData.swift */; };
+		E868D1DF2161640F000DC024 /* SensorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868D1DE2161640F000DC024 /* SensorsViewController.swift */; };
+		E868D1E1216165F8000DC024 /* SensorsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868D1E0216165F8000DC024 /* SensorsController.swift */; };
+		E868D1E6216174F9000DC024 /* SensorsRows.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868D1E3216174F9000DC024 /* SensorsRows.swift */; };
+		E868D1E7216174F9000DC024 /* SensorsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868D1E4216174F9000DC024 /* SensorsData.swift */; };
+		E868D1E8216174F9000DC024 /* SensorsBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868D1E5216174F9000DC024 /* SensorsBaseClass.swift */; };
+		E868D1EA21620E16000DC024 /* SensorsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868D1E921620E16000DC024 /* SensorsTableViewCell.swift */; };
 		E87277B52145AD7600FE3FC3 /* TimersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87277B42145AD7600FE3FC3 /* TimersTableViewCell.swift */; };
 		E87277B72145AEA000FE3FC3 /* TimersViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87277B62145AEA000FE3FC3 /* TimersViewControler.swift */; };
 		E87277B92145AF4A00FE3FC3 /* TimersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87277B82145AF4A00FE3FC3 /* TimersController.swift */; };
@@ -122,6 +128,12 @@
 		E845B9C0214E980900A75D96 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E848524020E42E22001DC4F2 /* LogsBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogsBaseClass.swift; sourceTree = "<group>"; };
 		E848524120E42E22001DC4F2 /* LogsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogsData.swift; sourceTree = "<group>"; };
+		E868D1DE2161640F000DC024 /* SensorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorsViewController.swift; sourceTree = "<group>"; };
+		E868D1E0216165F8000DC024 /* SensorsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorsController.swift; sourceTree = "<group>"; };
+		E868D1E3216174F9000DC024 /* SensorsRows.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorsRows.swift; sourceTree = "<group>"; };
+		E868D1E4216174F9000DC024 /* SensorsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorsData.swift; sourceTree = "<group>"; };
+		E868D1E5216174F9000DC024 /* SensorsBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorsBaseClass.swift; sourceTree = "<group>"; };
+		E868D1E921620E16000DC024 /* SensorsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorsTableViewCell.swift; sourceTree = "<group>"; };
 		E87277B42145AD7600FE3FC3 /* TimersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimersTableViewCell.swift; sourceTree = "<group>"; };
 		E87277B62145AEA000FE3FC3 /* TimersViewControler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimersViewControler.swift; sourceTree = "<group>"; };
 		E87277B82145AF4A00FE3FC3 /* TimersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimersController.swift; sourceTree = "<group>"; };
@@ -274,6 +286,7 @@
 			children = (
 				0AE327A12066622E00C288E8 /* LogFileViewController.swift */,
 				E87277B62145AEA000FE3FC3 /* TimersViewControler.swift */,
+				E868D1DE2161640F000DC024 /* SensorsViewController.swift */,
 				E8B63AB8214D96DA00EBF1A1 /* TimerViewController.swift */,
 				E811EB0520DFB47C00C3B62E /* SettingsViewController.swift */,
 			);
@@ -296,6 +309,7 @@
 				0A46C5FA1F56D58300ADB758 /* LightsTableViewCell.swift */,
 				0A6AD7AB206E65C200491B3E /* CommuteTableViewCell.swift */,
 				E811EB0720DFC78000C3B62E /* SettingsCollectionViewCell.swift */,
+				E868D1E921620E16000DC024 /* SensorsTableViewCell.swift */,
 			);
 			path = TableCells;
 			sourceTree = "<group>";
@@ -305,6 +319,7 @@
 			children = (
 				0ADF19B820658C5F008057DB /* LogsController.swift */,
 				E87277B82145AF4A00FE3FC3 /* TimersController.swift */,
+				E868D1E0216165F8000DC024 /* SensorsController.swift */,
 				E8B63ABA214D980800EBF1A1 /* TimerController.swift */,
 				E811EB0920DFCDF200C3B62E /* SettingsController.swift */,
 			);
@@ -419,6 +434,16 @@
 			path = Commute;
 			sourceTree = "<group>";
 		};
+		E868D1E2216174E4000DC024 /* Sensors */ = {
+			isa = PBXGroup;
+			children = (
+				E868D1E5216174F9000DC024 /* SensorsBaseClass.swift */,
+				E868D1E4216174F9000DC024 /* SensorsData.swift */,
+				E868D1E3216174F9000DC024 /* SensorsRows.swift */,
+			);
+			path = Sensors;
+			sourceTree = "<group>";
+		};
 		E89D443620D4EF7E00F6F142 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -449,6 +474,7 @@
 		E8BC4F7C20E2C384002C25DC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E868D1E2216174E4000DC024 /* Sensors */,
 				E89FDE452144601D00C2FB62 /* Timers */,
 				E89FDE442144600B00C2FB62 /* Logs */,
 			);
@@ -611,14 +637,18 @@
 				E87277B92145AF4A00FE3FC3 /* TimersController.swift in Sources */,
 				E82C11CA20F1615B00A53A63 /* CommuteJourneys.swift in Sources */,
 				0A29F7BE20551AA600111C50 /* InsideWeatherInsideWeatherBaseClass.swift in Sources */,
+				E868D1EA21620E16000DC024 /* SensorsTableViewCell.swift in Sources */,
 				E82C11C620F1614E00A53A63 /* CommuteBaseClass.swift in Sources */,
 				E82C11C920F1615B00A53A63 /* CommuteLegs.swift in Sources */,
+				E868D1E1216165F8000DC024 /* SensorsController.swift in Sources */,
 				E848524320E42E22001DC4F2 /* LogsData.swift in Sources */,
 				0A9EDC662052639C001277EC /* CurrentWeatherBaseClass.swift in Sources */,
 				0A420E4A1F140D0500BD2713 /* LogFileTableViewCell.swift in Sources */,
 				0A6AD7AC206E65C200491B3E /* CommuteTableViewCell.swift in Sources */,
 				E82C11C520F1614E00A53A63 /* CommuteData.swift in Sources */,
 				0A69FB811F10C25C00563A69 /* AppDelegate.swift in Sources */,
+				E868D1E8216174F9000DC024 /* SensorsBaseClass.swift in Sources */,
+				E868D1DF2161640F000DC024 /* SensorsViewController.swift in Sources */,
 				0A8AF14A1F24EF030064894F /* Helpers.swift in Sources */,
 				0A647EE62067E8CF00F7CD1E /* RoomLightsState.swift in Sources */,
 				0ADF19B920658C5F008057DB /* LogsController.swift in Sources */,
@@ -632,6 +662,7 @@
 				0A6A5F9F204C6A5800314ECE /* HomeController.swift in Sources */,
 				E811EB0620DFB47C00C3B62E /* SettingsViewController.swift in Sources */,
 				0A1BFDB3205315B400B729F8 /* CommuteController.swift in Sources */,
+				E868D1E6216174F9000DC024 /* SensorsRows.swift in Sources */,
 				0A647EDF2067E8CF00F7CD1E /* RoomLightsAction.swift in Sources */,
 				E811EB0A20DFCDF200C3B62E /* SettingsController.swift in Sources */,
 				E82C11C220F1548C00A53A63 /* CommuteStatusBaseClass.swift in Sources */,
@@ -644,6 +675,7 @@
 				E8B63AB9214D96DA00EBF1A1 /* TimerViewController.swift in Sources */,
 				0A7DADE11F4A2BF9002FEE9F /* HueColorHelper.swift in Sources */,
 				0A385C2C20C8685F00CD312D /* VideoViewController.swift in Sources */,
+				E868D1E7216174F9000DC024 /* SensorsData.swift in Sources */,
 				E89D443820D4EFB000F6F142 /* VideoController.swift in Sources */,
 				E89FDE4B2144611B00C2FB62 /* TimersRows.swift in Sources */,
 				0A647EE12067E8CF00F7CD1E /* RoomLightsData.swift in Sources */,
