@@ -25,14 +25,17 @@ class ViewSensorController: UIViewController {
     @IBOutlet weak var eveningLabel: UILabel!
     @IBOutlet weak var nightTimeLabel: UILabel!
     
-    /*
+    @IBAction func activeChange(_ sender: UISwitch) {
+        SensorsDataArray[0].rows![sensorID].active = sender.isOn
+    }
+    
     @IBAction func sunRiseSceneTap(_ sender: UITapGestureRecognizer) {
         sunRiseLabel.textColor = UIColor(red: 118/255.0, green: 214/255.0, blue: 114/255.0, alpha: 1.0)
         dayTimeLabel.textColor = UIColor.white
         sunSetLabel.textColor = UIColor.white
         eveningLabel.textColor = UIColor.white
         nightTimeLabel.textColor = UIColor.white
-        TimersDataArray[0].rows![timerID].scene = 1
+        SensorsDataArray[0].rows![sensorID].scene = 1
     }
     
     @IBAction func dayTimeSceneTap(_ sender: UITapGestureRecognizer) {
@@ -41,7 +44,7 @@ class ViewSensorController: UIViewController {
         sunSetLabel.textColor = UIColor.white
         eveningLabel.textColor = UIColor.white
         nightTimeLabel.textColor = UIColor.white
-        TimersDataArray[0].rows![timerID].scene = 2
+        SensorsDataArray[0].rows![sensorID].scene = 2
     }
     @IBAction func sunSetSceneTap(_ sender: UITapGestureRecognizer) {
         sunRiseLabel.textColor = UIColor.white
@@ -49,7 +52,7 @@ class ViewSensorController: UIViewController {
         sunSetLabel.textColor = UIColor(red: 118/255.0, green: 214/255.0, blue: 114/255.0, alpha: 1.0)
         eveningLabel.textColor = UIColor.white
         nightTimeLabel.textColor = UIColor.white
-        TimersDataArray[0].rows![timerID].scene = 3
+        SensorsDataArray[0].rows![sensorID].scene = 3
     }
     @IBAction func eveningSceneTap(_ sender: UITapGestureRecognizer) {
         sunRiseLabel.textColor = UIColor.white
@@ -57,7 +60,7 @@ class ViewSensorController: UIViewController {
         sunSetLabel.textColor = UIColor.white
         eveningLabel.textColor = UIColor(red: 118/255.0, green: 214/255.0, blue: 114/255.0, alpha: 1.0)
         nightTimeLabel.textColor = UIColor.white
-        TimersDataArray[0].rows![timerID].scene = 4
+        SensorsDataArray[0].rows![sensorID].scene = 4
     }
     @IBAction func nightTimeSceneTap(_ sender: UITapGestureRecognizer) {
         sunRiseLabel.textColor = UIColor.white
@@ -65,9 +68,67 @@ class ViewSensorController: UIViewController {
         sunSetLabel.textColor = UIColor.white
         eveningLabel.textColor = UIColor.white
         nightTimeLabel.textColor = UIColor(red: 118/255.0, green: 214/255.0, blue: 114/255.0, alpha: 1.0)
-        TimersDataArray[0].rows![timerID].scene = 5
+        SensorsDataArray[0].rows![sensorID].scene = 5
     }
-  */
+  
+    @IBAction func StartTimeTap(_ sender: UITapGestureRecognizer) {
+        let dateChooserAlert = UIAlertController(title: "Select a time...", message: nil, preferredStyle: .actionSheet)
+        let pickerHeight: NSLayoutConstraint = NSLayoutConstraint(item: dateChooserAlert.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.1, constant: 300)
+        let datePicker: UIDatePicker = UIDatePicker()
+        datePicker.frame = CGRect(x: 10, y: 30, width: self.view.frame.width, height: 150)
+        datePicker.datePickerMode = .time
+        
+        let strDate = SensorsDataArray[0].rows![sensorID].startTime
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        let date = dateFormatter.date(from: strDate!)
+        datePicker.setDate(date!, animated: false)
+        dateChooserAlert.view.addSubview(datePicker)
+        
+        dateChooserAlert.addAction(UIAlertAction(title: "Done", style: .cancel, handler: { action in
+            let date = datePicker.date
+            let components = Calendar.current.dateComponents([.hour, .minute], from: date)
+            let paddedHour =  String(format: "%02d", components.hour!)
+            let minute =  "\(components.minute ?? 0)"
+            let paddedMinute = minute.padding(toLength: 2, withPad: "0", startingAt: 0)
+            let strTime = paddedHour + ":" + paddedMinute
+            self.SensorsDataArray[0].rows![self.sensorID].startTime = strTime
+            self.startTimeLabel.text = strTime
+        }))
+        dateChooserAlert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
+        dateChooserAlert.view.addConstraint(pickerHeight)
+        self.present(dateChooserAlert, animated: true, completion: nil)
+    }
+    
+    @IBAction func EndTimeTap(_ sender: UITapGestureRecognizer) {
+        let dateChooserAlert = UIAlertController(title: "Select a time...", message: nil, preferredStyle: .actionSheet)
+        let pickerHeight: NSLayoutConstraint = NSLayoutConstraint(item: dateChooserAlert.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.1, constant: 300)
+        let datePicker: UIDatePicker = UIDatePicker()
+        datePicker.frame = CGRect(x: 10, y: 30, width: self.view.frame.width, height: 150)
+        datePicker.datePickerMode = .time
+        
+        let strDate = SensorsDataArray[0].rows![sensorID].endTime
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        let date = dateFormatter.date(from: strDate!)
+        datePicker.setDate(date!, animated: false)
+        dateChooserAlert.view.addSubview(datePicker)
+        
+        dateChooserAlert.addAction(UIAlertAction(title: "Done", style: .cancel, handler: { action in
+            let date = datePicker.date
+            let components = Calendar.current.dateComponents([.hour, .minute], from: date)
+            let paddedHour =  String(format: "%02d", components.hour!)
+            let minute =  "\(components.minute ?? 0)"
+            let paddedMinute = minute.padding(toLength: 2, withPad: "0", startingAt: 0)
+            let strTime = paddedHour + ":" + paddedMinute
+            self.SensorsDataArray[0].rows![self.sensorID].endTime = strTime
+            self.startTimeLabel.text = strTime
+        }))
+        dateChooserAlert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
+        dateChooserAlert.view.addConstraint(pickerHeight)
+        self.present(dateChooserAlert, animated: true, completion: nil)
+    }
+    
     private let sensorController = SensorController()
     
     fileprivate var SensorsDataArray = [SensorsData]() {
@@ -89,12 +150,12 @@ class ViewSensorController: UIViewController {
             startTimeLabel.text = SensorsDataArray[0].rows![sensorID].startTime
             endTimeLabel.text = SensorsDataArray[0].rows![sensorID].endTime
             
-            let brightnessSlider = MDCSlider(frame: CGRect(x: 107, y: 82, width: 204, height: 27))
+            let brightnessSlider = MDCSlider(frame: CGRect(x: 100, y: 121, width: 258, height: 27))
             brightnessSlider.minimumValue = 0
             brightnessSlider.maximumValue = 255
             brightnessSlider.color = UIColor(red: 118/255.0, green: 214/255.0, blue: 114/255.0, alpha: 1.0)
             brightnessSlider.value = CGFloat(Float(SensorsDataArray[0].rows![sensorID].brightness!))
-            //brightnessSlider.addTarget(self, action: #selector(roomSliderChange(senderSlider:)), for: .valueChanged)
+            brightnessSlider.addTarget(self, action: #selector(brightnessSliderChange(senderSlider:)), for: .valueChanged)
             editView.addSubview(brightnessSlider)
                 
             switch SensorsDataArray[0].rows![sensorID].scene {
@@ -124,10 +185,6 @@ class ViewSensorController: UIViewController {
         super.viewDidLoad()
         
         sensorController.delegate = self
-        
-        // Disable edit ui untill data is loaded
-        //name.isEnabled = false
-        //active.isEnabled = false
         self.navigationItem.rightBarButtonItem?.isEnabled = false // Disable the save button
     }
     
@@ -143,7 +200,6 @@ class ViewSensorController: UIViewController {
         navigationItem.rightBarButtonItem!.isEnabled = false
         
         sensorController.getSensorData()
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -153,12 +209,12 @@ class ViewSensorController: UIViewController {
     
     @objc func saveSettingsAction(sender: UIBarButtonItem) {
         self.navigationItem.rightBarButtonItem?.isEnabled = false // Disable the save button
-        //sensorController.saveSensorData(body: SensorsDataArray[0].rows![sensorID])
+        sensorController.saveSensorData(body: SensorsDataArray[0].rows![sensorID])
     }
     
-    //@objc func roomSliderChange(senderSlider:MDCSlider) {
-    //    SensorsDataArray[0].rows![sensorID].brightness = Int(senderSlider.value)
-    //}
+    @objc func brightnessSliderChange(senderSlider:MDCSlider) {
+        SensorsDataArray[0].rows![sensorID].brightness = Int(senderSlider.value)
+    }
 }
 
 extension ViewSensorController: SensorControllerDelegate {

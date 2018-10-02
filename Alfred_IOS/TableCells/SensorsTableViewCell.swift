@@ -14,8 +14,12 @@ class SensorsTableViewCell: UITableViewCell {
     @IBOutlet weak var sensorNameLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var sliderView: UIView!
+    @IBOutlet weak var activeImage: UIImageView!
     
     func configureWithItem(item: SensorsRows) {
+        
+        activeImage.image = #imageLiteral(resourceName: "ic_success")
+        if !item.active! { activeImage.image = #imageLiteral(resourceName: "ic_error") }
         
         switch item.sensorId {
         case 1:

@@ -61,14 +61,6 @@ func checkAPIData(apiData: Data?, response: URLResponse?, error: Error?) -> Bool
         return false
     }
     return true
-    //let json = try? JSON(data: apiData!)
-    //let apiStatus = json!["success"]
-    //let apiStatusString = apiStatus.string!
-    //if apiStatusString == "true" {
-    //     return true
-    //} else {
-    //    return false
-    //}
 }
 
 func readPlist(item: String) -> String {

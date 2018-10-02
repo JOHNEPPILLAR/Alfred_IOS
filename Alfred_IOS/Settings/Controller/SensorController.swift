@@ -37,11 +37,11 @@ class SensorController: NSObject {
         task.resume()
     }
     
-    func saveTimerData(body: TimersRows) {
+    func saveSensorData(body: SensorsRows) {
         let configuration = URLSessionConfiguration.ephemeral
         let bodyDictionary = body.dictionaryRepresentation()
         let APIbody = try! JSONSerialization.data(withJSONObject: bodyDictionary)
-        let request = putAPIHeaderData(url: "settings/listSensors", body: APIbody)
+        let request = putAPIHeaderData(url: "settings/saveSensor", body: APIbody)
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
