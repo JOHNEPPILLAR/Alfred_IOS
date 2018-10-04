@@ -29,6 +29,7 @@ class ViewTimerController: UIViewController {
     @IBOutlet weak var sunSetLabel: UILabel!
     @IBOutlet weak var eveningLabel: UILabel!
     @IBOutlet weak var nightTimeLabel: UILabel!
+    @IBOutlet weak var brightnessLabel: UILabel!
     
     @IBAction func activeChange(_ sender: UISwitch) {
         TimersDataArray[0].rows![timerID].active = sender.isOn
@@ -175,6 +176,7 @@ class ViewTimerController: UIViewController {
                 brightnessSlider.value = CGFloat(Float(TimersDataArray[0].rows![timerID].brightness!))
                 brightnessSlider.addTarget(self, action: #selector(roomSliderChange(senderSlider:)), for: .valueChanged)
                 moreDetailsView.addSubview(brightnessSlider)
+                brightnessLabel.text = "\(TimersDataArray[0].rows![timerID].brightness ?? 0)"
                 
                 switch TimersDataArray[0].rows![timerID].scene {
                 case 1:
@@ -260,6 +262,7 @@ class ViewTimerController: UIViewController {
     
     @objc func roomSliderChange(senderSlider:MDCSlider) {
         TimersDataArray[0].rows![timerID].brightness = Int(senderSlider.value)
+        brightnessLabel.text = "\(Int(senderSlider.value))"
     }
 }
 

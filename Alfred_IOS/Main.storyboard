@@ -276,6 +276,21 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q8o-o5-nZ2" userLabel="Brightness View">
+                                                <rect key="frame" x="325" y="78" width="36" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O7e-Ax-ii5">
+                                                        <rect key="frame" x="2" y="4" width="31" height="21"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.1176470588" green="0.1333333333" blue="0.23529411759999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
                                         </subviews>
                                         <gestureRecognizers/>
                                     </view>
@@ -347,6 +362,7 @@
                     <connections>
                         <outlet property="active" destination="uc3-RC-xnX" id="1qr-4n-iOE"/>
                         <outlet property="aiEnabled" destination="g1o-pG-tXB" id="ejf-QR-kns"/>
+                        <outlet property="brightnessLabel" destination="O7e-Ax-ii5" id="IQZ-QR-LNP"/>
                         <outlet property="colorLoopSwitch" destination="zFz-GE-dQm" id="SzI-9y-1n4"/>
                         <outlet property="dayTimeLabel" destination="qfN-Ko-XJb" id="bIE-Db-Yib"/>
                         <outlet property="eveningLabel" destination="2D9-0u-6xh" id="wBZ-bn-jvV"/>
@@ -1541,6 +1557,21 @@
                                         <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oY3-qf-bLo" userLabel="Brightness View">
+                                        <rect key="frame" x="301" y="118" width="66" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRX-SB-xf3" userLabel="brightnessLabel">
+                                                <rect key="frame" x="0.0" y="5" width="66" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.1176470588" green="0.1333333333" blue="0.23529411759999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
                                 </subviews>
                                 <gestureRecognizers/>
                             </view>
@@ -1555,6 +1586,7 @@
                         <viewLayoutGuide key="safeArea" id="1or-xh-w2X"/>
                     </view>
                     <connections>
+                        <outlet property="brightnessLabel" destination="dRX-SB-xf3" id="4lu-rr-P8z"/>
                         <outlet property="dayTimeLabel" destination="VjK-az-3W2" id="OMk-jY-E8C"/>
                         <outlet property="editView" destination="R2a-46-Fri" id="PaX-Wb-dcU"/>
                         <outlet property="endTimeLabel" destination="DoD-P8-WL6" id="S6J-Y5-Ajf"/>

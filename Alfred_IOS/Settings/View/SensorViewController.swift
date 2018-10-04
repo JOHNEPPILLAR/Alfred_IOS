@@ -24,6 +24,7 @@ class ViewSensorController: UIViewController {
     @IBOutlet weak var sunSetLabel: UILabel!
     @IBOutlet weak var eveningLabel: UILabel!
     @IBOutlet weak var nightTimeLabel: UILabel!
+    @IBOutlet weak var brightnessLabel: UILabel!
     
     @IBAction func activeChange(_ sender: UISwitch) {
         SensorsDataArray[0].rows![sensorID].active = sender.isOn
@@ -150,14 +151,16 @@ class ViewSensorController: UIViewController {
             startTimeLabel.text = SensorsDataArray[0].rows![sensorID].startTime
             endTimeLabel.text = SensorsDataArray[0].rows![sensorID].endTime
             
-            let brightnessSlider = MDCSlider(frame: CGRect(x: 100, y: 121, width: 258, height: 27))
+            let brightnessSlider = MDCSlider(frame: CGRect(x: 100, y: 121, width: 190, height: 27))
             brightnessSlider.minimumValue = 0
             brightnessSlider.maximumValue = 255
             brightnessSlider.color = UIColor(red: 118/255.0, green: 214/255.0, blue: 114/255.0, alpha: 1.0)
-            brightnessSlider.value = CGFloat(Float(SensorsDataArray[0].rows![sensorID].brightness!))
+            brightnessSlider.setValue(CGFloat(Float(SensorsDataArray[0].rows![sensorID].brightness!)), animated: true)
+            brightnessSlider.isThumbHollowAtStart = false
             brightnessSlider.addTarget(self, action: #selector(brightnessSliderChange(senderSlider:)), for: .valueChanged)
             editView.addSubview(brightnessSlider)
-                
+            brightnessLabel.text = "\(SensorsDataArray[0].rows![sensorID].brightness ?? 0)"
+            
             switch SensorsDataArray[0].rows![sensorID].scene {
             case 1:
                 sunRiseLabel.textColor = UIColor(red: 118/255.0, green: 214/255.0, blue: 114/255.0, alpha: 1.0)
@@ -175,8 +178,6 @@ class ViewSensorController: UIViewController {
             }
             
             SVProgressHUD.dismiss() // Stop spinner
-            //name.isEnabled = true
-            //active.isEnabled = true
             self.navigationItem.rightBarButtonItem?.isEnabled = true // Enable the save button
         }
     }
@@ -214,6 +215,7 @@ class ViewSensorController: UIViewController {
     
     @objc func brightnessSliderChange(senderSlider:MDCSlider) {
         SensorsDataArray[0].rows![sensorID].brightness = Int(senderSlider.value)
+        brightnessLabel.text = "\(Int(senderSlider.value))"
     }
 }
 
@@ -233,8 +235,6 @@ extension ViewSensorController: SensorControllerDelegate {
     
     func sensorSaved() {
         SVProgressHUD.showSuccess(withStatus: "Saved timer")
-        //name.isEnabled = true
-        //active.isEnabled = true
         navigationItem.rightBarButtonItem!.isEnabled = true
     }
 }
