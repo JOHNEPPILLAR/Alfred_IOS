@@ -1296,7 +1296,7 @@
                     </view>
                     <connections>
                         <outlet property="SensorsTableView" destination="TcZ-JO-go9" id="o0e-Si-nx8"/>
-                        <segue destination="p74-Of-2fv" kind="show" identifier="sensor" id="MEk-fp-CuZ"/>
+                        <segue destination="lHo-y3-jlH" kind="show" identifier="sensor" id="vFZ-bA-ELb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bE7-Af-eHN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1304,21 +1304,22 @@
             <point key="canvasLocation" x="2972" y="682.75862068965523"/>
         </scene>
         <!--Edit Sensor-->
-        <scene sceneID="9Zo-wo-9Hv">
+        <scene sceneID="kpg-hJ-gYb">
             <objects>
-                <viewController title="Edit Sensor" id="p74-Of-2fv" customClass="ViewSensorController" customModule="Alfred_IOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3Ly-e3-rx8">
+                <viewController title="Edit Sensor" id="lHo-y3-jlH" customClass="ViewSensorController" customModule="Alfred_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Yhu-th-7ws">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_Background" translatesAutoresizingMaskIntoConstraints="NO" id="Tkd-sP-fkN">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_Background" translatesAutoresizingMaskIntoConstraints="NO" id="3Tj-lp-Vzs">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <view autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R2a-46-Fri">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                            <view autoresizesSubviews="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jfu-XC-Xfe">
+                                <rect key="frame" x="0.0" y="69" width="375" height="655"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kze-XV-DoH">
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="511-0V-2qM">
                                         <rect key="frame" x="70" y="32" width="142" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.1176470588" green="0.1333333333" blue="0.23529411759999999" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
@@ -1329,50 +1330,50 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" spellCheckingType="yes"/>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sensor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJR-E6-vS3">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sensor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aRi-QH-uRq">
                                         <rect key="frame" x="8" y="37" width="54" height="18"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Brightness" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nmv-i2-mYG">
-                                        <rect key="frame" x="8" y="123" width="82" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Brightness" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="az8-Cj-9kv">
+                                        <rect key="frame" x="8" y="151" width="82" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Start" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Whg-Bv-hHT">
-                                        <rect key="frame" x="8" y="79" width="38" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Start" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hiX-3G-x9r">
+                                        <rect key="frame" x="8" y="95" width="38" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dae-15-ljd" userLabel="Scene View">
-                                        <rect key="frame" x="0.0" y="152" width="375" height="352"/>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3fV-fG-ytI" userLabel="Scene View">
+                                        <rect key="frame" x="0.0" y="188" width="375" height="316"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Scene" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7wV-Hn-SBg">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Scene" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nx3-rH-wSn">
                                                 <rect key="frame" x="8" y="8" width="93" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dFk-1Y-hxO" userLabel="Daytime View">
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wgx-dN-NM8" userLabel="Daytime View">
                                                 <rect key="frame" x="198" y="37" width="163" height="75"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Day time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VjK-az-3W2">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Day time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IuV-Wn-5sz">
                                                         <rect key="frame" x="71" y="17" width="72" height="40"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="daytime_image" translatesAutoresizingMaskIntoConstraints="NO" id="qS9-9X-1Et">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="daytime_image" translatesAutoresizingMaskIntoConstraints="NO" id="Ck0-ye-3qq">
                                                         <rect key="frame" x="8" y="12" width="50" height="50"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
@@ -1380,21 +1381,21 @@
                                                 <color key="backgroundColor" red="0.1176470588" green="0.1333333333" blue="0.23529411759999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <gestureRecognizers/>
                                                 <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="zn7-WT-nb7" appends="YES" id="5bw-x8-Otf"/>
+                                                    <outletCollection property="gestureRecognizers" destination="gCJ-Uy-3qw" appends="YES" id="fUo-Dc-zed"/>
                                                 </connections>
                                             </view>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f8a-N1-aO2" userLabel="Sunset View">
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KmD-u7-kqO" userLabel="Sunset View">
                                                 <rect key="frame" x="17" y="129" width="163" height="75"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sunset" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="slB-Kq-Ex0">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sunset" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3z-CW-Uvw">
                                                         <rect key="frame" x="71" y="17" width="72" height="40"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sunset_image" translatesAutoresizingMaskIntoConstraints="NO" id="tI8-Rp-5dd">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sunset_image" translatesAutoresizingMaskIntoConstraints="NO" id="hFY-wz-z7R">
                                                         <rect key="frame" x="8" y="12" width="50" height="50"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
@@ -1402,21 +1403,21 @@
                                                 <color key="backgroundColor" red="0.1176470588" green="0.1333333333" blue="0.23529411759999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <gestureRecognizers/>
                                                 <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="C0j-ew-ZQn" appends="YES" id="t0l-fh-QF4"/>
+                                                    <outletCollection property="gestureRecognizers" destination="c95-kZ-eZ2" appends="YES" id="sjB-kT-TY4"/>
                                                 </connections>
                                             </view>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9xR-c2-QVZ" userLabel="Sunrise View">
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vHD-5A-WMy" userLabel="Sunrise View">
                                                 <rect key="frame" x="17" y="37" width="163" height="75"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sunrise" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oTa-0v-8P5">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sunrise" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uj3-mT-663">
                                                         <rect key="frame" x="71" y="17" width="72" height="40"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sunrise_image" translatesAutoresizingMaskIntoConstraints="NO" id="H3z-1Y-V7T">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sunrise_image" translatesAutoresizingMaskIntoConstraints="NO" id="23v-YT-5YB">
                                                         <rect key="frame" x="8" y="12" width="50" height="50"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
@@ -1424,21 +1425,21 @@
                                                 <color key="backgroundColor" red="0.1176470588" green="0.1333333333" blue="0.23529411759999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <gestureRecognizers/>
                                                 <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="onu-cl-oxY" appends="YES" id="nHX-kX-6vK"/>
+                                                    <outletCollection property="gestureRecognizers" destination="YJm-Vo-nhl" appends="YES" id="iEh-c6-EAw"/>
                                                 </connections>
                                             </view>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a7u-VU-JiO" userLabel="Evening View">
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TTn-EP-or6" userLabel="Evening View">
                                                 <rect key="frame" x="198" y="129" width="163" height="75"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Evening" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t32-xt-iVj">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Evening" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iUY-2B-pAC">
                                                         <rect key="frame" x="71" y="17" width="72" height="40"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="evening_image" translatesAutoresizingMaskIntoConstraints="NO" id="4yp-pR-gQH">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="evening_image" translatesAutoresizingMaskIntoConstraints="NO" id="K4c-gD-ATb">
                                                         <rect key="frame" x="8" y="12" width="50" height="50"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
@@ -1446,21 +1447,21 @@
                                                 <color key="backgroundColor" red="0.1176470588" green="0.1333333333" blue="0.23529411759999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <gestureRecognizers/>
                                                 <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="Mn4-5Q-R7x" appends="YES" id="EtB-gj-cWQ"/>
+                                                    <outletCollection property="gestureRecognizers" destination="fwR-QF-Zo0" appends="YES" id="65I-ry-Foj"/>
                                                 </connections>
                                             </view>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CpH-qi-uDQ" userLabel="Nighttime View">
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vZI-zn-x14" userLabel="Nighttime View">
                                                 <rect key="frame" x="17" y="221" width="163" height="75"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Night time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMN-XI-klS">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Night time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PNI-Cn-yph">
                                                         <rect key="frame" x="71" y="17" width="80" height="40"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="nighttime_image" translatesAutoresizingMaskIntoConstraints="NO" id="IyQ-8O-Ev3">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="nighttime_image" translatesAutoresizingMaskIntoConstraints="NO" id="9r0-16-Mzc">
                                                         <rect key="frame" x="8" y="12" width="50" height="50"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
@@ -1468,17 +1469,17 @@
                                                 <color key="backgroundColor" red="0.1176470588" green="0.1333333333" blue="0.23529411759999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <gestureRecognizers/>
                                                 <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="i6M-in-9J8" appends="YES" id="dCc-dz-N8c"/>
+                                                    <outletCollection property="gestureRecognizers" destination="Jcy-rP-OOT" appends="YES" id="U37-AW-GWR"/>
                                                 </connections>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dGr-ce-BCU" userLabel="Start View">
-                                        <rect key="frame" x="143" y="74" width="36" height="30"/>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tAB-to-yfU" userLabel="Start View">
+                                        <rect key="frame" x="143" y="90" width="36" height="30"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_more" translatesAutoresizingMaskIntoConstraints="NO" id="UaU-Ur-9ey" userLabel="Start Time Edit">
+                                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_more" translatesAutoresizingMaskIntoConstraints="NO" id="gVW-8M-Dd3" userLabel="Start Time Edit">
                                                 <rect key="frame" x="0.0" y="0.0" width="36" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <gestureRecognizers/>
@@ -1487,14 +1488,14 @@
                                         <color key="backgroundColor" red="0.1176470588" green="0.1333333333" blue="0.23529411759999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
-                                            <outletCollection property="gestureRecognizers" destination="boo-xR-7Ux" appends="YES" id="bpf-Bq-nmy"/>
+                                            <outletCollection property="gestureRecognizers" destination="H1H-Qi-Dgo" appends="YES" id="Swv-jk-hce"/>
                                         </connections>
                                     </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jka-WI-dEh" userLabel="Start Time View">
-                                        <rect key="frame" x="70" y="74" width="66" height="30"/>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZRM-2q-kcb" userLabel="Start Time View">
+                                        <rect key="frame" x="70" y="90" width="66" height="30"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W23-cb-MoX" userLabel="startTimeLabel">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HfF-Ka-lZ0" userLabel="startTimeLabel">
                                                 <rect key="frame" x="0.0" y="5" width="66" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1505,18 +1506,18 @@
                                         <color key="backgroundColor" red="0.1176470588" green="0.1333333333" blue="0.23529411759999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="End" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h0L-TR-ueN">
-                                        <rect key="frame" x="216" y="79" width="30" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="End" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ge1-5T-ryR">
+                                        <rect key="frame" x="216" y="95" width="30" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wds-Gv-Mju" userLabel="Start Time View">
-                                        <rect key="frame" x="254" y="74" width="66" height="30"/>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EMV-qv-9ak" userLabel="End Time View">
+                                        <rect key="frame" x="254" y="90" width="66" height="30"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DoD-P8-WL6" userLabel="startTimeLabel">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bT-o5-dYo" userLabel="endTimeLabel">
                                                 <rect key="frame" x="0.0" y="5" width="66" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1527,41 +1528,41 @@
                                         <color key="backgroundColor" red="0.1176470588" green="0.1333333333" blue="0.23529411759999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FbY-bt-VVC" userLabel="End View">
-                                        <rect key="frame" x="327" y="74" width="36" height="30"/>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="egR-OU-wX3" userLabel="End View">
+                                        <rect key="frame" x="327" y="90" width="36" height="30"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_more" translatesAutoresizingMaskIntoConstraints="NO" id="ci0-1p-J1A" userLabel="End Time Edit">
+                                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_more" translatesAutoresizingMaskIntoConstraints="NO" id="VkD-0h-6de" userLabel="End Time Edit">
                                                 <rect key="frame" x="0.0" y="0.0" width="36" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <gestureRecognizers/>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="R5L-2U-ckT" appends="YES" id="XpG-Qn-DP1"/>
-                                                </connections>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.1176470588" green="0.1333333333" blue="0.23529411759999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="xu1-NY-vwW" appends="YES" id="kH9-yv-LW5"/>
+                                        </connections>
                                     </view>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8Do-NO-Ynb">
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="81V-82-4xs">
                                         <rect key="frame" x="310" y="31" width="49" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <connections>
-                                            <action selector="activeChange:" destination="p74-Of-2fv" eventType="valueChanged" id="age-Uu-G3E"/>
+                                            <action selector="activeChange:" destination="lHo-y3-jlH" eventType="valueChanged" id="JnT-mc-KbH"/>
                                         </connections>
                                     </switch>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Active" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IKZ-HL-vGp">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Active" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q9D-4p-0EM">
                                         <rect key="frame" x="254" y="36" width="48" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oY3-qf-bLo" userLabel="Brightness View">
-                                        <rect key="frame" x="301" y="118" width="66" height="30"/>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AYc-0Z-bic" userLabel="Brightness View">
+                                        <rect key="frame" x="301" y="146" width="66" height="30"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRX-SB-xf3" userLabel="brightnessLabel">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KN1-2t-cSP" userLabel="brightnessLabel">
                                                 <rect key="frame" x="0.0" y="5" width="66" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1576,64 +1577,57 @@
                                 <gestureRecognizers/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="R2a-46-Fri" firstAttribute="leading" secondItem="1or-xh-w2X" secondAttribute="leading" id="2ys-dw-HmQ"/>
-                            <constraint firstAttribute="bottom" secondItem="R2a-46-Fri" secondAttribute="bottom" id="Ajs-xI-Ehh"/>
-                            <constraint firstItem="R2a-46-Fri" firstAttribute="top" secondItem="1or-xh-w2X" secondAttribute="top" id="Gnw-2B-000"/>
-                            <constraint firstItem="R2a-46-Fri" firstAttribute="trailing" secondItem="1or-xh-w2X" secondAttribute="trailing" id="Qdd-ah-N1n"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="1or-xh-w2X"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="8r3-zn-cXG"/>
                     </view>
                     <connections>
-                        <outlet property="brightnessLabel" destination="dRX-SB-xf3" id="4lu-rr-P8z"/>
-                        <outlet property="dayTimeLabel" destination="VjK-az-3W2" id="OMk-jY-E8C"/>
-                        <outlet property="editView" destination="R2a-46-Fri" id="PaX-Wb-dcU"/>
-                        <outlet property="endTimeLabel" destination="DoD-P8-WL6" id="S6J-Y5-Ajf"/>
-                        <outlet property="eveningLabel" destination="t32-xt-iVj" id="nSn-PM-dhX"/>
-                        <outlet property="nightTimeLabel" destination="aMN-XI-klS" id="DmG-gH-k4I"/>
-                        <outlet property="sensorActive" destination="8Do-NO-Ynb" id="Azm-iA-X9d"/>
-                        <outlet property="sensorName" destination="Kze-XV-DoH" id="brw-wO-aDh"/>
-                        <outlet property="startTimeLabel" destination="W23-cb-MoX" id="2Kh-fn-XAA"/>
-                        <outlet property="sunRiseLabel" destination="oTa-0v-8P5" id="EED-jV-8bm"/>
-                        <outlet property="sunSetLabel" destination="slB-Kq-Ex0" id="c66-Ip-EvL"/>
-                        <outlet property="view" destination="R2a-46-Fri" id="h6d-xC-tvF"/>
+                        <outlet property="brightnessLabel" destination="KN1-2t-cSP" id="95y-N4-lkR"/>
+                        <outlet property="dayTimeLabel" destination="IuV-Wn-5sz" id="MCN-Se-k49"/>
+                        <outlet property="editView" destination="jfu-XC-Xfe" id="CGg-aZ-NM9"/>
+                        <outlet property="endTimeLabel" destination="6bT-o5-dYo" id="NH5-XG-YOw"/>
+                        <outlet property="eveningLabel" destination="iUY-2B-pAC" id="DgN-oT-dA6"/>
+                        <outlet property="nightTimeLabel" destination="PNI-Cn-yph" id="rlp-D0-CSi"/>
+                        <outlet property="sensorActive" destination="81V-82-4xs" id="bJJ-V4-ShC"/>
+                        <outlet property="sensorName" destination="511-0V-2qM" id="aED-yw-XMA"/>
+                        <outlet property="startTimeLabel" destination="HfF-Ka-lZ0" id="esb-eO-9WT"/>
+                        <outlet property="sunRiseLabel" destination="uj3-mT-663" id="5m6-gR-qso"/>
+                        <outlet property="sunSetLabel" destination="f3z-CW-Uvw" id="KyQ-Q1-Eaa"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8e7-Ef-HA0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="onu-cl-oxY" userLabel="Sunrise Tap Gesture Recognizer">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xqE-M6-UfF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="YJm-Vo-nhl" userLabel="Sunrise Tap Gesture Recognizer">
                     <connections>
-                        <action selector="sunRiseSceneTap:" destination="p74-Of-2fv" id="iwq-n4-qq1"/>
+                        <action selector="sunRiseSceneTap:" destination="lHo-y3-jlH" id="dj6-eP-yfr"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="zn7-WT-nb7" userLabel="Daytime Tap Gesture Recognizer">
+                <tapGestureRecognizer id="gCJ-Uy-3qw" userLabel="Daytime Tap Gesture Recognizer">
                     <connections>
-                        <action selector="dayTimeSceneTap:" destination="p74-Of-2fv" id="d2s-ux-2ro"/>
+                        <action selector="dayTimeSceneTap:" destination="lHo-y3-jlH" id="gpJ-qB-ZBj"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="C0j-ew-ZQn" userLabel="Sunset Tap Gesture Recognizer">
+                <tapGestureRecognizer id="c95-kZ-eZ2" userLabel="Sunset Tap Gesture Recognizer">
                     <connections>
-                        <action selector="sunSetSceneTap:" destination="p74-Of-2fv" id="2jw-Lh-lre"/>
+                        <action selector="sunSetSceneTap:" destination="lHo-y3-jlH" id="fLb-gj-Y7C"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="Mn4-5Q-R7x" userLabel="Evening Tap Gesture Recognizer">
+                <tapGestureRecognizer id="fwR-QF-Zo0" userLabel="Evening Tap Gesture Recognizer">
                     <connections>
-                        <action selector="eveningSceneTap:" destination="p74-Of-2fv" id="97l-VI-omz"/>
+                        <action selector="eveningSceneTap:" destination="lHo-y3-jlH" id="CcN-Ec-3CJ"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="i6M-in-9J8" userLabel="Nighttime Tap Gesture Recognizer">
+                <tapGestureRecognizer id="Jcy-rP-OOT" userLabel="Nighttime Tap Gesture Recognizer">
                     <connections>
-                        <action selector="nightTimeSceneTap:" destination="p74-Of-2fv" id="Xlp-bc-WCc"/>
+                        <action selector="nightTimeSceneTap:" destination="lHo-y3-jlH" id="9RO-kO-VVY"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="R5L-2U-ckT" userLabel="End Tap Gesture Recognizer">
+                <tapGestureRecognizer id="H1H-Qi-Dgo" userLabel="Start time Tap Gesture Recognizer">
                     <connections>
-                        <action selector="EndTimeTap:" destination="p74-Of-2fv" id="u3C-4g-cAb"/>
+                        <action selector="StartTimeTap:" destination="lHo-y3-jlH" id="HHf-Lb-d8q"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="boo-xR-7Ux" userLabel="Start Tap Gesture Recognizer">
+                <tapGestureRecognizer id="xu1-NY-vwW" userLabel="Endtime Tap Gesture Recognizer">
                     <connections>
-                        <action selector="StartTimeTap:" destination="p74-Of-2fv" id="3Q0-wK-0KC"/>
+                        <action selector="EndTimeTap:" destination="lHo-y3-jlH" id="voq-dH-1rK"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

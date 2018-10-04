@@ -151,7 +151,7 @@ class ViewSensorController: UIViewController {
             startTimeLabel.text = SensorsDataArray[0].rows![sensorID].startTime
             endTimeLabel.text = SensorsDataArray[0].rows![sensorID].endTime
             
-            let brightnessSlider = MDCSlider(frame: CGRect(x: 100, y: 121, width: 190, height: 27))
+            let brightnessSlider = MDCSlider(frame: CGRect(x: 100, y: 151, width: 190, height: 27))
             brightnessSlider.minimumValue = 0
             brightnessSlider.maximumValue = 255
             brightnessSlider.color = UIColor(red: 118/255.0, green: 214/255.0, blue: 114/255.0, alpha: 1.0)
