@@ -12,62 +12,79 @@ import SVProgressHUD
 class CommuteTableViewCell: UITableViewCell {
     
     @IBOutlet weak var lineType: UIImageView!
-    @IBOutlet weak var Summary1: UILabel!
-    @IBOutlet weak var Summary2: UILabel!
-    @IBOutlet weak var Distruptions: UIImageView!
+    @IBOutlet weak var StartTime: UILabel!
+    @IBOutlet weak var DepartText: UILabel!
+    @IBOutlet weak var Duration: UILabel!
+    @IBOutlet weak var Status: UILabel!
+    @IBOutlet weak var EndTime: UILabel!
+    @IBOutlet weak var ArriveText: UILabel!
+    @IBOutlet weak var StartIcon: UIImageView!
+    @IBOutlet weak var LineIcon: UIImageView!
+    @IBOutlet weak var EndIcon: UIImageView!
     
     func configureWithItem(item: CommuteLegs) {
         
         let mode = (item.mode != nil) ? item.mode! : ""
         let status = (item.status != nil) ? item.status! : ""
-        let departurePlatform = (item.departurePlatform != nil) ? item.departurePlatform! : ""
-        let arrivalStation = (item.arrivalStation != nil) ? item.arrivalStation! : ""
-        let arrivalTime = (item.arrivalTime != nil) ? item.arrivalTime! : ""
-        let disruptions = (item.disruptions != nil) ? item.disruptions! : ""
         let departureTime = (item.departureTime != nil) ? item.departureTime! : ""
+        var duration = (item.duration != nil) ? item.duration! : "0"
+        duration = duration + " (min)"
+        let arrivalTime = (item.arrivalTime != nil) ? item.arrivalTime! : ""
+        var departurePlatform = (item.departurePlatform != nil) ? item.departurePlatform! : "- tbc"
+        departurePlatform = "Platform " + departurePlatform
+        let arrivalStation = (item.arrivalStation != nil) ? item.arrivalStation! : ""
+        _ = (item.disruptions != nil) ? item.disruptions! : ""
         let departureStation = (item.departureStation != nil) ? item.departureStation! : ""
-        let duration = (item.duration != nil) ? item.duration! : ""
         let line = (item.line != nil) ? item.line! : ""
-        
-        // If no results then alert and exit function
-        if (mode == "train" && status == "No trains running") || mode == "error" {
-            lineType.image = #imageLiteral(resourceName: "ic_travel_train")
-            Summary1.isHidden = true
-            Summary2.frame.origin = CGPoint(x: 54, y: 25)
-            Summary2.text = status
-            return
-        }
-        
-        // Reset positions
-        Summary1.isHidden = false
-        Summary2.frame.origin = CGPoint(x: 54, y: 35)
-        Summary2.isHidden = false
-        Distruptions.image = nil
 
         // Process data
         switch(mode) {
             case "train" :
                 lineType.image = #imageLiteral(resourceName: "ic_travel_train")
                 if line == "Thameslink" { lineType.image = #imageLiteral(resourceName: "ic_travel_crossrail") }
-                Summary1.text = departureTime + "-" + arrivalTime + " (" + duration
-                Summary1.text = Summary1.text! + " min) (" + status + ")"
-                Summary2.text = departureStation + " (pl " + departurePlatform + ") to " + arrivalStation
+                StartTime.text = departureTime
+                DepartText.text = departureStation + " - " + departurePlatform
+                Duration.text = duration
+                Status.text = status
+                EndTime.text = arrivalTime
+                ArriveText.text = arrivalStation
                 break;
             case "tube" :
                 lineType.image = #imageLiteral(resourceName: "ic_travel_underground")
-                Summary1.text = departureTime + "-" + arrivalTime + " " + " (" + duration + " min)"
-                Summary2.text = line + " from " + departureStation + " to " + arrivalStation
+                StartTime.text = departureTime
+                DepartText.text = departureStation
+                Duration.text = duration
+                Status.text = status
+                EndTime.text = arrivalTime
+                ArriveText.text = arrivalStation
                 break;
             case "bus" :
                 lineType.image = #imageLiteral(resourceName: "ic_travel_bus")
-                Summary1.text = ""
-                Summary2.text = ""
+                StartTime.text = departureTime
+                DepartText.text = departureStation
+                Duration.text = duration
+                Status.text = nil
+                EndTime.text = arrivalTime
+                ArriveText.text = arrivalStation
                 break;
             case "walk" :
                 lineType.image = #imageLiteral(resourceName: "ic_walk")
-                Summary1.text = departureTime + "-" + arrivalTime + " (" +  duration + " min)"
-                Summary2.text = departureStation + " to " + arrivalStation
+                StartTime.text = departureTime
+                DepartText.text = departureStation
+                Duration.text = duration
+                Status.text = nil
+                EndTime.text = arrivalTime
+                ArriveText.text = arrivalStation
                 break;
+            case "error" :
+                lineType.image = #imageLiteral(resourceName: "ic_error")
+                StartTime.text = nil
+                DepartText.text = nil
+                Duration.text = nil
+                Status.text = status
+                EndTime.text = nil
+                ArriveText.text = nil
+            break;
             // case "dlr" :
             //     lineType.image = #imageLiteral(resourceName: "ic_travel_dlr")
             //     break;
@@ -82,10 +99,18 @@ class CommuteTableViewCell: UITableViewCell {
             //     break;
             default:
                 lineType.image = #imageLiteral(resourceName: "ic_question_mark")
-                Summary1.text = ""
-                Summary2.text = ""
+                StartTime.text = nil
+                DepartText.text = nil
+                Duration.text = nil
+                Status.text = nil
+                EndTime.text = nil
+                ArriveText.text = nil
             }
         
-        if disruptions == "true" { Distruptions.image = #imageLiteral(resourceName: "ic_error") }
+        if item.disruptions == "true" {
+            StartIcon.image = #imageLiteral(resourceName: "ic_start_end")
+            LineIcon.image = #imageLiteral(resourceName: "ic_line_red")
+            EndIcon.image = #imageLiteral(resourceName: "ic_end_red")
+        }
     }
 }

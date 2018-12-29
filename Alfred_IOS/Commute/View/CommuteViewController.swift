@@ -16,7 +16,6 @@ class CommuteViewController: UIViewController {
     var whoIsThis:String!
     var walking:Bool!
 
-    @IBOutlet weak var walkButton: UIButton!
     @IBOutlet weak var commuteTableView: UITableView!
     
     fileprivate var CommuteDataArray = [CommuteData]() {
@@ -41,7 +40,7 @@ class CommuteViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
 
-        self.commuteTableView?.rowHeight = 120.0
+        self.commuteTableView?.rowHeight = 130.0
         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
         SVProgressHUD.show(withStatus: "Loading")
 
@@ -54,26 +53,14 @@ class CommuteViewController: UIViewController {
             whoIsThis = ""
             SVProgressHUD.showInfo(withStatus: "Please setup the app user defaults in settings")
         } else {
-            if whoIsThis == "JP" { walkButton.isHidden = false }
-            walking = false
             getCommuteData()
         }
-        self.commuteTableView?.rowHeight = 70
-        
-        // Add walking button action
-        walkButton.addTarget(self, action: #selector(getCommuteData), for: .touchUpInside)
+        self.commuteTableView?.rowHeight = 165        
     }
     
     @objc func getCommuteData() {
-        if walking {
-            walking = false
-            walkButton.setImage(UIImage(named: "ic_walk_red"), for: UIControl.State.normal)
-        } else {
-            walking = true
-            walkButton.setImage(UIImage(named: "ic_walk_green"), for: UIControl.State.normal)
-        }
         SVProgressHUD.show(withStatus: "Loading")
-        commuteController.getCommuteData(whoIsThis: whoIsThis!, walk: walking)
+        commuteController.getCommuteData(whoIsThis: whoIsThis!)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -87,26 +74,25 @@ extension CommuteViewController: UITableViewDelegate {
 
 extension CommuteViewController: UITableViewDataSource {
 
+    /*
     func numberOfSections(in tableView: UITableView) -> Int {
-        if CommuteDataArray.count > 0 {
-            return CommuteDataArray[0].journeys!.count
-        }
-        return 0
+        return CommuteDataArray.count
     }
-
+     */
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if CommuteDataArray.count > 0 {
-            return CommuteDataArray[0].journeys![section].legs!.count
+            return CommuteDataArray[0].journeys?[0].legs?.count ?? 0
         }
         return 0
     }
-
+    
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         view.tintColor = UIColor(red: 51/255.0, green: 84/255.0, blue: 138/255.0, alpha: 1.0)
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.textColor = UIColor.white
     }
-    
+    /*
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var titleText = ""
         if section == 0 {
@@ -138,11 +124,11 @@ extension CommuteViewController: UITableViewDataSource {
         titleText = titleText + ": " + StartDatetime! + " - " + EndDatetime!
         return titleText
     }
-    
+    */
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "commuteCell", for: indexPath) as! CommuteTableViewCell
-        let item = CommuteDataArray[0].journeys![indexPath.section].legs![indexPath.item]
-        cell.configureWithItem(item: item)
+        let item = CommuteDataArray[0].journeys?[0].legs?[indexPath.item]
+        cell.configureWithItem(item: item!)
         return cell
     }
 

@@ -16,7 +16,11 @@ extension Int {
 }
 
 func putAPIHeaderData(url: String, body: Data) -> URLRequest {
+    #if DEBUG
+    let AlfredBaseURL = readPlist(item: "AlfredBaseURL-Local")
+    #else
     let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+    #endif
     let AlfredAppKey = readPlist(item: "AlfredAppKey")
     let url = URL(string: AlfredBaseURL + url)!
     var request = URLRequest(url: url)
@@ -30,21 +34,26 @@ func putAPIHeaderData(url: String, body: Data) -> URLRequest {
 }
 
 func getAPIHeaderData(url: String) -> URLRequest {
+    #if DEBUG
+    let AlfredBaseURL = readPlist(item: "AlfredBaseURL-Local")
+    #else
     let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+    #endif
     let AlfredAppKey = readPlist(item: "AlfredAppKey")
     let url = URL(string: AlfredBaseURL + url)!
     var request = URLRequest(url: url)
-    request.cachePolicy = URLRequest.CachePolicy.reloadIgnoringLocalAndRemoteCacheData
     request.httpMethod = "GET"
+    request.cachePolicy = URLRequest.CachePolicy.reloadIgnoringLocalAndRemoteCacheData
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.addValue("application/json", forHTTPHeaderField: "Accept")
     request.addValue(AlfredAppKey, forHTTPHeaderField: "client-access-key")
     return request
 }
 
 func getHLSAPIHeaderData(url: String) -> URLRequest {
-    let AlfredBaseURL = readPlist(item: "HLSBaseURL")
+    let HLSBaseURL = readPlist(item: "HLSBaseURL")
     let AlfredAppKey = readPlist(item: "AlfredAppKey")
-    let url = URL(string: AlfredBaseURL + url + "?clientaccesskey=" + AlfredAppKey)!
+    let url = URL(string: HLSBaseURL + url + "?clientaccesskey=" + AlfredAppKey)!
     var request = URLRequest(url: url)
     request.cachePolicy = URLRequest.CachePolicy.reloadIgnoringLocalAndRemoteCacheData
     request.httpMethod = "GET"
@@ -179,3 +188,4 @@ extension UIColor {
         context!.strokePath()
     }
 }
+

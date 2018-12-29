@@ -12,10 +12,10 @@ import SwiftyJSON
 
 // MARK: Delegate callback functions
 protocol HomeControllerDelegate: class {
-    func lightRoomTableDidRecieveDataUpdate(data: [RoomLightsData])
+    func lightRoomDidRecieveDataUpdate(data: [RoomLightsData])
     func currentWeatherDidRecieveDataUpdate(data: [CurrentWeatherData])
     func cummuteDidRecieveDataUpdate(data: [CommuteStatusData])
-    func insideWeatherDidRecieveDataUpdate(data: [InsideWeatherData])
+    func kidsRoomWeatherDidRecieveDataUpdate(data: [InsideWeatherData])
     func didFailDataUpdateWithError(displayMsg: Bool)
 }
 
@@ -43,30 +43,25 @@ class HomeController: NSObject, CLLocationManagerDelegate {
         manager.stopUpdatingLocation()
         
         // Get current weather data
-        var configuration = URLSessionConfiguration.ephemeral
-        var body: [String: Any] = ["lat": userLocation.coordinate.latitude, "long": userLocation.coordinate.longitude]
-        var APIbody: Data = try! JSONSerialization.data(withJSONObject: body, options: [])
-        var request = putAPIHeaderData(url: "weather/today", body: APIbody)
-        var session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
-        var task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+        let configuration = URLSessionConfiguration.ephemeral
+        var request = getAPIHeaderData(url: "weather/today?lat=" + "\(userLocation.coordinate.latitude)" + "&long=" + "\(userLocation.coordinate.longitude)")
+        let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
+        let weatherTask = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
                 let responseJSON = try? JSON(data: data!)
                 let data = [CurrentWeatherBaseData(json: responseJSON!)] // Update data store
                 self.delegate?.currentWeatherDidRecieveDataUpdate(data: [data[0].data!]) // Let the View controller know to show the data
             } else {
-                self.delegate?.didFailDataUpdateWithError(displayMsg: true) // Let the View controller know there was an error
+                self.delegate?.didFailDataUpdateWithError(displayMsg: false) // Let the View controller know there was an error
             }
         })
-        task.resume()
+        weatherTask.resume()
       
         // Get commute data
         if (whoIs != "") {
-            configuration = URLSessionConfiguration.ephemeral
-            body = ["user": whoIs, "lat": userLocation.coordinate.latitude, "long": userLocation.coordinate.longitude ]
-            APIbody = try! JSONSerialization.data(withJSONObject: body, options: [])
-            request = putAPIHeaderData(url: "commute/getcommutestatus", body: APIbody)
-            session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
-            task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+            request = getAPIHeaderData(url: "commute/getcommutestatus?lat=" + "\(userLocation.coordinate.latitude)" + "&long=" + "\(userLocation.coordinate.longitude)" + "&user=" + whoIs)
+            request = getAPIHeaderData(url: "commute/getcommutestatus")
+            let comuteTask = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
                 if checkAPIData(apiData: data, response: response, error: error) {
                     let responseJSON = try? JSON(data: data!)
                     let baseData = [CommuteStatusBaseClass(json: responseJSON!)] // Update data store
@@ -75,17 +70,17 @@ class HomeController: NSObject, CLLocationManagerDelegate {
                     self.delegate?.didFailDataUpdateWithError(displayMsg: true) // Let the View controller know there was an error
                 }
             })
-            task.resume()
+            comuteTask.resume()
         }
     }
 
-    func turnOffLights() {
+    func turnOffAllLights() {
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
         let request = getAPIHeaderData(url: "lights/alloff")
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
-                self.getLightRoomData()
+                //self.getLightRoomData()
             } else {
                 self.delegate?.didFailDataUpdateWithError(displayMsg: true) // Let the View controller know there was an error
             }
@@ -93,7 +88,7 @@ class HomeController: NSObject, CLLocationManagerDelegate {
         task.resume()
     }
 
-    func getInsideWeatherData() {
+    func getKidsRoomWeatherData() {
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
         let request = getAPIHeaderData(url: "weather/inside")
@@ -101,15 +96,14 @@ class HomeController: NSObject, CLLocationManagerDelegate {
             if checkAPIData(apiData: data, response: response, error: error) {
                 let responseJSON = try? JSON(data: data!)
                 let data = [InsideWeatherBaseClass(json: responseJSON!)] // Update data store
-                self.delegate?.insideWeatherDidRecieveDataUpdate(data: [data[0].data!]) // Refresh the data and UI
+                self.delegate?.kidsRoomWeatherDidRecieveDataUpdate(data: [data[0].data!]) // Refresh the data and UI
             } else {
-                self.delegate?.didFailDataUpdateWithError(displayMsg: true) // Let the View controller know there was an error
+                self.delegate?.didFailDataUpdateWithError(displayMsg: false) // Let the View controller know there was an error
             }
         })
         task.resume()
     }
     
-    // Light room table
     func getLightRoomData() {
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
@@ -118,49 +112,15 @@ class HomeController: NSObject, CLLocationManagerDelegate {
             if checkAPIData(apiData: data, response: response, error: error) {
                 let responseJSON = try? JSON(data: data!)
                 let data = [RoomLightsBaseData(json: responseJSON!)] // Update data store
-                self.delegate?.lightRoomTableDidRecieveDataUpdate(data: data[0].data!) // Let the View controller know to show the data
+                self.delegate?.lightRoomDidRecieveDataUpdate(data: data[0].data!) // Let the View controller know to show the data
             } else {
                 self.delegate?.didFailDataUpdateWithError(displayMsg: false) // Let the View controller know there was an error
             }
         })
         task.resume()
     }
-    
-    func UpdateLightBrightness(lightID: Int, brightness: Int) {
-        let configuration = URLSessionConfiguration.ephemeral
-        let body: [String: Any] = ["lightGroupNumber": lightID, "brightness": brightness]
-        let APIbody: Data = try! JSONSerialization.data(withJSONObject: body, options: [])
-        let request = putAPIHeaderData(url: "lights/lightgroupbrightness", body: APIbody)
-        let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
-        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
-            if checkAPIData(apiData: data, response: response, error: error) {
-                self.getLightRoomData() // Get latest data and refresh UI
-            } else {
-                self.delegate?.didFailDataUpdateWithError(displayMsg: true) // Let the View controller know there was an error
-            }
-        })
-        task.resume()
-    }
-    
-    func UpdateLightStateValueChange(lightID: Int, lightState: Bool) {
-        var lightsStatus = "off"
-        if lightState {
-            lightsStatus = "on"
-        }
-        let configuration = URLSessionConfiguration.ephemeral
-        let body: [String: Any] = ["lightGroupNumber": lightID, "lightAction": lightsStatus]        
-        let APIbody: Data = try! JSONSerialization.data(withJSONObject: body, options: [])
-        let request = putAPIHeaderData(url: "lights/lightgrouponoff", body: APIbody)
-        let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
-        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
-            if checkAPIData(apiData: data, response: response, error: error) {
-                self.getLightRoomData() // Get latest data and refresh UI
-            } else {
-                self.delegate?.didFailDataUpdateWithError(displayMsg: true) // Let the View controller know there was an error
-            }
-        })
-        task.resume()
-    }
+
+   
 }
 
 

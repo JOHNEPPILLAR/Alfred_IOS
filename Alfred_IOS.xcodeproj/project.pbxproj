@@ -11,8 +11,8 @@
 		0A0463F11F38E99B004A738D /* ColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0463F01F38E99B004A738D /* ColorViewController.swift */; };
 		0A1BFDAE2052EFF900B729F8 /* SplashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BFDAD2052EFF900B729F8 /* SplashController.swift */; };
 		0A1BFDB3205315B400B729F8 /* CommuteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BFDB2205315B400B729F8 /* CommuteController.swift */; };
-		0A29F7BC20551AA100111C50 /* InsideWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29F7BB20551AA100111C50 /* InsideWeatherData.swift */; };
-		0A29F7BE20551AA600111C50 /* InsideWeatherInsideWeatherBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29F7BD20551AA600111C50 /* InsideWeatherInsideWeatherBaseClass.swift */; };
+		0A29F7BC20551AA100111C50 /* KidsRoomWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29F7BB20551AA100111C50 /* KidsRoomWeatherData.swift */; };
+		0A29F7BE20551AA600111C50 /* KidsRoomWeatherInsideWeatherBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29F7BD20551AA600111C50 /* KidsRoomWeatherInsideWeatherBaseClass.swift */; };
 		0A385C2C20C8685F00CD312D /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A385C2B20C8685F00CD312D /* VideoViewController.swift */; };
 		0A420E4A1F140D0500BD2713 /* LogFileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A420E491F140D0500BD2713 /* LogFileTableViewCell.swift */; };
 		0A46C5FB1F56D58300ADB758 /* LightsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A46C5FA1F56D58300ADB758 /* LightsTableViewCell.swift */; };
@@ -46,12 +46,14 @@
 		E811EB0620DFB47C00C3B62E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E811EB0520DFB47C00C3B62E /* SettingsViewController.swift */; };
 		E811EB0820DFC78000C3B62E /* SettingsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E811EB0720DFC78000C3B62E /* SettingsCollectionViewCell.swift */; };
 		E811EB0A20DFCDF200C3B62E /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E811EB0920DFCDF200C3B62E /* SettingsController.swift */; };
+		E81F0C1C21D6CF6800F9FD0C /* CommuteBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81F0C1821D6CF6800F9FD0C /* CommuteBaseClass.swift */; };
+		E81F0C1D21D6CF6800F9FD0C /* CommuteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81F0C1921D6CF6800F9FD0C /* CommuteData.swift */; };
+		E81F0C1E21D6CF6800F9FD0C /* CommuteLegs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81F0C1A21D6CF6800F9FD0C /* CommuteLegs.swift */; };
+		E81F0C1F21D6CF6800F9FD0C /* CommuteJourneys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81F0C1B21D6CF6800F9FD0C /* CommuteJourneys.swift */; };
 		E82C11C120F1548C00A53A63 /* CommuteStatusData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82C11BF20F1548C00A53A63 /* CommuteStatusData.swift */; };
 		E82C11C220F1548C00A53A63 /* CommuteStatusBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82C11C020F1548C00A53A63 /* CommuteStatusBaseClass.swift */; };
-		E82C11C520F1614E00A53A63 /* CommuteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82C11C320F1614E00A53A63 /* CommuteData.swift */; };
-		E82C11C620F1614E00A53A63 /* CommuteBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82C11C420F1614E00A53A63 /* CommuteBaseClass.swift */; };
-		E82C11C920F1615B00A53A63 /* CommuteLegs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82C11C720F1615B00A53A63 /* CommuteLegs.swift */; };
-		E82C11CA20F1615B00A53A63 /* CommuteJourneys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82C11C820F1615B00A53A63 /* CommuteJourneys.swift */; };
+		E82CE68B21C693C80092A673 /* LightsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82CE68A21C693C80092A673 /* LightsViewController.swift */; };
+		E82CE69021C695510092A673 /* LightsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82CE68F21C695510092A673 /* LightsController.swift */; };
 		E845B9C1214E980900A75D96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E845B9C0214E980900A75D96 /* Main.storyboard */; };
 		E848524220E42E22001DC4F2 /* LogsBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E848524020E42E22001DC4F2 /* LogsBaseClass.swift */; };
 		E848524320E42E22001DC4F2 /* LogsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E848524120E42E22001DC4F2 /* LogsData.swift */; };
@@ -80,8 +82,8 @@
 		0A1BFDAD2052EFF900B729F8 /* SplashController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashController.swift; sourceTree = "<group>"; };
 		0A1BFDB2205315B400B729F8 /* CommuteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteController.swift; sourceTree = "<group>"; };
 		0A256ECC206F964F008C5283 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0A29F7BB20551AA100111C50 /* InsideWeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsideWeatherData.swift; sourceTree = "<group>"; };
-		0A29F7BD20551AA600111C50 /* InsideWeatherInsideWeatherBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsideWeatherInsideWeatherBaseClass.swift; sourceTree = "<group>"; };
+		0A29F7BB20551AA100111C50 /* KidsRoomWeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KidsRoomWeatherData.swift; sourceTree = "<group>"; };
+		0A29F7BD20551AA600111C50 /* KidsRoomWeatherInsideWeatherBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KidsRoomWeatherInsideWeatherBaseClass.swift; sourceTree = "<group>"; };
 		0A385C2B20C8685F00CD312D /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		0A420E491F140D0500BD2713 /* LogFileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogFileTableViewCell.swift; sourceTree = "<group>"; };
 		0A46C5FA1F56D58300ADB758 /* LightsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightsTableViewCell.swift; sourceTree = "<group>"; };
@@ -121,12 +123,14 @@
 		E811EB0520DFB47C00C3B62E /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E811EB0720DFC78000C3B62E /* SettingsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCollectionViewCell.swift; sourceTree = "<group>"; };
 		E811EB0920DFCDF200C3B62E /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		E81F0C1821D6CF6800F9FD0C /* CommuteBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteBaseClass.swift; sourceTree = "<group>"; };
+		E81F0C1921D6CF6800F9FD0C /* CommuteData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteData.swift; sourceTree = "<group>"; };
+		E81F0C1A21D6CF6800F9FD0C /* CommuteLegs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteLegs.swift; sourceTree = "<group>"; };
+		E81F0C1B21D6CF6800F9FD0C /* CommuteJourneys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteJourneys.swift; sourceTree = "<group>"; };
 		E82C11BF20F1548C00A53A63 /* CommuteStatusData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteStatusData.swift; sourceTree = "<group>"; };
 		E82C11C020F1548C00A53A63 /* CommuteStatusBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteStatusBaseClass.swift; sourceTree = "<group>"; };
-		E82C11C320F1614E00A53A63 /* CommuteData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteData.swift; sourceTree = "<group>"; };
-		E82C11C420F1614E00A53A63 /* CommuteBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteBaseClass.swift; sourceTree = "<group>"; };
-		E82C11C720F1615B00A53A63 /* CommuteLegs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteLegs.swift; sourceTree = "<group>"; };
-		E82C11C820F1615B00A53A63 /* CommuteJourneys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteJourneys.swift; sourceTree = "<group>"; };
+		E82CE68A21C693C80092A673 /* LightsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsViewController.swift; sourceTree = "<group>"; };
+		E82CE68F21C695510092A673 /* LightsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsController.swift; sourceTree = "<group>"; };
 		E845B9C0214E980900A75D96 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E848524020E42E22001DC4F2 /* LogsBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogsBaseClass.swift; sourceTree = "<group>"; };
 		E848524120E42E22001DC4F2 /* LogsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogsData.swift; sourceTree = "<group>"; };
@@ -233,8 +237,8 @@
 		0A256EBD206F92A9008C5283 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E82C11BA20F1544100A53A63 /* Commute */,
 				0A256EC0206F92F6008C5283 /* Lights */,
+				E82C11BA20F1544100A53A63 /* Commute */,
 				0A256EBF206F92E1008C5283 /* Weather */,
 			);
 			path = Model;
@@ -251,8 +255,8 @@
 		0A256EBF206F92E1008C5283 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
-				0A29F7BD20551AA600111C50 /* InsideWeatherInsideWeatherBaseClass.swift */,
-				0A29F7BB20551AA100111C50 /* InsideWeatherData.swift */,
+				0A29F7BD20551AA600111C50 /* KidsRoomWeatherInsideWeatherBaseClass.swift */,
+				0A29F7BB20551AA100111C50 /* KidsRoomWeatherData.swift */,
 				0A9EDC652052639C001277EC /* CurrentWeatherBaseClass.swift */,
 				0A9EDC67205263E5001277EC /* CurrentWeatherData.swift */,
 			);
@@ -370,6 +374,7 @@
 		0A69FB7F1F10C25C00563A69 /* Alfred_IOS */ = {
 			isa = PBXGroup;
 			children = (
+				E82CE68C21C693CE0092A673 /* Lights */,
 				E845B9C0214E980900A75D96 /* Main.storyboard */,
 				0A385C2920C8680E00CD312D /* Video */,
 				0AAD1023207D5564006B410C /* Alfred_IOS.entitlements */,
@@ -394,10 +399,10 @@
 		0A6AD7A4206E60DC00491B3E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E82C11C820F1615B00A53A63 /* CommuteJourneys.swift */,
-				E82C11C720F1615B00A53A63 /* CommuteLegs.swift */,
-				E82C11C420F1614E00A53A63 /* CommuteBaseClass.swift */,
-				E82C11C320F1614E00A53A63 /* CommuteData.swift */,
+				E81F0C1821D6CF6800F9FD0C /* CommuteBaseClass.swift */,
+				E81F0C1921D6CF6800F9FD0C /* CommuteData.swift */,
+				E81F0C1B21D6CF6800F9FD0C /* CommuteJourneys.swift */,
+				E81F0C1A21D6CF6800F9FD0C /* CommuteLegs.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -438,6 +443,39 @@
 				E82C11BF20F1548C00A53A63 /* CommuteStatusData.swift */,
 			);
 			path = Commute;
+			sourceTree = "<group>";
+		};
+		E82CE68C21C693CE0092A673 /* Lights */ = {
+			isa = PBXGroup;
+			children = (
+				E82CE69121C695D80092A673 /* Model */,
+				E82CE68E21C695320092A673 /* Controller */,
+				E82CE68D21C693E80092A673 /* View */,
+			);
+			path = Lights;
+			sourceTree = "<group>";
+		};
+		E82CE68D21C693E80092A673 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E82CE68A21C693C80092A673 /* LightsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E82CE68E21C695320092A673 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E82CE68F21C695510092A673 /* LightsController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E82CE69121C695D80092A673 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		E868D1E2216174E4000DC024 /* Sensors */ = {
@@ -642,17 +680,13 @@
 				E868D1EC2162236F000DC024 /* SensorController.swift in Sources */,
 				0A7ECE1F1FAE437B002AF233 /* CommuteViewController.swift in Sources */,
 				E87277B92145AF4A00FE3FC3 /* TimersController.swift in Sources */,
-				E82C11CA20F1615B00A53A63 /* CommuteJourneys.swift in Sources */,
-				0A29F7BE20551AA600111C50 /* InsideWeatherInsideWeatherBaseClass.swift in Sources */,
+				0A29F7BE20551AA600111C50 /* KidsRoomWeatherInsideWeatherBaseClass.swift in Sources */,
 				E868D1EA21620E16000DC024 /* SensorsTableViewCell.swift in Sources */,
-				E82C11C620F1614E00A53A63 /* CommuteBaseClass.swift in Sources */,
-				E82C11C920F1615B00A53A63 /* CommuteLegs.swift in Sources */,
 				E868D1E1216165F8000DC024 /* SensorsController.swift in Sources */,
 				E848524320E42E22001DC4F2 /* LogsData.swift in Sources */,
 				0A9EDC662052639C001277EC /* CurrentWeatherBaseClass.swift in Sources */,
 				0A420E4A1F140D0500BD2713 /* LogFileTableViewCell.swift in Sources */,
 				0A6AD7AC206E65C200491B3E /* CommuteTableViewCell.swift in Sources */,
-				E82C11C520F1614E00A53A63 /* CommuteData.swift in Sources */,
 				0A69FB811F10C25C00563A69 /* AppDelegate.swift in Sources */,
 				E868D1E8216174F9000DC024 /* SensorsBaseClass.swift in Sources */,
 				E868D1DF2161640F000DC024 /* SensorsViewController.swift in Sources */,
@@ -661,30 +695,36 @@
 				0ADF19B920658C5F008057DB /* LogsController.swift in Sources */,
 				E89FDE49214460EB00C2FB62 /* TimersData.swift in Sources */,
 				E82C11C120F1548C00A53A63 /* CommuteStatusData.swift in Sources */,
-				0A29F7BC20551AA100111C50 /* InsideWeatherData.swift in Sources */,
+				0A29F7BC20551AA100111C50 /* KidsRoomWeatherData.swift in Sources */,
 				0AE327A22066622E00C288E8 /* LogFileViewController.swift in Sources */,
 				E848524220E42E22001DC4F2 /* LogsBaseClass.swift in Sources */,
 				0A0463F11F38E99B004A738D /* ColorViewController.swift in Sources */,
 				E87277B52145AD7600FE3FC3 /* TimersTableViewCell.swift in Sources */,
 				0A6A5F9F204C6A5800314ECE /* HomeController.swift in Sources */,
 				E811EB0620DFB47C00C3B62E /* SettingsViewController.swift in Sources */,
+				E82CE68B21C693C80092A673 /* LightsViewController.swift in Sources */,
 				0A1BFDB3205315B400B729F8 /* CommuteController.swift in Sources */,
 				E868D1E6216174F9000DC024 /* SensorsRows.swift in Sources */,
 				0A647EDF2067E8CF00F7CD1E /* RoomLightsAction.swift in Sources */,
 				E811EB0A20DFCDF200C3B62E /* SettingsController.swift in Sources */,
 				E82C11C220F1548C00A53A63 /* CommuteStatusBaseClass.swift in Sources */,
+				E81F0C1C21D6CF6800F9FD0C /* CommuteBaseClass.swift in Sources */,
 				0A647EE32067E8CF00F7CD1E /* RoomLightsBaseClass.swift in Sources */,
 				0A9EDC68205263E5001277EC /* CurrentWeatherData.swift in Sources */,
 				0A647EE52067E8CF00F7CD1E /* RoomLightsAttributesAttributes.swift in Sources */,
 				E87277B72145AEA000FE3FC3 /* TimersViewControler.swift in Sources */,
+				E81F0C1E21D6CF6800F9FD0C /* CommuteLegs.swift in Sources */,
 				0A647EE42067E8CF00F7CD1E /* RoomLightsStateAttributes.swift in Sources */,
 				E868D1EE2162264A000DC024 /* SensorViewController.swift in Sources */,
+				E82CE69021C695510092A673 /* LightsController.swift in Sources */,
 				0A647EE02067E8CF00F7CD1E /* RoomLightsAttributes.swift in Sources */,
 				E8B63AB9214D96DA00EBF1A1 /* TimerViewController.swift in Sources */,
 				0A7DADE11F4A2BF9002FEE9F /* HueColorHelper.swift in Sources */,
 				0A385C2C20C8685F00CD312D /* VideoViewController.swift in Sources */,
+				E81F0C1F21D6CF6800F9FD0C /* CommuteJourneys.swift in Sources */,
 				E868D1E7216174F9000DC024 /* SensorsData.swift in Sources */,
 				E89D443820D4EFB000F6F142 /* VideoController.swift in Sources */,
+				E81F0C1D21D6CF6800F9FD0C /* CommuteData.swift in Sources */,
 				E89FDE4B2144611B00C2FB62 /* TimersRows.swift in Sources */,
 				0A647EE12067E8CF00F7CD1E /* RoomLightsData.swift in Sources */,
 				0AE259041F704A0A002C6922 /* SettingsBundleHelper.swift in Sources */,
@@ -831,6 +871,7 @@
 				INFOPLIST_FILE = Alfred_IOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-DDEBUG\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "JP.Alfred-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;

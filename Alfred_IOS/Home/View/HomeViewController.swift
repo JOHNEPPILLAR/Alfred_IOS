@@ -10,47 +10,41 @@ import UIKit
 import SVProgressHUD
 
 class HomeViewController: UIViewController {
-
-    @IBOutlet weak var ActivityWeather: UIActivityIndicatorView!
-    @IBOutlet weak var ActivityOutsideTemp: UIActivityIndicatorView!
-    @IBOutlet weak var ActivityCommute: UIActivityIndicatorView!
-    @IBOutlet weak var ActivityInsideTemp: UIActivityIndicatorView!
-    @IBOutlet weak var ActivityRoomLightTableView: UIActivityIndicatorView!
-    @IBOutlet weak var lightRoomView: UIScrollView!
-    @IBOutlet weak var lightRoomsTableView: UITableView?
-    @IBOutlet weak var menuIcon: UIImageView!
     
     private let homeController = HomeController()
 
     // table view refresh timer
     var refreshDataTimer: Timer!
-    let timerInterval = 5
+    let timerInterval = 5 // seconds
     
-    fileprivate var RoomLightsDataArray = [RoomLightsData]() {
-        didSet {
-            DispatchQueue.main.async {
-                self.lightRoomsTableView?.reloadData()
-            }
-            ActivityRoomLightTableView.stopAnimating()
-        }
+    // MARK: Interactive elements
+    @IBOutlet weak var menuIcon: UIImageView!
+    @IBOutlet weak var homeViewSection: UIView!
+    @IBOutlet weak var livingRoomViewSection: UIView!
+    @IBOutlet weak var kidsBedRoomViewSection: UIView!
+    @IBOutlet weak var mainBedRoomViewSection: UIView!
+
+    @IBAction func AllLightsOffPress(_ sender: UILongPressGestureRecognizer) {
+        homeController.turnOffAllLights()
     }
-    
-    // MARK: Quick Glance Tiles
+
+    // MARK: Info elements
     @IBOutlet weak var Greeting: UITextField!
+    @IBOutlet weak var homeTemp: UITextField!
+    @IBOutlet weak var homeTempMax: UITextField!
     @IBOutlet weak var weatherIcon: UIImageView!
-    @IBOutlet weak var outSideTemp: UITextField!
-    @IBOutlet weak var outSideTempMax: UITextField!
     @IBOutlet weak var commuteStatus: UIImageView!
-    @IBAction func LightsOffPress(_ sender: UITapGestureRecognizer) {
-        homeController.turnOffLights()
-    }
-    @IBOutlet weak var inSideTemp: UITextField!
-    @IBOutlet weak var insideCO2: UITextField!
+    @IBOutlet weak var allLightsIcon: UIImageView!
+    @IBOutlet weak var livingRoomLightsIcon: UIImageView!
+    @IBOutlet weak var kidsBedRoomLightsIcon: UIImageView!
+    @IBOutlet weak var kidsRoomTemp: UITextField!
+    @IBOutlet weak var kidsRoomCO2: UITextField!
+
+    @IBOutlet weak var mainBedRoomLightsIcon: UIImageView!
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-
-        // Setup quick glance area
         
         // Check the user defaults
         let appDefaults = [String:AnyObject]()
@@ -62,7 +56,6 @@ class HomeViewController: UIViewController {
             whoIsThis = ""
             SVProgressHUD.showInfo(withStatus: "Please setup the app user defaults in settings")
             commuteStatus.image = #imageLiteral(resourceName: "ic_question_mark")
-            ActivityCommute.stopAnimating()
         }
         if (whoIsThis == "JP") {
             menuIcon.isHidden = false
@@ -78,22 +71,15 @@ class HomeViewController: UIViewController {
             Greeting.text = "Good Evening " + whoIsThis!
         }
 
-        homeController.getCurrentLocation(whoIsThis: whoIsThis!) // Weather & commute summary
-        homeController.getInsideWeatherData() // Inside weather summary
-
-        // Setup feature area
-        self.lightRoomsTableView?.rowHeight = UITableView.automaticDimension
-        self.lightRoomsTableView?.estimatedRowHeight = 80
+        // Csll API's
+        //homeController.getLightRoomData()
+        homeController.getCurrentLocation(whoIsThis: whoIsThis!)
+        homeController.getKidsRoomWeatherData()
         
-        homeController.getLightRoomData() // Get data for light rooms table view
-
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        lightRoomsTableView?.delegate = self
-        lightRoomsTableView?.dataSource = self
         homeController.delegate = self
     }
     
@@ -105,70 +91,10 @@ class HomeViewController: UIViewController {
         }
     }
     
-    // Light room events
-    @objc func lightBrightnessValueChange(slider: UISlider, event: UIEvent) {
-        slider.setValue(slider.value.rounded(.down), animated: true)
-       
-        if let touchEvent = event.allTouches?.first {
-            switch touchEvent.phase {
-            case .began:
-                if refreshDataTimer != nil {
-                    refreshDataTimer.invalidate() // Stop the refresh data timer
-                    refreshDataTimer = nil
-                }
-            case .ended:
-                homeController.UpdateLightBrightness(lightID: slider.tag, brightness: Int(slider.value))
-            default:
-                break
-            }
-        }
-    }
- 
-    @objc func lightStateValueChange(_ sender: UISwitch) {
-        if refreshDataTimer != nil {
-            refreshDataTimer.invalidate() // Stop the refresh data timer
-            refreshDataTimer = nil
-        }
-        homeController.UpdateLightStateValueChange(lightID: (sender.tag), lightState: (sender.isOn))
-    }
-}
-
-extension HomeViewController: UITableViewDelegate {
-}
-
-extension HomeViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "lightCell", for: indexPath) as! LightsTableViewCell
-        cell.configureWithItem(item: RoomLightsDataArray[indexPath.item])
-        
-        // Add UI actions
-        cell.brightnessSlider?.addTarget(self, action: #selector(lightBrightnessValueChange(slider:event:)), for: .valueChanged)
-        cell.lightState?.addTarget(self, action: #selector(lightStateValueChange(_:)), for: .valueChanged)
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return RoomLightsDataArray.count
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let cell = self.lightRoomsTableView?.cellForRow(at: indexPath) as? LightsTableViewCell
-        var cellHeight = 80
-        var uiViewHeight = 70
-        if (cell?.lightState != nil) {
-            if (!(cell?.lightState.isOn)!) {
-                cellHeight = 51
-                uiViewHeight = 41
-            }
-        } else {
-        }
-        cell?.cellBackgroundView.frame.size.height = CGFloat(uiViewHeight)
-        return CGFloat(cellHeight)
-    }
 }
 
 extension HomeViewController: HomeControllerDelegate {
+    
     func didFailDataUpdateWithError(displayMsg: Bool) {
         if displayMsg {
             SVProgressHUD.showError(withStatus: "Network/API error")
@@ -180,9 +106,34 @@ extension HomeViewController: HomeControllerDelegate {
         }
     }
     
-    // Light room table callback function
-    func lightRoomTableDidRecieveDataUpdate(data: [RoomLightsData]) {
-        RoomLightsDataArray = data
+    // Process light room data
+    func lightRoomDidRecieveDataUpdate(data: [RoomLightsData]) {
+        allLightsIcon.image = #imageLiteral(resourceName: "ic_lights_off")
+        for item in data {
+            switch item.attributes?.attributes?.id {
+            case "4": // Kids bed room
+                kidsBedRoomLightsIcon.image = #imageLiteral(resourceName: "ic_lights_off")
+                if (item.state?.attributes?.anyOn)! {
+                    allLightsIcon.image = #imageLiteral(resourceName: "ic_lights_on")
+                    kidsBedRoomLightsIcon.image = #imageLiteral(resourceName: "ic_lights_on")
+                }
+            case "5": // main bed room
+                mainBedRoomLightsIcon.image = #imageLiteral(resourceName: "ic_lights_off")
+                if (item.state?.attributes?.anyOn)! {
+                    allLightsIcon.image = #imageLiteral(resourceName: "ic_lights_on")
+                    mainBedRoomLightsIcon.image = #imageLiteral(resourceName: "ic_lights_on")
+                }
+            case "8": // living room
+                livingRoomLightsIcon.image = #imageLiteral(resourceName: "ic_lights_off")
+                if (item.state?.attributes?.anyOn)! {
+                    allLightsIcon.image = #imageLiteral(resourceName: "ic_lights_on")
+                    livingRoomLightsIcon.image = #imageLiteral(resourceName: "ic_lights_on")
+                }
+
+            default: break
+            }
+        }
+        
         if refreshDataTimer == nil { // Set up data refresh timer
             refreshDataTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(timerInterval), repeats: true){_ in
                 self.homeController.getLightRoomData()
@@ -192,43 +143,47 @@ extension HomeViewController: HomeControllerDelegate {
     
     func currentWeatherDidRecieveDataUpdate(data: [CurrentWeatherData]) {
         switch data[0].icon {
-            case "clear-day"?: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-clear-day")
-            case "clear-night"?: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-clear-night")
-            case "rain"?: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-rain")
-            case "snow"?: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-snow")
-            case "sleet"?: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-snow")
-            case "wind"?: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-wind")
-            case "fog"?: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-unknown")
-            case "cloudy"?: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-cloudy")
-            case "partly-cloudy-day"?: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-cloudy-day")
-            case "partly-cloudy-night"?: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-partly-cloudy-night")
-            case .none: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-unknown")
-            case .some(_): weatherIcon.image = nil
+        case "clear-day"?: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-clear-day")
+        case "clear-night"?: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-clear-night")
+        case "rain"?: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-rain")
+        case "snow"?: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-snow")
+        case "sleet"?: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-snow")
+        case "wind"?: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-wind")
+        case "fog"?: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-unknown")
+        case "cloudy"?: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-cloudy")
+        case "partly-cloudy-day"?: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-cloudy-day")
+        case "partly-cloudy-night"?: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-partly-cloudy-night")
+        case .none: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-unknown")
+        case .some(_): weatherIcon.image = nil
         }
         DispatchQueue.main.async {
-            self.outSideTemp.text = "\(data[0].temperature ?? 0)"
-            self.outSideTempMax.text = "Max \(data[0].temperatureHigh ?? 0)"
-            self.ActivityWeather.stopAnimating()
-            self.ActivityOutsideTemp.stopAnimating()
-        }
-    }
-
-    func cummuteDidRecieveDataUpdate(data: [CommuteStatusData]) {
-        DispatchQueue.main.async {
-            if (data[0].anyDisruptions!) {
-                self.commuteStatus.image = #imageLiteral(resourceName: "ic_error")
-            } else {
-                self.commuteStatus.image = #imageLiteral(resourceName: "ic_success")
-            }
-            self.ActivityCommute.stopAnimating()
+            self.homeTemp.text = "\(data[0].temperature ?? 0)"
+            self.homeTempMax.text = "Max \(data[0].temperatureHigh ?? 0)"
         }
     }
     
-    func insideWeatherDidRecieveDataUpdate(data: [InsideWeatherData]) {
+    func cummuteDidRecieveDataUpdate(data: [CommuteStatusData]) {
         DispatchQueue.main.async {
-            self.inSideTemp.text = "\(data[0].insideTemp ?? 0)"
-            self.insideCO2.text = "\(data[0].insideCO2 ?? 0)"
-            self.ActivityInsideTemp.stopAnimating()
+            if (data[0].anyDisruptions!) {
+                self.commuteStatus.image = #imageLiteral(resourceName: "ic_transport_error")
+            } else {
+                self.commuteStatus.image = #imageLiteral(resourceName: "ic_transport_ok")
+            }
         }
     }
+    
+    func kidsRoomWeatherDidRecieveDataUpdate(data: [InsideWeatherData]) {
+        DispatchQueue.main.async {
+            self.kidsRoomTemp.text = "\(data[0].kidsRoomTemperature ?? 0)"
+            self.kidsRoomCO2.text = "\(data[0].kidsRoomCO2 ?? 0)"
+            self.kidsRoomCO2.textColor = UIColor.green
+            if data[0].kidsRoomCO2! > 1150 {
+                self.kidsRoomCO2.textColor = UIColor.orange
+            }
+            if data[0].kidsRoomCO2! > 1400 {
+                self.kidsRoomCO2.textColor = UIColor.red
+            }
+        }
+    }
+    
 }

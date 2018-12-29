@@ -1,29 +1,29 @@
 PODS:
-  - MaterialComponents/Ink (63.0.0):
+  - MaterialComponents/Ink (72.2.0):
     - MaterialComponents/private/Math
-  - MaterialComponents/Palettes (63.0.0)
-  - MaterialComponents/private/Application (63.0.0)
-  - MaterialComponents/private/Math (63.0.0)
-  - MaterialComponents/private/ThumbTrack (63.0.0):
+  - MaterialComponents/Palettes (72.2.0)
+  - MaterialComponents/private/Application (72.2.0)
+  - MaterialComponents/private/Math (72.2.0)
+  - MaterialComponents/private/ThumbTrack (72.2.0):
     - MaterialComponents/Ink
     - MaterialComponents/private/Math
     - MaterialComponents/ShadowElevations
     - MaterialComponents/ShadowLayer
     - MaterialComponents/Typography
     - MDFInternationalization
-  - MaterialComponents/ShadowElevations (63.0.0)
-  - MaterialComponents/ShadowLayer (63.0.0):
+  - MaterialComponents/ShadowElevations (72.2.0)
+  - MaterialComponents/ShadowLayer (72.2.0):
     - MaterialComponents/ShadowElevations
-  - MaterialComponents/Slider (63.0.0):
+  - MaterialComponents/Slider (72.2.0):
     - MaterialComponents/Palettes
     - MaterialComponents/private/ThumbTrack
     - MaterialComponents/ShadowElevations
-  - MaterialComponents/Typography (63.0.0):
+  - MaterialComponents/Typography (72.2.0):
     - MaterialComponents/private/Application
     - MaterialComponents/private/Math
-  - MDFInternationalization (1.1.0)
+  - MDFInternationalization (2.0.0)
   - SVProgressHUD (2.2.5)
-  - SwiftyJSON (4.1.0)
+  - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
   - MaterialComponents/Slider
@@ -38,10 +38,10 @@ SPEC REPOS:
     - SwiftyJSON
 
 SPEC CHECKSUMS:
-  MaterialComponents: 4e0c0ee000e0dcbf5214b0054767ef9f8f812264
-  MDFInternationalization: b5b8626628abf026e630e5ebaeee563037712cbb
+  MaterialComponents: d1637df9976683348de8eabd10de0723ec81db3d
+  MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
 PODFILE CHECKSUM: e41766ebfafd806201cb7fca8c93acee86652a07
 

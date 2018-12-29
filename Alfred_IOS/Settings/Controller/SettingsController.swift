@@ -22,7 +22,7 @@ class SettingsController: NSObject {
         let SettingsData: JSON = [
             ["label": "Logs", "image": "ic_log_file", "segue": "logs"],
             ["label": "Timers", "image": "ic_alarm_clock", "segue": "timers"],
-            ["label": "Sensors", "image": "ic_sensor", "segue": "sensors"],
+            ["label": "Light Sensors", "image": "ic_sensor", "segue": "sensors"],
         ]
         let SettingsJSON = JSON(SettingsData)
         self.delegate?.settingsDidRecieveDataUpdate(json: SettingsJSON)
