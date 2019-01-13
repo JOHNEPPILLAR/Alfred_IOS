@@ -74,11 +74,11 @@ class ColorViewController: UIViewController {
         readImage.layer.borderWidth = 0
     }
     
-    @IBAction func cancelButton(_ sender: RoundButton) {
+    @IBAction func cancelButton(_ sender: UIButton) {
         self.dismiss(animated: true)
     }
     
-    @IBAction func SaveButton(_ sender: RoundButton) {
+    @IBAction func SaveButton(_ sender: UIButton) {
         if colorViewSelected {
             delegate?.backFromColorPicker(colorID, ct: nil, scene: false)
         } else {

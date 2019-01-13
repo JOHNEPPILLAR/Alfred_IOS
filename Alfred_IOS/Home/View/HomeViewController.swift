@@ -72,7 +72,8 @@ class HomeViewController: UIViewController {
             Greeting.text = "Good Evening " + whoIsThis!
         }
 
-        // Csll API's
+        // Call API's to get data
+        homeController.getWeather()
         homeController.getLightRoomData()
         homeController.getCurrentLocation(whoIsThis: whoIsThis!)
         homeController.getHourseWeatherData()

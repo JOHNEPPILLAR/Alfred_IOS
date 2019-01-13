@@ -110,24 +110,6 @@ extension UIColor {
     }
 }
 
-
-@IBDesignable class RoundButton: UIButton {
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        updateCornerRadius()
-    }
-    @IBInspectable var rounded: Bool = false {
-        didSet {
-            updateCornerRadius()
-        }
-    }
-    func updateCornerRadius() {
-        layer.cornerRadius = 5
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.lightGray.cgColor
-    }
-}
-
 @IBDesignable class RoundImage: UIImageView {
     override func layoutSubviews() {
         super.layoutSubviews()

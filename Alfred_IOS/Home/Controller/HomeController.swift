@@ -42,24 +42,11 @@ class HomeController: NSObject, CLLocationManagerDelegate {
         let userLocation = locations[0] as CLLocation
         manager.stopUpdatingLocation()
         
-        // Get current weather data
-        let configuration = URLSessionConfiguration.ephemeral
-        var request = getAPIHeaderData(url: "weather/today?lat=" + "\(userLocation.coordinate.latitude)" + "&long=" + "\(userLocation.coordinate.longitude)")
-        let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
-        let weatherTask = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
-            if checkAPIData(apiData: data, response: response, error: error) {
-                let responseJSON = try? JSON(data: data!)
-                let data = [CurrentWeatherBaseData(json: responseJSON!)] // Update data store
-                self.delegate?.currentWeatherDidRecieveDataUpdate(data: [data[0].data!]) // Let the View controller know to show the data
-            } else {
-                self.delegate?.didFailDataUpdateWithError(displayMsg: false) // Let the View controller know there was an error
-            }
-        })
-        weatherTask.resume()
-      
         // Get commute data
         if (whoIs != "") {
-            request = getAPIHeaderData(url: "commute/getcommutestatus?lat=" + "\(userLocation.coordinate.latitude)" + "&long=" + "\(userLocation.coordinate.longitude)" + "&user=" + whoIs)
+            let configuration = URLSessionConfiguration.ephemeral
+            let request = getAPIHeaderData(url: "commute/getcommutestatus?lat=" + "\(userLocation.coordinate.latitude)" + "&long=" + "\(userLocation.coordinate.longitude)" + "&user=" + whoIs)
+            let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
             let comuteTask = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
                 if checkAPIData(apiData: data, response: response, error: error) {
                     let responseJSON = try? JSON(data: data!)
@@ -73,6 +60,26 @@ class HomeController: NSObject, CLLocationManagerDelegate {
         }
     }
 
+    func getWeather() {
+        // Get current weather data
+        let homeLat = readPlist(item: "home-lat")
+        let homeLong = readPlist(item: "home-long")
+        let configuration = URLSessionConfiguration.ephemeral
+        let request = getAPIHeaderData(url: "weather/today?lat=" + "\(homeLat)" + "&long=" + "\(homeLong)")
+        let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
+        let weatherTask = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+            if checkAPIData(apiData: data, response: response, error: error) {
+                let responseJSON = try? JSON(data: data!)
+                let data = [CurrentWeatherBaseData(json: responseJSON!)] // Update data store
+                self.delegate?.currentWeatherDidRecieveDataUpdate(data: [data[0].data!]) // Let the View controller know to show the data
+            } else {
+                self.delegate?.didFailDataUpdateWithError(displayMsg: false) // Let the View controller know there was an error
+            }
+        })
+        weatherTask.resume()
+        
+    }
+    
     func turnOffAllLights() {
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
