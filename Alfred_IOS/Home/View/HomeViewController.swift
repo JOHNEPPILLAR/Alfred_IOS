@@ -22,7 +22,9 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var homeViewSection: UIView!
     @IBOutlet weak var livingRoomViewSection: UIView!
     @IBOutlet weak var kidsBedRoomViewSection: UIView!
+    @IBOutlet weak var kidsBedRoomAitQualityIcon: UIImageView!
     @IBOutlet weak var mainBedRoomViewSection: UIView!
+    @IBOutlet weak var mainBedRoomAitQualityIcon: UIImageView!
 
     @IBAction func AllLightsOffPress(_ sender: UILongPressGestureRecognizer) {
         homeController.turnOffAllLights()
@@ -38,8 +40,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var livingRoomLightsIcon: UIImageView!
     @IBOutlet weak var kidsBedRoomLightsIcon: UIImageView!
     @IBOutlet weak var kidsRoomTemp: UITextField!
-    @IBOutlet weak var kidsRoomCO2: UITextField!
-
+    @IBOutlet weak var mainBedRoomTemp: UITextField!
     @IBOutlet weak var mainBedRoomLightsIcon: UIImageView!
 
     
@@ -72,9 +73,9 @@ class HomeViewController: UIViewController {
         }
 
         // Csll API's
-        //homeController.getLightRoomData()
+        homeController.getLightRoomData()
         homeController.getCurrentLocation(whoIsThis: whoIsThis!)
-        homeController.getKidsRoomWeatherData()
+        homeController.getHourseWeatherData()
         
     }
     
@@ -172,17 +173,30 @@ extension HomeViewController: HomeControllerDelegate {
         }
     }
     
-    func kidsRoomWeatherDidRecieveDataUpdate(data: [InsideWeatherData]) {
+    func houseWeatherDidRecieveDataUpdate(data: [HouseWeatherData]) {
         DispatchQueue.main.async {
-            self.kidsRoomTemp.text = "\(data[0].kidsRoomTemperature ?? 0)"
-            self.kidsRoomCO2.text = "\(data[0].kidsRoomCO2 ?? 0)"
-            self.kidsRoomCO2.textColor = UIColor.green
-            if data[0].kidsRoomCO2! > 1150 {
-                self.kidsRoomCO2.textColor = UIColor.orange
+            // Kids room
+            self.kidsRoomTemp.text = "\(data[0].kidsRoom?.temperature ?? 0)"
+            self.kidsBedRoomAitQualityIcon.image = #imageLiteral(resourceName: "ic_circle_green")
+            if data[0].kidsRoom?.cO2 ?? 0 > 1150 {
+                self.kidsBedRoomAitQualityIcon.image = #imageLiteral(resourceName: "ic_circle_yellow")
             }
-            if data[0].kidsRoomCO2! > 1400 {
-                self.kidsRoomCO2.textColor = UIColor.red
+            if data[0].kidsRoom?.cO2 ?? 0 > 1400 {
+                self.kidsBedRoomAitQualityIcon.image = #imageLiteral(resourceName: "ic_circle_red")
             }
+            
+            // Main bed room
+            self.mainBedRoomTemp.text = "\(data[0].mainBedRoom?.temperature ?? 0)"
+            switch data[0].mainBedRoom?.airQuality {
+                case 2: self.mainBedRoomAitQualityIcon.image = #imageLiteral(resourceName: "ic_circle_green")
+                case 3: self.mainBedRoomAitQualityIcon.image = #imageLiteral(resourceName: "ic_circle_yellow")
+                case 4: self.mainBedRoomAitQualityIcon.image = #imageLiteral(resourceName: "ic_circle_red")
+            case .none:
+                self.mainBedRoomAitQualityIcon.image = nil
+            case .some(_):
+                self.mainBedRoomAitQualityIcon.image = nil
+            }
+            
         }
     }
     

@@ -11,8 +11,6 @@
 		0A0463F11F38E99B004A738D /* ColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0463F01F38E99B004A738D /* ColorViewController.swift */; };
 		0A1BFDAE2052EFF900B729F8 /* SplashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BFDAD2052EFF900B729F8 /* SplashController.swift */; };
 		0A1BFDB3205315B400B729F8 /* CommuteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BFDB2205315B400B729F8 /* CommuteController.swift */; };
-		0A29F7BC20551AA100111C50 /* KidsRoomWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29F7BB20551AA100111C50 /* KidsRoomWeatherData.swift */; };
-		0A29F7BE20551AA600111C50 /* KidsRoomWeatherInsideWeatherBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29F7BD20551AA600111C50 /* KidsRoomWeatherInsideWeatherBaseClass.swift */; };
 		0A385C2C20C8685F00CD312D /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A385C2B20C8685F00CD312D /* VideoViewController.swift */; };
 		0A420E4A1F140D0500BD2713 /* LogFileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A420E491F140D0500BD2713 /* LogFileTableViewCell.swift */; };
 		0A46C5FB1F56D58300ADB758 /* LightsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A46C5FA1F56D58300ADB758 /* LightsTableViewCell.swift */; };
@@ -65,6 +63,12 @@
 		E868D1EA21620E16000DC024 /* SensorsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868D1E921620E16000DC024 /* SensorsTableViewCell.swift */; };
 		E868D1EC2162236F000DC024 /* SensorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868D1EB2162236F000DC024 /* SensorController.swift */; };
 		E868D1EE2162264A000DC024 /* SensorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868D1ED2162264A000DC024 /* SensorViewController.swift */; };
+		E8717C5A21EB23AB002A5B3B /* HouseWeatherGarden.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8717C5421EB23AB002A5B3B /* HouseWeatherGarden.swift */; };
+		E8717C5B21EB23AB002A5B3B /* HouseWeatherBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8717C5521EB23AB002A5B3B /* HouseWeatherBaseClass.swift */; };
+		E8717C5C21EB23AB002A5B3B /* HouseWeatherKitchen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8717C5621EB23AB002A5B3B /* HouseWeatherKitchen.swift */; };
+		E8717C5D21EB23AB002A5B3B /* HouseWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8717C5721EB23AB002A5B3B /* HouseWeatherData.swift */; };
+		E8717C5E21EB23AB002A5B3B /* HouseWeatherMainBedRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8717C5821EB23AB002A5B3B /* HouseWeatherMainBedRoom.swift */; };
+		E8717C5F21EB23AB002A5B3B /* HouseWeatherKidsRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8717C5921EB23AB002A5B3B /* HouseWeatherKidsRoom.swift */; };
 		E87277B52145AD7600FE3FC3 /* TimersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87277B42145AD7600FE3FC3 /* TimersTableViewCell.swift */; };
 		E87277B72145AEA000FE3FC3 /* TimersViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87277B62145AEA000FE3FC3 /* TimersViewControler.swift */; };
 		E87277B92145AF4A00FE3FC3 /* TimersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87277B82145AF4A00FE3FC3 /* TimersController.swift */; };
@@ -82,8 +86,6 @@
 		0A1BFDAD2052EFF900B729F8 /* SplashController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashController.swift; sourceTree = "<group>"; };
 		0A1BFDB2205315B400B729F8 /* CommuteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteController.swift; sourceTree = "<group>"; };
 		0A256ECC206F964F008C5283 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0A29F7BB20551AA100111C50 /* KidsRoomWeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KidsRoomWeatherData.swift; sourceTree = "<group>"; };
-		0A29F7BD20551AA600111C50 /* KidsRoomWeatherInsideWeatherBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KidsRoomWeatherInsideWeatherBaseClass.swift; sourceTree = "<group>"; };
 		0A385C2B20C8685F00CD312D /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		0A420E491F140D0500BD2713 /* LogFileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogFileTableViewCell.swift; sourceTree = "<group>"; };
 		0A46C5FA1F56D58300ADB758 /* LightsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightsTableViewCell.swift; sourceTree = "<group>"; };
@@ -142,6 +144,12 @@
 		E868D1E921620E16000DC024 /* SensorsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorsTableViewCell.swift; sourceTree = "<group>"; };
 		E868D1EB2162236F000DC024 /* SensorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorController.swift; sourceTree = "<group>"; };
 		E868D1ED2162264A000DC024 /* SensorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorViewController.swift; sourceTree = "<group>"; };
+		E8717C5421EB23AB002A5B3B /* HouseWeatherGarden.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseWeatherGarden.swift; sourceTree = "<group>"; };
+		E8717C5521EB23AB002A5B3B /* HouseWeatherBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseWeatherBaseClass.swift; sourceTree = "<group>"; };
+		E8717C5621EB23AB002A5B3B /* HouseWeatherKitchen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseWeatherKitchen.swift; sourceTree = "<group>"; };
+		E8717C5721EB23AB002A5B3B /* HouseWeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseWeatherData.swift; sourceTree = "<group>"; };
+		E8717C5821EB23AB002A5B3B /* HouseWeatherMainBedRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseWeatherMainBedRoom.swift; sourceTree = "<group>"; };
+		E8717C5921EB23AB002A5B3B /* HouseWeatherKidsRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseWeatherKidsRoom.swift; sourceTree = "<group>"; };
 		E87277B42145AD7600FE3FC3 /* TimersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimersTableViewCell.swift; sourceTree = "<group>"; };
 		E87277B62145AEA000FE3FC3 /* TimersViewControler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimersViewControler.swift; sourceTree = "<group>"; };
 		E87277B82145AF4A00FE3FC3 /* TimersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimersController.swift; sourceTree = "<group>"; };
@@ -255,8 +263,12 @@
 		0A256EBF206F92E1008C5283 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
-				0A29F7BD20551AA600111C50 /* KidsRoomWeatherInsideWeatherBaseClass.swift */,
-				0A29F7BB20551AA100111C50 /* KidsRoomWeatherData.swift */,
+				E8717C5521EB23AB002A5B3B /* HouseWeatherBaseClass.swift */,
+				E8717C5721EB23AB002A5B3B /* HouseWeatherData.swift */,
+				E8717C5421EB23AB002A5B3B /* HouseWeatherGarden.swift */,
+				E8717C5921EB23AB002A5B3B /* HouseWeatherKidsRoom.swift */,
+				E8717C5621EB23AB002A5B3B /* HouseWeatherKitchen.swift */,
+				E8717C5821EB23AB002A5B3B /* HouseWeatherMainBedRoom.swift */,
 				0A9EDC652052639C001277EC /* CurrentWeatherBaseClass.swift */,
 				0A9EDC67205263E5001277EC /* CurrentWeatherData.swift */,
 			);
@@ -667,6 +679,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E89FDE47214460CC00C2FB62 /* TimersBaseClass.swift in Sources */,
+				E8717C5B21EB23AB002A5B3B /* HouseWeatherBaseClass.swift in Sources */,
 				E811EB0820DFC78000C3B62E /* SettingsCollectionViewCell.swift in Sources */,
 				0A04167D20C1CBDC009B47ED /* ColorSlider.swift in Sources */,
 				0A647EE72067E8CF00F7CD1E /* RoomLightsChanged.swift in Sources */,
@@ -680,7 +693,6 @@
 				E868D1EC2162236F000DC024 /* SensorController.swift in Sources */,
 				0A7ECE1F1FAE437B002AF233 /* CommuteViewController.swift in Sources */,
 				E87277B92145AF4A00FE3FC3 /* TimersController.swift in Sources */,
-				0A29F7BE20551AA600111C50 /* KidsRoomWeatherInsideWeatherBaseClass.swift in Sources */,
 				E868D1EA21620E16000DC024 /* SensorsTableViewCell.swift in Sources */,
 				E868D1E1216165F8000DC024 /* SensorsController.swift in Sources */,
 				E848524320E42E22001DC4F2 /* LogsData.swift in Sources */,
@@ -690,12 +702,13 @@
 				0A69FB811F10C25C00563A69 /* AppDelegate.swift in Sources */,
 				E868D1E8216174F9000DC024 /* SensorsBaseClass.swift in Sources */,
 				E868D1DF2161640F000DC024 /* SensorsViewController.swift in Sources */,
+				E8717C5A21EB23AB002A5B3B /* HouseWeatherGarden.swift in Sources */,
 				0A8AF14A1F24EF030064894F /* Helpers.swift in Sources */,
 				0A647EE62067E8CF00F7CD1E /* RoomLightsState.swift in Sources */,
+				E8717C5C21EB23AB002A5B3B /* HouseWeatherKitchen.swift in Sources */,
 				0ADF19B920658C5F008057DB /* LogsController.swift in Sources */,
 				E89FDE49214460EB00C2FB62 /* TimersData.swift in Sources */,
 				E82C11C120F1548C00A53A63 /* CommuteStatusData.swift in Sources */,
-				0A29F7BC20551AA100111C50 /* KidsRoomWeatherData.swift in Sources */,
 				0AE327A22066622E00C288E8 /* LogFileViewController.swift in Sources */,
 				E848524220E42E22001DC4F2 /* LogsBaseClass.swift in Sources */,
 				0A0463F11F38E99B004A738D /* ColorViewController.swift in Sources */,
@@ -724,10 +737,13 @@
 				E81F0C1F21D6CF6800F9FD0C /* CommuteJourneys.swift in Sources */,
 				E868D1E7216174F9000DC024 /* SensorsData.swift in Sources */,
 				E89D443820D4EFB000F6F142 /* VideoController.swift in Sources */,
+				E8717C5F21EB23AB002A5B3B /* HouseWeatherKidsRoom.swift in Sources */,
 				E81F0C1D21D6CF6800F9FD0C /* CommuteData.swift in Sources */,
 				E89FDE4B2144611B00C2FB62 /* TimersRows.swift in Sources */,
 				0A647EE12067E8CF00F7CD1E /* RoomLightsData.swift in Sources */,
 				0AE259041F704A0A002C6922 /* SettingsBundleHelper.swift in Sources */,
+				E8717C5E21EB23AB002A5B3B /* HouseWeatherMainBedRoom.swift in Sources */,
+				E8717C5D21EB23AB002A5B3B /* HouseWeatherData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

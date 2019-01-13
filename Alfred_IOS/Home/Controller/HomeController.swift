@@ -15,7 +15,7 @@ protocol HomeControllerDelegate: class {
     func lightRoomDidRecieveDataUpdate(data: [RoomLightsData])
     func currentWeatherDidRecieveDataUpdate(data: [CurrentWeatherData])
     func cummuteDidRecieveDataUpdate(data: [CommuteStatusData])
-    func kidsRoomWeatherDidRecieveDataUpdate(data: [InsideWeatherData])
+    func houseWeatherDidRecieveDataUpdate(data: [HouseWeatherData])
     func didFailDataUpdateWithError(displayMsg: Bool)
 }
 
@@ -60,7 +60,6 @@ class HomeController: NSObject, CLLocationManagerDelegate {
         // Get commute data
         if (whoIs != "") {
             request = getAPIHeaderData(url: "commute/getcommutestatus?lat=" + "\(userLocation.coordinate.latitude)" + "&long=" + "\(userLocation.coordinate.longitude)" + "&user=" + whoIs)
-            request = getAPIHeaderData(url: "commute/getcommutestatus")
             let comuteTask = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
                 if checkAPIData(apiData: data, response: response, error: error) {
                     let responseJSON = try? JSON(data: data!)
@@ -82,21 +81,21 @@ class HomeController: NSObject, CLLocationManagerDelegate {
             if checkAPIData(apiData: data, response: response, error: error) {
                 //self.getLightRoomData()
             } else {
-                self.delegate?.didFailDataUpdateWithError(displayMsg: true) // Let the View controller know there was an error
+                self.delegate?.didFailDataUpdateWithError(displayMsg: false) // Let the View controller know there was an error
             }
         })
         task.resume()
     }
 
-    func getKidsRoomWeatherData() {
+    func getHourseWeatherData() {
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
         let request = getAPIHeaderData(url: "weather/inside")
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
                 let responseJSON = try? JSON(data: data!)
-                let data = [InsideWeatherBaseClass(json: responseJSON!)] // Update data store
-                self.delegate?.kidsRoomWeatherDidRecieveDataUpdate(data: [data[0].data!]) // Refresh the data and UI
+                let data = [HouseWeatherBaseClass(json: responseJSON!)] // Update data store
+                self.delegate?.houseWeatherDidRecieveDataUpdate(data: [data[0].data!]) // Refresh the data and UI
             } else {
                 self.delegate?.didFailDataUpdateWithError(displayMsg: false) // Let the View controller know there was an error
             }

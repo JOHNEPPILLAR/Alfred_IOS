@@ -1,24 +1,22 @@
 //
-//  InsideWeatherData.swift
+//  HouseWeatherBaseClass.swift
 //
-//  Created by John Pillar on 11/03/2018
+//  Created by John Pillar on 13/01/2019
 //  Copyright (c) . All rights reserved.
 //
 
 import Foundation
 import SwiftyJSON
 
-public final class InsideWeatherData: NSCoding {
+public final class HouseWeatherBaseClass: NSCoding {
 
   // MARK: Declaration for string constants to be used to decode and also serialize.
   private struct SerializationKeys {
-    static let kidsRoomCO2 = "KidsRoomCO2"
-    static let kidsRoomTemperature = "KidsRoomTemperature"
+    static let data = "data"
   }
 
   // MARK: Properties
-  public var kidsRoomCO2: Int?
-  public var kidsRoomTemperature: Int?
+  public var data: HouseWeatherData?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -33,8 +31,7 @@ public final class InsideWeatherData: NSCoding {
   ///
   /// - parameter json: JSON object from SwiftyJSON.
   public required init(json: JSON) {
-    kidsRoomCO2 = json[SerializationKeys.kidsRoomCO2].int
-    kidsRoomTemperature = json[SerializationKeys.kidsRoomTemperature].int
+    data = HouseWeatherData(json: json[SerializationKeys.data])
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -42,20 +39,17 @@ public final class InsideWeatherData: NSCoding {
   /// - returns: A Key value pair containing all valid values in the object.
   public func dictionaryRepresentation() -> [String: Any] {
     var dictionary: [String: Any] = [:]
-    if let value = kidsRoomCO2 { dictionary[SerializationKeys.kidsRoomCO2] = value }
-    if let value = kidsRoomTemperature { dictionary[SerializationKeys.kidsRoomTemperature] = value }
+    if let value = data { dictionary[SerializationKeys.data] = value.dictionaryRepresentation() }
     return dictionary
   }
 
   // MARK: NSCoding Protocol
   required public init(coder aDecoder: NSCoder) {
-    self.kidsRoomCO2 = aDecoder.decodeObject(forKey: SerializationKeys.kidsRoomCO2) as? Int
-    self.kidsRoomTemperature = aDecoder.decodeObject(forKey: SerializationKeys.kidsRoomTemperature) as? Int
+    self.data = aDecoder.decodeObject(forKey: SerializationKeys.data) as? HouseWeatherData
   }
 
   public func encode(with aCoder: NSCoder) {
-    aCoder.encode(kidsRoomCO2, forKey: SerializationKeys.kidsRoomCO2)
-    aCoder.encode(kidsRoomTemperature, forKey: SerializationKeys.kidsRoomTemperature)
+    aCoder.encode(data, forKey: SerializationKeys.data)
   }
 
 }

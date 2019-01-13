@@ -562,12 +562,8 @@
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_start" translatesAutoresizingMaskIntoConstraints="NO" id="izq-nP-4nJ">
-                                                            <rect key="frame" x="117" y="7" width="30" height="30"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        </imageView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_end" translatesAutoresizingMaskIntoConstraints="NO" id="8Al-Oh-sKz">
-                                                            <rect key="frame" x="117" y="72" width="30" height="30"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_circle" translatesAutoresizingMaskIntoConstraints="NO" id="izq-nP-4nJ">
+                                                            <rect key="frame" x="122" y="13" width="20" height="20"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_line" translatesAutoresizingMaskIntoConstraints="NO" id="EUt-wo-hy5">
@@ -585,7 +581,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vf-cv-yCd" userLabel="Status">
-                                                            <rect key="frame" x="155" y="35" width="204" height="40"/>
+                                                            <rect key="frame" x="155" y="34" width="204" height="40"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <accessibility key="accessibilityConfiguration">
                                                                 <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
@@ -594,6 +590,10 @@
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_circle" translatesAutoresizingMaskIntoConstraints="NO" id="8Al-Oh-sKz">
+                                                            <rect key="frame" x="122" y="77" width="20" height="20"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </tableViewCellContentView>
@@ -707,12 +707,12 @@
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_lights_off" translatesAutoresizingMaskIntoConstraints="NO" id="MLI-Oq-uAX" userLabel="All Lights icon">
+                                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_lights_off" translatesAutoresizingMaskIntoConstraints="NO" id="MLI-Oq-uAX" userLabel="All Lights icon">
                                                         <rect key="frame" x="319" y="62" width="30" height="30"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <gestureRecognizers/>
                                                         <connections>
-                                                            <outletCollection property="gestureRecognizers" destination="jB9-Bb-aZS" appends="YES" id="cCg-0D-1Ie"/>
+                                                            <outletCollection property="gestureRecognizers" destination="YKX-HK-pVM" appends="YES" id="Xxz-ia-C37"/>
                                                         </connections>
                                                     </imageView>
                                                     <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JuX-O5-rtd" userLabel="commute icon">
@@ -740,7 +740,7 @@
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tgO-dK-Ptk">
-                                                        <rect key="frame" x="152" y="0.0" width="100" height="77"/>
+                                                        <rect key="frame" x="160" y="11" width="84" height="62"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
                                                 </subviews>
@@ -799,7 +799,7 @@
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
                                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="°C" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="coc-z1-MhI">
-                                                        <rect key="frame" x="165" y="36" width="25" height="20"/>
+                                                        <rect key="frame" x="116" y="38" width="25" height="20"/>
                                                         <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -807,35 +807,22 @@
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="M6o-4O-9mz" userLabel="Temp">
-                                                        <rect key="frame" x="95" y="27" width="68" height="54"/>
+                                                        <rect key="frame" x="30" y="30" width="85" height="50"/>
                                                         <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
-                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="co" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="TUP-vV-WvB">
-                                                        <rect key="frame" x="288" y="31" width="25" height="22"/>
-                                                        <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
-                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="2" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="l4y-1h-abP">
-                                                        <rect key="frame" x="307" y="41" width="25" height="22"/>
-                                                        <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
-                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="uaG-Sa-N2D" userLabel="Temp">
-                                                        <rect key="frame" x="178" y="27" width="108" height="54"/>
-                                                        <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
+                                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_webcam" translatesAutoresizingMaskIntoConstraints="NO" id="ZuI-g5-I7k" userLabel="Webcam">
+                                                        <rect key="frame" x="286" y="44" width="25" height="25"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <gestureRecognizers/>
+                                                    </imageView>
+                                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BRF-HE-AvV" userLabel="AirQuality">
+                                                        <rect key="frame" x="247" y="43" width="25" height="25"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <gestureRecognizers/>
+                                                    </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.1166001037" green="0.13493388889999999" blue="0.2344644666" alpha="0.50382598460000005" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -862,7 +849,7 @@
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
                                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="°C" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="wj5-r2-Wq2">
-                                                        <rect key="frame" x="165" y="36" width="25" height="20"/>
+                                                        <rect key="frame" x="116" y="38" width="25" height="20"/>
                                                         <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -870,35 +857,17 @@
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="WkZ-ha-GYw" userLabel="Temp">
-                                                        <rect key="frame" x="95" y="27" width="68" height="54"/>
+                                                        <rect key="frame" x="30" y="30" width="85" height="50"/>
                                                         <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
-                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="co" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="6Aa-Cp-Vtr">
-                                                        <rect key="frame" x="288" y="31" width="25" height="22"/>
-                                                        <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
-                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="2" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="kCI-T5-d72">
-                                                        <rect key="frame" x="308" y="41" width="25" height="22"/>
-                                                        <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
-                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="aWP-Rn-HOg" userLabel="Temp">
-                                                        <rect key="frame" x="178" y="27" width="108" height="54"/>
-                                                        <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
+                                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OM1-Ih-0N2" userLabel="AirQuality">
+                                                        <rect key="frame" x="286" y="44" width="25" height="25"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <gestureRecognizers/>
+                                                    </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.1166001037" green="0.13493388889999999" blue="0.2344644666" alpha="0.50382598460000005" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -919,13 +888,15 @@
                         <outlet property="homeTemp" destination="Gpw-nN-cHc" id="aBL-7f-LMw"/>
                         <outlet property="homeTempMax" destination="9jG-XQ-Tdg" id="3tx-bT-N2x"/>
                         <outlet property="homeViewSection" destination="svP-GC-ruT" id="Nw4-uO-CiD"/>
+                        <outlet property="kidsBedRoomAitQualityIcon" destination="BRF-HE-AvV" id="BCo-hK-mNo"/>
                         <outlet property="kidsBedRoomLightsIcon" destination="vyF-Mw-qCX" id="Mpm-yu-SX1"/>
                         <outlet property="kidsBedRoomViewSection" destination="UnS-ga-pqS" id="t14-wb-YLo"/>
-                        <outlet property="kidsRoomCO2" destination="uaG-Sa-N2D" id="b7F-h8-TYx"/>
                         <outlet property="kidsRoomTemp" destination="M6o-4O-9mz" id="omz-MX-EnB"/>
                         <outlet property="livingRoomLightsIcon" destination="cPJ-Oi-cL1" id="yDj-XQ-9d0"/>
                         <outlet property="livingRoomViewSection" destination="M31-S0-6TQ" id="ZLu-fR-FYE"/>
+                        <outlet property="mainBedRoomAitQualityIcon" destination="OM1-Ih-0N2" id="xiG-iu-qQv"/>
                         <outlet property="mainBedRoomLightsIcon" destination="VXe-re-8b3" id="TjA-Ft-37j"/>
+                        <outlet property="mainBedRoomTemp" destination="WkZ-ha-GYw" id="Nmh-hF-fxn"/>
                         <outlet property="mainBedRoomViewSection" destination="ZM9-lF-SRC" id="ylb-dc-aN8"/>
                         <outlet property="menuIcon" destination="kG5-Y5-MlE" id="WXb-1X-wkP"/>
                         <outlet property="weatherIcon" destination="tgO-dK-Ptk" id="lgh-Fg-4fH"/>
@@ -937,16 +908,16 @@
                         <segue destination="mB2-T5-fal" kind="show" identifier="SettingsView" id="aHP-F2-JuV"/>
                     </connections>
                 </tapGestureRecognizer>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="jB9-Bb-aZS" userLabel="Lights Off Long Press Gesture Recognizer">
-                    <connections>
-                        <action selector="AllLightsOffPress:" destination="ma0-Ta-44m" id="dfJ-s8-mas"/>
-                    </connections>
-                </pongPressGestureRecognizer>
                 <tapGestureRecognizer id="YTL-kj-4XP" userLabel="Commute Tap Gesture Recognizer">
                     <connections>
                         <segue destination="GyY-n8-eYN" kind="show" id="GFm-fu-VFL"/>
                     </connections>
                 </tapGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="YKX-HK-pVM" userLabel="Lights off Long Press Gesture Recognizer">
+                    <connections>
+                        <action selector="AllLightsOffPress:" destination="ma0-Ta-44m" id="2dN-PE-TJQ"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="436" y="-55.418719211822662"/>
         </scene>
@@ -978,115 +949,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c9U-lC-tew" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1274" y="-832"/>
-        </scene>
-        <!--Lights View Controller-->
-        <scene sceneID="6fd-1e-c1h">
-            <objects>
-                <viewController id="Hxh-bG-5zf" customClass="LightsViewController" customModule="Alfred_IOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="eqj-1I-Nhe">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_Background" translatesAutoresizingMaskIntoConstraints="NO" id="mnW-06-5ka">
-                                <rect key="frame" x="0.0" y="0.0" width="384" height="812"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F9a-eC-JZU" userLabel="Light Room Scroll View">
-                                <rect key="frame" x="9" y="127" width="357" height="651"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xBX-GZ-X1b" userLabel="Room Lights View">
-                                        <rect key="frame" x="0.0" y="0.0" width="357" height="651"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <subviews>
-                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="vxm-Cj-wg7">
-                                                <rect key="frame" x="160" y="280" width="37" height="37"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                            </activityIndicatorView>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="15" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Gwl-uX-T3h">
-                                                <rect key="frame" x="0.0" y="8" width="357" height="643"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="lightCell" rowHeight="78" id="1Ci-j4-rlH" customClass="LightsTableViewCell" customModule="Alfred_IOS" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="15" width="357" height="78"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
-                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1Ci-j4-rlH" id="iF5-ag-tGy" customClass="RoundImage" customModule="Alfred_IOS" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="357" height="77.666666666666671"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                            <subviews>
-                                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UXl-T2-vOO" customClass="RoundCornersView" customModule="Alfred_IOS" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="70"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <subviews>
-                                                                        <textField hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1xJ-Gi-S9h" userLabel="LightID">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="41" height="30"/>
-                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                            <nil key="textColor"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                            <textInputTraits key="textInputTraits"/>
-                                                                        </textField>
-                                                                        <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YE3-u0-tgI">
-                                                                            <rect key="frame" x="35" y="5" width="237" height="30"/>
-                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                            <textInputTraits key="textInputTraits"/>
-                                                                        </textField>
-                                                                        <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="4L0-0W-m2m" customClass="CustomSlider" customModule="Alfred_IOS" customModuleProvider="target">
-                                                                            <rect key="frame" x="-2" y="41" width="363" height="30"/>
-                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                        </slider>
-                                                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mo6-vS-OzE">
-                                                                            <rect key="frame" x="292" y="5" width="49" height="31"/>
-                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                            <color key="tintColor" cocoaTouchSystemColor="lightTextColor"/>
-                                                                            <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        </switch>
-                                                                    </subviews>
-                                                                    <color key="backgroundColor" red="0.11764705882352941" green="0.13333333333333333" blue="0.23529411764705882" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <userDefinedRuntimeAttributes>
-                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
-                                                                    </userDefinedRuntimeAttributes>
-                                                                </view>
-                                                            </subviews>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </tableViewCellContentView>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <connections>
-                                                            <outlet property="brightnessSlider" destination="4L0-0W-m2m" id="TNo-uF-E3B"/>
-                                                            <outlet property="cellBackgroundView" destination="UXl-T2-vOO" id="kkT-B3-hCE"/>
-                                                            <outlet property="lightID" destination="1xJ-Gi-S9h" id="bzs-WZ-78b"/>
-                                                            <outlet property="lightName" destination="YE3-u0-tgI" id="7G1-y9-zQK"/>
-                                                            <outlet property="lightState" destination="mo6-vS-OzE" id="kuG-2G-1H4"/>
-                                                        </connections>
-                                                    </tableViewCell>
-                                                </prototypes>
-                                                <sections/>
-                                            </tableView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
-                                </subviews>
-                            </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L2e-PN-EW6">
-                                <rect key="frame" x="18" y="38" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="ic-close"/>
-                                <connections>
-                                    <action selector="returnToPreviousView:" destination="Hxh-bG-5zf" eventType="touchUpInside" id="0ec-2Q-btZ"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="LA8-qZ-BJr"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CBc-8p-m29" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2906" y="683"/>
         </scene>
         <!--Event Logs-->
         <scene sceneID="Xnq-Tj-Tyo">
@@ -1658,18 +1520,17 @@
     <resources>
         <image name="daytime_image" width="302" height="280"/>
         <image name="evening_image" width="1200" height="900"/>
-        <image name="ic-close" width="40" height="40"/>
         <image name="ic_Background" width="2136" height="2136"/>
         <image name="ic_ai" width="400" height="400"/>
+        <image name="ic_circle" width="32" height="32"/>
         <image name="ic_close" width="32" height="32"/>
-        <image name="ic_end" width="32" height="32"/>
         <image name="ic_lights_off" width="37.5" height="37.5"/>
         <image name="ic_line" width="32" height="32"/>
         <image name="ic_logo" width="1080" height="809"/>
         <image name="ic_menu" width="128" height="128"/>
         <image name="ic_more" width="72" height="72"/>
-        <image name="ic_start" width="32" height="32"/>
         <image name="ic_success" width="40.069564819335938" height="40.069564819335938"/>
+        <image name="ic_webcam" width="418.90908813476562" height="418.90908813476562"/>
         <image name="nighttime_image" width="122.40000152587891" height="81.599998474121094"/>
         <image name="sunrise_image" width="575.25" height="323.25"/>
         <image name="sunset_image" width="600" height="445"/>

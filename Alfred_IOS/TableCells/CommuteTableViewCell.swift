@@ -108,9 +108,9 @@ class CommuteTableViewCell: UITableViewCell {
             }
         
         if item.disruptions == "true" {
-            StartIcon.image = #imageLiteral(resourceName: "ic_start_end")
+            StartIcon.image = #imageLiteral(resourceName: "ic_circle_red")
             LineIcon.image = #imageLiteral(resourceName: "ic_line_red")
-            EndIcon.image = #imageLiteral(resourceName: "ic_end_red")
+            EndIcon.image = #imageLiteral(resourceName: "ic_circle_red")
         }
     }
 }
