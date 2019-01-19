@@ -8,6 +8,8 @@
 
 import UIKit
 import SVProgressHUD
+import AVKit
+import AVFoundation;
 
 class HomeViewController: UIViewController {
     
@@ -43,6 +45,21 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var mainBedRoomTemp: UITextField!
     @IBOutlet weak var mainBedRoomLightsIcon: UIImageView!
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "kidsRoomVideo"?:
+            let destination = segue.destination as! AVPlayerViewController
+            let url = URL(string: readPlist(item: "LottieCamURL"))
+            if let movieURL = url {
+                destination.player = AVPlayer(url: movieURL)
+                destination.player?.play()
+            }
+        case .none:
+            return
+        case .some(_):
+            return
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
