@@ -898,9 +898,13 @@
                                                         <rect key="frame" x="10" y="11" width="106" height="19"/>
                                                         <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <gestureRecognizers/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                         <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="1Mr-Mv-1Wx" appends="YES" id="cBl-K3-39Q"/>
+                                                        </connections>
                                                     </textField>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_lights_off" translatesAutoresizingMaskIntoConstraints="NO" id="cPJ-Oi-cL1" userLabel="Living Room Lights icon">
                                                         <rect key="frame" x="321" y="40" width="32" height="30"/>
@@ -1092,6 +1096,7 @@
                         <outlet property="upstairsHallLightsIcon" destination="pLx-qd-GKs" id="6YY-qS-zYi"/>
                         <outlet property="upstairsHallViewSection" destination="IUC-dH-L5K" id="kgD-Ds-eJt"/>
                         <outlet property="weatherIcon" destination="tgO-dK-Ptk" id="lgh-Fg-4fH"/>
+                        <segue destination="O5z-9K-rlW" kind="show" identifier="showRoom" id="iDY-vA-kQI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p5f-LT-OAW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1115,6 +1120,7 @@
                         <segue destination="mB2-T5-fal" kind="show" id="laI-Dw-qUe"/>
                     </connections>
                 </tapGestureRecognizer>
+                <tapGestureRecognizer id="1Mr-Mv-1Wx" userLabel="Living Room Tap Gesture Recognizer"/>
             </objects>
             <point key="canvasLocation" x="432.80000000000001" y="-16.256157635467982"/>
         </scene>
@@ -1145,6 +1151,36 @@
                                     <action selector="returnToPreviousView:" destination="GyY-n8-eYN" eventType="touchUpInside" id="XFd-B9-7mD"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LiG-ie-2ou" userLabel="Home View">
+                                <rect key="frame" x="8" y="86" width="359" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d2k-ra-3cO">
+                                        <rect key="frame" x="8" y="40" width="48" height="2"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Lights" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Wd6-TM-Ckl">
+                                        <rect key="frame" x="10" y="11" width="94" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="qEB-aH-PSF">
+                                        <rect key="frame" x="83" y="40" width="186" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="minimumTrackTintColor" red="0.46271836760000001" green="0.84014099840000001" blue="0.44698435069999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </slider>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yuT-Ag-a7y">
+                                        <rect key="frame" x="293" y="39" width="49" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </switch>
+                                </subviews>
+                                <color key="backgroundColor" red="0.1176470588" green="0.1333333333" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="MfJ-gj-edA"/>
