@@ -24,9 +24,14 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var homeViewSection: UIView!
     @IBOutlet weak var livingRoomViewSection: UIView!
     @IBOutlet weak var kidsBedRoomViewSection: UIView!
-    @IBOutlet weak var kidsBedRoomAitQualityIcon: UIImageView!
+    @IBOutlet weak var kidsBedRoomAirQualityIcon: UIImageView!
     @IBOutlet weak var mainBedRoomViewSection: UIView!
-    @IBOutlet weak var mainBedRoomAitQualityIcon: UIImageView!
+    @IBOutlet weak var mainBedRoomAirQualityIcon: UIImageView!
+    @IBOutlet weak var kitchenViewSection: UIView!
+    @IBOutlet weak var gardenViewSection: UIView!
+    @IBOutlet weak var downstairsHallViewSection: UIView!
+    @IBOutlet weak var middleHallViewSection: UIView!
+    @IBOutlet weak var upstairsHallViewSection: UIView!
 
     @IBAction func AllLightsOffPress(_ sender: UILongPressGestureRecognizer) {
         homeController.turnOffAllLights()
@@ -44,7 +49,13 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var kidsRoomTemp: UITextField!
     @IBOutlet weak var mainBedRoomTemp: UITextField!
     @IBOutlet weak var mainBedRoomLightsIcon: UIImageView!
-
+    @IBOutlet weak var kitchenTemp: UITextField!
+    @IBOutlet weak var kitchenLightsIcon: UIImageView!
+    @IBOutlet weak var gardenTemp: UITextField!
+    @IBOutlet weak var downstairsHallLightsIcon: UIImageView!
+    @IBOutlet weak var middleHallLightsIcon: UIImageView!
+    @IBOutlet weak var upstairsHallLightsIcon: UIImageView!
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "kidsRoomVideo"?:
@@ -148,7 +159,30 @@ extension HomeViewController: HomeControllerDelegate {
                     allLightsIcon.image = #imageLiteral(resourceName: "ic_lights_on")
                     livingRoomLightsIcon.image = #imageLiteral(resourceName: "ic_lights_on")
                 }
-
+            case "9": // kitchen
+                kitchenLightsIcon.image = #imageLiteral(resourceName: "ic_lights_off")
+                if (item.state?.attributes?.anyOn)! {
+                    allLightsIcon.image = #imageLiteral(resourceName: "ic_lights_on")
+                    kitchenLightsIcon.image = #imageLiteral(resourceName: "ic_lights_on")
+                }
+            case "7": // Downstairs Hall
+                downstairsHallLightsIcon.image = #imageLiteral(resourceName: "ic_lights_off")
+                if (item.state?.attributes?.anyOn)! {
+                    allLightsIcon.image = #imageLiteral(resourceName: "ic_lights_on")
+                    downstairsHallLightsIcon.image = #imageLiteral(resourceName: "ic_lights_on")
+                }
+            case "6": // Middle Hall
+                middleHallLightsIcon.image = #imageLiteral(resourceName: "ic_lights_off")
+                if (item.state?.attributes?.anyOn)! {
+                    allLightsIcon.image = #imageLiteral(resourceName: "ic_lights_on")
+                    middleHallLightsIcon.image = #imageLiteral(resourceName: "ic_lights_on")
+                }
+            case "10": // Upstairs Hall
+                upstairsHallLightsIcon.image = #imageLiteral(resourceName: "ic_lights_off")
+                if (item.state?.attributes?.anyOn)! {
+                    allLightsIcon.image = #imageLiteral(resourceName: "ic_lights_on")
+                    upstairsHallLightsIcon.image = #imageLiteral(resourceName: "ic_lights_on")
+                }
             default: break
             }
         }
@@ -195,26 +229,31 @@ extension HomeViewController: HomeControllerDelegate {
         DispatchQueue.main.async {
             // Kids room
             self.kidsRoomTemp.text = "\(data[0].kidsRoom?.temperature ?? 0)"
-            self.kidsBedRoomAitQualityIcon.image = #imageLiteral(resourceName: "ic_circle_green")
+            self.kidsBedRoomAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_green")
             if data[0].kidsRoom?.cO2 ?? 0 > 1150 {
-                self.kidsBedRoomAitQualityIcon.image = #imageLiteral(resourceName: "ic_circle_yellow")
+                self.kidsBedRoomAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_yellow")
             }
             if data[0].kidsRoom?.cO2 ?? 0 > 1400 {
-                self.kidsBedRoomAitQualityIcon.image = #imageLiteral(resourceName: "ic_circle_red")
+                self.kidsBedRoomAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_red")
             }
             
             // Main bed room
             self.mainBedRoomTemp.text = "\(data[0].mainBedRoom?.temperature ?? 0)"
             switch data[0].mainBedRoom?.airQuality {
-                case 2: self.mainBedRoomAitQualityIcon.image = #imageLiteral(resourceName: "ic_circle_green")
-                case 3: self.mainBedRoomAitQualityIcon.image = #imageLiteral(resourceName: "ic_circle_yellow")
-                case 4: self.mainBedRoomAitQualityIcon.image = #imageLiteral(resourceName: "ic_circle_red")
+                case 2: self.mainBedRoomAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_green")
+                case 3: self.mainBedRoomAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_yellow")
+                case 4: self.mainBedRoomAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_red")
             case .none:
-                self.mainBedRoomAitQualityIcon.image = nil
+                self.mainBedRoomAirQualityIcon.image = nil
             case .some(_):
-                self.mainBedRoomAitQualityIcon.image = nil
+                self.mainBedRoomAirQualityIcon.image = nil
             }
-            
+
+            // Kitchen room
+            self.kitchenTemp.text = "\(data[0].kitchen?.temperature ?? 0)"
+
+            // Garden room
+            self.gardenTemp.text = "\(data[0].garden?.temperature ?? 0)"
         }
     }
     
