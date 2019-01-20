@@ -660,30 +660,14 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
-                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Good &lt;greeting&gt; &lt;user&gt;" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="ag6-0L-6q4">
-                                <rect key="frame" x="9" y="48" width="356" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <imageView hidden="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_menu" translatesAutoresizingMaskIntoConstraints="NO" id="kG5-Y5-MlE">
-                                <rect key="frame" x="325" y="46" width="41" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="TjI-Aq-IKh" appends="YES" id="WAh-MA-Ru7"/>
-                                </connections>
-                            </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cTm-Td-jnI">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cTm-Td-jnI">
                                 <rect key="frame" x="0.0" y="87" width="375" height="833"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H9c-Er-Pyu">
-                                        <rect key="frame" x="8" y="0.0" width="375" height="833"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="833"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qab-2j-zdD" userLabel="Middle Hall View">
-                                                <rect key="frame" x="0.0" y="650" width="357" height="80"/>
+                                                <rect key="frame" x="8" y="650" width="359" height="80"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_lights_off" translatesAutoresizingMaskIntoConstraints="NO" id="6QO-Xz-DRU" userLabel="Middle Hall Lights icon">
@@ -708,7 +692,7 @@
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nyw-vl-eee" userLabel="Downstairs Hall View">
-                                                <rect key="frame" x="0.0" y="560" width="357" height="80"/>
+                                                <rect key="frame" x="8" y="560" width="359" height="80"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_lights_off" translatesAutoresizingMaskIntoConstraints="NO" id="fdU-NA-Yha" userLabel="Downstaird Hall Lights icon">
@@ -733,7 +717,7 @@
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gvu-bH-Wrp" userLabel="Garden View">
-                                                <rect key="frame" x="0.0" y="470" width="357" height="80"/>
+                                                <rect key="frame" x="8" y="470" width="359" height="80"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Garden" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="NNU-7Y-co8">
@@ -769,7 +753,7 @@
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u5u-6J-8ma" userLabel="Kitchen View">
-                                                <rect key="frame" x="0.0" y="380" width="357" height="80"/>
+                                                <rect key="frame" x="8" y="380" width="359" height="80"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Kitchen" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="vwq-0X-oVB">
@@ -809,7 +793,7 @@
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZM9-lF-SRC" userLabel="Main Bed Room View">
-                                                <rect key="frame" x="0.0" y="290" width="357" height="80"/>
+                                                <rect key="frame" x="8" y="290" width="359" height="80"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Main Bed Room" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="AGv-ZS-ZVw">
@@ -854,7 +838,7 @@
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UnS-ga-pqS" userLabel="Kids Bed Room View">
-                                                <rect key="frame" x="0.0" y="200" width="357" height="80"/>
+                                                <rect key="frame" x="8" y="200" width="359" height="80"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Kids Bed Room" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="TUV-xn-pci">
@@ -907,11 +891,11 @@
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M31-S0-6TQ" userLabel="Living Room View">
-                                                <rect key="frame" x="0.0" y="110" width="357" height="80"/>
+                                                <rect key="frame" x="8" y="110" width="359" height="80"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Living Room" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Nkq-nv-2u5">
-                                                        <rect key="frame" x="8" y="11" width="104" height="19"/>
+                                                        <rect key="frame" x="10" y="11" width="106" height="19"/>
                                                         <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -919,11 +903,11 @@
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_lights_off" translatesAutoresizingMaskIntoConstraints="NO" id="cPJ-Oi-cL1" userLabel="Living Room Lights icon">
-                                                        <rect key="frame" x="319" y="40" width="30" height="30"/>
+                                                        <rect key="frame" x="321" y="40" width="32" height="30"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </imageView>
                                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zal-DA-j5w">
-                                                        <rect key="frame" x="8" y="40" width="48" height="2"/>
+                                                        <rect key="frame" x="10" y="40" width="50" height="2"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
@@ -932,7 +916,7 @@
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="svP-GC-ruT" userLabel="Home View">
-                                                <rect key="frame" x="0.0" y="0.0" width="357" height="100"/>
+                                                <rect key="frame" x="8" y="0.0" width="359" height="100"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WxM-wf-RNF">
@@ -1004,7 +988,7 @@
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IUC-dH-L5K" userLabel="Upstaird Hall View">
-                                                <rect key="frame" x="0.0" y="740" width="357" height="80"/>
+                                                <rect key="frame" x="8" y="740" width="359" height="80"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_lights_off" translatesAutoresizingMaskIntoConstraints="NO" id="pLx-qd-GKs" userLabel="Upstairs Hall Lights icon">
@@ -1031,30 +1015,49 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="833" id="A2u-O5-CN7"/>
+                                            <constraint firstAttribute="height" constant="833" id="Yxy-2G-eS4"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="H9c-Er-Pyu" secondAttribute="bottom" id="Lrm-Qk-p6y"/>
-                                    <constraint firstItem="H9c-Er-Pyu" firstAttribute="top" secondItem="cTm-Td-jnI" secondAttribute="top" id="cPE-90-Wrd"/>
-                                    <constraint firstAttribute="trailing" secondItem="H9c-Er-Pyu" secondAttribute="trailing" constant="8" id="dav-7t-Y0I"/>
-                                    <constraint firstItem="H9c-Er-Pyu" firstAttribute="leading" secondItem="cTm-Td-jnI" secondAttribute="leading" constant="8" id="tpr-Ic-fQC"/>
+                                    <constraint firstItem="H9c-Er-Pyu" firstAttribute="top" secondItem="cTm-Td-jnI" secondAttribute="top" id="36N-HI-ghS"/>
+                                    <constraint firstAttribute="bottom" secondItem="H9c-Er-Pyu" secondAttribute="bottom" id="Hgd-Hi-xio"/>
+                                    <constraint firstAttribute="trailing" secondItem="H9c-Er-Pyu" secondAttribute="trailing" id="MtM-df-z88"/>
+                                    <constraint firstItem="H9c-Er-Pyu" firstAttribute="leading" secondItem="cTm-Td-jnI" secondAttribute="leading" id="trf-NA-Vc5"/>
                                 </constraints>
                             </scrollView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nlc-G3-hP2">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Good &lt;greeting&gt; &lt;user&gt;" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="ag6-0L-6q4">
+                                        <rect key="frame" x="9" y="49" width="356" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <imageView hidden="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_menu" translatesAutoresizingMaskIntoConstraints="NO" id="kG5-Y5-MlE">
+                                        <rect key="frame" x="325" y="46" width="41" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="TjI-Aq-IKh" appends="YES" id="WAh-MA-Ru7"/>
+                                        </connections>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="H9c-Er-Pyu" firstAttribute="width" secondItem="I48-TW-8Yh" secondAttribute="width" id="18q-0V-Hhy"/>
-                            <constraint firstItem="cTm-Td-jnI" firstAttribute="leading" secondItem="trZ-0D-HkB" secondAttribute="leading" id="ADR-t1-rzJ"/>
-                            <constraint firstAttribute="bottom" secondItem="cTm-Td-jnI" secondAttribute="bottom" id="Jff-SQ-ZMK"/>
-                            <constraint firstItem="cTm-Td-jnI" firstAttribute="leading" secondItem="trZ-0D-HkB" secondAttribute="leading" id="aVB-Cr-o9I"/>
-                            <constraint firstAttribute="bottom" secondItem="cTm-Td-jnI" secondAttribute="bottom" id="koY-9g-C8c"/>
-                            <constraint firstItem="cTm-Td-jnI" firstAttribute="top" secondItem="trZ-0D-HkB" secondAttribute="top" constant="43" id="rEW-xE-mqb"/>
-                            <constraint firstItem="cTm-Td-jnI" firstAttribute="top" secondItem="trZ-0D-HkB" secondAttribute="top" constant="43" id="rge-vi-Jfw"/>
-                            <constraint firstItem="cTm-Td-jnI" firstAttribute="trailing" secondItem="trZ-0D-HkB" secondAttribute="trailing" id="swp-Nj-FPn"/>
-                            <constraint firstItem="cTm-Td-jnI" firstAttribute="trailing" secondItem="trZ-0D-HkB" secondAttribute="trailing" id="w3L-GI-fsw"/>
+                            <constraint firstItem="cTm-Td-jnI" firstAttribute="leading" secondItem="trZ-0D-HkB" secondAttribute="leading" id="Ey7-2P-Vz0"/>
+                            <constraint firstAttribute="bottom" secondItem="cTm-Td-jnI" secondAttribute="bottom" id="Idc-ka-azH"/>
+                            <constraint firstItem="cTm-Td-jnI" firstAttribute="top" secondItem="trZ-0D-HkB" secondAttribute="top" constant="43" id="WXt-9N-3bm"/>
+                            <constraint firstItem="H9c-Er-Pyu" firstAttribute="width" secondItem="I48-TW-8Yh" secondAttribute="width" id="fQ8-RD-Yrj"/>
+                            <constraint firstItem="cTm-Td-jnI" firstAttribute="trailing" secondItem="trZ-0D-HkB" secondAttribute="trailing" id="oiR-Zl-f61"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="trZ-0D-HkB"/>
                     </view>
