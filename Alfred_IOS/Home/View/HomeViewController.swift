@@ -15,6 +15,8 @@ class HomeViewController: UIViewController {
     
     private let homeController = HomeController()
 
+    var roomID:Int = 0
+    
     // table view refresh timer
     var refreshDataTimer: Timer!
     let timerInterval = 5 // seconds
@@ -22,6 +24,18 @@ class HomeViewController: UIViewController {
     // MARK: Interactive elements
     @IBOutlet weak var menuIcon: UIImageView!
     @IBOutlet weak var homeViewSection: UIView!
+    
+    @IBAction func showLivingRoomViewTapped(_ sender: UITapGestureRecognizer) {
+        roomID = 8
+        print(roomID)
+        self.performSegue(withIdentifier: "showRoom", sender: self)
+    }
+    @IBAction func showKidsBedRoomViewTapped(_ sender: UITapGestureRecognizer) {
+        roomID = 4
+        print(roomID)
+        self.performSegue(withIdentifier: "showRoom", sender: self)
+    }
+    
     @IBOutlet weak var livingRoomViewSection: UIView!
     @IBOutlet weak var kidsBedRoomViewSection: UIView!
     @IBOutlet weak var kidsBedRoomAirQualityIcon: UIImageView!
@@ -44,6 +58,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var commuteStatus: UIImageView!
     @IBOutlet weak var allLightsIcon: UIImageView!
+    @IBOutlet weak var livingRoomTemp: UITextField!
     @IBOutlet weak var livingRoomLightsIcon: UIImageView!
     @IBOutlet weak var kidsBedRoomLightsIcon: UIImageView!
     @IBOutlet weak var kidsRoomTemp: UITextField!
@@ -64,6 +79,11 @@ class HomeViewController: UIViewController {
             if let movieURL = url {
                 destination.player = AVPlayer(url: movieURL)
                 destination.player?.play()
+            }
+        case "showRoom"?:
+            if let vc = segue.destination as? RoomsViewController
+            {
+                vc.roomID = roomID
             }
         case .none:
             return
@@ -227,33 +247,52 @@ extension HomeViewController: HomeControllerDelegate {
     
     func houseWeatherDidRecieveDataUpdate(data: [HouseWeatherData]) {
         DispatchQueue.main.async {
-            // Kids room
-            self.kidsRoomTemp.text = "\(data[0].kidsRoom?.temperature ?? 0)"
-            self.kidsBedRoomAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_green")
-            if data[0].kidsRoom?.cO2 ?? 0 > 1150 {
-                self.kidsBedRoomAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_yellow")
+
+            // Living room
+            let LivingRoom = data.filter { ($0.location?.contains("Living room"))! }
+            if LivingRoom.count > 0 {
+                self.livingRoomTemp.text = String(format: "%.0f", LivingRoom[0].temperature?.rounded(.up) ?? 0)
             }
-            if data[0].kidsRoom?.cO2 ?? 0 > 1400 {
-                self.kidsBedRoomAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_red")
+            
+            // Kids room
+            let KidsRoom = data.filter { ($0.location?.contains("Kids room"))! }
+            if KidsRoom.count > 0 {
+                self.kidsRoomTemp.text = String(format: "%.0f", KidsRoom[0].temperature?.rounded(.up) ?? 0)
+                self.kidsBedRoomAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_green")
+                if KidsRoom[0].co2 ?? 0 > 1150 {
+                    self.kidsBedRoomAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_yellow")
+                }
+                if KidsRoom[0].co2 ?? 0 > 1400 {
+                    self.kidsBedRoomAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_red")
+                }
             }
             
             // Main bed room
-            self.mainBedRoomTemp.text = "\(data[0].mainBedRoom?.temperature ?? 0)"
-            switch data[0].mainBedRoom?.airQuality {
-                case 2: self.mainBedRoomAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_green")
-                case 3: self.mainBedRoomAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_yellow")
-                case 4: self.mainBedRoomAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_red")
-            case .none:
-                self.mainBedRoomAirQualityIcon.image = nil
-            case .some(_):
-                self.mainBedRoomAirQualityIcon.image = nil
+            let MainBedRoom = data.filter { ($0.location?.contains("Bebroom"))! }
+            if MainBedRoom.count > 0 {
+                self.mainBedRoomTemp.text = String(format: "%.0f", MainBedRoom[0].temperature?.rounded(.up) ?? 0)
+                switch MainBedRoom[0].air {
+                    case 2: self.mainBedRoomAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_green")
+                    case 3: self.mainBedRoomAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_yellow")
+                    case 4: self.mainBedRoomAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_red")
+                case .none:
+                    self.mainBedRoomAirQualityIcon.image = nil
+                case .some(_):
+                    self.mainBedRoomAirQualityIcon.image = nil
+                }
+            }
+            
+            // Kitchen room
+            let Kitchen = data.filter { ($0.location?.contains("Kitchen"))! }
+            if Kitchen.count > 0 {
+                self.kitchenTemp.text = String(format: "%.0f", Kitchen[0].temperature?.rounded(.up) ?? 0)
             }
 
-            // Kitchen room
-            self.kitchenTemp.text = "\(data[0].kitchen?.temperature ?? 0)"
-
             // Garden room
-            self.gardenTemp.text = "\(data[0].garden?.temperature ?? 0)"
+            let Garden = data.filter { ($0.location?.contains("Garden"))! }
+            if Garden.count > 0 {
+                self.gardenTemp.text = String(format: "%.0f", Garden[0].temperature?.rounded(.up) ?? 0)
+            }
         }
     }
     

@@ -1,7 +1,7 @@
 //
 //  HouseWeatherBaseClass.swift
 //
-//  Created by John Pillar on 13/01/2019
+//  Created by John Pillar on 10/02/2019
 //  Copyright (c) . All rights reserved.
 //
 
@@ -16,7 +16,7 @@ public final class HouseWeatherBaseClass: NSCoding {
   }
 
   // MARK: Properties
-  public var data: HouseWeatherData?
+  public var data: [HouseWeatherData]?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -31,7 +31,7 @@ public final class HouseWeatherBaseClass: NSCoding {
   ///
   /// - parameter json: JSON object from SwiftyJSON.
   public required init(json: JSON) {
-    data = HouseWeatherData(json: json[SerializationKeys.data])
+    if let items = json[SerializationKeys.data].array { data = items.map { HouseWeatherData(json: $0) } }
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -39,13 +39,13 @@ public final class HouseWeatherBaseClass: NSCoding {
   /// - returns: A Key value pair containing all valid values in the object.
   public func dictionaryRepresentation() -> [String: Any] {
     var dictionary: [String: Any] = [:]
-    if let value = data { dictionary[SerializationKeys.data] = value.dictionaryRepresentation() }
+    if let value = data { dictionary[SerializationKeys.data] = value.map { $0.dictionaryRepresentation() } }
     return dictionary
   }
 
   // MARK: NSCoding Protocol
   required public init(coder aDecoder: NSCoder) {
-    self.data = aDecoder.decodeObject(forKey: SerializationKeys.data) as? HouseWeatherData
+    self.data = aDecoder.decodeObject(forKey: SerializationKeys.data) as? [HouseWeatherData]
   }
 
   public func encode(with aCoder: NSCoder) {

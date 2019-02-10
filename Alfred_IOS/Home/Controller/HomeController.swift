@@ -97,12 +97,12 @@ class HomeController: NSObject, CLLocationManagerDelegate {
     func getHourseWeatherData() {
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
-        let request = getAPIHeaderData(url: "weather/inside")
+        let request = getAPIHeaderData(url: "weather/houseWeather")
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
                 let responseJSON = try? JSON(data: data!)
                 let data = [HouseWeatherBaseClass(json: responseJSON!)] // Update data store
-                self.delegate?.houseWeatherDidRecieveDataUpdate(data: [data[0].data!]) // Refresh the data and UI
+                self.delegate?.houseWeatherDidRecieveDataUpdate(data: data[0].data!) // Refresh the data and UI
             } else {
                 self.delegate?.didFailDataUpdateWithError(displayMsg: false) // Let the View controller know there was an error
             }

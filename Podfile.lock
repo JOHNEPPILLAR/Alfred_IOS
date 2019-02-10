@@ -1,24 +1,24 @@
 PODS:
-  - MaterialComponents/Ink (72.2.0):
+  - MaterialComponents/Ink (74.0.0):
     - MaterialComponents/private/Math
-  - MaterialComponents/Palettes (72.2.0)
-  - MaterialComponents/private/Application (72.2.0)
-  - MaterialComponents/private/Math (72.2.0)
-  - MaterialComponents/private/ThumbTrack (72.2.0):
+  - MaterialComponents/Palettes (74.0.0)
+  - MaterialComponents/private/Application (74.0.0)
+  - MaterialComponents/private/Math (74.0.0)
+  - MaterialComponents/private/ThumbTrack (74.0.0):
     - MaterialComponents/Ink
     - MaterialComponents/private/Math
     - MaterialComponents/ShadowElevations
     - MaterialComponents/ShadowLayer
     - MaterialComponents/Typography
     - MDFInternationalization
-  - MaterialComponents/ShadowElevations (72.2.0)
-  - MaterialComponents/ShadowLayer (72.2.0):
+  - MaterialComponents/ShadowElevations (74.0.0)
+  - MaterialComponents/ShadowLayer (74.0.0):
     - MaterialComponents/ShadowElevations
-  - MaterialComponents/Slider (72.2.0):
+  - MaterialComponents/Slider (74.0.0):
     - MaterialComponents/Palettes
     - MaterialComponents/private/ThumbTrack
     - MaterialComponents/ShadowElevations
-  - MaterialComponents/Typography (72.2.0):
+  - MaterialComponents/Typography (74.0.0):
     - MaterialComponents/private/Application
     - MaterialComponents/private/Math
   - MDFInternationalization (2.0.0)
@@ -38,7 +38,7 @@ SPEC REPOS:
     - SwiftyJSON
 
 SPEC CHECKSUMS:
-  MaterialComponents: d1637df9976683348de8eabd10de0723ec81db3d
+  MaterialComponents: c382f7a1881832ff88a05bb1536c47714cf1295f
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96

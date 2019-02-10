@@ -17,8 +17,8 @@ extension Int {
 
 func putAPIHeaderData(url: String, body: Data) -> URLRequest {
     #if DEBUG
-//    let AlfredBaseURL = readPlist(item: "AlfredBaseURL-Local")
-    let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+    let AlfredBaseURL = readPlist(item: "AlfredBaseURL-Local")
+    //let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
     #else
     let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
     #endif
@@ -36,9 +36,9 @@ func putAPIHeaderData(url: String, body: Data) -> URLRequest {
 
 func getAPIHeaderData(url: String) -> URLRequest {
     #if DEBUG
-//    let AlfredBaseURL = readPlist(item: "AlfredBaseURL-Local")
-    let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
-  #else
+    let AlfredBaseURL = readPlist(item: "AlfredBaseURL-Local")
+    //let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
+    #else
     let AlfredBaseURL = readPlist(item: "AlfredBaseURL")
     #endif
     let AlfredAppKey = readPlist(item: "AlfredAppKey")
