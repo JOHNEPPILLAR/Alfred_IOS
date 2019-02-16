@@ -51,6 +51,7 @@
 		E82C11C220F1548C00A53A63 /* CommuteStatusBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82C11C020F1548C00A53A63 /* CommuteStatusBaseClass.swift */; };
 		E82CE68B21C693C80092A673 /* LightsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82CE68A21C693C80092A673 /* LightsViewController.swift */; };
 		E82CE69021C695510092A673 /* LightsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82CE68F21C695510092A673 /* LightsController.swift */; };
+		E841FE252218BCD2009D1A82 /* RoomsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E841FE242218BCD2009D1A82 /* RoomsController.swift */; };
 		E84566D32210BEA900CF93DF /* HouseWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84566D12210BEA900CF93DF /* HouseWeatherData.swift */; };
 		E84566D42210BEA900CF93DF /* HouseWeatherBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84566D22210BEA900CF93DF /* HouseWeatherBaseClass.swift */; };
 		E845B9C1214E980900A75D96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E845B9C0214E980900A75D96 /* Main.storyboard */; };
@@ -127,6 +128,7 @@
 		E82C11C020F1548C00A53A63 /* CommuteStatusBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteStatusBaseClass.swift; sourceTree = "<group>"; };
 		E82CE68A21C693C80092A673 /* LightsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsViewController.swift; sourceTree = "<group>"; };
 		E82CE68F21C695510092A673 /* LightsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsController.swift; sourceTree = "<group>"; };
+		E841FE242218BCD2009D1A82 /* RoomsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsController.swift; sourceTree = "<group>"; };
 		E84566D12210BEA900CF93DF /* HouseWeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseWeatherData.swift; sourceTree = "<group>"; };
 		E84566D22210BEA900CF93DF /* HouseWeatherBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseWeatherBaseClass.swift; sourceTree = "<group>"; };
 		E845B9C0214E980900A75D96 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -489,6 +491,7 @@
 		E89F4C9D21F50ACE000873E8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E841FE242218BCD2009D1A82 /* RoomsController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -709,6 +712,7 @@
 				E81F0C1C21D6CF6800F9FD0C /* CommuteBaseClass.swift in Sources */,
 				0A647EE32067E8CF00F7CD1E /* RoomLightsBaseClass.swift in Sources */,
 				0A9EDC68205263E5001277EC /* CurrentWeatherData.swift in Sources */,
+				E841FE252218BCD2009D1A82 /* RoomsController.swift in Sources */,
 				0A647EE52067E8CF00F7CD1E /* RoomLightsAttributesAttributes.swift in Sources */,
 				E87277B72145AEA000FE3FC3 /* TimersViewControler.swift in Sources */,
 				E81F0C1E21D6CF6800F9FD0C /* CommuteLegs.swift in Sources */,

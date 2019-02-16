@@ -15,37 +15,22 @@ class HomeViewController: UIViewController {
     
     private let homeController = HomeController()
 
-    var roomID:Int = 0
-    
-    // table view refresh timer
-    var refreshDataTimer: Timer!
     let timerInterval = 5 // seconds
+    var roomID:Int = 0
+    var refreshDataTimer: Timer!
     
     // MARK: Interactive elements
     @IBOutlet weak var menuIcon: UIImageView!
     @IBOutlet weak var homeViewSection: UIView!
     
     @IBAction func showLivingRoomViewTapped(_ sender: UITapGestureRecognizer) {
-        roomID = 8
-        print(roomID)
+        roomID = (sender.view?.tag)!
         self.performSegue(withIdentifier: "showRoom", sender: self)
     }
     @IBAction func showKidsBedRoomViewTapped(_ sender: UITapGestureRecognizer) {
-        roomID = 4
-        print(roomID)
+        roomID = (sender.view?.tag)!
         self.performSegue(withIdentifier: "showRoom", sender: self)
     }
-    
-    @IBOutlet weak var livingRoomViewSection: UIView!
-    @IBOutlet weak var kidsBedRoomViewSection: UIView!
-    @IBOutlet weak var kidsBedRoomAirQualityIcon: UIImageView!
-    @IBOutlet weak var mainBedRoomViewSection: UIView!
-    @IBOutlet weak var mainBedRoomAirQualityIcon: UIImageView!
-    @IBOutlet weak var kitchenViewSection: UIView!
-    @IBOutlet weak var gardenViewSection: UIView!
-    @IBOutlet weak var downstairsHallViewSection: UIView!
-    @IBOutlet weak var middleHallViewSection: UIView!
-    @IBOutlet weak var upstairsHallViewSection: UIView!
 
     @IBAction func AllLightsOffPress(_ sender: UILongPressGestureRecognizer) {
         homeController.turnOffAllLights()
@@ -62,8 +47,10 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var livingRoomLightsIcon: UIImageView!
     @IBOutlet weak var kidsBedRoomLightsIcon: UIImageView!
     @IBOutlet weak var kidsRoomTemp: UITextField!
+    @IBOutlet weak var kidsBedRoomAirQualityIcon: UIImageView!
     @IBOutlet weak var mainBedRoomTemp: UITextField!
     @IBOutlet weak var mainBedRoomLightsIcon: UIImageView!
+    @IBOutlet weak var mainBedRoomAirQualityIcon: UIImageView!
     @IBOutlet weak var kitchenTemp: UITextField!
     @IBOutlet weak var kitchenLightsIcon: UIImageView!
     @IBOutlet weak var gardenTemp: UITextField!
@@ -122,7 +109,7 @@ class HomeViewController: UIViewController {
 
         // Call API's to get data
         homeController.getWeather()
-        homeController.getLightRoomData()
+        homeController.getRoomLightData()
         homeController.getCurrentLocation(whoIsThis: whoIsThis!)
         homeController.getHourseWeatherData()
         
@@ -156,8 +143,8 @@ extension HomeViewController: HomeControllerDelegate {
         }
     }
     
-    // Process light room data
-    func lightRoomDidRecieveDataUpdate(data: [RoomLightsData]) {
+    // Process room light data
+    func roomLightDidRecieveDataUpdate(data: [RoomLightsData]) {
         allLightsIcon.image = #imageLiteral(resourceName: "ic_lights_off")
         for item in data {
             switch item.attributes?.attributes?.id {
@@ -209,7 +196,7 @@ extension HomeViewController: HomeControllerDelegate {
         
         if refreshDataTimer == nil { // Set up data refresh timer
             refreshDataTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(timerInterval), repeats: true){_ in
-                self.homeController.getLightRoomData()
+                self.homeController.getRoomLightData()
             }
         }
     }

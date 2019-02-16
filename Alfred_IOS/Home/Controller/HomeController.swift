@@ -12,7 +12,7 @@ import SwiftyJSON
 
 // MARK: Delegate callback functions
 protocol HomeControllerDelegate: class {
-    func lightRoomDidRecieveDataUpdate(data: [RoomLightsData])
+    func roomLightDidRecieveDataUpdate(data: [RoomLightsData])
     func currentWeatherDidRecieveDataUpdate(data: [CurrentWeatherData])
     func cummuteDidRecieveDataUpdate(data: [CommuteStatusData])
     func houseWeatherDidRecieveDataUpdate(data: [HouseWeatherData])
@@ -110,7 +110,7 @@ class HomeController: NSObject, CLLocationManagerDelegate {
         task.resume()
     }
     
-    func getLightRoomData() {
+    func getRoomLightData() {
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
         let request = getAPIHeaderData(url: "lights/listlightgroups")
@@ -118,7 +118,7 @@ class HomeController: NSObject, CLLocationManagerDelegate {
             if checkAPIData(apiData: data, response: response, error: error) {
                 let responseJSON = try? JSON(data: data!)
                 let data = [RoomLightsBaseData(json: responseJSON!)] // Update data store
-                self.delegate?.lightRoomDidRecieveDataUpdate(data: data[0].data!) // Let the View controller know to show the data
+                self.delegate?.roomLightDidRecieveDataUpdate(data: data[0].data!) // Let the View controller know to show the data
             } else {
                 self.delegate?.didFailDataUpdateWithError(displayMsg: false) // Let the View controller know there was an error
             }
@@ -126,10 +126,4 @@ class HomeController: NSObject, CLLocationManagerDelegate {
         task.resume()
     }
 
-   
 }
-
-
-
-
-
