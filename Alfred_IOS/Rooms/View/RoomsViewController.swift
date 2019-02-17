@@ -21,11 +21,21 @@ class RoomsViewController: UIViewController {
         self.dismiss(animated: true, completion:nil)
     }
     
+    
     @IBOutlet weak var roomName: UILabel!
-
+    
+    // Lights
+    @IBOutlet weak var lightsLabel: UITextField!
+    @IBOutlet weak var lightsLabelLine: UIView!
+    
+    @IBOutlet weak var lightsOnOff: UISwitch!
+    @IBOutlet weak var lightsView: UIView!
+    @IBOutlet weak var lightSlider: UISlider!
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-
+        
         // Call API's to get data
         roomsController.getLightRoomData()
         
@@ -51,10 +61,10 @@ extension RoomsViewController: RoomsControllerDelegate {
         if displayMsg {
             SVProgressHUD.showError(withStatus: "Network/API error")
         } else {
-            //if refreshDataTimer != nil {
-            //    refreshDataTimer.invalidate() // Stop the refresh data timer
-            //    refreshDataTimer = nil
-            //}
+            if refreshDataTimer != nil {
+                refreshDataTimer.invalidate() // Stop the refresh data timer
+                refreshDataTimer = nil
+            }
         }
     }
     
@@ -63,7 +73,39 @@ extension RoomsViewController: RoomsControllerDelegate {
         let roomData = data.filter { ($0.attributes?.attributes?.id?.contains(String(roomID)))! }
         
         roomName.text = roomData[0].attributes?.attributes?.name
-        //   allLightsIcon.image = #imageLiteral(resourceName: "ic_lights_off")
+        
+        lightsOnOff.isOn = roomData[0].state?.attributes?.anyOn ?? false
+        lightSlider.value = Float(roomData[0].action?.attributes?.bri ?? 0)
+        
+        var color = UIColor(red: 30/255, green: 34/255, blue: 60/255, alpha: 0.5)
+        if (roomData[0].state?.attributes?.anyOn)! {
+            switch roomData[0].action?.attributes?.colormode {
+            case "ct"?: color = HueColorHelper.getColorFromScene((roomData[0].action?.attributes?.ct)!)
+            case "xy"?: color = HueColorHelper.colorFromXY(CGPoint(x: Double((roomData[0].action?.attributes?.xy![0])!), y: Double((roomData[0].action?.attributes?.xy![1])!)), forModel: "LCT007")
+            case "hs"?: color = HueColorHelper.colorFromXY(CGPoint(x: Double((roomData[0].action?.attributes?.xy![0])!), y: Double((roomData[0].action?.attributes?.xy![1])!)), forModel: "LCT007")
+            default: color = UIColor.white
+            }
+            let darkerColor = color.darker(by: -15)
+            lightsOnOff.onTintColor = darkerColor
+            lightSlider.maximumTrackTintColor = darkerColor
+            lightSlider.setMinimumTrackImage(startColor: darkerColor!,
+                                                  endColor: UIColor.white,
+                                                  startPoint: CGPoint.init(x: 0, y: 0),
+                                                  endPoint: CGPoint.init(x: 1, y: 1))
+            // lightSlider.layer.cornerRadius = 12.0;
+            lightSlider.isHidden = false
+            lightsView.backgroundColor = color
+            
+        } else {
+            lightSlider.isHidden = true
+        }
+        
+        if refreshDataTimer == nil { // Set up data refresh timer
+            refreshDataTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(timerInterval), repeats: true){_ in
+                self.roomsController.getLightRoomData()
+            }
+        }
+
     }
 
 }

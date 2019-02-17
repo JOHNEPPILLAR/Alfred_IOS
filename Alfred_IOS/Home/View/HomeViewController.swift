@@ -68,8 +68,7 @@ class HomeViewController: UIViewController {
                 destination.player?.play()
             }
         case "showRoom"?:
-            if let vc = segue.destination as? RoomsViewController
-            {
+            if let vc = segue.destination as? RoomsViewController {
                 vc.roomID = roomID
             }
         case .none:
