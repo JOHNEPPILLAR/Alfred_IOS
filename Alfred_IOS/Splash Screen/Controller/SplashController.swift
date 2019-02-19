@@ -17,6 +17,7 @@ protocol SplashControllerDelegate: class {
 
 class SplashController: NSObject {
     weak var delegate: SplashControllerDelegate?
+
     func ping() {
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)

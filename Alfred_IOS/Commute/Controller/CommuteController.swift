@@ -23,7 +23,7 @@ class CommuteController: NSObject, CLLocationManagerDelegate {
     var locationManager:CLLocationManager!
     var whoIs:String!
     var walking:String!
-    
+
     func getCommuteData(whoIsThis: String) {
         
         whoIs = whoIsThis

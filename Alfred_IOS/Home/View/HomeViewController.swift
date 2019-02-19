@@ -17,7 +17,7 @@ class HomeViewController: UIViewController {
 
     let timerInterval = 5 // seconds
     var roomID:Int = 0
-    var refreshDataTimer: Timer!
+    var refreshLightDataTimer: Timer!
     
     // MARK: Interactive elements
     @IBOutlet weak var menuIcon: UIImageView!
@@ -121,9 +121,9 @@ class HomeViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if refreshDataTimer != nil {
-            refreshDataTimer.invalidate() // Stop the refresh data timer
-            refreshDataTimer = nil
+        if refreshLightDataTimer != nil {
+            refreshLightDataTimer.invalidate() // Stop the refresh data timer
+            refreshLightDataTimer = nil
         }
     }
     
@@ -134,14 +134,23 @@ extension HomeViewController: HomeControllerDelegate {
     func didFailDataUpdateWithError(displayMsg: Bool) {
         if displayMsg {
             SVProgressHUD.showError(withStatus: "Network/API error")
-        } else {
-            if refreshDataTimer != nil {
-                refreshDataTimer.invalidate() // Stop the refresh data timer
-                refreshDataTimer = nil
-            }
+        }
+        if refreshLightDataTimer != nil {
+            refreshLightDataTimer.invalidate() // Stop the refresh data timer
+            refreshLightDataTimer = nil
         }
     }
-    
+
+    func didFailLightDataUpdateWithError(displayMsg: Bool) {
+        if displayMsg {
+            SVProgressHUD.showError(withStatus: "Lights - Network/API error")
+        }
+        if refreshLightDataTimer != nil {
+            refreshLightDataTimer.invalidate() // Stop the refresh data timer
+            refreshLightDataTimer = nil
+        }
+    }
+
     // Process room light data
     func roomLightDidRecieveDataUpdate(data: [RoomLightsData]) {
         allLightsIcon.image = #imageLiteral(resourceName: "ic_lights_off")
@@ -193,8 +202,8 @@ extension HomeViewController: HomeControllerDelegate {
             }
         }
         
-        if refreshDataTimer == nil { // Set up data refresh timer
-            refreshDataTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(timerInterval), repeats: true){_ in
+        if refreshLightDataTimer == nil { // Set up data refresh timer
+            refreshLightDataTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(timerInterval), repeats: true){_ in
                 self.homeController.getRoomLightData()
             }
         }

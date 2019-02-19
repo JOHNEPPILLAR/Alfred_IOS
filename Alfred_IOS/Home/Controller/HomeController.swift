@@ -17,6 +17,7 @@ protocol HomeControllerDelegate: class {
     func cummuteDidRecieveDataUpdate(data: [CommuteStatusData])
     func houseWeatherDidRecieveDataUpdate(data: [HouseWeatherData])
     func didFailDataUpdateWithError(displayMsg: Bool)
+    func didFailLightDataUpdateWithError(displayMsg: Bool)
 }
 
 class HomeController: NSObject, CLLocationManagerDelegate {
@@ -86,9 +87,9 @@ class HomeController: NSObject, CLLocationManagerDelegate {
         let request = getAPIHeaderData(url: "lights/alloff")
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
-                //self.getLightRoomData()
+                self.getRoomLightData()
             } else {
-                self.delegate?.didFailDataUpdateWithError(displayMsg: false) // Let the View controller know there was an error
+                self.delegate?.didFailLightDataUpdateWithError(displayMsg: false) // Let the View controller know there was an error
             }
         })
         task.resume()
@@ -120,7 +121,7 @@ class HomeController: NSObject, CLLocationManagerDelegate {
                 let data = [RoomLightsBaseData(json: responseJSON!)] // Update data store
                 self.delegate?.roomLightDidRecieveDataUpdate(data: data[0].data!) // Let the View controller know to show the data
             } else {
-                self.delegate?.didFailDataUpdateWithError(displayMsg: false) // Let the View controller know there was an error
+                self.delegate?.didFailLightDataUpdateWithError(displayMsg: true) // Let the View controller know there was an error
             }
         })
         task.resume()

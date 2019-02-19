@@ -20,6 +20,7 @@ class SensorsController: NSObject {
     weak var delegate: SensorsControllerDelegate?
     
     func getSensorsData() {
+        /*
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
         let request = getAPIHeaderData(url: "settings/listSensors")
@@ -33,6 +34,7 @@ class SensorsController: NSObject {
             }
         })
         task.resume()
+ */
     }
     
 }

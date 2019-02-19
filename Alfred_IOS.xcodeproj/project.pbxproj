@@ -49,8 +49,6 @@
 		E81F0C1F21D6CF6800F9FD0C /* CommuteJourneys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81F0C1B21D6CF6800F9FD0C /* CommuteJourneys.swift */; };
 		E82C11C120F1548C00A53A63 /* CommuteStatusData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82C11BF20F1548C00A53A63 /* CommuteStatusData.swift */; };
 		E82C11C220F1548C00A53A63 /* CommuteStatusBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82C11C020F1548C00A53A63 /* CommuteStatusBaseClass.swift */; };
-		E82CE68B21C693C80092A673 /* LightsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82CE68A21C693C80092A673 /* LightsViewController.swift */; };
-		E82CE69021C695510092A673 /* LightsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82CE68F21C695510092A673 /* LightsController.swift */; };
 		E841FE252218BCD2009D1A82 /* RoomsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E841FE242218BCD2009D1A82 /* RoomsController.swift */; };
 		E84566D32210BEA900CF93DF /* HouseWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84566D12210BEA900CF93DF /* HouseWeatherData.swift */; };
 		E84566D42210BEA900CF93DF /* HouseWeatherBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84566D22210BEA900CF93DF /* HouseWeatherBaseClass.swift */; };
@@ -68,6 +66,11 @@
 		E87277B52145AD7600FE3FC3 /* TimersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87277B42145AD7600FE3FC3 /* TimersTableViewCell.swift */; };
 		E87277B72145AEA000FE3FC3 /* TimersViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87277B62145AEA000FE3FC3 /* TimersViewControler.swift */; };
 		E87277B92145AF4A00FE3FC3 /* TimersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87277B82145AF4A00FE3FC3 /* TimersController.swift */; };
+		E877C4FA221AD783007D1A79 /* RoomTempSensorBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E877C4F6221AD782007D1A79 /* RoomTempSensorBaseClass.swift */; };
+		E877C4FC221AD783007D1A79 /* RoomTempSensorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E877C4F8221AD783007D1A79 /* RoomTempSensorData.swift */; };
+		E877C4FD221AD783007D1A79 /* RoomTempSensorRows.swift in Sources */ = {isa = PBXBuildFile; fileRef = E877C4F9221AD783007D1A79 /* RoomTempSensorRows.swift */; };
+		E89E162A221C68860088AC62 /* ChartSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89E1629221C68860088AC62 /* ChartSlide.swift */; };
+		E89E162E221C68F90088AC62 /* ChartSlide.xib in Resources */ = {isa = PBXBuildFile; fileRef = E89E162D221C68F90088AC62 /* ChartSlide.xib */; };
 		E89F4C9B21F50AB9000873E8 /* RoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89F4C9A21F50AB9000873E8 /* RoomsViewController.swift */; };
 		E89FDE47214460CC00C2FB62 /* TimersBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89FDE46214460CC00C2FB62 /* TimersBaseClass.swift */; };
 		E89FDE49214460EB00C2FB62 /* TimersData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89FDE48214460EB00C2FB62 /* TimersData.swift */; };
@@ -126,8 +129,6 @@
 		E81F0C1B21D6CF6800F9FD0C /* CommuteJourneys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteJourneys.swift; sourceTree = "<group>"; };
 		E82C11BF20F1548C00A53A63 /* CommuteStatusData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteStatusData.swift; sourceTree = "<group>"; };
 		E82C11C020F1548C00A53A63 /* CommuteStatusBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteStatusBaseClass.swift; sourceTree = "<group>"; };
-		E82CE68A21C693C80092A673 /* LightsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsViewController.swift; sourceTree = "<group>"; };
-		E82CE68F21C695510092A673 /* LightsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsController.swift; sourceTree = "<group>"; };
 		E841FE242218BCD2009D1A82 /* RoomsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsController.swift; sourceTree = "<group>"; };
 		E84566D12210BEA900CF93DF /* HouseWeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseWeatherData.swift; sourceTree = "<group>"; };
 		E84566D22210BEA900CF93DF /* HouseWeatherBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseWeatherBaseClass.swift; sourceTree = "<group>"; };
@@ -145,6 +146,11 @@
 		E87277B42145AD7600FE3FC3 /* TimersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimersTableViewCell.swift; sourceTree = "<group>"; };
 		E87277B62145AEA000FE3FC3 /* TimersViewControler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimersViewControler.swift; sourceTree = "<group>"; };
 		E87277B82145AF4A00FE3FC3 /* TimersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimersController.swift; sourceTree = "<group>"; };
+		E877C4F6221AD782007D1A79 /* RoomTempSensorBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomTempSensorBaseClass.swift; sourceTree = "<group>"; };
+		E877C4F8221AD783007D1A79 /* RoomTempSensorData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomTempSensorData.swift; sourceTree = "<group>"; };
+		E877C4F9221AD783007D1A79 /* RoomTempSensorRows.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomTempSensorRows.swift; sourceTree = "<group>"; };
+		E89E1629221C68860088AC62 /* ChartSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartSlide.swift; sourceTree = "<group>"; };
+		E89E162D221C68F90088AC62 /* ChartSlide.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChartSlide.xib; sourceTree = "<group>"; };
 		E89F4C9A21F50AB9000873E8 /* RoomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsViewController.swift; sourceTree = "<group>"; };
 		E89FDE46214460CC00C2FB62 /* TimersBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimersBaseClass.swift; sourceTree = "<group>"; };
 		E89FDE48214460EB00C2FB62 /* TimersData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimersData.swift; sourceTree = "<group>"; };
@@ -358,8 +364,9 @@
 			isa = PBXGroup;
 			children = (
 				E89F4C9921F50A9A000873E8 /* Rooms */,
-				E82CE68C21C693CE0092A673 /* Lights */,
 				E845B9C0214E980900A75D96 /* Main.storyboard */,
+				E89E162D221C68F90088AC62 /* ChartSlide.xib */,
+				E89E1629221C68860088AC62 /* ChartSlide.swift */,
 				0AAD1023207D5564006B410C /* Alfred_IOS.entitlements */,
 				0A256EC8206F94BF008C5283 /* TableCells */,
 				0A256EC5206F942D008C5283 /* To Do */,
@@ -428,39 +435,6 @@
 			path = Commute;
 			sourceTree = "<group>";
 		};
-		E82CE68C21C693CE0092A673 /* Lights */ = {
-			isa = PBXGroup;
-			children = (
-				E82CE69121C695D80092A673 /* Model */,
-				E82CE68E21C695320092A673 /* Controller */,
-				E82CE68D21C693E80092A673 /* View */,
-			);
-			path = Lights;
-			sourceTree = "<group>";
-		};
-		E82CE68D21C693E80092A673 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				E82CE68A21C693C80092A673 /* LightsViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		E82CE68E21C695320092A673 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				E82CE68F21C695510092A673 /* LightsController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		E82CE69121C695D80092A673 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		E868D1E2216174E4000DC024 /* Sensors */ = {
 			isa = PBXGroup;
 			children = (
@@ -471,9 +445,20 @@
 			path = Sensors;
 			sourceTree = "<group>";
 		};
+		E877C4F5221AD774007D1A79 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E877C4F6221AD782007D1A79 /* RoomTempSensorBaseClass.swift */,
+				E877C4F8221AD783007D1A79 /* RoomTempSensorData.swift */,
+				E877C4F9221AD783007D1A79 /* RoomTempSensorRows.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		E89F4C9921F50A9A000873E8 /* Rooms */ = {
 			isa = PBXGroup;
 			children = (
+				E877C4F5221AD774007D1A79 /* Model */,
 				E89F4C9D21F50ACE000873E8 /* Controller */,
 				E89F4C9C21F50AC0000873E8 /* View */,
 			);
@@ -598,6 +583,7 @@
 				E845B9C1214E980900A75D96 /* Main.storyboard in Resources */,
 				0A80C09C1F24812E0082F77C /* Alfred.plist in Resources */,
 				0A69FB8B1F10C25C00563A69 /* Assets.xcassets in Resources */,
+				E89E162E221C68F90088AC62 /* ChartSlide.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -641,7 +627,8 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Alfred_IOS/Pods-Alfred_IOS-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Alfred_IOS/Pods-Alfred_IOS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
 				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
@@ -649,6 +636,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
@@ -656,7 +644,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Alfred_IOS/Pods-Alfred_IOS-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Alfred_IOS/Pods-Alfred_IOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -668,6 +656,7 @@
 			files = (
 				E89FDE47214460CC00C2FB62 /* TimersBaseClass.swift in Sources */,
 				E811EB0820DFC78000C3B62E /* SettingsCollectionViewCell.swift in Sources */,
+				E877C4FC221AD783007D1A79 /* RoomTempSensorData.swift in Sources */,
 				0A04167D20C1CBDC009B47ED /* ColorSlider.swift in Sources */,
 				0A647EE72067E8CF00F7CD1E /* RoomLightsChanged.swift in Sources */,
 				0A69FB891F10C25C00563A69 /* Alfred_IOS.xcdatamodeld in Sources */,
@@ -679,6 +668,7 @@
 				0A1BFDAE2052EFF900B729F8 /* SplashController.swift in Sources */,
 				E868D1EC2162236F000DC024 /* SensorController.swift in Sources */,
 				0A7ECE1F1FAE437B002AF233 /* CommuteViewController.swift in Sources */,
+				E89E162A221C68860088AC62 /* ChartSlide.swift in Sources */,
 				E87277B92145AF4A00FE3FC3 /* TimersController.swift in Sources */,
 				E868D1EA21620E16000DC024 /* SensorsTableViewCell.swift in Sources */,
 				E868D1E1216165F8000DC024 /* SensorsController.swift in Sources */,
@@ -689,12 +679,14 @@
 				E84566D32210BEA900CF93DF /* HouseWeatherData.swift in Sources */,
 				0A6AD7AC206E65C200491B3E /* CommuteTableViewCell.swift in Sources */,
 				0A69FB811F10C25C00563A69 /* AppDelegate.swift in Sources */,
+				E877C4FA221AD783007D1A79 /* RoomTempSensorBaseClass.swift in Sources */,
 				E89F4C9B21F50AB9000873E8 /* RoomsViewController.swift in Sources */,
 				E868D1E8216174F9000DC024 /* SensorsBaseClass.swift in Sources */,
 				E868D1DF2161640F000DC024 /* SensorsViewController.swift in Sources */,
 				0A8AF14A1F24EF030064894F /* Helpers.swift in Sources */,
 				0A647EE62067E8CF00F7CD1E /* RoomLightsState.swift in Sources */,
 				0ADF19B920658C5F008057DB /* LogsController.swift in Sources */,
+				E877C4FD221AD783007D1A79 /* RoomTempSensorRows.swift in Sources */,
 				E89FDE49214460EB00C2FB62 /* TimersData.swift in Sources */,
 				E82C11C120F1548C00A53A63 /* CommuteStatusData.swift in Sources */,
 				0AE327A22066622E00C288E8 /* LogFileViewController.swift in Sources */,
@@ -703,7 +695,6 @@
 				E87277B52145AD7600FE3FC3 /* TimersTableViewCell.swift in Sources */,
 				0A6A5F9F204C6A5800314ECE /* HomeController.swift in Sources */,
 				E811EB0620DFB47C00C3B62E /* SettingsViewController.swift in Sources */,
-				E82CE68B21C693C80092A673 /* LightsViewController.swift in Sources */,
 				0A1BFDB3205315B400B729F8 /* CommuteController.swift in Sources */,
 				E868D1E6216174F9000DC024 /* SensorsRows.swift in Sources */,
 				0A647EDF2067E8CF00F7CD1E /* RoomLightsAction.swift in Sources */,
@@ -718,7 +709,6 @@
 				E81F0C1E21D6CF6800F9FD0C /* CommuteLegs.swift in Sources */,
 				0A647EE42067E8CF00F7CD1E /* RoomLightsStateAttributes.swift in Sources */,
 				E868D1EE2162264A000DC024 /* SensorViewController.swift in Sources */,
-				E82CE69021C695510092A673 /* LightsController.swift in Sources */,
 				0A647EE02067E8CF00F7CD1E /* RoomLightsAttributes.swift in Sources */,
 				E8B63AB9214D96DA00EBF1A1 /* TimerViewController.swift in Sources */,
 				0A7DADE11F4A2BF9002FEE9F /* HueColorHelper.swift in Sources */,
@@ -869,7 +859,7 @@
 					"\"${PODS_ROOT}/Headers/Public\"",
 				);
 				INFOPLIST_FILE = Alfred_IOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-DDEBUG\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "JP.Alfred-IOS";
@@ -898,7 +888,7 @@
 					"\"${PODS_ROOT}/Headers/Public\"",
 				);
 				INFOPLIST_FILE = Alfred_IOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "JP.Alfred-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";

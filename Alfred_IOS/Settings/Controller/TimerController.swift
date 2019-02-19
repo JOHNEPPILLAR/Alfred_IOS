@@ -23,6 +23,7 @@ class TimerController: NSObject {
     
     // Timer data
     func getTimerData() {
+        /*
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
         let request = getAPIHeaderData(url: "settings/listSchedules")
@@ -36,6 +37,7 @@ class TimerController: NSObject {
             }
         })
         task.resume()
+ */
     }
     
     func saveTimerData(body: TimersRows) {
@@ -56,6 +58,7 @@ class TimerController: NSObject {
     
     // Light room data
     func getLightRoomData() {
+        /*
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
         let request = getAPIHeaderData(url: "lights/listlightgroups")
@@ -69,6 +72,7 @@ class TimerController: NSObject {
             }
         })
         task.resume()
+ */
     }
     
 }

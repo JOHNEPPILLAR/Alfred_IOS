@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomSlider: UISlider {
+class ColorSlider: UISlider {
     override func trackRect(forBounds bounds: CGRect) -> CGRect {
         let customBounds = CGRect(origin: bounds.origin, size: CGSize(width: bounds.size.width, height: 29.0))
         super.trackRect(forBounds: customBounds)

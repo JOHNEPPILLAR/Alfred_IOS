@@ -1,4 +1,7 @@
 PODS:
+  - Charts (3.2.2):
+    - Charts/Core (= 3.2.2)
+  - Charts/Core (3.2.2)
   - MaterialComponents/Ink (74.0.0):
     - MaterialComponents/private/Math
   - MaterialComponents/Palettes (74.0.0)
@@ -26,23 +29,26 @@ PODS:
   - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
+  - Charts
   - MaterialComponents/Slider
   - SVProgressHUD
   - SwiftyJSON
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Charts
     - MaterialComponents
     - MDFInternationalization
     - SVProgressHUD
     - SwiftyJSON
 
 SPEC CHECKSUMS:
+  Charts: f69cf0518b6d1d62608ca504248f1bbe0b6ae77e
   MaterialComponents: c382f7a1881832ff88a05bb1536c47714cf1295f
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: e41766ebfafd806201cb7fca8c93acee86652a07
+PODFILE CHECKSUM: 533f92dd39d106dcdc312597740e2970e1896c76
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.0

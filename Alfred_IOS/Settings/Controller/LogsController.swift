@@ -20,7 +20,8 @@ class LogsController: NSObject {
     weak var delegate: LogsControllerDelegate?
     
     func getLogData(page: Int) {
-        let configuration = URLSessionConfiguration.ephemeral
+        /*
+ let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
         let request = getAPIHeaderData(url: "display")
         //        let request = getAPIHeaderData(url: "display?page=" + String(page))
@@ -34,7 +35,8 @@ class LogsController: NSObject {
             }
         })
         task.resume()
-    }
+ */
+ }
     
 }
 

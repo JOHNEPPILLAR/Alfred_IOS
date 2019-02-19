@@ -20,6 +20,7 @@ class TimersController: NSObject {
     weak var delegate: TimersControllerDelegate?
     
     func getTimerData() {
+        /*
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
         let request = getAPIHeaderData(url: "settings/listSchedules")
@@ -33,6 +34,7 @@ class TimersController: NSObject {
             }
         })
         task.resume()
+ */
     }
     
 }
