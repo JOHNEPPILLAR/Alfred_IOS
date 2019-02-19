@@ -69,8 +69,8 @@
 		E877C4FA221AD783007D1A79 /* RoomTempSensorBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E877C4F6221AD782007D1A79 /* RoomTempSensorBaseClass.swift */; };
 		E877C4FC221AD783007D1A79 /* RoomTempSensorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E877C4F8221AD783007D1A79 /* RoomTempSensorData.swift */; };
 		E877C4FD221AD783007D1A79 /* RoomTempSensorRows.swift in Sources */ = {isa = PBXBuildFile; fileRef = E877C4F9221AD783007D1A79 /* RoomTempSensorRows.swift */; };
-		E89E162A221C68860088AC62 /* ChartSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89E1629221C68860088AC62 /* ChartSlide.swift */; };
-		E89E162E221C68F90088AC62 /* ChartSlide.xib in Resources */ = {isa = PBXBuildFile; fileRef = E89E162D221C68F90088AC62 /* ChartSlide.xib */; };
+		E89E162A221C68860088AC62 /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89E1629221C68860088AC62 /* Slide.swift */; };
+		E89E162E221C68F90088AC62 /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = E89E162D221C68F90088AC62 /* Slide.xib */; };
 		E89F4C9B21F50AB9000873E8 /* RoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89F4C9A21F50AB9000873E8 /* RoomsViewController.swift */; };
 		E89FDE47214460CC00C2FB62 /* TimersBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89FDE46214460CC00C2FB62 /* TimersBaseClass.swift */; };
 		E89FDE49214460EB00C2FB62 /* TimersData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89FDE48214460EB00C2FB62 /* TimersData.swift */; };
@@ -149,8 +149,8 @@
 		E877C4F6221AD782007D1A79 /* RoomTempSensorBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomTempSensorBaseClass.swift; sourceTree = "<group>"; };
 		E877C4F8221AD783007D1A79 /* RoomTempSensorData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomTempSensorData.swift; sourceTree = "<group>"; };
 		E877C4F9221AD783007D1A79 /* RoomTempSensorRows.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomTempSensorRows.swift; sourceTree = "<group>"; };
-		E89E1629221C68860088AC62 /* ChartSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartSlide.swift; sourceTree = "<group>"; };
-		E89E162D221C68F90088AC62 /* ChartSlide.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChartSlide.xib; sourceTree = "<group>"; };
+		E89E1629221C68860088AC62 /* Slide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
+		E89E162D221C68F90088AC62 /* Slide.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Slide.xib; sourceTree = "<group>"; };
 		E89F4C9A21F50AB9000873E8 /* RoomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsViewController.swift; sourceTree = "<group>"; };
 		E89FDE46214460CC00C2FB62 /* TimersBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimersBaseClass.swift; sourceTree = "<group>"; };
 		E89FDE48214460EB00C2FB62 /* TimersData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimersData.swift; sourceTree = "<group>"; };
@@ -365,8 +365,6 @@
 			children = (
 				E89F4C9921F50A9A000873E8 /* Rooms */,
 				E845B9C0214E980900A75D96 /* Main.storyboard */,
-				E89E162D221C68F90088AC62 /* ChartSlide.xib */,
-				E89E1629221C68860088AC62 /* ChartSlide.swift */,
 				0AAD1023207D5564006B410C /* Alfred_IOS.entitlements */,
 				0A256EC8206F94BF008C5283 /* TableCells */,
 				0A256EC5206F942D008C5283 /* To Do */,
@@ -455,9 +453,19 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		E89E162F221C7D200088AC62 /* Chart UI */ = {
+			isa = PBXGroup;
+			children = (
+				E89E162D221C68F90088AC62 /* Slide.xib */,
+				E89E1629221C68860088AC62 /* Slide.swift */,
+			);
+			path = "Chart UI";
+			sourceTree = "<group>";
+		};
 		E89F4C9921F50A9A000873E8 /* Rooms */ = {
 			isa = PBXGroup;
 			children = (
+				E89E162F221C7D200088AC62 /* Chart UI */,
 				E877C4F5221AD774007D1A79 /* Model */,
 				E89F4C9D21F50ACE000873E8 /* Controller */,
 				E89F4C9C21F50AC0000873E8 /* View */,
@@ -583,7 +591,7 @@
 				E845B9C1214E980900A75D96 /* Main.storyboard in Resources */,
 				0A80C09C1F24812E0082F77C /* Alfred.plist in Resources */,
 				0A69FB8B1F10C25C00563A69 /* Assets.xcassets in Resources */,
-				E89E162E221C68F90088AC62 /* ChartSlide.xib in Resources */,
+				E89E162E221C68F90088AC62 /* Slide.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -668,7 +676,7 @@
 				0A1BFDAE2052EFF900B729F8 /* SplashController.swift in Sources */,
 				E868D1EC2162236F000DC024 /* SensorController.swift in Sources */,
 				0A7ECE1F1FAE437B002AF233 /* CommuteViewController.swift in Sources */,
-				E89E162A221C68860088AC62 /* ChartSlide.swift in Sources */,
+				E89E162A221C68860088AC62 /* Slide.swift in Sources */,
 				E87277B92145AF4A00FE3FC3 /* TimersController.swift in Sources */,
 				E868D1EA21620E16000DC024 /* SensorsTableViewCell.swift in Sources */,
 				E868D1E1216165F8000DC024 /* SensorsController.swift in Sources */,

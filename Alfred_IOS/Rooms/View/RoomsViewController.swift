@@ -10,19 +10,27 @@ import UIKit
 import SVProgressHUD
 import Charts
 
-class RoomsViewController: UIViewController {
+class RoomsViewController: UIViewController, UIScrollViewDelegate {
 
     private let roomsController = RoomsController()
 
-    let timerInterval = 5 // seconds
-
-    var refreshLightDataTimer: Timer!
     var roomID:Int = 0
     var headerViewColor: UIColor!
+    @IBOutlet weak var roomName: UILabel!
     
     @IBAction func returnToPreviousView(_ sender: UIButton) {
         self.dismiss(animated: true, completion:nil)
     }
+    
+    // Lights
+    let timerInterval = 5 // seconds
+    var refreshLightDataTimer: Timer!
+
+    @IBOutlet weak var lightsLabel: UITextField!
+    @IBOutlet weak var lightsLabelLine: UIView!
+    @IBOutlet weak var lightsOnOff: UISwitch!
+    @IBOutlet weak var lightsView: UIView!
+    @IBOutlet weak var lightSlider: UISlider!
     
     @IBAction func lightsOnOffChange(_ sender: UISwitch) {
         if refreshLightDataTimer != nil {
@@ -31,7 +39,7 @@ class RoomsViewController: UIViewController {
         }
         roomsController.UpdateLightStateValueChange(lightID: (roomID), lightState: (sender.isOn))
     }
-  
+    
     @IBAction func lightBrightnessChange(_ sender: UISlider, event: UIEvent) {
         sender.setValue(sender.value.rounded(.down), animated: true)
         
@@ -50,22 +58,10 @@ class RoomsViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var roomName: UILabel!
-    
-    // Lights
-    @IBOutlet weak var lightsLabel: UITextField!
-    @IBOutlet weak var lightsLabelLine: UIView!
-    @IBOutlet weak var lightsOnOff: UISwitch!
-    @IBOutlet weak var lightsView: UIView!
-    @IBOutlet weak var lightSlider: UISlider!
-    
-    // Chart buttons
-    @IBOutlet weak var chartHourButton: UIButton!
-    @IBOutlet weak var chartDayButton: UIButton!
-    @IBOutlet weak var chartWeekButton: UIButton!
-    
-    @IBOutlet weak var ChartAreaScroolView: UIScrollView!
-    
+    // Chart setup
+    var slides:[Slide] = [];
+    @IBOutlet weak var chartAreaScrollView: UIScrollView!
+    @IBOutlet weak var chartPageControl: UIPageControl!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -75,20 +71,12 @@ class RoomsViewController: UIViewController {
         // Call API's to get data
         roomsController.getLightRoomData()
         roomsController.getChartData(roomID: roomID, durartion: "day")
-
     }
-    
-    // Temp
-    @IBOutlet weak var roomTemp: UITextField!
-    @IBOutlet weak var chartView: LineChartView!
-    
-    
-    //
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         roomsController.delegate = self
+        chartAreaScrollView.delegate = self
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -98,6 +86,7 @@ class RoomsViewController: UIViewController {
             refreshLightDataTimer = nil
         }
     }
+    
 }
 
 extension RoomsViewController: RoomsControllerDelegate {
@@ -162,59 +151,156 @@ extension RoomsViewController: RoomsControllerDelegate {
                 self.roomsController.getLightRoomData()
             }
         }
-
     }
 
     // Process chart data
-    func chartDataDidRecieveDataUpdate(data: [RoomTempSensorData]) {
-
-        let chartData: Any
-        
-        // Configure chart UI
-        chartView.backgroundColor = .clear
-        chartView.gridBackgroundColor = .clear
-        chartView.drawGridBackgroundEnabled = true
-        chartView.drawBordersEnabled = false
-        chartView.setScaleEnabled(true)
-        chartView.legend.enabled = false
-        chartView.xAxis.enabled = false
-        chartView.leftAxis.axisMinimum = -10
-        chartView.leftAxis.drawAxisLineEnabled = false
-        chartView.rightAxis.enabled = false
-        chartView.leftAxis.drawAxisLineEnabled = false
-        chartView.leftAxis.drawGridLinesEnabled = false
-        chartView.leftAxis.gridColor = NSUIColor.clear
-        chartView.xAxis.drawGridLinesEnabled = false
-        //tempChartView.chartDescription?.enabled = false
-        //tempChartView.pinchZoomEnabled = false
-        //tempChartView.dragEnabled = true
-
-        // Temp
-        chartView.chartDescription?.text = "Temperature"
-        chartView.leftAxis.axisMaximum = 45
-        chartData = (0..<data[0].rows!.count).map { (i) -> ChartDataEntry in
-            let val = data[0].rows![i].temperature?.rounded(.up)
-            return ChartDataEntry(x: Double(i), y: Double(val!))
-        }
-
-        // CO2
-        
-        // Hum
-        
-        
-        // Configure chart result UI
-        let chartResultsData = LineChartDataSet(values: chartData as? [ChartDataEntry], label: "")
+    func createSlide() -> Slide {
+        let baseSlide:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
+        baseSlide.chartView.leftAxis.drawAxisLineEnabled = false
+        baseSlide.chartView.leftAxis.drawAxisLineEnabled = false
+        baseSlide.chartView.leftAxis.drawGridLinesEnabled = false
+        baseSlide.chartView.leftAxis.gridColor = NSUIColor.clear
+        baseSlide.chartView.xAxis.enabled = false
+        baseSlide.chartView.xAxis.drawGridLinesEnabled = false
+        baseSlide.chartView.rightAxis.enabled = false
+        baseSlide.chartView.backgroundColor = .clear
+        baseSlide.chartView.gridBackgroundColor = .clear
+        baseSlide.chartView.drawGridBackgroundEnabled = true
+        baseSlide.chartView.drawBordersEnabled = false
+        baseSlide.chartView.setScaleEnabled(true)
+        baseSlide.chartView.legend.enabled = false
+        baseSlide.chartView.chartDescription?.enabled = false
+        //baseSlide.chartView.pinchZoomEnabled = false
+        //baseSlide.chartView.dragEnabled = true
+        return baseSlide
+    }
+    
+    func formatChart(chartData: [ChartDataEntry]) -> LineChartDataSet {
+        let chartResultsData = LineChartDataSet(values: chartData, label: "")
         chartResultsData.setColor(UIColor.darkGray)
         chartResultsData.drawCirclesEnabled = false
         chartResultsData.lineWidth = 1
         chartResultsData.drawValuesEnabled = false
         chartResultsData.drawFilledEnabled = true
         chartResultsData.fillColor = .darkGray
- 
-        let data = LineChartData()
-        data.addDataSet(chartResultsData)
-        self.chartView.data = data
-        
+        return chartResultsData
     }
     
+    func createSlides(chartData: [RoomTempSensorData]) -> [Slide] {
+
+        var lineChartData = LineChartData()
+        var chartResultsData = LineChartDataSet()
+
+        // Slide 1
+        let slide1 = createSlide()
+        slide1.chartTitleLabel.text = "Temperature"
+        slide1.chartView.leftAxis.axisMaximum = 45
+        slide1.chartView.leftAxis.axisMinimum = -10
+        let chartTempData = (0..<chartData[0].rows!.count).map { (i) -> ChartDataEntry in
+            let val = chartData[0].rows![i].temperature?.rounded(.up)
+            return ChartDataEntry(x: Double(i), y: Double(val!))
+        }
+        chartResultsData = formatChart(chartData: chartTempData)
+        lineChartData.addDataSet(chartResultsData)
+        slide1.chartView.data = lineChartData
+        // Tidy up vars
+        lineChartData = LineChartData()
+        chartResultsData = LineChartDataSet()
+        
+        // Slide 2
+        let slide2 = createSlide()
+        slide2.chartTitleLabel.text = "Humidity"
+        slide2.chartView.leftAxis.axisMaximum = 60
+        slide2.chartView.leftAxis.axisMinimum = 0
+        let chartHumData = (0..<chartData[0].rows!.count).map { (i) -> ChartDataEntry in
+            let val = chartData[0].rows![i].humidity?.rounded(.up)
+            return ChartDataEntry(x: Double(i), y: Double(val!))
+        }
+        chartResultsData = formatChart(chartData: chartHumData)
+        lineChartData.addDataSet(chartResultsData)
+        slide2.chartView.data = lineChartData
+        // Tidy up vars
+        lineChartData = LineChartData()
+        chartResultsData = LineChartDataSet()
+
+        // Slide 3
+        let slide3 = createSlide()
+        slide3.chartTitleLabel.text = "Air Quality"
+        slide3.chartView.leftAxis.axisMaximum = 10
+        slide3.chartView.leftAxis.axisMinimum = 0
+        let chartAirData = (0..<chartData[0].rows!.count).map { (i) -> ChartDataEntry in
+            let val = chartData[0].rows![i].airQuality
+            return ChartDataEntry(x: Double(i), y: Double(val!))
+        }
+        chartResultsData = formatChart(chartData: chartAirData)
+        lineChartData.addDataSet(chartResultsData)
+        slide3.chartView.data = lineChartData
+        // Tidy up vars
+        lineChartData = LineChartData()
+        chartResultsData = LineChartDataSet()
+        
+        // Slide 4
+        let slide4 = createSlide()
+        slide4.chartTitleLabel.text = "Nitrogen"
+        slide4.chartView.leftAxis.axisMaximum = 20
+        slide4.chartView.leftAxis.axisMinimum = 0
+        let chartNitData = (0..<chartData[0].rows!.count).map { (i) -> ChartDataEntry in
+            let val = chartData[0].rows![i].nitrogen
+            return ChartDataEntry(x: Double(i), y: Double(val!))
+        }
+        chartResultsData = formatChart(chartData: chartNitData)
+        lineChartData.addDataSet(chartResultsData)
+        slide4.chartView.data = lineChartData
+        // Tidy up vars
+        lineChartData = LineChartData()
+        chartResultsData = LineChartDataSet()
+        
+        // Slide 5
+        let slide5 = createSlide()
+        slide5.chartTitleLabel.text = "Battery"
+        slide5.chartView.leftAxis.axisMaximum = 100
+        slide5.chartView.leftAxis.axisMinimum = 0
+        let chartBatData = (0..<chartData[0].rows!.count).map { (i) -> ChartDataEntry in
+            let val = chartData[0].rows![i].battery ?? "0"
+            return ChartDataEntry(x: Double(i), y: Double(val)!)
+        }
+        chartResultsData = formatChart(chartData: chartBatData)
+        lineChartData.addDataSet(chartResultsData)
+        slide5.chartView.data = lineChartData
+        // Tidy up vars
+        lineChartData = LineChartData()
+        chartResultsData = LineChartDataSet()
+        
+        return [slide1, slide2, slide3, slide4, slide5]
+    }
+    
+    func setupSlideScrollView(slides : [Slide]) {
+        chartAreaScrollView.frame = CGRect(x: 8, y: 170, width: view.frame.width, height: view.frame.height)
+        chartAreaScrollView.contentSize = CGSize(width: view.frame.width * CGFloat(slides.count), height: view.frame.height)
+        chartAreaScrollView.isPagingEnabled = true
+        
+        for i in 0 ..< slides.count {
+            slides[i].frame = CGRect(x: view.frame.width * CGFloat(i), y: 0, width: view.frame.width, height: view.frame.height)
+            chartAreaScrollView.addSubview(slides[i])
+        }
+    }
+    
+    func chartDataDidRecieveDataUpdate(data: [RoomTempSensorData]) {
+        slides = createSlides(chartData: data)
+        setupSlideScrollView(slides: slides)
+        chartPageControl.numberOfPages = slides.count
+        chartPageControl.currentPage = 0
+        chartPageControl.addTarget(self, action: #selector(self.changeChart(sender:)), for: UIControl.Event.valueChanged)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let pageIndex = round(scrollView.contentOffset.x/view.frame.width)
+        chartPageControl.currentPage = Int(pageIndex)
+    }
+    
+    @objc func changeChart(sender: AnyObject) -> () {
+        let x = CGFloat(chartPageControl.currentPage) * chartAreaScrollView.frame.size.width
+        chartAreaScrollView.setContentOffset(CGPoint(x:x, y:0), animated: true)
+    }
+
 }
