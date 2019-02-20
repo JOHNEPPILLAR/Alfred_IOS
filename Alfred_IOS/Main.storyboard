@@ -1353,12 +1353,39 @@
                                 <color key="pageIndicatorTintColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="currentPageIndicatorTintColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </pageControl>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eMu-jR-zPn" userLabel="Chart Filter Hour Button">
+                                <rect key="frame" x="224" y="173" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Hour"/>
+                                <connections>
+                                    <action selector="chartFilterHour:" destination="O5z-9K-rlW" eventType="touchUpInside" id="yjX-w9-LyV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CTO-UG-at6" userLabel="Chart Filter Day Button">
+                                <rect key="frame" x="273" y="173" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Day"/>
+                                <connections>
+                                    <action selector="chartFilterDay:" destination="O5z-9K-rlW" eventType="touchUpInside" id="jHW-wF-tYE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="frO-mf-fsL" userLabel="Chart Filter Week Button">
+                                <rect key="frame" x="315" y="173" width="39" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Week"/>
+                                <connections>
+                                    <action selector="chartFilterWeek:" destination="O5z-9K-rlW" eventType="touchUpInside" id="9pp-Gc-ALP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="MfJ-gj-edA"/>
                     </view>
                     <connections>
                         <outlet property="chartAreaScrollView" destination="Xe2-FV-SJF" id="Gwb-gE-Vrd"/>
+                        <outlet property="chartFilterDay" destination="CTO-UG-at6" id="K2U-rU-6L2"/>
+                        <outlet property="chartFilterHour" destination="eMu-jR-zPn" id="0To-LK-ECu"/>
+                        <outlet property="chartFilterWeek" destination="frO-mf-fsL" id="c5g-0i-mBK"/>
                         <outlet property="chartPageControl" destination="XU5-Sx-WI2" id="9Lf-53-dkv"/>
                         <outlet property="lightSlider" destination="RNZ-PF-XZa" id="VNU-nY-RSb"/>
                         <outlet property="lightsLabel" destination="Wd6-TM-Ckl" id="uD9-z2-mxb"/>

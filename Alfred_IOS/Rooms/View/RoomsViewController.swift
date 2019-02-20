@@ -59,10 +59,35 @@ class RoomsViewController: UIViewController, UIScrollViewDelegate {
     }
     
     // Chart setup
+    var chartPageID:Int = 0
     var slides:[Slide] = [];
     @IBOutlet weak var chartAreaScrollView: UIScrollView!
     @IBOutlet weak var chartPageControl: UIPageControl!
-    
+    @IBOutlet weak var chartFilterHour: UIButton!
+    @IBAction func chartFilterHour(_ sender: Any) {
+        chartAreaScrollView.subviews.forEach({ $0.removeFromSuperview() })
+        roomsController.getChartData(roomID: roomID, durartion: "hour")
+        chartFilterHour.setTitleColor(UIColor.darkGray, for: .normal)
+        chartFilterDay.setTitleColor(UIColor.gray, for: .normal)
+        chartFilterWeek.setTitleColor(UIColor.gray, for: .normal)
+    }
+    @IBOutlet weak var chartFilterDay: UIButton!
+    @IBAction func chartFilterDay(_ sender: Any) {
+        chartAreaScrollView.subviews.forEach({ $0.removeFromSuperview() })
+        roomsController.getChartData(roomID: roomID, durartion: "day")
+        chartFilterHour.setTitleColor(UIColor.gray, for: .normal)
+        chartFilterDay.setTitleColor(UIColor.darkGray, for: .normal)
+        chartFilterWeek.setTitleColor(UIColor.gray, for: .normal)
+    }
+    @IBOutlet weak var chartFilterWeek: UIButton!
+    @IBAction func chartFilterWeek(_ sender: Any) {
+        chartAreaScrollView.subviews.forEach({ $0.removeFromSuperview() })
+        roomsController.getChartData(roomID: roomID, durartion: "week")
+        chartFilterHour.setTitleColor(UIColor.gray, for: .normal)
+        chartFilterDay.setTitleColor(UIColor.gray, for: .normal)
+        chartFilterWeek.setTitleColor(UIColor.darkGray, for: .normal)
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
@@ -70,7 +95,11 @@ class RoomsViewController: UIViewController, UIScrollViewDelegate {
 
         // Call API's to get data
         roomsController.getLightRoomData()
-        roomsController.getChartData(roomID: roomID, durartion: "day")
+
+        chartFilterHour.setTitleColor(UIColor.darkGray, for: .normal)
+        chartFilterDay.setTitleColor(UIColor.gray, for: .normal)
+        chartFilterWeek.setTitleColor(UIColor.gray, for: .normal)
+        roomsController.getChartData(roomID: roomID, durartion: "hour")
     }
     
     override func viewDidLoad() {
@@ -193,6 +222,7 @@ extension RoomsViewController: RoomsControllerDelegate {
 
         // Slide 1
         let slide1 = createSlide()
+        slide1.tag = 1
         slide1.chartTitleLabel.text = "Temperature"
         slide1.chartView.leftAxis.axisMaximum = 45
         slide1.chartView.leftAxis.axisMinimum = -10
@@ -209,6 +239,7 @@ extension RoomsViewController: RoomsControllerDelegate {
         
         // Slide 2
         let slide2 = createSlide()
+        slide1.tag = 2
         slide2.chartTitleLabel.text = "Humidity"
         slide2.chartView.leftAxis.axisMaximum = 60
         slide2.chartView.leftAxis.axisMinimum = 0
@@ -225,6 +256,7 @@ extension RoomsViewController: RoomsControllerDelegate {
 
         // Slide 3
         let slide3 = createSlide()
+        slide1.tag = 3
         slide3.chartTitleLabel.text = "Air Quality"
         slide3.chartView.leftAxis.axisMaximum = 10
         slide3.chartView.leftAxis.axisMinimum = 0
@@ -241,6 +273,7 @@ extension RoomsViewController: RoomsControllerDelegate {
         
         // Slide 4
         let slide4 = createSlide()
+        slide1.tag = 4
         slide4.chartTitleLabel.text = "Nitrogen"
         slide4.chartView.leftAxis.axisMaximum = 20
         slide4.chartView.leftAxis.axisMinimum = 0
@@ -257,6 +290,7 @@ extension RoomsViewController: RoomsControllerDelegate {
         
         // Slide 5
         let slide5 = createSlide()
+        slide1.tag = 5
         slide5.chartTitleLabel.text = "Battery"
         slide5.chartView.leftAxis.axisMaximum = 100
         slide5.chartView.leftAxis.axisMinimum = 0
@@ -289,18 +323,22 @@ extension RoomsViewController: RoomsControllerDelegate {
         slides = createSlides(chartData: data)
         setupSlideScrollView(slides: slides)
         chartPageControl.numberOfPages = slides.count
-        chartPageControl.currentPage = 0
+        chartPageControl.currentPage = chartPageID
         chartPageControl.addTarget(self, action: #selector(self.changeChart(sender:)), for: UIControl.Event.valueChanged)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pageIndex = round(scrollView.contentOffset.x/view.frame.width)
         chartPageControl.currentPage = Int(pageIndex)
+        chartPageID = chartPageControl.currentPage
     }
     
-    @objc func changeChart(sender: AnyObject) -> () {
+    @objc func changeChart(sender: UIPageControl) -> () {
         let x = CGFloat(chartPageControl.currentPage) * chartAreaScrollView.frame.size.width
         chartAreaScrollView.setContentOffset(CGPoint(x:x, y:0), animated: true)
+        chartPageID = chartPageControl.currentPage
+        let theViewToAccess = chartAreaScrollView.subviews[chartPageID] as! Slide
+        theViewToAccess.chartView.animate(yAxisDuration: CATransaction.animationDuration()*2, easingOption: .linear)
     }
 
 }
