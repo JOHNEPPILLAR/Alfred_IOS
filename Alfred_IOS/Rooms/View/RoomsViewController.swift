@@ -199,6 +199,10 @@ extension RoomsViewController: RoomsControllerDelegate {
         baseSlide.chartView.setScaleEnabled(true)
         baseSlide.chartView.legend.enabled = false
         baseSlide.chartView.chartDescription?.enabled = false
+        
+        baseSlide.chartView.noDataText = "No data to display"
+        baseSlide.chartView.noDataTextColor = UIColor.darkGray
+
         //baseSlide.chartView.pinchZoomEnabled = false
         //baseSlide.chartView.dragEnabled = true
         return baseSlide
@@ -220,40 +224,69 @@ extension RoomsViewController: RoomsControllerDelegate {
         var lineChartData = LineChartData()
         var chartResultsData = LineChartDataSet()
 
-        // Slide 1
-        let slide1 = createSlide()
-        slide1.tag = 1
-        slide1.chartTitleLabel.text = "Temperature"
-        slide1.chartView.leftAxis.axisMaximum = 45
-        slide1.chartView.leftAxis.axisMinimum = -10
-        let chartTempData = (0..<chartData[0].rows!.count).map { (i) -> ChartDataEntry in
-            let val = chartData[0].rows![i].temperature?.rounded(.up)
-            return ChartDataEntry(x: Double(i), y: Double(val!))
-        }
-        chartResultsData = formatChart(chartData: chartTempData)
-        lineChartData.addDataSet(chartResultsData)
-        slide1.chartView.data = lineChartData
-        // Tidy up vars
-        lineChartData = LineChartData()
-        chartResultsData = LineChartDataSet()
-        
-        // Slide 2
-        let slide2 = createSlide()
-        slide1.tag = 2
-        slide2.chartTitleLabel.text = "Humidity"
-        slide2.chartView.leftAxis.axisMaximum = 60
-        slide2.chartView.leftAxis.axisMinimum = 0
-        let chartHumData = (0..<chartData[0].rows!.count).map { (i) -> ChartDataEntry in
-            let val = chartData[0].rows![i].humidity?.rounded(.up)
-            return ChartDataEntry(x: Double(i), y: Double(val!))
-        }
-        chartResultsData = formatChart(chartData: chartHumData)
-        lineChartData.addDataSet(chartResultsData)
-        slide2.chartView.data = lineChartData
-        // Tidy up vars
-        lineChartData = LineChartData()
-        chartResultsData = LineChartDataSet()
+        // Temperature
+        let TemperatureSlide = createSlide()
+        TemperatureSlide.chartTitleLabel.text = "Temperature"
+        TemperatureSlide.chartView.leftAxis.axisMaximum = 45
+        TemperatureSlide.chartView.leftAxis.axisMinimum = -10
 
+        if (chartData[0].rows?.count != nil) {
+            let chartTempData = (0..<chartData[0].rows!.count).map { (i) -> ChartDataEntry in
+                let val = chartData[0].rows![i].temperature?.rounded(.up)
+                return ChartDataEntry(x: Double(i), y: Double(val!))
+            }
+            chartResultsData = formatChart(chartData: chartTempData)
+            lineChartData.addDataSet(chartResultsData)
+            TemperatureSlide.chartView.data = lineChartData
+            TemperatureSlide.chartView.animate(yAxisDuration: CATransaction.animationDuration()*2, easingOption: .linear)
+    
+            // Tidy up vars
+            chartResultsData = LineChartDataSet()
+            lineChartData = LineChartData()
+        }
+        
+        // Humidity
+        let HumiditySlide = createSlide()
+        HumiditySlide.chartTitleLabel.text = "Humidity"
+        HumiditySlide.chartView.leftAxis.axisMaximum = 60
+        HumiditySlide.chartView.leftAxis.axisMinimum = 0
+
+        if (chartData[0].rows?.count != nil) {
+            let chartHumData = (0..<chartData[0].rows!.count).map { (i) -> ChartDataEntry in
+                let val = chartData[0].rows![i].humidity?.rounded(.up)
+                return ChartDataEntry(x: Double(i), y: Double(val!))
+            }
+            chartResultsData = formatChart(chartData: chartHumData)
+            lineChartData.addDataSet(chartResultsData)
+            HumiditySlide.chartView.data = lineChartData
+            // Tidy up vars
+            lineChartData = LineChartData()
+            chartResultsData = LineChartDataSet()
+        }
+        
+        // Battery
+        let BatterySlide = createSlide()
+        BatterySlide.chartTitleLabel.text = "Battery"
+        BatterySlide.chartView.leftAxis.axisMaximum = 100
+        BatterySlide.chartView.leftAxis.axisMinimum = 0
+        
+        if (chartData[0].rows?.count != nil) {
+            let chartHumData = (0..<chartData[0].rows!.count).map { (i) -> ChartDataEntry in
+                let val = chartData[0].rows![i].battery!
+                return ChartDataEntry(x: Double(i), y: Double(val) ?? 0)
+            }
+            chartResultsData = formatChart(chartData: chartHumData)
+            lineChartData.addDataSet(chartResultsData)
+            BatterySlide.chartView.data = lineChartData
+            // Tidy up vars
+            lineChartData = LineChartData()
+            chartResultsData = LineChartDataSet()
+        }
+       
+    
+        
+            
+        /*
         // Slide 3
         let slide3 = createSlide()
         slide1.tag = 3
@@ -306,6 +339,8 @@ extension RoomsViewController: RoomsControllerDelegate {
         chartResultsData = LineChartDataSet()
         
         return [slide1, slide2, slide3, slide4, slide5]
+ */
+        return [TemperatureSlide, HumiditySlide, BatterySlide]
     }
     
     func setupSlideScrollView(slides : [Slide]) {
