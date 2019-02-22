@@ -216,7 +216,7 @@ extension HomeViewController: HomeControllerDelegate {
         case "snow"?: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-snow")
         case "sleet"?: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-snow")
         case "wind"?: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-wind")
-        case "fog"?: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-unknown")
+        case "fog"?: weatherIcon.image = #imageLiteral(resourceName: "ic_weather-fog")
         case "cloudy"?: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-cloudy")
         case "partly-cloudy-day"?: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-cloudy-day")
         case "partly-cloudy-night"?: weatherIcon.image = #imageLiteral(resourceName: "ic_Weather-partly-cloudy-night")
