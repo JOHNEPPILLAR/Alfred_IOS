@@ -18,6 +18,7 @@ public final class RoomTempSensorRows: NSCoding {
     static let nitrogen = "nitrogen"
     static let battery = "battery"
     static let time = "time"
+    static let co2 = "co2"
   }
 
   // MARK: Properties
@@ -27,6 +28,7 @@ public final class RoomTempSensorRows: NSCoding {
   public var nitrogen: Int?
   public var battery: String?
   public var time: String?
+  public var co2: Float?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -47,6 +49,7 @@ public final class RoomTempSensorRows: NSCoding {
     nitrogen = json[SerializationKeys.nitrogen].int
     battery = json[SerializationKeys.battery].string
     time = json[SerializationKeys.time].string
+    co2 = json[SerializationKeys.co2].float
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -60,6 +63,7 @@ public final class RoomTempSensorRows: NSCoding {
     if let value = nitrogen { dictionary[SerializationKeys.nitrogen] = value }
     if let value = battery { dictionary[SerializationKeys.battery] = value }
     if let value = time { dictionary[SerializationKeys.time] = value }
+    if let value = co2 { dictionary[SerializationKeys.co2] = value }
     return dictionary
   }
 
@@ -71,6 +75,7 @@ public final class RoomTempSensorRows: NSCoding {
     self.nitrogen = aDecoder.decodeObject(forKey: SerializationKeys.nitrogen) as? Int
     self.battery = aDecoder.decodeObject(forKey: SerializationKeys.battery) as? String
     self.time = aDecoder.decodeObject(forKey: SerializationKeys.time) as? String
+    self.co2 = aDecoder.decodeObject(forKey: SerializationKeys.co2) as? Float
   }
 
   public func encode(with aCoder: NSCoder) {
@@ -80,6 +85,7 @@ public final class RoomTempSensorRows: NSCoding {
     aCoder.encode(nitrogen, forKey: SerializationKeys.nitrogen)
     aCoder.encode(battery, forKey: SerializationKeys.battery)
     aCoder.encode(time, forKey: SerializationKeys.time)
+    aCoder.encode(co2, forKey: SerializationKeys.co2)
   }
 
 }

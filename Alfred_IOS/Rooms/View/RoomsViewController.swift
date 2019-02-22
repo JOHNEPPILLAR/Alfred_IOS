@@ -64,30 +64,41 @@ class RoomsViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var chartAreaScrollView: UIScrollView!
     @IBOutlet weak var chartPageControl: UIPageControl!
     @IBOutlet weak var chartFilterHour: UIButton!
-    @IBAction func chartFilterHour(_ sender: Any) {
+    @IBAction func chartFilterHour(_ sender: UIButton) {
         chartAreaScrollView.subviews.forEach({ $0.removeFromSuperview() })
         roomsController.getChartData(roomID: roomID, durartion: "hour")
         chartFilterHour.setTitleColor(UIColor.darkGray, for: .normal)
         chartFilterDay.setTitleColor(UIColor.gray, for: .normal)
         chartFilterWeek.setTitleColor(UIColor.gray, for: .normal)
+        chartFilterMonth.setTitleColor(UIColor.gray, for: .normal)
     }
     @IBOutlet weak var chartFilterDay: UIButton!
-    @IBAction func chartFilterDay(_ sender: Any) {
+    @IBAction func chartFilterDay(_ sender: UIButton) {
         chartAreaScrollView.subviews.forEach({ $0.removeFromSuperview() })
         roomsController.getChartData(roomID: roomID, durartion: "day")
         chartFilterHour.setTitleColor(UIColor.gray, for: .normal)
         chartFilterDay.setTitleColor(UIColor.darkGray, for: .normal)
         chartFilterWeek.setTitleColor(UIColor.gray, for: .normal)
+        chartFilterMonth.setTitleColor(UIColor.gray, for: .normal)
     }
     @IBOutlet weak var chartFilterWeek: UIButton!
-    @IBAction func chartFilterWeek(_ sender: Any) {
+    @IBAction func chartFilterWeek(_ sender: UIButton) {
         chartAreaScrollView.subviews.forEach({ $0.removeFromSuperview() })
         roomsController.getChartData(roomID: roomID, durartion: "week")
         chartFilterHour.setTitleColor(UIColor.gray, for: .normal)
         chartFilterDay.setTitleColor(UIColor.gray, for: .normal)
         chartFilterWeek.setTitleColor(UIColor.darkGray, for: .normal)
+        chartFilterMonth.setTitleColor(UIColor.gray, for: .normal)
     }
-
+    @IBOutlet weak var chartFilterMonth: UIButton!
+    @IBAction func chartFilterMonth(_ sender: UIButton) {
+        chartAreaScrollView.subviews.forEach({ $0.removeFromSuperview() })
+        roomsController.getChartData(roomID: roomID, durartion: "month")
+        chartFilterHour.setTitleColor(UIColor.gray, for: .normal)
+        chartFilterDay.setTitleColor(UIColor.gray, for: .normal)
+        chartFilterWeek.setTitleColor(UIColor.gray, for: .normal)
+        chartFilterMonth.setTitleColor(UIColor.darkGray, for: .normal)
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
@@ -99,6 +110,7 @@ class RoomsViewController: UIViewController, UIScrollViewDelegate {
         chartFilterHour.setTitleColor(UIColor.darkGray, for: .normal)
         chartFilterDay.setTitleColor(UIColor.gray, for: .normal)
         chartFilterWeek.setTitleColor(UIColor.gray, for: .normal)
+        chartFilterMonth.setTitleColor(UIColor.gray, for: .normal)
         roomsController.getChartData(roomID: roomID, durartion: "hour")
     }
     
@@ -133,6 +145,7 @@ extension RoomsViewController: RoomsControllerDelegate {
 
     func didFailLightDataUpdateWithError(displayMsg: Bool) {
         if displayMsg {
+            SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
             SVProgressHUD.showError(withStatus: "Lights - Network/API error")
         }
         if refreshLightDataTimer != nil {
@@ -194,17 +207,21 @@ extension RoomsViewController: RoomsControllerDelegate {
         baseSlide.chartView.rightAxis.enabled = false
         baseSlide.chartView.backgroundColor = .clear
         baseSlide.chartView.gridBackgroundColor = .clear
-        baseSlide.chartView.drawGridBackgroundEnabled = true
         baseSlide.chartView.drawBordersEnabled = false
         baseSlide.chartView.setScaleEnabled(true)
         baseSlide.chartView.legend.enabled = false
         baseSlide.chartView.chartDescription?.enabled = false
-        
         baseSlide.chartView.noDataText = "No data to display"
         baseSlide.chartView.noDataTextColor = UIColor.darkGray
+        baseSlide.chartView.pinchZoomEnabled = false
 
-        //baseSlide.chartView.pinchZoomEnabled = false
-        //baseSlide.chartView.dragEnabled = true
+        let marker = BalloonMarker(color: UIColor.darkGray,
+                                   font: .systemFont(ofSize: 12),
+                                   textColor: .white,
+                                   insets: UIEdgeInsets(top: 8, left: 8, bottom: 20, right: 8))
+        marker.chartView = baseSlide.chartView
+        marker.minimumSize = CGSize(width: 80, height: 40)
+        baseSlide.chartView.marker = marker
         return baseSlide
     }
     
@@ -216,14 +233,23 @@ extension RoomsViewController: RoomsControllerDelegate {
         chartResultsData.drawValuesEnabled = false
         chartResultsData.drawFilledEnabled = true
         chartResultsData.fillColor = .darkGray
+        chartResultsData.drawHorizontalHighlightIndicatorEnabled = false
+        chartResultsData.drawVerticalHighlightIndicatorEnabled = false
         return chartResultsData
     }
     
     func createSlides(chartData: [RoomTempSensorData]) -> [Slide] {
 
+        let roomsWithBattery = [4, 8, 9]
+        let roomsWithHumidity = [4, 5, 8, 9]
+        let roomsWithAir = [5]
+        let roomsWithNitrogen = [5]
+        let roomsWithCO2 = [4, 9]
+
         var lineChartData = LineChartData()
         var chartResultsData = LineChartDataSet()
-
+        var showSlides = [Slide]()
+        
         // Temperature
         let TemperatureSlide = createSlide()
         TemperatureSlide.chartTitleLabel.text = "Temperature"
@@ -233,7 +259,7 @@ extension RoomsViewController: RoomsControllerDelegate {
         if (chartData[0].rows?.count != nil) {
             let chartTempData = (0..<chartData[0].rows!.count).map { (i) -> ChartDataEntry in
                 let val = chartData[0].rows![i].temperature?.rounded(.up)
-                return ChartDataEntry(x: Double(i), y: Double(val!))
+                return ChartDataEntry(x: Double(i), y: Double(val ?? 0))
             }
             chartResultsData = formatChart(chartData: chartTempData)
             lineChartData.addDataSet(chartResultsData)
@@ -244,103 +270,119 @@ extension RoomsViewController: RoomsControllerDelegate {
             chartResultsData = LineChartDataSet()
             lineChartData = LineChartData()
         }
+        showSlides.append(TemperatureSlide) // Add slide
         
         // Humidity
-        let HumiditySlide = createSlide()
-        HumiditySlide.chartTitleLabel.text = "Humidity"
-        HumiditySlide.chartView.leftAxis.axisMaximum = 60
-        HumiditySlide.chartView.leftAxis.axisMinimum = 0
+        if roomsWithHumidity.contains(where: { $0 == roomID }) {
+            let HumiditySlide = createSlide()
+            HumiditySlide.chartTitleLabel.text = "Humidity"
+            HumiditySlide.chartView.leftAxis.axisMaximum = 100
+            HumiditySlide.chartView.leftAxis.axisMinimum = 0
 
-        if (chartData[0].rows?.count != nil) {
-            let chartHumData = (0..<chartData[0].rows!.count).map { (i) -> ChartDataEntry in
-                let val = chartData[0].rows![i].humidity?.rounded(.up)
-                return ChartDataEntry(x: Double(i), y: Double(val!))
+            if (chartData[0].rows?.count != nil) {
+                let chartHumData = (0..<chartData[0].rows!.count).map { (i) -> ChartDataEntry in
+                    let val = chartData[0].rows![i].humidity?.rounded(.up)
+                    return ChartDataEntry(x: Double(i), y: Double(val ?? 0))
+                }
+                chartResultsData = formatChart(chartData: chartHumData)
+                lineChartData.addDataSet(chartResultsData)
+                HumiditySlide.chartView.data = lineChartData
+                // Tidy up vars
+                lineChartData = LineChartData()
+                chartResultsData = LineChartDataSet()
             }
-            chartResultsData = formatChart(chartData: chartHumData)
-            lineChartData.addDataSet(chartResultsData)
-            HumiditySlide.chartView.data = lineChartData
-            // Tidy up vars
-            lineChartData = LineChartData()
-            chartResultsData = LineChartDataSet()
+            showSlides.append(HumiditySlide) // Add slide
+        }
+        
+        // Air Quality
+        if roomsWithAir.contains(where: { $0 == roomID }) {
+            let AirQualitySlide = createSlide()
+            AirQualitySlide.chartTitleLabel.text = "Air Quality"
+            AirQualitySlide.chartView.leftAxis.axisMaximum = 4
+            AirQualitySlide.chartView.leftAxis.axisMinimum = 0
+            AirQualitySlide.chartView.leftAxis.labelCount = 4
+            
+            if (chartData[0].rows?.count != nil) {
+                let chartHumData = (0..<chartData[0].rows!.count).map { (i) -> ChartDataEntry in
+                    let val = chartData[0].rows![i].airQuality
+                    return ChartDataEntry(x: Double(i), y: Double(val ?? 0))
+                }
+                chartResultsData = formatChart(chartData: chartHumData)
+                lineChartData.addDataSet(chartResultsData)
+                AirQualitySlide.chartView.data = lineChartData
+                // Tidy up vars
+                lineChartData = LineChartData()
+                chartResultsData = LineChartDataSet()
+            }
+            showSlides.append(AirQualitySlide) // Add slide
+        }
+        
+        // Nitrogen
+        if roomsWithNitrogen.contains(where: { $0 == roomID }) {
+            let nitrogenSlide = createSlide()
+            nitrogenSlide.chartTitleLabel.text = "Nitrogen"
+            nitrogenSlide.chartView.leftAxis.axisMaximum = 10
+            nitrogenSlide.chartView.leftAxis.axisMinimum = 0
+            
+            if (chartData[0].rows?.count != nil) {
+                let chartHumData = (0..<chartData[0].rows!.count).map { (i) -> ChartDataEntry in
+                    let val = chartData[0].rows![i].nitrogen
+                    return ChartDataEntry(x: Double(i), y: Double(val ?? 0))
+                }
+                chartResultsData = formatChart(chartData: chartHumData)
+                lineChartData.addDataSet(chartResultsData)
+                nitrogenSlide.chartView.data = lineChartData
+                // Tidy up vars
+                lineChartData = LineChartData()
+                chartResultsData = LineChartDataSet()
+            }
+            showSlides.append(nitrogenSlide) // Add slide
+        }
+        
+        // CO2
+        if roomsWithCO2.contains(where: { $0 == roomID }) {
+            let CO2Slide = createSlide()
+            CO2Slide.chartTitleLabel.text = "CO2"
+            CO2Slide.chartView.leftAxis.axisMaximum = 2000
+            CO2Slide.chartView.leftAxis.axisMinimum = 0
+            
+            if (chartData[0].rows?.count != nil) {
+                let chartHumData = (0..<chartData[0].rows!.count).map { (i) -> ChartDataEntry in
+                    let val = chartData[0].rows![i].co2?.rounded(.up)
+                    return ChartDataEntry(x: Double(i), y: Double(val ?? 0))
+                }
+                chartResultsData = formatChart(chartData: chartHumData)
+                lineChartData.addDataSet(chartResultsData)
+                CO2Slide.chartView.data = lineChartData
+                // Tidy up vars
+                lineChartData = LineChartData()
+                chartResultsData = LineChartDataSet()
+            }
+            showSlides.append(CO2Slide) // Add slide
         }
         
         // Battery
-        let BatterySlide = createSlide()
-        BatterySlide.chartTitleLabel.text = "Battery"
-        BatterySlide.chartView.leftAxis.axisMaximum = 100
-        BatterySlide.chartView.leftAxis.axisMinimum = 0
-        
-        if (chartData[0].rows?.count != nil) {
-            let chartHumData = (0..<chartData[0].rows!.count).map { (i) -> ChartDataEntry in
-                let val = chartData[0].rows![i].battery!
-                return ChartDataEntry(x: Double(i), y: Double(val) ?? 0)
-            }
-            chartResultsData = formatChart(chartData: chartHumData)
-            lineChartData.addDataSet(chartResultsData)
-            BatterySlide.chartView.data = lineChartData
-            // Tidy up vars
-            lineChartData = LineChartData()
-            chartResultsData = LineChartDataSet()
-        }
-       
-    
-        
+        if roomsWithBattery.contains(where: { $0 == roomID }) {
+            let BatterySlide = createSlide()
+            BatterySlide.chartTitleLabel.text = "Battery"
+            BatterySlide.chartView.leftAxis.axisMaximum = 100
+            BatterySlide.chartView.leftAxis.axisMinimum = 0
             
-        /*
-        // Slide 3
-        let slide3 = createSlide()
-        slide1.tag = 3
-        slide3.chartTitleLabel.text = "Air Quality"
-        slide3.chartView.leftAxis.axisMaximum = 10
-        slide3.chartView.leftAxis.axisMinimum = 0
-        let chartAirData = (0..<chartData[0].rows!.count).map { (i) -> ChartDataEntry in
-            let val = chartData[0].rows![i].airQuality
-            return ChartDataEntry(x: Double(i), y: Double(val!))
+            if (chartData[0].rows?.count != nil) {
+                let chartHumData = (0..<chartData[0].rows!.count).map { (i) -> ChartDataEntry in
+                    let val = chartData[0].rows![i].battery!
+                    return ChartDataEntry(x: Double(i), y: Double(val) ?? 0)
+                }
+                chartResultsData = formatChart(chartData: chartHumData)
+                lineChartData.addDataSet(chartResultsData)
+                BatterySlide.chartView.data = lineChartData
+                // Tidy up vars
+                lineChartData = LineChartData()
+                chartResultsData = LineChartDataSet()
+            }
+            showSlides.append(BatterySlide) // Add slide
         }
-        chartResultsData = formatChart(chartData: chartAirData)
-        lineChartData.addDataSet(chartResultsData)
-        slide3.chartView.data = lineChartData
-        // Tidy up vars
-        lineChartData = LineChartData()
-        chartResultsData = LineChartDataSet()
-        
-        // Slide 4
-        let slide4 = createSlide()
-        slide1.tag = 4
-        slide4.chartTitleLabel.text = "Nitrogen"
-        slide4.chartView.leftAxis.axisMaximum = 20
-        slide4.chartView.leftAxis.axisMinimum = 0
-        let chartNitData = (0..<chartData[0].rows!.count).map { (i) -> ChartDataEntry in
-            let val = chartData[0].rows![i].nitrogen
-            return ChartDataEntry(x: Double(i), y: Double(val!))
-        }
-        chartResultsData = formatChart(chartData: chartNitData)
-        lineChartData.addDataSet(chartResultsData)
-        slide4.chartView.data = lineChartData
-        // Tidy up vars
-        lineChartData = LineChartData()
-        chartResultsData = LineChartDataSet()
-        
-        // Slide 5
-        let slide5 = createSlide()
-        slide1.tag = 5
-        slide5.chartTitleLabel.text = "Battery"
-        slide5.chartView.leftAxis.axisMaximum = 100
-        slide5.chartView.leftAxis.axisMinimum = 0
-        let chartBatData = (0..<chartData[0].rows!.count).map { (i) -> ChartDataEntry in
-            let val = chartData[0].rows![i].battery ?? "0"
-            return ChartDataEntry(x: Double(i), y: Double(val)!)
-        }
-        chartResultsData = formatChart(chartData: chartBatData)
-        lineChartData.addDataSet(chartResultsData)
-        slide5.chartView.data = lineChartData
-        // Tidy up vars
-        lineChartData = LineChartData()
-        chartResultsData = LineChartDataSet()
-        
-        return [slide1, slide2, slide3, slide4, slide5]
- */
-        return [TemperatureSlide, HumiditySlide, BatterySlide]
+        return showSlides
     }
     
     func setupSlideScrollView(slides : [Slide]) {
@@ -366,14 +408,13 @@ extension RoomsViewController: RoomsControllerDelegate {
         let pageIndex = round(scrollView.contentOffset.x/view.frame.width)
         chartPageControl.currentPage = Int(pageIndex)
         chartPageID = chartPageControl.currentPage
+        let theViewToAccess = chartAreaScrollView.getAllSubviews() as [Slide]
+        theViewToAccess[chartPageID].chartView.animate(yAxisDuration: CATransaction.animationDuration()*2, easingOption: .linear)
     }
     
     @objc func changeChart(sender: UIPageControl) -> () {
         let x = CGFloat(chartPageControl.currentPage) * chartAreaScrollView.frame.size.width
         chartAreaScrollView.setContentOffset(CGPoint(x:x, y:0), animated: true)
         chartPageID = chartPageControl.currentPage
-        let theViewToAccess = chartAreaScrollView.subviews[chartPageID] as! Slide
-        theViewToAccess.chartView.animate(yAxisDuration: CATransaction.animationDuration()*2, easingOption: .linear)
     }
-
 }

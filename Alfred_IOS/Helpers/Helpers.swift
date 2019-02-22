@@ -173,3 +173,18 @@ extension UIColor {
     }
 }
 
+extension UIView {
+    class func getAllSubviews<T: UIView>(view: UIView) -> [T] {
+        return view.subviews.flatMap { subView -> [T] in
+            var result = getAllSubviews(view: subView) as [T]
+            if let view = subView as? T {
+                result.append(view)
+            }
+            return result
+        }
+    }
+    
+    func getAllSubviews<T: UIView>() -> [T] {
+        return UIView.getAllSubviews(view: self) as [T]
+    }
+}

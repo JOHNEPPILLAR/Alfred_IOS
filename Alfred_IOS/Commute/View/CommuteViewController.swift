@@ -41,8 +41,6 @@ class CommuteViewController: UIViewController {
         super.viewWillAppear(true)
 
         self.commuteTableView?.rowHeight = 130.0
-        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-        SVProgressHUD.show(withStatus: "Loading")
 
         // Check the user defaults
         let appDefaults = [String:AnyObject]()
@@ -51,6 +49,7 @@ class CommuteViewController: UIViewController {
         whoIsThis = defaults.string(forKey: "who_is_this")
         if (whoIsThis == nil) {
             whoIsThis = ""
+            SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
             SVProgressHUD.showInfo(withStatus: "Please setup the app user defaults in settings")
         } else {
             getCommuteData()
@@ -59,6 +58,7 @@ class CommuteViewController: UIViewController {
     }
     
     @objc func getCommuteData() {
+        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
         SVProgressHUD.show(withStatus: "Loading")
         commuteController.getCommuteData(whoIsThis: whoIsThis!)
     }
@@ -136,6 +136,7 @@ extension CommuteViewController: UITableViewDataSource {
 
 extension CommuteViewController: CommuteViewControllerDelegate {
     func didFailDataUpdateWithError() {
+        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
         SVProgressHUD.showError(withStatus: "Network/API error")
     }
 

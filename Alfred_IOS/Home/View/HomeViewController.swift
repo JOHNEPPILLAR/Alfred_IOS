@@ -23,11 +23,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var menuIcon: UIImageView!
     @IBOutlet weak var homeViewSection: UIView!
     
-    @IBAction func showLivingRoomViewTapped(_ sender: UITapGestureRecognizer) {
-        roomID = (sender.view?.tag)!
-        self.performSegue(withIdentifier: "showRoom", sender: self)
-    }
-    @IBAction func showKidsBedRoomViewTapped(_ sender: UITapGestureRecognizer) {
+    @IBAction func showRoomViewTapped(_ sender: UITapGestureRecognizer) {
         roomID = (sender.view?.tag)!
         self.performSegue(withIdentifier: "showRoom", sender: self)
     }
@@ -89,6 +85,7 @@ class HomeViewController: UIViewController {
         var whoIsThis = defaults.string(forKey: "who_is_this")
         if (whoIsThis == nil) {
             whoIsThis = ""
+            SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
             SVProgressHUD.showInfo(withStatus: "Please setup the app user defaults in settings")
             commuteStatus.image = #imageLiteral(resourceName: "ic_question_mark")
         }
@@ -133,6 +130,7 @@ extension HomeViewController: HomeControllerDelegate {
     
     func didFailDataUpdateWithError(displayMsg: Bool) {
         if displayMsg {
+            SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
             SVProgressHUD.showError(withStatus: "Network/API error")
         }
         if refreshLightDataTimer != nil {
@@ -143,6 +141,7 @@ extension HomeViewController: HomeControllerDelegate {
 
     func didFailLightDataUpdateWithError(displayMsg: Bool) {
         if displayMsg {
+            SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
             SVProgressHUD.showError(withStatus: "Lights - Network/API error")
         }
         if refreshLightDataTimer != nil {
