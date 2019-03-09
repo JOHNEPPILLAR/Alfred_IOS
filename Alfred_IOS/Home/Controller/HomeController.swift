@@ -121,7 +121,7 @@ class HomeController: NSObject, CLLocationManagerDelegate {
                 let data = [RoomLightsBaseData(json: responseJSON!)] // Update data store
                 self.delegate?.roomLightDidRecieveDataUpdate(data: data[0].data!) // Let the View controller know to show the data
             } else {
-                self.delegate?.didFailLightDataUpdateWithError(displayMsg: true) // Let the View controller know there was an error
+                self.delegate?.didFailLightDataUpdateWithError(displayMsg: false) // Let the View controller know there was an error
             }
         })
         task.resume()

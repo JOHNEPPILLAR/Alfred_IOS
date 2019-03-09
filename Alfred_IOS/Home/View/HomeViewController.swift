@@ -29,7 +29,9 @@ class HomeViewController: UIViewController {
     }
 
     @IBAction func AllLightsOffPress(_ sender: UILongPressGestureRecognizer) {
-        homeController.turnOffAllLights()
+        if (sender.state == .ended) {
+            homeController.turnOffAllLights()
+        }
     }
 
     // MARK: Info elements
