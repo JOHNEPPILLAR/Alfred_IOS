@@ -11,7 +11,6 @@ import SVProgressHUD
 import Charts
 
 class RoomsViewController: UIViewController, UIScrollViewDelegate {
-
     private let roomsController = RoomsController()
 
     var roomID:Int = 0
@@ -61,56 +60,53 @@ class RoomsViewController: UIViewController, UIScrollViewDelegate {
     // Chart setup
     var chartPageID:Int = 0
     var slides:[Slide] = [];
+    
     @IBOutlet weak var chartAreaScrollView: UIScrollView!
     @IBOutlet weak var chartPageControl: UIPageControl!
     @IBOutlet weak var chartFilterHour: UIButton!
     @IBAction func chartFilterHour(_ sender: UIButton) {
         chartAreaScrollView.subviews.forEach({ $0.removeFromSuperview() })
         roomsController.getChartData(roomID: roomID, durartion: "hour")
-        chartFilterHour.setTitleColor(UIColor.darkGray, for: .normal)
-        chartFilterDay.setTitleColor(UIColor.gray, for: .normal)
-        chartFilterWeek.setTitleColor(UIColor.gray, for: .normal)
-        chartFilterMonth.setTitleColor(UIColor.gray, for: .normal)
+        chartFilterHour.underline()
+        chartFilterDay.removeUnderline()
+        chartFilterWeek.removeUnderline()
+        chartFilterMonth.removeUnderline()
     }
     @IBOutlet weak var chartFilterDay: UIButton!
     @IBAction func chartFilterDay(_ sender: UIButton) {
         chartAreaScrollView.subviews.forEach({ $0.removeFromSuperview() })
         roomsController.getChartData(roomID: roomID, durartion: "day")
-        chartFilterHour.setTitleColor(UIColor.gray, for: .normal)
-        chartFilterDay.setTitleColor(UIColor.darkGray, for: .normal)
-        chartFilterWeek.setTitleColor(UIColor.gray, for: .normal)
-        chartFilterMonth.setTitleColor(UIColor.gray, for: .normal)
+        chartFilterHour.removeUnderline()
+        chartFilterDay.underline()
+        chartFilterWeek.removeUnderline()
+        chartFilterMonth.removeUnderline()
     }
     @IBOutlet weak var chartFilterWeek: UIButton!
     @IBAction func chartFilterWeek(_ sender: UIButton) {
         chartAreaScrollView.subviews.forEach({ $0.removeFromSuperview() })
         roomsController.getChartData(roomID: roomID, durartion: "week")
-        chartFilterHour.setTitleColor(UIColor.gray, for: .normal)
-        chartFilterDay.setTitleColor(UIColor.gray, for: .normal)
-        chartFilterWeek.setTitleColor(UIColor.darkGray, for: .normal)
-        chartFilterMonth.setTitleColor(UIColor.gray, for: .normal)
+        chartFilterHour.removeUnderline()
+        chartFilterDay.removeUnderline()
+        chartFilterWeek.underline()
+        chartFilterMonth.removeUnderline()
     }
     @IBOutlet weak var chartFilterMonth: UIButton!
     @IBAction func chartFilterMonth(_ sender: UIButton) {
         chartAreaScrollView.subviews.forEach({ $0.removeFromSuperview() })
         roomsController.getChartData(roomID: roomID, durartion: "month")
-        chartFilterHour.setTitleColor(UIColor.gray, for: .normal)
-        chartFilterDay.setTitleColor(UIColor.gray, for: .normal)
-        chartFilterWeek.setTitleColor(UIColor.gray, for: .normal)
-        chartFilterMonth.setTitleColor(UIColor.darkGray, for: .normal)
+        chartFilterHour.removeUnderline()
+        chartFilterDay.removeUnderline()
+        chartFilterWeek.removeUnderline()
+        chartFilterMonth.underline()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
         headerViewColor = lightsView.backgroundColor!
-
+        chartFilterHour.underline()
+        
         // Call API's to get data
         roomsController.getLightRoomData()
-
-        chartFilterHour.setTitleColor(UIColor.darkGray, for: .normal)
-        chartFilterDay.setTitleColor(UIColor.gray, for: .normal)
-        chartFilterWeek.setTitleColor(UIColor.gray, for: .normal)
-        chartFilterMonth.setTitleColor(UIColor.gray, for: .normal)
         roomsController.getChartData(roomID: roomID, durartion: "hour")
     }
     
@@ -127,11 +123,9 @@ class RoomsViewController: UIViewController, UIScrollViewDelegate {
             refreshLightDataTimer = nil
         }
     }
-    
 }
 
 extension RoomsViewController: RoomsControllerDelegate {
- 
     func didFailDataUpdateWithError(displayMsg: Bool) {
         if displayMsg {
             SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
@@ -414,7 +408,8 @@ extension RoomsViewController: RoomsControllerDelegate {
     
     @objc func changeChart(sender: UIPageControl) -> () {
         let x = CGFloat(chartPageControl.currentPage) * chartAreaScrollView.frame.size.width
-        chartAreaScrollView.setContentOffset(CGPoint(x:x, y:0), animated: true)
+        chartAreaScrollView.setContentOffset(CGPoint(x:x, y:0), animated: false)
         chartPageID = chartPageControl.currentPage
     }
+    
 }

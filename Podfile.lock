@@ -2,26 +2,26 @@ PODS:
   - Charts (3.2.2):
     - Charts/Core (= 3.2.2)
   - Charts/Core (3.2.2)
-  - MaterialComponents/Ink (74.0.0):
+  - MaterialComponents/Ink (79.1.1):
     - MaterialComponents/private/Math
-  - MaterialComponents/Palettes (74.0.0)
-  - MaterialComponents/private/Application (74.0.0)
-  - MaterialComponents/private/Math (74.0.0)
-  - MaterialComponents/private/ThumbTrack (74.0.0):
+  - MaterialComponents/Palettes (79.1.1)
+  - MaterialComponents/private/Application (79.1.1)
+  - MaterialComponents/private/Math (79.1.1)
+  - MaterialComponents/private/ThumbTrack (79.1.1):
     - MaterialComponents/Ink
     - MaterialComponents/private/Math
     - MaterialComponents/ShadowElevations
     - MaterialComponents/ShadowLayer
     - MaterialComponents/Typography
     - MDFInternationalization
-  - MaterialComponents/ShadowElevations (74.0.0)
-  - MaterialComponents/ShadowLayer (74.0.0):
+  - MaterialComponents/ShadowElevations (79.1.1)
+  - MaterialComponents/ShadowLayer (79.1.1):
     - MaterialComponents/ShadowElevations
-  - MaterialComponents/Slider (74.0.0):
+  - MaterialComponents/Slider (79.1.1):
     - MaterialComponents/Palettes
     - MaterialComponents/private/ThumbTrack
     - MaterialComponents/ShadowElevations
-  - MaterialComponents/Typography (74.0.0):
+  - MaterialComponents/Typography (79.1.1):
     - MaterialComponents/private/Application
     - MaterialComponents/private/Math
   - MDFInternationalization (2.0.0)
@@ -44,11 +44,11 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Charts: f69cf0518b6d1d62608ca504248f1bbe0b6ae77e
-  MaterialComponents: c382f7a1881832ff88a05bb1536c47714cf1295f
+  MaterialComponents: 8b8a7a49da5b5c35bc8dab1173bb7d5f7a87b2f8
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 533f92dd39d106dcdc312597740e2970e1896c76
+PODFILE CHECKSUM: 2fa7d3a27cecbde6ba253135b42b0526c5920b0a
 
 COCOAPODS: 1.6.0

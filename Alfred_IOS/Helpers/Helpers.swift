@@ -188,3 +188,25 @@ extension UIView {
         return UIView.getAllSubviews(view: self) as [T]
     }
 }
+
+extension UIButton {
+    func underline() {
+        if let textString = self.currentTitle {
+            let buttonAttributes : [NSAttributedString.Key : Any] = [
+                NSAttributedString.Key(rawValue: NSAttributedString.Key.underlineStyle.rawValue) : NSUnderlineStyle.single.rawValue,
+                NSAttributedString.Key.foregroundColor : UIColor.black
+            ]
+            let attributeString = NSMutableAttributedString(string: textString, attributes: buttonAttributes)
+            self.setAttributedTitle(attributeString, for: .normal)
+        }
+    }
+    
+    func removeUnderline() {
+        if let textString = self.currentTitle {
+            let buttonAttributes : [NSAttributedString.Key : Any] = [NSAttributedString.Key.foregroundColor : UIColor.gray]
+            let attributeString = NSMutableAttributedString(string: textString, attributes: buttonAttributes)
+            self.setAttributedTitle(attributeString, for: .normal)
+        }
+    }
+
+}
