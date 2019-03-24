@@ -14,6 +14,7 @@ import SwiftyJSON
 protocol RoomsControllerDelegate: class {
     func roomLightsDidRecieveDataUpdate(data: [RoomLightsData])
     func chartDataDidRecieveDataUpdate(data: [RoomTempSensorData])
+    func schedulesDidRecieveDataUpdate(data: [SchedulesData])
     func didFailLightDataUpdateWithError(displayMsg: Bool)
     func didFailDataUpdateWithError(displayMsg: Bool)
 }
@@ -82,6 +83,22 @@ class RoomsController: NSObject {
                 let responseJSON = try? JSON(data: data!)
                 let data = [RoomTempSensorBaseClass(json: responseJSON!)] // Update data store
                 self.delegate?.chartDataDidRecieveDataUpdate(data: [data[0].data!]) // Let the View controller know to show the data
+            } else {
+                self.delegate?.didFailDataUpdateWithError(displayMsg: false) // Let the View controller know there was an error
+            }
+        })
+        task.resume()
+    }
+    
+    func getSchedulesData(roomID: Int) {
+        let configuration = URLSessionConfiguration.ephemeral
+        let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
+        let request = getAPIHeaderData(url: "settings/listSchedules?roomNumber=" + "\(roomID)")
+        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+            if checkAPIData(apiData: data, response: response, error: error) {
+                let responseJSON = try? JSON(data: data!)
+                let data = [SchedulesBaseClass(json: responseJSON!)] // Update data store
+                self.delegate?.schedulesDidRecieveDataUpdate(data: data[0].data!) // Let the View controller know to show the data
             } else {
                 self.delegate?.didFailDataUpdateWithError(displayMsg: true) // Let the View controller know there was an error
             }

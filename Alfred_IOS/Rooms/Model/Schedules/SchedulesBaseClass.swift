@@ -1,14 +1,14 @@
 //
-//  TimersBaseClass.swift
+//  SchedulesBaseClass.swift
 //
-//  Created by John Pillar on 08/09/2018
+//  Created by John Pillar on 24/03/2019
 //  Copyright (c) . All rights reserved.
 //
 
 import Foundation
 import SwiftyJSON
 
-public final class TimersBaseClass: NSCoding {
+public final class SchedulesBaseClass: NSCoding {
 
   // MARK: Declaration for string constants to be used to decode and also serialize.
   private struct SerializationKeys {
@@ -16,7 +16,7 @@ public final class TimersBaseClass: NSCoding {
   }
 
   // MARK: Properties
-  public var data: TimersData?
+  public var data: [SchedulesData]?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -31,7 +31,7 @@ public final class TimersBaseClass: NSCoding {
   ///
   /// - parameter json: JSON object from SwiftyJSON.
   public required init(json: JSON) {
-    data = TimersData(json: json[SerializationKeys.data])
+    if let items = json[SerializationKeys.data].array { data = items.map { SchedulesData(json: $0) } }
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -39,13 +39,13 @@ public final class TimersBaseClass: NSCoding {
   /// - returns: A Key value pair containing all valid values in the object.
   public func dictionaryRepresentation() -> [String: Any] {
     var dictionary: [String: Any] = [:]
-    if let value = data { dictionary[SerializationKeys.data] = value.dictionaryRepresentation() }
+    if let value = data { dictionary[SerializationKeys.data] = value.map { $0.dictionaryRepresentation() } }
     return dictionary
   }
 
   // MARK: NSCoding Protocol
   required public init(coder aDecoder: NSCoder) {
-    self.data = aDecoder.decodeObject(forKey: SerializationKeys.data) as? TimersData
+    self.data = aDecoder.decodeObject(forKey: SerializationKeys.data) as? [SchedulesData]
   }
 
   public func encode(with aCoder: NSCoder) {

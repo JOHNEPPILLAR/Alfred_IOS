@@ -6,6 +6,7 @@
 //  Copyright © 2018 John Pillar. All rights reserved.
 //
 
+/*
 import UIKit
 import SwiftyJSON
 import SVProgressHUD
@@ -32,10 +33,10 @@ class ViewTimerController: UIViewController {
     @IBOutlet weak var brightnessLabel: UILabel!
     
     @IBAction func activeChange(_ sender: UISwitch) {
-        TimersDataArray[0].rows![timerID].active = sender.isOn
+        ScheduleDataArray[0].rows![timerID].active = sender.isOn
     }
     @IBAction func AIEnabledChange(_ sender: UISwitch) {
-        TimersDataArray[0].rows![timerID].aiOverride = sender.isOn
+        ScheduleDataArray[0].rows![timerID].aiOverride = sender.isOn
     }
     @IBAction func ColorLoopChange(_ sender: UISwitch) {
         if (sender.isOn) {
@@ -43,7 +44,7 @@ class ViewTimerController: UIViewController {
         } else {
             sceneView.isHidden = false
         }
-        TimersDataArray[0].rows![timerID].color_loop = sender.isOn
+        ScheduleDataArray[0].rows![timerID].color_loop = sender.isOn
     }
   
     @IBAction func ChangeTimeTap(_ sender: UITapGestureRecognizer) {
@@ -53,8 +54,8 @@ class ViewTimerController: UIViewController {
         datePicker.frame = CGRect(x: 10, y: 30, width: self.view.frame.width, height: 150)
         datePicker.datePickerMode = .time
         
-        let hour =  "\(TimersDataArray[0].rows![timerID].hour ?? 0)"
-        let minute =  "\(TimersDataArray[0].rows![timerID].minute ?? 0)"
+        let hour =  "\(ScheduleDataArray[0].rows![timerID].hour ?? 0)"
+        let minute =  "\(ScheduleDataArray[0].rows![timerID].minute ?? 0)"
         let strDate = hour + ":" + minute
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
@@ -65,11 +66,11 @@ class ViewTimerController: UIViewController {
         dateChooserAlert.addAction(UIAlertAction(title: "Done", style: .cancel, handler: { action in
             let date = datePicker.date
             let components = Calendar.current.dateComponents([.hour, .minute], from: date)
-            self.TimersDataArray[0].rows![self.timerID].hour = components.hour!
-            self.TimersDataArray[0].rows![self.timerID].minute = components.minute!
+            self.ScheduleDataArray[0].rows![self.timerID].hour = components.hour!
+            self.ScheduleDataArray[0].rows![self.timerID].minute = components.minute!
             
-            let paddedHour =  String(format: "%02d", self.TimersDataArray[0].rows![self.timerID].hour!)
-            let minute =  "\(self.TimersDataArray[0].rows![self.timerID].minute ?? 0)"
+            let paddedHour =  String(format: "%02d", self.ScheduleDataArray[0].rows![self.timerID].hour!)
+            let minute =  "\(self.ScheduleDataArray[0].rows![self.timerID].minute ?? 0)"
             let paddedMinute = minute.padding(toLength: 2, withPad: "0", startingAt: 0)
             let strTime = paddedHour + ":" + paddedMinute
             self.timeLabel.text = strTime
@@ -88,13 +89,13 @@ class ViewTimerController: UIViewController {
         roomPicker.dataSource = self
         roomPicker.delegate = self
         
-        var selectedRoomIndex = RoomLightsDataArray.index(where: { $0.attributes?.attributes!.id == "\(self.TimersDataArray[0].rows![self.timerID].light_group_number ?? 0)" })
+        var selectedRoomIndex = RoomLightsDataArray.index(where: { $0.attributes?.attributes!.id == "\(self.ScheduleDataArray[0].rows![self.timerID].light_group_number ?? 0)" })
         if(selectedRoomIndex == nil) { selectedRoomIndex = 0 }
         roomPicker.selectRow(selectedRoomIndex!, inComponent: 0, animated: false)
         
         roomChooserAlert.view.addSubview(roomPicker);
         roomChooserAlert.addAction(UIAlertAction(title: "Done", style: .cancel, handler: { action in
-            let selectedRoom = self.RoomLightsDataArray.compactMap({ $0 }).filter { (($0.attributes?.attributes?.id!.contains("\(self.TimersDataArray[0].rows![self.timerID].light_group_number ?? 0)" ))!) }
+            let selectedRoom = self.RoomLightsDataArray.compactMap({ $0 }).filter { (($0.attributes?.attributes?.id!.contains("\(ScheduleDataArray[0].rows![self.timerID].light_group_number ?? 0)" ))!) }
             self.lightGroupText.text = selectedRoom[0].attributes?.attributes?.name
         }))
         roomChooserAlert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
@@ -108,7 +109,7 @@ class ViewTimerController: UIViewController {
         sunSetLabel.textColor = UIColor.white
         eveningLabel.textColor = UIColor.white
         nightTimeLabel.textColor = UIColor.white
-        TimersDataArray[0].rows![timerID].scene = 1
+        ScheduleDataArray[0].rows![timerID].scene = 1
     }
     
     @IBAction func dayTimeSceneTap(_ sender: UITapGestureRecognizer) {
@@ -117,7 +118,7 @@ class ViewTimerController: UIViewController {
         sunSetLabel.textColor = UIColor.white
         eveningLabel.textColor = UIColor.white
         nightTimeLabel.textColor = UIColor.white
-        TimersDataArray[0].rows![timerID].scene = 2
+        ScheduleDataArray[0].rows![timerID].scene = 2
     }
     @IBAction func sunSetSceneTap(_ sender: UITapGestureRecognizer) {
         sunRiseLabel.textColor = UIColor.white
@@ -125,7 +126,7 @@ class ViewTimerController: UIViewController {
         sunSetLabel.textColor = UIColor(red: 118/255.0, green: 214/255.0, blue: 114/255.0, alpha: 1.0)
         eveningLabel.textColor = UIColor.white
         nightTimeLabel.textColor = UIColor.white
-        TimersDataArray[0].rows![timerID].scene = 3
+        ScheduleDataArray[0].rows![timerID].scene = 3
     }
     @IBAction func eveningSceneTap(_ sender: UITapGestureRecognizer) {
         sunRiseLabel.textColor = UIColor.white
@@ -133,7 +134,7 @@ class ViewTimerController: UIViewController {
         sunSetLabel.textColor = UIColor.white
         eveningLabel.textColor = UIColor(red: 118/255.0, green: 214/255.0, blue: 114/255.0, alpha: 1.0)
         nightTimeLabel.textColor = UIColor.white
-        TimersDataArray[0].rows![timerID].scene = 4
+        ScheduleDataArray[0].rows![timerID].scene = 4
     }
     @IBAction func nightTimeSceneTap(_ sender: UITapGestureRecognizer) {
         sunRiseLabel.textColor = UIColor.white
@@ -141,27 +142,27 @@ class ViewTimerController: UIViewController {
         sunSetLabel.textColor = UIColor.white
         eveningLabel.textColor = UIColor.white
         nightTimeLabel.textColor = UIColor(red: 118/255.0, green: 214/255.0, blue: 114/255.0, alpha: 1.0)
-        TimersDataArray[0].rows![timerID].scene = 5
+        ScheduleDataArray[timerID].scene = 5
     }
     
     private let timerController = TimerController()
     
-    fileprivate var TimersDataArray = [TimersData]() {
+    fileprivate var ScheduleDataArray = [SchedulesData]() {
         didSet {
-            name.text = TimersDataArray[0].rows![timerID].name
-            if (TimersDataArray[0].rows![timerID].aiOverride!) { aiEnabled.isOn = true } else { aiEnabled.isOn = false }
-            if (TimersDataArray[0].rows![timerID].active!) { active.isOn = true } else { active.isOn = false }
+            name.text = ScheduleDataArray[timerID].name
+            if (ScheduleDataArray[timerID].aiOverride!) { aiEnabled.isOn = true } else { aiEnabled.isOn = false }
+            if (ScheduleDataArray[timerID].active!) { active.isOn = true } else { active.isOn = false }
 
-            let paddedHour =  String(format: "%02d", TimersDataArray[0].rows![timerID].hour!)
-            let minute =  "\(TimersDataArray[0].rows![timerID].minute ?? 0)"
+            let paddedHour =  String(format: "%02d", ScheduleDataArray[0].rows![timerID].hour!)
+            let minute =  "\(ScheduleDataArray[0].rows![timerID].minute ?? 0)"
             let paddedMinute = minute.padding(toLength: 2, withPad: "0", startingAt: 0)
             let strTime = paddedHour + ":" + paddedMinute
             timeLabel.text = strTime
             
-            switch TimersDataArray[0].rows![timerID].type {
+            switch ScheduleDataArray[0].rows![timerID].type {
             case 4,5,6?:
                 moreDetailsView.isHidden = false
-                if (TimersDataArray[0].rows![timerID].color_loop!) {
+                if (ScheduleDataArray[0].rows![timerID].color_loop!) {
                     colorLoopSwitch.isOn = true
                     sceneView.isHidden = true
                 } else {
@@ -173,12 +174,12 @@ class ViewTimerController: UIViewController {
                 brightnessSlider.minimumValue = 0
                 brightnessSlider.maximumValue = 255
                 brightnessSlider.color = UIColor(red: 118/255.0, green: 214/255.0, blue: 114/255.0, alpha: 1.0)
-                brightnessSlider.value = CGFloat(Float(TimersDataArray[0].rows![timerID].brightness!))
+                brightnessSlider.value = CGFloat(Float(ScheduleDataArray[0].rows![timerID].brightness!))
                 brightnessSlider.addTarget(self, action: #selector(roomSliderChange(senderSlider:)), for: .valueChanged)
                 moreDetailsView.addSubview(brightnessSlider)
-                brightnessLabel.text = "\(TimersDataArray[0].rows![timerID].brightness ?? 0)"
+                brightnessLabel.text = "\(ScheduleDataArray[0].rows![timerID].brightness ?? 0)"
                 
-                switch TimersDataArray[0].rows![timerID].scene {
+                switch ScheduleDataArray[0].rows![timerID].scene {
                 case 1:
                     sunRiseLabel.textColor = UIColor(red: 118/255.0, green: 214/255.0, blue: 114/255.0, alpha: 1.0)
                 case 2:
@@ -191,7 +192,7 @@ class ViewTimerController: UIViewController {
                     nightTimeLabel.textColor = UIColor(red: 118/255.0, green: 214/255.0, blue: 114/255.0, alpha: 1.0)
                 default:
                     dayTimeLabel.textColor = UIColor(red: 118/255.0, green: 214/255.0, blue: 114/255.0, alpha: 1.0)
-                    TimersDataArray[0].rows![timerID].scene = 2
+                    ScheduleDataArray[0].rows![timerID].scene = 2
                 }
                 
                 // Get light group data
@@ -212,7 +213,7 @@ class ViewTimerController: UIViewController {
     fileprivate var RoomLightsDataArray = [RoomLightsData]() {
         didSet {
             for item in RoomLightsDataArray {
-                if (item.attributes?.attributes?.id == "\(TimersDataArray[0].rows![timerID].light_group_number ?? 0)") {
+                if (item.attributes?.attributes?.id == "\(ScheduleDataArray[0].rows![timerID].light_group_number ?? 0)") {
                  lightGroupText.text = item.attributes?.attributes?.name
                 }
             }
@@ -261,7 +262,7 @@ class ViewTimerController: UIViewController {
     }
     
     @objc func roomSliderChange(senderSlider:MDCSlider) {
-        TimersDataArray[0].rows![timerID].brightness = Int(senderSlider.value)
+        ScheduleDataArray[0].rows![timerID].brightness = Int(senderSlider.value)
         brightnessLabel.text = "\(Int(senderSlider.value))"
     }
 }
@@ -280,7 +281,7 @@ extension ViewTimerController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        TimersDataArray[0].rows![timerID].light_group_number = Int((RoomLightsDataArray[row].attributes?.attributes?.id)!)
+        ScheduleDataArray[0].rows![timerID].light_group_number = Int((RoomLightsDataArray[row].attributes?.attributes?.id)!)
     }
 }
 
@@ -294,7 +295,7 @@ extension ViewTimerController: TimerControllerDelegate {
         }
     }
     
-    func timerDidRecieveDataUpdate(data: [TimersData]) {
+    func timerDidRecieveDataUpdate(data: [SchedulesData]) {
         TimersDataArray = data
     }
 
@@ -309,3 +310,5 @@ extension ViewTimerController: TimerControllerDelegate {
         RoomLightsDataArray = data
     }
 }
+
+ */

@@ -14,6 +14,7 @@ class RoomsViewController: UIViewController, UIScrollViewDelegate {
     private let roomsController = RoomsController()
 
     var roomID:Int = 0
+    var scheduleID:Int = 0
     var headerViewColor: UIColor!
     @IBOutlet weak var roomName: UILabel!
     
@@ -21,12 +22,20 @@ class RoomsViewController: UIViewController, UIScrollViewDelegate {
         self.dismiss(animated: true, completion:nil)
     }
     
+    // Schedules
+    @IBOutlet weak var scheduleTableView: UITableView!
+    fileprivate var SchedulesDataArray = [SchedulesData]() {
+        didSet {
+            scheduleTableView?.reloadData()
+            SVProgressHUD.dismiss() // Stop spinner
+        }
+    }
+    
     // Lights
     let timerInterval = 5 // seconds
     var refreshLightDataTimer: Timer!
 
     @IBOutlet weak var lightsLabel: UITextField!
-    @IBOutlet weak var lightsLabelLine: UIView!
     @IBOutlet weak var lightsOnOff: UISwitch!
     @IBOutlet weak var lightsView: UIView!
     @IBOutlet weak var lightSlider: UISlider!
@@ -108,10 +117,14 @@ class RoomsViewController: UIViewController, UIScrollViewDelegate {
         // Call API's to get data
         roomsController.getLightRoomData()
         roomsController.getChartData(roomID: roomID, durartion: "hour")
+        roomsController.getSchedulesData(roomID: roomID)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+        scheduleTableView.delegate = self
+        scheduleTableView.dataSource = self
         roomsController.delegate = self
         chartAreaScrollView.delegate = self
     }
@@ -249,8 +262,7 @@ extension RoomsViewController: RoomsControllerDelegate {
         TemperatureSlide.chartTitleLabel.text = "Temperature"
         TemperatureSlide.chartView.leftAxis.axisMaximum = 45
         TemperatureSlide.chartView.leftAxis.axisMinimum = -10
-
-        if (chartData[0].rows?.count != nil) {
+        if (chartData[0].rows?.count ?? 0 > 1) {
             let chartTempData = (0..<chartData[0].rows!.count).map { (i) -> ChartDataEntry in
                 let val = chartData[0].rows![i].temperature?.rounded(.up)
                 return ChartDataEntry(x: Double(i), y: Double(val ?? 0))
@@ -411,5 +423,46 @@ extension RoomsViewController: RoomsControllerDelegate {
         chartAreaScrollView.setContentOffset(CGPoint(x:x, y:0), animated: false)
         chartPageID = chartPageControl.currentPage
     }
-    
+ 
+    // Process light room data
+    func schedulesDidRecieveDataUpdate(data: [SchedulesData]) {
+        SchedulesDataArray = data
+    }
 }
+
+extension RoomsViewController: UITableViewDelegate {
+}
+
+extension RoomsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleTableViewCell", for: indexPath) as! ScheduleTableViewCell
+        cell.configureWithItem(item: SchedulesDataArray[indexPath.item])
+        cell.backgroundColor = .clear
+        
+        //let backgroundView = UIView()
+        //backgroundView.backgroundColor = UIColor(red: 30/255, green: 24/255, blue: 60/255, alpha: 1.0)
+        //cell.selectedBackgroundView = backgroundView
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (SchedulesDataArray.count > 0) {
+            return SchedulesDataArray.count
+        } else { return 0 }
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {
+        let edit = UITableViewRowAction(style: .normal, title: "Edit") { action, index in
+            self.scheduleID = editActionsForRowAt.row
+            self.performSegue(withIdentifier: "schedule", sender: self)
+        }
+        edit.backgroundColor = .lightGray
+        return [edit]
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+}
+

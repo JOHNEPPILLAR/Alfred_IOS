@@ -6,6 +6,7 @@
 //  Copyright © 2018 John Pillar. All rights reserved.
 //
 
+/*
 import UIKit
 import SwiftyJSON
 
@@ -77,4 +78,4 @@ class TimerController: NSObject {
     
 }
 
-
+*/
