@@ -35,10 +35,8 @@
 		0A8AF14A1F24EF030064894F /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8AF1491F24EF030064894F /* Helpers.swift */; };
 		0A9EDC662052639C001277EC /* CurrentWeatherBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9EDC652052639C001277EC /* CurrentWeatherBaseClass.swift */; };
 		0A9EDC68205263E5001277EC /* CurrentWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9EDC67205263E5001277EC /* CurrentWeatherData.swift */; };
-		0ADF19B920658C5F008057DB /* LogsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADF19B820658C5F008057DB /* LogsController.swift */; };
 		0AE259021F70476D002C6922 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0AE259011F70476D002C6922 /* Settings.bundle */; };
 		0AE259041F704A0A002C6922 /* SettingsBundleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE259031F704A0A002C6922 /* SettingsBundleHelper.swift */; };
-		0AE327A22066622E00C288E8 /* LogFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE327A12066622E00C288E8 /* LogFileViewController.swift */; };
 		A5CB0541EC331A4BFEF71AD8 /* Pods_Alfred_IOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2D4C3A3EE9E0D17B56318E /* Pods_Alfred_IOS.framework */; };
 		E80EEF302220518200A9EDAB /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80EEF2F2220518200A9EDAB /* BalloonMarker.swift */; };
 		E811EB0620DFB47C00C3B62E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E811EB0520DFB47C00C3B62E /* SettingsViewController.swift */; };
@@ -54,8 +52,6 @@
 		E84566D32210BEA900CF93DF /* HouseWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84566D12210BEA900CF93DF /* HouseWeatherData.swift */; };
 		E84566D42210BEA900CF93DF /* HouseWeatherBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84566D22210BEA900CF93DF /* HouseWeatherBaseClass.swift */; };
 		E845B9C1214E980900A75D96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E845B9C0214E980900A75D96 /* Main.storyboard */; };
-		E848524220E42E22001DC4F2 /* LogsBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E848524020E42E22001DC4F2 /* LogsBaseClass.swift */; };
-		E848524320E42E22001DC4F2 /* LogsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E848524120E42E22001DC4F2 /* LogsData.swift */; };
 		E868D1DF2161640F000DC024 /* SensorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868D1DE2161640F000DC024 /* SensorsViewController.swift */; };
 		E868D1E1216165F8000DC024 /* SensorsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868D1E0216165F8000DC024 /* SensorsController.swift */; };
 		E868D1E6216174F9000DC024 /* SensorsRows.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868D1E3216174F9000DC024 /* SensorsRows.swift */; };
@@ -111,10 +107,8 @@
 		0A9EDC652052639C001277EC /* CurrentWeatherBaseClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherBaseClass.swift; sourceTree = "<group>"; };
 		0A9EDC67205263E5001277EC /* CurrentWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherData.swift; sourceTree = "<group>"; };
 		0AAD1023207D5564006B410C /* Alfred_IOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Alfred_IOS.entitlements; sourceTree = "<group>"; };
-		0ADF19B820658C5F008057DB /* LogsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogsController.swift; sourceTree = "<group>"; };
 		0AE259011F70476D002C6922 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		0AE259031F704A0A002C6922 /* SettingsBundleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBundleHelper.swift; sourceTree = "<group>"; };
-		0AE327A12066622E00C288E8 /* LogFileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogFileViewController.swift; sourceTree = "<group>"; };
 		252CE001F08C2663E6B7452E /* Pods-Alfred_IOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alfred_IOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Alfred_IOS/Pods-Alfred_IOS.release.xcconfig"; sourceTree = "<group>"; };
 		BC2D4C3A3EE9E0D17B56318E /* Pods_Alfred_IOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Alfred_IOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA1CFC04806CB58D802C73D7 /* Pods-Alfred_IOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alfred_IOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Alfred_IOS/Pods-Alfred_IOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -132,8 +126,6 @@
 		E84566D12210BEA900CF93DF /* HouseWeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseWeatherData.swift; sourceTree = "<group>"; };
 		E84566D22210BEA900CF93DF /* HouseWeatherBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseWeatherBaseClass.swift; sourceTree = "<group>"; };
 		E845B9C0214E980900A75D96 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		E848524020E42E22001DC4F2 /* LogsBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogsBaseClass.swift; sourceTree = "<group>"; };
-		E848524120E42E22001DC4F2 /* LogsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogsData.swift; sourceTree = "<group>"; };
 		E868D1DE2161640F000DC024 /* SensorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorsViewController.swift; sourceTree = "<group>"; };
 		E868D1E0216165F8000DC024 /* SensorsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorsController.swift; sourceTree = "<group>"; };
 		E868D1E3216174F9000DC024 /* SensorsRows.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorsRows.swift; sourceTree = "<group>"; };
@@ -295,7 +287,6 @@
 		0A256EC4206F93C3008C5283 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0AE327A12066622E00C288E8 /* LogFileViewController.swift */,
 				E868D1DE2161640F000DC024 /* SensorsViewController.swift */,
 				E868D1ED2162264A000DC024 /* SensorViewController.swift */,
 				E811EB0520DFB47C00C3B62E /* SettingsViewController.swift */,
@@ -327,7 +318,6 @@
 		0A256ECE206F96DB008C5283 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				0ADF19B820658C5F008057DB /* LogsController.swift */,
 				E868D1E0216165F8000DC024 /* SensorsController.swift */,
 				E868D1EB2162236F000DC024 /* SensorController.swift */,
 				E811EB0920DFCDF200C3B62E /* SettingsController.swift */,
@@ -482,20 +472,10 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		E89FDE442144600B00C2FB62 /* Logs */ = {
-			isa = PBXGroup;
-			children = (
-				E848524120E42E22001DC4F2 /* LogsData.swift */,
-				E848524020E42E22001DC4F2 /* LogsBaseClass.swift */,
-			);
-			path = Logs;
-			sourceTree = "<group>";
-		};
 		E8BC4F7C20E2C384002C25DC /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				E868D1E2216174E4000DC024 /* Sensors */,
-				E89FDE442144600B00C2FB62 /* Logs */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -707,7 +687,6 @@
 				E868D1EA21620E16000DC024 /* SensorsTableViewCell.swift in Sources */,
 				E868D1E1216165F8000DC024 /* SensorsController.swift in Sources */,
 				E84566D42210BEA900CF93DF /* HouseWeatherBaseClass.swift in Sources */,
-				E848524320E42E22001DC4F2 /* LogsData.swift in Sources */,
 				0A9EDC662052639C001277EC /* CurrentWeatherBaseClass.swift in Sources */,
 				0A420E4A1F140D0500BD2713 /* LogFileTableViewCell.swift in Sources */,
 				E8F82C382247A7A800BF09F3 /* SchedulesBaseClass.swift in Sources */,
@@ -720,11 +699,8 @@
 				E868D1DF2161640F000DC024 /* SensorsViewController.swift in Sources */,
 				0A8AF14A1F24EF030064894F /* Helpers.swift in Sources */,
 				0A647EE62067E8CF00F7CD1E /* RoomLightsState.swift in Sources */,
-				0ADF19B920658C5F008057DB /* LogsController.swift in Sources */,
 				E877C4FD221AD783007D1A79 /* RoomTempSensorRows.swift in Sources */,
 				E82C11C120F1548C00A53A63 /* CommuteStatusData.swift in Sources */,
-				0AE327A22066622E00C288E8 /* LogFileViewController.swift in Sources */,
-				E848524220E42E22001DC4F2 /* LogsBaseClass.swift in Sources */,
 				0A0463F11F38E99B004A738D /* ColorViewController.swift in Sources */,
 				E87277B52145AD7600FE3FC3 /* ScheduleTableViewCell.swift in Sources */,
 				0A6A5F9F204C6A5800314ECE /* HomeController.swift in Sources */,
