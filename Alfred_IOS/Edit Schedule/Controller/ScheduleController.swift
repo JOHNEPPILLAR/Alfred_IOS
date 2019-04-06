@@ -6,42 +6,38 @@
 //  Copyright © 2018 John Pillar. All rights reserved.
 //
 
-/*
 import UIKit
 import SwiftyJSON
 
 // MARK: Delegate callback functions
-protocol TimerControllerDelegate: class {
-    func timerDidRecieveDataUpdate(data: [TimersData])
+protocol ScheduleControllerDelegate: class {
+    func scheduleDidRecieveDataUpdate(data: [SchedulesData])
     func didFailDataUpdateWithError(displayMsg: Bool)
-    func timerSaved()
-    func lightRoomDidRecieveDataUpdate(data: [RoomLightsData])
+    func scheduleSaved()
 }
 
-class TimerController: NSObject {
+class ScheduleController: NSObject {
     
-    weak var delegate: TimerControllerDelegate?
+    weak var delegate: ScheduleControllerDelegate?
     
-    // Timer data
-    func getTimerData() {
-        /*
+    // Schedule data
+    func getScheduleData(scheduleID: Int) {
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
-        let request = getAPIHeaderData(url: "settings/listSchedules")
+        let request = getAPIHeaderData(url: "settings/getSchedule?scheduleID=" + "\(scheduleID)")
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
                 let responseJSON = try? JSON(data: data!)
-                let data = [TimersBaseClass(json: responseJSON!)] // Update data store
-                self.delegate?.timerDidRecieveDataUpdate(data: [data[0].data!]) // Let the View controller know to show the data
+                let data = [SchedulesBaseClass(json: responseJSON!)] // Update data store
+                self.delegate?.scheduleDidRecieveDataUpdate(data: data[0].data!) // Let the View controller know to show the data
             } else {
                 self.delegate?.didFailDataUpdateWithError(displayMsg: false) // Let the View controller know there was an error
             }
         })
         task.resume()
- */
     }
     
-    func saveTimerData(body: TimersRows) {
+    func saveScheduleData(body: SchedulesData) {
         let configuration = URLSessionConfiguration.ephemeral
         let bodyDictionary = body.dictionaryRepresentation()
         let APIbody = try! JSONSerialization.data(withJSONObject: bodyDictionary)
@@ -49,7 +45,7 @@ class TimerController: NSObject {
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
-                self.delegate?.timerSaved()
+                self.delegate?.scheduleSaved()
             } else {
                 self.delegate?.didFailDataUpdateWithError(displayMsg: true) // Let the View controller know there was an error
             }
@@ -57,25 +53,4 @@ class TimerController: NSObject {
         task.resume()
     }
     
-    // Light room data
-    func getLightRoomData() {
-        /*
-        let configuration = URLSessionConfiguration.ephemeral
-        let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
-        let request = getAPIHeaderData(url: "lights/listlightgroups")
-        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
-            if checkAPIData(apiData: data, response: response, error: error) {
-                let responseJSON = try? JSON(data: data!)
-                let data = [RoomLightsBaseData(json: responseJSON!)] // Update data store
-                self.delegate?.lightRoomDidRecieveDataUpdate(data: data[0].data!) // Let the View controller know to show the data
-            } else {
-                self.delegate?.didFailDataUpdateWithError(displayMsg: false) // Let the View controller know there was an error
-            }
-        })
-        task.resume()
- */
-    }
-    
 }
-
-*/

@@ -108,6 +108,20 @@ class RoomsViewController: UIViewController, UIScrollViewDelegate {
         chartFilterWeek.removeUnderline()
         chartFilterMonth.underline()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "schedule"?:
+            if let vc = segue.destination as? ViewScheduleController {
+                vc.scheduleID = scheduleID
+            }
+        case .none:
+            return
+        case .some(_):
+            return
+        }
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
@@ -178,21 +192,24 @@ extension RoomsViewController: RoomsControllerDelegate {
             case "hs"?: color = HueColorHelper.colorFromXY(CGPoint(x: Double((roomData[0].action?.attributes?.xy![0])!), y: Double((roomData[0].action?.attributes?.xy![1])!)), forModel: "LCT007")
             default: color = UIColor.white
             }
-            lightSlider.maximumTrackTintColor = color
+
             let darkerColor = color.darker(by: -15)
-            lightsOnOff.onTintColor = darkerColor
+            lightsOnOff.onTintColor = UIColor.lightGray
+            lightsOnOff.thumbTintColor = darkerColor
+
             lightSlider.maximumTrackTintColor = darkerColor
+            lightSlider.thumbTintColor = UIColor.lightGray
             lightSlider.setMinimumTrackImage(startColor: darkerColor!,
                                                   endColor: UIColor.white,
                                                   startPoint: CGPoint.init(x: 0, y: 0),
                                                   endPoint: CGPoint.init(x: 1, y: 1))
-            // lightSlider.layer.cornerRadius = 12.0;
+            
             lightSlider.isHidden = false
             lightsView.backgroundColor = color
         } else {
             lightSlider.isHidden = true
             lightsView.backgroundColor = headerViewColor
-            lightsOnOff.onTintColor = headerViewColor
+            lightsOnOff.thumbTintColor = UIColor.darkGray
         }
         
         if refreshLightDataTimer == nil { // Set up data refresh timer
@@ -438,11 +455,6 @@ extension RoomsViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleTableViewCell", for: indexPath) as! ScheduleTableViewCell
         cell.configureWithItem(item: SchedulesDataArray[indexPath.item])
         cell.backgroundColor = .clear
-        
-        //let backgroundView = UIView()
-        //backgroundView.backgroundColor = UIColor(red: 30/255, green: 24/255, blue: 60/255, alpha: 1.0)
-        //cell.selectedBackgroundView = backgroundView
-        
         return cell
     }
     
@@ -454,7 +466,7 @@ extension RoomsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {
         let edit = UITableViewRowAction(style: .normal, title: "Edit") { action, index in
-            self.scheduleID = editActionsForRowAt.row
+            self.scheduleID = self.SchedulesDataArray[editActionsForRowAt.row].id!
             self.performSegue(withIdentifier: "schedule", sender: self)
         }
         edit.backgroundColor = .lightGray

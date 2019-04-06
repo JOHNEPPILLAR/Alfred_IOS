@@ -22,6 +22,7 @@ public final class SchedulesData: NSCoding {
     static let brightness = "brightness"
     static let type = "type"
     static let minute = "minute"
+    static let scene = "scene"
   }
 
   // MARK: Properties
@@ -35,6 +36,7 @@ public final class SchedulesData: NSCoding {
   public var brightness: Int?
   public var type: Int?
   public var minute: Int?
+  public var scene: Int?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -59,6 +61,7 @@ public final class SchedulesData: NSCoding {
     brightness = json[SerializationKeys.brightness].int
     type = json[SerializationKeys.type].int
     minute = json[SerializationKeys.minute].int
+    scene = json[SerializationKeys.scene].int
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -76,6 +79,7 @@ public final class SchedulesData: NSCoding {
     if let value = brightness { dictionary[SerializationKeys.brightness] = value }
     if let value = type { dictionary[SerializationKeys.type] = value }
     if let value = minute { dictionary[SerializationKeys.minute] = value }
+    if let value = scene { dictionary[SerializationKeys.scene] = value }
     return dictionary
   }
 
@@ -91,6 +95,7 @@ public final class SchedulesData: NSCoding {
     self.brightness = aDecoder.decodeObject(forKey: SerializationKeys.brightness) as? Int
     self.type = aDecoder.decodeObject(forKey: SerializationKeys.type) as? Int
     self.minute = aDecoder.decodeObject(forKey: SerializationKeys.minute) as? Int
+    self.scene = aDecoder.decodeObject(forKey: SerializationKeys.scene) as? Int
   }
 
   public func encode(with aCoder: NSCoder) {
@@ -104,6 +109,6 @@ public final class SchedulesData: NSCoding {
     aCoder.encode(brightness, forKey: SerializationKeys.brightness)
     aCoder.encode(type, forKey: SerializationKeys.type)
     aCoder.encode(minute, forKey: SerializationKeys.minute)
+    aCoder.encode(scene, forKey: SerializationKeys.scene)
   }
-
 }

@@ -43,6 +43,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var allLightsIcon: UIImageView!
     @IBOutlet weak var livingRoomTemp: UITextField!
     @IBOutlet weak var livingRoomLightsIcon: UIImageView!
+    @IBOutlet weak var livingRoomAirQualityIcon: UIImageView!
     @IBOutlet weak var kidsBedRoomLightsIcon: UIImageView!
     @IBOutlet weak var kidsRoomTemp: UITextField!
     @IBOutlet weak var kidsBedRoomAirQualityIcon: UIImageView!
@@ -248,6 +249,13 @@ extension HomeViewController: HomeControllerDelegate {
             let LivingRoom = data.filter { ($0.location?.contains("Living room"))! }
             if LivingRoom.count > 0 {
                 self.livingRoomTemp.text = String(format: "%.0f", LivingRoom[0].temperature?.rounded(.up) ?? 0)
+                self.livingRoomAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_green")
+                if LivingRoom[0].co2 ?? 0 > 1150 {
+                    self.livingRoomAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_yellow")
+                }
+                if LivingRoom[0].co2 ?? 0 > 1400 {
+                    self.livingRoomAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_red")
+                }
             }
             
             // Kids room
