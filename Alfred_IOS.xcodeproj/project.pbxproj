@@ -11,7 +11,6 @@
 		0A0463F11F38E99B004A738D /* ColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0463F01F38E99B004A738D /* ColorViewController.swift */; };
 		0A1BFDAE2052EFF900B729F8 /* SplashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BFDAD2052EFF900B729F8 /* SplashController.swift */; };
 		0A1BFDB3205315B400B729F8 /* CommuteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BFDB2205315B400B729F8 /* CommuteController.swift */; };
-		0A420E4A1F140D0500BD2713 /* LogFileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A420E491F140D0500BD2713 /* LogFileTableViewCell.swift */; };
 		0A46C5FB1F56D58300ADB758 /* LightsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A46C5FA1F56D58300ADB758 /* LightsTableViewCell.swift */; };
 		0A647EDF2067E8CF00F7CD1E /* RoomLightsAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A647ED62067E8CE00F7CD1E /* RoomLightsAction.swift */; };
 		0A647EE02067E8CF00F7CD1E /* RoomLightsAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A647ED72067E8CF00F7CD1E /* RoomLightsAttributes.swift */; };
@@ -79,7 +78,6 @@
 		0A1BFDAD2052EFF900B729F8 /* SplashController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashController.swift; sourceTree = "<group>"; };
 		0A1BFDB2205315B400B729F8 /* CommuteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteController.swift; sourceTree = "<group>"; };
 		0A256ECC206F964F008C5283 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0A420E491F140D0500BD2713 /* LogFileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogFileTableViewCell.swift; sourceTree = "<group>"; };
 		0A46C5FA1F56D58300ADB758 /* LightsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightsTableViewCell.swift; sourceTree = "<group>"; };
 		0A4986511F437846006979E0 /* MobileVLCKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileVLCKit.framework; path = "Pods/MobileVLCKit/MobileVLCKit-binary/MobileVLCKit.framework"; sourceTree = "<group>"; };
 		0A4986541F437BBE006979E0 /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
@@ -305,7 +303,6 @@
 		0A256EC8206F94BF008C5283 /* TableCells */ = {
 			isa = PBXGroup;
 			children = (
-				0A420E491F140D0500BD2713 /* LogFileTableViewCell.swift */,
 				E87277B42145AD7600FE3FC3 /* ScheduleTableViewCell.swift */,
 				0A46C5FA1F56D58300ADB758 /* LightsTableViewCell.swift */,
 				0A6AD7AB206E65C200491B3E /* CommuteTableViewCell.swift */,
@@ -560,7 +557,7 @@
 					0A69FB7C1F10C25C00563A69 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = P5E7TWCV9X;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -688,7 +685,6 @@
 				E868D1E1216165F8000DC024 /* SensorsController.swift in Sources */,
 				E84566D42210BEA900CF93DF /* HouseWeatherBaseClass.swift in Sources */,
 				0A9EDC662052639C001277EC /* CurrentWeatherBaseClass.swift in Sources */,
-				0A420E4A1F140D0500BD2713 /* LogFileTableViewCell.swift in Sources */,
 				E8F82C382247A7A800BF09F3 /* SchedulesBaseClass.swift in Sources */,
 				E84566D32210BEA900CF93DF /* HouseWeatherData.swift in Sources */,
 				0A6AD7AC206E65C200491B3E /* CommuteTableViewCell.swift in Sources */,
@@ -874,7 +870,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-DDEBUG\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "JP.Alfred-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -902,7 +898,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "JP.Alfred-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

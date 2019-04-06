@@ -74,7 +74,7 @@ class ViewSensorController: UIViewController {
   
     @IBAction func StartTimeTap(_ sender: UITapGestureRecognizer) {
         let dateChooserAlert = UIAlertController(title: "Select a time...", message: nil, preferredStyle: .actionSheet)
-        let pickerHeight: NSLayoutConstraint = NSLayoutConstraint(item: dateChooserAlert.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.1, constant: 300)
+        let pickerHeight: NSLayoutConstraint = NSLayoutConstraint(item: dateChooserAlert.view!, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.1, constant: 300)
         let datePicker: UIDatePicker = UIDatePicker()
         datePicker.frame = CGRect(x: 10, y: 30, width: self.view.frame.width, height: 150)
         datePicker.datePickerMode = .time
@@ -103,7 +103,7 @@ class ViewSensorController: UIViewController {
     
     @IBAction func EndTimeTap(_ sender: UITapGestureRecognizer) {
         let dateChooserAlert = UIAlertController(title: "Select a time...", message: nil, preferredStyle: .actionSheet)
-        let pickerHeight: NSLayoutConstraint = NSLayoutConstraint(item: dateChooserAlert.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.1, constant: 300)
+        let pickerHeight: NSLayoutConstraint = NSLayoutConstraint(item: dateChooserAlert.view!, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.1, constant: 300)
         let datePicker: UIDatePicker = UIDatePicker()
         datePicker.frame = CGRect(x: 10, y: 30, width: self.view.frame.width, height: 150)
         datePicker.datePickerMode = .time
