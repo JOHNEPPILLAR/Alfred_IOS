@@ -52,6 +52,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var mainBedRoomAirQualityIcon: UIImageView!
     @IBOutlet weak var kitchenTemp: UITextField!
     @IBOutlet weak var kitchenLightsIcon: UIImageView!
+    @IBOutlet weak var kitchenAirQualityIcon: UIImageView!
     @IBOutlet weak var gardenTemp: UITextField!
     @IBOutlet weak var downstairsHallLightsIcon: UIImageView!
     @IBOutlet weak var middleHallLightsIcon: UIImageView!
@@ -290,6 +291,13 @@ extension HomeViewController: HomeControllerDelegate {
             let Kitchen = data.filter { ($0.location?.contains("Kitchen"))! }
             if Kitchen.count > 0 {
                 self.kitchenTemp.text = String(format: "%.0f", Kitchen[0].temperature?.rounded(.up) ?? 0)
+                self.kitchenAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_green")
+                if Kitchen[0].co2 ?? 0 > 1150 {
+                    self.kitchenAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_yellow")
+                }
+                if Kitchen[0].co2 ?? 0 > 1400 {
+                    self.kitchenAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_red")
+                }
             }
 
             // Garden room
