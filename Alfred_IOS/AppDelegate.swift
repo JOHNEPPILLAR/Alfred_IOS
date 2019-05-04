@@ -58,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UserDefaults.standard.register(defaults: appDefaults)
         let defaults = UserDefaults.standard
         let whoIsThis = defaults.string(forKey: "who_is_this")
-        
+    
         let dict = ["device": token, "user": whoIsThis as Any] as [String: Any]
         let jsonData = try? JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
         

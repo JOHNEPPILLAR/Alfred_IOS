@@ -18,6 +18,7 @@ class HomeViewController: UIViewController {
     let timerInterval = 5 // seconds
     var roomID:Int = 0
     var refreshLightDataTimer: Timer!
+    var videoUUID: String = ""
     
     // MARK: Interactive elements
     @IBOutlet weak var menuIcon: UIImageView!
@@ -28,6 +29,12 @@ class HomeViewController: UIViewController {
         self.performSegue(withIdentifier: "showRoom", sender: self)
     }
 
+    @IBAction func showStreamViewTapped(_ sender: UITapGestureRecognizer) {
+        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
+        SVProgressHUD.show(withStatus: "Starting stream")
+        homeController.startVideoStream()
+    }
+    
     @IBAction func AllLightsOffPress(_ sender: UILongPressGestureRecognizer) {
         if (sender.state == .ended) {
             homeController.turnOffAllLights()
@@ -60,13 +67,13 @@ class HomeViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
-        case "kidsRoomVideo"?:
+        case "showVideo"?:
             let destination = segue.destination as! AVPlayerViewController
-            let url = URL(string: readPlist(item: "LottieCamURL"))
-            if let movieURL = url {
-                destination.player = AVPlayer(url: movieURL)
-                destination.player?.play()
-            }
+            let HLSBaseURL = readPlist(item: "HLSBaseURL")
+            let AlfredAppKey = readPlist(item: "AlfredAppKey")
+            let videoURL = URL(string: HLSBaseURL + "stream/play/" + videoUUID + "/cam.m3u8?clientaccesskey=" + AlfredAppKey)!
+            destination.player = AVPlayer(url: videoURL)
+            destination.player?.play()
         case "showRoom"?:
             if let vc = segue.destination as? RoomsViewController {
                 vc.roomID = roomID
@@ -99,11 +106,12 @@ class HomeViewController: UIViewController {
 
         // Calc which part of day it is and set greeting message
         let hour = Calendar.current.component(.hour, from: Date())
-        if (hour >= 0 && hour <= 12) {
+        switch hour {
+        case 0 ... 11:
             Greeting.text = "Good Morning " + whoIsThis!
-        } else if (hour > 12 && hour <= 17) {
+        case 12 ... 17:
             Greeting.text = "Good Afternoon " + whoIsThis!
-        } else {
+        default:
             Greeting.text = "Good Evening " + whoIsThis!
         }
 
@@ -112,7 +120,6 @@ class HomeViewController: UIViewController {
         homeController.getRoomLightData()
         homeController.getCurrentLocation(whoIsThis: whoIsThis!)
         homeController.getHourseWeatherData()
-        
     }
     
     override func viewDidLoad() {
@@ -143,6 +150,15 @@ extension HomeViewController: HomeControllerDelegate {
         }
     }
 
+    func didFailVideoWithError() {
+        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
+        SVProgressHUD.showError(withStatus: "Unable to start video stream")
+        if refreshLightDataTimer != nil {
+            refreshLightDataTimer.invalidate() // Stop the refresh data timer
+            refreshLightDataTimer = nil
+        }
+    }
+    
     func didFailLightDataUpdateWithError(displayMsg: Bool) {
         if displayMsg {
             SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
@@ -242,7 +258,15 @@ extension HomeViewController: HomeControllerDelegate {
             }
         }
     }
-    
+
+    func videoDidRecieveDataUpdate(videoUUID: String) {
+        SVProgressHUD.dismiss()
+        self.videoUUID = videoUUID
+        DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
+            self.performSegue(withIdentifier: "showVideo", sender: self)
+        })
+    }
+
     func houseWeatherDidRecieveDataUpdate(data: [HouseWeatherData]) {
         DispatchQueue.main.async {
 

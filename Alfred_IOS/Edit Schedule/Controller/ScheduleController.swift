@@ -24,7 +24,7 @@ class ScheduleController: NSObject {
     func getScheduleData(scheduleID: Int) {
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
-        let request = getAPIHeaderData(url: "settings/getSchedule?scheduleID=" + "\(scheduleID)")
+        let request = getAPIHeaderData(url: "schedules/get?scheduleID=" + "\(scheduleID)")
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
                 let responseJSON = try? JSON(data: data!)
@@ -41,7 +41,7 @@ class ScheduleController: NSObject {
         let configuration = URLSessionConfiguration.ephemeral
         let bodyDictionary = body.dictionaryRepresentation()
         let APIbody = try! JSONSerialization.data(withJSONObject: bodyDictionary)
-        let request = putAPIHeaderData(url: "settings/saveSchedule", body: APIbody)
+        let request = putAPIHeaderData(url: "schedules/save", body: APIbody)
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {

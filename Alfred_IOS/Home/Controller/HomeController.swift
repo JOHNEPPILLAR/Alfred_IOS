@@ -16,8 +16,10 @@ protocol HomeControllerDelegate: class {
     func currentWeatherDidRecieveDataUpdate(data: [CurrentWeatherData])
     func cummuteDidRecieveDataUpdate(data: [CommuteStatusData])
     func houseWeatherDidRecieveDataUpdate(data: [HouseWeatherData])
+    func videoDidRecieveDataUpdate(videoUUID: String)
     func didFailDataUpdateWithError(displayMsg: Bool)
     func didFailLightDataUpdateWithError(displayMsg: Bool)
+    func didFailVideoWithError()
 }
 
 class HomeController: NSObject, CLLocationManagerDelegate {
@@ -126,5 +128,23 @@ class HomeController: NSObject, CLLocationManagerDelegate {
         })
         task.resume()
     }
-
+    
+    func startVideoStream() {
+        let configuration = URLSessionConfiguration.ephemeral
+        let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
+        let request = getHLSAPIHeaderData(url: "stream/start")
+        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+            if checkAPIData(apiData: data, response: response, error: error) {
+                let responseJSON = try? JSON(data: data!)
+                if let APIData = responseJSON?["data"].string {
+                    self.delegate?.videoDidRecieveDataUpdate(videoUUID: APIData)
+                } else {
+                    self.delegate?.didFailVideoWithError() // Let the View controller know there was an error
+                }
+            } else {
+                self.delegate?.didFailVideoWithError() // Let the View controller know there was an error
+            }
+        })
+        task.resume()
+    }
 }
