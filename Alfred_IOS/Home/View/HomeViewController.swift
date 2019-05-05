@@ -297,7 +297,7 @@ extension HomeViewController: HomeControllerDelegate {
             }
             
             // Main bed room
-            let MainBedRoom = data.filter { ($0.location?.contains("Bebroom"))! }
+            let MainBedRoom = data.filter { ($0.location?.contains("Bedroom"))! }
             if MainBedRoom.count > 0 {
                 self.mainBedRoomTemp.text = String(format: "%.0f", MainBedRoom[0].temperature?.rounded(.up) ?? 0)
                 switch MainBedRoom[0].air {

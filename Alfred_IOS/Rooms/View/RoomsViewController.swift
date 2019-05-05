@@ -427,8 +427,21 @@ extension RoomsViewController: RoomsControllerDelegate {
         chartPageControl.addTarget(self, action: #selector(self.changeChart(sender:)), for: UIControl.Event.valueChanged)
     }
     
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        chartFilterHour.isHidden = true
+        chartFilterDay.isHidden = true
+        chartFilterWeek.isHidden = true
+        chartFilterMonth.isHidden = true
+    }
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pageIndex = round(scrollView.contentOffset.x/view.frame.width)
+        if scrollView.contentOffset.x / view.frame.width == CGFloat(pageIndex)  {
+            chartFilterHour.isHidden = false
+            chartFilterDay.isHidden = false
+            chartFilterWeek.isHidden = false
+            chartFilterMonth.isHidden = false
+        }
         chartPageControl.currentPage = Int(pageIndex)
         chartPageID = chartPageControl.currentPage
         let theViewToAccess = chartAreaScrollView.getAllSubviews() as [Slide]
