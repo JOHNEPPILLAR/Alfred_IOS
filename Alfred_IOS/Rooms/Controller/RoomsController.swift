@@ -13,8 +13,9 @@ import SwiftyJSON
 // MARK: Delegate callback functions
 protocol RoomsControllerDelegate: class {
     func roomLightsDidRecieveDataUpdate(data: [RoomLightsData])
-    func chartDataDidRecieveDataUpdate(data: [RoomTempSensorData])
+    func chartDataDidRecieveDataUpdate(data: [RoomSensorBaseClass])
     func schedulesDidRecieveDataUpdate(data: [SchedulesData])
+    func motionSensorsDidRecieveDataUpdate(data: [MotionSensorsData])
     func didFailLightDataUpdateWithError(displayMsg: Bool)
     func didFailDataUpdateWithError(displayMsg: Bool)
 }
@@ -81,8 +82,8 @@ class RoomsController: NSObject {
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
                 let responseJSON = try? JSON(data: data!)
-                let data = [RoomTempSensorBaseClass(json: responseJSON!)] // Update data store
-                self.delegate?.chartDataDidRecieveDataUpdate(data: [data[0].data!]) // Let the View controller know to show the data
+                let data = [RoomSensorBaseClass(json: responseJSON!)] // Update data store
+                self.delegate?.chartDataDidRecieveDataUpdate(data: [data[0]]) // Let the View controller know to show the data
             } else {
                 self.delegate?.didFailDataUpdateWithError(displayMsg: false) // Let the View controller know there was an error
             }
@@ -106,5 +107,20 @@ class RoomsController: NSObject {
         task.resume()
     }
     
+    func getMotionSensorData(roomID: Int) {
+        let configuration = URLSessionConfiguration.ephemeral
+        let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
+        let request = getAPIHeaderData(url: "sensors/list?roomNumber=" + "\(roomID)")
+        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+            if checkAPIData(apiData: data, response: response, error: error) {
+                let responseJSON = try? JSON(data: data!)
+                let data = [MotionSensorsBaseClass(json: responseJSON!)] // Update data store
+                self.delegate?.motionSensorsDidRecieveDataUpdate(data: data[0].data!) // Let the View controller know to show the data
+            } else {
+                self.delegate?.didFailDataUpdateWithError(displayMsg: true) // Let the View controller know there was an error
+            }
+        })
+        task.resume()
+    }
 }
 

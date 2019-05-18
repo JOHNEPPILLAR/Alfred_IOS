@@ -11,30 +11,19 @@ import MaterialComponents.MaterialSlider
 
 class SensorsTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var sensorNameLabel: UILabel!
-    @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var startTimeLabel: UILabel!
+    @IBOutlet weak var endTimeLabel: UILabel!
     @IBOutlet weak var sliderView: UIView!
     @IBOutlet weak var activeImage: UIImageView!
     
-    func configureWithItem(item: SensorsRows) {
-        
+    func configureWithItem(item: MotionSensorsData) {
         activeImage.image = #imageLiteral(resourceName: "ic_success")
         if !item.active! { activeImage.image = #imageLiteral(resourceName: "ic_error") }
         
-        switch item.sensorId {
-        case 1:
-            sensorNameLabel.text = "Front hall"
-        case 2:
-            sensorNameLabel.text = "Living room"
-        case 3:
-            sensorNameLabel.text = "Middle hall"
-        default:
-            sensorNameLabel.text = "Not defined"
-        }
-        
-        timerLabel.text = item.startTime! + " to " + item.endTime!
-        
-        let brightnessSlider = MDCSlider(frame: CGRect(x: 10, y: 10, width: 100, height: 27))
+       startTimeLabel.text = item.startTime
+       endTimeLabel.text = item.endTime
+
+        let brightnessSlider = MDCSlider(frame: CGRect(x: 10, y: 2, width: 170, height: 27))
         brightnessSlider.minimumValue = 0
         brightnessSlider.maximumValue = 255
         brightnessSlider.color = UIColor(red: 118/255.0, green: 214/255.0, blue: 114/255.0, alpha: 1.0)

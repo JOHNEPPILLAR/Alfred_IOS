@@ -29,18 +29,7 @@ class ViewScheduleController: UIViewController {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var moreDetailsView: UIView!
     @IBOutlet weak var colorLoopSwitch: UISwitch!
-    @IBOutlet weak var sceneLabel: UILabel!
     @IBOutlet weak var sceneView: UIView!
-    @IBOutlet weak var sunRiseLabel: UILabel!
-    @IBOutlet weak var sunRiseView: UIView!
-    @IBOutlet weak var dayTimeLabel: UILabel!
-    @IBOutlet weak var dayTimeView: UIView!
-    @IBOutlet weak var sunSetLabel: UILabel!
-    @IBOutlet weak var sunSetView: UIView!
-    @IBOutlet weak var eveningLabel: UILabel!
-    @IBOutlet weak var eveningView: UIView!
-    @IBOutlet weak var nightTimeLabel: UILabel!
-    @IBOutlet weak var nightTimeView: UIView!
     @IBOutlet weak var brightnessLabel: UILabel!
     
     @IBAction func activeChange(_ sender: UISwitch) {
@@ -92,73 +81,6 @@ class ViewScheduleController: UIViewController {
         self.present(dateChooserAlert, animated: true, completion: nil)
     }
     
-    @IBAction func sunRiseSceneTap(_ sender: UITapGestureRecognizer) {
-        sunRiseLabel.textColor = UIColor.white
-        sunRiseView.backgroundColor = UIColor.darkGray
-        dayTimeLabel.textColor = UIColor.black
-        dayTimeView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
-        sunSetLabel.textColor = UIColor.black
-        sunSetView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
-        eveningLabel.textColor = UIColor.black
-        eveningView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
-        nightTimeLabel.textColor = UIColor.black
-        nightTimeView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
-        ScheduleDataArray[0].scene = 1
-    }
-    
-    @IBAction func dayTimeSceneTap(_ sender: UITapGestureRecognizer) {
-        sunRiseLabel.textColor = UIColor.black
-        sunRiseView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
-        dayTimeLabel.textColor = UIColor.white
-        dayTimeView.backgroundColor = UIColor.darkGray
-        sunSetLabel.textColor = UIColor.black
-        sunSetView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
-        eveningLabel.textColor = UIColor.black
-        eveningView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
-        nightTimeLabel.textColor = UIColor.black
-        nightTimeView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
-        ScheduleDataArray[0].scene = 2
-    }
-    @IBAction func sunSetSceneTap(_ sender: UITapGestureRecognizer) {
-        sunRiseLabel.textColor = UIColor.black
-        sunRiseView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
-        dayTimeLabel.textColor = UIColor.black
-        dayTimeView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
-        sunSetLabel.textColor = UIColor.white
-        sunSetView.backgroundColor = UIColor.darkGray
-        eveningLabel.textColor = UIColor.black
-        eveningView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
-        nightTimeLabel.textColor = UIColor.black
-        nightTimeView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
-        ScheduleDataArray[0].scene = 3
-    }
-    @IBAction func eveningSceneTap(_ sender: UITapGestureRecognizer) {
-        sunRiseLabel.textColor = UIColor.black
-        sunRiseView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
-        dayTimeLabel.textColor = UIColor.black
-        dayTimeView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
-        sunSetLabel.textColor = UIColor.black
-        sunSetView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
-        eveningLabel.textColor = UIColor.white
-        eveningView.backgroundColor = UIColor.darkGray
-        nightTimeLabel.textColor = UIColor.black
-        nightTimeView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
-        ScheduleDataArray[0].scene = 4
-    }
-    @IBAction func nightTimeSceneTap(_ sender: UITapGestureRecognizer) {
-        sunRiseLabel.textColor = UIColor.black
-        sunRiseView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
-        dayTimeLabel.textColor = UIColor.black
-        dayTimeView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
-        sunSetLabel.textColor = UIColor.black
-        sunSetView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
-        eveningLabel.textColor = UIColor.black
-        eveningView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
-        nightTimeLabel.textColor = UIColor.white
-        nightTimeView.backgroundColor = UIColor.darkGray
-        ScheduleDataArray[0].scene = 5
-    }
-    
     private let scheduleController = ScheduleController()
     
     fileprivate var ScheduleDataArray = [SchedulesData]() {
@@ -175,6 +97,12 @@ class ViewScheduleController: UIViewController {
             
             switch ScheduleDataArray[0].type {
             case 1?:
+
+                let baseLightScenes:LightScenes = Bundle.main.loadNibNamed("LightScenes", owner: self, options: nil)?.first as! LightScenes
+                baseLightScenes.setScene(setSceneID: ScheduleDataArray[0].scene ?? 0)
+                baseLightScenes.delegate = self as LightScenesDelegate
+                sceneView.addSubview(baseLightScenes)
+
                 moreDetailsView.isHidden = false
                 if (ScheduleDataArray[0].colorLoop!) {
                     colorLoopSwitch.isOn = true
@@ -192,31 +120,9 @@ class ViewScheduleController: UIViewController {
                 brightnessSlider.addTarget(self, action: #selector(brightnessSliderChange(senderSlider:)), for: .valueChanged)
                 moreDetailsView.addSubview(brightnessSlider)
                 brightnessLabel.text = "\(ScheduleDataArray[0].brightness ?? 0)"
-                
-                switch ScheduleDataArray[0].scene {
-                case 1:
-                    sunRiseLabel.textColor = UIColor.white
-                    sunRiseView.backgroundColor = UIColor.darkGray
-                case 2:
-                    dayTimeLabel.textColor = UIColor.white
-                    dayTimeView.backgroundColor = UIColor.darkGray
-                case 3:
-                    sunSetLabel.textColor = UIColor.white
-                    sunSetView.backgroundColor = UIColor.darkGray
-                case 4:
-                    eveningLabel.textColor = UIColor.white
-                    eveningView.backgroundColor = UIColor.darkGray
-                case 5:
-                    nightTimeLabel.textColor = UIColor.white
-                    nightTimeView.backgroundColor = UIColor.darkGray
-                default:
-                    dayTimeLabel.textColor = UIColor.white
-                    dayTimeView.backgroundColor = UIColor.darkGray
-                    ScheduleDataArray[0].scene = 2
-                }
-                default: moreDetailsView.isHidden = true
+               
+            default: moreDetailsView.isHidden = true
             }
-
             SVProgressHUD.dismiss() // Stop spinner
         }
     }
@@ -260,9 +166,14 @@ extension ViewScheduleController: ScheduleControllerDelegate {
     }
 
     func scheduleSaved() {
-        SVProgressHUD.showSuccess(withStatus: "Saved schedule")
+        SVProgressHUD.showSuccess(withStatus: "Saved settings")
         name.isEnabled = true
         active.isEnabled = true
     }
 }
 
+extension ViewScheduleController: LightScenesDelegate {
+    func updateSceneID(sceneID: Int) {
+        ScheduleDataArray[0].scene = sceneID
+    }
+}

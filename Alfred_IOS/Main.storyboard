@@ -113,160 +113,6 @@
                                             <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ect-Sc-ukI" userLabel="Scene View">
                                                 <rect key="frame" x="0.0" y="115" width="375" height="309"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Scene:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q8h-v7-yfm">
-                                                        <rect key="frame" x="8" y="8" width="93" height="21"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fat-MF-ECY" userLabel="Daytime View">
-                                                        <rect key="frame" x="190" y="42" width="163" height="75"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <subviews>
-                                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F4o-BK-hk5" userLabel="Sunrise View">
-                                                                <rect key="frame" x="8" y="7" width="65" height="60"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_daytime" translatesAutoresizingMaskIntoConstraints="NO" id="S75-dR-HXl">
-                                                                        <rect key="frame" x="8" y="5" width="50" height="50"/>
-                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    </imageView>
-                                                                </subviews>
-                                                                <color key="backgroundColor" red="0.6980135440826416" green="0.91558992862701416" blue="0.9329637885093689" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <gestureRecognizers/>
-                                                            </view>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Day time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qfN-Ko-XJb">
-                                                                <rect key="frame" x="73" y="17" width="90" height="40"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                        <color key="backgroundColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <gestureRecognizers/>
-                                                        <connections>
-                                                            <outletCollection property="gestureRecognizers" destination="17P-Lf-1VF" appends="YES" id="0Ed-TU-7JD"/>
-                                                        </connections>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0bX-7R-ye3" userLabel="Sunrise View">
-                                                        <rect key="frame" x="17" y="42" width="162" height="75"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <subviews>
-                                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MO2-zm-kfC" userLabel="Sunrise View">
-                                                                <rect key="frame" x="8" y="7" width="65" height="60"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_sunrise" translatesAutoresizingMaskIntoConstraints="NO" id="rxY-r7-hrx">
-                                                                        <rect key="frame" x="8" y="5" width="50" height="50"/>
-                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    </imageView>
-                                                                </subviews>
-                                                                <color key="backgroundColor" red="0.59330219030380249" green="0.81604915857315063" blue="0.91697490215301514" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <gestureRecognizers/>
-                                                            </view>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Morning" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="boI-5g-V4d">
-                                                                <rect key="frame" x="73" y="17" width="89" height="40"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                        <color key="backgroundColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <gestureRecognizers/>
-                                                        <connections>
-                                                            <outletCollection property="gestureRecognizers" destination="f8C-bL-4ar" appends="YES" id="DiK-sf-Xhp"/>
-                                                        </connections>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m9y-am-ZP2" userLabel="Sunrise View">
-                                                        <rect key="frame" x="17" y="131" width="162" height="75"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <subviews>
-                                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kMN-VT-UK8" userLabel="Sunrise View">
-                                                                <rect key="frame" x="8" y="7" width="65" height="60"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_sunset" translatesAutoresizingMaskIntoConstraints="NO" id="BCR-ok-2dE">
-                                                                        <rect key="frame" x="8" y="5" width="50" height="50"/>
-                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    </imageView>
-                                                                </subviews>
-                                                                <color key="backgroundColor" red="0.94374144077301025" green="0.9088473916053772" blue="0.76304644346237183" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <gestureRecognizers/>
-                                                            </view>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sunset" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ixa-7w-kZF">
-                                                                <rect key="frame" x="73" y="17" width="89" height="40"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                        <color key="backgroundColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <gestureRecognizers/>
-                                                        <connections>
-                                                            <outletCollection property="gestureRecognizers" destination="jm3-Ih-lJg" appends="YES" id="mKJ-uv-kkV"/>
-                                                        </connections>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Qp-wc-Vlc" userLabel="Sunrise View">
-                                                        <rect key="frame" x="191" y="131" width="162" height="75"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <subviews>
-                                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rtA-o2-9uO" userLabel="Sunrise View">
-                                                                <rect key="frame" x="8" y="7" width="65" height="60"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_evening" translatesAutoresizingMaskIntoConstraints="NO" id="7FA-VP-1gz">
-                                                                        <rect key="frame" x="7" y="5" width="50" height="50"/>
-                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    </imageView>
-                                                                </subviews>
-                                                                <color key="backgroundColor" red="0.91344946622848511" green="0.73211288452148438" blue="0.48654526472091675" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <gestureRecognizers/>
-                                                            </view>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Evening" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PMn-4b-9KW">
-                                                                <rect key="frame" x="73" y="17" width="89" height="40"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                        <color key="backgroundColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <gestureRecognizers/>
-                                                        <connections>
-                                                            <outletCollection property="gestureRecognizers" destination="w5A-8j-EuN" appends="YES" id="L9g-IZ-ajY"/>
-                                                        </connections>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JkD-82-T81" userLabel="Sunrise View">
-                                                        <rect key="frame" x="101" y="214" width="162" height="75"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <subviews>
-                                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XNc-ZE-1GU" userLabel="Sunrise View">
-                                                                <rect key="frame" x="8" y="7" width="65" height="60"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_night" translatesAutoresizingMaskIntoConstraints="NO" id="3Ik-0K-pVS">
-                                                                        <rect key="frame" x="8" y="5" width="50" height="50"/>
-                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    </imageView>
-                                                                </subviews>
-                                                                <color key="backgroundColor" red="0.60196679830551147" green="0.46588504314422607" blue="0.092692233622074127" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <gestureRecognizers/>
-                                                            </view>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Night time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zmb-JR-MDw">
-                                                                <rect key="frame" x="73" y="17" width="89" height="40"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                        <color key="backgroundColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <gestureRecognizers/>
-                                                        <connections>
-                                                            <outletCollection property="gestureRecognizers" destination="z99-9R-zEZ" appends="YES" id="eOq-99-qYC"/>
-                                                        </connections>
-                                                    </view>
-                                                </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q8o-o5-nZ2" userLabel="Brightness View">
@@ -371,7 +217,7 @@
                                 <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K1W-b4-zTr" userLabel="Exit Button">
+                            <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K1W-b4-zTr" userLabel="Save Button">
                                 <rect key="frame" x="329" y="38" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="ic_save"/>
@@ -394,20 +240,9 @@
                         <outlet property="aiEnabled" destination="g1o-pG-tXB" id="ejf-QR-kns"/>
                         <outlet property="brightnessLabel" destination="O7e-Ax-ii5" id="IQZ-QR-LNP"/>
                         <outlet property="colorLoopSwitch" destination="zFz-GE-dQm" id="SzI-9y-1n4"/>
-                        <outlet property="dayTimeLabel" destination="qfN-Ko-XJb" id="bIE-Db-Yib"/>
-                        <outlet property="dayTimeView" destination="fat-MF-ECY" id="RQq-S9-v6v"/>
-                        <outlet property="eveningLabel" destination="PMn-4b-9KW" id="4Wk-L5-UjM"/>
-                        <outlet property="eveningView" destination="5Qp-wc-Vlc" id="VYS-3u-6NG"/>
                         <outlet property="moreDetailsView" destination="byG-4y-8BQ" id="6DU-yF-fVl"/>
                         <outlet property="name" destination="2qA-Ih-2CB" id="3lV-B5-Ssw"/>
-                        <outlet property="nightTimeLabel" destination="Zmb-JR-MDw" id="sAR-SY-iuI"/>
-                        <outlet property="nightTimeView" destination="JkD-82-T81" id="we7-RN-J9J"/>
-                        <outlet property="sceneLabel" destination="q8h-v7-yfm" id="9wu-7Z-ggK"/>
                         <outlet property="sceneView" destination="Ect-Sc-ukI" id="HQK-rU-ODW"/>
-                        <outlet property="sunRiseLabel" destination="boI-5g-V4d" id="eRK-XI-MXt"/>
-                        <outlet property="sunRiseView" destination="0bX-7R-ye3" id="wLo-3U-KfU"/>
-                        <outlet property="sunSetLabel" destination="Ixa-7w-kZF" id="Jsc-fr-vB4"/>
-                        <outlet property="sunSetView" destination="m9y-am-ZP2" id="EoU-4J-h1h"/>
                         <outlet property="timeLabel" destination="X1A-52-m7m" id="ELD-5C-Mqk"/>
                     </connections>
                 </viewController>
@@ -1067,11 +902,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Good &lt;greeting&gt; &lt;user&gt;" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="ag6-0L-6q4">
-                                        <rect key="frame" x="9" y="49" width="356" height="22"/>
+                                        <rect key="frame" x="9" y="34" width="356" height="42"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="25"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <imageView hidden="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_menu" translatesAutoresizingMaskIntoConstraints="NO" id="kG5-Y5-MlE">
@@ -1212,7 +1047,7 @@
                                         </connections>
                                     </slider>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yuT-Ag-a7y">
-                                        <rect key="frame" x="304" y="8" width="49" height="31"/>
+                                        <rect key="frame" x="302" y="8" width="51" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="onTintColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="thumbTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1237,9 +1072,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" directionalLockEnabled="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xe2-FV-SJF" userLabel="Chart Scroll View">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" directionalLockEnabled="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xe2-FV-SJF" userLabel="Chart Scroll View">
                                 <rect key="frame" x="8" y="170" width="359" height="140"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <viewLayoutGuide key="safeArea" id="HGe-B6-OEo"/>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="XU5-Sx-WI2">
                                 <rect key="frame" x="8" y="309" width="359" height="37"/>
@@ -1287,17 +1123,25 @@
                                     <action selector="chartFilterMonth:" destination="O5z-9K-rlW" eventType="touchUpInside" id="a6P-mc-oRA"/>
                                 </connections>
                             </button>
-                            <view alpha="0.30000001192092896" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QKe-cu-5ff" userLabel="Schedule View BK" customClass="RoundCornersView" customModule="Alfred_IOS" customModuleProvider="target">
-                                <rect key="frame" x="8" y="340" width="359" height="210"/>
+                            <view alpha="0.30000001192092896" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QKe-cu-5ff" userLabel="Timers View BK" customClass="RoundCornersView" customModule="Alfred_IOS" customModuleProvider="target">
+                                <rect key="frame" x="8" y="345" width="359" height="210"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GME-AU-ogo" userLabel="Schedule View">
-                                <rect key="frame" x="8" y="340" width="359" height="210"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="210" translatesAutoresizingMaskIntoConstraints="NO" id="GME-AU-ogo" userLabel="Timers View">
+                                <rect key="frame" x="8" y="345" width="359" height="210"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="32" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZJK-Pp-aWT" userLabel="ScheduleTableView">
-                                        <rect key="frame" x="0.0" y="34" width="359" height="176"/>
+                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Timers" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="nXK-g2-51F">
+                                        <rect key="frame" x="8" y="13" width="94" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="32" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZJK-Pp-aWT" userLabel="TimersTableView">
+                                        <rect key="frame" x="0.0" y="35" width="359" height="175"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
@@ -1342,16 +1186,81 @@
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
-                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Timers" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="nXK-g2-51F">
-                                        <rect key="frame" x="8" y="13" width="94" height="20"/>
-                                        <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
+                                </subviews>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view alpha="0.30000001192092896" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mX1-LF-JbN" userLabel="Sensors View BK" customClass="RoundCornersView" customModule="Alfred_IOS" customModuleProvider="target">
+                                <rect key="frame" x="8" y="574" width="359" height="204"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="210" translatesAutoresizingMaskIntoConstraints="NO" id="cMU-bf-dNJ" userLabel="Sensors View">
+                                <rect key="frame" x="8" y="574" width="359" height="204"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Light sensors" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="CpM-4P-DK8">
+                                        <rect key="frame" x="8" y="13" width="112" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="32" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JCh-LC-3Cd" userLabel="SensorsTableView">
+                                        <rect key="frame" x="0.0" y="35" width="359" height="169"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="SensorTableViewCell" rowHeight="32" id="W07-Vc-QJk" userLabel="SensorsTableViewCell" customClass="SensorsTableViewCell" customModule="Alfred_IOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="359" height="32"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="W07-Vc-QJk" id="xJQ-04-3ru">
+                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="31.666666666666668"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Acj-Pa-r1M" userLabel="Start">
+                                                            <rect key="frame" x="22" y="-1" width="51" height="33"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="-" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9pD-Xa-P3U">
+                                                            <rect key="frame" x="60" y="0.0" width="14" height="32"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_success" translatesAutoresizingMaskIntoConstraints="NO" id="hDr-bo-veH" userLabel="Active">
+                                                            <rect key="frame" x="328" y="4" width="25" height="25"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUs-Yj-ccK" userLabel="End">
+                                                            <rect key="frame" x="73" y="0.0" width="51" height="32"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="daH-Om-u3d" userLabel="SliderView">
+                                                            <rect key="frame" x="121" y="-1" width="192" height="33"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </view>
+                                                    </subviews>
+                                                </tableViewCellContentView>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <connections>
+                                                    <outlet property="activeImage" destination="hDr-bo-veH" id="zJr-lu-iGB"/>
+                                                    <outlet property="endTimeLabel" destination="NUs-Yj-ccK" id="urI-M2-yXS"/>
+                                                    <outlet property="sliderView" destination="daH-Om-u3d" id="mbM-tV-p3s"/>
+                                                    <outlet property="startTimeLabel" destination="Acj-Pa-r1M" id="uf3-5T-iDc"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -1370,8 +1279,14 @@
                         <outlet property="lightsOnOff" destination="yuT-Ag-a7y" id="cV9-F1-aLY"/>
                         <outlet property="lightsView" destination="LiG-ie-2ou" id="Y2O-8y-1RI"/>
                         <outlet property="roomName" destination="Bgx-th-K19" id="LBH-hc-v3C"/>
-                        <outlet property="scheduleTableView" destination="ZJK-Pp-aWT" id="LE8-R0-kOZ"/>
+                        <outlet property="sensorBackgroundView" destination="mX1-LF-JbN" id="TJK-H0-xVJ"/>
+                        <outlet property="sensorsTableView" destination="JCh-LC-3Cd" id="feM-GG-1rX"/>
+                        <outlet property="sensorsView" destination="cMU-bf-dNJ" id="9ef-dO-3Aq"/>
+                        <outlet property="timersBackgroundView" destination="QKe-cu-5ff" id="zvf-q7-gfa"/>
+                        <outlet property="timersTableView" destination="ZJK-Pp-aWT" id="LE8-R0-kOZ"/>
+                        <outlet property="timersView" destination="GME-AU-ogo" id="Ts0-Ds-NRE"/>
                         <segue destination="hBN-xu-fck" kind="show" identifier="schedule" id="HRZ-Mf-l3O"/>
+                        <segue destination="lHo-y3-jlH" kind="show" identifier="motionSensor" id="M9H-er-gpb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EMn-Hl-s7E" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1386,87 +1301,6 @@
             </objects>
             <point key="canvasLocation" x="1313" y="789"/>
         </scene>
-        <!--Light Sensors-->
-        <scene sceneID="705-T8-M92">
-            <objects>
-                <viewController title="Light Sensors" id="z0N-Cd-753" customClass="ViewSensorsController" customModule="Alfred_IOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kaZ-qd-ebP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_background" translatesAutoresizingMaskIntoConstraints="NO" id="8RF-5t-5G4">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TcZ-JO-go9">
-                                <rect key="frame" x="0.0" y="44" width="375" height="768"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="SensorsTableViewCell" rowHeight="44" id="TBl-fi-hnB" customClass="SensorsTableViewCell" customModule="Alfred_IOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TBl-fi-hnB" id="EDn-yd-Lob">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LH9-29-kmJ" userLabel="SliderView">
-                                                    <rect key="frame" x="245" y="0.0" width="115" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00 to 00:00" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Syg-Zf-hx3">
-                                                    <rect key="frame" x="147" y="-1" width="90" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XIa-oN-MTp">
-                                                    <rect key="frame" x="15" y="9" width="25" height="25"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RoomName" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iva-vp-94L" userLabel="SensorNameLabel">
-                                                    <rect key="frame" x="57" y="8" width="97" height="29"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <connections>
-                                            <outlet property="activeImage" destination="XIa-oN-MTp" id="Ej6-Vy-6Ux"/>
-                                            <outlet property="sensorNameLabel" destination="iva-vp-94L" id="oId-9Y-QRS"/>
-                                            <outlet property="sliderView" destination="LH9-29-kmJ" id="yxV-tv-kmj"/>
-                                            <outlet property="timerLabel" destination="Syg-Zf-hx3" id="0vV-Oc-im1"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="z0N-Cd-753" id="FtG-Db-irN"/>
-                                    <outlet property="delegate" destination="z0N-Cd-753" id="5vd-CZ-RN5"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="TcZ-JO-go9" firstAttribute="leading" secondItem="c4a-1q-jI2" secondAttribute="leading" id="1Ki-K7-BMf"/>
-                            <constraint firstItem="TcZ-JO-go9" firstAttribute="top" secondItem="c4a-1q-jI2" secondAttribute="top" id="Cec-RH-fFb"/>
-                            <constraint firstAttribute="bottom" secondItem="TcZ-JO-go9" secondAttribute="bottom" id="mma-zs-8Mg"/>
-                            <constraint firstItem="TcZ-JO-go9" firstAttribute="trailing" secondItem="c4a-1q-jI2" secondAttribute="trailing" id="yWJ-me-xHD"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="c4a-1q-jI2"/>
-                    </view>
-                    <connections>
-                        <outlet property="SensorsTableView" destination="TcZ-JO-go9" id="o0e-Si-nx8"/>
-                        <segue destination="lHo-y3-jlH" kind="show" identifier="sensor" id="vFZ-bA-ELb"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bE7-Af-eHN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1314" y="-1640"/>
-        </scene>
         <!--Edit Light Sensor-->
         <scene sceneID="kpg-hJ-gYb">
             <objects>
@@ -1475,172 +1309,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_background" translatesAutoresizingMaskIntoConstraints="NO" id="3Tj-lp-Vzs">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background_2" translatesAutoresizingMaskIntoConstraints="NO" id="3Tj-lp-Vzs">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <view autoresizesSubviews="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jfu-XC-Xfe">
-                                <rect key="frame" x="0.0" y="69" width="375" height="655"/>
+                                <rect key="frame" x="0.0" y="76" width="375" height="648"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="511-0V-2qM">
-                                        <rect key="frame" x="70" y="32" width="142" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.1176470588" green="0.1333333333" blue="0.23529411759999999" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <accessibility key="accessibilityConfiguration">
-                                            <accessibilityTraits key="traits" notEnabled="YES"/>
-                                        </accessibility>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" spellCheckingType="yes"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sensor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aRi-QH-uRq">
-                                        <rect key="frame" x="8" y="37" width="54" height="18"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Brightness" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="az8-Cj-9kv">
-                                        <rect key="frame" x="8" y="151" width="82" height="21"/>
+                                        <rect key="frame" x="8" y="71" width="82" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Start" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hiX-3G-x9r">
-                                        <rect key="frame" x="8" y="95" width="38" height="21"/>
+                                        <rect key="frame" x="8" y="18" width="38" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3fV-fG-ytI" userLabel="Scene View">
-                                        <rect key="frame" x="0.0" y="188" width="375" height="316"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Scene" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nx3-rH-wSn">
-                                                <rect key="frame" x="8" y="8" width="93" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wgx-dN-NM8" userLabel="Daytime View">
-                                                <rect key="frame" x="198" y="37" width="163" height="75"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Day time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IuV-Wn-5sz">
-                                                        <rect key="frame" x="71" y="17" width="72" height="40"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="daytime_image" translatesAutoresizingMaskIntoConstraints="NO" id="Ck0-ye-3qq">
-                                                        <rect key="frame" x="8" y="12" width="50" height="50"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    </imageView>
-                                                </subviews>
-                                                <color key="backgroundColor" red="0.1176470588" green="0.1333333333" blue="0.23529411759999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <gestureRecognizers/>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="gCJ-Uy-3qw" appends="YES" id="fUo-Dc-zed"/>
-                                                </connections>
-                                            </view>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KmD-u7-kqO" userLabel="Sunset View">
-                                                <rect key="frame" x="17" y="129" width="163" height="75"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sunset" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3z-CW-Uvw">
-                                                        <rect key="frame" x="71" y="17" width="72" height="40"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sunset_image" translatesAutoresizingMaskIntoConstraints="NO" id="hFY-wz-z7R">
-                                                        <rect key="frame" x="8" y="12" width="50" height="50"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    </imageView>
-                                                </subviews>
-                                                <color key="backgroundColor" red="0.1176470588" green="0.1333333333" blue="0.23529411759999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <gestureRecognizers/>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="c95-kZ-eZ2" appends="YES" id="sjB-kT-TY4"/>
-                                                </connections>
-                                            </view>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vHD-5A-WMy" userLabel="Sunrise View">
-                                                <rect key="frame" x="17" y="37" width="163" height="75"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sunrise" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uj3-mT-663">
-                                                        <rect key="frame" x="71" y="17" width="72" height="40"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sunrise_image" translatesAutoresizingMaskIntoConstraints="NO" id="23v-YT-5YB">
-                                                        <rect key="frame" x="8" y="12" width="50" height="50"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    </imageView>
-                                                </subviews>
-                                                <color key="backgroundColor" red="0.1176470588" green="0.1333333333" blue="0.23529411759999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <gestureRecognizers/>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="YJm-Vo-nhl" appends="YES" id="iEh-c6-EAw"/>
-                                                </connections>
-                                            </view>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TTn-EP-or6" userLabel="Evening View">
-                                                <rect key="frame" x="198" y="129" width="163" height="75"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Evening" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iUY-2B-pAC">
-                                                        <rect key="frame" x="71" y="17" width="72" height="40"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="evening_image" translatesAutoresizingMaskIntoConstraints="NO" id="K4c-gD-ATb">
-                                                        <rect key="frame" x="8" y="12" width="50" height="50"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    </imageView>
-                                                </subviews>
-                                                <color key="backgroundColor" red="0.1176470588" green="0.1333333333" blue="0.23529411759999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <gestureRecognizers/>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="fwR-QF-Zo0" appends="YES" id="65I-ry-Foj"/>
-                                                </connections>
-                                            </view>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vZI-zn-x14" userLabel="Nighttime View">
-                                                <rect key="frame" x="17" y="221" width="163" height="75"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Night time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PNI-Cn-yph">
-                                                        <rect key="frame" x="71" y="17" width="80" height="40"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="nighttime_image" translatesAutoresizingMaskIntoConstraints="NO" id="9r0-16-Mzc">
-                                                        <rect key="frame" x="8" y="12" width="50" height="50"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    </imageView>
-                                                </subviews>
-                                                <color key="backgroundColor" red="0.1176470588" green="0.1333333333" blue="0.23529411759999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <gestureRecognizers/>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="Jcy-rP-OOT" appends="YES" id="U37-AW-GWR"/>
-                                                </connections>
-                                            </view>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tAB-to-yfU" userLabel="Start View">
-                                        <rect key="frame" x="143" y="90" width="36" height="30"/>
+                                        <rect key="frame" x="126" y="13" width="36" height="30"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_more" translatesAutoresizingMaskIntoConstraints="NO" id="gVW-8M-Dd3" userLabel="Start Time Edit">
@@ -1656,7 +1348,7 @@
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZRM-2q-kcb" userLabel="Start Time View">
-                                        <rect key="frame" x="70" y="90" width="66" height="30"/>
+                                        <rect key="frame" x="53" y="13" width="66" height="30"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HfF-Ka-lZ0" userLabel="startTimeLabel">
@@ -1671,14 +1363,15 @@
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="End" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ge1-5T-ryR">
-                                        <rect key="frame" x="216" y="95" width="30" height="21"/>
+                                        <rect key="frame" x="213" y="18" width="30" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <viewLayoutGuide key="safeArea" id="vU2-ku-xpX"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EMV-qv-9ak" userLabel="End Time View">
-                                        <rect key="frame" x="254" y="90" width="66" height="30"/>
+                                        <rect key="frame" x="251" y="13" width="66" height="30"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bT-o5-dYo" userLabel="endTimeLabel">
@@ -1691,9 +1384,10 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.1176470588" green="0.1333333333" blue="0.23529411759999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <viewLayoutGuide key="safeArea" id="gfm-eK-U5P"/>
                                     </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="egR-OU-wX3" userLabel="End View">
-                                        <rect key="frame" x="327" y="90" width="36" height="30"/>
+                                        <rect key="frame" x="324" y="13" width="36" height="30"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_more" translatesAutoresizingMaskIntoConstraints="NO" id="VkD-0h-6de" userLabel="End Time Edit">
@@ -1704,26 +1398,13 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.1176470588" green="0.1333333333" blue="0.23529411759999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <viewLayoutGuide key="safeArea" id="j7d-qo-BRP"/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="xu1-NY-vwW" appends="YES" id="kH9-yv-LW5"/>
                                         </connections>
                                     </view>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="81V-82-4xs">
-                                        <rect key="frame" x="310" y="31" width="49" height="31"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <connections>
-                                            <action selector="activeChange:" destination="lHo-y3-jlH" eventType="valueChanged" id="JnT-mc-KbH"/>
-                                        </connections>
-                                    </switch>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Active" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q9D-4p-0EM">
-                                        <rect key="frame" x="254" y="36" width="48" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AYc-0Z-bic" userLabel="Brightness View">
-                                        <rect key="frame" x="301" y="146" width="66" height="30"/>
+                                        <rect key="frame" x="294" y="66" width="66" height="30"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KN1-2t-cSP" userLabel="brightnessLabel">
@@ -1737,25 +1418,63 @@
                                         <color key="backgroundColor" red="0.1176470588" green="0.1333333333" blue="0.23529411759999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="81V-82-4xs">
+                                        <rect key="frame" x="313" y="122" width="49" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="activeChange:" destination="lHo-y3-jlH" eventType="valueChanged" id="JnT-mc-KbH"/>
+                                        </connections>
+                                    </switch>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Active" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q9D-4p-0EM">
+                                        <rect key="frame" x="257" y="127" width="48" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IhO-S3-teP" userLabel="LightSceneView">
+                                        <rect key="frame" x="0.0" y="170" width="375" height="489"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
                                 </subviews>
                                 <gestureRecognizers/>
                             </view>
+                            <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="93j-Jf-NWV" userLabel="Exit Button">
+                                <rect key="frame" x="18" y="38" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="ic_close"/>
+                                <connections>
+                                    <action selector="returnToPreviousView:" destination="lHo-y3-jlH" eventType="touchUpInside" id="BeX-eP-XyM"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sensor" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mcx-Dv-0wX">
+                                <rect key="frame" x="8" y="43" width="359" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GZr-KT-hRJ" userLabel="Save Button">
+                                <rect key="frame" x="329" y="38" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="ic_save"/>
+                                <connections>
+                                    <action selector="saveSchedule:" destination="lHo-y3-jlH" eventType="touchUpInside" id="QmT-v2-5D7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="8r3-zn-cXG"/>
                     </view>
                     <connections>
                         <outlet property="brightnessLabel" destination="KN1-2t-cSP" id="95y-N4-lkR"/>
-                        <outlet property="dayTimeLabel" destination="IuV-Wn-5sz" id="MCN-Se-k49"/>
                         <outlet property="editView" destination="jfu-XC-Xfe" id="CGg-aZ-NM9"/>
                         <outlet property="endTimeLabel" destination="6bT-o5-dYo" id="NH5-XG-YOw"/>
-                        <outlet property="eveningLabel" destination="iUY-2B-pAC" id="DgN-oT-dA6"/>
-                        <outlet property="nightTimeLabel" destination="PNI-Cn-yph" id="rlp-D0-CSi"/>
+                        <outlet property="lightScenesBaseView" destination="IhO-S3-teP" id="1XJ-1g-Jd7"/>
+                        <outlet property="saveButton" destination="GZr-KT-hRJ" id="BBy-WN-hMc"/>
                         <outlet property="sensorActive" destination="81V-82-4xs" id="bJJ-V4-ShC"/>
-                        <outlet property="sensorName" destination="511-0V-2qM" id="aED-yw-XMA"/>
                         <outlet property="startTimeLabel" destination="HfF-Ka-lZ0" id="esb-eO-9WT"/>
-                        <outlet property="sunRiseLabel" destination="uj3-mT-663" id="5m6-gR-qso"/>
-                        <outlet property="sunSetLabel" destination="f3z-CW-Uvw" id="KyQ-Q1-Eaa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xqE-M6-UfF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1795,32 +1514,21 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2226" y="-1640"/>
+            <point key="canvasLocation" x="2173.5999999999999" y="787.6847290640394"/>
         </scene>
     </scenes>
     <resources>
         <image name="background_2" width="1280" height="800"/>
-        <image name="daytime_image" width="302" height="280"/>
-        <image name="evening_image" width="1200" height="900"/>
         <image name="ic_ai" width="400" height="400"/>
-        <image name="ic_background" width="450" height="675"/>
         <image name="ic_circle" width="32" height="32"/>
         <image name="ic_close" width="32" height="32"/>
-        <image name="ic_daytime" width="75" height="75"/>
-        <image name="ic_evening" width="75" height="75"/>
         <image name="ic_lights_off" width="50" height="50"/>
         <image name="ic_line" width="32" height="32"/>
         <image name="ic_logo" width="1447" height="1447"/>
         <image name="ic_menu" width="75" height="75"/>
         <image name="ic_more" width="96" height="96"/>
-        <image name="ic_night" width="75" height="75"/>
         <image name="ic_save" width="75" height="75"/>
         <image name="ic_success" width="128" height="128"/>
-        <image name="ic_sunrise" width="75" height="75"/>
-        <image name="ic_sunset" width="75" height="75"/>
         <image name="ic_webcam" width="75" height="75"/>
-        <image name="nighttime_image" width="510" height="340"/>
-        <image name="sunrise_image" width="767" height="431"/>
-        <image name="sunset_image" width="600" height="445"/>
     </resources>
 </document>

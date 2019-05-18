@@ -1,14 +1,14 @@
 //
-//  SensorsRows.swift
+//  MotionSensorsData.swift
 //
-//  Created by John Pillar on 30/09/2018
+//  Created by John Pillar on 17/05/2019
 //  Copyright (c) . All rights reserved.
 //
 
 import Foundation
 import SwiftyJSON
 
-public final class SensorsRows: NSCoding {
+public final class MotionSensorsData: NSCoding {
 
   // MARK: Declaration for string constants to be used to decode and also serialize.
   private struct SerializationKeys {

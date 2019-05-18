@@ -1,14 +1,14 @@
 //
-//  RoomTempSensorBaseClass.swift
+//  MotionSensorsBaseClass.swift
 //
-//  Created by John Pillar on 18/02/2019
+//  Created by John Pillar on 17/05/2019
 //  Copyright (c) . All rights reserved.
 //
 
 import Foundation
 import SwiftyJSON
 
-public final class RoomTempSensorBaseClass: NSCoding {
+public final class MotionSensorsBaseClass: NSCoding {
 
   // MARK: Declaration for string constants to be used to decode and also serialize.
   private struct SerializationKeys {
@@ -16,7 +16,7 @@ public final class RoomTempSensorBaseClass: NSCoding {
   }
 
   // MARK: Properties
-  public var data: RoomTempSensorData?
+  public var data: [MotionSensorsData]?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -31,7 +31,7 @@ public final class RoomTempSensorBaseClass: NSCoding {
   ///
   /// - parameter json: JSON object from SwiftyJSON.
   public required init(json: JSON) {
-    data = RoomTempSensorData(json: json[SerializationKeys.data])
+    if let items = json[SerializationKeys.data].array { data = items.map { MotionSensorsData(json: $0) } }
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -39,13 +39,13 @@ public final class RoomTempSensorBaseClass: NSCoding {
   /// - returns: A Key value pair containing all valid values in the object.
   public func dictionaryRepresentation() -> [String: Any] {
     var dictionary: [String: Any] = [:]
-    if let value = data { dictionary[SerializationKeys.data] = value.dictionaryRepresentation() }
+    if let value = data { dictionary[SerializationKeys.data] = value.map { $0.dictionaryRepresentation() } }
     return dictionary
   }
 
   // MARK: NSCoding Protocol
   required public init(coder aDecoder: NSCoder) {
-    self.data = aDecoder.decodeObject(forKey: SerializationKeys.data) as? RoomTempSensorData
+    self.data = aDecoder.decodeObject(forKey: SerializationKeys.data) as? [MotionSensorsData]
   }
 
   public func encode(with aCoder: NSCoder) {

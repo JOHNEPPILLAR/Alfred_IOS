@@ -1,32 +1,32 @@
 PODS:
-  - Charts (3.2.2):
-    - Charts/Core (= 3.2.2)
-  - Charts/Core (3.2.2)
-  - MaterialComponents/Ink (81.0.0):
+  - Charts (3.3.0):
+    - Charts/Core (= 3.3.0)
+  - Charts/Core (3.3.0)
+  - MaterialComponents/Ink (84.1.1):
     - MaterialComponents/private/Math
-  - MaterialComponents/Palettes (81.0.0)
-  - MaterialComponents/private/Application (81.0.0)
-  - MaterialComponents/private/Math (81.0.0)
-  - MaterialComponents/private/ThumbTrack (81.0.0):
+  - MaterialComponents/Palettes (84.1.1)
+  - MaterialComponents/private/Application (84.1.1)
+  - MaterialComponents/private/Math (84.1.1)
+  - MaterialComponents/private/ThumbTrack (84.1.1):
     - MaterialComponents/Ink
     - MaterialComponents/private/Math
     - MaterialComponents/ShadowElevations
     - MaterialComponents/ShadowLayer
     - MaterialComponents/Typography
     - MDFInternationalization
-  - MaterialComponents/ShadowElevations (81.0.0)
-  - MaterialComponents/ShadowLayer (81.0.0):
+  - MaterialComponents/ShadowElevations (84.1.1)
+  - MaterialComponents/ShadowLayer (84.1.1):
     - MaterialComponents/ShadowElevations
-  - MaterialComponents/Slider (81.0.0):
+  - MaterialComponents/Slider (84.1.1):
     - MaterialComponents/Palettes
     - MaterialComponents/private/ThumbTrack
     - MaterialComponents/ShadowElevations
-  - MaterialComponents/Typography (81.0.0):
+  - MaterialComponents/Typography (84.1.1):
     - MaterialComponents/private/Application
     - MaterialComponents/private/Math
   - MDFInternationalization (2.0.0)
   - SVProgressHUD (2.2.5)
-  - SwiftyJSON (4.3.0)
+  - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
   - Charts
@@ -43,11 +43,11 @@ SPEC REPOS:
     - SwiftyJSON
 
 SPEC CHECKSUMS:
-  Charts: f69cf0518b6d1d62608ca504248f1bbe0b6ae77e
-  MaterialComponents: 9ef60e1abd89463ac018ca6d354be41fd5df059a
+  Charts: ec1f57f9340054155691e84d4544a1d239d382c5
+  MaterialComponents: 85832ad0a4a7c0113f67330fa135b9702aae7f93
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
 PODFILE CHECKSUM: 2fa7d3a27cecbde6ba253135b42b0526c5920b0a
 

@@ -11,7 +11,7 @@ import SwiftyJSON
 
 // MARK: Delegate callback functions
 protocol SensorControllerDelegate: class {
-    func sensorDidRecieveDataUpdate(data: [SensorsData])
+    func sensorDidRecieveDataUpdate(data: [MotionSensorsData])
     func didFailDataUpdateWithError(displayMsg: Bool)
     func sensorSaved()
 }
@@ -21,29 +21,27 @@ class SensorController: NSObject {
     weak var delegate: SensorControllerDelegate?
     
     // Sensor data
-    func getSensorData() {
-        /*
+    func getSensorData(roomID: Int) {
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
-        let request = getAPIHeaderData(url: "settings/listSensors")
+        let request = getAPIHeaderData(url: "sensors/get?sensorID=" + "\(roomID)")
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
                 let responseJSON = try? JSON(data: data!)
-                let data = [SensorsBaseClass(json: responseJSON!)] // Update data store
-                self.delegate?.sensorDidRecieveDataUpdate(data: [data[0].data!]) // Let the View controller know to show the data
+                let data = [MotionSensorsBaseClass(json: responseJSON!)] // Update data store
+                self.delegate?.sensorDidRecieveDataUpdate(data: data[0].data!) // Let the View controller know to show the data
             } else {
-                self.delegate?.didFailDataUpdateWithError(displayMsg: false) // Let the View controller know there was an error
+                self.delegate?.didFailDataUpdateWithError(displayMsg: true) // Let the View controller know there was an error
             }
         })
         task.resume()
-        */
     }
     
-    func saveSensorData(body: SensorsRows) {
+    func saveSensorData(body: MotionSensorsData) {
         let configuration = URLSessionConfiguration.ephemeral
         let bodyDictionary = body.dictionaryRepresentation()
         let APIbody = try! JSONSerialization.data(withJSONObject: bodyDictionary)
-        let request = putAPIHeaderData(url: "settings/saveSensor", body: APIbody)
+        let request = putAPIHeaderData(url: "sensors/save", body: APIbody)
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {

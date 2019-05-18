@@ -208,3 +208,13 @@ extension UIButton {
     }
 
 }
+
+extension UIView {
+    func moveY(y:CGFloat) {
+        let xPosition = self.frame.origin.x
+        let height = self.frame.height
+        let width = self.frame.width
+        self.frame = CGRect(x: xPosition, y: y, width: width, height: height)
+    }
+}
+

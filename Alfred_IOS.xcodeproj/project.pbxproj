@@ -47,29 +47,27 @@
 		E81F0C1F21D6CF6800F9FD0C /* CommuteJourneys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81F0C1B21D6CF6800F9FD0C /* CommuteJourneys.swift */; };
 		E82C11C120F1548C00A53A63 /* CommuteStatusData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82C11BF20F1548C00A53A63 /* CommuteStatusData.swift */; };
 		E82C11C220F1548C00A53A63 /* CommuteStatusBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82C11C020F1548C00A53A63 /* CommuteStatusBaseClass.swift */; };
+		E8349801228E90710009C6BD /* SchedulesBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83497FF228E90710009C6BD /* SchedulesBaseClass.swift */; };
+		E8349802228E90710009C6BD /* SchedulesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8349800228E90710009C6BD /* SchedulesData.swift */; };
+		E8349805228E921E0009C6BD /* RoomSensorBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8349803228E921E0009C6BD /* RoomSensorBaseClass.swift */; };
+		E8349806228E921E0009C6BD /* RoomSensorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8349804228E921E0009C6BD /* RoomSensorData.swift */; };
+		E834980A228E98EF0009C6BD /* MotionSensorsBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8349808228E98EF0009C6BD /* MotionSensorsBaseClass.swift */; };
+		E834980B228E98EF0009C6BD /* MotionSensorsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8349809228E98EF0009C6BD /* MotionSensorsData.swift */; };
 		E841FE252218BCD2009D1A82 /* RoomsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E841FE242218BCD2009D1A82 /* RoomsController.swift */; };
 		E84566D32210BEA900CF93DF /* HouseWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84566D12210BEA900CF93DF /* HouseWeatherData.swift */; };
 		E84566D42210BEA900CF93DF /* HouseWeatherBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84566D22210BEA900CF93DF /* HouseWeatherBaseClass.swift */; };
 		E845B9C1214E980900A75D96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E845B9C0214E980900A75D96 /* Main.storyboard */; };
-		E868D1DF2161640F000DC024 /* SensorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868D1DE2161640F000DC024 /* SensorsViewController.swift */; };
-		E868D1E1216165F8000DC024 /* SensorsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868D1E0216165F8000DC024 /* SensorsController.swift */; };
-		E868D1E6216174F9000DC024 /* SensorsRows.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868D1E3216174F9000DC024 /* SensorsRows.swift */; };
-		E868D1E7216174F9000DC024 /* SensorsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868D1E4216174F9000DC024 /* SensorsData.swift */; };
-		E868D1E8216174F9000DC024 /* SensorsBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868D1E5216174F9000DC024 /* SensorsBaseClass.swift */; };
 		E868D1EA21620E16000DC024 /* SensorsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868D1E921620E16000DC024 /* SensorsTableViewCell.swift */; };
 		E868D1EC2162236F000DC024 /* SensorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868D1EB2162236F000DC024 /* SensorController.swift */; };
 		E868D1EE2162264A000DC024 /* SensorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868D1ED2162264A000DC024 /* SensorViewController.swift */; };
 		E87277B52145AD7600FE3FC3 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87277B42145AD7600FE3FC3 /* ScheduleTableViewCell.swift */; };
-		E877C4FA221AD783007D1A79 /* RoomTempSensorBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E877C4F6221AD782007D1A79 /* RoomTempSensorBaseClass.swift */; };
-		E877C4FC221AD783007D1A79 /* RoomTempSensorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E877C4F8221AD783007D1A79 /* RoomTempSensorData.swift */; };
-		E877C4FD221AD783007D1A79 /* RoomTempSensorRows.swift in Sources */ = {isa = PBXBuildFile; fileRef = E877C4F9221AD783007D1A79 /* RoomTempSensorRows.swift */; };
 		E89E162A221C68860088AC62 /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89E1629221C68860088AC62 /* Slide.swift */; };
 		E89E162E221C68F90088AC62 /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = E89E162D221C68F90088AC62 /* Slide.xib */; };
 		E89F4C9B21F50AB9000873E8 /* RoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89F4C9A21F50AB9000873E8 /* RoomsViewController.swift */; };
 		E8B63AB9214D96DA00EBF1A1 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B63AB8214D96DA00EBF1A1 /* ScheduleViewController.swift */; };
 		E8B63ABB214D980800EBF1A1 /* ScheduleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B63ABA214D980800EBF1A1 /* ScheduleController.swift */; };
-		E8F82C382247A7A800BF09F3 /* SchedulesBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F82C362247A7A800BF09F3 /* SchedulesBaseClass.swift */; };
-		E8F82C392247A7A800BF09F3 /* SchedulesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F82C372247A7A800BF09F3 /* SchedulesData.swift */; };
+		E8CB30C522904CB500168CAC /* LightScenes.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8CB30C422904CB500168CAC /* LightScenes.xib */; };
+		E8CB30C722904EF800168CAC /* LightScenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CB30C622904EF800168CAC /* LightScenes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,29 +118,27 @@
 		E81F0C1B21D6CF6800F9FD0C /* CommuteJourneys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteJourneys.swift; sourceTree = "<group>"; };
 		E82C11BF20F1548C00A53A63 /* CommuteStatusData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteStatusData.swift; sourceTree = "<group>"; };
 		E82C11C020F1548C00A53A63 /* CommuteStatusBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommuteStatusBaseClass.swift; sourceTree = "<group>"; };
+		E83497FF228E90710009C6BD /* SchedulesBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchedulesBaseClass.swift; sourceTree = "<group>"; };
+		E8349800228E90710009C6BD /* SchedulesData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchedulesData.swift; sourceTree = "<group>"; };
+		E8349803228E921E0009C6BD /* RoomSensorBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSensorBaseClass.swift; sourceTree = "<group>"; };
+		E8349804228E921E0009C6BD /* RoomSensorData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSensorData.swift; sourceTree = "<group>"; };
+		E8349808228E98EF0009C6BD /* MotionSensorsBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionSensorsBaseClass.swift; sourceTree = "<group>"; };
+		E8349809228E98EF0009C6BD /* MotionSensorsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionSensorsData.swift; sourceTree = "<group>"; };
 		E841FE242218BCD2009D1A82 /* RoomsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsController.swift; sourceTree = "<group>"; };
 		E84566D12210BEA900CF93DF /* HouseWeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseWeatherData.swift; sourceTree = "<group>"; };
 		E84566D22210BEA900CF93DF /* HouseWeatherBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseWeatherBaseClass.swift; sourceTree = "<group>"; };
 		E845B9C0214E980900A75D96 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		E868D1DE2161640F000DC024 /* SensorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorsViewController.swift; sourceTree = "<group>"; };
-		E868D1E0216165F8000DC024 /* SensorsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorsController.swift; sourceTree = "<group>"; };
-		E868D1E3216174F9000DC024 /* SensorsRows.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorsRows.swift; sourceTree = "<group>"; };
-		E868D1E4216174F9000DC024 /* SensorsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorsData.swift; sourceTree = "<group>"; };
-		E868D1E5216174F9000DC024 /* SensorsBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorsBaseClass.swift; sourceTree = "<group>"; };
 		E868D1E921620E16000DC024 /* SensorsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorsTableViewCell.swift; sourceTree = "<group>"; };
 		E868D1EB2162236F000DC024 /* SensorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorController.swift; sourceTree = "<group>"; };
 		E868D1ED2162264A000DC024 /* SensorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorViewController.swift; sourceTree = "<group>"; };
 		E87277B42145AD7600FE3FC3 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
-		E877C4F6221AD782007D1A79 /* RoomTempSensorBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomTempSensorBaseClass.swift; sourceTree = "<group>"; };
-		E877C4F8221AD783007D1A79 /* RoomTempSensorData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomTempSensorData.swift; sourceTree = "<group>"; };
-		E877C4F9221AD783007D1A79 /* RoomTempSensorRows.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomTempSensorRows.swift; sourceTree = "<group>"; };
 		E89E1629221C68860088AC62 /* Slide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
 		E89E162D221C68F90088AC62 /* Slide.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Slide.xib; sourceTree = "<group>"; };
 		E89F4C9A21F50AB9000873E8 /* RoomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsViewController.swift; sourceTree = "<group>"; };
 		E8B63AB8214D96DA00EBF1A1 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		E8B63ABA214D980800EBF1A1 /* ScheduleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleController.swift; sourceTree = "<group>"; };
-		E8F82C362247A7A800BF09F3 /* SchedulesBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchedulesBaseClass.swift; sourceTree = "<group>"; };
-		E8F82C372247A7A800BF09F3 /* SchedulesData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchedulesData.swift; sourceTree = "<group>"; };
+		E8CB30C422904CB500168CAC /* LightScenes.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LightScenes.xib; sourceTree = "<group>"; };
+		E8CB30C622904EF800168CAC /* LightScenes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightScenes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +211,8 @@
 				0A7DADE01F4A2BF9002FEE9F /* HueColorHelper.swift */,
 				0A04167C20C1CBDC009B47ED /* ColorSlider.swift */,
 				E80EEF2F2220518200A9EDAB /* BalloonMarker.swift */,
+				E8CB30C422904CB500168CAC /* LightScenes.xib */,
+				E8CB30C622904EF800168CAC /* LightScenes.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -285,8 +283,6 @@
 		0A256EC4206F93C3008C5283 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E868D1DE2161640F000DC024 /* SensorsViewController.swift */,
-				E868D1ED2162264A000DC024 /* SensorViewController.swift */,
 				E811EB0520DFB47C00C3B62E /* SettingsViewController.swift */,
 			);
 			path = View;
@@ -315,8 +311,6 @@
 		0A256ECE206F96DB008C5283 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E868D1E0216165F8000DC024 /* SensorsController.swift */,
-				E868D1EB2162236F000DC024 /* SensorController.swift */,
 				E811EB0920DFCDF200C3B62E /* SettingsController.swift */,
 			);
 			path = Controller;
@@ -343,6 +337,7 @@
 		0A69FB7F1F10C25C00563A69 /* Alfred_IOS */ = {
 			isa = PBXGroup;
 			children = (
+				E834980C228F0FD30009C6BD /* Edit Motion Sensor */,
 				E8F82C3A2248350700BF09F3 /* Edit Schedule */,
 				E89F4C9921F50A9A000873E8 /* Rooms */,
 				E845B9C0214E980900A75D96 /* Main.storyboard */,
@@ -379,7 +374,6 @@
 		0A7F509D2064401E0080445B /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				E8BC4F7C20E2C384002C25DC /* Model */,
 				0A256EC4206F93C3008C5283 /* View */,
 				0A256ECE206F96DB008C5283 /* Controller */,
 			);
@@ -414,21 +408,46 @@
 			path = Commute;
 			sourceTree = "<group>";
 		};
-		E868D1E2216174E4000DC024 /* Sensors */ = {
+		E8349807228E98D90009C6BD /* MotionSensors */ = {
 			isa = PBXGroup;
 			children = (
-				E868D1E5216174F9000DC024 /* SensorsBaseClass.swift */,
-				E868D1E4216174F9000DC024 /* SensorsData.swift */,
-				E868D1E3216174F9000DC024 /* SensorsRows.swift */,
+				E8349808228E98EF0009C6BD /* MotionSensorsBaseClass.swift */,
+				E8349809228E98EF0009C6BD /* MotionSensorsData.swift */,
 			);
-			path = Sensors;
+			path = MotionSensors;
+			sourceTree = "<group>";
+		};
+		E834980C228F0FD30009C6BD /* Edit Motion Sensor */ = {
+			isa = PBXGroup;
+			children = (
+				E834980E228F0FF10009C6BD /* Controller */,
+				E834980D228F0FE20009C6BD /* View */,
+			);
+			path = "Edit Motion Sensor";
+			sourceTree = "<group>";
+		};
+		E834980D228F0FE20009C6BD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E868D1ED2162264A000DC024 /* SensorViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E834980E228F0FF10009C6BD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E868D1EB2162236F000DC024 /* SensorController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		E877C4F5221AD774007D1A79 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E8349807228E98D90009C6BD /* MotionSensors */,
 				E8F82C352247A78800BF09F3 /* Schedules */,
-				E8F82C342247A77500BF09F3 /* RoomTemp */,
+				E8F82C342247A77500BF09F3 /* RoomSensors */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -469,29 +488,20 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		E8BC4F7C20E2C384002C25DC /* Model */ = {
+		E8F82C342247A77500BF09F3 /* RoomSensors */ = {
 			isa = PBXGroup;
 			children = (
-				E868D1E2216174E4000DC024 /* Sensors */,
+				E8349803228E921E0009C6BD /* RoomSensorBaseClass.swift */,
+				E8349804228E921E0009C6BD /* RoomSensorData.swift */,
 			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		E8F82C342247A77500BF09F3 /* RoomTemp */ = {
-			isa = PBXGroup;
-			children = (
-				E877C4F6221AD782007D1A79 /* RoomTempSensorBaseClass.swift */,
-				E877C4F8221AD783007D1A79 /* RoomTempSensorData.swift */,
-				E877C4F9221AD783007D1A79 /* RoomTempSensorRows.swift */,
-			);
-			path = RoomTemp;
+			path = RoomSensors;
 			sourceTree = "<group>";
 		};
 		E8F82C352247A78800BF09F3 /* Schedules */ = {
 			isa = PBXGroup;
 			children = (
-				E8F82C362247A7A800BF09F3 /* SchedulesBaseClass.swift */,
-				E8F82C372247A7A800BF09F3 /* SchedulesData.swift */,
+				E83497FF228E90710009C6BD /* SchedulesBaseClass.swift */,
+				E8349800228E90710009C6BD /* SchedulesData.swift */,
 			);
 			path = Schedules;
 			sourceTree = "<group>";
@@ -591,6 +601,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AE259021F70476D002C6922 /* Settings.bundle in Resources */,
+				E8CB30C522904CB500168CAC /* LightScenes.xib in Resources */,
 				E845B9C1214E980900A75D96 /* Main.storyboard in Resources */,
 				0A80C09C1F24812E0082F77C /* Alfred.plist in Resources */,
 				0A69FB8B1F10C25C00563A69 /* Assets.xcassets in Resources */,
@@ -667,13 +678,11 @@
 			files = (
 				E811EB0820DFC78000C3B62E /* SettingsCollectionViewCell.swift in Sources */,
 				E80EEF302220518200A9EDAB /* BalloonMarker.swift in Sources */,
-				E877C4FC221AD783007D1A79 /* RoomTempSensorData.swift in Sources */,
 				0A04167D20C1CBDC009B47ED /* ColorSlider.swift in Sources */,
 				0A647EE72067E8CF00F7CD1E /* RoomLightsChanged.swift in Sources */,
 				0A69FB891F10C25C00563A69 /* Alfred_IOS.xcdatamodeld in Sources */,
 				0A6A5F9B204C53D100314ECE /* HomeViewController.swift in Sources */,
 				0A69FB9F1F1160F500563A69 /* SplashViewController.swift in Sources */,
-				E8F82C392247A7A800BF09F3 /* SchedulesData.swift in Sources */,
 				0A46C5FB1F56D58300ADB758 /* LightsTableViewCell.swift in Sources */,
 				0A647EE22067E8CF00F7CD1E /* RoomLightsActionAttributes.swift in Sources */,
 				E8B63ABB214D980800EBF1A1 /* ScheduleController.swift in Sources */,
@@ -682,27 +691,26 @@
 				0A7ECE1F1FAE437B002AF233 /* CommuteViewController.swift in Sources */,
 				E89E162A221C68860088AC62 /* Slide.swift in Sources */,
 				E868D1EA21620E16000DC024 /* SensorsTableViewCell.swift in Sources */,
-				E868D1E1216165F8000DC024 /* SensorsController.swift in Sources */,
 				E84566D42210BEA900CF93DF /* HouseWeatherBaseClass.swift in Sources */,
 				0A9EDC662052639C001277EC /* CurrentWeatherBaseClass.swift in Sources */,
-				E8F82C382247A7A800BF09F3 /* SchedulesBaseClass.swift in Sources */,
 				E84566D32210BEA900CF93DF /* HouseWeatherData.swift in Sources */,
 				0A6AD7AC206E65C200491B3E /* CommuteTableViewCell.swift in Sources */,
 				0A69FB811F10C25C00563A69 /* AppDelegate.swift in Sources */,
-				E877C4FA221AD783007D1A79 /* RoomTempSensorBaseClass.swift in Sources */,
 				E89F4C9B21F50AB9000873E8 /* RoomsViewController.swift in Sources */,
-				E868D1E8216174F9000DC024 /* SensorsBaseClass.swift in Sources */,
-				E868D1DF2161640F000DC024 /* SensorsViewController.swift in Sources */,
+				E8349802228E90710009C6BD /* SchedulesData.swift in Sources */,
+				E8349806228E921E0009C6BD /* RoomSensorData.swift in Sources */,
 				0A8AF14A1F24EF030064894F /* Helpers.swift in Sources */,
+				E834980B228E98EF0009C6BD /* MotionSensorsData.swift in Sources */,
 				0A647EE62067E8CF00F7CD1E /* RoomLightsState.swift in Sources */,
-				E877C4FD221AD783007D1A79 /* RoomTempSensorRows.swift in Sources */,
 				E82C11C120F1548C00A53A63 /* CommuteStatusData.swift in Sources */,
 				0A0463F11F38E99B004A738D /* ColorViewController.swift in Sources */,
 				E87277B52145AD7600FE3FC3 /* ScheduleTableViewCell.swift in Sources */,
 				0A6A5F9F204C6A5800314ECE /* HomeController.swift in Sources */,
 				E811EB0620DFB47C00C3B62E /* SettingsViewController.swift in Sources */,
 				0A1BFDB3205315B400B729F8 /* CommuteController.swift in Sources */,
-				E868D1E6216174F9000DC024 /* SensorsRows.swift in Sources */,
+				E834980A228E98EF0009C6BD /* MotionSensorsBaseClass.swift in Sources */,
+				E8349801228E90710009C6BD /* SchedulesBaseClass.swift in Sources */,
+				E8349805228E921E0009C6BD /* RoomSensorBaseClass.swift in Sources */,
 				0A647EDF2067E8CF00F7CD1E /* RoomLightsAction.swift in Sources */,
 				E811EB0A20DFCDF200C3B62E /* SettingsController.swift in Sources */,
 				E82C11C220F1548C00A53A63 /* CommuteStatusBaseClass.swift in Sources */,
@@ -718,10 +726,10 @@
 				E8B63AB9214D96DA00EBF1A1 /* ScheduleViewController.swift in Sources */,
 				0A7DADE11F4A2BF9002FEE9F /* HueColorHelper.swift in Sources */,
 				E81F0C1F21D6CF6800F9FD0C /* CommuteJourneys.swift in Sources */,
-				E868D1E7216174F9000DC024 /* SensorsData.swift in Sources */,
 				E81F0C1D21D6CF6800F9FD0C /* CommuteData.swift in Sources */,
 				0A647EE12067E8CF00F7CD1E /* RoomLightsData.swift in Sources */,
 				0AE259041F704A0A002C6922 /* SettingsBundleHelper.swift in Sources */,
+				E8CB30C722904EF800168CAC /* LightScenes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
