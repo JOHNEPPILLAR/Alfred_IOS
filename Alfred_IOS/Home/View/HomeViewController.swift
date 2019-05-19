@@ -301,9 +301,9 @@ extension HomeViewController: HomeControllerDelegate {
             if MainBedRoom.count > 0 {
                 self.mainBedRoomTemp.text = String(format: "%.0f", MainBedRoom[0].temperature?.rounded(.up) ?? 0)
                 switch MainBedRoom[0].air {
-                    case 2: self.mainBedRoomAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_green")
-                    case 3: self.mainBedRoomAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_yellow")
-                    case 4: self.mainBedRoomAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_red")
+                    case 1,2,3: self.mainBedRoomAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_green")
+                    case 4,5,6: self.mainBedRoomAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_yellow")
+                    case 7,8,9: self.mainBedRoomAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_red")
                 case .none:
                     self.mainBedRoomAirQualityIcon.image = nil
                 case .some(_):
