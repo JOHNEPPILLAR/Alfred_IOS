@@ -368,7 +368,7 @@ extension RoomsViewController: RoomsControllerDelegate {
             AirQualitySlide.chartTitleLabel.text = "Air Quality"
             // AirQualitySlide.chartView.leftAxis.axisMaximum = 4
             // AirQualitySlide.chartView.leftAxis.axisMinimum = 0
-            AirQualitySlide.chartView.leftAxis.labelCount = 4
+            // AirQualitySlide.chartView.leftAxis.labelCount = 4
             
             if (chartData[0].data?.count != nil) {
                 let chartHumData = (0..<chartData[0].data!.count).map { (i) -> ChartDataEntry in
