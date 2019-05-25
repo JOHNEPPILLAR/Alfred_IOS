@@ -31,10 +31,10 @@ class RoomsViewController: UIViewController, UIScrollViewDelegate {
             
             // Resize the views based on table rows
             timersTableView.sizeToFit()
-            timersTableView.frame.size.height = timersTableView.contentSize.height
-            timersView.frame.size.height = timersTableView.contentSize.height
+//            timersTableView.frame.size.height = timersTableView.contentSize.height
+//            timersView.frame.size.height = timersTableView.contentSize.height
             timersBackgroundView.frame.size.height = timersTableView.contentSize.height + 40
-            
+
             let newStartPosition = timersBackgroundView.frame.origin.y + timersBackgroundView.frame.size.height + 20
             sensorBackgroundView.moveY(y: newStartPosition)
             sensorsView.moveY(y: newStartPosition)
@@ -50,9 +50,9 @@ class RoomsViewController: UIViewController, UIScrollViewDelegate {
             if MotionSensorDataArray.count > 0 {
                 // Resize the views based on table rows
                 sensorsTableView.sizeToFit()
-                sensorsTableView.frame.size.height = sensorsTableView.contentSize.height
+                // sensorsTableView.frame.size.height = sensorsTableView.contentSize.height
                 sensorsView.frame.size.height = sensorsTableView.contentSize.height
-                sensorBackgroundView.frame.size.height = sensorsTableView.contentSize.height + 40
+                sensorBackgroundView.frame.size.height = sensorsTableView.contentSize.height + 10
             } else {
                 sensorsView.isHidden = true
                 sensorBackgroundView.isHidden = true
@@ -325,10 +325,6 @@ extension RoomsViewController: RoomsControllerDelegate {
                 let val = chartData[0].data![i].temperature?.rounded(.up)
                 return ChartDataEntry(x: Double(i), y: Double(val ?? 0))
             }
-            
-            // TemperatureSlide.chartView.leftAxis.axisMaximum = 45
-            // TemperatureSlide.chartView.leftAxis.axisMinimum = -10
-            
             chartResultsData = formatChart(chartData: chartTempData)
             lineChartData.addDataSet(chartResultsData)
             TemperatureSlide.chartView.data = lineChartData
@@ -344,9 +340,6 @@ extension RoomsViewController: RoomsControllerDelegate {
         if roomsWithHumidity.contains(where: { $0 == roomID }) {
             let HumiditySlide = createSlide()
             HumiditySlide.chartTitleLabel.text = "Humidity"
-            // HumiditySlide.chartView.leftAxis.axisMaximum = 100
-            // HumiditySlide.chartView.leftAxis.axisMinimum = 0
-
             if (chartData[0].data?.count != nil) {
                 let chartHumData = (0..<chartData[0].data!.count).map { (i) -> ChartDataEntry in
                     let val = chartData[0].data![i].humidity?.rounded(.up)
@@ -366,16 +359,13 @@ extension RoomsViewController: RoomsControllerDelegate {
         if roomsWithAir.contains(where: { $0 == roomID }) {
             let AirQualitySlide = createSlide()
             AirQualitySlide.chartTitleLabel.text = "Air Quality"
-            // AirQualitySlide.chartView.leftAxis.axisMaximum = 4
-            // AirQualitySlide.chartView.leftAxis.axisMinimum = 0
-            // AirQualitySlide.chartView.leftAxis.labelCount = 4
             
             if (chartData[0].data?.count != nil) {
-                let chartHumData = (0..<chartData[0].data!.count).map { (i) -> ChartDataEntry in
+                let chartAirData = (0..<chartData[0].data!.count).map { (i) -> ChartDataEntry in
                     let val = chartData[0].data![i].airQuality
                     return ChartDataEntry(x: Double(i), y: Double(val ?? 0))
                 }
-                chartResultsData = formatChart(chartData: chartHumData)
+                chartResultsData = formatChart(chartData: chartAirData)
                 lineChartData.addDataSet(chartResultsData)
                 AirQualitySlide.chartView.data = lineChartData
                 // Tidy up vars
@@ -389,15 +379,12 @@ extension RoomsViewController: RoomsControllerDelegate {
         if roomsWithNitrogen.contains(where: { $0 == roomID }) {
             let nitrogenSlide = createSlide()
             nitrogenSlide.chartTitleLabel.text = "Nitrogen"
-            // nitrogenSlide.chartView.leftAxis.axisMaximum = 10
-            // nitrogenSlide.chartView.leftAxis.axisMinimum = 0
-            
             if (chartData[0].data?.count != nil) {
-                let chartHumData = (0..<chartData[0].data!.count).map { (i) -> ChartDataEntry in
+                let chartNitData = (0..<chartData[0].data!.count).map { (i) -> ChartDataEntry in
                     let val = chartData[0].data![i].nitrogen
                     return ChartDataEntry(x: Double(i), y: Double(val ?? 0))
                 }
-                chartResultsData = formatChart(chartData: chartHumData)
+                chartResultsData = formatChart(chartData: chartNitData)
                 lineChartData.addDataSet(chartResultsData)
                 nitrogenSlide.chartView.data = lineChartData
                 // Tidy up vars
@@ -411,15 +398,12 @@ extension RoomsViewController: RoomsControllerDelegate {
         if roomsWithCO2.contains(where: { $0 == roomID }) {
             let CO2Slide = createSlide()
             CO2Slide.chartTitleLabel.text = "CO2"
-            // CO2Slide.chartView.leftAxis.axisMaximum = 2000
-            // CO2Slide.chartView.leftAxis.axisMinimum = 0
-            
             if (chartData[0].data?.count != nil) {
-                let chartHumData = (0..<chartData[0].data!.count).map { (i) -> ChartDataEntry in
+                let chartCo2Data = (0..<chartData[0].data!.count).map { (i) -> ChartDataEntry in
                     let val = chartData[0].data![i].co2?.rounded(.up)
                     return ChartDataEntry(x: Double(i), y: Double(val ?? 0))
                 }
-                chartResultsData = formatChart(chartData: chartHumData)
+                chartResultsData = formatChart(chartData: chartCo2Data)
                 lineChartData.addDataSet(chartResultsData)
                 CO2Slide.chartView.data = lineChartData
                 // Tidy up vars
@@ -433,15 +417,12 @@ extension RoomsViewController: RoomsControllerDelegate {
         if roomsWithBattery.contains(where: { $0 == roomID }) {
             let BatterySlide = createSlide()
             BatterySlide.chartTitleLabel.text = "Battery"
-            // BatterySlide.chartView.leftAxis.axisMaximum = 100
-            // BatterySlide.chartView.leftAxis.axisMinimum = 0
-            
             if (chartData[0].data?.count != nil) {
-                let chartHumData = (0..<chartData[0].data!.count).map { (i) -> ChartDataEntry in
+                let chartBatData = (0..<chartData[0].data!.count).map { (i) -> ChartDataEntry in
                     let val = chartData[0].data![i].battery!
                     return ChartDataEntry(x: Double(i), y: Double(val) ?? 0)
                 }
-                chartResultsData = formatChart(chartData: chartHumData)
+                chartResultsData = formatChart(chartData: chartBatData)
                 lineChartData.addDataSet(chartResultsData)
                 BatterySlide.chartView.data = lineChartData
                 // Tidy up vars

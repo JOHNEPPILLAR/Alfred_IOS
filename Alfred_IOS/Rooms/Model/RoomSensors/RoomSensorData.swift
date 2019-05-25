@@ -18,7 +18,7 @@ public final class RoomSensorData: NSCoding {
     static let timeofday = "timeofday"
     static let co2 = "co2"
     static let nitrogen = "nitrogen"
-    static let airQuality = "airQuality"
+    static let airQuality = "air_quality"
   }
 
   // MARK: Properties
