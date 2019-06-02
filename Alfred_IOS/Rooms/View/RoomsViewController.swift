@@ -265,22 +265,24 @@ extension RoomsViewController: RoomsControllerDelegate {
     func createSlide() -> Slide {
         let baseSlide:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
         baseSlide.chartView.leftAxis.drawAxisLineEnabled = false
-        baseSlide.chartView.leftAxis.drawAxisLineEnabled = false
         baseSlide.chartView.leftAxis.drawGridLinesEnabled = false
         baseSlide.chartView.leftAxis.gridColor = NSUIColor.clear
-        baseSlide.chartView.xAxis.enabled = false
+
         baseSlide.chartView.xAxis.drawGridLinesEnabled = false
+        baseSlide.chartView.xAxis.enabled = false
+
         baseSlide.chartView.rightAxis.enabled = false
         baseSlide.chartView.backgroundColor = .clear
         baseSlide.chartView.gridBackgroundColor = .clear
         baseSlide.chartView.drawBordersEnabled = false
+
         baseSlide.chartView.setScaleEnabled(true)
         baseSlide.chartView.legend.enabled = false
         baseSlide.chartView.chartDescription?.enabled = false
         baseSlide.chartView.noDataText = "No data to display"
         baseSlide.chartView.noDataTextColor = UIColor.darkGray
         baseSlide.chartView.pinchZoomEnabled = false
-
+        
         let marker = BalloonMarker(color: UIColor.darkGray,
                                    font: .systemFont(ofSize: 12),
                                    textColor: .white,
@@ -301,6 +303,7 @@ extension RoomsViewController: RoomsControllerDelegate {
         chartResultsData.fillColor = .darkGray
         chartResultsData.drawHorizontalHighlightIndicatorEnabled = false
         chartResultsData.drawVerticalHighlightIndicatorEnabled = false
+        chartResultsData.mode = .cubicBezier
         return chartResultsData
     }
     
@@ -347,7 +350,9 @@ extension RoomsViewController: RoomsControllerDelegate {
                 }
                 chartResultsData = formatChart(chartData: chartHumData)
                 lineChartData.addDataSet(chartResultsData)
+                HumiditySlide.chartView.leftAxis.axisMinimum = 0
                 HumiditySlide.chartView.data = lineChartData
+                
                 // Tidy up vars
                 lineChartData = LineChartData()
                 chartResultsData = LineChartDataSet()
@@ -367,7 +372,25 @@ extension RoomsViewController: RoomsControllerDelegate {
                 }
                 chartResultsData = formatChart(chartData: chartAirData)
                 lineChartData.addDataSet(chartResultsData)
+
+                let ll1 = ChartLimitLine(limit: 3, label: "Low")
+                ll1.lineWidth = 2
+                ll1.lineDashLengths = [5, 5]
+                ll1.lineColor  = .darkGray
+                ll1.labelPosition = .bottomRight
+               
+                let ll2 = ChartLimitLine(limit: 6, label: "Moderate")
+                ll2.lineWidth = 2
+                ll2.lineDashLengths = [5, 5]
+                ll2.lineColor  = .yellow
+                ll2.labelPosition = .bottomRight
+                
+                AirQualitySlide.chartView.leftAxis.axisMinimum = 0
+                AirQualitySlide.chartView.leftAxis.addLimitLine(ll1)
+                AirQualitySlide.chartView.leftAxis.addLimitLine(ll2)
+                //AirQualitySlide.chartView.leftAxis.drawLimitLinesBehindDataEnabled = true
                 AirQualitySlide.chartView.data = lineChartData
+                
                 // Tidy up vars
                 lineChartData = LineChartData()
                 chartResultsData = LineChartDataSet()
@@ -386,7 +409,9 @@ extension RoomsViewController: RoomsControllerDelegate {
                 }
                 chartResultsData = formatChart(chartData: chartNitData)
                 lineChartData.addDataSet(chartResultsData)
+                nitrogenSlide.chartView.leftAxis.axisMinimum = 0
                 nitrogenSlide.chartView.data = lineChartData
+
                 // Tidy up vars
                 lineChartData = LineChartData()
                 chartResultsData = LineChartDataSet()
@@ -404,8 +429,10 @@ extension RoomsViewController: RoomsControllerDelegate {
                     return ChartDataEntry(x: Double(i), y: Double(val ?? 0))
                 }
                 chartResultsData = formatChart(chartData: chartCo2Data)
-                lineChartData.addDataSet(chartResultsData)
                 CO2Slide.chartView.data = lineChartData
+                CO2Slide.chartView.leftAxis.axisMinimum = 0
+                lineChartData.addDataSet(chartResultsData)
+
                 // Tidy up vars
                 lineChartData = LineChartData()
                 chartResultsData = LineChartDataSet()
@@ -424,11 +451,15 @@ extension RoomsViewController: RoomsControllerDelegate {
                 }
                 chartResultsData = formatChart(chartData: chartBatData)
                 lineChartData.addDataSet(chartResultsData)
+                BatterySlide.chartView.leftAxis.axisMinimum = 0
+                BatterySlide.chartView.leftAxis.axisMaximum = 100
                 BatterySlide.chartView.data = lineChartData
+                
                 // Tidy up vars
                 lineChartData = LineChartData()
                 chartResultsData = LineChartDataSet()
             }
+            
             showSlides.append(BatterySlide) // Add slide
         }
         return showSlides

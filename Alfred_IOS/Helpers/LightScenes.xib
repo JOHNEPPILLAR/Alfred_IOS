@@ -13,25 +13,25 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LightScenes" customModule="Alfred_IOS" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="361" height="319"/>
+            <rect key="frame" x="0.0" y="0.0" width="370" height="319"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DgH-Y7-22t" userLabel="Scene View" customClass="LightScene" customModule="Alfred_IOS" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="319"/>
+                    <rect key="frame" x="0.0" y="0.0" width="401" height="319"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Scenes:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJq-nM-OIk">
                             <rect key="frame" x="8" y="8" width="93" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                             <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cgw-33-A6r" userLabel="Daytime View">
-                            <rect key="frame" x="190" y="42" width="163" height="75"/>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cgw-33-A6r" userLabel="Concentrate View" customClass="RoundCornersView" customModule="Alfred_IOS" customModuleProvider="target">
+                            <rect key="frame" x="184" y="42" width="174" height="75"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CI0-Da-x5c" userLabel="Daytime View">
+                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CI0-Da-x5c" userLabel="Concentrate View" customClass="RoundCornersView" customModule="Alfred_IOS" customModuleProvider="target">
                                     <rect key="frame" x="8" y="7" width="65" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
@@ -42,25 +42,31 @@
                                     </subviews>
                                     <color key="backgroundColor" red="0.69801354410000005" green="0.91558992859999999" blue="0.93296378849999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <gestureRecognizers/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Day time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2rw-Wt-BEU">
-                                    <rect key="frame" x="73" y="17" width="90" height="40"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Concentrate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2rw-Wt-BEU">
+                                    <rect key="frame" x="80" y="17" width="94" height="40"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <gestureRecognizers/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <outletCollection property="gestureRecognizers" destination="9e0-Im-ajn" appends="YES" id="0tR-uA-9g9"/>
                             </connections>
                         </view>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zeu-mv-qeg" userLabel="Sunrise View">
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zeu-mv-qeg" userLabel="Energise View" customClass="RoundCornersView" customModule="Alfred_IOS" customModuleProvider="target">
                             <rect key="frame" x="17" y="42" width="162" height="75"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q2N-nK-iRT" userLabel="Sunrise View">
+                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q2N-nK-iRT" userLabel="Energise View" customClass="RoundCornersView" customModule="Alfred_IOS" customModuleProvider="target">
                                     <rect key="frame" x="8" y="7" width="65" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
@@ -71,25 +77,32 @@
                                     </subviews>
                                     <color key="backgroundColor" red="0.59330219029999998" green="0.81604915860000005" blue="0.9169749022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <gestureRecognizers/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Morning" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oaW-Uz-smb">
-                                    <rect key="frame" x="73" y="17" width="89" height="40"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Energise" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oaW-Uz-smb">
+                                    <rect key="frame" x="80" y="17" width="89" height="40"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <gestureRecognizers/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <outletCollection property="gestureRecognizers" destination="Kj8-8M-INW" appends="YES" id="wfx-Wm-bXT"/>
                             </connections>
                         </view>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Y6-nr-U3G" userLabel="SunSet View">
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Y6-nr-U3G" userLabel="Read View" customClass="RoundCornersView" customModule="Alfred_IOS" customModuleProvider="target">
                             <rect key="frame" x="17" y="131" width="162" height="75"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xpU-wG-mc9" userLabel="SunSet View">
+                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xpU-wG-mc9" userLabel="Read View" customClass="RoundCornersView" customModule="Alfred_IOS" customModuleProvider="target">
                                     <rect key="frame" x="8" y="7" width="65" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
@@ -100,25 +113,31 @@
                                     </subviews>
                                     <color key="backgroundColor" red="0.9437414408" green="0.90884739160000005" blue="0.76304644349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <gestureRecognizers/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sunset" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9h-s0-q8p">
-                                    <rect key="frame" x="73" y="17" width="89" height="40"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Read" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9h-s0-q8p">
+                                    <rect key="frame" x="80" y="17" width="89" height="40"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <gestureRecognizers/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <outletCollection property="gestureRecognizers" destination="Yf1-XM-HRc" appends="YES" id="Jtc-De-AiX"/>
                             </connections>
                         </view>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hQ3-cn-s53" userLabel="Evening View">
-                            <rect key="frame" x="191" y="131" width="162" height="75"/>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hQ3-cn-s53" userLabel="Relax View" customClass="RoundCornersView" customModule="Alfred_IOS" customModuleProvider="target">
+                            <rect key="frame" x="184" y="131" width="174" height="75"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="16Y-po-RB8" userLabel="Evening View">
+                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="16Y-po-RB8" userLabel="Relax View" customClass="RoundCornersView" customModule="Alfred_IOS" customModuleProvider="target">
                                     <rect key="frame" x="8" y="7" width="65" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
@@ -129,25 +148,31 @@
                                     </subviews>
                                     <color key="backgroundColor" red="0.9134494662" green="0.73211288450000001" blue="0.48654526469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <gestureRecognizers/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Evening" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTI-vR-WT5">
-                                    <rect key="frame" x="73" y="17" width="89" height="40"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Relax" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTI-vR-WT5">
+                                    <rect key="frame" x="80" y="17" width="89" height="40"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <gestureRecognizers/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <outletCollection property="gestureRecognizers" destination="vqm-CR-xt7" appends="YES" id="4w6-om-qJI"/>
                             </connections>
                         </view>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W7B-II-U9k" userLabel="Night View">
-                            <rect key="frame" x="104" y="218" width="162" height="75"/>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W7B-II-U9k" userLabel="Dimmed View" customClass="RoundCornersView" customModule="Alfred_IOS" customModuleProvider="target">
+                            <rect key="frame" x="17" y="228" width="162" height="75"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="25p-Ve-bAu" userLabel="Night View">
+                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="25p-Ve-bAu" userLabel="Dimmed View" customClass="RoundCornersView" customModule="Alfred_IOS" customModuleProvider="target">
                                     <rect key="frame" x="8" y="7" width="65" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
@@ -158,18 +183,59 @@
                                     </subviews>
                                     <color key="backgroundColor" red="0.60196679829999999" green="0.46588504310000001" blue="0.092692233619999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <gestureRecognizers/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Night time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7t-S1-pw9">
-                                    <rect key="frame" x="73" y="17" width="89" height="40"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dimmed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7t-S1-pw9">
+                                    <rect key="frame" x="80" y="17" width="89" height="40"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <gestureRecognizers/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <outletCollection property="gestureRecognizers" destination="B8K-uj-yR9" appends="YES" id="hOD-7A-dvs"/>
+                            </connections>
+                        </view>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5e5-ti-wCi" userLabel="Nightlight View" customClass="RoundCornersView" customModule="Alfred_IOS" customModuleProvider="target">
+                            <rect key="frame" x="184" y="228" width="162" height="75"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RvQ-wC-sSa" userLabel="Nightlight View" customClass="RoundCornersView" customModule="Alfred_IOS" customModuleProvider="target">
+                                    <rect key="frame" x="8" y="7" width="65" height="60"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_night" translatesAutoresizingMaskIntoConstraints="NO" id="pgr-Qd-Tda">
+                                            <rect key="frame" x="8" y="5" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.60196679829999999" green="0.46588504310000001" blue="0.092692233619999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <gestureRecognizers/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nightlight" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KCh-QY-P4a">
+                                    <rect key="frame" x="80" y="17" width="89" height="40"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <gestureRecognizers/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="uGZ-L5-cL9" appends="YES" id="Piy-C8-N0t"/>
                             </connections>
                         </view>
                     </subviews>
@@ -182,42 +248,43 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
-                <outlet property="dayTimeLabel" destination="2rw-Wt-BEU" id="rhe-vF-JBk"/>
-                <outlet property="dayTimeView" destination="cgw-33-A6r" id="P3x-Jq-lU9"/>
-                <outlet property="eveningLabel" destination="MTI-vR-WT5" id="jFu-bm-0Sd"/>
-                <outlet property="eveningView" destination="hQ3-cn-s53" id="Nbt-ZW-49e"/>
-                <outlet property="nightTimeLabel" destination="f7t-S1-pw9" id="kXY-BO-c5g"/>
-                <outlet property="nightTimeView" destination="W7B-II-U9k" id="lhF-91-2JL"/>
-                <outlet property="sunRiseLabel" destination="oaW-Uz-smb" id="u9R-g5-uOC"/>
-                <outlet property="sunRiseView" destination="Zeu-mv-qeg" id="zUm-kI-m7d"/>
-                <outlet property="sunSetLabel" destination="Z9h-s0-q8p" id="Rke-dp-3i0"/>
-                <outlet property="sunSetView" destination="1Y6-nr-U3G" id="5QC-v2-fuj"/>
+                <outlet property="concentrateView" destination="cgw-33-A6r" id="2gy-8E-BwO"/>
+                <outlet property="dimmedView" destination="W7B-II-U9k" id="bHg-oz-ed8"/>
+                <outlet property="energiseView" destination="Zeu-mv-qeg" id="Wrc-HZ-nu3"/>
+                <outlet property="nightLightView" destination="5e5-ti-wCi" id="MF9-Ez-z7r"/>
+                <outlet property="readView" destination="1Y6-nr-U3G" id="DkI-gB-DPc"/>
+                <outlet property="relaxView" destination="hQ3-cn-s53" id="fNX-aE-KLD"/>
             </connections>
-            <point key="canvasLocation" x="9.4202898550724647" y="-157.70089285714286"/>
+            <point key="canvasLocation" x="28.800000000000001" y="-155.54187192118226"/>
         </view>
-        <tapGestureRecognizer id="Kj8-8M-INW" userLabel="Morning Tap Gesture Recognizer">
+        <tapGestureRecognizer id="Kj8-8M-INW" userLabel="Energise Tap Gesture Recognizer">
             <connections>
-                <action selector="sunRiseTap:" destination="iN0-l3-epB" id="cMR-7e-gTa"/>
+                <action selector="energiseTap:" destination="iN0-l3-epB" id="Re3-ZZ-aJG"/>
             </connections>
         </tapGestureRecognizer>
-        <tapGestureRecognizer id="9e0-Im-ajn" userLabel="Daytime Tap Gesture Recognizer">
+        <tapGestureRecognizer id="9e0-Im-ajn" userLabel="Concentrate Tap Gesture Recognizer">
             <connections>
-                <action selector="dayTimeSceneTap:" destination="iN0-l3-epB" id="HYN-mk-IQY"/>
+                <action selector="concentrateTap:" destination="iN0-l3-epB" id="9Am-s8-5pV"/>
             </connections>
         </tapGestureRecognizer>
-        <tapGestureRecognizer id="Yf1-XM-HRc" userLabel="Sunset Tap Gesture Recognizer">
+        <tapGestureRecognizer id="Yf1-XM-HRc" userLabel="Read Tap Gesture Recognizer">
             <connections>
-                <action selector="sunSetSceneTap:" destination="iN0-l3-epB" id="mwe-iu-M56"/>
+                <action selector="readTap:" destination="iN0-l3-epB" id="VRg-2f-yHO"/>
             </connections>
         </tapGestureRecognizer>
-        <tapGestureRecognizer id="vqm-CR-xt7" userLabel="Evening Tap Gesture Recognizer">
+        <tapGestureRecognizer id="vqm-CR-xt7" userLabel="Relax Tap Gesture Recognizer">
             <connections>
-                <action selector="eveningSceneTap:" destination="iN0-l3-epB" id="87c-Re-dIc"/>
+                <action selector="relaxTap:" destination="iN0-l3-epB" id="vmS-Rv-wwq"/>
             </connections>
         </tapGestureRecognizer>
-        <tapGestureRecognizer id="B8K-uj-yR9" userLabel="Night Tap Gesture Recognizer">
+        <tapGestureRecognizer id="B8K-uj-yR9" userLabel="Dimmed Tap Gesture Recognizer">
             <connections>
-                <action selector="nightTimeSceneTap:" destination="iN0-l3-epB" id="twA-dO-e4t"/>
+                <action selector="dimmedTap:" destination="iN0-l3-epB" id="Uze-L1-xML"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="uGZ-L5-cL9" userLabel="NightLight Tap Gesture Recognizer">
+            <connections>
+                <action selector="nightLightTap:" destination="iN0-l3-epB" id="RkU-TE-8W9"/>
             </connections>
         </tapGestureRecognizer>
     </objects>

@@ -16,101 +16,84 @@ class LightScenes: UIView {
     
     weak var delegate: LightScenesDelegate?
     
-    @IBOutlet weak var sunRiseLabel: UILabel!
-    @IBOutlet weak var sunRiseView: UIView!
-    @IBOutlet weak var dayTimeLabel: UILabel!
-    @IBOutlet weak var dayTimeView: UIView!
-    @IBOutlet weak var sunSetLabel: UILabel!
-    @IBOutlet weak var sunSetView: UIView!
-    @IBOutlet weak var eveningLabel: UILabel!
-    @IBOutlet weak var eveningView: UIView!
-    @IBOutlet weak var nightTimeLabel: UILabel!
-    @IBOutlet weak var nightTimeView: UIView!
+    @IBOutlet weak var energiseView: UIView!
+    @IBOutlet weak var concentrateView: UIView!
+    @IBOutlet weak var readView: UIView!
+    @IBOutlet weak var relaxView: UIView!
+    @IBOutlet weak var dimmedView: UIView!
+    @IBOutlet weak var nightLightView: UIView!
 
-    @IBAction func sunRiseTap(_ sender: UITapGestureRecognizer) {
-        sunRiseLabel.textColor = UIColor.white
-        sunRiseView.backgroundColor = UIColor.darkGray
-        dayTimeLabel.textColor = UIColor.black
-        dayTimeView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
-        sunSetLabel.textColor = UIColor.black
-        sunSetView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
-        eveningLabel.textColor = UIColor.black
-        eveningView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
-        nightTimeLabel.textColor = UIColor.black
-        nightTimeView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
+    @IBAction func energiseTap(_ sender: UITapGestureRecognizer) {
+        energiseView.backgroundColor = HueColorHelper.getColorFromScene(1)
+        concentrateView.backgroundColor = .clear
+        readView.backgroundColor = .clear
+        relaxView.backgroundColor = .clear
+        dimmedView.backgroundColor = .clear
+        nightLightView.backgroundColor = .clear
         self.delegate?.updateSceneID(sceneID: 1)
     }
     
-    @IBAction func dayTimeSceneTap(_ sender: UITapGestureRecognizer) {
-        sunRiseLabel.textColor = UIColor.black
-        sunRiseView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
-        dayTimeLabel.textColor = UIColor.white
-        dayTimeView.backgroundColor = UIColor.darkGray
-        sunSetLabel.textColor = UIColor.black
-        sunSetView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
-        eveningLabel.textColor = UIColor.black
-        eveningView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
-        nightTimeLabel.textColor = UIColor.black
-        nightTimeView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
+    @IBAction func concentrateTap(_ sender: UITapGestureRecognizer) {
+        energiseView.backgroundColor = .clear
+        concentrateView.backgroundColor = HueColorHelper.getColorFromScene(2)
+        readView.backgroundColor = .clear
+        relaxView.backgroundColor = .clear
+        dimmedView.backgroundColor = .clear
+        nightLightView.backgroundColor = .clear
         self.delegate?.updateSceneID(sceneID: 2)
     }
-    @IBAction func sunSetSceneTap(_ sender: UITapGestureRecognizer) {
-        sunRiseLabel.textColor = UIColor.black
-        sunRiseView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
-        dayTimeLabel.textColor = UIColor.black
-        dayTimeView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
-        sunSetLabel.textColor = UIColor.white
-        sunSetView.backgroundColor = UIColor.darkGray
-        eveningLabel.textColor = UIColor.black
-        eveningView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
-        nightTimeLabel.textColor = UIColor.black
-        nightTimeView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
+    @IBAction func readTap(_ sender: UITapGestureRecognizer) {
+        energiseView.backgroundColor = .clear
+        concentrateView.backgroundColor = .clear
+        readView.backgroundColor = HueColorHelper.getColorFromScene(3)
+        relaxView.backgroundColor = .clear
+        dimmedView.backgroundColor = .clear
+        nightLightView.backgroundColor = .clear
         self.delegate?.updateSceneID(sceneID: 3)
     }
-    @IBAction func eveningSceneTap(_ sender: UITapGestureRecognizer) {
-        sunRiseLabel.textColor = UIColor.black
-        sunRiseView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
-        dayTimeLabel.textColor = UIColor.black
-        dayTimeView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
-        sunSetLabel.textColor = UIColor.black
-        sunSetView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
-        eveningLabel.textColor = UIColor.white
-        eveningView.backgroundColor = UIColor.darkGray
-        nightTimeLabel.textColor = UIColor.black
-        nightTimeView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
+    @IBAction func relaxTap(_ sender: UITapGestureRecognizer) {
+        energiseView.backgroundColor = .clear
+        concentrateView.backgroundColor = .clear
+        readView.backgroundColor = .clear
+        relaxView.backgroundColor = HueColorHelper.getColorFromScene(4)
+        dimmedView.backgroundColor = .clear
+        nightLightView.backgroundColor = .clear
         self.delegate?.updateSceneID(sceneID: 4)
     }
-    @IBAction func nightTimeSceneTap(_ sender: UITapGestureRecognizer) {
-        sunRiseLabel.textColor = UIColor.black
-        sunRiseView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
-        dayTimeLabel.textColor = UIColor.black
-        dayTimeView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
-        sunSetLabel.textColor = UIColor.black
-        sunSetView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
-        eveningLabel.textColor = UIColor.black
-        eveningView.backgroundColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 146/255.0, alpha: 1.0)
-        nightTimeLabel.textColor = UIColor.white
-        nightTimeView.backgroundColor = UIColor.darkGray
+    @IBAction func dimmedTap(_ sender: UITapGestureRecognizer) {
+        energiseView.backgroundColor = .clear
+        concentrateView.backgroundColor = .clear
+        readView.backgroundColor = .clear
+        relaxView.backgroundColor = .clear
+        dimmedView.backgroundColor = HueColorHelper.getColorFromScene(5)
+        nightLightView.backgroundColor = .clear
+        self.delegate?.updateSceneID(sceneID: 5)
+    }
+    @IBAction func nightLightTap(_ sender: UITapGestureRecognizer) {
+        energiseView.backgroundColor = .clear
+        concentrateView.backgroundColor = .clear
+        readView.backgroundColor = .clear
+        relaxView.backgroundColor = .clear
+        dimmedView.backgroundColor = .clear
+        nightLightView.backgroundColor = HueColorHelper.getColorFromScene(5)
         self.delegate?.updateSceneID(sceneID: 5)
     }
     
     func setScene(setSceneID:Int) {
+        let tapRec = UITapGestureRecognizer()
         switch setSceneID {
         case 1:
-            sunRiseLabel.textColor = UIColor.white
-            sunRiseView.backgroundColor = UIColor.darkGray
+            energiseTap(tapRec)
         case 2:
-            dayTimeLabel.textColor = UIColor.white
-            dayTimeView.backgroundColor = UIColor.darkGray
+            concentrateTap(tapRec)
         case 3:
-            sunSetLabel.textColor = UIColor.white
-            sunSetView.backgroundColor = UIColor.darkGray
+            readTap(tapRec)
         case 4:
-            eveningLabel.textColor = UIColor.white
-            eveningView.backgroundColor = UIColor.darkGray
+            relaxTap(tapRec)
         case 5:
-            nightTimeLabel.textColor = UIColor.white
-            nightTimeView.backgroundColor = UIColor.darkGray
+            dimmedTap(tapRec)
+        case 6:
+            nightLightTap(tapRec)
         default:
             break
         }
