@@ -60,6 +60,8 @@
 		E868D1EA21620E16000DC024 /* SensorsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868D1E921620E16000DC024 /* SensorsTableViewCell.swift */; };
 		E868D1EC2162236F000DC024 /* SensorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868D1EB2162236F000DC024 /* SensorController.swift */; };
 		E868D1EE2162264A000DC024 /* SensorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868D1ED2162264A000DC024 /* SensorViewController.swift */; };
+		E86BB70322A46E150002F569 /* GardenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86BB70222A46E150002F569 /* GardenViewController.swift */; };
+		E86BB70522A479490002F569 /* GardenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86BB70422A479490002F569 /* GardenController.swift */; };
 		E87277B52145AD7600FE3FC3 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87277B42145AD7600FE3FC3 /* ScheduleTableViewCell.swift */; };
 		E89E162A221C68860088AC62 /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89E1629221C68860088AC62 /* Slide.swift */; };
 		E89E162E221C68F90088AC62 /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = E89E162D221C68F90088AC62 /* Slide.xib */; };
@@ -131,6 +133,8 @@
 		E868D1E921620E16000DC024 /* SensorsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorsTableViewCell.swift; sourceTree = "<group>"; };
 		E868D1EB2162236F000DC024 /* SensorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorController.swift; sourceTree = "<group>"; };
 		E868D1ED2162264A000DC024 /* SensorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorViewController.swift; sourceTree = "<group>"; };
+		E86BB70222A46E150002F569 /* GardenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenViewController.swift; sourceTree = "<group>"; };
+		E86BB70422A479490002F569 /* GardenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenController.swift; sourceTree = "<group>"; };
 		E87277B42145AD7600FE3FC3 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		E89E1629221C68860088AC62 /* Slide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
 		E89E162D221C68F90088AC62 /* Slide.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Slide.xib; sourceTree = "<group>"; };
@@ -337,6 +341,7 @@
 		0A69FB7F1F10C25C00563A69 /* Alfred_IOS */ = {
 			isa = PBXGroup;
 			children = (
+				E86BB6FE22A46D3A0002F569 /* Garden */,
 				E834980C228F0FD30009C6BD /* Edit Motion Sensor */,
 				E8F82C3A2248350700BF09F3 /* Edit Schedule */,
 				E89F4C9921F50A9A000873E8 /* Rooms */,
@@ -440,6 +445,39 @@
 				E868D1EB2162236F000DC024 /* SensorController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		E86BB6FE22A46D3A0002F569 /* Garden */ = {
+			isa = PBXGroup;
+			children = (
+				E86BB70122A46D610002F569 /* View */,
+				E86BB70022A46D5A0002F569 /* Controller */,
+				E86BB6FF22A46D540002F569 /* Model */,
+			);
+			path = Garden;
+			sourceTree = "<group>";
+		};
+		E86BB6FF22A46D540002F569 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E86BB70022A46D5A0002F569 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E86BB70422A479490002F569 /* GardenController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E86BB70122A46D610002F569 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E86BB70222A46E150002F569 /* GardenViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		E877C4F5221AD774007D1A79 /* Model */ = {
@@ -682,6 +720,7 @@
 				0A647EE72067E8CF00F7CD1E /* RoomLightsChanged.swift in Sources */,
 				0A69FB891F10C25C00563A69 /* Alfred_IOS.xcdatamodeld in Sources */,
 				0A6A5F9B204C53D100314ECE /* HomeViewController.swift in Sources */,
+				E86BB70522A479490002F569 /* GardenController.swift in Sources */,
 				0A69FB9F1F1160F500563A69 /* SplashViewController.swift in Sources */,
 				0A46C5FB1F56D58300ADB758 /* LightsTableViewCell.swift in Sources */,
 				0A647EE22067E8CF00F7CD1E /* RoomLightsActionAttributes.swift in Sources */,
@@ -706,6 +745,7 @@
 				0A0463F11F38E99B004A738D /* ColorViewController.swift in Sources */,
 				E87277B52145AD7600FE3FC3 /* ScheduleTableViewCell.swift in Sources */,
 				0A6A5F9F204C6A5800314ECE /* HomeController.swift in Sources */,
+				E86BB70322A46E150002F569 /* GardenViewController.swift in Sources */,
 				E811EB0620DFB47C00C3B62E /* SettingsViewController.swift in Sources */,
 				0A1BFDB3205315B400B729F8 /* CommuteController.swift in Sources */,
 				E834980A228E98EF0009C6BD /* MotionSensorsBaseClass.swift in Sources */,

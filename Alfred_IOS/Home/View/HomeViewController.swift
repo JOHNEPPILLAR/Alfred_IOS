@@ -21,7 +21,6 @@ class HomeViewController: UIViewController {
     var videoUUID: String = ""
     
     // MARK: Interactive elements
-    @IBOutlet weak var menuIcon: UIImageView!
     @IBOutlet weak var homeViewSection: UIView!
     
     @IBAction func showRoomViewTapped(_ sender: UITapGestureRecognizer) {
@@ -34,7 +33,7 @@ class HomeViewController: UIViewController {
         SVProgressHUD.show(withStatus: "Starting stream")
         homeController.startVideoStream()
     }
-    
+
     @IBAction func AllLightsOffPress(_ sender: UILongPressGestureRecognizer) {
         if (sender.state == .ended) {
             homeController.turnOffAllLights()
@@ -92,16 +91,12 @@ class HomeViewController: UIViewController {
         let appDefaults = [String:AnyObject]()
         UserDefaults.standard.register(defaults: appDefaults)
         let defaults = UserDefaults.standard
-        menuIcon.isHidden = true
         var whoIsThis = defaults.string(forKey: "who_is_this")
         if (whoIsThis == nil) {
             whoIsThis = ""
             SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
             SVProgressHUD.showInfo(withStatus: "Please setup the app user defaults in settings")
             commuteStatus.image = #imageLiteral(resourceName: "ic_question_mark")
-        }
-        if (whoIsThis == "JP") {
-            menuIcon.isHidden = false
         }
 
         // Calc which part of day it is and set greeting message
