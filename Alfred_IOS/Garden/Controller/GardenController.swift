@@ -13,6 +13,7 @@ import SwiftyJSON
 // MARK: Delegate callback functions
 protocol GardenControllerDelegate: class {
     func chartDataDidRecieveDataUpdate(data: [RoomSensorBaseClass])
+    func sensorDataDidRecieveDataUpdate(data: [SensorsBaseClass])
     func didFailDataUpdateWithError(displayMsg: Bool)
 }
 
@@ -35,5 +36,20 @@ class GardenController: NSObject {
         task.resume()
     }
 
+    func getSensorData() {
+        let configuration = URLSessionConfiguration.ephemeral
+        let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
+        let request = getAPIHeaderData(url: "iot/displaycureentgardendata")
+        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+            if checkAPIData(apiData: data, response: response, error: error) {
+                let responseJSON = try? JSON(data: data!)
+                let data = [SensorsBaseClass(json: responseJSON!)] // Update data store
+                self.delegate?.sensorDataDidRecieveDataUpdate(data: [data[0]]) // Let the View controller know to show the data
+            } else {
+                self.delegate?.didFailDataUpdateWithError(displayMsg: false) // Let the View controller know there was an error
+            }
+        })
+        task.resume()
+    }
 }
 

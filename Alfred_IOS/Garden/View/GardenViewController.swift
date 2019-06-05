@@ -18,6 +18,21 @@ class GardenViewController: UIViewController, UIScrollViewDelegate {
         self.dismiss(animated: true, completion:nil)
     }
     
+    // Sensors
+    @IBOutlet weak var sensorsTableView: UITableView!
+    @IBOutlet weak var sensorBackgroundView: RoundCornersView!
+    @IBOutlet weak var sensorsView: UIView!
+
+    fileprivate var SensorsDataArray = [SensorsData]() {
+        didSet {
+            sensorsTableView.reloadData()
+            
+            // Resize the views based on table rows
+            sensorsTableView.sizeToFit()
+            sensorBackgroundView.frame.size.height = sensorsTableView.contentSize.height + 40
+        }
+    }
+    
     // Chart setup
     var chartPageID:Int = 0
     var slides:[Slide] = [];
@@ -68,11 +83,15 @@ class GardenViewController: UIViewController, UIScrollViewDelegate {
         
         // Call API's to get data
         gardenController.getChartData(durartion: "hour")
+        gardenController.getSensorData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        sensorsTableView.delegate = self
+        sensorsTableView.dataSource = self
+
         gardenController.delegate = self
         chartAreaScrollView.delegate = self
     }
@@ -251,5 +270,39 @@ extension GardenViewController: GardenControllerDelegate {
         chartPageID = chartPageControl.currentPage
     }
     
-   
+    // Process sensor data
+    func sensorDataDidRecieveDataUpdate(data: [SensorsBaseClass]){
+        SensorsDataArray = data[0].data!
+    }
+}
+
+extension GardenViewController: UITableViewDelegate {
+}
+
+extension GardenViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "GardenSensorTableViewCell", for: indexPath) as! GardenSensorsTableViewCell
+        cell.configureWithItem(item: SensorsDataArray[indexPath.item])
+        cell.backgroundColor = .clear
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (SensorsDataArray.count > 0) {
+            return SensorsDataArray.count
+        } else { return 0 }
+    }
+    
+    //func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {
+    //    let edit = UITableViewRowAction(style: .normal, title: "Edit") { action, index in
+    //        self.sensorID = self.MotionSensorDataArray[editActionsForRowAt.row].id!
+    //        self.performSegue(withIdentifier: "sensor", sender: self)
+    //    }
+    //    edit.backgroundColor = .lightGray
+    //    return [edit]
+    //}
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
 }

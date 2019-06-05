@@ -28,19 +28,19 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cgw-33-A6r" userLabel="Concentrate View" customClass="RoundCornersView" customModule="Alfred_IOS" customModuleProvider="target">
-                            <rect key="frame" x="184" y="42" width="174" height="75"/>
+                            <rect key="frame" x="180" y="42" width="182" height="75"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CI0-Da-x5c" userLabel="Concentrate View" customClass="RoundCornersView" customModule="Alfred_IOS" customModuleProvider="target">
                                     <rect key="frame" x="8" y="7" width="65" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_daytime" translatesAutoresizingMaskIntoConstraints="NO" id="3aJ-A3-2lB">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_concentrate" translatesAutoresizingMaskIntoConstraints="NO" id="3aJ-A3-2lB">
                                             <rect key="frame" x="8" y="5" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.69801354410000005" green="0.91558992859999999" blue="0.93296378849999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <gestureRecognizers/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
@@ -63,19 +63,19 @@
                             </connections>
                         </view>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zeu-mv-qeg" userLabel="Energise View" customClass="RoundCornersView" customModule="Alfred_IOS" customModuleProvider="target">
-                            <rect key="frame" x="17" y="42" width="162" height="75"/>
+                            <rect key="frame" x="11" y="42" width="162" height="75"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q2N-nK-iRT" userLabel="Energise View" customClass="RoundCornersView" customModule="Alfred_IOS" customModuleProvider="target">
                                     <rect key="frame" x="8" y="7" width="65" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_sunrise" translatesAutoresizingMaskIntoConstraints="NO" id="4zl-FJ-kHO">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_energise" translatesAutoresizingMaskIntoConstraints="NO" id="4zl-FJ-kHO">
                                             <rect key="frame" x="8" y="5" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.59330219029999998" green="0.81604915860000005" blue="0.9169749022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <gestureRecognizers/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
@@ -99,19 +99,19 @@
                             </connections>
                         </view>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Y6-nr-U3G" userLabel="Read View" customClass="RoundCornersView" customModule="Alfred_IOS" customModuleProvider="target">
-                            <rect key="frame" x="17" y="131" width="162" height="75"/>
+                            <rect key="frame" x="11" y="131" width="162" height="75"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xpU-wG-mc9" userLabel="Read View" customClass="RoundCornersView" customModule="Alfred_IOS" customModuleProvider="target">
                                     <rect key="frame" x="8" y="7" width="65" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_sunset" translatesAutoresizingMaskIntoConstraints="NO" id="avE-d6-sAW">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_read" translatesAutoresizingMaskIntoConstraints="NO" id="avE-d6-sAW">
                                             <rect key="frame" x="8" y="5" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.9437414408" green="0.90884739160000005" blue="0.76304644349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <gestureRecognizers/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
@@ -134,19 +134,19 @@
                             </connections>
                         </view>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hQ3-cn-s53" userLabel="Relax View" customClass="RoundCornersView" customModule="Alfred_IOS" customModuleProvider="target">
-                            <rect key="frame" x="184" y="131" width="174" height="75"/>
+                            <rect key="frame" x="180" y="131" width="182" height="75"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="16Y-po-RB8" userLabel="Relax View" customClass="RoundCornersView" customModule="Alfred_IOS" customModuleProvider="target">
                                     <rect key="frame" x="8" y="7" width="65" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_evening" translatesAutoresizingMaskIntoConstraints="NO" id="E3H-iA-7E2">
-                                            <rect key="frame" x="7" y="5" width="50" height="50"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_relax" translatesAutoresizingMaskIntoConstraints="NO" id="E3H-iA-7E2">
+                                            <rect key="frame" x="7" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.9134494662" green="0.73211288450000001" blue="0.48654526469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <gestureRecognizers/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
@@ -169,19 +169,19 @@
                             </connections>
                         </view>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W7B-II-U9k" userLabel="Dimmed View" customClass="RoundCornersView" customModule="Alfred_IOS" customModuleProvider="target">
-                            <rect key="frame" x="17" y="228" width="162" height="75"/>
+                            <rect key="frame" x="11" y="228" width="162" height="75"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="25p-Ve-bAu" userLabel="Dimmed View" customClass="RoundCornersView" customModule="Alfred_IOS" customModuleProvider="target">
                                     <rect key="frame" x="8" y="7" width="65" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_night" translatesAutoresizingMaskIntoConstraints="NO" id="D7r-ui-Kcv">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_dimmed" translatesAutoresizingMaskIntoConstraints="NO" id="D7r-ui-Kcv">
                                             <rect key="frame" x="8" y="5" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.60196679829999999" green="0.46588504310000001" blue="0.092692233619999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <gestureRecognizers/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
@@ -203,41 +203,6 @@
                                 <outletCollection property="gestureRecognizers" destination="B8K-uj-yR9" appends="YES" id="hOD-7A-dvs"/>
                             </connections>
                         </view>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5e5-ti-wCi" userLabel="Nightlight View" customClass="RoundCornersView" customModule="Alfred_IOS" customModuleProvider="target">
-                            <rect key="frame" x="184" y="228" width="162" height="75"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RvQ-wC-sSa" userLabel="Nightlight View" customClass="RoundCornersView" customModule="Alfred_IOS" customModuleProvider="target">
-                                    <rect key="frame" x="8" y="7" width="65" height="60"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_night" translatesAutoresizingMaskIntoConstraints="NO" id="pgr-Qd-Tda">
-                                            <rect key="frame" x="8" y="5" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
-                                    </subviews>
-                                    <color key="backgroundColor" red="0.60196679829999999" green="0.46588504310000001" blue="0.092692233619999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <gestureRecognizers/>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
-                                    </userDefinedRuntimeAttributes>
-                                </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nightlight" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KCh-QY-P4a">
-                                    <rect key="frame" x="80" y="17" width="89" height="40"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <gestureRecognizers/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <outletCollection property="gestureRecognizers" destination="uGZ-L5-cL9" appends="YES" id="Piy-C8-N0t"/>
-                            </connections>
-                        </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
@@ -251,7 +216,6 @@
                 <outlet property="concentrateView" destination="cgw-33-A6r" id="2gy-8E-BwO"/>
                 <outlet property="dimmedView" destination="W7B-II-U9k" id="bHg-oz-ed8"/>
                 <outlet property="energiseView" destination="Zeu-mv-qeg" id="Wrc-HZ-nu3"/>
-                <outlet property="nightLightView" destination="5e5-ti-wCi" id="MF9-Ez-z7r"/>
                 <outlet property="readView" destination="1Y6-nr-U3G" id="DkI-gB-DPc"/>
                 <outlet property="relaxView" destination="hQ3-cn-s53" id="fNX-aE-KLD"/>
             </connections>
@@ -289,10 +253,10 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="ic_daytime" width="75" height="75"/>
-        <image name="ic_evening" width="75" height="75"/>
-        <image name="ic_night" width="75" height="75"/>
-        <image name="ic_sunrise" width="75" height="75"/>
-        <image name="ic_sunset" width="75" height="75"/>
+        <image name="ic_concentrate" width="75" height="75"/>
+        <image name="ic_dimmed" width="75" height="75"/>
+        <image name="ic_energise" width="75" height="75"/>
+        <image name="ic_read" width="75" height="75"/>
+        <image name="ic_relax" width="75" height="75"/>
     </resources>
 </document>

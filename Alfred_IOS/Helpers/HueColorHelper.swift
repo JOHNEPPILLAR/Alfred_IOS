@@ -22,12 +22,12 @@ public struct HueColorHelper {
     public static func getColorFromScene(_ ct: Int) -> UIColor {
         
         switch ct {
-        case 1: return UIColor(red: 0.74, green: 0.98, blue: 1, alpha: 1.00) // Energise
-        case 2: return UIColor(red: 0.28, green: 0.87, blue: 1, alpha: 1.00) // Concentrate
-        case 3: return UIColor(red: 1, green: 0.96, blue: 0.57, alpha: 1.00) // Read
-        case 4: return UIColor(red: 1, green: 0.76, blue: 0.29, alpha: 1.00) // Relax
-        case 5: return UIColor(red: 1, green: 0.76, blue: 0.29, alpha: 1.00) // Dimmed
-        case 6: return UIColor(red: 1, green: 0.76, blue: 0.29, alpha: 1.00) // Nightlight
+            
+        case 1: return UIColor(red: 0.967718, green: 1, blue: 0.998513, alpha: 1.00) // Energise
+        case 2: return UIColor(red: 1, green: 0.945504, blue: 0.78016, alpha: 1.00) // Concentrate
+        case 3: return UIColor(red: 1, green: 0.829867, blue: 0.509371, alpha: 1.00) // Read
+        case 4: return UIColor(red: 1, green: 0.739236, blue: 0.331175, alpha: 1.00) // Relax
+        case 5: return UIColor(red: 1, green: 0.810143, blue: 0.468297, alpha: 1.00) // Dimmed
         default:
             return UIColor.white // Default
         }

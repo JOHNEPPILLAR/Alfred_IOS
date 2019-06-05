@@ -21,61 +21,71 @@ class LightScenes: UIView {
     @IBOutlet weak var readView: UIView!
     @IBOutlet weak var relaxView: UIView!
     @IBOutlet weak var dimmedView: UIView!
-    @IBOutlet weak var nightLightView: UIView!
 
     @IBAction func energiseTap(_ sender: UITapGestureRecognizer) {
         energiseView.backgroundColor = HueColorHelper.getColorFromScene(1)
+        energiseView.layer.borderWidth = 1
         concentrateView.backgroundColor = .clear
+        concentrateView.layer.borderWidth = 0
         readView.backgroundColor = .clear
+        readView.layer.borderWidth = 0
         relaxView.backgroundColor = .clear
+        relaxView.layer.borderWidth = 0
         dimmedView.backgroundColor = .clear
-        nightLightView.backgroundColor = .clear
+        dimmedView.layer.borderWidth = 0
         self.delegate?.updateSceneID(sceneID: 1)
     }
     
     @IBAction func concentrateTap(_ sender: UITapGestureRecognizer) {
         energiseView.backgroundColor = .clear
+        energiseView.layer.borderWidth = 0
         concentrateView.backgroundColor = HueColorHelper.getColorFromScene(2)
+        concentrateView.layer.borderWidth = 1
         readView.backgroundColor = .clear
+        readView.layer.borderWidth = 0
         relaxView.backgroundColor = .clear
+        relaxView.layer.borderWidth = 0
         dimmedView.backgroundColor = .clear
-        nightLightView.backgroundColor = .clear
+        dimmedView.layer.borderWidth = 0
         self.delegate?.updateSceneID(sceneID: 2)
     }
     @IBAction func readTap(_ sender: UITapGestureRecognizer) {
         energiseView.backgroundColor = .clear
+        energiseView.layer.borderWidth = 0
         concentrateView.backgroundColor = .clear
+        concentrateView.layer.borderWidth = 0
         readView.backgroundColor = HueColorHelper.getColorFromScene(3)
+        readView.layer.borderWidth = 1
         relaxView.backgroundColor = .clear
+        relaxView.layer.borderWidth = 0
         dimmedView.backgroundColor = .clear
-        nightLightView.backgroundColor = .clear
+        dimmedView.layer.borderWidth = 0
         self.delegate?.updateSceneID(sceneID: 3)
     }
     @IBAction func relaxTap(_ sender: UITapGestureRecognizer) {
         energiseView.backgroundColor = .clear
+        energiseView.layer.borderWidth = 0
         concentrateView.backgroundColor = .clear
+        concentrateView.layer.borderWidth = 0
         readView.backgroundColor = .clear
+        readView.layer.borderWidth = 0
         relaxView.backgroundColor = HueColorHelper.getColorFromScene(4)
+        relaxView.layer.borderWidth = 1
         dimmedView.backgroundColor = .clear
-        nightLightView.backgroundColor = .clear
+        dimmedView.layer.borderWidth = 0
         self.delegate?.updateSceneID(sceneID: 4)
     }
     @IBAction func dimmedTap(_ sender: UITapGestureRecognizer) {
         energiseView.backgroundColor = .clear
+        energiseView.layer.borderWidth = 0
         concentrateView.backgroundColor = .clear
+        concentrateView.layer.borderWidth = 0
         readView.backgroundColor = .clear
+        readView.layer.borderWidth = 0
         relaxView.backgroundColor = .clear
+        relaxView.layer.borderWidth = 0
         dimmedView.backgroundColor = HueColorHelper.getColorFromScene(5)
-        nightLightView.backgroundColor = .clear
-        self.delegate?.updateSceneID(sceneID: 5)
-    }
-    @IBAction func nightLightTap(_ sender: UITapGestureRecognizer) {
-        energiseView.backgroundColor = .clear
-        concentrateView.backgroundColor = .clear
-        readView.backgroundColor = .clear
-        relaxView.backgroundColor = .clear
-        dimmedView.backgroundColor = .clear
-        nightLightView.backgroundColor = HueColorHelper.getColorFromScene(5)
+        dimmedView.layer.borderWidth = 1
         self.delegate?.updateSceneID(sceneID: 5)
     }
     
@@ -92,8 +102,6 @@ class LightScenes: UIView {
             relaxTap(tapRec)
         case 5:
             dimmedTap(tapRec)
-        case 6:
-            nightLightTap(tapRec)
         default:
             break
         }

@@ -70,6 +70,9 @@
 		E8B63ABB214D980800EBF1A1 /* ScheduleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B63ABA214D980800EBF1A1 /* ScheduleController.swift */; };
 		E8CB30C522904CB500168CAC /* LightScenes.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8CB30C422904CB500168CAC /* LightScenes.xib */; };
 		E8CB30C722904EF800168CAC /* LightScenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CB30C622904EF800168CAC /* LightScenes.swift */; };
+		E8FD639822A5F3AC001063E7 /* SensorsBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FD639622A5F3AC001063E7 /* SensorsBaseClass.swift */; };
+		E8FD639922A5F3AC001063E7 /* SensorsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FD639722A5F3AC001063E7 /* SensorsData.swift */; };
+		E8FD639B22A69903001063E7 /* GardenSensorsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FD639A22A69903001063E7 /* GardenSensorsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -143,6 +146,9 @@
 		E8B63ABA214D980800EBF1A1 /* ScheduleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleController.swift; sourceTree = "<group>"; };
 		E8CB30C422904CB500168CAC /* LightScenes.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LightScenes.xib; sourceTree = "<group>"; };
 		E8CB30C622904EF800168CAC /* LightScenes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightScenes.swift; sourceTree = "<group>"; };
+		E8FD639622A5F3AC001063E7 /* SensorsBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorsBaseClass.swift; sourceTree = "<group>"; };
+		E8FD639722A5F3AC001063E7 /* SensorsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorsData.swift; sourceTree = "<group>"; };
+		E8FD639A22A69903001063E7 /* GardenSensorsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenSensorsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -308,6 +314,7 @@
 				0A6AD7AB206E65C200491B3E /* CommuteTableViewCell.swift */,
 				E811EB0720DFC78000C3B62E /* SettingsCollectionViewCell.swift */,
 				E868D1E921620E16000DC024 /* SensorsTableViewCell.swift */,
+				E8FD639A22A69903001063E7 /* GardenSensorsTableViewCell.swift */,
 			);
 			path = TableCells;
 			sourceTree = "<group>";
@@ -460,6 +467,8 @@
 		E86BB6FF22A46D540002F569 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E8FD639622A5F3AC001063E7 /* SensorsBaseClass.swift */,
+				E8FD639722A5F3AC001063E7 /* SensorsData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -723,6 +732,7 @@
 				E86BB70522A479490002F569 /* GardenController.swift in Sources */,
 				0A69FB9F1F1160F500563A69 /* SplashViewController.swift in Sources */,
 				0A46C5FB1F56D58300ADB758 /* LightsTableViewCell.swift in Sources */,
+				E8FD639B22A69903001063E7 /* GardenSensorsTableViewCell.swift in Sources */,
 				0A647EE22067E8CF00F7CD1E /* RoomLightsActionAttributes.swift in Sources */,
 				E8B63ABB214D980800EBF1A1 /* ScheduleController.swift in Sources */,
 				0A1BFDAE2052EFF900B729F8 /* SplashController.swift in Sources */,
@@ -738,6 +748,7 @@
 				E89F4C9B21F50AB9000873E8 /* RoomsViewController.swift in Sources */,
 				E8349802228E90710009C6BD /* SchedulesData.swift in Sources */,
 				E8349806228E921E0009C6BD /* RoomSensorData.swift in Sources */,
+				E8FD639822A5F3AC001063E7 /* SensorsBaseClass.swift in Sources */,
 				0A8AF14A1F24EF030064894F /* Helpers.swift in Sources */,
 				E834980B228E98EF0009C6BD /* MotionSensorsData.swift in Sources */,
 				0A647EE62067E8CF00F7CD1E /* RoomLightsState.swift in Sources */,
@@ -764,6 +775,7 @@
 				E868D1EE2162264A000DC024 /* SensorViewController.swift in Sources */,
 				0A647EE02067E8CF00F7CD1E /* RoomLightsAttributes.swift in Sources */,
 				E8B63AB9214D96DA00EBF1A1 /* ScheduleViewController.swift in Sources */,
+				E8FD639922A5F3AC001063E7 /* SensorsData.swift in Sources */,
 				0A7DADE11F4A2BF9002FEE9F /* HueColorHelper.swift in Sources */,
 				E81F0C1F21D6CF6800F9FD0C /* CommuteJourneys.swift in Sources */,
 				E81F0C1D21D6CF6800F9FD0C /* CommuteData.swift in Sources */,
