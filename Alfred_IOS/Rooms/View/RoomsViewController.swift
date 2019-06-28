@@ -318,7 +318,7 @@ extension RoomsViewController: RoomsControllerDelegate {
         var lineChartData = LineChartData()
         var chartResultsData = LineChartDataSet()
         var showSlides = [Slide]()
-        
+
         // Temperature
         let TemperatureSlide = createSlide()
         TemperatureSlide.chartTitleLabel.text = "Temperature"
@@ -338,7 +338,7 @@ extension RoomsViewController: RoomsControllerDelegate {
             lineChartData = LineChartData()
         }
         showSlides.append(TemperatureSlide) // Add slide
-        
+ 
         // Humidity
         if roomsWithHumidity.contains(where: { $0 == roomID }) {
             let HumiditySlide = createSlide()
@@ -359,7 +359,7 @@ extension RoomsViewController: RoomsControllerDelegate {
             }
             showSlides.append(HumiditySlide) // Add slide
         }
-        
+ 
         // Air Quality
         if roomsWithAir.contains(where: { $0 == roomID }) {
             let AirQualitySlide = createSlide()
@@ -382,13 +382,12 @@ extension RoomsViewController: RoomsControllerDelegate {
                 let ll2 = ChartLimitLine(limit: 6, label: "Moderate")
                 ll2.lineWidth = 2
                 ll2.lineDashLengths = [5, 5]
-                ll2.lineColor  = .yellow
+                ll2.lineColor  = .darkGray
                 ll2.labelPosition = .bottomRight
                 
                 AirQualitySlide.chartView.leftAxis.axisMinimum = 0
                 AirQualitySlide.chartView.leftAxis.addLimitLine(ll1)
                 AirQualitySlide.chartView.leftAxis.addLimitLine(ll2)
-                //AirQualitySlide.chartView.leftAxis.drawLimitLinesBehindDataEnabled = true
                 AirQualitySlide.chartView.data = lineChartData
                 
                 // Tidy up vars
@@ -422,6 +421,9 @@ extension RoomsViewController: RoomsControllerDelegate {
         // CO2
         if roomsWithCO2.contains(where: { $0 == roomID }) {
             let CO2Slide = createSlide()
+            
+            lineChartData = LineChartData()
+            
             CO2Slide.chartTitleLabel.text = "CO2"
             if (chartData[0].data?.count != nil) {
                 let chartCo2Data = (0..<chartData[0].data!.count).map { (i) -> ChartDataEntry in
@@ -429,9 +431,9 @@ extension RoomsViewController: RoomsControllerDelegate {
                     return ChartDataEntry(x: Double(i), y: Double(val ?? 0))
                 }
                 chartResultsData = formatChart(chartData: chartCo2Data)
-                CO2Slide.chartView.data = lineChartData
-                CO2Slide.chartView.leftAxis.axisMinimum = 0
                 lineChartData.addDataSet(chartResultsData)
+                CO2Slide.chartView.leftAxis.axisMinimum = 0
+                CO2Slide.chartView.data = lineChartData
 
                 // Tidy up vars
                 lineChartData = LineChartData()
@@ -462,6 +464,7 @@ extension RoomsViewController: RoomsControllerDelegate {
             
             showSlides.append(BatterySlide) // Add slide
         }
+
         return showSlides
     }
     

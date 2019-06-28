@@ -87,33 +87,10 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        // Check the user defaults
-        let appDefaults = [String:AnyObject]()
-        UserDefaults.standard.register(defaults: appDefaults)
-        let defaults = UserDefaults.standard
-        var whoIsThis = defaults.string(forKey: "who_is_this")
-        if (whoIsThis == nil) {
-            whoIsThis = ""
-            SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
-            SVProgressHUD.showInfo(withStatus: "Please setup the app user defaults in settings")
-            commuteStatus.image = #imageLiteral(resourceName: "ic_question_mark")
-        }
-
-        // Calc which part of day it is and set greeting message
-        let hour = Calendar.current.component(.hour, from: Date())
-        switch hour {
-        case 0 ... 11:
-            Greeting.text = "Good Morning " + whoIsThis!
-        case 12 ... 17:
-            Greeting.text = "Good Afternoon " + whoIsThis!
-        default:
-            Greeting.text = "Good Evening " + whoIsThis!
-        }
-
         // Call API's to get data
         homeController.getWeather()
         homeController.getRoomLightData()
-        homeController.getCurrentLocation(whoIsThis: whoIsThis!)
+        homeController.getCurrentLocation()
         homeController.getHourseWeatherData()
     }
     

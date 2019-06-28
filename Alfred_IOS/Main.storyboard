@@ -457,8 +457,8 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cTm-Td-jnI">
-                                <rect key="frame" x="0.0" y="87" width="375" height="833"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cTm-Td-jnI">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="935"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H9c-Er-Pyu">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="833"/>
@@ -901,27 +901,12 @@
                                     <constraint firstItem="H9c-Er-Pyu" firstAttribute="leading" secondItem="cTm-Td-jnI" secondAttribute="leading" id="trf-NA-Vc5"/>
                                 </constraints>
                             </scrollView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nlc-G3-hP2">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Good &lt;greeting&gt; &lt;user&gt;" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="ag6-0L-6q4">
-                                        <rect key="frame" x="9" y="37" width="356" height="42"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="25"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="cTm-Td-jnI" firstAttribute="leading" secondItem="trZ-0D-HkB" secondAttribute="leading" id="Ey7-2P-Vz0"/>
                             <constraint firstAttribute="bottom" secondItem="cTm-Td-jnI" secondAttribute="bottom" id="Idc-ka-azH"/>
-                            <constraint firstItem="cTm-Td-jnI" firstAttribute="top" secondItem="trZ-0D-HkB" secondAttribute="top" constant="43" id="WXt-9N-3bm"/>
+                            <constraint firstItem="cTm-Td-jnI" firstAttribute="top" secondItem="trZ-0D-HkB" secondAttribute="top" id="WXt-9N-3bm"/>
                             <constraint firstItem="H9c-Er-Pyu" firstAttribute="width" secondItem="I48-TW-8Yh" secondAttribute="width" id="fQ8-RD-Yrj"/>
                             <constraint firstItem="cTm-Td-jnI" firstAttribute="trailing" secondItem="trZ-0D-HkB" secondAttribute="trailing" id="oiR-Zl-f61"/>
                         </constraints>
@@ -929,7 +914,6 @@
                     </view>
                     <size key="freeformSize" width="375" height="920"/>
                     <connections>
-                        <outlet property="Greeting" destination="ag6-0L-6q4" id="dAh-TC-nAq"/>
                         <outlet property="allLightsIcon" destination="MLI-Oq-uAX" id="cz0-98-2xJ"/>
                         <outlet property="commuteStatus" destination="JuX-O5-rtd" id="LTO-pY-lUv"/>
                         <outlet property="downstairsHallLightsIcon" destination="fdU-NA-Yha" id="8v2-j7-xvl"/>
