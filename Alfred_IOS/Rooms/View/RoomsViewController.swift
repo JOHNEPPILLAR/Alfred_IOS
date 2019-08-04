@@ -319,6 +319,43 @@ extension RoomsViewController: RoomsControllerDelegate {
         var chartResultsData = LineChartDataSet()
         var showSlides = [Slide]()
 
+        // Air Quality
+        if roomsWithAir.contains(where: { $0 == roomID }) {
+            let AirQualitySlide = createSlide()
+            AirQualitySlide.chartTitleLabel.text = "Air Quality"
+            
+            if (chartData[0].data?.count != nil) {
+                let chartAirData = (0..<chartData[0].data!.count).map { (i) -> ChartDataEntry in
+                    let val = chartData[0].data![i].airQuality
+                    return ChartDataEntry(x: Double(i), y: Double(val ?? 0))
+                }
+                chartResultsData = formatChart(chartData: chartAirData)
+                lineChartData.addDataSet(chartResultsData)
+                
+                let ll1 = ChartLimitLine(limit: 3, label: "Low")
+                ll1.lineWidth = 2
+                ll1.lineDashLengths = [5, 5]
+                ll1.lineColor  = .darkGray
+                ll1.labelPosition = .bottomRight
+                
+                let ll2 = ChartLimitLine(limit: 6, label: "Moderate")
+                ll2.lineWidth = 2
+                ll2.lineDashLengths = [5, 5]
+                ll2.lineColor  = .darkGray
+                ll2.labelPosition = .bottomRight
+                
+                AirQualitySlide.chartView.leftAxis.axisMinimum = 0
+                AirQualitySlide.chartView.leftAxis.addLimitLine(ll1)
+                AirQualitySlide.chartView.leftAxis.addLimitLine(ll2)
+                AirQualitySlide.chartView.data = lineChartData
+                
+                // Tidy up vars
+                lineChartData = LineChartData()
+                chartResultsData = LineChartDataSet()
+            }
+            showSlides.append(AirQualitySlide) // Add slide
+        }
+        
         // Temperature
         let TemperatureSlide = createSlide()
         TemperatureSlide.chartTitleLabel.text = "Temperature"
@@ -330,9 +367,10 @@ extension RoomsViewController: RoomsControllerDelegate {
             }
             chartResultsData = formatChart(chartData: chartTempData)
             lineChartData.addDataSet(chartResultsData)
+            TemperatureSlide.chartView.leftAxis.axisMinimum = 0
             TemperatureSlide.chartView.data = lineChartData
             TemperatureSlide.chartView.animate(yAxisDuration: CATransaction.animationDuration()*2, easingOption: .linear)
-    
+
             // Tidy up vars
             chartResultsData = LineChartDataSet()
             lineChartData = LineChartData()
@@ -352,49 +390,13 @@ extension RoomsViewController: RoomsControllerDelegate {
                 lineChartData.addDataSet(chartResultsData)
                 HumiditySlide.chartView.leftAxis.axisMinimum = 0
                 HumiditySlide.chartView.data = lineChartData
-                
+                HumiditySlide.chartView.animate(yAxisDuration: CATransaction.animationDuration()*2, easingOption: .linear)
+
                 // Tidy up vars
                 lineChartData = LineChartData()
                 chartResultsData = LineChartDataSet()
             }
             showSlides.append(HumiditySlide) // Add slide
-        }
- 
-        // Air Quality
-        if roomsWithAir.contains(where: { $0 == roomID }) {
-            let AirQualitySlide = createSlide()
-            AirQualitySlide.chartTitleLabel.text = "Air Quality"
-            
-            if (chartData[0].data?.count != nil) {
-                let chartAirData = (0..<chartData[0].data!.count).map { (i) -> ChartDataEntry in
-                    let val = chartData[0].data![i].airQuality
-                    return ChartDataEntry(x: Double(i), y: Double(val ?? 0))
-                }
-                chartResultsData = formatChart(chartData: chartAirData)
-                lineChartData.addDataSet(chartResultsData)
-
-                let ll1 = ChartLimitLine(limit: 3, label: "Low")
-                ll1.lineWidth = 2
-                ll1.lineDashLengths = [5, 5]
-                ll1.lineColor  = .darkGray
-                ll1.labelPosition = .bottomRight
-               
-                let ll2 = ChartLimitLine(limit: 6, label: "Moderate")
-                ll2.lineWidth = 2
-                ll2.lineDashLengths = [5, 5]
-                ll2.lineColor  = .darkGray
-                ll2.labelPosition = .bottomRight
-                
-                AirQualitySlide.chartView.leftAxis.axisMinimum = 0
-                AirQualitySlide.chartView.leftAxis.addLimitLine(ll1)
-                AirQualitySlide.chartView.leftAxis.addLimitLine(ll2)
-                AirQualitySlide.chartView.data = lineChartData
-                
-                // Tidy up vars
-                lineChartData = LineChartData()
-                chartResultsData = LineChartDataSet()
-            }
-            showSlides.append(AirQualitySlide) // Add slide
         }
         
         // Nitrogen
@@ -410,6 +412,7 @@ extension RoomsViewController: RoomsControllerDelegate {
                 lineChartData.addDataSet(chartResultsData)
                 nitrogenSlide.chartView.leftAxis.axisMinimum = 0
                 nitrogenSlide.chartView.data = lineChartData
+                nitrogenSlide.chartView.animate(yAxisDuration: CATransaction.animationDuration()*2, easingOption: .linear)
 
                 // Tidy up vars
                 lineChartData = LineChartData()
@@ -434,7 +437,8 @@ extension RoomsViewController: RoomsControllerDelegate {
                 lineChartData.addDataSet(chartResultsData)
                 CO2Slide.chartView.leftAxis.axisMinimum = 0
                 CO2Slide.chartView.data = lineChartData
-
+                CO2Slide.chartView.animate(yAxisDuration: CATransaction.animationDuration()*2, easingOption: .linear)
+                
                 // Tidy up vars
                 lineChartData = LineChartData()
                 chartResultsData = LineChartDataSet()
@@ -456,7 +460,8 @@ extension RoomsViewController: RoomsControllerDelegate {
                 BatterySlide.chartView.leftAxis.axisMinimum = 0
                 BatterySlide.chartView.leftAxis.axisMaximum = 100
                 BatterySlide.chartView.data = lineChartData
-                
+                BatterySlide.chartView.animate(yAxisDuration: CATransaction.animationDuration()*2, easingOption: .linear)
+
                 // Tidy up vars
                 lineChartData = LineChartData()
                 chartResultsData = LineChartDataSet()

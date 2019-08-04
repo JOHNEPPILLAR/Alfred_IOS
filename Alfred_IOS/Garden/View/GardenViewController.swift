@@ -174,6 +174,7 @@ extension GardenViewController: GardenControllerDelegate {
             chartResultsData = formatChart(chartData: chartTempData)
             lineChartData.addDataSet(chartResultsData)
             TemperatureSlide.chartView.data = lineChartData
+            TemperatureSlide.chartView.leftAxis.axisMinimum = 0
             TemperatureSlide.chartView.animate(yAxisDuration: CATransaction.animationDuration()*2, easingOption: .linear)
             
             // Tidy up vars
