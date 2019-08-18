@@ -132,7 +132,9 @@ class HomeController: NSObject, CLLocationManagerDelegate {
             if checkAPIData(apiData: data, response: response, error: error) {
                 let responseJSON = try? JSON(data: data!)
                 if let APIData = responseJSON?["data"].string {
-                    self.delegate?.videoDidRecieveDataUpdate(videoUUID: APIData)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 25.0) {
+                        self.delegate?.videoDidRecieveDataUpdate(videoUUID: APIData)
+                    }
                 } else {
                     self.delegate?.didFailVideoWithError() // Let the View controller know there was an error
                 }
