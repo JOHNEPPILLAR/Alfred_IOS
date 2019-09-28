@@ -7,4 +7,5 @@ target 'Alfred_IOS' do
 	pod 'SVProgressHUD'
   pod 'Charts'
   pod 'MaterialComponents/Slider'
+  pod 'SwiftGifOrigin'
 end

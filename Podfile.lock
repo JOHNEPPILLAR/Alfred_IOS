@@ -2,13 +2,18 @@ PODS:
   - Charts (3.3.0):
     - Charts/Core (= 3.3.0)
   - Charts/Core (3.3.0)
-  - MaterialComponents/AnimationTiming (85.1.0)
-  - MaterialComponents/Ink (85.1.0):
+  - MaterialComponents/AnimationTiming (92.0.0)
+  - MaterialComponents/Elevation (92.0.0):
+    - MaterialComponents/private/Color
     - MaterialComponents/private/Math
-  - MaterialComponents/Palettes (85.1.0)
-  - MaterialComponents/private/Application (85.1.0)
-  - MaterialComponents/private/Math (85.1.0)
-  - MaterialComponents/private/ThumbTrack (85.1.0):
+  - MaterialComponents/Ink (92.0.0):
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+  - MaterialComponents/Palettes (92.0.0)
+  - MaterialComponents/private/Application (92.0.0)
+  - MaterialComponents/private/Color (92.0.0)
+  - MaterialComponents/private/Math (92.0.0)
+  - MaterialComponents/private/ThumbTrack (92.0.0):
     - MaterialComponents/Ink
     - MaterialComponents/private/Math
     - MaterialComponents/Ripple
@@ -16,44 +21,51 @@ PODS:
     - MaterialComponents/ShadowLayer
     - MaterialComponents/Typography
     - MDFInternationalization
-  - MaterialComponents/Ripple (85.1.0):
+  - MaterialComponents/Ripple (92.0.0):
     - MaterialComponents/AnimationTiming
+    - MaterialComponents/private/Color
     - MaterialComponents/private/Math
-  - MaterialComponents/ShadowElevations (85.1.0)
-  - MaterialComponents/ShadowLayer (85.1.0):
+  - MaterialComponents/ShadowElevations (92.0.0)
+  - MaterialComponents/ShadowLayer (92.0.0):
     - MaterialComponents/ShadowElevations
-  - MaterialComponents/Slider (85.1.0):
+  - MaterialComponents/Slider (92.0.0):
+    - MaterialComponents/Elevation
     - MaterialComponents/Palettes
+    - MaterialComponents/private/Math
     - MaterialComponents/private/ThumbTrack
     - MaterialComponents/ShadowElevations
-  - MaterialComponents/Typography (85.1.0):
+  - MaterialComponents/Typography (92.0.0):
     - MaterialComponents/private/Application
     - MaterialComponents/private/Math
   - MDFInternationalization (2.0.0)
   - SVProgressHUD (2.2.5)
+  - SwiftGifOrigin (1.7.0)
   - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
   - Charts
   - MaterialComponents/Slider
   - SVProgressHUD
+  - SwiftGifOrigin
   - SwiftyJSON
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Charts
     - MaterialComponents
     - MDFInternationalization
     - SVProgressHUD
+    - SwiftGifOrigin
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Charts: e0dd4cd8f257bccf98407b58183ddca8e8d5b578
-  MaterialComponents: 7401c9849f9860a214f35453e040dc17502e8b6f
+  MaterialComponents: 0fccf7f7e232145c164dc60da6fdefd011e9bf28
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwiftGifOrigin: fbd6cf37afcfcf97a5c3db996ddc0492e5c5c145
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 6ec2abd8bb8da1306eec473c5a43728ec07aadff
+PODFILE CHECKSUM: 6d6ba1e49a7fbfac808f089861b3f68e171d3ca2
 
-COCOAPODS: 1.7.1
+COCOAPODS: 1.8.1

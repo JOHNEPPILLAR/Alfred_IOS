@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -57,6 +57,7 @@
 		E84566D32210BEA900CF93DF /* HouseWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84566D12210BEA900CF93DF /* HouseWeatherData.swift */; };
 		E84566D42210BEA900CF93DF /* HouseWeatherBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84566D22210BEA900CF93DF /* HouseWeatherBaseClass.swift */; };
 		E845B9C1214E980900A75D96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E845B9C0214E980900A75D96 /* Main.storyboard */; };
+		E850F759233FCAED00441A7E /* ic_logo.gif in Resources */ = {isa = PBXBuildFile; fileRef = E850F758233FCAED00441A7E /* ic_logo.gif */; };
 		E868D1EA21620E16000DC024 /* SensorsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868D1E921620E16000DC024 /* SensorsTableViewCell.swift */; };
 		E868D1EC2162236F000DC024 /* SensorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868D1EB2162236F000DC024 /* SensorController.swift */; };
 		E868D1EE2162264A000DC024 /* SensorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868D1ED2162264A000DC024 /* SensorViewController.swift */; };
@@ -133,6 +134,7 @@
 		E84566D12210BEA900CF93DF /* HouseWeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseWeatherData.swift; sourceTree = "<group>"; };
 		E84566D22210BEA900CF93DF /* HouseWeatherBaseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseWeatherBaseClass.swift; sourceTree = "<group>"; };
 		E845B9C0214E980900A75D96 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		E850F758233FCAED00441A7E /* ic_logo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ic_logo.gif; sourceTree = "<group>"; };
 		E868D1E921620E16000DC024 /* SensorsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorsTableViewCell.swift; sourceTree = "<group>"; };
 		E868D1EB2162236F000DC024 /* SensorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorController.swift; sourceTree = "<group>"; };
 		E868D1ED2162264A000DC024 /* SensorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 		0A1BFDAB2052EF9800B729F8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E850F758233FCAED00441A7E /* ic_logo.gif */,
 				0A69FB9E1F1160F500563A69 /* SplashViewController.swift */,
 			);
 			path = View;
@@ -625,7 +628,7 @@
 				};
 			};
 			buildConfigurationList = 0A69FB781F10C25B00563A69 /* Build configuration list for PBXProject "Alfred_IOS" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -647,6 +650,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E850F759233FCAED00441A7E /* ic_logo.gif in Resources */,
 				0AE259021F70476D002C6922 /* Settings.bundle in Resources */,
 				E8CB30C522904CB500168CAC /* LightScenes.xib in Resources */,
 				E845B9C1214E980900A75D96 /* Main.storyboard in Resources */,
@@ -701,6 +705,7 @@
 				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
 				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftGifOrigin/SwiftGifOrigin.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -709,6 +714,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftGifOrigin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -838,14 +844,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -895,12 +901,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -926,7 +933,10 @@
 				);
 				INFOPLIST_FILE = Alfred_IOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-DDEBUG\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "JP.Alfred-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -955,7 +965,10 @@
 				);
 				INFOPLIST_FILE = Alfred_IOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "JP.Alfred-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

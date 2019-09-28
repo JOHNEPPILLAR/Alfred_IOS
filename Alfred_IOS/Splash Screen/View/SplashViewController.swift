@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import SwiftGifOrigin
 
 class SplashViewController: UIViewController {
-  
+    @IBOutlet weak var logoImage: UIImageView!
+    
     private let splashController = SplashController()
 
     // MARK: override functions
@@ -17,7 +19,9 @@ class SplashViewController: UIViewController {
         super.viewWillAppear(true)
 
         UIApplication.shared.applicationIconBadgeNumber = 0 // Clear badges
-        
+      
+        logoImage.image = UIImage.gif(name: "ic_logo")
+      
         splashController.ping() // Make sure Alred is online
     }
     
