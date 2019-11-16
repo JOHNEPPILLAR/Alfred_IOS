@@ -31,8 +31,6 @@ class RoomsViewController: UIViewController, UIScrollViewDelegate {
             
             // Resize the views based on table rows
             timersTableView.sizeToFit()
-//            timersTableView.frame.size.height = timersTableView.contentSize.height
-//            timersView.frame.size.height = timersTableView.contentSize.height
             timersBackgroundView.frame.size.height = timersTableView.contentSize.height + 40
 
             let newStartPosition = timersBackgroundView.frame.origin.y + timersBackgroundView.frame.size.height + 20
@@ -168,7 +166,7 @@ class RoomsViewController: UIViewController, UIScrollViewDelegate {
         // Call API's to get data
         roomsController.getLightRoomData()
         roomsController.getChartData(roomID: roomID, durartion: "hour")
-        roomsController.getSchedulesData(roomID: roomID)
+        // roomsController.getSchedulesData(roomID: roomID)
         roomsController.getMotionSensorData(roomID: roomID)
     }
     
@@ -236,11 +234,11 @@ extension RoomsViewController: RoomsControllerDelegate {
             }
 
             let darkerColor = color.darker(by: -15)
-            lightsOnOff.onTintColor = UIColor.lightGray
+            lightsOnOff.onTintColor = UIColor.white
             lightsOnOff.thumbTintColor = darkerColor
 
             lightSlider.maximumTrackTintColor = darkerColor
-            lightSlider.thumbTintColor = UIColor.lightGray
+            lightSlider.thumbTintColor = UIColor.white
             lightSlider.setMinimumTrackImage(startColor: darkerColor!,
                                                   endColor: UIColor.white,
                                                   startPoint: CGPoint.init(x: 0, y: 0),
@@ -251,7 +249,7 @@ extension RoomsViewController: RoomsControllerDelegate {
         } else {
             lightSlider.isHidden = true
             lightsView.backgroundColor = headerViewColor
-            lightsOnOff.thumbTintColor = UIColor.darkGray
+            lightsOnOff.thumbTintColor = UIColor.white
         }
         
         if refreshLightDataTimer == nil { // Set up data refresh timer
@@ -264,6 +262,7 @@ extension RoomsViewController: RoomsControllerDelegate {
     // Process chart data
     func createSlide() -> Slide {
         let baseSlide:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
+        baseSlide.chartView.leftAxis.labelTextColor = .white
         baseSlide.chartView.leftAxis.drawAxisLineEnabled = false
         baseSlide.chartView.leftAxis.drawGridLinesEnabled = false
         baseSlide.chartView.leftAxis.gridColor = NSUIColor.clear
@@ -280,12 +279,12 @@ extension RoomsViewController: RoomsControllerDelegate {
         baseSlide.chartView.legend.enabled = false
         baseSlide.chartView.chartDescription?.enabled = false
         baseSlide.chartView.noDataText = "No data to display"
-        baseSlide.chartView.noDataTextColor = UIColor.darkGray
+        baseSlide.chartView.noDataTextColor = UIColor.white
         baseSlide.chartView.pinchZoomEnabled = false
         
-        let marker = BalloonMarker(color: UIColor.darkGray,
+        let marker = BalloonMarker(color: UIColor.lightGray,
                                    font: .systemFont(ofSize: 12),
-                                   textColor: .white,
+                                   textColor: .black,
                                    insets: UIEdgeInsets(top: 8, left: 8, bottom: 20, right: 8))
         marker.chartView = baseSlide.chartView
         marker.minimumSize = CGSize(width: 80, height: 40)
@@ -295,7 +294,7 @@ extension RoomsViewController: RoomsControllerDelegate {
     
     func formatChart(chartData: [ChartDataEntry]) -> LineChartDataSet {
         let chartResultsData = LineChartDataSet(entries: chartData, label: "")
-        chartResultsData.setColor(UIColor.darkGray)
+        chartResultsData.setColor(UIColor.white)
         chartResultsData.drawCirclesEnabled = false
         chartResultsData.lineWidth = 1
         chartResultsData.drawValuesEnabled = false
@@ -333,12 +332,14 @@ extension RoomsViewController: RoomsControllerDelegate {
                 lineChartData.addDataSet(chartResultsData)
                 
                 let ll1 = ChartLimitLine(limit: 3, label: "Low")
+                ll1.valueTextColor = .white
                 ll1.lineWidth = 2
                 ll1.lineDashLengths = [5, 5]
                 ll1.lineColor  = .darkGray
                 ll1.labelPosition = .bottomRight
                 
                 let ll2 = ChartLimitLine(limit: 6, label: "Moderate")
+                ll2.valueTextColor = .white
                 ll2.lineWidth = 2
                 ll2.lineDashLengths = [5, 5]
                 ll2.lineColor  = .darkGray
@@ -519,7 +520,7 @@ extension RoomsViewController: RoomsControllerDelegate {
         chartPageID = chartPageControl.currentPage
     }
  
-    // Process light room data
+    // Process schedules room data
     func schedulesDidRecieveDataUpdate(data: [SchedulesData]) {
         SchedulesDataArray = data
     }

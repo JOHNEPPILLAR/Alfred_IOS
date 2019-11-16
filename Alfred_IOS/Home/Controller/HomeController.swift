@@ -25,7 +25,6 @@ protocol HomeControllerDelegate: class {
 class HomeController: NSObject, CLLocationManagerDelegate {
     weak var delegate: HomeControllerDelegate?
     var locationManager:CLLocationManager!
-    var whoIs:String!
     
     // Get current location
     func getCurrentLocation() {
@@ -44,7 +43,7 @@ class HomeController: NSObject, CLLocationManagerDelegate {
         
         // Get commute data
         let configuration = URLSessionConfiguration.ephemeral
-        let request = getAPIHeaderData(url: "commute/getcommutestatus?lat=" + "\(userLocation.coordinate.latitude)" + "&long=" + "\(userLocation.coordinate.longitude)")
+        let request = getAPIHeaderData(url: "commute/" + "\(userLocation.coordinate.latitude)" + "/" + "\(userLocation.coordinate.longitude)")
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
         let comuteTask = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
@@ -63,7 +62,7 @@ class HomeController: NSObject, CLLocationManagerDelegate {
         let homeLat = readPlist(item: "home-lat")
         let homeLong = readPlist(item: "home-long")
         let configuration = URLSessionConfiguration.ephemeral
-        let request = getAPIHeaderData(url: "weather/today?lat=" + "\(homeLat)" + "&long=" + "\(homeLong)")
+        let request = getAPIHeaderData(url: "weather/today/" + "\(homeLat)" + "/" + "\(homeLong)")
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
         let weatherTask = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
@@ -92,10 +91,10 @@ class HomeController: NSObject, CLLocationManagerDelegate {
         task.resume()
     }
 
-    func getHourseWeatherData() {
+    func getHouseWeatherData() {
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
-        let request = getAPIHeaderData(url: "weather/houseWeather")
+        let request = getAPIHeaderData(url: "weather/house")
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
                 let responseJSON = try? JSON(data: data!)
@@ -111,7 +110,7 @@ class HomeController: NSObject, CLLocationManagerDelegate {
     func getRoomLightData() {
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
-        let request = getAPIHeaderData(url: "lights/listlightgroups")
+        let request = getAPIHeaderData(url: "lightgroups")
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
                 let responseJSON = try? JSON(data: data!)

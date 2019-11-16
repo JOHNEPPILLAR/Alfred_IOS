@@ -15,7 +15,7 @@ extension Int {
     }
 }
 
-func putAPIHeaderData(url: String, body: Data) -> URLRequest {
+func putAPIHeaderData(url: String, body: Data?) -> URLRequest {
     #if DEBUG
     let AlfredBaseURL = readPlist(item: "AlfredBaseURL-Local")
     #else
@@ -192,7 +192,7 @@ extension UIButton {
         if let textString = self.currentTitle {
             let buttonAttributes : [NSAttributedString.Key : Any] = [
                 NSAttributedString.Key(rawValue: NSAttributedString.Key.underlineStyle.rawValue) : NSUnderlineStyle.single.rawValue,
-                NSAttributedString.Key.foregroundColor : UIColor.black
+                NSAttributedString.Key.foregroundColor : UIColor.green
             ]
             let attributeString = NSMutableAttributedString(string: textString, attributes: buttonAttributes)
             self.setAttributedTitle(attributeString, for: .normal)
@@ -201,7 +201,7 @@ extension UIButton {
     
     func removeUnderline() {
         if let textString = self.currentTitle {
-            let buttonAttributes : [NSAttributedString.Key : Any] = [NSAttributedString.Key.foregroundColor : UIColor.gray]
+            let buttonAttributes : [NSAttributedString.Key : Any] = [NSAttributedString.Key.foregroundColor : UIColor.white]
             let attributeString = NSMutableAttributedString(string: textString, attributes: buttonAttributes)
             self.setAttributedTitle(attributeString, for: .normal)
         }

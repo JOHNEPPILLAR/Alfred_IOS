@@ -14,8 +14,8 @@ class GardenSensorsTableViewCell: UITableViewCell {
     @IBOutlet weak var sensorLabel: UILabel!
     @IBOutlet weak var moistureLabel: UILabel!
     @IBOutlet weak var moistureImage: UIImageView!
-    @IBOutlet weak var fertiliserLabel: UILabel!
-    @IBOutlet weak var fertiliserImage: UIImageView!
+    @IBOutlet weak var batteryLabel: UILabel!
+    @IBOutlet weak var batteryImage: UIImageView!
     
     func configureWithItem(item: SensorsData) {
         sensorLabel.text = item.plantName
@@ -27,13 +27,10 @@ class GardenSensorsTableViewCell: UITableViewCell {
         }
         moistureLabel.text = "\(item.moisture ?? 0)" + " %"
 
-        
-        if item.fertiliser ?? 0 < item.thresholdFertilizer ?? 0 {
-            fertiliserImage.image = #imageLiteral(resourceName: "ic_fertaliser_red")
-        } else {
-            fertiliserImage.image = #imageLiteral(resourceName: "ic_fertaliser")
-        }
-        fertiliserLabel.text = "\(item.fertiliser ?? 0)" + " µS/cm"
+        if item.battery ?? 0 < 50 { batteryImage.image = #imageLiteral(resourceName: "ic_battery_middle") }
+        if item.battery ?? 0 < 15 { batteryImage.image = #imageLiteral(resourceName: "ic_battery_empty") }
+
+        batteryLabel.text = "\(item.battery ?? 0)" + " %"
 
     }
 }

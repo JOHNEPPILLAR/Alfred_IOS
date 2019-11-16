@@ -17,75 +17,115 @@ class LightScenes: UIView {
     weak var delegate: LightScenesDelegate?
     
     @IBOutlet weak var energiseView: UIView!
+    @IBOutlet weak var energiseText: UILabel!
+    @IBOutlet weak var energiseImage: UIImageView!
     @IBOutlet weak var concentrateView: UIView!
+    @IBOutlet weak var concentrateText: UILabel!
+    @IBOutlet weak var concentrateImage: UIImageView!
     @IBOutlet weak var readView: UIView!
+    @IBOutlet weak var readImage: UIImageView!
+    @IBOutlet weak var readText: UILabel!
     @IBOutlet weak var relaxView: UIView!
+    @IBOutlet weak var relaxText: UILabel!
+    @IBOutlet weak var relaxImage: UIImageView!
     @IBOutlet weak var dimmedView: UIView!
-
+    @IBOutlet weak var dimmedText: UILabel!
+    @IBOutlet weak var dimmedImage: UIImageView!
+    
     @IBAction func energiseTap(_ sender: UITapGestureRecognizer) {
-        energiseView.backgroundColor = HueColorHelper.getColorFromScene(1)
         energiseView.layer.borderWidth = 1
-        concentrateView.backgroundColor = .clear
+        energiseView.layer.borderColor = UIColor.green.cgColor
+        energiseText.textColor = .green
+        energiseImage.image = #imageLiteral(resourceName: "ic_energise_green")
         concentrateView.layer.borderWidth = 0
-        readView.backgroundColor = .clear
+        concentrateText.textColor = .white
+        concentrateImage.image = #imageLiteral(resourceName: "ic_concentrate_white")
         readView.layer.borderWidth = 0
-        relaxView.backgroundColor = .clear
+        readText.textColor = .white
+        readImage.image = #imageLiteral(resourceName: "ic_read_white")
         relaxView.layer.borderWidth = 0
-        dimmedView.backgroundColor = .clear
+        relaxText.textColor = .white
+        relaxImage.image = #imageLiteral(resourceName: "ic_relax_white")
         dimmedView.layer.borderWidth = 0
+        dimmedText.textColor = .white
+        dimmedImage.image = #imageLiteral(resourceName: "ic_dimmed_white")
         self.delegate?.updateSceneID(sceneID: 1)
     }
     
     @IBAction func concentrateTap(_ sender: UITapGestureRecognizer) {
-        energiseView.backgroundColor = .clear
         energiseView.layer.borderWidth = 0
-        concentrateView.backgroundColor = HueColorHelper.getColorFromScene(2)
+        energiseText.textColor = .white
+        energiseImage.image = #imageLiteral(resourceName: "ic_energise_white")
         concentrateView.layer.borderWidth = 1
-        readView.backgroundColor = .clear
+        concentrateView.layer.borderColor = UIColor.green.cgColor
+        concentrateText.textColor = .green
+        concentrateImage.image = #imageLiteral(resourceName: "ic_concentrate_green")
         readView.layer.borderWidth = 0
-        relaxView.backgroundColor = .clear
+        readText.textColor = .white
+        readImage.image = #imageLiteral(resourceName: "ic_read_white")
         relaxView.layer.borderWidth = 0
-        dimmedView.backgroundColor = .clear
+        relaxText.textColor = .white
+        relaxImage.image = #imageLiteral(resourceName: "ic_relax_white")
         dimmedView.layer.borderWidth = 0
+        dimmedText.textColor = .white
+        dimmedImage.image = #imageLiteral(resourceName: "ic_dimmed_white")
         self.delegate?.updateSceneID(sceneID: 2)
     }
     @IBAction func readTap(_ sender: UITapGestureRecognizer) {
-        energiseView.backgroundColor = .clear
         energiseView.layer.borderWidth = 0
-        concentrateView.backgroundColor = .clear
+        energiseText.textColor = .white
+        energiseImage.image = #imageLiteral(resourceName: "ic_energise_white")
         concentrateView.layer.borderWidth = 0
-        readView.backgroundColor = HueColorHelper.getColorFromScene(3)
+        concentrateText.textColor = .white
+        concentrateImage.image = #imageLiteral(resourceName: "ic_concentrate_white")
         readView.layer.borderWidth = 1
-        relaxView.backgroundColor = .clear
+        readView.layer.borderColor = UIColor.green.cgColor
+        readText.textColor = .green
+        readImage.image = #imageLiteral(resourceName: "ic_read_green")
         relaxView.layer.borderWidth = 0
-        dimmedView.backgroundColor = .clear
+        relaxText.textColor = .white
+        relaxImage.image = #imageLiteral(resourceName: "ic_relax_white")
         dimmedView.layer.borderWidth = 0
+        dimmedText.textColor = .white
+        dimmedImage.image = #imageLiteral(resourceName: "ic_dimmed_white")
         self.delegate?.updateSceneID(sceneID: 3)
     }
     @IBAction func relaxTap(_ sender: UITapGestureRecognizer) {
-        energiseView.backgroundColor = .clear
         energiseView.layer.borderWidth = 0
-        concentrateView.backgroundColor = .clear
+        energiseText.textColor = .white
+        energiseImage.image = #imageLiteral(resourceName: "ic_energise_white")
         concentrateView.layer.borderWidth = 0
-        readView.backgroundColor = .clear
+        concentrateText.textColor = .white
+        concentrateImage.image = #imageLiteral(resourceName: "ic_concentrate_white")
         readView.layer.borderWidth = 0
-        relaxView.backgroundColor = HueColorHelper.getColorFromScene(4)
+        readText.textColor = .white
+        readImage.image = #imageLiteral(resourceName: "ic_read_white")
         relaxView.layer.borderWidth = 1
-        dimmedView.backgroundColor = .clear
+        relaxView.layer.borderColor = UIColor.green.cgColor
+        relaxText.textColor = .green
+        relaxImage.image = #imageLiteral(resourceName: "ic_relax_green")
         dimmedView.layer.borderWidth = 0
+        dimmedText.textColor = .white
+        dimmedImage.image = #imageLiteral(resourceName: "ic_dimmed_white")
         self.delegate?.updateSceneID(sceneID: 4)
     }
     @IBAction func dimmedTap(_ sender: UITapGestureRecognizer) {
-        energiseView.backgroundColor = .clear
         energiseView.layer.borderWidth = 0
-        concentrateView.backgroundColor = .clear
+        energiseText.textColor = .white
+        energiseImage.image = #imageLiteral(resourceName: "ic_energise_white")
         concentrateView.layer.borderWidth = 0
-        readView.backgroundColor = .clear
+        concentrateText.textColor = .white
+        concentrateImage.image = #imageLiteral(resourceName: "ic_concentrate_white")
         readView.layer.borderWidth = 0
-        relaxView.backgroundColor = .clear
+        readText.textColor = .white
+        readImage.image = #imageLiteral(resourceName: "ic_read_white")
         relaxView.layer.borderWidth = 0
-        dimmedView.backgroundColor = HueColorHelper.getColorFromScene(5)
+        relaxText.textColor = .white
+        relaxImage.image = #imageLiteral(resourceName: "ic_relax_white")
         dimmedView.layer.borderWidth = 1
+        dimmedView.layer.borderColor = UIColor.green.cgColor
+        dimmedText.textColor = .green
+        dimmedImage.image = #imageLiteral(resourceName: "ic_dimmed_green")
         self.delegate?.updateSceneID(sceneID: 5)
     }
     

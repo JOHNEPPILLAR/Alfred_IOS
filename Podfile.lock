@@ -1,19 +1,19 @@
 PODS:
-  - Charts (3.3.0):
-    - Charts/Core (= 3.3.0)
-  - Charts/Core (3.3.0)
-  - MaterialComponents/AnimationTiming (92.0.0)
-  - MaterialComponents/Elevation (92.0.0):
+  - Charts (3.4.0):
+    - Charts/Core (= 3.4.0)
+  - Charts/Core (3.4.0)
+  - MaterialComponents/AnimationTiming (94.2.0)
+  - MaterialComponents/Elevation (94.2.0):
     - MaterialComponents/private/Color
     - MaterialComponents/private/Math
-  - MaterialComponents/Ink (92.0.0):
+  - MaterialComponents/Ink (94.2.0):
     - MaterialComponents/private/Color
     - MaterialComponents/private/Math
-  - MaterialComponents/Palettes (92.0.0)
-  - MaterialComponents/private/Application (92.0.0)
-  - MaterialComponents/private/Color (92.0.0)
-  - MaterialComponents/private/Math (92.0.0)
-  - MaterialComponents/private/ThumbTrack (92.0.0):
+  - MaterialComponents/Palettes (94.2.0)
+  - MaterialComponents/private/Application (94.2.0)
+  - MaterialComponents/private/Color (94.2.0)
+  - MaterialComponents/private/Math (94.2.0)
+  - MaterialComponents/private/ThumbTrack (94.2.0):
     - MaterialComponents/Ink
     - MaterialComponents/private/Math
     - MaterialComponents/Ripple
@@ -21,20 +21,20 @@ PODS:
     - MaterialComponents/ShadowLayer
     - MaterialComponents/Typography
     - MDFInternationalization
-  - MaterialComponents/Ripple (92.0.0):
+  - MaterialComponents/Ripple (94.2.0):
     - MaterialComponents/AnimationTiming
     - MaterialComponents/private/Color
     - MaterialComponents/private/Math
-  - MaterialComponents/ShadowElevations (92.0.0)
-  - MaterialComponents/ShadowLayer (92.0.0):
+  - MaterialComponents/ShadowElevations (94.2.0)
+  - MaterialComponents/ShadowLayer (94.2.0):
     - MaterialComponents/ShadowElevations
-  - MaterialComponents/Slider (92.0.0):
+  - MaterialComponents/Slider (94.2.0):
     - MaterialComponents/Elevation
     - MaterialComponents/Palettes
     - MaterialComponents/private/Math
     - MaterialComponents/private/ThumbTrack
     - MaterialComponents/ShadowElevations
-  - MaterialComponents/Typography (92.0.0):
+  - MaterialComponents/Typography (94.2.0):
     - MaterialComponents/private/Application
     - MaterialComponents/private/Math
   - MDFInternationalization (2.0.0)
@@ -59,8 +59,8 @@ SPEC REPOS:
     - SwiftyJSON
 
 SPEC CHECKSUMS:
-  Charts: e0dd4cd8f257bccf98407b58183ddca8e8d5b578
-  MaterialComponents: 0fccf7f7e232145c164dc60da6fdefd011e9bf28
+  Charts: 74c9f256eaf0460c0c416522d1cf8c634ea6b286
+  MaterialComponents: ddaf6964e9bc429fc228fa46344e406c976cd85c
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftGifOrigin: fbd6cf37afcfcf97a5c3db996ddc0492e5c5c145
@@ -68,4 +68,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 6d6ba1e49a7fbfac808f089861b3f68e171d3ca2
 
-COCOAPODS: 1.8.1
+COCOAPODS: 1.8.3

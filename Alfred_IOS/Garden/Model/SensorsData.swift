@@ -19,6 +19,7 @@ public final class SensorsData: NSCoding {
     static let thresholdMoisture = "threshold_moisture"
     static let sensorLabel = "sensor_label"
     static let moisture = "moisture"
+    static let battery = "battery"
   }
 
   // MARK: Properties
@@ -29,6 +30,7 @@ public final class SensorsData: NSCoding {
   public var thresholdMoisture: Int?
   public var sensorLabel: String?
   public var moisture: Int?
+  public var battery: Int?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -50,6 +52,7 @@ public final class SensorsData: NSCoding {
     thresholdMoisture = json[SerializationKeys.thresholdMoisture].int
     sensorLabel = json[SerializationKeys.sensorLabel].string
     moisture = json[SerializationKeys.moisture].int
+    battery = json[SerializationKeys.battery].int
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -64,6 +67,7 @@ public final class SensorsData: NSCoding {
     if let value = thresholdMoisture { dictionary[SerializationKeys.thresholdMoisture] = value }
     if let value = sensorLabel { dictionary[SerializationKeys.sensorLabel] = value }
     if let value = moisture { dictionary[SerializationKeys.moisture] = value }
+    if let value = battery { dictionary[SerializationKeys.battery] = value }
     return dictionary
   }
 
@@ -76,6 +80,7 @@ public final class SensorsData: NSCoding {
     self.thresholdMoisture = aDecoder.decodeObject(forKey: SerializationKeys.thresholdMoisture) as? Int
     self.sensorLabel = aDecoder.decodeObject(forKey: SerializationKeys.sensorLabel) as? String
     self.moisture = aDecoder.decodeObject(forKey: SerializationKeys.moisture) as? Int
+    self.battery = aDecoder.decodeObject(forKey: SerializationKeys.battery) as? Int
   }
 
   public func encode(with aCoder: NSCoder) {
@@ -86,6 +91,7 @@ public final class SensorsData: NSCoding {
     aCoder.encode(thresholdMoisture, forKey: SerializationKeys.thresholdMoisture)
     aCoder.encode(sensorLabel, forKey: SerializationKeys.sensorLabel)
     aCoder.encode(moisture, forKey: SerializationKeys.moisture)
+    aCoder.encode(battery, forKey: SerializationKeys.battery)
   }
 
 }

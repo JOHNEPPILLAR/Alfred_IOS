@@ -21,7 +21,7 @@ class ViewSensorController: UIViewController {
         self.dismiss(animated: true, completion:nil)
     }
     @IBAction func saveSchedule(_ sender: UIButton) {
-        sensorController.saveSensorData(body: SensorsDataArray[0])
+        sensorController.saveSensorData(sensorID: sensorID, body: SensorsDataArray[0])
     }
     @IBOutlet weak var sensorActive: UISwitch!
     @IBOutlet weak var startTimeLabel: UILabel!
@@ -135,7 +135,7 @@ class ViewSensorController: UIViewController {
         SVProgressHUD.show(withStatus: "Loading")
         
         saveButton.isEnabled = false // Disable the save button
-        sensorController.getSensorData(roomID: sensorID)
+        sensorController.getSensorData(sensorID: sensorID)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

@@ -42,25 +42,15 @@ class CommuteViewController: UIViewController {
 
         self.commuteTableView?.rowHeight = 130.0
 
-        // Check the user defaults
-        let appDefaults = [String:AnyObject]()
-        UserDefaults.standard.register(defaults: appDefaults)
-        let defaults = UserDefaults.standard
-        whoIsThis = defaults.string(forKey: "who_is_this")
-        if (whoIsThis == nil) {
-            whoIsThis = ""
-            SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
-            SVProgressHUD.showInfo(withStatus: "Please setup the app user defaults in settings")
-        } else {
-            getCommuteData()
-        }
-        self.commuteTableView?.rowHeight = 165        
+        getCommuteData()
+        
+        self.commuteTableView?.rowHeight = 165
     }
     
     @objc func getCommuteData() {
         SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
         SVProgressHUD.show(withStatus: "Loading")
-        commuteController.getCommuteData(whoIsThis: whoIsThis!)
+        commuteController.getCommuteData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

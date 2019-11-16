@@ -21,10 +21,10 @@ class SensorController: NSObject {
     weak var delegate: SensorControllerDelegate?
     
     // Sensor data
-    func getSensorData(roomID: Int) {
+    func getSensorData(sensorID: Int) {
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
-        let request = getAPIHeaderData(url: "sensors/get?sensorID=" + "\(roomID)")
+        let request = getAPIHeaderData(url: "sensors/schedules/" + "\(sensorID)")
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
                 let responseJSON = try? JSON(data: data!)
@@ -37,11 +37,11 @@ class SensorController: NSObject {
         task.resume()
     }
     
-    func saveSensorData(body: MotionSensorsData) {
+    func saveSensorData(sensorID: Int, body: MotionSensorsData) {
         let configuration = URLSessionConfiguration.ephemeral
         let bodyDictionary = body.dictionaryRepresentation()
         let APIbody = try! JSONSerialization.data(withJSONObject: bodyDictionary)
-        let request = putAPIHeaderData(url: "sensors/save", body: APIbody)
+        let request = putAPIHeaderData(url: "sensors/schedules/" + "\(sensorID)", body: APIbody)
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {

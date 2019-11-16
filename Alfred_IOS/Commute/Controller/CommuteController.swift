@@ -24,10 +24,7 @@ class CommuteController: NSObject, CLLocationManagerDelegate {
     var whoIs:String!
     var walking:String!
 
-    func getCommuteData(whoIsThis: String) {
-        
-        whoIs = whoIsThis
-        if whoIs == nil { whoIs = "JP"}
+    func getCommuteData() {
         
         // Get current location
         locationManager = CLLocationManager()
@@ -45,7 +42,9 @@ class CommuteController: NSObject, CLLocationManagerDelegate {
 
         // Call Alfred API
         let configuration = URLSessionConfiguration.ephemeral
-        let request = getAPIHeaderData(url: "commute/getcommute?lat=" + "\(userLocation.coordinate.latitude)" + "&long=" + "\(userLocation.coordinate.longitude)" + "&user=" + whoIs)
+        let request = getAPIHeaderData(url: "commute/" + "\(userLocation.coordinate.latitude)" + "/" + "\(userLocation.coordinate.longitude)")
+        dump(request)
+        
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {

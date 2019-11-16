@@ -52,20 +52,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return String(format: "%02.2hhx", data)
         }
         let token = tokenParts.joined()
-
-        // Get main user
-        let appDefaults = [String:AnyObject]()
-        UserDefaults.standard.register(defaults: appDefaults)
-        let defaults = UserDefaults.standard
-        let whoIsThis = defaults.string(forKey: "who_is_this")
     
-        let dict = ["device": token, "user": whoIsThis as Any] as [String: Any]
-        let jsonData = try? JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
+        // let dict = ["device": token] as [String: Any]
+        // let jsonData = try? JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
         
         // Save device token and user to api data store to use for PNs payloads
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
-        let request = putAPIHeaderData(url: "notifications/register", body: jsonData!)
+        let request = putAPIHeaderData(url: "iosDevices/" + token, body: nil )
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
                 print("Device Token: \(token)")

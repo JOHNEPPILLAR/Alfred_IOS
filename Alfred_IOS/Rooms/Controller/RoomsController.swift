@@ -26,7 +26,7 @@ class RoomsController: NSObject {
     func getLightRoomData() {
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
-        let request = getAPIHeaderData(url: "lights/listlightgroups")
+        let request = getAPIHeaderData(url: "lightgroups")
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
                 let responseJSON = try? JSON(data: data!)
@@ -41,13 +41,11 @@ class RoomsController: NSObject {
     
     func UpdateLightStateValueChange(lightID: Int, lightState: Bool) {
         var lightsStatus = "off"
-        if lightState {
-            lightsStatus = "on"
-        }
+        if lightState { lightsStatus = "on" }
         let configuration = URLSessionConfiguration.ephemeral
-        let body: [String: Any] = ["lightGroupNumber": lightID, "lightAction": lightsStatus]
+        let body: [String: Any] = ["lightAction": lightsStatus]
         let APIbody: Data = try! JSONSerialization.data(withJSONObject: body, options: [])
-        let request = putAPIHeaderData(url: "lights/lightgrouponoff", body: APIbody)
+        let request = putAPIHeaderData(url: "lightgroups/" + String(lightID), body: APIbody)
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
@@ -61,9 +59,11 @@ class RoomsController: NSObject {
     
     func UpdateLightBrightness(lightID: Int, brightness: Int) {
         let configuration = URLSessionConfiguration.ephemeral
-        let body: [String: Any] = ["lightGroupNumber": lightID, "brightness": brightness]
+        var lightAction = "on"
+        if (brightness < 1) { lightAction = "off" }
+        let body: [String: Any] = ["lightAction": lightAction, "brightness": brightness]
         let APIbody: Data = try! JSONSerialization.data(withJSONObject: body, options: [])
-        let request = putAPIHeaderData(url: "lights/lightgroupbrightness", body: APIbody)
+        let request = putAPIHeaderData(url: "lightgroups/" + String(lightID), body: APIbody)
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
@@ -78,7 +78,7 @@ class RoomsController: NSObject {
     func getChartData(roomID: Int, durartion: String) {
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
-        let request = getAPIHeaderData(url: "iot/displayroomcharts?roomID=" + "\(roomID)" + "&durationSpan=" + durartion)
+        let request = getAPIHeaderData(url: "displayroomcharts/" + "\(roomID)" + "?durationSpan=" + durartion)
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
                 let responseJSON = try? JSON(data: data!)
@@ -110,7 +110,7 @@ class RoomsController: NSObject {
     func getMotionSensorData(roomID: Int) {
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
-        let request = getAPIHeaderData(url: "sensors/list?roomNumber=" + "\(roomID)")
+        let request = getAPIHeaderData(url: "sensors/schedules/rooms/" + "\(roomID)")
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
                 let responseJSON = try? JSON(data: data!)

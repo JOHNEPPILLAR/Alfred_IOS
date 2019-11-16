@@ -90,8 +90,8 @@ class HomeViewController: UIViewController {
         // Call API's to get data
         homeController.getWeather()
         homeController.getRoomLightData()
+        homeController.getHouseWeatherData()
         homeController.getCurrentLocation()
-        homeController.getHourseWeatherData()
     }
     
     override func viewDidLoad() {
@@ -216,8 +216,8 @@ extension HomeViewController: HomeControllerDelegate {
         case .some(_): weatherIcon.image = nil
         }
         DispatchQueue.main.async {
-            self.homeTemp.text = "\(data[0].temperature ?? 0)"
-            self.homeTempMax.text = "Max \(data[0].temperatureHigh ?? 0)"
+            self.homeTemp.text = "\(data[0].temperature ?? 0)°"
+            self.homeTempMax.text = "Max \(data[0].temperatureHigh ?? 0)°"
         }
     }
     
@@ -245,7 +245,7 @@ extension HomeViewController: HomeControllerDelegate {
             // Living room
             let LivingRoom = data.filter { ($0.location?.contains("Living room"))! }
             if LivingRoom.count > 0 {
-                self.livingRoomTemp.text = String(format: "%.0f", LivingRoom[0].temperature?.rounded(.up) ?? 0)
+                self.livingRoomTemp.text = String(format: "%.0f", LivingRoom[0].temperature?.rounded(.up) ?? 0) + "°"
                 self.livingRoomAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_green")
                 if LivingRoom[0].co2 ?? 0 > 1150 {
                     self.livingRoomAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_yellow")
@@ -258,7 +258,7 @@ extension HomeViewController: HomeControllerDelegate {
             // Kids room
             let KidsRoom = data.filter { ($0.location?.contains("Kids room"))! }
             if KidsRoom.count > 0 {
-                self.kidsRoomTemp.text = String(format: "%.0f", KidsRoom[0].temperature?.rounded(.up) ?? 0)
+                self.kidsRoomTemp.text = String(format: "%.0f", KidsRoom[0].temperature?.rounded(.up) ?? 0) + "°"
                 self.kidsBedRoomAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_green")
                 if KidsRoom[0].co2 ?? 0 > 1150 {
                     self.kidsBedRoomAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_yellow")
@@ -271,7 +271,7 @@ extension HomeViewController: HomeControllerDelegate {
             // Main bed room
             let MainBedRoom = data.filter { ($0.location?.contains("Bedroom"))! }
             if MainBedRoom.count > 0 {
-                self.mainBedRoomTemp.text = String(format: "%.0f", MainBedRoom[0].temperature?.rounded(.up) ?? 0)
+                self.mainBedRoomTemp.text = String(format: "%.0f", MainBedRoom[0].temperature?.rounded(.up) ?? 0) + "°"
                 switch MainBedRoom[0].air {
                     case 1,2,3: self.mainBedRoomAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_green")
                     case 4,5,6: self.mainBedRoomAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_yellow")
@@ -286,7 +286,7 @@ extension HomeViewController: HomeControllerDelegate {
             // Kitchen room
             let Kitchen = data.filter { ($0.location?.contains("Kitchen"))! }
             if Kitchen.count > 0 {
-                self.kitchenTemp.text = String(format: "%.0f", Kitchen[0].temperature?.rounded(.up) ?? 0)
+                self.kitchenTemp.text = String(format: "%.0f", Kitchen[0].temperature?.rounded(.up) ?? 0) + "°"
                 self.kitchenAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_green")
                 if Kitchen[0].co2 ?? 0 > 1150 {
                     self.kitchenAirQualityIcon.image = #imageLiteral(resourceName: "ic_circle_yellow")
@@ -299,7 +299,7 @@ extension HomeViewController: HomeControllerDelegate {
             // Garden room
             let Garden = data.filter { ($0.location?.contains("Garden"))! }
             if Garden.count > 0 {
-                self.gardenTemp.text = String(format: "%.0f", Garden[0].temperature?.rounded(.up) ?? 0)
+                self.gardenTemp.text = String(format: "%.0f", Garden[0].temperature?.rounded(.up) ?? 0) + "°"
             }
         }
     }

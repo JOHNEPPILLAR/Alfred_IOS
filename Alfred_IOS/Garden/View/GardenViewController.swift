@@ -17,6 +17,22 @@ class GardenViewController: UIViewController, UIScrollViewDelegate {
     @IBAction func returnToPreviousView(_ sender: UIButton) {
         self.dismiss(animated: true, completion:nil)
     }
+    // Schedules
+    @IBOutlet weak var timersTableView: UITableView!
+    @IBOutlet weak var timersBackgroundView: RoundCornersView!
+    fileprivate var SchedulesDataArray = [SchedulesData]() {
+        didSet {
+            timersTableView.reloadData()
+            
+            // Resize the views based on table rows
+            timersTableView.sizeToFit()
+            timersBackgroundView.frame.size.height = timersTableView.contentSize.height + 40
+
+            let newStartPosition = timersBackgroundView.frame.origin.y + timersBackgroundView.frame.size.height + 20
+            sensorBackgroundView.moveY(y: newStartPosition)
+            sensorsView.moveY(y: newStartPosition)
+        }
+    }
     
     // Sensors
     @IBOutlet weak var sensorsTableView: UITableView!
@@ -84,6 +100,7 @@ class GardenViewController: UIViewController, UIScrollViewDelegate {
         // Call API's to get data
         gardenController.getChartData(durartion: "hour")
         gardenController.getSensorData()
+        gardenController.getSchedulesData()
     }
     
     override func viewDidLoad() {
@@ -91,6 +108,8 @@ class GardenViewController: UIViewController, UIScrollViewDelegate {
         
         sensorsTableView.delegate = self
         sensorsTableView.dataSource = self
+        timersTableView.delegate = self
+        timersTableView.dataSource = self
 
         gardenController.delegate = self
         chartAreaScrollView.delegate = self
@@ -114,6 +133,7 @@ extension GardenViewController: GardenControllerDelegate {
     // Process chart data
     func createSlide() -> Slide {
         let baseSlide:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
+        baseSlide.chartView.leftAxis.labelTextColor = .white
         baseSlide.chartView.leftAxis.drawAxisLineEnabled = false
         baseSlide.chartView.leftAxis.drawGridLinesEnabled = false
         baseSlide.chartView.leftAxis.gridColor = NSUIColor.clear
@@ -133,10 +153,10 @@ extension GardenViewController: GardenControllerDelegate {
         baseSlide.chartView.noDataTextColor = UIColor.darkGray
         baseSlide.chartView.pinchZoomEnabled = false
         
-        let marker = BalloonMarker(color: UIColor.darkGray,
-                                   font: .systemFont(ofSize: 12),
-                                   textColor: .white,
-                                   insets: UIEdgeInsets(top: 8, left: 8, bottom: 20, right: 8))
+        let marker = BalloonMarker(color: UIColor.lightGray,
+                                          font: .systemFont(ofSize: 12),
+                                          textColor: .black,
+                                          insets: UIEdgeInsets(top: 8, left: 8, bottom: 20, right: 8))
         marker.chartView = baseSlide.chartView
         marker.minimumSize = CGSize(width: 80, height: 40)
         baseSlide.chartView.marker = marker
@@ -271,10 +291,16 @@ extension GardenViewController: GardenControllerDelegate {
         chartPageID = chartPageControl.currentPage
     }
     
+    // Process schedules room data
+    func schedulesDidRecieveDataUpdate(data: [SchedulesData]) {
+        SchedulesDataArray = data
+    }
+
     // Process sensor data
     func sensorDataDidRecieveDataUpdate(data: [SensorsBaseClass]){
         SensorsDataArray = data[0].data!
     }
+
 }
 
 extension GardenViewController: UITableViewDelegate {
@@ -282,28 +308,46 @@ extension GardenViewController: UITableViewDelegate {
 
 extension GardenViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "GardenSensorTableViewCell", for: indexPath) as! GardenSensorsTableViewCell
-        cell.configureWithItem(item: SensorsDataArray[indexPath.item])
-        cell.backgroundColor = .clear
-        return cell
+        if tableView == timersTableView {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleTableViewCell", for: indexPath) as! ScheduleTableViewCell
+            cell.configureWithItem(item: SchedulesDataArray[indexPath.item])
+            cell.backgroundColor = .clear
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "GardenSensorTableViewCell", for: indexPath) as! GardenSensorsTableViewCell
+            cell.configureWithItem(item: SensorsDataArray[indexPath.item])
+            cell.backgroundColor = .clear
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (SensorsDataArray.count > 0) {
-            return SensorsDataArray.count
-        } else { return 0 }
+        if tableView == timersTableView {
+            if (SchedulesDataArray.count > 0) {
+                return SchedulesDataArray.count
+            } else { return 0 }
+        } else {
+            if (SensorsDataArray.count > 0) {
+                return SensorsDataArray.count
+            } else { return 0 }
+        }
     }
     
-    //func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {
-    //    let edit = UITableViewRowAction(style: .normal, title: "Edit") { action, index in
-    //        self.sensorID = self.MotionSensorDataArray[editActionsForRowAt.row].id!
-    //        self.performSegue(withIdentifier: "sensor", sender: self)
-    //    }
-    //    edit.backgroundColor = .lightGray
-    //    return [edit]
-    //}
+    func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) ->
+        [UITableViewRowAction]? {
+        let edit = UITableViewRowAction(style: .normal, title: "Edit") { action, index in
+            // self.scheduleID = self.SchedulesDataArray[editActionsForRowAt.row].id!
+            self.performSegue(withIdentifier: "schedule", sender: self)
+        }
+        edit.backgroundColor = .lightGray
+        return [edit]
+    }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+        if tableView == timersTableView {
+            return true
+        } else {
+            return false
+        }
     }
 }

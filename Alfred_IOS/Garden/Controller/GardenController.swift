@@ -14,6 +14,7 @@ import SwiftyJSON
 protocol GardenControllerDelegate: class {
     func chartDataDidRecieveDataUpdate(data: [RoomSensorBaseClass])
     func sensorDataDidRecieveDataUpdate(data: [SensorsBaseClass])
+    func schedulesDidRecieveDataUpdate(data: [SchedulesData])
     func didFailDataUpdateWithError(displayMsg: Bool)
 }
 
@@ -36,6 +37,22 @@ class GardenController: NSObject {
         task.resume()
     }
 
+    func getSchedulesData() {
+        let configuration = URLSessionConfiguration.ephemeral
+        let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
+        let request = getAPIHeaderData(url: "schedules/list?roomNumber=G")
+        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+            if checkAPIData(apiData: data, response: response, error: error) {
+                let responseJSON = try? JSON(data: data!)
+                let data = [SchedulesBaseClass(json: responseJSON!)] // Update data store
+                self.delegate?.schedulesDidRecieveDataUpdate(data: data[0].data!) // Let the View controller know to show the data
+            } else {
+                self.delegate?.didFailDataUpdateWithError(displayMsg: true) // Let the View controller know there was an error
+            }
+        })
+        task.resume()
+    }
+    
     func getSensorData() {
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
@@ -52,4 +69,3 @@ class GardenController: NSObject {
         task.resume()
     }
 }
-
