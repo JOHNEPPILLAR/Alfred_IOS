@@ -185,16 +185,21 @@ extension GardenViewController: GardenControllerDelegate {
         
         // Temperature
         let TemperatureSlide = createSlide()
+        var minTemp = 0 as Double
         TemperatureSlide.chartTitleLabel.text = "Temperature"
         if (chartData[0].data?.count ?? 0 > 1) {
             let chartTempData = (0..<chartData[0].data!.count).map { (i) -> ChartDataEntry in
                 let val = chartData[0].data![i].temperature?.rounded(.up)
+                if (Double(val ?? 0) < minTemp){
+                    minTemp = Double(val ?? 0)
+                }
                 return ChartDataEntry(x: Double(i), y: Double(val ?? 0))
             }
             chartResultsData = formatChart(chartData: chartTempData)
             lineChartData.addDataSet(chartResultsData)
             TemperatureSlide.chartView.data = lineChartData
-            TemperatureSlide.chartView.leftAxis.axisMinimum = 0
+            TemperatureSlide.chartView.leftAxis.axisMinimum = minTemp
+            TemperatureSlide.chartView.leftAxis.labelCount = Int(TemperatureSlide.chartView.leftAxis.axisMaximum - TemperatureSlide.chartView.leftAxis.axisMinimum)
             TemperatureSlide.chartView.animate(yAxisDuration: CATransaction.animationDuration()*2, easingOption: .linear)
             
             // Tidy up vars

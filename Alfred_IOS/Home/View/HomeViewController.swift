@@ -41,7 +41,6 @@ class HomeViewController: UIViewController {
     }
 
     // MARK: Info elements
-    @IBOutlet weak var Greeting: UITextField!
     @IBOutlet weak var homeTemp: UITextField!
     @IBOutlet weak var homeTempMax: UITextField!
     @IBOutlet weak var weatherIcon: UIImageView!

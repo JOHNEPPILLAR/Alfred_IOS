@@ -39,7 +39,7 @@ extension SplashViewController: SplashControllerDelegate {
     }
 
     func didRecieveDataUpdate() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
             self.performSegue(withIdentifier: "home", sender: self)
         })
     }

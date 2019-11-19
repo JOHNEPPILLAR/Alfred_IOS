@@ -80,7 +80,7 @@ class HomeController: NSObject, CLLocationManagerDelegate {
     func turnOffAllLights() {
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
-        let request = getAPIHeaderData(url: "lights/alloff")
+        let request = getAPIHeaderData(url: "alllightsoff")
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
                 self.getRoomLightData()
