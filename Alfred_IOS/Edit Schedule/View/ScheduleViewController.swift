@@ -20,7 +20,7 @@ class ViewScheduleController: UIViewController {
     }
   
     @IBAction func saveSchedule(_ sender: UIButton) {
-        scheduleController.saveScheduleData(body: ScheduleDataArray[0])
+        scheduleController.saveScheduleData(scheduleID: scheduleID, body: ScheduleDataArray[0])
     }
     
     @IBOutlet weak var name: UITextField!

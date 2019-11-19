@@ -100,7 +100,7 @@ class GardenViewController: UIViewController, UIScrollViewDelegate {
         // Call API's to get data
         gardenController.getChartData(durartion: "hour")
         gardenController.getSensorData()
-        //gardenController.getSchedulesData()
+        gardenController.getSchedulesData()
     }
     
     override func viewDidLoad() {

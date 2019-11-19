@@ -166,7 +166,7 @@ class RoomsViewController: UIViewController, UIScrollViewDelegate {
         // Call API's to get data
         roomsController.getLightRoomData()
         roomsController.getChartData(roomID: roomID, durartion: "hour")
-        // roomsController.getSchedulesData(roomID: roomID)
+        roomsController.getSchedulesData(roomID: roomID)
         roomsController.getMotionSensorData(roomID: roomID)
     }
     
