@@ -2,18 +2,18 @@ PODS:
   - Charts (3.4.0):
     - Charts/Core (= 3.4.0)
   - Charts/Core (3.4.0)
-  - MaterialComponents/AnimationTiming (94.2.0)
-  - MaterialComponents/Elevation (94.2.0):
+  - MaterialComponents/AnimationTiming (103.1.0)
+  - MaterialComponents/Elevation (103.1.0):
     - MaterialComponents/private/Color
     - MaterialComponents/private/Math
-  - MaterialComponents/Ink (94.2.0):
+  - MaterialComponents/Ink (103.1.0):
     - MaterialComponents/private/Color
     - MaterialComponents/private/Math
-  - MaterialComponents/Palettes (94.2.0)
-  - MaterialComponents/private/Application (94.2.0)
-  - MaterialComponents/private/Color (94.2.0)
-  - MaterialComponents/private/Math (94.2.0)
-  - MaterialComponents/private/ThumbTrack (94.2.0):
+  - MaterialComponents/Palettes (103.1.0)
+  - MaterialComponents/private/Application (103.1.0)
+  - MaterialComponents/private/Color (103.1.0)
+  - MaterialComponents/private/Math (103.1.0)
+  - MaterialComponents/private/ThumbTrack (103.1.0):
     - MaterialComponents/Ink
     - MaterialComponents/private/Math
     - MaterialComponents/Ripple
@@ -21,20 +21,20 @@ PODS:
     - MaterialComponents/ShadowLayer
     - MaterialComponents/Typography
     - MDFInternationalization
-  - MaterialComponents/Ripple (94.2.0):
+  - MaterialComponents/Ripple (103.1.0):
     - MaterialComponents/AnimationTiming
     - MaterialComponents/private/Color
     - MaterialComponents/private/Math
-  - MaterialComponents/ShadowElevations (94.2.0)
-  - MaterialComponents/ShadowLayer (94.2.0):
+  - MaterialComponents/ShadowElevations (103.1.0)
+  - MaterialComponents/ShadowLayer (103.1.0):
     - MaterialComponents/ShadowElevations
-  - MaterialComponents/Slider (94.2.0):
+  - MaterialComponents/Slider (103.1.0):
     - MaterialComponents/Elevation
     - MaterialComponents/Palettes
     - MaterialComponents/private/Math
     - MaterialComponents/private/ThumbTrack
     - MaterialComponents/ShadowElevations
-  - MaterialComponents/Typography (94.2.0):
+  - MaterialComponents/Typography (103.1.0):
     - MaterialComponents/private/Application
     - MaterialComponents/private/Math
   - MDFInternationalization (2.0.0)
@@ -60,7 +60,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Charts: 74c9f256eaf0460c0c416522d1cf8c634ea6b286
-  MaterialComponents: ddaf6964e9bc429fc228fa46344e406c976cd85c
+  MaterialComponents: 0312a643d1aed5e5f10cba4be06a6aa62bd07c14
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftGifOrigin: fbd6cf37afcfcf97a5c3db996ddc0492e5c5c145

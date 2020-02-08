@@ -56,7 +56,7 @@ class GardenController: NSObject {
     func getSensorData() {
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
-        let request = getAPIHeaderData(url: "displaycureentgardendata")
+        let request = getAPIHeaderData(url: "sensors/garden")
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
                 let responseJSON = try? JSON(data: data!)

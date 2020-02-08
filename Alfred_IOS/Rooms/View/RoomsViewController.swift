@@ -28,18 +28,20 @@ class RoomsViewController: UIViewController, UIScrollViewDelegate {
     fileprivate var SchedulesDataArray = [SchedulesData]() {
         didSet {
             timersTableView.reloadData()
-            
-            // Resize the views based on table rows
-            timersTableView.sizeToFit()
-            timersBackgroundView.frame.size.height = timersTableView.contentSize.height + 40
 
-            let newStartPosition = timersBackgroundView.frame.origin.y + timersBackgroundView.frame.size.height + 20
-            sensorBackgroundView.moveY(y: newStartPosition)
-            sensorsView.moveY(y: newStartPosition)
+            if SchedulesDataArray.count > 0 {
+                // Resize the views based on table rows
+                timersView.frame.size.height = timersTableView.contentSize.height + 40
+                timersTableView.sizeToFit()
+                let newStartPosition = timersView.frame.origin.y + timersView.frame.size.height + 20
+                sensorsView.moveY(y: newStartPosition)
+            } else {
+                timersView.isHidden = true
+            }
         }
     }
     
-    // Motion Sensors
+    // Light/Motion Sensors
     @IBOutlet weak var sensorsTableView: UITableView!
     fileprivate var MotionSensorDataArray = [MotionSensorsData]() {
         didSet {
@@ -47,13 +49,10 @@ class RoomsViewController: UIViewController, UIScrollViewDelegate {
             
             if MotionSensorDataArray.count > 0 {
                 // Resize the views based on table rows
+                sensorsTableView.frame.size.height = sensorsTableView.contentSize.height
                 sensorsTableView.sizeToFit()
-                // sensorsTableView.frame.size.height = sensorsTableView.contentSize.height
-                sensorsView.frame.size.height = sensorsTableView.contentSize.height
-                sensorBackgroundView.frame.size.height = sensorsTableView.contentSize.height + 10
             } else {
                 sensorsView.isHidden = true
-                sensorBackgroundView.isHidden = true
             }
         }
     }
@@ -67,8 +66,6 @@ class RoomsViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var lightsView: UIView!
     @IBOutlet weak var timersView: UIView!
     @IBOutlet weak var lightSlider: UISlider!
-    @IBOutlet weak var timersBackgroundView: RoundCornersView!
-    @IBOutlet weak var sensorBackgroundView: RoundCornersView!
     @IBOutlet weak var sensorsView: UIView!
     
     @IBAction func lightsOnOffChange(_ sender: UISwitch) {

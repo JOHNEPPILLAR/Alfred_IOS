@@ -90,7 +90,7 @@ class HomeViewController: UIViewController {
         homeController.getWeather()
         homeController.getRoomLightData()
         homeController.getHouseWeatherData()
-        homeController.getCurrentLocation()
+        homeController.getCommutestatus()
     }
     
     override func viewDidLoad() {
@@ -105,7 +105,6 @@ class HomeViewController: UIViewController {
             refreshLightDataTimer = nil
         }
     }
-    
 }
 
 extension HomeViewController: HomeControllerDelegate {

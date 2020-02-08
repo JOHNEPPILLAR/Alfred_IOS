@@ -24,26 +24,11 @@ protocol HomeControllerDelegate: class {
 
 class HomeController: NSObject, CLLocationManagerDelegate {
     weak var delegate: HomeControllerDelegate?
-    var locationManager:CLLocationManager!
     
-    // Get current location
-    func getCurrentLocation() {
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.startUpdatingLocation()
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let userLocation = locations[0] as CLLocation
-        manager.stopUpdatingLocation()
-        
+    func getCommutestatus() {
         // Get commute data
         let configuration = URLSessionConfiguration.ephemeral
-        let request = getAPIHeaderData(url: "commute/" + "\(userLocation.coordinate.latitude)" + "/" + "\(userLocation.coordinate.longitude)")
+        let request = getAPIHeaderData(url: "getcommutestatus")
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
         let comuteTask = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
@@ -56,13 +41,11 @@ class HomeController: NSObject, CLLocationManagerDelegate {
         })
         comuteTask.resume()
     }
-
+    
     func getWeather() {
         // Get current weather data
-        let homeLat = readPlist(item: "home-lat")
-        let homeLong = readPlist(item: "home-long")
         let configuration = URLSessionConfiguration.ephemeral
-        let request = getAPIHeaderData(url: "weather/today/" + "\(homeLat)" + "/" + "\(homeLong)")
+        let request = getAPIHeaderData(url: "weather/today")
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
         let weatherTask = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
@@ -126,7 +109,7 @@ class HomeController: NSObject, CLLocationManagerDelegate {
     func startVideoStream() {
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
-        let request = getHLSAPIHeaderData(url: "stream/start")
+        let request = getHLSAPIHeaderData(url: "stream/start/Kids")
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if checkAPIData(apiData: data, response: response, error: error) {
                 let responseJSON = try? JSON(data: data!)

@@ -19,24 +19,21 @@ class GardenViewController: UIViewController, UIScrollViewDelegate {
     }
     // Schedules
     @IBOutlet weak var timersTableView: UITableView!
-    @IBOutlet weak var timersBackgroundView: RoundCornersView!
+    @IBOutlet weak var timersView: UIView!
     fileprivate var SchedulesDataArray = [SchedulesData]() {
         didSet {
             timersTableView.reloadData()
-            
+       
             // Resize the views based on table rows
+            timersView.frame.size.height = timersTableView.contentSize.height + 40
             timersTableView.sizeToFit()
-            timersBackgroundView.frame.size.height = timersTableView.contentSize.height + 40
-
-            let newStartPosition = timersBackgroundView.frame.origin.y + timersBackgroundView.frame.size.height + 20
-            sensorBackgroundView.moveY(y: newStartPosition)
+            let newStartPosition = timersView.frame.origin.y + timersView.frame.size.height + 20
             sensorsView.moveY(y: newStartPosition)
         }
     }
     
     // Sensors
     @IBOutlet weak var sensorsTableView: UITableView!
-    @IBOutlet weak var sensorBackgroundView: RoundCornersView!
     @IBOutlet weak var sensorsView: UIView!
 
     fileprivate var SensorsDataArray = [SensorsData]() {
@@ -44,8 +41,13 @@ class GardenViewController: UIViewController, UIScrollViewDelegate {
             sensorsTableView.reloadData()
             
             // Resize the views based on table rows
-            sensorsTableView.sizeToFit()
-            sensorBackgroundView.frame.size.height = sensorsTableView.contentSize.height + 40
+            if SensorsDataArray.count > 0 {
+                // Resize the views based on table rows
+                sensorsTableView.frame.size.height = sensorsTableView.contentSize.height
+                sensorsTableView.sizeToFit()
+            } else {
+                sensorsView.isHidden = true
+            }
         }
     }
     
@@ -95,7 +97,7 @@ class GardenViewController: UIViewController, UIScrollViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-         chartFilterHour.underline()
+        chartFilterHour.underline()
         
         // Call API's to get data
         gardenController.getChartData(durartion: "hour")
@@ -133,24 +135,24 @@ extension GardenViewController: GardenControllerDelegate {
     // Process chart data
     func createSlide() -> Slide {
         let baseSlide:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
-        baseSlide.chartView.leftAxis.labelTextColor = .white
+               baseSlide.chartView.leftAxis.labelTextColor = .white
         baseSlide.chartView.leftAxis.drawAxisLineEnabled = false
         baseSlide.chartView.leftAxis.drawGridLinesEnabled = false
         baseSlide.chartView.leftAxis.gridColor = NSUIColor.clear
-        
+
         baseSlide.chartView.xAxis.drawGridLinesEnabled = false
         baseSlide.chartView.xAxis.enabled = false
-        
+
         baseSlide.chartView.rightAxis.enabled = false
         baseSlide.chartView.backgroundColor = .clear
         baseSlide.chartView.gridBackgroundColor = .clear
         baseSlide.chartView.drawBordersEnabled = false
-        
+
         baseSlide.chartView.setScaleEnabled(true)
         baseSlide.chartView.legend.enabled = false
         baseSlide.chartView.chartDescription?.enabled = false
         baseSlide.chartView.noDataText = "No data to display"
-        baseSlide.chartView.noDataTextColor = UIColor.darkGray
+        baseSlide.chartView.noDataTextColor = UIColor.white
         baseSlide.chartView.pinchZoomEnabled = false
         
         let marker = BalloonMarker(color: UIColor.lightGray,
@@ -165,7 +167,7 @@ extension GardenViewController: GardenControllerDelegate {
     
     func formatChart(chartData: [ChartDataEntry]) -> LineChartDataSet {
         let chartResultsData = LineChartDataSet(entries: chartData, label: "")
-        chartResultsData.setColor(UIColor.darkGray)
+        chartResultsData.setColor(UIColor.white)
         chartResultsData.drawCirclesEnabled = false
         chartResultsData.lineWidth = 1
         chartResultsData.drawValuesEnabled = false
@@ -195,11 +197,11 @@ extension GardenViewController: GardenControllerDelegate {
                 }
                 return ChartDataEntry(x: Double(i), y: Double(val ?? 0))
             }
+            
             chartResultsData = formatChart(chartData: chartTempData)
             lineChartData.addDataSet(chartResultsData)
-            TemperatureSlide.chartView.data = lineChartData
             TemperatureSlide.chartView.leftAxis.axisMinimum = minTemp
-            TemperatureSlide.chartView.leftAxis.labelCount = Int(TemperatureSlide.chartView.leftAxis.axisMaximum - TemperatureSlide.chartView.leftAxis.axisMinimum)
+            TemperatureSlide.chartView.data = lineChartData
             TemperatureSlide.chartView.animate(yAxisDuration: CATransaction.animationDuration()*2, easingOption: .linear)
             
             // Tidy up vars
@@ -303,7 +305,7 @@ extension GardenViewController: GardenControllerDelegate {
 
     // Process sensor data
     func sensorDataDidRecieveDataUpdate(data: [SensorsBaseClass]){
-        SensorsDataArray = data[0].data!
+        SensorsDataArray = data[0].data ?? []
     }
 
 }
