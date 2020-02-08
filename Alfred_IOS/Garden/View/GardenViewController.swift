@@ -340,15 +340,15 @@ extension GardenViewController: UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) ->
-        [UITableViewRowAction]? {
-        let edit = UITableViewRowAction(style: .normal, title: "Edit") { action, index in
-            // self.scheduleID = self.SchedulesDataArray[editActionsForRowAt.row].id!
-            self.performSegue(withIdentifier: "schedule", sender: self)
-        }
-        edit.backgroundColor = .lightGray
-        return [edit]
-    }
+    //func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) ->
+    //    [UITableViewRowAction]? {
+    //    let edit = UITableViewRowAction(style: .normal, title: "Edit") { action, index in
+    //        // self.scheduleID = self.SchedulesDataArray[editActionsForRowAt.row].id!
+    //        self.performSegue(withIdentifier: "schedule", sender: self)
+    //    }
+    //    edit.backgroundColor = .lightGray
+    //    return [edit]
+    //}
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         if tableView == timersTableView {

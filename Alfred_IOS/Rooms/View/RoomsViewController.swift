@@ -559,23 +559,23 @@ extension RoomsViewController: UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {
-        if tableView == timersTableView {
-            let edit = UITableViewRowAction(style: .normal, title: "Edit") { action, index in
-                self.scheduleID = self.SchedulesDataArray[editActionsForRowAt.row].id!
-                self.performSegue(withIdentifier: "schedule", sender: self)
-            }
-            edit.backgroundColor = .lightGray
-            return [edit]
-        } else {
-            let edit = UITableViewRowAction(style: .normal, title: "Edit") { action, index in
-                self.sensorID = self.MotionSensorDataArray[editActionsForRowAt.row].id!
-                self.performSegue(withIdentifier: "motionSensor", sender: self)
-            }
-            edit.backgroundColor = .lightGray
-            return [edit]
-        }
-    }
+    //func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {
+        //if tableView == timersTableView {
+        //    let edit = UITableViewRowAction(style: .normal, title: "Edit") { action, index in
+        //        self.scheduleID = self.SchedulesDataArray[editActionsForRowAt.row].id!
+        //        self.performSegue(withIdentifier: "schedule", sender: self)
+        //    }
+        //    edit.backgroundColor = .lightGray
+        //    return [edit]
+        //} else {
+        //    let edit = UITableViewRowAction(style: .normal, title: "Edit") { action, index in
+        //        self.sensorID = self.MotionSensorDataArray[editActionsForRowAt.row].id!
+        //        self.performSegue(withIdentifier: "motionSensor", sender: self)
+        //    }
+        //    edit.backgroundColor = .lightGray
+        //    return [edit]
+        //}
+    //}
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true

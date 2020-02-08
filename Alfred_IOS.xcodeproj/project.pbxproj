@@ -56,7 +56,6 @@
 		E841FE252218BCD2009D1A82 /* RoomsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E841FE242218BCD2009D1A82 /* RoomsController.swift */; };
 		E84566D32210BEA900CF93DF /* HouseWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84566D12210BEA900CF93DF /* HouseWeatherData.swift */; };
 		E84566D42210BEA900CF93DF /* HouseWeatherBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84566D22210BEA900CF93DF /* HouseWeatherBaseClass.swift */; };
-		E845B9C1214E980900A75D96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E845B9C0214E980900A75D96 /* Main.storyboard */; };
 		E850F759233FCAED00441A7E /* ic_logo.gif in Resources */ = {isa = PBXBuildFile; fileRef = E850F758233FCAED00441A7E /* ic_logo.gif */; };
 		E868D1EA21620E16000DC024 /* SensorsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868D1E921620E16000DC024 /* SensorsTableViewCell.swift */; };
 		E868D1EC2162236F000DC024 /* SensorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868D1EB2162236F000DC024 /* SensorController.swift */; };
@@ -64,6 +63,7 @@
 		E86BB70322A46E150002F569 /* GardenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86BB70222A46E150002F569 /* GardenViewController.swift */; };
 		E86BB70522A479490002F569 /* GardenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86BB70422A479490002F569 /* GardenController.swift */; };
 		E87277B52145AD7600FE3FC3 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87277B42145AD7600FE3FC3 /* ScheduleTableViewCell.swift */; };
+		E88A02D923EEC810006B3B1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E845B9C0214E980900A75D96 /* Main.storyboard */; };
 		E89E162A221C68860088AC62 /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89E1629221C68860088AC62 /* Slide.swift */; };
 		E89E162E221C68F90088AC62 /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = E89E162D221C68F90088AC62 /* Slide.xib */; };
 		E89F4C9B21F50AB9000873E8 /* RoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89F4C9A21F50AB9000873E8 /* RoomsViewController.swift */; };
@@ -650,10 +650,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E88A02D923EEC810006B3B1F /* Main.storyboard in Resources */,
 				E850F759233FCAED00441A7E /* ic_logo.gif in Resources */,
 				0AE259021F70476D002C6922 /* Settings.bundle in Resources */,
 				E8CB30C522904CB500168CAC /* LightScenes.xib in Resources */,
-				E845B9C1214E980900A75D96 /* Main.storyboard in Resources */,
 				0A80C09C1F24812E0082F77C /* Alfred.plist in Resources */,
 				0A69FB8B1F10C25C00563A69 /* Assets.xcassets in Resources */,
 				E89E162E221C68F90088AC62 /* Slide.xib in Resources */,
@@ -833,7 +833,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -890,7 +890,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -921,12 +921,12 @@
 					"\"${PODS_ROOT}/Headers/Public\"",
 				);
 				INFOPLIST_FILE = Alfred_IOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 4.0;
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-DDEBUG\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "JP.Alfred-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -954,12 +954,12 @@
 					"\"${PODS_ROOT}/Headers/Public\"",
 				);
 				INFOPLIST_FILE = Alfred_IOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "JP.Alfred-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
