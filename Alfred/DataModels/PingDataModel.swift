@@ -25,7 +25,6 @@ class PingData: ObservableObject {
 
     private var results = PingDataItem() {
         didSet {
-            print("data --> \(self.results)")
             if self.results.error != nil {
                 pingError = true
             }
@@ -54,7 +53,7 @@ extension PingData {
             .eraseToAnyPublisher()
             .receive(on: RunLoop.main)
             .catch { error -> AnyPublisher<PingDataItem, Never> in
-                print("☣️ error decoding: \(error)")
+                print("☣️ PingData - error decoding: \(error)")
                 return self.emptyPublisher()
             }
             .assign(to: \.results, on: self)

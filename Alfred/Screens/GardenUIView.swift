@@ -18,7 +18,9 @@ struct GardenUIView: View {
         GeometryReader { geometry in
             VStack {
                 HeaderUIView()
-                    .frame(width: geometry.size.width, height: 230)
+                .frame(width: geometry.size.width, height: 230)
+
+                FlowerCareDataGraph()
             }
             Spacer()
         }

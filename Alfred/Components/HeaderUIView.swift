@@ -16,7 +16,7 @@ struct HeaderUIView: View {
                 Spacer()
                 .frame(width: geometry.size.width, height: 20)
                 SummaryUIView()
-                    .frame(width: geometry.size.width, height: 120)
+                    .frame(width: geometry.size.width, height: 100)
                 MenuUIView()
                     .frame(width: geometry.size.width, height: 80)
             }
