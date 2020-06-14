@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum NetworkError: Error {
     case badURL, badStatusCode, requestFailed, unknown
@@ -45,4 +46,18 @@ func getAlfredData(for url: String) -> (request: URLRequest?, error: NetworkErro
     request.addValue(accessKey, forHTTPHeaderField: "client-access-key")
 
     return (request, error: nil)
+}
+
+// swiftlint:disable implicit_getter
+extension UIColor {
+    var color: Color {
+        get {
+            let rgbColours = self.cgColor.components
+            return Color(
+                red: Double(rgbColours![0]),
+                green: Double(rgbColours![1]),
+                blue: Double(rgbColours![2])
+            )
+        }
+    }
 }

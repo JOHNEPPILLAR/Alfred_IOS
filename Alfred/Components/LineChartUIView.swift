@@ -10,15 +10,18 @@ import SwiftUI
 
 struct LineChartUIView: View {
     var data: [(Double)]
+    var batteryData: [(Double)]?
     var title: String?
-    var marker: Double?
+    var threshhold: Double?
 
     public init(data: [Double],
+                batteryData: [Double]? = nil,
                 title: String? = nil,
-                marker: Double? = nil) {
+                threshhold: Double? = nil) {
         self.data = data
+        self.batteryData = batteryData
         self.title = title
-        self.marker = marker
+        self.threshhold = threshhold
     }
 
     var globalMin: Double {
@@ -36,19 +39,57 @@ struct LineChartUIView: View {
     }
 
     public var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            if self.title != nil {
-                Text(self.title!)
-                .fontWeight(.bold)
-                .foregroundColor(.white)
-                .offset(x: 10, y: 0)
-            }
-            GeometryReader { reader in
-                ZStack {
-                    if self.marker != nil {
+        ZStack {
+            VStack(alignment: .leading, spacing: 8) {
+                HStack {
+                    if self.title != nil {
+                        Text(self.title ?? "")
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .offset(x: 10, y: 0)
+                        Spacer()
+                        Text("Current: \(String(format: "%.0f", self.data.last ?? 0))/" +
+                             "\(String(format: "%.0f", self.threshhold ?? 0))")
+                            .fontWeight((self.data.last ?? 0) <= (self.threshhold ?? 0) ? .bold : .light)
+                            .foregroundColor((self.data.last ?? 0) <= (self.threshhold ?? 0) ? .red : .white)
+                            .offset(x: -10, y: 0)
+                    }
+                }
+                Spacer()
+                Spacer()
+                GeometryReader { reader in
+                    ZStack {
+                        if self.threshhold != nil {
+                            Line( // Battery
+                                data: self.batteryData ?? [],
+                                lineColor: #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1).color,
+                                dashLine: false,
+                                minDataValue: .constant(self.globalMin),
+                                maxDataValue: .constant(self.globalMax),
+                                frame: .constant(CGRect(
+                                x: 0,
+                                y: 0,
+                                width: reader.frame(in: .local).width - 30,
+                                height: reader.frame(in: .local).height))
+                            )
+
+                            Line( // Threshhold
+                                data: [Double](repeating: self.threshhold ?? 0.0, count: self.data.count),
+                                lineColor: #colorLiteral(red: 0.8078431487, green: 0.2911018658, blue: 0.3674803542, alpha: 1).color,
+                                dashLine: true,
+                                minDataValue: .constant(self.globalMin),
+                                maxDataValue: .constant(self.globalMax),
+                                frame: .constant(CGRect(
+                                x: 0,
+                                y: 0,
+                                width: reader.frame(in: .local).width - 30,
+                                height: reader.frame(in: .local).height))
+                            )
+                        }
                         Line(
-                            data: [Double](repeating: self.marker ?? 0.0, count: self.data.count),
-                            lineColor: Color.red,
+                            data: self.data,
+                            lineColor: Color.green,
+                            dashLine: false,
                             minDataValue: .constant(self.globalMin),
                             maxDataValue: .constant(self.globalMax),
                             frame: .constant(CGRect(
@@ -58,34 +99,50 @@ struct LineChartUIView: View {
                             height: reader.frame(in: .local).height))
                         )
                     }
-                    Line(
-                        data: self.data,
-                        lineColor: Color.green,
-                        minDataValue: .constant(self.globalMin),
-                        maxDataValue: .constant(self.globalMax),
-                        frame: .constant(CGRect(
-                        x: 0,
-                        y: 0,
-                        width: reader.frame(in: .local).width - 30,
-                        height: reader.frame(in: .local).height))
-                    )
                 }
+                .offset(x: 10, y: -30)
             }
-            .offset(x: 10, y: -30)
         }
     }
 }
 
 #if DEBUG
 struct LineChartUIView_Previews: PreviewProvider {
+
+    static func chartDataMoisture () -> [Double] {
+        let mockSensorDataItem = MockSensorDataItem()
+        return (0..<mockSensorDataItem.data[1].readings.count).map { (item) in
+            return mockSensorDataItem.data[1].readings[item].moisture.rounded(.down)
+        }
+    }
+
+    static func chartDataBattery () -> [Double] {
+        let mockSensorDataItem = MockSensorDataItem()
+        return (0..<mockSensorDataItem.data[1].readings.count).map { (item) in
+            return Double(mockSensorDataItem.data[1].readings[item].battery)
+        }
+    }
+
+    static func chartDataTitle () -> String {
+        let mockSensorDataItem = MockSensorDataItem()
+        return mockSensorDataItem.data[1].plantname
+    }
+
+    static func chartDataThreshhold () -> Double {
+        let mockSensorDataItem = MockSensorDataItem()
+        return mockSensorDataItem.data[1].thresholdmoisture
+    }
+
     static var previews: some View {
         ZStack {
             Color(#colorLiteral(red: 0.1439366937, green: 0.1623166203, blue: 0.2411367297, alpha: 1))
-            .edgesIgnoringSafeArea(.all)
+                .edgesIgnoringSafeArea(.all)
             LineChartUIView(
-                data: [0, 8, 100, 23, 54, 32, 12, 37, 100, 7, 23, 43],
-                title: "Title",
-                marker: 8.0)
+                data: chartDataMoisture(),
+                batteryData: chartDataBattery(),
+                title: chartDataTitle(),
+                threshhold: chartDataThreshhold()
+            )
         }
     }
 }
@@ -94,6 +151,7 @@ struct LineChartUIView_Previews: PreviewProvider {
 struct Line: View {
     var data: [(Double)]
     var lineColor: Color = Color.green
+    var dashLine: Bool = false
 
     @Binding var minDataValue: Double?
     @Binding var maxDataValue: Double?
@@ -132,19 +190,21 @@ struct Line: View {
 
     var path: Path {
         let points = self.data
-        // return Path.lineChart(points: points, step: CGPoint(x: stepWidth, y: stepHeight))
         return Path.quadCurvedPathWithPoints(
-            points: points,
-            step: CGPoint(
+                points: points,
+                step: CGPoint(
                 x: stepWidth,
                 y: stepHeight),
                 globalOffset: minDataValue)
     }
 
+    let dashStyle = StrokeStyle(lineWidth: 3, dash: [5, 5])
+    let lineStyle = StrokeStyle(lineWidth: 3, lineJoin: .round)
+
     public var body: some View {
         ZStack {
             self.path
-                .stroke(lineColor, style: StrokeStyle(lineWidth: 3, lineJoin: .round))
+                .stroke(lineColor, style: dashLine ? dashStyle : lineStyle)
                 .rotationEffect(.degrees(180), anchor: .center)
                 .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
                 .drawingGroup()

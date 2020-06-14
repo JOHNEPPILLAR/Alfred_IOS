@@ -20,17 +20,8 @@ struct SensorDataItem: Codable, Identifiable, Hashable {
     let plantname: String
     let address: String
     let sensorlabel: String
+    let thresholdmoisture: Double
     let readings: [SensorReadingDataItem]
-
-/*    init(plantname: String? = nil,
-         address: String? = nil,
-         sensorlabel: String? = nil,
-         readings: [SensorReadingDataItem] = []) {
-        self.plantname = plantname
-        self.address = address
-        self.sensorlabel = sensorlabel
-        self.readings = readings
-    }*/
 
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
@@ -52,48 +43,11 @@ struct SensorReadingDataItem: Codable, Identifiable {
     var id: Date {
         return date
     }
-
-/*    init(timeofday: Date? = nil,
-         sunlight: Double? = nil,
-         plantname: String? = nil,
-         moisture: Double? = nil,
-         fertiliser: Double? = nil,
-         battery: Int? = nil) {
-        self.timeofday = timeofday
-        self.sunlight = sunlight
-        self.plantname = plantname
-        self.moisture = moisture
-        self.fertiliser = fertiliser
-        self.battery = battery
-    }*/
  }
 
 public class FlowerCareData: ObservableObject {
 
     @Published var results = [SensorDataItem]()
-    @Published var mockResults: [SensorReadingDataItem] = [
-    SensorReadingDataItem(
-        timeofday: "2020-05-11T20:00:00.000Z",
-        sunlight: 156.33333333333334,
-        plantname: "Lemon Tree",
-        moisture: 12.80952380952381,
-        fertiliser: 175.38095238095238,
-        battery: 96),
-    SensorReadingDataItem(
-        timeofday: "2020-05-11T23:00:00.000Z",
-        sunlight: 166.11428571428573,
-        plantname: "Lemon Tree",
-        moisture: 12.17142857142857,
-        fertiliser: 170.25714285714287,
-        battery: 95),
-    SensorReadingDataItem(
-        timeofday: "2020-05-12T02:00:00.000Z",
-        sunlight: 251.7941176470588,
-        plantname: "Lemon Tree",
-        moisture: 11.588235294117647,
-        fertiliser: 165.23529411764707,
-        battery: 94)
-    ]
 
     private(set) var cancellationToken: AnyCancellable?
 

@@ -20,10 +20,10 @@ struct ControllerUIView: View {
             VStack {
                 if viewRouter.currentPage == "SplashUIView" {
                         SplashUIView(viewRouter: viewRouter)
-                        .transition(AnyTransition.opacity.animation(.easeInOut(duration: 2.0)))
+                            .transition(AnyTransition.opacity.animation(.easeInOut(duration: 2.0)))
                     } else if viewRouter.currentPage == "GardenUIView" {
                         GardenUIView(viewRouter: viewRouter)
-                        .transition(AnyTransition.opacity.animation(.easeInOut(duration: 2.0)))
+                            .transition(AnyTransition.opacity.animation(.easeInOut(duration: 2.0)))
                     } else {
                         EmptyView()
                 }

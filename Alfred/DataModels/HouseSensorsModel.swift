@@ -17,20 +17,21 @@ struct HouseSensorDataItem: Codable, Comparable {
 
     let location: String?
     let battery: Int?
-    let temperature: Float?
+    let temperature: Double?
     let humidity: Int?
-    let pressure: Float?
+    let pressure: Double?
     let co2: Int?
     let air: Int?
+    let nitrogen: Int?
 
-    // Init
     init(location: String? = nil,
          battery: Int? = nil,
-         temperature: Float? = nil,
+         temperature: Double? = nil,
          humidity: Int? = nil,
-         pressure: Float? = nil,
+         pressure: Double? = nil,
          co2: Int? = nil,
-         air: Int? = nil) {
+         air: Int? = nil,
+         nitrogen: Int? = nil) {
         self.location = location
         self.battery = battery
         self.temperature = temperature
@@ -38,13 +39,15 @@ struct HouseSensorDataItem: Codable, Comparable {
         self.pressure = pressure
         self.co2 = co2
         self.air = air
+        self.nitrogen = nitrogen
     }
-
 }
 
 public class HouseSensorData: ObservableObject {
 
-    @Published var healthIndicator: Int = 0
+    @Published var healthIndicator: String = "1pxHeader"
+    @Published var netatmoData: [HouseSensorDataItem] = []
+    @Published var dysonData: [HouseSensorDataItem] = []
 
     private var cancellationToken: AnyCancellable?
 
@@ -59,8 +62,9 @@ extension HouseSensorData {
            Empty<[HouseSensorDataItem], Never>(completeImmediately: completeImmediately).eraseToAnyPublisher()
        }
 
+    // function_body_length
+    // swiftlint:disable cyclomatic_complexity
     func loadData() {
-
         let (urlRequest1, errorURL1) = getAlfredData(for: "netatmo/sensors/current")
         let (urlRequest2, errorURL2) = getAlfredData(for: "dyson/sensors/current")
 
@@ -90,6 +94,9 @@ extension HouseSensorData {
                 Just(([], []))
             }
             .sink(receiveValue: { netatmoDataItems, dysonDataItems in
+                self.netatmoData = netatmoDataItems
+                self.dysonData = dysonDataItems
+
                 var airQuality: [Int] = [0, 0]
 
                 let airReading = dysonDataItems.max()?.air ?? 0
@@ -120,9 +127,12 @@ extension HouseSensorData {
                 default: airQuality[1] = 3
                 }
 
-                self.healthIndicator = airQuality.max() ?? 0
+                switch airQuality.max() {
+                case 1: self.healthIndicator = "air_quality_green"
+                case 2: self.healthIndicator = "air_quality_yellow"
+                default: self.healthIndicator = "air_quality_red"
+                }
             })
-
         }
     }
 }

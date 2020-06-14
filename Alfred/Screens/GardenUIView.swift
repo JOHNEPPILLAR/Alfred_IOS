@@ -18,8 +18,7 @@ struct GardenUIView: View {
         GeometryReader { geometry in
             VStack {
                 HeaderUIView()
-                .frame(width: geometry.size.width, height: 230)
-
+                    .frame(width: geometry.size.width, height: 230)
                 FlowerCareDataGraph()
             }
             Spacer()
@@ -32,7 +31,7 @@ struct GardenUIView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Color(#colorLiteral(red: 0.1439366937, green: 0.1623166203, blue: 0.2411367297, alpha: 1))
-            .edgesIgnoringSafeArea(.all)
+                .edgesIgnoringSafeArea(.all)
             GardenUIView(viewRouter: ViewRouter())
         }
     }

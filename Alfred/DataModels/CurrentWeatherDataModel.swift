@@ -18,13 +18,11 @@ struct CurrentWeatherDataItem: Codable {
     let temperatureLow: Int?
 
     init(icon: String? = nil,
-         skyConIcon: String? = nil,
          summary: String? = nil,
          temperature: Int? = nil,
          apparentTemperature: Int? = nil,
          temperatureHigh: Int? = nil,
          temperatureLow: Int? = nil) {
-
         self.icon = icon
         self.summary = summary
         self.temperature = temperature
@@ -39,10 +37,6 @@ public class CurrentWeatherData: ObservableObject {
     @Published var results = CurrentWeatherDataItem()
 
     private(set) var cancellationToken: AnyCancellable?
-
-    init() {
-        loadData()
-    }
 }
 
 extension CurrentWeatherData {
@@ -52,7 +46,6 @@ extension CurrentWeatherData {
     }
 
     func loadData() {
-
         let (urlRequest, errorURL) = getAlfredData(for: "weather/today")
         if errorURL == nil {
             self.cancellationToken = URLSession.shared.dataTaskPublisher(for: urlRequest!)

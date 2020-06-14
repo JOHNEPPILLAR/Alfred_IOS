@@ -12,31 +12,39 @@ struct FlowerCareDataGraph: View {
 
     @ObservedObject var flowerCareData: FlowerCareData = FlowerCareData()
 
-    func chartData (data: [SensorReadingDataItem]) -> [Double] {
+    func chartDataMoisture (data: [SensorReadingDataItem]) -> [Double] {
         return (0..<data.count).map { (item) in
             return data[item].moisture.rounded(.down)
         }
     }
 
-    var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            GeometryReader { geometry in
-                VStack {
-                    //if self.flowerCareData.results.count > 0 {
-                    //ForEach(self.flowerCareData.results) { item in
-                        LineChartUIView(
-                            data: [0, 8, 100, 23, 54, 32, 12, 37, 100, 7, 23, 43],
-                            //self.chartData(data: self.flowerCareData.results[0].readings),
-                            title: "Title",
-                            marker: 8.0)
-                        .frame(width: geometry.size.width, height: 140)
-                        .transition(.opacity)
-                        .animation(.easeIn(duration: 1.0))
+    func chartDataBattery (data: [SensorReadingDataItem]) -> [Double] {
+        return (0..<data.count).map { (item) in
+            return Double(data[item].battery)
+        }
+    }
 
-                        //Spacer()
-                    //}
+    var body: some View {
+        GeometryReader { geometry in
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack {
+                    Group {
+                        ForEach(self.flowerCareData.results) { sensor in
+                            LineChartUIView(
+                                data: self.chartDataMoisture(data: sensor.readings),
+                                batteryData: self.chartDataBattery(data: sensor.readings),
+                                title: sensor.plantname,
+                                threshhold: sensor.thresholdmoisture)
+                                .frame(width: geometry.size.width, height: 140)
+                                .transition(.opacity)
+                                .animation(.easeIn(duration: 1.0)
+                            )
+                        }
+                    }
                 }
+                Spacer()
             }
+            .id(UUID().uuidString)
         }
     }
 }
@@ -46,12 +54,9 @@ struct FlowerCareDataGraph_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Color(#colorLiteral(red: 0.1439366937, green: 0.1623166203, blue: 0.2411367297, alpha: 1))
-            .edgesIgnoringSafeArea(.all)
+                .edgesIgnoringSafeArea(.all)
             FlowerCareDataGraph()
         }
-        //.previewLayout(
-        //    .fixed(width: 414, height: 80)
-        //)
     }
 }
 #endif

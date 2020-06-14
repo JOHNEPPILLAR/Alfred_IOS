@@ -19,30 +19,30 @@ struct SplashUIView: View {
     var body: some View {
         HStack(alignment: .lastTextBaseline) {
             Image("splash_logo")
-            .resizable()
-            .accessibility(hidden: true)
-            .aspectRatio(contentMode: .fit)
-            .frame(width: 60.0, alignment: .center)
+                .resizable()
+                .accessibility(hidden: true)
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 60.0, alignment: .center)
             Text("l")
-            .fontWeight(.light)
-            .foregroundColor(.white)
-            .font(.system(size: 48))
+                .fontWeight(.light)
+                .foregroundColor(.white)
+                .font(.system(size: 48))
             Text("f")
-            .fontWeight(.light)
-            .foregroundColor(.white)
-            .font(.system(size: 48))
+                .fontWeight(.light)
+                .foregroundColor(.white)
+                .font(.system(size: 48))
             Text("r")
-            .fontWeight(.light)
-            .foregroundColor(.white)
-            .font(.system(size: 48))
+                .fontWeight(.light)
+                .foregroundColor(.white)
+                .font(.system(size: 48))
             Text("e")
-            .fontWeight(.light)
-            .foregroundColor(.white)
-            .font(.system(size: 48))
+                .fontWeight(.light)
+                .foregroundColor(.white)
+                .font(.system(size: 48))
             Text("d")
-            .fontWeight(.light)
-            .foregroundColor(.white)
-            .font(.system(size: 48))
+                .fontWeight(.light)
+                .foregroundColor(.white)
+                .font(.system(size: 48))
         }
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
@@ -68,7 +68,7 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Color(#colorLiteral(red: 0.1439366937, green: 0.1623166203, blue: 0.2411367297, alpha: 1))
-            .edgesIgnoringSafeArea(.all)
+                .edgesIgnoringSafeArea(.all)
             SplashUIView(viewRouter: ViewRouter())
         }
     }

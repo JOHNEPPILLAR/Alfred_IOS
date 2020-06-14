@@ -14,7 +14,7 @@ struct HeaderUIView: View {
         GeometryReader { geometry in
             VStack {
                 Spacer()
-                .frame(width: geometry.size.width, height: 20)
+                    .frame(width: geometry.size.width, height: 20)
                 SummaryUIView()
                     .frame(width: geometry.size.width, height: 100)
                 MenuUIView()
@@ -29,7 +29,7 @@ struct HeaderUIView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Color(#colorLiteral(red: 0.1439366937, green: 0.1623166203, blue: 0.2411367297, alpha: 1))
-            .edgesIgnoringSafeArea(.all)
+                .edgesIgnoringSafeArea(.all)
             HeaderUIView()
         }
         .previewLayout(

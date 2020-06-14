@@ -9,17 +9,9 @@
 import Foundation
 import UIKit
 
-enum SkyconTypes: String, CaseIterable {
-    case clearDay, clearNight, rain, sleet, wind, fog, cloudy, partlyCloudyDay, partlyCloudyNight, snow
+class SkyIconUIView: UIView {
 
-    static func withLabel(_ label: String) -> SkyconTypes? {
-        return self.allCases.first{ "\($0)" == label }
-    }
-}
-
-class SkyIconView: UIView {
-
-    fileprivate var type = SkyconTypes.clearDay
+    fileprivate var type = "clearDay"
     fileprivate var strokeColor = UIColor.black
     fileprivate var timer: Timer!
 
@@ -86,11 +78,11 @@ class SkyIconView: UIView {
         return min(width, height)
     }
     
-    init(type: SkyconTypes, strokeColor: UIColor, backgroundColor: UIColor?, frame: CGRect) {
+    init(type: String?, strokeColor: UIColor, backgroundColor: UIColor?, frame: CGRect) {
         
         super.init(frame: frame)
         
-        self.type = type
+        self.type = type ?? "clearDay"
         self.strokeColor = strokeColor
         self.backgroundColor = backgroundColor
         
@@ -145,26 +137,28 @@ class SkyIconView: UIView {
         let color: CGColor = self.strokeColor.cgColor
         
         switch self.type {
-        case .clearDay:
+        case "clearDay":
             drawClearDayInContext(context, time: time, color: color)
-        case .clearNight:
+        case "clearNight":
             drawClearNightInContext(context, time: time, color: color)
-        case .cloudy:
+        case "cloudy":
             drawCloudyInContext(context, time: time, color: color)
-        case .fog:
+        case "fog":
             drawFogInContext(context, time: time, color: color)
-        case .partlyCloudyDay:
+        case "partlyCloudyDay":
             drawPartlyCloudyDayInContext(context, time: time, color: color)
-        case .partlyCloudyNight:
+        case "partlyCloudyNight":
             drawPartlyCloudyNightInCotnext(context, time: time, color: color)
-        case .rain:
+        case "rain":
             drawRainInContext(context, time: time, color: color)
-        case .sleet:
+        case "sleet":
             drawSleetInContext(context, time: time, color: color)
-        case .wind:
+        case "wind":
             drawWindInContext(context, time: time, color: color)
-        case .snow:
+        case "snow":
             drawSnowInContext(context, time: time, color: color)
+        default:
+            drawClearDayInContext(context, time: time, color: color)
         }
     }
     

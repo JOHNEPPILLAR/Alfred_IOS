@@ -27,8 +27,8 @@ class MenuDataItems: ObservableObject {
     init() {
         self.menuDataItems = [
             MenuDataItem(id: 0, room: "Garden", active: true),
-            MenuDataItem(id: 1, room: "Living Room", active: false),
-            MenuDataItem(id: 2, room: "Office", active: false),
+            MenuDataItem(id: 1, room: "Office", active: false),
+            MenuDataItem(id: 2, room: "Living Room", active: false),
             MenuDataItem(id: 3, room: "Bedroom", active: false),
             MenuDataItem(id: 4, room: "Kids Bedroom", active: false),
             MenuDataItem(id: 5, room: "Kitchen", active: false)

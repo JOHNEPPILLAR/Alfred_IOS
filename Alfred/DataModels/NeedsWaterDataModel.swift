@@ -37,7 +37,17 @@ struct NeedsWaterDataItem: Codable {
 
 public class NeedsWaterData: ObservableObject {
 
-    @Published var results = [NeedsWaterDataItem]()
+    @Published var needsWater: String = "1pxHeader"
+
+    var results = [NeedsWaterDataItem]() {
+        didSet {
+            if results.count > 0 {
+                needsWater = "leaf_red"
+            } else {
+                needsWater = "leaf_green"
+            }
+        }
+    }
 
     private(set) var cancellationToken: AnyCancellable?
 
