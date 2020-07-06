@@ -25,32 +25,21 @@ struct FlowerCareDataGraph: View {
     }
 
     var body: some View {
-        GeometryReader { geometry in
-            ScrollView(.vertical, showsIndicators: false) {
-                VStack {
-                    Group {
-                        ForEach(self.flowerCareData.results) { sensor in
-                            LineChartUIView(
-                                data: self.chartDataMoisture(data: sensor.readings),
-                                batteryData: self.chartDataBattery(data: sensor.readings),
-                                title: sensor.plantname,
-                                threshhold: sensor.thresholdmoisture)
-                                .frame(width: geometry.size.width, height: 140)
-                                .transition(.opacity)
-                                .animation(.easeIn(duration: 1.0)
-                            )
-                        }
-                    }
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack {
+                ForEach(self.flowerCareData.results) { sensor in
+                    GardenSensorChartUIView(sensorData: sensor)
+                        .frame(height: 170)
                 }
-                Spacer()
             }
-            .id(UUID().uuidString)
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
         }
     }
 }
 
 #if DEBUG
 struct FlowerCareDataGraph_Previews: PreviewProvider {
+
     static var previews: some View {
         ZStack {
             Color(#colorLiteral(red: 0.1439366937, green: 0.1623166203, blue: 0.2411367297, alpha: 1))

@@ -11,7 +11,6 @@ import Combine
 
 struct NeedsWaterDataItem: Codable {
     let address: String?
-    let identifier: String?
     let sensorlabel: String?
     let plantname: String?
     let moisture: Double?
@@ -19,14 +18,12 @@ struct NeedsWaterDataItem: Codable {
     let zone: Int?
 
     init(address: String? = nil,
-         identifier: String? = nil,
          sensorlabel: String? = nil,
          plantname: String? = nil,
          moisture: Double? = nil,
          thresholdmoisture: Double? = nil,
          zone: Int? = nil) {
         self.address = address
-        self.identifier = identifier
         self.sensorlabel = sensorlabel
         self.plantname = plantname
         self.moisture = moisture
@@ -64,7 +61,7 @@ extension NeedsWaterData {
 
     func loadData() {
 
-        let (urlRequest, errorURL) = getAlfredData(for: "gardenflower/needswater")
+        let (urlRequest, errorURL) = getAlfredData(for: "flowercare/needswater")
         if errorURL == nil {
             self.cancellationToken = URLSession.shared.dataTaskPublisher(for: urlRequest!)
             .map { $0.data }

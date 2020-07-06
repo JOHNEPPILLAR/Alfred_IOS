@@ -10,11 +10,29 @@ import SwiftUI
 
 struct HeaderUIView: View {
 
+    @State private var showingAlert = false
+    @State private var deviceToken: String = ""
+
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                Spacer()
-                    .frame(width: geometry.size.width, height: 20)
+                HStack {
+                    Spacer()
+
+                    // swiftlint:disable multiple_closures_with_trailing_closure
+                    Button(action: {
+                        self.showingAlert = true
+                    }) {
+                        Image(systemName: "gear")
+                        .foregroundColor(.gray)
+                        .offset(x: -10)
+                    }
+                    //.alert(isPresented: self.$showingAlert) {
+                    //    Alert(title: Text("Device Token"),
+                    //          message: Text(self.deviceToken),
+                    //          dismissButton: .default(Text("OK")))
+                    //}
+                }
                 SummaryUIView()
                     .frame(width: geometry.size.width, height: 100)
                 MenuUIView()

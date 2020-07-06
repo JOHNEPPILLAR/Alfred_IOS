@@ -27,7 +27,7 @@ func readPlist(item: String) -> String {
 func getAlfredData(for url: String) -> (request: URLRequest?, error: NetworkError?) {
     #if DEBUG
     let baseURL = readPlist(item: "BaseURL")
-//    let baseURL = readPlist(item: "BaseURL_Local")
+    //let baseURL = readPlist(item: "BaseURL_Local")
     #else
     let baseURL = readPlist(item: "BaseURL")
     #endif
@@ -40,6 +40,30 @@ func getAlfredData(for url: String) -> (request: URLRequest?, error: NetworkErro
 
     var request = URLRequest(url: url)
     request.httpMethod = "GET"
+    request.cachePolicy = URLRequest.CachePolicy.reloadIgnoringLocalAndRemoteCacheData
+    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.addValue("application/json", forHTTPHeaderField: "Accept")
+    request.addValue(accessKey, forHTTPHeaderField: "client-access-key")
+
+    return (request, error: nil)
+}
+
+func putAlfredData(for url: String) -> (request: URLRequest?, error: NetworkError?) {
+    #if DEBUG
+    let baseURL = readPlist(item: "BaseURL")
+    //let baseURL = readPlist(item: "BaseURL_Local")
+    #else
+    let baseURL = readPlist(item: "BaseURL")
+    #endif
+
+    let accessKey = readPlist(item: "AccessKey")
+    guard let url = URL(string: baseURL + "/" + url) else {
+        print("Invalid URL")
+        return (nil, error: NetworkError.badURL)
+    }
+
+    var request = URLRequest(url: url)
+    request.httpMethod = "PUT"
     request.cachePolicy = URLRequest.CachePolicy.reloadIgnoringLocalAndRemoteCacheData
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
     request.addValue("application/json", forHTTPHeaderField: "Accept")

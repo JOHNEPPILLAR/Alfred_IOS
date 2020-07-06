@@ -9,6 +9,13 @@
 import Foundation
 
 struct MockSensorDataItem {
+
+    let url = Bundle.main.url(forResource: "mockFlowerCareData", withExtension: "json")!
+    lazy var jsonData = try? Data(contentsOf: url)
+    let decoder = JSONDecoder()
+    lazy var data = try? decoder.decode([SensorDataItem].self, from: jsonData!)
+
+    /*
     let data: [SensorDataItem] = [
         SensorDataItem(
             plantname: "Lemon Tree",
@@ -168,5 +175,6 @@ struct MockSensorDataItem {
             ]
         )
     ]
+ */
 
 }

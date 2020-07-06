@@ -62,7 +62,6 @@ extension HouseSensorData {
            Empty<[HouseSensorDataItem], Never>(completeImmediately: completeImmediately).eraseToAnyPublisher()
        }
 
-    // function_body_length
     // swiftlint:disable cyclomatic_complexity
     func loadData() {
         let (urlRequest1, errorURL1) = getAlfredData(for: "netatmo/sensors/current")

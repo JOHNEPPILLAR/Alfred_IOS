@@ -52,7 +52,7 @@ public class FlowerCareData: ObservableObject {
     private(set) var cancellationToken: AnyCancellable?
 
     init() {
-        loadData(zone: "1-2", durationSpan: "month")
+        loadData(zone: "1-2", durationSpan: "day")
     }
 }
 
@@ -65,7 +65,7 @@ extension FlowerCareData {
     func loadData(zone: String, durationSpan: String) {
 
         let (urlRequest, errorURL) = getAlfredData(
-            for: "gardenflower/sensors/zone/\(zone)?durationSpan=\(durationSpan)"
+            for: "flowercare/sensors/zone/\(zone)?durationSpan=\(durationSpan)"
         )
         if errorURL == nil {
             self.cancellationToken = URLSession.shared.dataTaskPublisher(for: urlRequest!)
