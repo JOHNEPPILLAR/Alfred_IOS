@@ -8,50 +8,47 @@
 
 import SwiftUI
 
-struct MenuItemCell: View {
-
-    @State private var isActive = false
-
-    let menuDataItem: MenuDataItem
-
-    var body: some View {
-        VStack(alignment: .leading) {
-            Text(self.menuDataItem.room)
-                .fontWeight(isActive ? .bold : .light)
-                .foregroundColor(isActive ? .white : .gray)
-                .fixedSize(horizontal: true, vertical: false)
-                .padding(.horizontal, 5)
-                .offset(x: 0, y: isActive ? 31 : 0)
-                .onAppear {
-                    if self.menuDataItem.active == true {
-                        self.isActive.toggle()
-                    }
-                }
-            if isActive {
-                Image("yellow_horizontal_line")
-                .offset(x: 5, y: isActive ? -5 : 0)
-            }
-        }
-    }
-}
-
 struct MenuUIView: View {
 
-    @ObservedObject var menuData: MenuDataItems = MenuDataItems()
+    @EnvironmentObject var stateSettings: StateSettings
+    @ObservedObject var menuItems: MenuDataItems = MenuDataItems()
 
     var body: some View {
         GeometryReader { geometry in
             VStack {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
-                        ForEach(self.menuData.menuDataItems) { item in
-                            MenuItemCell(menuDataItem: item)
+                        ForEach(self.menuItems.menuDataItems) { item in
+                            VStack(alignment: .leading) {
+                                // swiftlint:disable multiple_closures_with_trailing_closure
+                                Button(action: {
+                                    if self.stateSettings.currentMenuItem != item.id {
+                                        self.stateSettings.currentMenuItem = item.id
+                                        self.menuItems.loadData(roomID: self.stateSettings.currentMenuItem)
+                                    }
+                                }) {
+                                    VStack(alignment: .trailing) {
+                                        Text(item.room)
+                                            .fontWeight(item.active ? .bold : .light)
+                                            .foregroundColor(item.active ? .white : .gray)
+                                        .fixedSize(horizontal: true, vertical: false)
+                                        .padding(.horizontal, 5)
+                                        Image("yellow_horizontal_line")
+                                            .foregroundColor(item.active ? .yellow : .clear)
+                                        .frame(height: 10)
+                                        .offset(x: -3, y: -12)
+                                    }
+                                }
+                            }
                         }
                     }
                     Spacer()
                 }
             }
-            .frame(width: geometry.size.width, height: 80)
+            //.onAppear {
+            //    self.menuItems.loadData(roomID: self.stateSettings.currentMenuItem)
+            //}
+            .frame(width: geometry.size.width, height: 50)
         }
     }
 }
@@ -61,11 +58,11 @@ struct MenuUIView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Color(#colorLiteral(red: 0.1439366937, green: 0.1623166203, blue: 0.2411367297, alpha: 1))
-                .edgesIgnoringSafeArea(.all)
-            MenuUIView()
+            .edgesIgnoringSafeArea(.all)
+            MenuUIView().environmentObject(StateSettings())
         }
         .previewLayout(
-            .fixed(width: 414, height: 80)
+            .fixed(width: 414, height: 60)
         )
     }
 }

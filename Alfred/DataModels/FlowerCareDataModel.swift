@@ -9,11 +9,29 @@
 import Foundation
 import Combine
 
-struct SensorDataItem: Codable, Identifiable, Hashable {
-   static func == (lhs: SensorDataItem, rhs: SensorDataItem) -> Bool {
-    return (lhs.address, lhs.sensorlabel) < (rhs.address, rhs.sensorlabel)
+struct SensorReadingDataItem: Codable {
+//struct SensorReadingDataItem: Codable, Identifiable {
+    var id: String {
+        return timeofday
     }
+    let timeofday: String
+    let sunlight: Double
+    //let plantname: String
+    let moisture: Double
+    let fertiliser: Double
+    let battery: Int
+    //   var date: Date {
+    //      let dateFormatter = DateFormatter()
+    //      dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+    //       return dateFormatter.date(from: timeofday) ?? Date()
+    //   }
+}
 
+//struct SensorDataItem: Codable, Identifiable, Hashable {
+struct SensorDataItem: Codable, Identifiable {
+//    static func == (lhs: SensorDataItem, rhs: SensorDataItem) -> Bool {
+//        return (lhs.address, lhs.sensorlabel) < (rhs.address, rhs.sensorlabel)
+//    }
     var id: Date {
         return Date()
     }
@@ -22,38 +40,16 @@ struct SensorDataItem: Codable, Identifiable, Hashable {
     let sensorlabel: String
     let thresholdmoisture: Double
     let readings: [SensorReadingDataItem]
-
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
+//    func hash(into hasher: inout Hasher) {
+//        hasher.combine(id)
+//    }
 }
-
-struct SensorReadingDataItem: Codable, Identifiable {
-    let timeofday: String
-    var date: Date {
-       let dateFormatter = DateFormatter()
-       dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        return dateFormatter.date(from: timeofday) ?? Date()
-    }
-    let sunlight: Double
-    let plantname: String
-    let moisture: Double
-    let fertiliser: Double
-    let battery: Int
-    var id: Date {
-        return date
-    }
- }
 
 public class FlowerCareData: ObservableObject {
 
-    @Published var results = [SensorDataItem]()
+    @Published var results: [SensorDataItem] = [SensorDataItem]()
 
-    private(set) var cancellationToken: AnyCancellable?
-
-    init() {
-        loadData(zone: "1-2", durationSpan: "day")
-    }
+    private var cancellationToken: AnyCancellable?
 }
 
 extension FlowerCareData {
@@ -62,14 +58,19 @@ extension FlowerCareData {
         Empty<[SensorDataItem], Never>(completeImmediately: completeImmediately).eraseToAnyPublisher()
     }
 
-    func loadData(zone: String, durationSpan: String) {
-
+    func loadData(zone: String, duration: String) {
         let (urlRequest, errorURL) = getAlfredData(
-            for: "flowercare/sensors/zone/\(zone)?durationSpan=\(durationSpan)"
+            for: "flowercare/sensors/zone/\(zone)?durationSpan=\(duration)"
         )
         if errorURL == nil {
             self.cancellationToken = URLSession.shared.dataTaskPublisher(for: urlRequest!)
-            .map { $0.data }
+            //.map { $0.data }
+            .tryMap { output in
+                guard let response = output.response as? HTTPURLResponse, response.statusCode == 200 else {
+                    throw HTTPError.statusCode
+                }
+                return output.data
+            }
             .decode(type: [SensorDataItem].self, decoder: JSONDecoder())
             .eraseToAnyPublisher()
             .receive(on: RunLoop.main)

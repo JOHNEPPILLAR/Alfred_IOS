@@ -13,6 +13,11 @@ enum NetworkError: Error {
     case badURL, badStatusCode, requestFailed, unknown
 }
 
+enum HTTPError: LocalizedError {
+    case statusCode
+    case post
+}
+
 func readPlist(item: String) -> String {
     var plistItem: String = ""
     if let path = Bundle.main.path(forResource: "Alfred", ofType: "plist") {

@@ -11,7 +11,7 @@ import Foundation
 struct MenuDataItem: Identifiable {
     let id: Int
     let room: String
-    let active: Bool
+    var active: Bool
 
     init(id: Int, room: String, active: Bool) {
         self.id = id
@@ -21,18 +21,22 @@ struct MenuDataItem: Identifiable {
 }
 
 class MenuDataItems: ObservableObject {
-
-    @Published var menuDataItems: [MenuDataItem]
+    @Published var menuDataItems: [MenuDataItem] = []
 
     init() {
+        self.loadData(roomID: 0)
+    }
+}
+
+extension MenuDataItems {
+    func loadData(roomID: Int = 0) {
         self.menuDataItems = [
-            MenuDataItem(id: 0, room: "Garden", active: true),
-            MenuDataItem(id: 1, room: "Office", active: false),
-            MenuDataItem(id: 2, room: "Living Room", active: false),
-            MenuDataItem(id: 3, room: "Bedroom", active: false),
-            MenuDataItem(id: 4, room: "Kids Bedroom", active: false),
-            MenuDataItem(id: 5, room: "Kitchen", active: false)
+            MenuDataItem(id: 0, room: "Garden", active: roomID == 0 ? true : false),
+            MenuDataItem(id: 1, room: "Office", active: roomID == 1 ? true : false),
+            MenuDataItem(id: 2, room: "Living Room", active: roomID == 2 ? true : false),
+            MenuDataItem(id: 3, room: "Bedroom", active: roomID == 3 ? true : false),
+            MenuDataItem(id: 4, room: "Kids Bedroom", active: roomID == 4 ? true : false),
+            MenuDataItem(id: 5, room: "Kitchen", active: roomID == 5 ? true : false)
         ]
     }
-
 }

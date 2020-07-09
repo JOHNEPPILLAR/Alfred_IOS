@@ -13,7 +13,7 @@ class ViewRouter: ObservableObject {
 
     let objectWillChange = PassthroughSubject<ViewRouter, Never>()
 
-    var currentPage: String = "SplashUIView" {
+    var currentPage: String = "Splash Screen" {
         didSet {
             withAnimation {
                 objectWillChange.send(self)

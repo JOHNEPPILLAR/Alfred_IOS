@@ -15,17 +15,17 @@ struct ControllerUIView: View {
     var body: some View {
         ZStack {
             Color(#colorLiteral(red: 0.1439366937, green: 0.1623166203, blue: 0.2411367297, alpha: 1))
-            .edgesIgnoringSafeArea(.all)
+                .edgesIgnoringSafeArea(.all)
 
             VStack {
-                if viewRouter.currentPage == "SplashUIView" {
-                        SplashUIView(viewRouter: viewRouter)
-                            .transition(AnyTransition.opacity.animation(.easeInOut(duration: 2.0)))
-                    } else if viewRouter.currentPage == "GardenUIView" {
-                        GardenUIView(viewRouter: viewRouter)
-                            .transition(AnyTransition.opacity.animation(.easeInOut(duration: 2.0)))
-                    } else {
-                        EmptyView()
+                if viewRouter.currentPage == "Splash Screen" {
+                    SplashUIView(viewRouter: viewRouter)
+                        .transition(AnyTransition.opacity.animation(.easeInOut(duration: 2.0)))
+                } else if viewRouter.currentPage == "Main" {
+                    MainUIView()
+                        .transition(AnyTransition.opacity.animation(.easeInOut(duration: 2.0)))
+                } else {
+                    EmptyView()
                 }
             }
         }

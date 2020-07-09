@@ -10,7 +10,7 @@ import SwiftUI
 import Charts
 
 struct LineChartUIView: UIViewRepresentable {
-    var lineData: [(Double)]
+    var lineData: [(Double)] = []
     var secondLineData: [(Double)] = []
     var threshhold: Double = 0
 
@@ -31,6 +31,7 @@ struct LineChartUIView: UIViewRepresentable {
         chart.leftAxis.drawAxisLineEnabled = false
         chart.leftAxis.drawGridLinesEnabled = false
         chart.leftAxis.drawLimitLinesBehindDataEnabled = true
+        chart.leftAxis.axisMinimum = 0
 
         chart.setScaleEnabled(true)
         chart.doubleTapToZoomEnabled = false
@@ -116,7 +117,7 @@ struct LineChartUIView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Color(#colorLiteral(red: 0.1439366937, green: 0.1623166203, blue: 0.2411367297, alpha: 1))
-                .edgesIgnoringSafeArea(.all)
+            .edgesIgnoringSafeArea(.all)
             LineChartUIView(
                 lineData: chartDataMoisture(),
                 secondLineData: chartDataBattery(),
