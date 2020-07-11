@@ -16,7 +16,7 @@ struct HeaderUIView: View {
                 SummaryUIView()
                 .frame(width: geometry.size.width, height: 100)
                 MenuUIView()
-                .frame(width: geometry.size.width, height: 80)
+                .frame(width: geometry.size.width, height: 60)
             }
         }
     }
@@ -31,7 +31,7 @@ struct HeaderUIView_Previews: PreviewProvider {
             HeaderUIView().environmentObject(StateSettings())
         }
         .previewLayout(
-            .fixed(width: 414, height: 220)
+            .fixed(width: 414, height: 170)
         )
     }
 }

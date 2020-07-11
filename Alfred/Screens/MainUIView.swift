@@ -16,7 +16,7 @@ struct MainUIView: View {
         GeometryReader { geometry in
             VStack {
                 HeaderUIView()
-                .frame(width: geometry.size.width, height: 230)
+                .frame(width: geometry.size.width, height: 200)
                 if self.stateSettings.currentMenuItem == 0 {
                     FlowerCareDataGraph()
                 } else if self.stateSettings.currentMenuItem == 1 {
