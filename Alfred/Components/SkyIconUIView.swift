@@ -11,7 +11,7 @@ import UIKit
 
 class SkyIconUIView: UIView {
 
-    fileprivate var type = "clearDay"
+    fileprivate var type: String = ""
     fileprivate var strokeColor = UIColor.black
     fileprivate var timer: Timer!
 
@@ -78,11 +78,11 @@ class SkyIconUIView: UIView {
         return min(width, height)
     }
     
-    init(type: String?, strokeColor: UIColor, backgroundColor: UIColor?, frame: CGRect) {
+    init(type: String, strokeColor: UIColor, backgroundColor: UIColor?, frame: CGRect) {
         
         super.init(frame: frame)
         
-        self.type = type ?? "clearDay"
+        self.type = type
         self.strokeColor = strokeColor
         self.backgroundColor = backgroundColor
         
@@ -158,7 +158,8 @@ class SkyIconUIView: UIView {
         case "snow":
             drawSnowInContext(context, time: time, color: color)
         default:
-            drawClearDayInContext(context, time: time, color: color)
+            return
+            //drawClearDayInContext(context, time: time, color: color)
         }
     }
     

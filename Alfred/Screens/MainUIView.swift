@@ -17,15 +17,18 @@ struct MainUIView: View {
             VStack {
                 HeaderUIView()
                 .frame(width: geometry.size.width, height: 200)
-                if self.stateSettings.currentMenuItem == 0 {
-                    FlowerCareDataGraph()
-                } else if self.stateSettings.currentMenuItem == 1 {
-                    FlowerCareDataGraph()
-                } else {
-                    Text("To Do")
+                VStack {
+                    if self.stateSettings.currentMenuItem == 0 {
+                        FlowerCareDataGraph()
+                    } else if self.stateSettings.currentMenuItem == 1 {
+                        FlowerCareDataGraph()
+                    } else {
+                        Text("To Do")
+                    }
                 }
+                .offset(x: 0, y: -30)
             }
-            Spacer()
+    //        Spacer()
         }
     }
 }
@@ -33,11 +36,15 @@ struct MainUIView: View {
 #if DEBUG
 struct MainUIView_Previews: PreviewProvider {
     static var previews: some View {
-        ZStack {
-            Color(#colorLiteral(red: 0.1439366937, green: 0.1623166203, blue: 0.2411367297, alpha: 1))
+
+        let stateSettings = StateSettings()
+        stateSettings.currentMenuItem = 1
+
+        return ZStack {
+            Color(#colorLiteral(red: 0.04249928892, green: 0.1230544075, blue: 0.1653896868, alpha: 1))
             .edgesIgnoringSafeArea(.all)
             MainUIView()
-            .environmentObject(StateSettings())
+           .environmentObject(stateSettings)
         }
     }
 }

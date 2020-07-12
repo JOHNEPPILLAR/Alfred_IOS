@@ -43,7 +43,7 @@ struct FlowerCareDataGraph_Previews: PreviewProvider {
 
     static var previews: some View {
         ZStack {
-            Color(#colorLiteral(red: 0.1439366937, green: 0.1623166203, blue: 0.2411367297, alpha: 1))
+            Color(#colorLiteral(red: 0.04249928892, green: 0.1230544075, blue: 0.1653896868, alpha: 1))
             .edgesIgnoringSafeArea(.all)
             FlowerCareDataGraph(flowerCareData: chartData())
             .environmentObject(StateSettings())

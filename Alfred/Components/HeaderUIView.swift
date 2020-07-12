@@ -16,7 +16,7 @@ struct HeaderUIView: View {
                 SummaryUIView()
                 .frame(width: geometry.size.width, height: 100)
                 MenuUIView()
-                .frame(width: geometry.size.width, height: 60)
+                .frame(width: geometry.size.width, height: 80)
             }
         }
     }
@@ -26,12 +26,12 @@ struct HeaderUIView: View {
 struct HeaderUIView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
-            Color(#colorLiteral(red: 0.1439366937, green: 0.1623166203, blue: 0.2411367297, alpha: 1))
+            Color(#colorLiteral(red: 0.04249928892, green: 0.1230544075, blue: 0.1653896868, alpha: 1))
             .edgesIgnoringSafeArea(.all)
             HeaderUIView().environmentObject(StateSettings())
         }
         .previewLayout(
-            .fixed(width: 414, height: 170)
+            .fixed(width: 414, height: 180)
         )
     }
 }

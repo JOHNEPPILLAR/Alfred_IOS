@@ -20,7 +20,7 @@ struct WeatherIconUIView: UIViewRepresentable {
 
         let frame = CGRect(x: 20, y: 0, width: 30, height: 30)
         let iconView = SkyIconUIView(
-            type: self.currentWeatherData.results.icon,
+            type: self.currentWeatherData.results.icon ?? "",
             strokeColor: .white,
             backgroundColor: .clear,
             frame: frame)
@@ -83,11 +83,10 @@ struct SummaryUIView: View {
                     Spacer()
                 }
             }
-                .padding(10)
-                .background(Color(#colorLiteral(red: 0.03529411765, green: 0.09411764706, blue: 0.1803921569, alpha: 1)))
-                .cornerRadius(10)
-                .frame(width: geometry.size.width, height: 100)
-            Spacer()
+            .padding(10)
+            .background(Color(#colorLiteral(red: 0.1933776736, green: 0.3321536779, blue: 0.4167628586, alpha: 1)))
+            .cornerRadius(10)
+            .frame(width: geometry.size.width, height: 100)
         }
     }
 }
@@ -96,12 +95,12 @@ struct SummaryUIView: View {
 struct SummaryUIView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
-            Color(#colorLiteral(red: 0.1439366937, green: 0.1623166203, blue: 0.2411367297, alpha: 1))
-                .edgesIgnoringSafeArea(.all)
+            Color(#colorLiteral(red: 0.04249928892, green: 0.1230544075, blue: 0.1653896868, alpha: 1))
+            .edgesIgnoringSafeArea(.all)
             SummaryUIView()
         }
         .previewLayout(
-            .fixed(width: 414, height: 120)
+        .fixed(width: 414, height: 120)
         )
     }
 }

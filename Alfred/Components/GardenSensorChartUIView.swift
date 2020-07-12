@@ -28,23 +28,29 @@ struct GardenSensorChartUIView: View {
 
     var body: some View {
         VStack {
-            HStack {
-                Text(self.sensorData.plantname)
-                .foregroundColor(.white)
-                Spacer()
-                if self.sensorData.readings.count > 0 {
-                    Text("Latest: \(String(format: "%.0f", self.sensorData.readings.last!.moisture.rounded(.up)))")
-                        .foregroundColor(self.sensorData.readings.last!.moisture >
-                            self.sensorData.thresholdmoisture ? .gray : .red)
+            VStack {
+                HStack {
+                    Text(self.sensorData.plantname)
+                    .foregroundColor(.white)
+                    Spacer()
+                    if self.sensorData.readings.count > 0 {
+                        Text("Latest: \(String(format: "%.0f", self.sensorData.readings.last!.moisture.rounded(.up)))")
+                            .foregroundColor(self.sensorData.readings.last!.moisture >
+                                self.sensorData.thresholdmoisture ? .gray : .red)
+                    }
                 }
+                LineChartUIView(
+                    lineData: self.chartDataMoisture(data: self.sensorData.readings),
+                    secondLineData: self.chartDataBattery(data: self.sensorData.readings),
+                    threshhold: self.sensorData.thresholdmoisture
+                )
+                .frame(height: 140)
             }
-            LineChartUIView(
-                lineData: self.chartDataMoisture(data: self.sensorData.readings),
-                secondLineData: self.chartDataBattery(data: self.sensorData.readings),
-                threshhold: self.sensorData.thresholdmoisture
-            )
-            .frame(height: 140)
+            .padding(10)
+            .background(Color(#colorLiteral(red: 0.07641596347, green: 0.1622726619, blue: 0.2177014351, alpha: 1)))
+            .cornerRadius(15)
         }
+        .padding(15)
     }
 }
 
@@ -60,7 +66,7 @@ struct GardenSensorChartUIView_Previews: PreviewProvider {
 
     static var previews: some View {
         ZStack {
-            Color(#colorLiteral(red: 0.1439366937, green: 0.1623166203, blue: 0.2411367297, alpha: 1))
+            Color(#colorLiteral(red: 0.04249928892, green: 0.1230544075, blue: 0.1653896868, alpha: 1))
             .edgesIgnoringSafeArea(.all)
             GardenSensorChartUIView(
                 sensorData: chartData()
