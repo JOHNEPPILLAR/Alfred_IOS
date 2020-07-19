@@ -13,7 +13,6 @@ struct SplashUIView: View {
 
     @ObservedObject var viewRouter: ViewRouter
     @ObservedObject var pingData = PingData()
-    @State var transitionAppeared: Double = 0
 
     var body: some View {
         HStack(alignment: .lastTextBaseline) {
@@ -21,7 +20,8 @@ struct SplashUIView: View {
             .resizable()
             .accessibility(hidden: true)
             .aspectRatio(contentMode: .fit)
-            .frame(width: 60.0, alignment: .center)
+            .frame(width: 80.0, alignment: .center)
+            .offset(x: 10, y: +12)
             Text("l")
             .fontWeight(.light)
             .foregroundColor(.white)
@@ -66,7 +66,7 @@ struct SplashUIView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
-            Color(#colorLiteral(red: 0.04249928892, green: 0.1230544075, blue: 0.1653896868, alpha: 1))
+            Color(#colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1))
             .edgesIgnoringSafeArea(.all)
             SplashUIView(viewRouter: ViewRouter())
         }

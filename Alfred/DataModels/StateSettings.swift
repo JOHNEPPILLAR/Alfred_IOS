@@ -11,6 +11,7 @@ import Foundation
 class StateSettings: ObservableObject {
     @Published var flowerCareZone: String = "1-2"
     @Published var flowerCareduration: String = "day"
+    @Published var lightGroupID: Int = 0
     @Published var currentMenuItem: Int = 0 {
         didSet {
             switch currentMenuItem {
@@ -18,6 +19,7 @@ class StateSettings: ObservableObject {
                 flowerCareZone = "1-2"
             case 1:
                 flowerCareZone = "3"
+                lightGroupID = 12
             default:
                 return
             }

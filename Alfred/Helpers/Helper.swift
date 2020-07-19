@@ -53,7 +53,7 @@ func getAlfredData(for url: String) -> (request: URLRequest?, error: NetworkErro
     return (request, error: nil)
 }
 
-func putAlfredData(for url: String) -> (request: URLRequest?, error: NetworkError?) {
+func putAlfredData(for url: String, body: Data? = nil) -> (request: URLRequest?, error: NetworkError?) {
     #if DEBUG
     let baseURL = readPlist(item: "BaseURL")
     //let baseURL = readPlist(item: "BaseURL_Local")
@@ -69,6 +69,10 @@ func putAlfredData(for url: String) -> (request: URLRequest?, error: NetworkErro
 
     var request = URLRequest(url: url)
     request.httpMethod = "PUT"
+    if let putBody = body {
+        request.httpBody = putBody
+        request.setValue("\(putBody.count)", forHTTPHeaderField: "Content-Length")
+    }
     request.cachePolicy = URLRequest.CachePolicy.reloadIgnoringLocalAndRemoteCacheData
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
     request.addValue("application/json", forHTTPHeaderField: "Accept")

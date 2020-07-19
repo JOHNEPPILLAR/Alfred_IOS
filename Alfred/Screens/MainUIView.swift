@@ -21,14 +21,24 @@ struct MainUIView: View {
                     if self.stateSettings.currentMenuItem == 0 {
                         FlowerCareDataGraph()
                     } else if self.stateSettings.currentMenuItem == 1 {
+                        HStack {
+                            Spacer()
+                                .frame(width: 10)
+                            RoomTempUIView()
+                            Spacer()
+                                .frame(width: 10)
+                            LightSwitchUIView()
+                            Spacer()
+                                .frame(width: 10)
+                        }
+                        Spacer()
                         FlowerCareDataGraph()
                     } else {
                         Text("To Do")
                     }
                 }
-                .offset(x: 0, y: -30)
+                .offset(x: 0, y: -20)
             }
-    //        Spacer()
         }
     }
 }
@@ -41,7 +51,7 @@ struct MainUIView_Previews: PreviewProvider {
         stateSettings.currentMenuItem = 1
 
         return ZStack {
-            Color(#colorLiteral(red: 0.04249928892, green: 0.1230544075, blue: 0.1653896868, alpha: 1))
+            Color(#colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1))
             .edgesIgnoringSafeArea(.all)
             MainUIView()
            .environmentObject(stateSettings)

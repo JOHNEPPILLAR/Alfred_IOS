@@ -50,8 +50,12 @@ struct SummaryUIView: View {
                     Image(self.houseSensorData.healthIndicator)
                         .resizable()
                         .frame(width: 30, height: 30)
+                        .onAppear {
+                            self.houseSensorData.loadData(menuItem: -1)
+                        }
                     Spacer()
                 }
+                .frame(width: 100)
                 Divider().background(Color.gray)
                 VStack {
                     Text("Weather")
@@ -70,6 +74,7 @@ struct SummaryUIView: View {
                             .foregroundColor(.white)
                     }
                 }
+                .frame(width: 100)
                 Divider().background(Color.gray)
                 VStack {
                     Text("Plants")
@@ -82,9 +87,10 @@ struct SummaryUIView: View {
                         .frame(width: 30, height: 30)
                     Spacer()
                 }
+                .frame(width: 100)
             }
             .padding(10)
-            .background(Color(#colorLiteral(red: 0.1933776736, green: 0.3321536779, blue: 0.4167628586, alpha: 1)))
+            .background(Color(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)))
             .cornerRadius(10)
             .frame(width: geometry.size.width, height: 100)
         }
@@ -95,8 +101,8 @@ struct SummaryUIView: View {
 struct SummaryUIView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
-            Color(#colorLiteral(red: 0.04249928892, green: 0.1230544075, blue: 0.1653896868, alpha: 1))
-            .edgesIgnoringSafeArea(.all)
+            Color(#colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1))
+                .edgesIgnoringSafeArea(.all)
             SummaryUIView()
         }
         .previewLayout(

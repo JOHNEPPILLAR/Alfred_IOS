@@ -10,28 +10,17 @@ import Foundation
 import Combine
 
 struct SensorReadingDataItem: Codable {
-//struct SensorReadingDataItem: Codable, Identifiable {
     var id: String {
         return timeofday
     }
     let timeofday: String
     let sunlight: Double
-    //let plantname: String
     let moisture: Double
     let fertiliser: Double
     let battery: Int
-    //   var date: Date {
-    //      let dateFormatter = DateFormatter()
-    //      dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-    //       return dateFormatter.date(from: timeofday) ?? Date()
-    //   }
 }
 
-//struct SensorDataItem: Codable, Identifiable, Hashable {
 struct SensorDataItem: Codable, Identifiable {
-//    static func == (lhs: SensorDataItem, rhs: SensorDataItem) -> Bool {
-//        return (lhs.address, lhs.sensorlabel) < (rhs.address, rhs.sensorlabel)
-//    }
     var id: Date {
         return Date()
     }
@@ -40,9 +29,6 @@ struct SensorDataItem: Codable, Identifiable {
     let sensorlabel: String
     let thresholdmoisture: Double
     let readings: [SensorReadingDataItem]
-//    func hash(into hasher: inout Hasher) {
-//        hasher.combine(id)
-//    }
 }
 
 public class FlowerCareData: ObservableObject {

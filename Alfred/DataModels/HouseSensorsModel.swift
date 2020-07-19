@@ -47,13 +47,20 @@ public class HouseSensorData: ObservableObject {
 
     @Published var healthIndicator: String = "1pxHeader"
     @Published var netatmoData: [HouseSensorDataItem] = []
-    @Published var dysonData: [HouseSensorDataItem] = []
+    @Published var dysonData: [HouseSensorDataItem] = [] {
+        didSet {
+            // Viewing a room so calc room air quality data
+            if currentMenuItem > -1 {
+                currentRoomData(currentMenuItem: currentMenuItem)
+            }
+
+        }
+    }
+    @Published var roomHealthIndicator: String = "1pxHeader"
+    @Published var roomTemp: Int = 0
 
     private var cancellationToken: AnyCancellable?
-
-    init() {
-        loadData()
-    }
+    private var currentMenuItem: Int = -1
 }
 
 extension HouseSensorData {
@@ -62,8 +69,8 @@ extension HouseSensorData {
            Empty<[HouseSensorDataItem], Never>(completeImmediately: completeImmediately).eraseToAnyPublisher()
        }
 
-    // swiftlint:disable cyclomatic_complexity
-    func loadData() {
+    func loadData(menuItem: Int) {
+        currentMenuItem = menuItem
         let (urlRequest1, errorURL1) = getAlfredData(for: "netatmo/sensors/current")
         let (urlRequest2, errorURL2) = getAlfredData(for: "dyson/sensors/current")
 
@@ -98,20 +105,11 @@ extension HouseSensorData {
 
                 var airQuality: [Int] = [0, 0]
 
+                // Dyson
                 let airReading = dysonDataItems.max()?.air ?? 0
-                /*
-                    Air quality for Dyson
-                    1-3 = Low
-                    4-6 = Moderate
-                    7-9 = High
-                */
-                switch airReading {
-                case ..<3: airQuality[0] = 1
-                case 4..<7: airQuality[0] = 2
-                case 7...: airQuality[0] = 3
-                default: airQuality[0] = 0
-                }
+                airQuality[0] = self.dysonAirQuality(airReading: airReading)
 
+                // Netatmo
                 let co2Reading = netatmoDataItems.max()?.co2 ?? 0
                 /*
                     CO2 for Netatmo
@@ -126,12 +124,44 @@ extension HouseSensorData {
                 default: airQuality[1] = 3
                 }
 
+                // Combined
                 switch airQuality.max() {
                 case 1: self.healthIndicator = "air_quality_green"
                 case 2: self.healthIndicator = "air_quality_yellow"
                 default: self.healthIndicator = "air_quality_red"
                 }
             })
+        }
+    }
+
+    func currentRoomData(currentMenuItem: Int) {
+        switch currentMenuItem {
+        case 1:
+            let officeData = self.dysonData.filter { $0.location == "Office" }
+            self.roomTemp = Int(officeData[0].temperature?.rounded(.up) ?? 0)
+            let airQuality = dysonAirQuality(airReading: officeData[0].air ?? 0)
+            switch airQuality {
+            case 1: self.roomHealthIndicator = "air_quality_green"
+            case 2: self.roomHealthIndicator = "air_quality_yellow"
+            default: self.roomHealthIndicator = "air_quality_red"
+            }
+        default:
+            return
+        }
+    }
+
+    func dysonAirQuality (airReading: Int) -> Int {
+        /*
+            Air quality for Dyson
+            1-3 = Low
+            4-6 = Moderate
+            7-9 = High
+        */
+        switch airReading {
+        case ..<3: return 1
+        case 4..<7: return 2
+        case 7...: return 3
+        default: return 0
         }
     }
 }

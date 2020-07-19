@@ -116,14 +116,14 @@ struct LineChartUIView_Previews: PreviewProvider {
 
     static var previews: some View {
         ZStack {
-            Color(#colorLiteral(red: 0.04249928892, green: 0.1230544075, blue: 0.1653896868, alpha: 1))
-            .edgesIgnoringSafeArea(.all)
+            Color(#colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1))
+                .edgesIgnoringSafeArea(.all)
             LineChartUIView(
                 lineData: chartDataMoisture(),
                 secondLineData: chartDataBattery(),
                 threshhold: chartDataThreshhold()
             )
-            .frame(height: 140)
+                .frame(height: 140)
         }
     }
 }

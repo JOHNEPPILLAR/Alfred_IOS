@@ -31,12 +31,12 @@ struct GardenSensorChartUIView: View {
             VStack {
                 HStack {
                     Text(self.sensorData.plantname)
-                    .foregroundColor(.white)
+                        .foregroundColor(.white)
                     Spacer()
                     if self.sensorData.readings.count > 0 {
                         Text("Latest: \(String(format: "%.0f", self.sensorData.readings.last!.moisture.rounded(.up)))")
                             .foregroundColor(self.sensorData.readings.last!.moisture >
-                                self.sensorData.thresholdmoisture ? .gray : .red)
+                                self.sensorData.thresholdmoisture ? .gray : .blue)
                     }
                 }
                 LineChartUIView(
@@ -47,10 +47,11 @@ struct GardenSensorChartUIView: View {
                 .frame(height: 140)
             }
             .padding(10)
-            .background(Color(#colorLiteral(red: 0.07641596347, green: 0.1622726619, blue: 0.2177014351, alpha: 1)))
+            .background(Color.black)
             .cornerRadius(15)
         }
-        .padding(15)
+        .padding(.horizontal, 15)
+        .padding(.vertical, 5)
     }
 }
 
@@ -66,8 +67,8 @@ struct GardenSensorChartUIView_Previews: PreviewProvider {
 
     static var previews: some View {
         ZStack {
-            Color(#colorLiteral(red: 0.04249928892, green: 0.1230544075, blue: 0.1653896868, alpha: 1))
-            .edgesIgnoringSafeArea(.all)
+            Color(#colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1))
+                .edgesIgnoringSafeArea(.all)
             GardenSensorChartUIView(
                 sensorData: chartData()
             )

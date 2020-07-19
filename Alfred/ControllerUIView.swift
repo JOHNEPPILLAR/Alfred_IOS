@@ -14,7 +14,7 @@ struct ControllerUIView: View {
 
     var body: some View {
         ZStack {
-            Color(#colorLiteral(red: 0.04249928892, green: 0.1230544075, blue: 0.1653896868, alpha: 1))
+            Color(#colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1))
             .edgesIgnoringSafeArea(.all)
             VStack {
                 if viewRouter.currentPage == "Splash Screen" {

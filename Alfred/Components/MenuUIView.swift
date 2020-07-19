@@ -32,12 +32,12 @@ struct MenuUIView: View {
                                         Text(item.room)
                                             .fontWeight(item.active ? .bold : .light)
                                             .foregroundColor(item.active ? .white : .gray)
-                                        .fixedSize(horizontal: true, vertical: false)
-                                        .padding(.horizontal, 5)
+                                            .fixedSize(horizontal: true, vertical: false)
+                                            .padding(.horizontal, 5)
                                         Image("yellow_horizontal_line")
                                             .foregroundColor(item.active ? .yellow : .clear)
-                                        .frame(height: 10)
-                                        .offset(x: -3, y: -12)
+                                            .frame(height: 10)
+                                            .offset(x: -3, y: -12)
                                     }
                                 }
                             }
@@ -54,8 +54,8 @@ struct MenuUIView: View {
 struct MenuUIView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
-            Color(#colorLiteral(red: 0.04249928892, green: 0.1230544075, blue: 0.1653896868, alpha: 1))
-            .edgesIgnoringSafeArea(.all)
+            Color(#colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1))
+                .edgesIgnoringSafeArea(.all)
             MenuUIView().environmentObject(StateSettings())
         }
         .previewLayout(
