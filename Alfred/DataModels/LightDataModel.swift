@@ -45,7 +45,8 @@ struct ActionAttributes: Codable {
     let on: Bool?
     let bri: Int?
     let colormode: String?
-    let hue, sat: Int?
+    let hue: Int?
+    let sat: Int?
     let xy: [Double]?
     let ct: Int?
 }
@@ -60,7 +61,8 @@ struct AttributesAttributes: Codable {
     let type: String?
     let lights: [String]?
     let id: Int?
-    let name, attributesClass: String?
+    let name: String?
+    let attributesClass: String?
 
     enum CodingKeys: String, CodingKey {
         case type, lights, id, name
@@ -97,13 +99,18 @@ public class LightGroupData: ObservableObject {
             brightness = results.action?.attributes?.bri ?? 0
             lightGroupOn = results.state?.attributes?.anyOn ?? false
             if lightGroupOn {
-                var point: CGPoint = CGPoint()
-                point.x = CGFloat(results.action?.attributes?.xy?[0] ?? 0)
-                point.y = CGFloat(results.action?.attributes?.xy?[1] ?? 0)
-                lightColor = Color(HueColorHelper.colorFromXY(point, forModel: ""))
+                switch results.action?.attributes?.colormode {
+                case nil, "hs": lightColor = .white
+                default:
+                    var point: CGPoint = CGPoint()
+                    point.x = CGFloat(results.action?.attributes?.xy?[0] ?? 0)
+                    point.y = CGFloat(results.action?.attributes?.xy?[1] ?? 0)
+                    lightColor = Color(HueColorHelper.colorFromXY(point, forModel: ""))
+                }
             } else {
                 lightColor = .gray
             }
+            //print(lightColor)
         }
     }
 
@@ -146,14 +153,18 @@ extension LightGroupData {
         }
 
         if timer == nil || !(timer?.isValid ?? false) {
-            timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
-                self.loadData()
-            }
+            //timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
+            //    self.loadData()
+            //}
+            //print("new timer")
+            //print(timer)
         }
     }
 
     func stopTimer() {
-        timer?.invalidate()
+        //print("stopping timer")
+        //print(timer)
+        //timer?.invalidate()
     }
 
     func toggleLight() {

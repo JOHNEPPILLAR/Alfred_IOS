@@ -50,9 +50,9 @@ struct SummaryUIView: View {
                     Image(self.houseSensorData.healthIndicator)
                         .resizable()
                         .frame(width: 30, height: 30)
-                        .onAppear {
-                            self.houseSensorData.loadData(menuItem: -1)
-                        }
+                        //.onAppear {
+                        //    self.houseSensorData.loadData(menuItem: -1)
+                        //}
                     Spacer()
                 }
                 .frame(width: 100)

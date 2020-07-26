@@ -45,9 +45,15 @@ public struct HueColorHelper {
     public static func colorFromXY(_ xy: CGPoint, forModel model: String) -> SwiftyHueColor {
 
         var xy = xy
-        let colorPoints: [NSValue] = colorPointsForModel(model)
+        let lightModel: String
+        if model == "" {
+            lightModel = "LWB006" // Default white light
+        } else {
+            lightModel = model
+        }
+        let colorPoints: [NSValue] = colorPointsForModel(lightModel)
         let inReachOfLamps: Bool = checkPointInLampsReach(xy, withColorPoints: colorPoints)
-
+        
         if !inReachOfLamps {
             //It seems the colour is out of reach
             //let's find the closest colour we can produce with our lamp and send this XY value out.

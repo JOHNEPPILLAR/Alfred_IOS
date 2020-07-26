@@ -20,9 +20,6 @@ struct RoomTempUIView: View {
                 .font(.system(size: 26))
                 .fixedSize(horizontal: true, vertical: false)
                 .foregroundColor(.white)
-                .onAppear {
-                    self.houseSensorData.loadData(menuItem: self.stateSettings.currentMenuItem)
-                }
             Image(self.houseSensorData.roomHealthIndicator)
                 .resizable()
                 .frame(width: 30, height: 30)
@@ -32,6 +29,9 @@ struct RoomTempUIView: View {
         .background(Color.black)
         .cornerRadius(10)
         .frame(width: 100, height: 100)
+        .onAppear {
+            self.houseSensorData.loadData(menuItem: self.stateSettings.currentMenuItem)
+        }
     }
 }
 
@@ -47,7 +47,7 @@ struct RoomTempUIView_Previews: PreviewProvider {
 
     static var previews: some View {
         let stateSettings = StateSettings()
-        stateSettings.currentMenuItem = 1
+        //stateSettings.currentMenuItem = 1
 
         return ZStack {
             Color(#colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1))

@@ -13,7 +13,6 @@ struct LightSwitchUIView: View {
     @EnvironmentObject var stateSettings: StateSettings
     @ObservedObject var lightGroupData: LightGroupData = LightGroupData()
 
-    //@State var lightOn: Bool = false //true
     //@State var value: Double = 0
 
     var body: some View {

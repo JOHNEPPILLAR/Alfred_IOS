@@ -15,11 +15,18 @@ class StateSettings: ObservableObject {
     @Published var currentMenuItem: Int = 0 {
         didSet {
             switch currentMenuItem {
-            case 0:
+            case 0: // Garden
                 flowerCareZone = "1-2"
-            case 1:
+            case 1: // Office
                 flowerCareZone = "3"
                 lightGroupID = 12
+            case 2: // Living room
+                lightGroupID = 8
+            case 3: // Master bedroom
+                flowerCareZone = "4"
+                lightGroupID = 5
+            case 4: // Kids bedroom
+                lightGroupID = 4
             default:
                 return
             }
