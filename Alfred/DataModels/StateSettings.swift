@@ -21,12 +21,15 @@ class StateSettings: ObservableObject {
                 flowerCareZone = "3"
                 lightGroupID = 12
             case 2: // Living room
+                flowerCareZone = "5"
                 lightGroupID = 8
             case 3: // Master bedroom
                 flowerCareZone = "4"
                 lightGroupID = 5
             case 4: // Kids bedroom
                 lightGroupID = 4
+            case 5: // Kitchen
+                lightGroupID = 9
             default:
                 return
             }
