@@ -1,6 +1,0 @@
-framework module Pods_Alfred_IOS {
-  umbrella header "Pods-Alfred_IOS-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -1,0 +1,3762 @@
+[
+    {
+        "plantname": "Lemon Tree",
+        "thresholdmoisture": 15,
+        "address": "c4:7c:8d:66:27:96",
+        "sensorlabel": "A",
+        "readings": [
+            {
+                "timeofday": "2020-06-13T08:00:00.000Z",
+                "sunlight": 57451.666666666664,
+                "plantname": "Lemon Tree",
+                "moisture": 36.666666666666664,
+                "fertiliser": 255.38095238095238,
+                "battery": 96
+            },
+            {
+                "timeofday": "2020-06-13T11:00:00.000Z",
+                "sunlight": 64637.59259259259,
+                "plantname": "Lemon Tree",
+                "moisture": 36.851851851851855,
+                "fertiliser": 257.7037037037037,
+                "battery": 97
+            },
+            {
+                "timeofday": "2020-06-13T14:00:00.000Z",
+                "sunlight": 28926.58823529412,
+                "plantname": "Lemon Tree",
+                "moisture": 34.94117647058823,
+                "fertiliser": 284.05882352941177,
+                "battery": 96
+            },
+            {
+                "timeofday": "2020-06-13T17:00:00.000Z",
+                "sunlight": 3217.625,
+                "plantname": "Lemon Tree",
+                "moisture": 35.75,
+                "fertiliser": 289.75,
+                "battery": 96
+            },
+            {
+                "timeofday": "2020-06-14T11:00:00.000Z",
+                "sunlight": 40536.5,
+                "plantname": "Lemon Tree",
+                "moisture": 35.5,
+                "fertiliser": 263.75,
+                "battery": 97
+            },
+            {
+                "timeofday": "2020-06-14T14:00:00.000Z",
+                "sunlight": 67043,
+                "plantname": "Lemon Tree",
+                "moisture": 35,
+                "fertiliser": 269,
+                "battery": 97
+            },
+            {
+                "timeofday": "2020-06-15T08:00:00.000Z",
+                "sunlight": 31787.75,
+                "plantname": "Lemon Tree",
+                "moisture": 28.833333333333332,
+                "fertiliser": 219.83333333333334,
+                "battery": 95
+            },
+            {
+                "timeofday": "2020-06-15T11:00:00.000Z",
+                "sunlight": 18847.090909090908,
+                "plantname": "Lemon Tree",
+                "moisture": 31,
+                "fertiliser": 232.63636363636363,
+                "battery": 96
+            },
+            {
+                "timeofday": "2020-06-15T17:00:00.000Z",
+                "sunlight": 2997.4285714285716,
+                "plantname": "Lemon Tree",
+                "moisture": 34.57142857142857,
+                "fertiliser": 275.2857142857143,
+                "battery": 95
+            },
+            {
+                "timeofday": "2020-06-16T20:00:00.000Z",
+                "sunlight": 148.8,
+                "plantname": "Lemon Tree",
+                "moisture": 32.4,
+                "fertiliser": 299.8,
+                "battery": 95
+            },
+            {
+                "timeofday": "2020-06-16T23:00:00.000Z",
+                "sunlight": 168,
+                "plantname": "Lemon Tree",
+                "moisture": 18.571428571428573,
+                "fertiliser": 296.42857142857144,
+                "battery": 94
+            },
+            {
+                "timeofday": "2020-06-17T02:00:00.000Z",
+                "sunlight": 572.5,
+                "plantname": "Lemon Tree",
+                "moisture": 16.5,
+                "fertiliser": 287.5,
+                "battery": 94
+            },
+            {
+                "timeofday": "2020-06-17T11:00:00.000Z",
+                "sunlight": 18631.714285714286,
+                "plantname": "Lemon Tree",
+                "moisture": 20.428571428571427,
+                "fertiliser": 292.42857142857144,
+                "battery": 94
+            },
+            {
+                "timeofday": "2020-06-17T14:00:00.000Z",
+                "sunlight": 12260.833333333334,
+                "plantname": "Lemon Tree",
+                "moisture": 28.5,
+                "fertiliser": 281.3333333333333,
+                "battery": 95
+            },
+            {
+                "timeofday": "2020-06-17T17:00:00.000Z",
+                "sunlight": 4847,
+                "plantname": "Lemon Tree",
+                "moisture": 34,
+                "fertiliser": 284,
+                "battery": 95
+            },
+            {
+                "timeofday": "2020-07-02T17:00:00.000Z",
+                "sunlight": 502,
+                "plantname": "Lemon Tree",
+                "moisture": 2,
+                "fertiliser": 0,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-07-03T11:00:00.000Z",
+                "sunlight": 33602,
+                "plantname": "Lemon Tree",
+                "moisture": 30.333333333333332,
+                "fertiliser": 288.6666666666667,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-07-04T11:00:00.000Z",
+                "sunlight": 7350.142857142857,
+                "plantname": "Lemon Tree",
+                "moisture": 35,
+                "fertiliser": 295.85714285714283,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-07-04T14:00:00.000Z",
+                "sunlight": 5080,
+                "plantname": "Lemon Tree",
+                "moisture": 35,
+                "fertiliser": 298.3333333333333,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-07-04T17:00:00.000Z",
+                "sunlight": 1510.8333333333333,
+                "plantname": "Lemon Tree",
+                "moisture": 34.5,
+                "fertiliser": 302.5833333333333,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-07-04T20:00:00.000Z",
+                "sunlight": 102.0909090909091,
+                "plantname": "Lemon Tree",
+                "moisture": 33.54545454545455,
+                "fertiliser": 301.1818181818182,
+                "battery": 99
+            },
+            {
+                "timeofday": "2020-07-04T23:00:00.000Z",
+                "sunlight": 81.23076923076923,
+                "plantname": "Lemon Tree",
+                "moisture": 32.84615384615385,
+                "fertiliser": 296.53846153846155,
+                "battery": 99
+            },
+            {
+                "timeofday": "2020-07-05T02:00:00.000Z",
+                "sunlight": 96.33333333333333,
+                "plantname": "Lemon Tree",
+                "moisture": 32.333333333333336,
+                "fertiliser": 293.3333333333333,
+                "battery": 99
+            },
+            {
+                "timeofday": "2020-07-05T05:00:00.000Z",
+                "sunlight": 4077.8333333333335,
+                "plantname": "Lemon Tree",
+                "moisture": 32.75,
+                "fertiliser": 286.25,
+                "battery": 99
+            },
+            {
+                "timeofday": "2020-07-05T08:00:00.000Z",
+                "sunlight": 32069.833333333332,
+                "plantname": "Lemon Tree",
+                "moisture": 32.833333333333336,
+                "fertiliser": 271.9166666666667,
+                "battery": 99
+            },
+            {
+                "timeofday": "2020-07-05T11:00:00.000Z",
+                "sunlight": 53071.36363636364,
+                "plantname": "Lemon Tree",
+                "moisture": 33,
+                "fertiliser": 274.3636363636364,
+                "battery": 99
+            },
+            {
+                "timeofday": "2020-07-05T14:00:00.000Z",
+                "sunlight": 23987,
+                "plantname": "Lemon Tree",
+                "moisture": 31.333333333333332,
+                "fertiliser": 283.25,
+                "battery": 99
+            },
+            {
+                "timeofday": "2020-07-05T17:00:00.000Z",
+                "sunlight": 1512.6666666666667,
+                "plantname": "Lemon Tree",
+                "moisture": 32.25,
+                "fertiliser": 297.5833333333333,
+                "battery": 99
+            },
+            {
+                "timeofday": "2020-07-05T20:00:00.000Z",
+                "sunlight": 118.91666666666667,
+                "plantname": "Lemon Tree",
+                "moisture": 34.166666666666664,
+                "fertiliser": 326.5833333333333,
+                "battery": 99
+            },
+            {
+                "timeofday": "2020-07-05T23:00:00.000Z",
+                "sunlight": 83,
+                "plantname": "Lemon Tree",
+                "moisture": 33.25,
+                "fertiliser": 325.5833333333333,
+                "battery": 99
+            },
+            {
+                "timeofday": "2020-07-06T02:00:00.000Z",
+                "sunlight": 264.9166666666667,
+                "plantname": "Lemon Tree",
+                "moisture": 32.666666666666664,
+                "fertiliser": 325.25,
+                "battery": 99
+            },
+            {
+                "timeofday": "2020-07-06T05:00:00.000Z",
+                "sunlight": 3523.181818181818,
+                "plantname": "Lemon Tree",
+                "moisture": 33,
+                "fertiliser": 318.3636363636364,
+                "battery": 99
+            },
+            {
+                "timeofday": "2020-07-06T08:00:00.000Z",
+                "sunlight": 8089.166666666667,
+                "plantname": "Lemon Tree",
+                "moisture": 33,
+                "fertiliser": 313.3333333333333,
+                "battery": 99
+            },
+            {
+                "timeofday": "2020-07-06T11:00:00.000Z",
+                "sunlight": 20288.153846153848,
+                "plantname": "Lemon Tree",
+                "moisture": 33.30769230769231,
+                "fertiliser": 312.15384615384613,
+                "battery": 99
+            },
+            {
+                "timeofday": "2020-07-06T14:00:00.000Z",
+                "sunlight": 10180.846153846154,
+                "plantname": "Lemon Tree",
+                "moisture": 32.92307692307692,
+                "fertiliser": 325.0769230769231,
+                "battery": 99
+            },
+            {
+                "timeofday": "2020-07-06T17:00:00.000Z",
+                "sunlight": 2452.8333333333335,
+                "plantname": "Lemon Tree",
+                "moisture": 32.5,
+                "fertiliser": 330.6666666666667,
+                "battery": 99
+            }
+        ]
+    },
+    {
+        "plantname": "Strawberry",
+        "thresholdmoisture": 15,
+        "address": "c4:7c:8d:67:42:a3",
+        "sensorlabel": "B",
+        "readings": [
+            {
+                "timeofday": "2020-06-11T14:00:00.000Z",
+                "sunlight": 5604.40625,
+                "plantname": "Strawberry",
+                "moisture": 17.625,
+                "fertiliser": 89.53125,
+                "battery": 27
+            },
+            {
+                "timeofday": "2020-06-11T17:00:00.000Z",
+                "sunlight": 1004.2571428571429,
+                "plantname": "Strawberry",
+                "moisture": 20.914285714285715,
+                "fertiliser": 120.74285714285715,
+                "battery": 23
+            },
+            {
+                "timeofday": "2020-06-11T20:00:00.000Z",
+                "sunlight": 220.68571428571428,
+                "plantname": "Strawberry",
+                "moisture": 19,
+                "fertiliser": 107.6,
+                "battery": 23
+            },
+            {
+                "timeofday": "2020-06-11T23:00:00.000Z",
+                "sunlight": 208.0909090909091,
+                "plantname": "Strawberry",
+                "moisture": 19.03030303030303,
+                "fertiliser": 98.27272727272727,
+                "battery": 23
+            },
+            {
+                "timeofday": "2020-06-12T02:00:00.000Z",
+                "sunlight": 415.57142857142856,
+                "plantname": "Strawberry",
+                "moisture": 18.314285714285713,
+                "fertiliser": 93.65714285714286,
+                "battery": 23
+            },
+            {
+                "timeofday": "2020-06-12T05:00:00.000Z",
+                "sunlight": 3036.9142857142856,
+                "plantname": "Strawberry",
+                "moisture": 22.457142857142856,
+                "fertiliser": 118.82857142857142,
+                "battery": 23
+            },
+            {
+                "timeofday": "2020-06-12T08:00:00.000Z",
+                "sunlight": 5899.257142857143,
+                "plantname": "Strawberry",
+                "moisture": 23.65714285714286,
+                "fertiliser": 110.45714285714286,
+                "battery": 25
+            },
+            {
+                "timeofday": "2020-06-12T11:00:00.000Z",
+                "sunlight": 5713.114285714286,
+                "plantname": "Strawberry",
+                "moisture": 22.457142857142856,
+                "fertiliser": 98.08571428571429,
+                "battery": 26
+            },
+            {
+                "timeofday": "2020-06-12T14:00:00.000Z",
+                "sunlight": 3651.2571428571428,
+                "plantname": "Strawberry",
+                "moisture": 21.285714285714285,
+                "fertiliser": 91.8,
+                "battery": 27
+            },
+            {
+                "timeofday": "2020-06-12T17:00:00.000Z",
+                "sunlight": 1091.8529411764705,
+                "plantname": "Strawberry",
+                "moisture": 24.441176470588236,
+                "fertiliser": 116.20588235294117,
+                "battery": 26
+            },
+            {
+                "timeofday": "2020-06-12T20:00:00.000Z",
+                "sunlight": 212.11428571428573,
+                "plantname": "Strawberry",
+                "moisture": 24.02857142857143,
+                "fertiliser": 112.94285714285714,
+                "battery": 24
+            },
+            {
+                "timeofday": "2020-06-12T23:00:00.000Z",
+                "sunlight": 216.42857142857142,
+                "plantname": "Strawberry",
+                "moisture": 21.085714285714285,
+                "fertiliser": 105.97142857142858,
+                "battery": 23
+            },
+            {
+                "timeofday": "2020-06-13T02:00:00.000Z",
+                "sunlight": 307.8285714285714,
+                "plantname": "Strawberry",
+                "moisture": 20.8,
+                "fertiliser": 101.25714285714285,
+                "battery": 22
+            },
+            {
+                "timeofday": "2020-06-13T05:00:00.000Z",
+                "sunlight": 3628.5142857142855,
+                "plantname": "Strawberry",
+                "moisture": 23.82857142857143,
+                "fertiliser": 124.65714285714286,
+                "battery": 22
+            },
+            {
+                "timeofday": "2020-06-13T08:00:00.000Z",
+                "sunlight": 7740.470588235294,
+                "plantname": "Strawberry",
+                "moisture": 18.764705882352942,
+                "fertiliser": 80.55882352941177,
+                "battery": 25
+            },
+            {
+                "timeofday": "2020-06-13T11:00:00.000Z",
+                "sunlight": 30423.137931034482,
+                "plantname": "Strawberry",
+                "moisture": 16,
+                "fertiliser": 60.37931034482759,
+                "battery": 27
+            },
+            {
+                "timeofday": "2020-06-13T14:00:00.000Z",
+                "sunlight": 24798.516129032258,
+                "plantname": "Strawberry",
+                "moisture": 14.96774193548387,
+                "fertiliser": 52.74193548387097,
+                "battery": 47
+            },
+            {
+                "timeofday": "2020-06-13T17:00:00.000Z",
+                "sunlight": 3593.1428571428573,
+                "plantname": "Strawberry",
+                "moisture": 13.714285714285714,
+                "fertiliser": 80.42857142857143,
+                "battery": 32
+            },
+            {
+                "timeofday": "2020-06-13T20:00:00.000Z",
+                "sunlight": 205.26666666666668,
+                "plantname": "Strawberry",
+                "moisture": 14.4,
+                "fertiliser": 64,
+                "battery": 26
+            },
+            {
+                "timeofday": "2020-06-13T23:00:00.000Z",
+                "sunlight": 160.71428571428572,
+                "plantname": "Strawberry",
+                "moisture": 14,
+                "fertiliser": 62.714285714285715,
+                "battery": 26
+            },
+            {
+                "timeofday": "2020-06-14T11:00:00.000Z",
+                "sunlight": 40404.6875,
+                "plantname": "Strawberry",
+                "moisture": 20.5,
+                "fertiliser": 323.625,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-14T14:00:00.000Z",
+                "sunlight": 87378,
+                "plantname": "Strawberry",
+                "moisture": 20.5,
+                "fertiliser": 313.5,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-15T08:00:00.000Z",
+                "sunlight": 7395.8,
+                "plantname": "Strawberry",
+                "moisture": 16.266666666666666,
+                "fertiliser": 333.06666666666666,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-15T11:00:00.000Z",
+                "sunlight": 8940.916666666666,
+                "plantname": "Strawberry",
+                "moisture": 16.25,
+                "fertiliser": 325.75,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-15T17:00:00.000Z",
+                "sunlight": 2813.909090909091,
+                "plantname": "Strawberry",
+                "moisture": 14.727272727272727,
+                "fertiliser": 240.1818181818182,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-15T20:00:00.000Z",
+                "sunlight": 247.5,
+                "plantname": "Strawberry",
+                "moisture": 12,
+                "fertiliser": 117,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-16T11:00:00.000Z",
+                "sunlight": 30250,
+                "plantname": "Strawberry",
+                "moisture": 11,
+                "fertiliser": 62,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-16T20:00:00.000Z",
+                "sunlight": 151.1764705882353,
+                "plantname": "Strawberry",
+                "moisture": 10.647058823529411,
+                "fertiliser": 61.1764705882353,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-16T23:00:00.000Z",
+                "sunlight": 127.27777777777777,
+                "plantname": "Strawberry",
+                "moisture": 10.11111111111111,
+                "fertiliser": 60.77777777777778,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-17T02:00:00.000Z",
+                "sunlight": 229.875,
+                "plantname": "Strawberry",
+                "moisture": 9.3125,
+                "fertiliser": 57.9375,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-17T08:00:00.000Z",
+                "sunlight": 7263.916666666667,
+                "plantname": "Strawberry",
+                "moisture": 10.333333333333334,
+                "fertiliser": 48.75,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-17T11:00:00.000Z",
+                "sunlight": 5397.117647058823,
+                "plantname": "Strawberry",
+                "moisture": 13.117647058823529,
+                "fertiliser": 60.470588235294116,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-17T14:00:00.000Z",
+                "sunlight": 5793.764705882353,
+                "plantname": "Strawberry",
+                "moisture": 11.882352941176471,
+                "fertiliser": 59.05882352941177,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-17T17:00:00.000Z",
+                "sunlight": 2075.3333333333335,
+                "plantname": "Strawberry",
+                "moisture": 11.833333333333334,
+                "fertiliser": 56,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-19T08:00:00.000Z",
+                "sunlight": 6834.25,
+                "plantname": "Strawberry",
+                "moisture": 11,
+                "fertiliser": 41,
+                "battery": 91
+            },
+            {
+                "timeofday": "2020-06-19T11:00:00.000Z",
+                "sunlight": 7540.611111111111,
+                "plantname": "Strawberry",
+                "moisture": 11.055555555555555,
+                "fertiliser": 39.94444444444444,
+                "battery": 89
+            },
+            {
+                "timeofday": "2020-06-19T14:00:00.000Z",
+                "sunlight": 11020.222222222223,
+                "plantname": "Strawberry",
+                "moisture": 10.944444444444445,
+                "fertiliser": 38.27777777777778,
+                "battery": 94
+            },
+            {
+                "timeofday": "2020-06-19T17:00:00.000Z",
+                "sunlight": 2789.090909090909,
+                "plantname": "Strawberry",
+                "moisture": 11,
+                "fertiliser": 42.63636363636363,
+                "battery": 87
+            },
+            {
+                "timeofday": "2020-06-20T17:00:00.000Z",
+                "sunlight": 1140.7777777777778,
+                "plantname": "Strawberry",
+                "moisture": 10.055555555555555,
+                "fertiliser": 36.72222222222222,
+                "battery": 92
+            },
+            {
+                "timeofday": "2020-06-20T20:00:00.000Z",
+                "sunlight": 186.66666666666666,
+                "plantname": "Strawberry",
+                "moisture": 9.777777777777779,
+                "fertiliser": 35.44444444444444,
+                "battery": 85
+            },
+            {
+                "timeofday": "2020-06-20T23:00:00.000Z",
+                "sunlight": 125.71428571428571,
+                "plantname": "Strawberry",
+                "moisture": 9.714285714285714,
+                "fertiliser": 35.785714285714285,
+                "battery": 81
+            },
+            {
+                "timeofday": "2020-06-23T17:00:00.000Z",
+                "sunlight": 1442.909090909091,
+                "plantname": "Strawberry",
+                "moisture": 13,
+                "fertiliser": 45.18181818181818,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-23T20:00:00.000Z",
+                "sunlight": 171.44444444444446,
+                "plantname": "Strawberry",
+                "moisture": 11.333333333333334,
+                "fertiliser": 41.833333333333336,
+                "battery": 92
+            },
+            {
+                "timeofday": "2020-06-23T23:00:00.000Z",
+                "sunlight": 125,
+                "plantname": "Strawberry",
+                "moisture": 10.277777777777779,
+                "fertiliser": 39.22222222222222,
+                "battery": 83
+            },
+            {
+                "timeofday": "2020-06-24T02:00:00.000Z",
+                "sunlight": 97,
+                "plantname": "Strawberry",
+                "moisture": 10,
+                "fertiliser": 41,
+                "battery": 83
+            },
+            {
+                "timeofday": "2020-06-24T11:00:00.000Z",
+                "sunlight": 14795.333333333334,
+                "plantname": "Strawberry",
+                "moisture": 10.666666666666666,
+                "fertiliser": 24.4,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-24T14:00:00.000Z",
+                "sunlight": 24530,
+                "plantname": "Strawberry",
+                "moisture": 9.894736842105264,
+                "fertiliser": 22.789473684210527,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-24T17:00:00.000Z",
+                "sunlight": 1079.3529411764705,
+                "plantname": "Strawberry",
+                "moisture": 11.058823529411764,
+                "fertiliser": 46.411764705882355,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-24T20:00:00.000Z",
+                "sunlight": 161.52631578947367,
+                "plantname": "Strawberry",
+                "moisture": 11.157894736842104,
+                "fertiliser": 47.78947368421053,
+                "battery": 93
+            },
+            {
+                "timeofday": "2020-06-24T23:00:00.000Z",
+                "sunlight": 140.3125,
+                "plantname": "Strawberry",
+                "moisture": 10.75,
+                "fertiliser": 49.0625,
+                "battery": 88
+            },
+            {
+                "timeofday": "2020-06-25T02:00:00.000Z",
+                "sunlight": 208.64705882352942,
+                "plantname": "Strawberry",
+                "moisture": 10,
+                "fertiliser": 47.470588235294116,
+                "battery": 83
+            },
+            {
+                "timeofday": "2020-06-26T08:00:00.000Z",
+                "sunlight": 5063,
+                "plantname": "Strawberry",
+                "moisture": 11.5,
+                "fertiliser": 48,
+                "battery": 95
+            },
+            {
+                "timeofday": "2020-06-26T11:00:00.000Z",
+                "sunlight": 7766.722222222223,
+                "plantname": "Strawberry",
+                "moisture": 11.166666666666666,
+                "fertiliser": 45.55555555555556,
+                "battery": 98
+            },
+            {
+                "timeofday": "2020-06-26T14:00:00.000Z",
+                "sunlight": 15751.722222222223,
+                "plantname": "Strawberry",
+                "moisture": 11.666666666666666,
+                "fertiliser": 41.833333333333336,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-26T17:00:00.000Z",
+                "sunlight": 2121.5454545454545,
+                "plantname": "Strawberry",
+                "moisture": 12.909090909090908,
+                "fertiliser": 74.81818181818181,
+                "battery": 91
+            },
+            {
+                "timeofday": "2020-06-28T20:00:00.000Z",
+                "sunlight": 142.14285714285714,
+                "plantname": "Strawberry",
+                "moisture": 11,
+                "fertiliser": 59.642857142857146,
+                "battery": 54
+            },
+            {
+                "timeofday": "2020-06-28T23:00:00.000Z",
+                "sunlight": 148.1,
+                "plantname": "Strawberry",
+                "moisture": 11,
+                "fertiliser": 57.2,
+                "battery": 50
+            },
+            {
+                "timeofday": "2020-06-29T02:00:00.000Z",
+                "sunlight": 199.6875,
+                "plantname": "Strawberry",
+                "moisture": 10.75,
+                "fertiliser": 56.6875,
+                "battery": 48
+            },
+            {
+                "timeofday": "2020-06-29T17:00:00.000Z",
+                "sunlight": 1058.6764705882354,
+                "plantname": "Strawberry",
+                "moisture": 10.617647058823529,
+                "fertiliser": 58.705882352941174,
+                "battery": 55
+            },
+            {
+                "timeofday": "2020-06-29T20:00:00.000Z",
+                "sunlight": 165.47058823529412,
+                "plantname": "Strawberry",
+                "moisture": 10.588235294117647,
+                "fertiliser": 58.5,
+                "battery": 50
+            },
+            {
+                "timeofday": "2020-06-29T23:00:00.000Z",
+                "sunlight": 178.27777777777777,
+                "plantname": "Strawberry",
+                "moisture": 10,
+                "fertiliser": 57.27777777777778,
+                "battery": 48
+            },
+            {
+                "timeofday": "2020-06-30T02:00:00.000Z",
+                "sunlight": 307.1764705882353,
+                "plantname": "Strawberry",
+                "moisture": 9.411764705882353,
+                "fertiliser": 55.76470588235294,
+                "battery": 43
+            },
+            {
+                "timeofday": "2020-06-30T05:00:00.000Z",
+                "sunlight": 2425.2285714285713,
+                "plantname": "Strawberry",
+                "moisture": 10.028571428571428,
+                "fertiliser": 53.2,
+                "battery": 44
+            },
+            {
+                "timeofday": "2020-06-30T08:00:00.000Z",
+                "sunlight": 3607.5555555555557,
+                "plantname": "Strawberry",
+                "moisture": 10,
+                "fertiliser": 52.25,
+                "battery": 49
+            },
+            {
+                "timeofday": "2020-06-30T11:00:00.000Z",
+                "sunlight": 5075.85294117647,
+                "plantname": "Strawberry",
+                "moisture": 10.705882352941176,
+                "fertiliser": 53.38235294117647,
+                "battery": 50
+            },
+            {
+                "timeofday": "2020-06-30T14:00:00.000Z",
+                "sunlight": 2841,
+                "plantname": "Strawberry",
+                "moisture": 10.833333333333334,
+                "fertiliser": 55.25,
+                "battery": 54
+            },
+            {
+                "timeofday": "2020-06-30T17:00:00.000Z",
+                "sunlight": 937.9142857142857,
+                "plantname": "Strawberry",
+                "moisture": 11.028571428571428,
+                "fertiliser": 60.94285714285714,
+                "battery": 52
+            },
+            {
+                "timeofday": "2020-06-30T20:00:00.000Z",
+                "sunlight": 146.64705882352942,
+                "plantname": "Strawberry",
+                "moisture": 11,
+                "fertiliser": 62.294117647058826,
+                "battery": 50
+            },
+            {
+                "timeofday": "2020-06-30T23:00:00.000Z",
+                "sunlight": 149,
+                "plantname": "Strawberry",
+                "moisture": 10.942857142857143,
+                "fertiliser": 61.857142857142854,
+                "battery": 47
+            },
+            {
+                "timeofday": "2020-07-01T02:00:00.000Z",
+                "sunlight": 234.77142857142857,
+                "plantname": "Strawberry",
+                "moisture": 10.6,
+                "fertiliser": 61.25714285714286,
+                "battery": 42
+            },
+            {
+                "timeofday": "2020-07-01T05:00:00.000Z",
+                "sunlight": 2060.96875,
+                "plantname": "Strawberry",
+                "moisture": 10.5625,
+                "fertiliser": 57.96875,
+                "battery": 42
+            },
+            {
+                "timeofday": "2020-07-01T08:00:00.000Z",
+                "sunlight": 5169.290322580645,
+                "plantname": "Strawberry",
+                "moisture": 11,
+                "fertiliser": 52.935483870967744,
+                "battery": 50
+            },
+            {
+                "timeofday": "2020-07-01T11:00:00.000Z",
+                "sunlight": 6156.40625,
+                "plantname": "Strawberry",
+                "moisture": 10.21875,
+                "fertiliser": 52.3125,
+                "battery": 57
+            },
+            {
+                "timeofday": "2020-07-01T14:00:00.000Z",
+                "sunlight": 4058.6,
+                "plantname": "Strawberry",
+                "moisture": 10.142857142857142,
+                "fertiliser": 54.57142857142857,
+                "battery": 54
+            },
+            {
+                "timeofday": "2020-07-01T17:00:00.000Z",
+                "sunlight": 1795.2285714285715,
+                "plantname": "Strawberry",
+                "moisture": 10.485714285714286,
+                "fertiliser": 61.34285714285714,
+                "battery": 48
+            },
+            {
+                "timeofday": "2020-07-01T20:00:00.000Z",
+                "sunlight": 162.08823529411765,
+                "plantname": "Strawberry",
+                "moisture": 10.323529411764707,
+                "fertiliser": 62.88235294117647,
+                "battery": 44
+            },
+            {
+                "timeofday": "2020-07-01T23:00:00.000Z",
+                "sunlight": 143.57142857142858,
+                "plantname": "Strawberry",
+                "moisture": 10.628571428571428,
+                "fertiliser": 60.4,
+                "battery": 36
+            },
+            {
+                "timeofday": "2020-07-02T02:00:00.000Z",
+                "sunlight": 221.55882352941177,
+                "plantname": "Strawberry",
+                "moisture": 10.235294117647058,
+                "fertiliser": 60.23529411764706,
+                "battery": 32
+            },
+            {
+                "timeofday": "2020-07-02T05:00:00.000Z",
+                "sunlight": 2128.4117647058824,
+                "plantname": "Strawberry",
+                "moisture": 10.5,
+                "fertiliser": 56.85294117647059,
+                "battery": 32
+            },
+            {
+                "timeofday": "2020-07-02T08:00:00.000Z",
+                "sunlight": 4802.625,
+                "plantname": "Strawberry",
+                "moisture": 10.833333333333334,
+                "fertiliser": 53.791666666666664,
+                "battery": 43
+            },
+            {
+                "timeofday": "2020-07-02T17:00:00.000Z",
+                "sunlight": 658.8,
+                "plantname": "Strawberry",
+                "moisture": 28.666666666666668,
+                "fertiliser": 321.93333333333334,
+                "battery": 45
+            },
+            {
+                "timeofday": "2020-07-02T20:00:00.000Z",
+                "sunlight": 205,
+                "plantname": "Strawberry",
+                "moisture": 30,
+                "fertiliser": 336,
+                "battery": 45
+            },
+            {
+                "timeofday": "2020-07-02T23:00:00.000Z",
+                "sunlight": 131.83333333333334,
+                "plantname": "Strawberry",
+                "moisture": 29.583333333333332,
+                "fertiliser": 342.25,
+                "battery": 39
+            },
+            {
+                "timeofday": "2020-07-03T02:00:00.000Z",
+                "sunlight": 303.75,
+                "plantname": "Strawberry",
+                "moisture": 29.416666666666668,
+                "fertiliser": 349,
+                "battery": 33
+            },
+            {
+                "timeofday": "2020-07-03T05:00:00.000Z",
+                "sunlight": 2978.3333333333335,
+                "plantname": "Strawberry",
+                "moisture": 29,
+                "fertiliser": 341.25,
+                "battery": 35
+            },
+            {
+                "timeofday": "2020-07-03T08:00:00.000Z",
+                "sunlight": 6364.583333333333,
+                "plantname": "Strawberry",
+                "moisture": 29.25,
+                "fertiliser": 327.75,
+                "battery": 39
+            },
+            {
+                "timeofday": "2020-07-03T11:00:00.000Z",
+                "sunlight": 10990.222222222223,
+                "plantname": "Strawberry",
+                "moisture": 28.88888888888889,
+                "fertiliser": 316,
+                "battery": 45
+            },
+            {
+                "timeofday": "2020-07-04T08:00:00.000Z",
+                "sunlight": 4305,
+                "plantname": "Strawberry",
+                "moisture": 26,
+                "fertiliser": 304,
+                "battery": 49
+            },
+            {
+                "timeofday": "2020-07-04T11:00:00.000Z",
+                "sunlight": 5467.090909090909,
+                "plantname": "Strawberry",
+                "moisture": 26,
+                "fertiliser": 303.27272727272725,
+                "battery": 48
+            },
+            {
+                "timeofday": "2020-07-04T14:00:00.000Z",
+                "sunlight": 4562.555555555556,
+                "plantname": "Strawberry",
+                "moisture": 25.444444444444443,
+                "fertiliser": 300.22222222222223,
+                "battery": 49
+            },
+            {
+                "timeofday": "2020-07-04T17:00:00.000Z",
+                "sunlight": 1279.0833333333333,
+                "plantname": "Strawberry",
+                "moisture": 24.5,
+                "fertiliser": 302.9166666666667,
+                "battery": 48
+            },
+            {
+                "timeofday": "2020-07-04T20:00:00.000Z",
+                "sunlight": 167.16666666666666,
+                "plantname": "Strawberry",
+                "moisture": 24,
+                "fertiliser": 301.0833333333333,
+                "battery": 45
+            },
+            {
+                "timeofday": "2020-07-04T23:00:00.000Z",
+                "sunlight": 149.33333333333334,
+                "plantname": "Strawberry",
+                "moisture": 24.083333333333332,
+                "fertiliser": 298.5833333333333,
+                "battery": 43
+            },
+            {
+                "timeofday": "2020-07-05T02:00:00.000Z",
+                "sunlight": 303.9,
+                "plantname": "Strawberry",
+                "moisture": 23.5,
+                "fertiliser": 293.7,
+                "battery": 43
+            },
+            {
+                "timeofday": "2020-07-05T05:00:00.000Z",
+                "sunlight": 2791.5,
+                "plantname": "Strawberry",
+                "moisture": 23,
+                "fertiliser": 288.9166666666667,
+                "battery": 44
+            },
+            {
+                "timeofday": "2020-07-05T08:00:00.000Z",
+                "sunlight": 5137.916666666667,
+                "plantname": "Strawberry",
+                "moisture": 23,
+                "fertiliser": 281.5,
+                "battery": 47
+            },
+            {
+                "timeofday": "2020-07-05T11:00:00.000Z",
+                "sunlight": 20528.454545454544,
+                "plantname": "Strawberry",
+                "moisture": 22.727272727272727,
+                "fertiliser": 258.54545454545456,
+                "battery": 50
+            },
+            {
+                "timeofday": "2020-07-05T14:00:00.000Z",
+                "sunlight": 13254.333333333334,
+                "plantname": "Strawberry",
+                "moisture": 21.75,
+                "fertiliser": 245.33333333333334,
+                "battery": 52
+            },
+            {
+                "timeofday": "2020-07-05T17:00:00.000Z",
+                "sunlight": 1672.4166666666667,
+                "plantname": "Strawberry",
+                "moisture": 25.833333333333332,
+                "fertiliser": 327.9166666666667,
+                "battery": 38
+            },
+            {
+                "timeofday": "2020-07-05T20:00:00.000Z",
+                "sunlight": 173.41666666666666,
+                "plantname": "Strawberry",
+                "moisture": 31.25,
+                "fertiliser": 362.8333333333333,
+                "battery": 32
+            },
+            {
+                "timeofday": "2020-07-05T23:00:00.000Z",
+                "sunlight": 135.16666666666666,
+                "plantname": "Strawberry",
+                "moisture": 30,
+                "fertiliser": 330.0833333333333,
+                "battery": 29
+            },
+            {
+                "timeofday": "2020-07-06T02:00:00.000Z",
+                "sunlight": 260.5833333333333,
+                "plantname": "Strawberry",
+                "moisture": 30,
+                "fertiliser": 314.8333333333333,
+                "battery": 27
+            },
+            {
+                "timeofday": "2020-07-06T05:00:00.000Z",
+                "sunlight": 2946.9166666666665,
+                "plantname": "Strawberry",
+                "moisture": 30,
+                "fertiliser": 296.5,
+                "battery": 27
+            },
+            {
+                "timeofday": "2020-07-06T08:00:00.000Z",
+                "sunlight": 5773.818181818182,
+                "plantname": "Strawberry",
+                "moisture": 29.09090909090909,
+                "fertiliser": 283.90909090909093,
+                "battery": 33
+            },
+            {
+                "timeofday": "2020-07-06T11:00:00.000Z",
+                "sunlight": 9830.307692307691,
+                "plantname": "Strawberry",
+                "moisture": 27.692307692307693,
+                "fertiliser": 270.46153846153845,
+                "battery": 37
+            },
+            {
+                "timeofday": "2020-07-06T14:00:00.000Z",
+                "sunlight": 8583.333333333334,
+                "plantname": "Strawberry",
+                "moisture": 26.833333333333332,
+                "fertiliser": 258.6666666666667,
+                "battery": 43
+            },
+            {
+                "timeofday": "2020-07-06T17:00:00.000Z",
+                "sunlight": 2973.5,
+                "plantname": "Strawberry",
+                "moisture": 26,
+                "fertiliser": 264.1666666666667,
+                "battery": 41
+            }
+        ]
+    },
+    {
+        "plantname": "Hanging Basket",
+        "thresholdmoisture": 20,
+        "address": "c4:7c:8d:66:2a:ea",
+        "sensorlabel": "C",
+        "readings": [
+            {
+                "timeofday": "2020-06-11T14:00:00.000Z",
+                "sunlight": 6262.935483870968,
+                "plantname": "Hanging Basket",
+                "moisture": 22.225806451612904,
+                "fertiliser": 51.70967741935484,
+                "battery": 0
+            },
+            {
+                "timeofday": "2020-06-11T17:00:00.000Z",
+                "sunlight": 1039.4705882352941,
+                "plantname": "Hanging Basket",
+                "moisture": 45.5,
+                "fertiliser": 149.58823529411765,
+                "battery": 0
+            },
+            {
+                "timeofday": "2020-06-11T20:00:00.000Z",
+                "sunlight": 131.77142857142857,
+                "plantname": "Hanging Basket",
+                "moisture": 41.42857142857143,
+                "fertiliser": 188.31428571428572,
+                "battery": 0
+            },
+            {
+                "timeofday": "2020-06-11T23:00:00.000Z",
+                "sunlight": 117.58823529411765,
+                "plantname": "Hanging Basket",
+                "moisture": 41,
+                "fertiliser": 177.64705882352942,
+                "battery": 0
+            },
+            {
+                "timeofday": "2020-06-12T02:00:00.000Z",
+                "sunlight": 464.1142857142857,
+                "plantname": "Hanging Basket",
+                "moisture": 40.628571428571426,
+                "fertiliser": 173.17142857142858,
+                "battery": 0
+            },
+            {
+                "timeofday": "2020-06-12T05:00:00.000Z",
+                "sunlight": 8166.714285714285,
+                "plantname": "Hanging Basket",
+                "moisture": 59.65714285714286,
+                "fertiliser": 209.42857142857142,
+                "battery": 0
+            },
+            {
+                "timeofday": "2020-06-12T08:00:00.000Z",
+                "sunlight": 7337.4,
+                "plantname": "Hanging Basket",
+                "moisture": 68.62857142857143,
+                "fertiliser": 219.4,
+                "battery": 0
+            },
+            {
+                "timeofday": "2020-06-12T11:00:00.000Z",
+                "sunlight": 6512.371428571429,
+                "plantname": "Hanging Basket",
+                "moisture": 67.65714285714286,
+                "fertiliser": 213.54285714285714,
+                "battery": 0
+            },
+            {
+                "timeofday": "2020-06-12T14:00:00.000Z",
+                "sunlight": 3781,
+                "plantname": "Hanging Basket",
+                "moisture": 66.57142857142857,
+                "fertiliser": 208.71428571428572,
+                "battery": 0
+            },
+            {
+                "timeofday": "2020-06-12T17:00:00.000Z",
+                "sunlight": 1039.6176470588234,
+                "plantname": "Hanging Basket",
+                "moisture": 69.41176470588235,
+                "fertiliser": 242.61764705882354,
+                "battery": 0
+            },
+            {
+                "timeofday": "2020-06-12T20:00:00.000Z",
+                "sunlight": 128.25714285714287,
+                "plantname": "Hanging Basket",
+                "moisture": 70.11428571428571,
+                "fertiliser": 253.88571428571427,
+                "battery": 0
+            },
+            {
+                "timeofday": "2020-06-12T23:00:00.000Z",
+                "sunlight": 124.77142857142857,
+                "plantname": "Hanging Basket",
+                "moisture": 70.02857142857142,
+                "fertiliser": 252.2,
+                "battery": 0
+            },
+            {
+                "timeofday": "2020-06-13T02:00:00.000Z",
+                "sunlight": 233.11428571428573,
+                "plantname": "Hanging Basket",
+                "moisture": 70.05714285714286,
+                "fertiliser": 247.02857142857144,
+                "battery": 0
+            },
+            {
+                "timeofday": "2020-06-13T05:00:00.000Z",
+                "sunlight": 22190.22857142857,
+                "plantname": "Hanging Basket",
+                "moisture": 71.45714285714286,
+                "fertiliser": 261.22857142857146,
+                "battery": 0
+            },
+            {
+                "timeofday": "2020-06-13T08:00:00.000Z",
+                "sunlight": 21390.764705882353,
+                "plantname": "Hanging Basket",
+                "moisture": 70.61764705882354,
+                "fertiliser": 240.8235294117647,
+                "battery": 0
+            },
+            {
+                "timeofday": "2020-06-13T11:00:00.000Z",
+                "sunlight": 14979.51724137931,
+                "plantname": "Hanging Basket",
+                "moisture": 66,
+                "fertiliser": 211.55172413793105,
+                "battery": 0
+            },
+            {
+                "timeofday": "2020-06-13T14:00:00.000Z",
+                "sunlight": 5983.733333333334,
+                "plantname": "Hanging Basket",
+                "moisture": 42.333333333333336,
+                "fertiliser": 190.26666666666668,
+                "battery": 0
+            },
+            {
+                "timeofday": "2020-06-13T17:00:00.000Z",
+                "sunlight": 2757.6666666666665,
+                "plantname": "Hanging Basket",
+                "moisture": 47.5,
+                "fertiliser": 205.33333333333334,
+                "battery": 0
+            },
+            {
+                "timeofday": "2020-06-13T20:00:00.000Z",
+                "sunlight": 132.26666666666668,
+                "plantname": "Hanging Basket",
+                "moisture": 70.8,
+                "fertiliser": 265.73333333333335,
+                "battery": 0
+            },
+            {
+                "timeofday": "2020-06-13T23:00:00.000Z",
+                "sunlight": 219.71428571428572,
+                "plantname": "Hanging Basket",
+                "moisture": 70.85714285714286,
+                "fertiliser": 265.42857142857144,
+                "battery": 0
+            },
+            {
+                "timeofday": "2020-06-14T11:00:00.000Z",
+                "sunlight": 17252.4375,
+                "plantname": "Hanging Basket",
+                "moisture": 60.375,
+                "fertiliser": 257.4375,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-14T14:00:00.000Z",
+                "sunlight": 23721,
+                "plantname": "Hanging Basket",
+                "moisture": 60,
+                "fertiliser": 243.5,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-15T08:00:00.000Z",
+                "sunlight": 38235.86666666667,
+                "plantname": "Hanging Basket",
+                "moisture": 31.533333333333335,
+                "fertiliser": 167.86666666666667,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-15T11:00:00.000Z",
+                "sunlight": 10225.25,
+                "plantname": "Hanging Basket",
+                "moisture": 28.25,
+                "fertiliser": 160.08333333333334,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-15T17:00:00.000Z",
+                "sunlight": 2120.3,
+                "plantname": "Hanging Basket",
+                "moisture": 39.7,
+                "fertiliser": 178.2,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-15T20:00:00.000Z",
+                "sunlight": 74.5,
+                "plantname": "Hanging Basket",
+                "moisture": 58,
+                "fertiliser": 235,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-16T11:00:00.000Z",
+                "sunlight": 40362,
+                "plantname": "Hanging Basket",
+                "moisture": 33,
+                "fertiliser": 186,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-16T20:00:00.000Z",
+                "sunlight": 57.35294117647059,
+                "plantname": "Hanging Basket",
+                "moisture": 27.235294117647058,
+                "fertiliser": 155.7058823529412,
+                "battery": 90
+            },
+            {
+                "timeofday": "2020-06-16T23:00:00.000Z",
+                "sunlight": 61.666666666666664,
+                "plantname": "Hanging Basket",
+                "moisture": 26.055555555555557,
+                "fertiliser": 151.94444444444446,
+                "battery": 72
+            },
+            {
+                "timeofday": "2020-06-17T02:00:00.000Z",
+                "sunlight": 172.93333333333334,
+                "plantname": "Hanging Basket",
+                "moisture": 26,
+                "fertiliser": 145.93333333333334,
+                "battery": 59
+            },
+            {
+                "timeofday": "2020-06-17T08:00:00.000Z",
+                "sunlight": 16365.25,
+                "plantname": "Hanging Basket",
+                "moisture": 25.583333333333332,
+                "fertiliser": 119,
+                "battery": 72
+            },
+            {
+                "timeofday": "2020-06-17T11:00:00.000Z",
+                "sunlight": 5389.588235294118,
+                "plantname": "Hanging Basket",
+                "moisture": 24.41176470588235,
+                "fertiliser": 117.29411764705883,
+                "battery": 68
+            },
+            {
+                "timeofday": "2020-06-17T14:00:00.000Z",
+                "sunlight": 5775.117647058823,
+                "plantname": "Hanging Basket",
+                "moisture": 25.529411764705884,
+                "fertiliser": 115.82352941176471,
+                "battery": 63
+            },
+            {
+                "timeofday": "2020-06-17T17:00:00.000Z",
+                "sunlight": 2462.5,
+                "plantname": "Hanging Basket",
+                "moisture": 24.833333333333332,
+                "fertiliser": 114.66666666666667,
+                "battery": 63
+            },
+            {
+                "timeofday": "2020-06-19T08:00:00.000Z",
+                "sunlight": 8406,
+                "plantname": "Hanging Basket",
+                "moisture": 55.25,
+                "fertiliser": 200.5,
+                "battery": 41
+            },
+            {
+                "timeofday": "2020-06-19T11:00:00.000Z",
+                "sunlight": 7294.888888888889,
+                "plantname": "Hanging Basket",
+                "moisture": 36.44444444444444,
+                "fertiliser": 191.55555555555554,
+                "battery": 41
+            },
+            {
+                "timeofday": "2020-06-19T14:00:00.000Z",
+                "sunlight": 6222.277777777777,
+                "plantname": "Hanging Basket",
+                "moisture": 35.388888888888886,
+                "fertiliser": 174.11111111111111,
+                "battery": 42
+            },
+            {
+                "timeofday": "2020-06-19T17:00:00.000Z",
+                "sunlight": 2372,
+                "plantname": "Hanging Basket",
+                "moisture": 35.8,
+                "fertiliser": 178.2,
+                "battery": 41
+            },
+            {
+                "timeofday": "2020-06-20T17:00:00.000Z",
+                "sunlight": 689.9444444444445,
+                "plantname": "Hanging Basket",
+                "moisture": 35.166666666666664,
+                "fertiliser": 192.27777777777777,
+                "battery": 43
+            },
+            {
+                "timeofday": "2020-06-20T20:00:00.000Z",
+                "sunlight": 48.611111111111114,
+                "plantname": "Hanging Basket",
+                "moisture": 34,
+                "fertiliser": 194.61111111111111,
+                "battery": 40
+            },
+            {
+                "timeofday": "2020-06-20T23:00:00.000Z",
+                "sunlight": 28.714285714285715,
+                "plantname": "Hanging Basket",
+                "moisture": 34,
+                "fertiliser": 191.64285714285714,
+                "battery": 39
+            },
+            {
+                "timeofday": "2020-06-23T17:00:00.000Z",
+                "sunlight": 823.1666666666666,
+                "plantname": "Hanging Basket",
+                "moisture": 51.833333333333336,
+                "fertiliser": 228.58333333333334,
+                "battery": 59
+            },
+            {
+                "timeofday": "2020-06-23T20:00:00.000Z",
+                "sunlight": 71.05555555555556,
+                "plantname": "Hanging Basket",
+                "moisture": 48.72222222222222,
+                "fertiliser": 213.16666666666666,
+                "battery": 48
+            },
+            {
+                "timeofday": "2020-06-23T23:00:00.000Z",
+                "sunlight": 42.72222222222222,
+                "plantname": "Hanging Basket",
+                "moisture": 26.88888888888889,
+                "fertiliser": 185.11111111111111,
+                "battery": 44
+            },
+            {
+                "timeofday": "2020-06-24T02:00:00.000Z",
+                "sunlight": 42,
+                "plantname": "Hanging Basket",
+                "moisture": 26,
+                "fertiliser": 180,
+                "battery": 45
+            },
+            {
+                "timeofday": "2020-06-24T11:00:00.000Z",
+                "sunlight": 8878.133333333333,
+                "plantname": "Hanging Basket",
+                "moisture": 20.666666666666668,
+                "fertiliser": 91.86666666666666,
+                "battery": 63
+            },
+            {
+                "timeofday": "2020-06-24T14:00:00.000Z",
+                "sunlight": 5771.421052631579,
+                "plantname": "Hanging Basket",
+                "moisture": 18.105263157894736,
+                "fertiliser": 73.42105263157895,
+                "battery": 72
+            },
+            {
+                "timeofday": "2020-06-24T17:00:00.000Z",
+                "sunlight": 449.52941176470586,
+                "plantname": "Hanging Basket",
+                "moisture": 44.8235294117647,
+                "fertiliser": 214.94117647058823,
+                "battery": 50
+            },
+            {
+                "timeofday": "2020-06-24T20:00:00.000Z",
+                "sunlight": 50.421052631578945,
+                "plantname": "Hanging Basket",
+                "moisture": 59.63157894736842,
+                "fertiliser": 271.4736842105263,
+                "battery": 47
+            },
+            {
+                "timeofday": "2020-06-24T23:00:00.000Z",
+                "sunlight": 22.823529411764707,
+                "plantname": "Hanging Basket",
+                "moisture": 58.11764705882353,
+                "fertiliser": 259.11764705882354,
+                "battery": 45
+            },
+            {
+                "timeofday": "2020-06-25T02:00:00.000Z",
+                "sunlight": 83.8125,
+                "plantname": "Hanging Basket",
+                "moisture": 57.375,
+                "fertiliser": 250.8125,
+                "battery": 43
+            },
+            {
+                "timeofday": "2020-06-26T08:00:00.000Z",
+                "sunlight": 10031.75,
+                "plantname": "Hanging Basket",
+                "moisture": 58.5,
+                "fertiliser": 209.25,
+                "battery": 49
+            },
+            {
+                "timeofday": "2020-06-26T11:00:00.000Z",
+                "sunlight": 7284.611111111111,
+                "plantname": "Hanging Basket",
+                "moisture": 31,
+                "fertiliser": 164.88888888888889,
+                "battery": 49
+            },
+            {
+                "timeofday": "2020-06-26T14:00:00.000Z",
+                "sunlight": 4680.555555555556,
+                "plantname": "Hanging Basket",
+                "moisture": 24.72222222222222,
+                "fertiliser": 114.88888888888889,
+                "battery": 54
+            },
+            {
+                "timeofday": "2020-06-26T17:00:00.000Z",
+                "sunlight": 744.8181818181819,
+                "plantname": "Hanging Basket",
+                "moisture": 41.09090909090909,
+                "fertiliser": 190.27272727272728,
+                "battery": 48
+            },
+            {
+                "timeofday": "2020-06-28T20:00:00.000Z",
+                "sunlight": 31.3125,
+                "plantname": "Hanging Basket",
+                "moisture": 22.6875,
+                "fertiliser": 107.9375,
+                "battery": 33
+            },
+            {
+                "timeofday": "2020-06-28T23:00:00.000Z",
+                "sunlight": 32.166666666666664,
+                "plantname": "Hanging Basket",
+                "moisture": 22,
+                "fertiliser": 103.83333333333333,
+                "battery": 32
+            },
+            {
+                "timeofday": "2020-06-29T02:00:00.000Z",
+                "sunlight": 64.125,
+                "plantname": "Hanging Basket",
+                "moisture": 22,
+                "fertiliser": 100.1875,
+                "battery": 31
+            },
+            {
+                "timeofday": "2020-06-29T17:00:00.000Z",
+                "sunlight": 417.05882352941177,
+                "plantname": "Hanging Basket",
+                "moisture": 41.029411764705884,
+                "fertiliser": 171.85294117647058,
+                "battery": 37
+            },
+            {
+                "timeofday": "2020-06-29T20:00:00.000Z",
+                "sunlight": 42.8,
+                "plantname": "Hanging Basket",
+                "moisture": 54.97142857142857,
+                "fertiliser": 211.17142857142858,
+                "battery": 35
+            },
+            {
+                "timeofday": "2020-06-29T23:00:00.000Z",
+                "sunlight": 29.085714285714285,
+                "plantname": "Hanging Basket",
+                "moisture": 37.91428571428571,
+                "fertiliser": 197.97142857142856,
+                "battery": 35
+            },
+            {
+                "timeofday": "2020-06-30T02:00:00.000Z",
+                "sunlight": 109.91176470588235,
+                "plantname": "Hanging Basket",
+                "moisture": 31,
+                "fertiliser": 189.44117647058823,
+                "battery": 33
+            },
+            {
+                "timeofday": "2020-06-30T05:00:00.000Z",
+                "sunlight": 1183.0285714285715,
+                "plantname": "Hanging Basket",
+                "moisture": 30.514285714285716,
+                "fertiliser": 176.9142857142857,
+                "battery": 33
+            },
+            {
+                "timeofday": "2020-06-30T08:00:00.000Z",
+                "sunlight": 1655.8857142857144,
+                "plantname": "Hanging Basket",
+                "moisture": 29.457142857142856,
+                "fertiliser": 164.71428571428572,
+                "battery": 34
+            },
+            {
+                "timeofday": "2020-06-30T11:00:00.000Z",
+                "sunlight": 2405.823529411765,
+                "plantname": "Hanging Basket",
+                "moisture": 29.735294117647058,
+                "fertiliser": 155.97058823529412,
+                "battery": 35
+            },
+            {
+                "timeofday": "2020-06-30T14:00:00.000Z",
+                "sunlight": 1151.6944444444443,
+                "plantname": "Hanging Basket",
+                "moisture": 28.02777777777778,
+                "fertiliser": 143.36111111111111,
+                "battery": 36
+            },
+            {
+                "timeofday": "2020-06-30T17:00:00.000Z",
+                "sunlight": 365.42857142857144,
+                "plantname": "Hanging Basket",
+                "moisture": 48.51428571428571,
+                "fertiliser": 199.65714285714284,
+                "battery": 38
+            },
+            {
+                "timeofday": "2020-06-30T20:00:00.000Z",
+                "sunlight": 30.58823529411765,
+                "plantname": "Hanging Basket",
+                "moisture": 60,
+                "fertiliser": 232.7058823529412,
+                "battery": 38
+            },
+            {
+                "timeofday": "2020-06-30T23:00:00.000Z",
+                "sunlight": 29.02857142857143,
+                "plantname": "Hanging Basket",
+                "moisture": 59.77142857142857,
+                "fertiliser": 230.5142857142857,
+                "battery": 37
+            },
+            {
+                "timeofday": "2020-07-01T02:00:00.000Z",
+                "sunlight": 79.42857142857143,
+                "plantname": "Hanging Basket",
+                "moisture": 58.97142857142857,
+                "fertiliser": 227.82857142857142,
+                "battery": 35
+            },
+            {
+                "timeofday": "2020-07-01T05:00:00.000Z",
+                "sunlight": 2647.342857142857,
+                "plantname": "Hanging Basket",
+                "moisture": 58.68571428571428,
+                "fertiliser": 219.05714285714285,
+                "battery": 35
+            },
+            {
+                "timeofday": "2020-07-01T08:00:00.000Z",
+                "sunlight": 4827.888888888889,
+                "plantname": "Hanging Basket",
+                "moisture": 58.18518518518518,
+                "fertiliser": 204.8148148148148,
+                "battery": 39
+            },
+            {
+                "timeofday": "2020-07-01T11:00:00.000Z",
+                "sunlight": 2633.875,
+                "plantname": "Hanging Basket",
+                "moisture": 33.25,
+                "fertiliser": 187.8125,
+                "battery": 41
+            },
+            {
+                "timeofday": "2020-07-01T14:00:00.000Z",
+                "sunlight": 1438.4857142857143,
+                "plantname": "Hanging Basket",
+                "moisture": 31.257142857142856,
+                "fertiliser": 175.4857142857143,
+                "battery": 40
+            },
+            {
+                "timeofday": "2020-07-01T17:00:00.000Z",
+                "sunlight": 546.3142857142857,
+                "plantname": "Hanging Basket",
+                "moisture": 50.2,
+                "fertiliser": 219.02857142857144,
+                "battery": 39
+            },
+            {
+                "timeofday": "2020-07-01T20:00:00.000Z",
+                "sunlight": 26.794117647058822,
+                "plantname": "Hanging Basket",
+                "moisture": 60,
+                "fertiliser": 247.3235294117647,
+                "battery": 39
+            },
+            {
+                "timeofday": "2020-07-01T23:00:00.000Z",
+                "sunlight": 29.685714285714287,
+                "plantname": "Hanging Basket",
+                "moisture": 60.51428571428571,
+                "fertiliser": 246.25714285714287,
+                "battery": 36
+            },
+            {
+                "timeofday": "2020-07-02T02:00:00.000Z",
+                "sunlight": 77.41176470588235,
+                "plantname": "Hanging Basket",
+                "moisture": 60,
+                "fertiliser": 245.02941176470588,
+                "battery": 34
+            },
+            {
+                "timeofday": "2020-07-02T05:00:00.000Z",
+                "sunlight": 2863.9714285714285,
+                "plantname": "Hanging Basket",
+                "moisture": 60.51428571428571,
+                "fertiliser": 233.17142857142858,
+                "battery": 34
+            },
+            {
+                "timeofday": "2020-07-02T08:00:00.000Z",
+                "sunlight": 2332.7391304347825,
+                "plantname": "Hanging Basket",
+                "moisture": 60,
+                "fertiliser": 228.43478260869566,
+                "battery": 36
+            },
+            {
+                "timeofday": "2020-07-02T17:00:00.000Z",
+                "sunlight": 197.86666666666667,
+                "plantname": "Hanging Basket",
+                "moisture": 62.2,
+                "fertiliser": 224,
+                "battery": 39
+            },
+            {
+                "timeofday": "2020-07-02T20:00:00.000Z",
+                "sunlight": 50,
+                "plantname": "Hanging Basket",
+                "moisture": 63,
+                "fertiliser": 226,
+                "battery": 39
+            },
+            {
+                "timeofday": "2020-07-02T23:00:00.000Z",
+                "sunlight": 3.6666666666666665,
+                "plantname": "Hanging Basket",
+                "moisture": 61.75,
+                "fertiliser": 225,
+                "battery": 38
+            },
+            {
+                "timeofday": "2020-07-03T02:00:00.000Z",
+                "sunlight": 70,
+                "plantname": "Hanging Basket",
+                "moisture": 61,
+                "fertiliser": 226.16666666666666,
+                "battery": 35
+            },
+            {
+                "timeofday": "2020-07-03T05:00:00.000Z",
+                "sunlight": 2482.1666666666665,
+                "plantname": "Hanging Basket",
+                "moisture": 61,
+                "fertiliser": 217.83333333333334,
+                "battery": 35
+            },
+            {
+                "timeofday": "2020-07-03T08:00:00.000Z",
+                "sunlight": 5842.5,
+                "plantname": "Hanging Basket",
+                "moisture": 48.166666666666664,
+                "fertiliser": 200.33333333333334,
+                "battery": 37
+            },
+            {
+                "timeofday": "2020-07-03T11:00:00.000Z",
+                "sunlight": 7439,
+                "plantname": "Hanging Basket",
+                "moisture": 33.125,
+                "fertiliser": 174,
+                "battery": 40
+            },
+            {
+                "timeofday": "2020-07-04T08:00:00.000Z",
+                "sunlight": 1342,
+                "plantname": "Hanging Basket",
+                "moisture": 25,
+                "fertiliser": 105,
+                "battery": 42
+            },
+            {
+                "timeofday": "2020-07-04T11:00:00.000Z",
+                "sunlight": 1745.4545454545455,
+                "plantname": "Hanging Basket",
+                "moisture": 24.272727272727273,
+                "fertiliser": 100.0909090909091,
+                "battery": 42
+            },
+            {
+                "timeofday": "2020-07-04T14:00:00.000Z",
+                "sunlight": 1349.6666666666667,
+                "plantname": "Hanging Basket",
+                "moisture": 22.22222222222222,
+                "fertiliser": 93.11111111111111,
+                "battery": 43
+            },
+            {
+                "timeofday": "2020-07-04T17:00:00.000Z",
+                "sunlight": 318.9166666666667,
+                "plantname": "Hanging Basket",
+                "moisture": 21,
+                "fertiliser": 90.41666666666667,
+                "battery": 42
+            },
+            {
+                "timeofday": "2020-07-04T20:00:00.000Z",
+                "sunlight": 0.6666666666666666,
+                "plantname": "Hanging Basket",
+                "moisture": 21,
+                "fertiliser": 86.5,
+                "battery": 42
+            },
+            {
+                "timeofday": "2020-07-04T23:00:00.000Z",
+                "sunlight": 0,
+                "plantname": "Hanging Basket",
+                "moisture": 21,
+                "fertiliser": 84.75,
+                "battery": 41
+            },
+            {
+                "timeofday": "2020-07-05T02:00:00.000Z",
+                "sunlight": 55.916666666666664,
+                "plantname": "Hanging Basket",
+                "moisture": 20.25,
+                "fertiliser": 82.66666666666667,
+                "battery": 41
+            },
+            {
+                "timeofday": "2020-07-05T05:00:00.000Z",
+                "sunlight": 1538.8333333333333,
+                "plantname": "Hanging Basket",
+                "moisture": 20,
+                "fertiliser": 78.08333333333333,
+                "battery": 41
+            },
+            {
+                "timeofday": "2020-07-05T08:00:00.000Z",
+                "sunlight": 6304.083333333333,
+                "plantname": "Hanging Basket",
+                "moisture": 19.083333333333332,
+                "fertiliser": 69,
+                "battery": 43
+            },
+            {
+                "timeofday": "2020-07-05T11:00:00.000Z",
+                "sunlight": 6582.636363636364,
+                "plantname": "Hanging Basket",
+                "moisture": 16.818181818181817,
+                "fertiliser": 56.63636363636363,
+                "battery": 45
+            },
+            {
+                "timeofday": "2020-07-05T14:00:00.000Z",
+                "sunlight": 4755.25,
+                "plantname": "Hanging Basket",
+                "moisture": 15.333333333333334,
+                "fertiliser": 45.583333333333336,
+                "battery": 45
+            },
+            {
+                "timeofday": "2020-07-05T17:00:00.000Z",
+                "sunlight": 403.0833333333333,
+                "plantname": "Hanging Basket",
+                "moisture": 19,
+                "fertiliser": 95.33333333333333,
+                "battery": 40
+            },
+            {
+                "timeofday": "2020-07-05T20:00:00.000Z",
+                "sunlight": 20.166666666666668,
+                "plantname": "Hanging Basket",
+                "moisture": 29.916666666666668,
+                "fertiliser": 190.5,
+                "battery": 39
+            },
+            {
+                "timeofday": "2020-07-05T23:00:00.000Z",
+                "sunlight": 25.333333333333332,
+                "plantname": "Hanging Basket",
+                "moisture": 30,
+                "fertiliser": 181.58333333333334,
+                "battery": 37
+            },
+            {
+                "timeofday": "2020-07-06T02:00:00.000Z",
+                "sunlight": 60.666666666666664,
+                "plantname": "Hanging Basket",
+                "moisture": 30,
+                "fertiliser": 174,
+                "battery": 35
+            },
+            {
+                "timeofday": "2020-07-06T05:00:00.000Z",
+                "sunlight": 2516.8333333333335,
+                "plantname": "Hanging Basket",
+                "moisture": 30,
+                "fertiliser": 163.83333333333334,
+                "battery": 34
+            },
+            {
+                "timeofday": "2020-07-06T08:00:00.000Z",
+                "sunlight": 2899.090909090909,
+                "plantname": "Hanging Basket",
+                "moisture": 29.363636363636363,
+                "fertiliser": 152,
+                "battery": 38
+            },
+            {
+                "timeofday": "2020-07-06T11:00:00.000Z",
+                "sunlight": 3826.1428571428573,
+                "plantname": "Hanging Basket",
+                "moisture": 27,
+                "fertiliser": 133.42857142857142,
+                "battery": 39
+            },
+            {
+                "timeofday": "2020-07-06T14:00:00.000Z",
+                "sunlight": 2347,
+                "plantname": "Hanging Basket",
+                "moisture": 24.583333333333332,
+                "fertiliser": 112.41666666666667,
+                "battery": 41
+            },
+            {
+                "timeofday": "2020-07-06T17:00:00.000Z",
+                "sunlight": 613.6666666666666,
+                "plantname": "Hanging Basket",
+                "moisture": 23,
+                "fertiliser": 106,
+                "battery": 41
+            }
+        ]
+    },
+    {
+        "plantname": "Tomato",
+        "thresholdmoisture": 15,
+        "address": "80:ea:ca:89:5e:d7",
+        "sensorlabel": "D",
+        "readings": [
+            {
+                "timeofday": "2020-06-11T14:00:00.000Z",
+                "sunlight": 14719.4375,
+                "plantname": "Tomato",
+                "moisture": 44.3125,
+                "fertiliser": 3271.875,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-11T17:00:00.000Z",
+                "sunlight": 3039.0555555555557,
+                "plantname": "Tomato",
+                "moisture": 43,
+                "fertiliser": 3536.6666666666665,
+                "battery": 95
+            },
+            {
+                "timeofday": "2020-06-11T20:00:00.000Z",
+                "sunlight": 75.28571428571429,
+                "plantname": "Tomato",
+                "moisture": 42.05714285714286,
+                "fertiliser": 3537.342857142857,
+                "battery": 90
+            },
+            {
+                "timeofday": "2020-06-11T23:00:00.000Z",
+                "sunlight": 58.94117647058823,
+                "plantname": "Tomato",
+                "moisture": 41.088235294117645,
+                "fertiliser": 3488.3823529411766,
+                "battery": 86
+            },
+            {
+                "timeofday": "2020-06-12T02:00:00.000Z",
+                "sunlight": 1035.142857142857,
+                "plantname": "Tomato",
+                "moisture": 41.05714285714286,
+                "fertiliser": 3469.885714285714,
+                "battery": 81
+            },
+            {
+                "timeofday": "2020-06-12T05:00:00.000Z",
+                "sunlight": 10666,
+                "plantname": "Tomato",
+                "moisture": 41.371428571428574,
+                "fertiliser": 3326.057142857143,
+                "battery": 81
+            },
+            {
+                "timeofday": "2020-06-12T08:00:00.000Z",
+                "sunlight": 21196.85714285714,
+                "plantname": "Tomato",
+                "moisture": 43.05714285714286,
+                "fertiliser": 3115.457142857143,
+                "battery": 90
+            },
+            {
+                "timeofday": "2020-06-12T11:00:00.000Z",
+                "sunlight": 20019.77142857143,
+                "plantname": "Tomato",
+                "moisture": 43.2,
+                "fertiliser": 3164.4,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-12T14:00:00.000Z",
+                "sunlight": 10229.485714285714,
+                "plantname": "Tomato",
+                "moisture": 43,
+                "fertiliser": 3256,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-12T17:00:00.000Z",
+                "sunlight": 3660.264705882353,
+                "plantname": "Tomato",
+                "moisture": 42.44117647058823,
+                "fertiliser": 3303.205882352941,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-12T20:00:00.000Z",
+                "sunlight": 102.31428571428572,
+                "plantname": "Tomato",
+                "moisture": 41.02857142857143,
+                "fertiliser": 3403.457142857143,
+                "battery": 86
+            },
+            {
+                "timeofday": "2020-06-12T23:00:00.000Z",
+                "sunlight": 64.02857142857142,
+                "plantname": "Tomato",
+                "moisture": 40.371428571428574,
+                "fertiliser": 3440.285714285714,
+                "battery": 77
+            },
+            {
+                "timeofday": "2020-06-13T02:00:00.000Z",
+                "sunlight": 453.8857142857143,
+                "plantname": "Tomato",
+                "moisture": 40.02857142857143,
+                "fertiliser": 3367.5714285714284,
+                "battery": 68
+            },
+            {
+                "timeofday": "2020-06-13T05:00:00.000Z",
+                "sunlight": 8062.828571428571,
+                "plantname": "Tomato",
+                "moisture": 40.542857142857144,
+                "fertiliser": 3125.8285714285716,
+                "battery": 72
+            },
+            {
+                "timeofday": "2020-06-13T08:00:00.000Z",
+                "sunlight": 63374.76470588235,
+                "plantname": "Tomato",
+                "moisture": 44,
+                "fertiliser": 2842.764705882353,
+                "battery": 86
+            },
+            {
+                "timeofday": "2020-06-13T11:00:00.000Z",
+                "sunlight": 50804.862068965514,
+                "plantname": "Tomato",
+                "moisture": 46.241379310344826,
+                "fertiliser": 2974.206896551724,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-13T14:00:00.000Z",
+                "sunlight": 28026.709677419356,
+                "plantname": "Tomato",
+                "moisture": 46,
+                "fertiliser": 3148.4193548387098,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-13T17:00:00.000Z",
+                "sunlight": 6857.142857142857,
+                "plantname": "Tomato",
+                "moisture": 45.285714285714285,
+                "fertiliser": 3396.4285714285716,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-13T20:00:00.000Z",
+                "sunlight": 57.86666666666667,
+                "plantname": "Tomato",
+                "moisture": 42.93333333333333,
+                "fertiliser": 3516.3333333333335,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-13T23:00:00.000Z",
+                "sunlight": 31.285714285714285,
+                "plantname": "Tomato",
+                "moisture": 42.42857142857143,
+                "fertiliser": 3510.8571428571427,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-14T11:00:00.000Z",
+                "sunlight": 41373.3125,
+                "plantname": "Tomato",
+                "moisture": 41,
+                "fertiliser": 1863.25,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-14T14:00:00.000Z",
+                "sunlight": 28010.5,
+                "plantname": "Tomato",
+                "moisture": 41,
+                "fertiliser": 1832.5,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-15T08:00:00.000Z",
+                "sunlight": 47894.933333333334,
+                "plantname": "Tomato",
+                "moisture": 38.93333333333333,
+                "fertiliser": 1740.1333333333334,
+                "battery": 95
+            },
+            {
+                "timeofday": "2020-06-15T11:00:00.000Z",
+                "sunlight": 23846,
+                "plantname": "Tomato",
+                "moisture": 39,
+                "fertiliser": 1863.4166666666667,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-15T17:00:00.000Z",
+                "sunlight": 6658.545454545455,
+                "plantname": "Tomato",
+                "moisture": 38,
+                "fertiliser": 2111.4545454545455,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-15T20:00:00.000Z",
+                "sunlight": 248.5,
+                "plantname": "Tomato",
+                "moisture": 38,
+                "fertiliser": 2246.5,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-16T11:00:00.000Z",
+                "sunlight": 107771,
+                "plantname": "Tomato",
+                "moisture": 39,
+                "fertiliser": 1705,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-16T20:00:00.000Z",
+                "sunlight": 98.94117647058823,
+                "plantname": "Tomato",
+                "moisture": 37.05882352941177,
+                "fertiliser": 2086.6470588235293,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-16T23:00:00.000Z",
+                "sunlight": 66.16666666666667,
+                "plantname": "Tomato",
+                "moisture": 36,
+                "fertiliser": 2091.5555555555557,
+                "battery": 95
+            },
+            {
+                "timeofday": "2020-06-17T02:00:00.000Z",
+                "sunlight": 655.625,
+                "plantname": "Tomato",
+                "moisture": 35.625,
+                "fertiliser": 2053.0625,
+                "battery": 90
+            },
+            {
+                "timeofday": "2020-06-17T08:00:00.000Z",
+                "sunlight": 28344.166666666668,
+                "plantname": "Tomato",
+                "moisture": 37.833333333333336,
+                "fertiliser": 1663.25,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-17T11:00:00.000Z",
+                "sunlight": 15586.176470588236,
+                "plantname": "Tomato",
+                "moisture": 36.76470588235294,
+                "fertiliser": 1838.2941176470588,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-17T14:00:00.000Z",
+                "sunlight": 12378.70588235294,
+                "plantname": "Tomato",
+                "moisture": 37.35294117647059,
+                "fertiliser": 1831.4705882352941,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-17T17:00:00.000Z",
+                "sunlight": 7373.6,
+                "plantname": "Tomato",
+                "moisture": 37,
+                "fertiliser": 1855.8,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-19T08:00:00.000Z",
+                "sunlight": 22719.666666666668,
+                "plantname": "Tomato",
+                "moisture": 46,
+                "fertiliser": 749.6666666666666,
+                "battery": 90
+            },
+            {
+                "timeofday": "2020-06-19T11:00:00.000Z",
+                "sunlight": 22069.36842105263,
+                "plantname": "Tomato",
+                "moisture": 45.8421052631579,
+                "fertiliser": 749.2105263157895,
+                "battery": 90
+            },
+            {
+                "timeofday": "2020-06-19T14:00:00.000Z",
+                "sunlight": 17237.555555555555,
+                "plantname": "Tomato",
+                "moisture": 45.611111111111114,
+                "fertiliser": 743.1111111111111,
+                "battery": 95
+            },
+            {
+                "timeofday": "2020-06-19T17:00:00.000Z",
+                "sunlight": 6666.25,
+                "plantname": "Tomato",
+                "moisture": 44.916666666666664,
+                "fertiliser": 781.8333333333334,
+                "battery": 90
+            },
+            {
+                "timeofday": "2020-06-20T17:00:00.000Z",
+                "sunlight": 2991,
+                "plantname": "Tomato",
+                "moisture": 44.05555555555556,
+                "fertiliser": 757,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-20T20:00:00.000Z",
+                "sunlight": 134.77777777777777,
+                "plantname": "Tomato",
+                "moisture": 43,
+                "fertiliser": 773.0555555555555,
+                "battery": 90
+            },
+            {
+                "timeofday": "2020-06-20T23:00:00.000Z",
+                "sunlight": 58.5,
+                "plantname": "Tomato",
+                "moisture": 42.57142857142857,
+                "fertiliser": 758.6428571428571,
+                "battery": 86
+            },
+            {
+                "timeofday": "2020-06-23T17:00:00.000Z",
+                "sunlight": 3301.3333333333335,
+                "plantname": "Tomato",
+                "moisture": 47,
+                "fertiliser": 702.4166666666666,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-23T20:00:00.000Z",
+                "sunlight": 176.88888888888889,
+                "plantname": "Tomato",
+                "moisture": 45.833333333333336,
+                "fertiliser": 720.7777777777778,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-23T23:00:00.000Z",
+                "sunlight": 73.38888888888889,
+                "plantname": "Tomato",
+                "moisture": 44.77777777777778,
+                "fertiliser": 726.6111111111111,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-24T02:00:00.000Z",
+                "sunlight": 121.5,
+                "plantname": "Tomato",
+                "moisture": 45,
+                "fertiliser": 724.5,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-24T11:00:00.000Z",
+                "sunlight": 40202.73333333333,
+                "plantname": "Tomato",
+                "moisture": 50.733333333333334,
+                "fertiliser": 557.2,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-24T14:00:00.000Z",
+                "sunlight": 34256.57894736842,
+                "plantname": "Tomato",
+                "moisture": 50.63157894736842,
+                "fertiliser": 580.6842105263158,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-24T17:00:00.000Z",
+                "sunlight": 2799.1176470588234,
+                "plantname": "Tomato",
+                "moisture": 46.76470588235294,
+                "fertiliser": 698.9411764705883,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-24T20:00:00.000Z",
+                "sunlight": 146.31578947368422,
+                "plantname": "Tomato",
+                "moisture": 45.1578947368421,
+                "fertiliser": 717.6842105263158,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-24T23:00:00.000Z",
+                "sunlight": 65,
+                "plantname": "Tomato",
+                "moisture": 44.35294117647059,
+                "fertiliser": 710.1764705882352,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-25T02:00:00.000Z",
+                "sunlight": 345.75,
+                "plantname": "Tomato",
+                "moisture": 43.625,
+                "fertiliser": 703.125,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-26T08:00:00.000Z",
+                "sunlight": 11809.25,
+                "plantname": "Tomato",
+                "moisture": 50,
+                "fertiliser": 807.75,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-26T11:00:00.000Z",
+                "sunlight": 30565,
+                "plantname": "Tomato",
+                "moisture": 51.44444444444444,
+                "fertiliser": 770.5555555555555,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-26T14:00:00.000Z",
+                "sunlight": 31740.555555555555,
+                "plantname": "Tomato",
+                "moisture": 51.55555555555556,
+                "fertiliser": 758.1111111111111,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-26T17:00:00.000Z",
+                "sunlight": 5012.909090909091,
+                "plantname": "Tomato",
+                "moisture": 47.27272727272727,
+                "fertiliser": 847.5454545454545,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-06-28T20:00:00.000Z",
+                "sunlight": 69.25,
+                "plantname": "Tomato",
+                "moisture": 45,
+                "fertiliser": 952,
+                "battery": 72
+            },
+            {
+                "timeofday": "2020-06-28T23:00:00.000Z",
+                "sunlight": 56.44444444444444,
+                "plantname": "Tomato",
+                "moisture": 44.666666666666664,
+                "fertiliser": 941.3333333333334,
+                "battery": 63
+            },
+            {
+                "timeofday": "2020-06-29T02:00:00.000Z",
+                "sunlight": 401.8125,
+                "plantname": "Tomato",
+                "moisture": 44.5625,
+                "fertiliser": 919.4375,
+                "battery": 59
+            },
+            {
+                "timeofday": "2020-06-29T17:00:00.000Z",
+                "sunlight": 3382.8823529411766,
+                "plantname": "Tomato",
+                "moisture": 45,
+                "fertiliser": 833.2941176470588,
+                "battery": 72
+            },
+            {
+                "timeofday": "2020-06-29T20:00:00.000Z",
+                "sunlight": 119.97142857142858,
+                "plantname": "Tomato",
+                "moisture": 44.82857142857143,
+                "fertiliser": 825.4285714285714,
+                "battery": 63
+            },
+            {
+                "timeofday": "2020-06-29T23:00:00.000Z",
+                "sunlight": 60.74285714285714,
+                "plantname": "Tomato",
+                "moisture": 44.65714285714286,
+                "fertiliser": 798.1428571428571,
+                "battery": 63
+            },
+            {
+                "timeofday": "2020-06-30T02:00:00.000Z",
+                "sunlight": 723.5588235294117,
+                "plantname": "Tomato",
+                "moisture": 44.970588235294116,
+                "fertiliser": 782.7058823529412,
+                "battery": 54
+            },
+            {
+                "timeofday": "2020-06-30T05:00:00.000Z",
+                "sunlight": 7745.828571428571,
+                "plantname": "Tomato",
+                "moisture": 45.65714285714286,
+                "fertiliser": 750.6285714285714,
+                "battery": 54
+            },
+            {
+                "timeofday": "2020-06-30T08:00:00.000Z",
+                "sunlight": 10244.861111111111,
+                "plantname": "Tomato",
+                "moisture": 45.94444444444444,
+                "fertiliser": 731.5277777777778,
+                "battery": 63
+            },
+            {
+                "timeofday": "2020-06-30T11:00:00.000Z",
+                "sunlight": 13140.970588235294,
+                "plantname": "Tomato",
+                "moisture": 46.14705882352941,
+                "fertiliser": 716.6176470588235,
+                "battery": 68
+            },
+            {
+                "timeofday": "2020-06-30T14:00:00.000Z",
+                "sunlight": 7710.361111111111,
+                "plantname": "Tomato",
+                "moisture": 46,
+                "fertiliser": 733.9722222222222,
+                "battery": 72
+            },
+            {
+                "timeofday": "2020-06-30T17:00:00.000Z",
+                "sunlight": 2784.542857142857,
+                "plantname": "Tomato",
+                "moisture": 46,
+                "fertiliser": 740.0285714285715,
+                "battery": 72
+            },
+            {
+                "timeofday": "2020-06-30T20:00:00.000Z",
+                "sunlight": 93.21212121212122,
+                "plantname": "Tomato",
+                "moisture": 45.96969696969697,
+                "fertiliser": 743.939393939394,
+                "battery": 72
+            },
+            {
+                "timeofday": "2020-06-30T23:00:00.000Z",
+                "sunlight": 57.97142857142857,
+                "plantname": "Tomato",
+                "moisture": 45.114285714285714,
+                "fertiliser": 741.8,
+                "battery": 68
+            },
+            {
+                "timeofday": "2020-07-01T02:00:00.000Z",
+                "sunlight": 379.0571428571429,
+                "plantname": "Tomato",
+                "moisture": 45,
+                "fertiliser": 748.6285714285714,
+                "battery": 63
+            },
+            {
+                "timeofday": "2020-07-01T05:00:00.000Z",
+                "sunlight": 4989.428571428572,
+                "plantname": "Tomato",
+                "moisture": 45.371428571428574,
+                "fertiliser": 722.8571428571429,
+                "battery": 59
+            },
+            {
+                "timeofday": "2020-07-01T08:00:00.000Z",
+                "sunlight": 10934.464285714286,
+                "plantname": "Tomato",
+                "moisture": 47.035714285714285,
+                "fertiliser": 667.8571428571429,
+                "battery": 68
+            },
+            {
+                "timeofday": "2020-07-01T11:00:00.000Z",
+                "sunlight": 14401.28125,
+                "plantname": "Tomato",
+                "moisture": 47.15625,
+                "fertiliser": 670.28125,
+                "battery": 81
+            },
+            {
+                "timeofday": "2020-07-01T14:00:00.000Z",
+                "sunlight": 9267.971428571429,
+                "plantname": "Tomato",
+                "moisture": 46.08571428571429,
+                "fertiliser": 705.5142857142857,
+                "battery": 77
+            },
+            {
+                "timeofday": "2020-07-01T17:00:00.000Z",
+                "sunlight": 4031.885714285714,
+                "plantname": "Tomato",
+                "moisture": 45.97142857142857,
+                "fertiliser": 712.4285714285714,
+                "battery": 77
+            },
+            {
+                "timeofday": "2020-07-01T20:00:00.000Z",
+                "sunlight": 94.54285714285714,
+                "plantname": "Tomato",
+                "moisture": 45.34285714285714,
+                "fertiliser": 723.8,
+                "battery": 72
+            },
+            {
+                "timeofday": "2020-07-01T23:00:00.000Z",
+                "sunlight": 55.82857142857143,
+                "plantname": "Tomato",
+                "moisture": 45,
+                "fertiliser": 718.0571428571428,
+                "battery": 63
+            },
+            {
+                "timeofday": "2020-07-02T02:00:00.000Z",
+                "sunlight": 301.79411764705884,
+                "plantname": "Tomato",
+                "moisture": 44.1764705882353,
+                "fertiliser": 715.5,
+                "battery": 54
+            },
+            {
+                "timeofday": "2020-07-02T05:00:00.000Z",
+                "sunlight": 4061.542857142857,
+                "plantname": "Tomato",
+                "moisture": 44.97142857142857,
+                "fertiliser": 678.2285714285714,
+                "battery": 54
+            },
+            {
+                "timeofday": "2020-07-02T08:00:00.000Z",
+                "sunlight": 10537.521739130434,
+                "plantname": "Tomato",
+                "moisture": 46,
+                "fertiliser": 640,
+                "battery": 63
+            },
+            {
+                "timeofday": "2020-07-02T17:00:00.000Z",
+                "sunlight": 1522.6666666666667,
+                "plantname": "Tomato",
+                "moisture": 44.2,
+                "fertiliser": 234.73333333333332,
+                "battery": 72
+            },
+            {
+                "timeofday": "2020-07-02T20:00:00.000Z",
+                "sunlight": 133.5,
+                "plantname": "Tomato",
+                "moisture": 48,
+                "fertiliser": 330.5,
+                "battery": 77
+            },
+            {
+                "timeofday": "2020-07-02T23:00:00.000Z",
+                "sunlight": 28.5,
+                "plantname": "Tomato",
+                "moisture": 44.916666666666664,
+                "fertiliser": 345,
+                "battery": 68
+            },
+            {
+                "timeofday": "2020-07-03T02:00:00.000Z",
+                "sunlight": 761.6666666666666,
+                "plantname": "Tomato",
+                "moisture": 43.75,
+                "fertiliser": 347.4166666666667,
+                "battery": 59
+            },
+            {
+                "timeofday": "2020-07-03T05:00:00.000Z",
+                "sunlight": 16921.166666666668,
+                "plantname": "Tomato",
+                "moisture": 44.333333333333336,
+                "fertiliser": 325.0833333333333,
+                "battery": 59
+            },
+            {
+                "timeofday": "2020-07-03T08:00:00.000Z",
+                "sunlight": 54449.166666666664,
+                "plantname": "Tomato",
+                "moisture": 45.583333333333336,
+                "fertiliser": 282.9166666666667,
+                "battery": 72
+            },
+            {
+                "timeofday": "2020-07-03T11:00:00.000Z",
+                "sunlight": 55004.375,
+                "plantname": "Tomato",
+                "moisture": 45,
+                "fertiliser": 277.375,
+                "battery": 90
+            },
+            {
+                "timeofday": "2020-07-04T08:00:00.000Z",
+                "sunlight": 9799,
+                "plantname": "Tomato",
+                "moisture": 41,
+                "fertiliser": 235,
+                "battery": 90
+            },
+            {
+                "timeofday": "2020-07-04T11:00:00.000Z",
+                "sunlight": 10102.545454545454,
+                "plantname": "Tomato",
+                "moisture": 41.09090909090909,
+                "fertiliser": 230.54545454545453,
+                "battery": 90
+            },
+            {
+                "timeofday": "2020-07-04T14:00:00.000Z",
+                "sunlight": 8168.333333333333,
+                "plantname": "Tomato",
+                "moisture": 41.22222222222222,
+                "fertiliser": 226.88888888888889,
+                "battery": 90
+            },
+            {
+                "timeofday": "2020-07-04T17:00:00.000Z",
+                "sunlight": 2685.5,
+                "plantname": "Tomato",
+                "moisture": 40.916666666666664,
+                "fertiliser": 228.5,
+                "battery": 90
+            },
+            {
+                "timeofday": "2020-07-04T20:00:00.000Z",
+                "sunlight": 82.81818181818181,
+                "plantname": "Tomato",
+                "moisture": 40.09090909090909,
+                "fertiliser": 227.72727272727272,
+                "battery": 86
+            },
+            {
+                "timeofday": "2020-07-04T23:00:00.000Z",
+                "sunlight": 26.5,
+                "plantname": "Tomato",
+                "moisture": 40,
+                "fertiliser": 225.83333333333334,
+                "battery": 81
+            },
+            {
+                "timeofday": "2020-07-05T02:00:00.000Z",
+                "sunlight": 597.9,
+                "plantname": "Tomato",
+                "moisture": 40,
+                "fertiliser": 221.4,
+                "battery": 81
+            },
+            {
+                "timeofday": "2020-07-05T05:00:00.000Z",
+                "sunlight": 9724,
+                "plantname": "Tomato",
+                "moisture": 38.166666666666664,
+                "fertiliser": 213,
+                "battery": 81
+            },
+            {
+                "timeofday": "2020-07-05T08:00:00.000Z",
+                "sunlight": 59010.2,
+                "plantname": "Tomato",
+                "moisture": 19.2,
+                "fertiliser": 180.5,
+                "battery": 90
+            },
+            {
+                "timeofday": "2020-07-05T11:00:00.000Z",
+                "sunlight": 45306.454545454544,
+                "plantname": "Tomato",
+                "moisture": 19,
+                "fertiliser": 187.1818181818182,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-07-05T14:00:00.000Z",
+                "sunlight": 9241.636363636364,
+                "plantname": "Tomato",
+                "moisture": 21.545454545454547,
+                "fertiliser": 197.1818181818182,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-07-05T17:00:00.000Z",
+                "sunlight": 2477.181818181818,
+                "plantname": "Tomato",
+                "moisture": 39.36363636363637,
+                "fertiliser": 203.9090909090909,
+                "battery": 100
+            },
+            {
+                "timeofday": "2020-07-05T20:00:00.000Z",
+                "sunlight": 91.53846153846153,
+                "plantname": "Tomato",
+                "moisture": 36.76923076923077,
+                "fertiliser": 203.15384615384616,
+                "battery": 90
+            },
+            {
+                "timeofday": "2020-07-05T23:00:00.000Z",
+                "sunlight": 54.18181818181818,
+                "plantname": "Tomato",
+                "moisture": 15,
+                "fertiliser": 196.27272727272728,
+                "battery": 77
+            },
+            {
+                "timeofday": "2020-07-06T02:00:00.000Z",
+                "sunlight": 414.4166666666667,
+                "plantname": "Tomato",
+                "moisture": 15,
+                "fertiliser": 190.83333333333334,
+                "battery": 72
+            },
+            {
+                "timeofday": "2020-07-06T05:00:00.000Z",
+                "sunlight": 13440.636363636364,
+                "plantname": "Tomato",
+                "moisture": 15.181818181818182,
+                "fertiliser": 151.54545454545453,
+                "battery": 59
+            },
+            {
+                "timeofday": "2020-07-06T08:00:00.000Z",
+                "sunlight": 17670.81818181818,
+                "plantname": "Tomato",
+                "moisture": 40.63636363636363,
+                "fertiliser": 142.63636363636363,
+                "battery": 77
+            },
+            {
+                "timeofday": "2020-07-06T11:00:00.000Z",
+                "sunlight": 12555.857142857143,
+                "plantname": "Tomato",
+                "moisture": 54.57142857142857,
+                "fertiliser": 201.78571428571428,
+                "battery": 86
+            },
+            {
+                "timeofday": "2020-07-06T14:00:00.000Z",
+                "sunlight": 8445.833333333334,
+                "plantname": "Tomato",
+                "moisture": 37.333333333333336,
+                "fertiliser": 173.66666666666666,
+                "battery": 86
+            },
+            {
+                "timeofday": "2020-07-06T17:00:00.000Z",
+                "sunlight": 3926,
+                "plantname": "Tomato",
+                "moisture": 36,
+                "fertiliser": 166.33333333333334,
+                "battery": 81
+            }
+        ]
+    },
+    {
+        "plantname": "Herbs",
+        "thresholdmoisture": 15,
+        "address": "80:ea:ca:89:61:ff",
+        "sensorlabel": "E",
+        "readings": [
+            {
+                "timeofday": "2020-06-11T14:00:00.000Z",
+                "sunlight": 17864.96875,
+                "plantname": "Herbs",
+                "moisture": 28,
+                "fertiliser": 1785.3125,
+                "battery": 98
+            },
+            {
+                "timeofday": "2020-06-11T17:00:00.000Z",
+                "sunlight": 3318.6944444444443,
+                "plantname": "Herbs",
+                "moisture": 26.666666666666668,
+                "fertiliser": 1985.6944444444443,
+                "battery": 98
+            },
+            {
+                "timeofday": "2020-06-11T20:00:00.000Z",
+                "sunlight": 54.57142857142857,
+                "plantname": "Herbs",
+                "moisture": 26.114285714285714,
+                "fertiliser": 2032.857142857143,
+                "battery": 98
+            },
+            {
+                "timeofday": "2020-06-11T23:00:00.000Z",
+                "sunlight": 43.26470588235294,
+                "plantname": "Herbs",
+                "moisture": 25.88235294117647,
+                "fertiliser": 2030.1470588235295,
+                "battery": 98
+            },
+            {
+                "timeofday": "2020-06-12T02:00:00.000Z",
+                "sunlight": 1073.2857142857142,
+                "plantname": "Herbs",
+                "moisture": 25.228571428571428,
+                "fertiliser": 2026.2,
+                "battery": 98
+            },
+            {
+                "timeofday": "2020-06-12T05:00:00.000Z",
+                "sunlight": 13091.8,
+                "plantname": "Herbs",
+                "moisture": 25.685714285714287,
+                "fertiliser": 1956.5142857142857,
+                "battery": 98
+            },
+            {
+                "timeofday": "2020-06-12T08:00:00.000Z",
+                "sunlight": 31823.571428571428,
+                "plantname": "Herbs",
+                "moisture": 26.428571428571427,
+                "fertiliser": 1855.6285714285714,
+                "battery": 98
+            },
+            {
+                "timeofday": "2020-06-12T11:00:00.000Z",
+                "sunlight": 29415.17142857143,
+                "plantname": "Herbs",
+                "moisture": 26.742857142857144,
+                "fertiliser": 1909.5142857142857,
+                "battery": 98
+            },
+            {
+                "timeofday": "2020-06-12T14:00:00.000Z",
+                "sunlight": 11772.029411764706,
+                "plantname": "Herbs",
+                "moisture": 25.970588235294116,
+                "fertiliser": 1955.235294117647,
+                "battery": 98
+            },
+            {
+                "timeofday": "2020-06-12T17:00:00.000Z",
+                "sunlight": 4079.7428571428572,
+                "plantname": "Herbs",
+                "moisture": 25.8,
+                "fertiliser": 1963.3428571428572,
+                "battery": 98
+            },
+            {
+                "timeofday": "2020-06-12T20:00:00.000Z",
+                "sunlight": 80.65714285714286,
+                "plantname": "Herbs",
+                "moisture": 24.97142857142857,
+                "fertiliser": 1994.4571428571428,
+                "battery": 98
+            },
+            {
+                "timeofday": "2020-06-12T23:00:00.000Z",
+                "sunlight": 38.42857142857143,
+                "plantname": "Herbs",
+                "moisture": 23.771428571428572,
+                "fertiliser": 2017,
+                "battery": 98
+            },
+            {
+                "timeofday": "2020-06-13T02:00:00.000Z",
+                "sunlight": 475,
+                "plantname": "Herbs",
+                "moisture": 23.457142857142856,
+                "fertiliser": 1974.5142857142857,
+                "battery": 98
+            },
+            {
+                "timeofday": "2020-06-13T05:00:00.000Z",
+                "sunlight": 9328.857142857143,
+                "plantname": "Herbs",
+                "moisture": 24.057142857142857,
+                "fertiliser": 1827.5142857142857,
+                "battery": 98
+            },
+            {
+                "timeofday": "2020-06-13T08:00:00.000Z",
+                "sunlight": 88443.44117647059,
+                "plantname": "Herbs",
+                "moisture": 31.764705882352942,
+                "fertiliser": 1949.5,
+                "battery": 98
+            },
+            {
+                "timeofday": "2020-06-13T11:00:00.000Z",
+                "sunlight": 63785.48275862069,
+                "plantname": "Herbs",
+                "moisture": 34.793103448275865,
+                "fertiliser": 2002.448275862069,
+                "battery": 72
+            },
+            {
+                "timeofday": "2020-06-13T14:00:00.000Z",
+                "sunlight": 16133.451612903225,
+                "plantname": "Herbs",
+                "moisture": 31.516129032258064,
+                "fertiliser": 2008.3548387096773,
+                "battery": 81
+            },
+            {
+                "timeofday": "2020-06-13T17:00:00.000Z",
+                "sunlight": 7725.8,
+                "plantname": "Herbs",
+                "moisture": 30,
+                "fertiliser": 2013.4,
+                "battery": 72
+            },
+            {
+                "timeofday": "2020-06-13T20:00:00.000Z",
+                "sunlight": 51.93333333333333,
+                "plantname": "Herbs",
+                "moisture": 27.733333333333334,
+                "fertiliser": 1993,
+                "battery": 50
+            },
+            {
+                "timeofday": "2020-06-13T23:00:00.000Z",
+                "sunlight": 58.42857142857143,
+                "plantname": "Herbs",
+                "moisture": 28,
+                "fertiliser": 1944.5714285714287,
+                "battery": 49
+            },
+            {
+                "timeofday": "2020-06-14T11:00:00.000Z",
+                "sunlight": 48730.9375,
+                "plantname": "Herbs",
+                "moisture": 32.1875,
+                "fertiliser": 1671.3125,
+                "battery": 86
+            },
+            {
+                "timeofday": "2020-06-14T14:00:00.000Z",
+                "sunlight": 21991,
+                "plantname": "Herbs",
+                "moisture": 33,
+                "fertiliser": 1894.5,
+                "battery": 90
+            },
+            {
+                "timeofday": "2020-06-15T05:00:00.000Z",
+                "sunlight": 98146,
+                "plantname": "Herbs",
+                "moisture": 28,
+                "fertiliser": 1782,
+                "battery": 47
+            },
+            {
+                "timeofday": "2020-06-15T08:00:00.000Z",
+                "sunlight": 92833.06666666667,
+                "plantname": "Herbs",
+                "moisture": 30.533333333333335,
+                "fertiliser": 1611.1333333333334,
+                "battery": 48
+            },
+            {
+                "timeofday": "2020-06-15T11:00:00.000Z",
+                "sunlight": 33189.416666666664,
+                "plantname": "Herbs",
+                "moisture": 31.75,
+                "fertiliser": 1795.75,
+                "battery": 86
+            },
+            {
+                "timeofday": "2020-06-15T17:00:00.000Z",
+                "sunlight": 7568.181818181818,
+                "plantname": "Herbs",
+                "moisture": 31.363636363636363,
+                "fertiliser": 1952.1818181818182,
+                "battery": 63
+            },
+            {
+                "timeofday": "2020-06-15T20:00:00.000Z",
+                "sunlight": 231,
+                "plantname": "Herbs",
+                "moisture": 30,
+                "fertiliser": 1902,
+                "battery": 54
+            },
+            {
+                "timeofday": "2020-06-16T11:00:00.000Z",
+                "sunlight": 98146,
+                "plantname": "Herbs",
+                "moisture": 35,
+                "fertiliser": 1350,
+                "battery": 81
+            },
+            {
+                "timeofday": "2020-06-16T20:00:00.000Z",
+                "sunlight": 81.05882352941177,
+                "plantname": "Herbs",
+                "moisture": 28.764705882352942,
+                "fertiliser": 1683.0588235294117,
+                "battery": 49
+            },
+            {
+                "timeofday": "2020-06-16T23:00:00.000Z",
+                "sunlight": 42.44444444444444,
+                "plantname": "Herbs",
+                "moisture": 28.27777777777778,
+                "fertiliser": 1686.611111111111,
+                "battery": 46
+            },
+            {
+                "timeofday": "2020-06-17T02:00:00.000Z",
+                "sunlight": 576.0666666666667,
+                "plantname": "Herbs",
+                "moisture": 26.066666666666666,
+                "fertiliser": 1651.7333333333333,
+                "battery": 44
+            },
+            {
+                "timeofday": "2020-06-17T08:00:00.000Z",
+                "sunlight": 83032.58333333333,
+                "plantname": "Herbs",
+                "moisture": 32,
+                "fertiliser": 1323.75,
+                "battery": 50
+            },
+            {
+                "timeofday": "2020-06-17T11:00:00.000Z",
+                "sunlight": 20915.529411764706,
+                "plantname": "Herbs",
+                "moisture": 29.823529411764707,
+                "fertiliser": 1494.6470588235295,
+                "battery": 54
+            },
+            {
+                "timeofday": "2020-06-17T14:00:00.000Z",
+                "sunlight": 16428.470588235294,
+                "plantname": "Herbs",
+                "moisture": 30.88235294117647,
+                "fertiliser": 1496.5882352941176,
+                "battery": 63
+            },
+            {
+                "timeofday": "2020-06-17T17:00:00.000Z",
+                "sunlight": 8089.833333333333,
+                "plantname": "Herbs",
+                "moisture": 30,
+                "fertiliser": 1513.3333333333333,
+                "battery": 59
+            },
+            {
+                "timeofday": "2020-06-19T08:00:00.000Z",
+                "sunlight": 39619.5,
+                "plantname": "Herbs",
+                "moisture": 37,
+                "fertiliser": 423.75,
+                "battery": 47
+            },
+            {
+                "timeofday": "2020-06-19T11:00:00.000Z",
+                "sunlight": 31126,
+                "plantname": "Herbs",
+                "moisture": 38.55555555555556,
+                "fertiliser": 429.44444444444446,
+                "battery": 48
+            },
+            {
+                "timeofday": "2020-06-19T14:00:00.000Z",
+                "sunlight": 17842.61111111111,
+                "plantname": "Herbs",
+                "moisture": 37.333333333333336,
+                "fertiliser": 437.27777777777777,
+                "battery": 49
+            },
+            {
+                "timeofday": "2020-06-19T17:00:00.000Z",
+                "sunlight": 7725.7,
+                "plantname": "Herbs",
+                "moisture": 36.2,
+                "fertiliser": 458.7,
+                "battery": 47
+            },
+            {
+                "timeofday": "2020-06-20T17:00:00.000Z",
+                "sunlight": 2930.722222222222,
+                "plantname": "Herbs",
+                "moisture": 37.44444444444444,
+                "fertiliser": 473.3333333333333,
+                "battery": 50
+            },
+            {
+                "timeofday": "2020-06-20T20:00:00.000Z",
+                "sunlight": 110.72222222222223,
+                "plantname": "Herbs",
+                "moisture": 35,
+                "fertiliser": 489.6111111111111,
+                "battery": 46
+            },
+            {
+                "timeofday": "2020-06-20T23:00:00.000Z",
+                "sunlight": 38.214285714285715,
+                "plantname": "Herbs",
+                "moisture": 35.142857142857146,
+                "fertiliser": 488.5,
+                "battery": 44
+            },
+            {
+                "timeofday": "2020-06-23T17:00:00.000Z",
+                "sunlight": 3333.75,
+                "plantname": "Herbs",
+                "moisture": 53.166666666666664,
+                "fertiliser": 323.25,
+                "battery": 86
+            },
+            {
+                "timeofday": "2020-06-23T20:00:00.000Z",
+                "sunlight": 172.61111111111111,
+                "plantname": "Herbs",
+                "moisture": 53.111111111111114,
+                "fertiliser": 331,
+                "battery": 68
+            },
+            {
+                "timeofday": "2020-06-23T23:00:00.000Z",
+                "sunlight": 50,
+                "plantname": "Herbs",
+                "moisture": 51.27777777777778,
+                "fertiliser": 335.27777777777777,
+                "battery": 54
+            },
+            {
+                "timeofday": "2020-06-24T02:00:00.000Z",
+                "sunlight": 21.5,
+                "plantname": "Herbs",
+                "moisture": 50,
+                "fertiliser": 338.5,
+                "battery": 54
+            },
+            {
+                "timeofday": "2020-06-24T11:00:00.000Z",
+                "sunlight": 72455.73333333334,
+                "plantname": "Herbs",
+                "moisture": 55.46666666666667,
+                "fertiliser": 262.6,
+                "battery": 95
+            },
+            {
+                "timeofday": "2020-06-24T14:00:00.000Z",
+                "sunlight": 20803.315789473683,
+                "plantname": "Herbs",
+                "moisture": 54.1578947368421,
+                "fertiliser": 289.5263157894737,
+                "battery": 95
+            },
+            {
+                "timeofday": "2020-06-24T17:00:00.000Z",
+                "sunlight": 2657.294117647059,
+                "plantname": "Herbs",
+                "moisture": 50.8235294117647,
+                "fertiliser": 310.88235294117646,
+                "battery": 86
+            },
+            {
+                "timeofday": "2020-06-24T20:00:00.000Z",
+                "sunlight": 143.05263157894737,
+                "plantname": "Herbs",
+                "moisture": 49.68421052631579,
+                "fertiliser": 320.7368421052632,
+                "battery": 68
+            },
+            {
+                "timeofday": "2020-06-24T23:00:00.000Z",
+                "sunlight": 55.76470588235294,
+                "plantname": "Herbs",
+                "moisture": 49,
+                "fertiliser": 317.47058823529414,
+                "battery": 59
+            },
+            {
+                "timeofday": "2020-06-25T02:00:00.000Z",
+                "sunlight": 387.4375,
+                "plantname": "Herbs",
+                "moisture": 49.6875,
+                "fertiliser": 314.3125,
+                "battery": 49
+            },
+            {
+                "timeofday": "2020-06-26T08:00:00.000Z",
+                "sunlight": 110030,
+                "plantname": "Herbs",
+                "moisture": 58,
+                "fertiliser": 359.75,
+                "battery": 90
+            },
+            {
+                "timeofday": "2020-06-26T11:00:00.000Z",
+                "sunlight": 40135.666666666664,
+                "plantname": "Herbs",
+                "moisture": 58.72222222222222,
+                "fertiliser": 360.44444444444446,
+                "battery": 95
+            },
+            {
+                "timeofday": "2020-06-26T14:00:00.000Z",
+                "sunlight": 19228.555555555555,
+                "plantname": "Herbs",
+                "moisture": 55,
+                "fertiliser": 381.22222222222223,
+                "battery": 90
+            },
+            {
+                "timeofday": "2020-06-26T17:00:00.000Z",
+                "sunlight": 5604.909090909091,
+                "plantname": "Herbs",
+                "moisture": 52.81818181818182,
+                "fertiliser": 390.09090909090907,
+                "battery": 86
+            },
+            {
+                "timeofday": "2020-06-28T20:00:00.000Z",
+                "sunlight": 50.8125,
+                "plantname": "Herbs",
+                "moisture": 51.6875,
+                "fertiliser": 535.5,
+                "battery": 43
+            },
+            {
+                "timeofday": "2020-06-28T23:00:00.000Z",
+                "sunlight": 43.44444444444444,
+                "plantname": "Herbs",
+                "moisture": 51.833333333333336,
+                "fertiliser": 518.6111111111111,
+                "battery": 41
+            },
+            {
+                "timeofday": "2020-06-29T02:00:00.000Z",
+                "sunlight": 478.3125,
+                "plantname": "Herbs",
+                "moisture": 50.0625,
+                "fertiliser": 496.25,
+                "battery": 40
+            },
+            {
+                "timeofday": "2020-06-29T17:00:00.000Z",
+                "sunlight": 4052.5588235294117,
+                "plantname": "Herbs",
+                "moisture": 51.029411764705884,
+                "fertiliser": 403.94117647058823,
+                "battery": 44
+            },
+            {
+                "timeofday": "2020-06-29T20:00:00.000Z",
+                "sunlight": 121.91428571428571,
+                "plantname": "Herbs",
+                "moisture": 50.48571428571429,
+                "fertiliser": 403.1714285714286,
+                "battery": 42
+            },
+            {
+                "timeofday": "2020-06-29T23:00:00.000Z",
+                "sunlight": 42.885714285714286,
+                "plantname": "Herbs",
+                "moisture": 49.628571428571426,
+                "fertiliser": 393.0857142857143,
+                "battery": 41
+            },
+            {
+                "timeofday": "2020-06-30T02:00:00.000Z",
+                "sunlight": 921,
+                "plantname": "Herbs",
+                "moisture": 49.88235294117647,
+                "fertiliser": 385.5882352941176,
+                "battery": 39
+            },
+            {
+                "timeofday": "2020-06-30T05:00:00.000Z",
+                "sunlight": 8983.742857142857,
+                "plantname": "Herbs",
+                "moisture": 50.285714285714285,
+                "fertiliser": 368.65714285714284,
+                "battery": 39
+            },
+            {
+                "timeofday": "2020-06-30T08:00:00.000Z",
+                "sunlight": 14008.75,
+                "plantname": "Herbs",
+                "moisture": 50.80555555555556,
+                "fertiliser": 354.3333333333333,
+                "battery": 42
+            },
+            {
+                "timeofday": "2020-06-30T11:00:00.000Z",
+                "sunlight": 22221.029411764706,
+                "plantname": "Herbs",
+                "moisture": 51.970588235294116,
+                "fertiliser": 342.6470588235294,
+                "battery": 43
+            },
+            {
+                "timeofday": "2020-06-30T14:00:00.000Z",
+                "sunlight": 10004.75,
+                "plantname": "Herbs",
+                "moisture": 51.861111111111114,
+                "fertiliser": 347.3611111111111,
+                "battery": 45
+            },
+            {
+                "timeofday": "2020-06-30T17:00:00.000Z",
+                "sunlight": 3690.6857142857143,
+                "plantname": "Herbs",
+                "moisture": 51.42857142857143,
+                "fertiliser": 349.0857142857143,
+                "battery": 45
+            },
+            {
+                "timeofday": "2020-06-30T20:00:00.000Z",
+                "sunlight": 83.44117647058823,
+                "plantname": "Herbs",
+                "moisture": 51.205882352941174,
+                "fertiliser": 350.97058823529414,
+                "battery": 44
+            },
+            {
+                "timeofday": "2020-06-30T23:00:00.000Z",
+                "sunlight": 38.8,
+                "plantname": "Herbs",
+                "moisture": 50.57142857142857,
+                "fertiliser": 351.0857142857143,
+                "battery": 43
+            },
+            {
+                "timeofday": "2020-07-01T02:00:00.000Z",
+                "sunlight": 498.7142857142857,
+                "plantname": "Herbs",
+                "moisture": 50.34285714285714,
+                "fertiliser": 353.0857142857143,
+                "battery": 42
+            },
+            {
+                "timeofday": "2020-07-01T05:00:00.000Z",
+                "sunlight": 6667.142857142857,
+                "plantname": "Herbs",
+                "moisture": 50.371428571428574,
+                "fertiliser": 343.9714285714286,
+                "battery": 42
+            },
+            {
+                "timeofday": "2020-07-01T08:00:00.000Z",
+                "sunlight": 55900.846153846156,
+                "plantname": "Herbs",
+                "moisture": 51.80769230769231,
+                "fertiliser": 311.8076923076923,
+                "battery": 43
+            },
+            {
+                "timeofday": "2020-07-01T11:00:00.000Z",
+                "sunlight": 22397.625,
+                "plantname": "Herbs",
+                "moisture": 51.71875,
+                "fertiliser": 315.71875,
+                "battery": 48
+            },
+            {
+                "timeofday": "2020-07-01T14:00:00.000Z",
+                "sunlight": 10580.314285714287,
+                "plantname": "Herbs",
+                "moisture": 51.2,
+                "fertiliser": 327.0857142857143,
+                "battery": 47
+            },
+            {
+                "timeofday": "2020-07-01T17:00:00.000Z",
+                "sunlight": 4741.914285714286,
+                "plantname": "Herbs",
+                "moisture": 51.285714285714285,
+                "fertiliser": 326.2,
+                "battery": 46
+            },
+            {
+                "timeofday": "2020-07-01T20:00:00.000Z",
+                "sunlight": 84.34285714285714,
+                "plantname": "Herbs",
+                "moisture": 50.6,
+                "fertiliser": 331.42857142857144,
+                "battery": 44
+            },
+            {
+                "timeofday": "2020-07-01T23:00:00.000Z",
+                "sunlight": 41.57142857142857,
+                "plantname": "Herbs",
+                "moisture": 50.34285714285714,
+                "fertiliser": 330.77142857142854,
+                "battery": 43
+            },
+            {
+                "timeofday": "2020-07-02T02:00:00.000Z",
+                "sunlight": 434.5882352941176,
+                "plantname": "Herbs",
+                "moisture": 49.35294117647059,
+                "fertiliser": 332.9117647058824,
+                "battery": 40
+            },
+            {
+                "timeofday": "2020-07-02T05:00:00.000Z",
+                "sunlight": 5805.085714285714,
+                "plantname": "Herbs",
+                "moisture": 49.48571428571429,
+                "fertiliser": 317.51428571428573,
+                "battery": 40
+            },
+            {
+                "timeofday": "2020-07-02T08:00:00.000Z",
+                "sunlight": 19598.739130434784,
+                "plantname": "Herbs",
+                "moisture": 50.65217391304348,
+                "fertiliser": 298.5652173913044,
+                "battery": 42
+            },
+            {
+                "timeofday": "2020-07-02T17:00:00.000Z",
+                "sunlight": 1835.2,
+                "plantname": "Herbs",
+                "moisture": 55,
+                "fertiliser": 307.8,
+                "battery": 47
+            },
+            {
+                "timeofday": "2020-07-02T20:00:00.000Z",
+                "sunlight": 260.5,
+                "plantname": "Herbs",
+                "moisture": 56.5,
+                "fertiliser": 379.5,
+                "battery": 46
+            },
+            {
+                "timeofday": "2020-07-02T23:00:00.000Z",
+                "sunlight": 54.166666666666664,
+                "plantname": "Herbs",
+                "moisture": 54.333333333333336,
+                "fertiliser": 406.25,
+                "battery": 44
+            },
+            {
+                "timeofday": "2020-07-03T02:00:00.000Z",
+                "sunlight": 731.3333333333334,
+                "plantname": "Herbs",
+                "moisture": 53.083333333333336,
+                "fertiliser": 414.8333333333333,
+                "battery": 42
+            },
+            {
+                "timeofday": "2020-07-03T05:00:00.000Z",
+                "sunlight": 10046.666666666666,
+                "plantname": "Herbs",
+                "moisture": 53.75,
+                "fertiliser": 399.6666666666667,
+                "battery": 42
+            },
+            {
+                "timeofday": "2020-07-03T08:00:00.000Z",
+                "sunlight": 65789,
+                "plantname": "Herbs",
+                "moisture": 53.916666666666664,
+                "fertiliser": 361.8333333333333,
+                "battery": 44
+            },
+            {
+                "timeofday": "2020-07-03T11:00:00.000Z",
+                "sunlight": 42683.125,
+                "plantname": "Herbs",
+                "moisture": 55.5,
+                "fertiliser": 342.625,
+                "battery": 47
+            },
+            {
+                "timeofday": "2020-07-04T08:00:00.000Z",
+                "sunlight": 10128,
+                "plantname": "Herbs",
+                "moisture": 52,
+                "fertiliser": 321,
+                "battery": 48
+            },
+            {
+                "timeofday": "2020-07-04T11:00:00.000Z",
+                "sunlight": 11631.90909090909,
+                "plantname": "Herbs",
+                "moisture": 52.72727272727273,
+                "fertiliser": 319.09090909090907,
+                "battery": 47
+            },
+            {
+                "timeofday": "2020-07-04T14:00:00.000Z",
+                "sunlight": 9377.222222222223,
+                "plantname": "Herbs",
+                "moisture": 52.44444444444444,
+                "fertiliser": 316.1111111111111,
+                "battery": 48
+            },
+            {
+                "timeofday": "2020-07-04T17:00:00.000Z",
+                "sunlight": 3406.7272727272725,
+                "plantname": "Herbs",
+                "moisture": 51.90909090909091,
+                "fertiliser": 320.90909090909093,
+                "battery": 47
+            },
+            {
+                "timeofday": "2020-07-04T20:00:00.000Z",
+                "sunlight": 85.46153846153847,
+                "plantname": "Herbs",
+                "moisture": 51.07692307692308,
+                "fertiliser": 320.6923076923077,
+                "battery": 47
+            },
+            {
+                "timeofday": "2020-07-04T23:00:00.000Z",
+                "sunlight": 40.583333333333336,
+                "plantname": "Herbs",
+                "moisture": 51.166666666666664,
+                "fertiliser": 319.5833333333333,
+                "battery": 46
+            },
+            {
+                "timeofday": "2020-07-05T02:00:00.000Z",
+                "sunlight": 657.9,
+                "plantname": "Herbs",
+                "moisture": 51,
+                "fertiliser": 313.7,
+                "battery": 46
+            },
+            {
+                "timeofday": "2020-07-05T05:00:00.000Z",
+                "sunlight": 7310.75,
+                "plantname": "Herbs",
+                "moisture": 51.75,
+                "fertiliser": 306.1666666666667,
+                "battery": 46
+            },
+            {
+                "timeofday": "2020-07-05T08:00:00.000Z",
+                "sunlight": 58433.5,
+                "plantname": "Herbs",
+                "moisture": 52.75,
+                "fertiliser": 277.75,
+                "battery": 46
+            },
+            {
+                "timeofday": "2020-07-05T11:00:00.000Z",
+                "sunlight": 42677.09090909091,
+                "plantname": "Herbs",
+                "moisture": 53.27272727272727,
+                "fertiliser": 271.3636363636364,
+                "battery": 54
+            },
+            {
+                "timeofday": "2020-07-05T14:00:00.000Z",
+                "sunlight": 9452.916666666666,
+                "plantname": "Herbs",
+                "moisture": 51.166666666666664,
+                "fertiliser": 289.9166666666667,
+                "battery": 54
+            },
+            {
+                "timeofday": "2020-07-05T17:00:00.000Z",
+                "sunlight": 2727.5,
+                "plantname": "Herbs",
+                "moisture": 50,
+                "fertiliser": 307,
+                "battery": 47
+            },
+            {
+                "timeofday": "2020-07-05T20:00:00.000Z",
+                "sunlight": 74.75,
+                "plantname": "Herbs",
+                "moisture": 48.666666666666664,
+                "fertiliser": 309,
+                "battery": 44
+            },
+            {
+                "timeofday": "2020-07-05T23:00:00.000Z",
+                "sunlight": 51.583333333333336,
+                "plantname": "Herbs",
+                "moisture": 49.25,
+                "fertiliser": 304.25,
+                "battery": 43
+            },
+            {
+                "timeofday": "2020-07-06T02:00:00.000Z",
+                "sunlight": 373.9166666666667,
+                "plantname": "Herbs",
+                "moisture": 49.166666666666664,
+                "fertiliser": 301.5833333333333,
+                "battery": 41
+            },
+            {
+                "timeofday": "2020-07-06T05:00:00.000Z",
+                "sunlight": 6465.666666666667,
+                "plantname": "Herbs",
+                "moisture": 49.5,
+                "fertiliser": 289.8333333333333,
+                "battery": 42
+            },
+            {
+                "timeofday": "2020-07-06T08:00:00.000Z",
+                "sunlight": 19377.454545454544,
+                "plantname": "Herbs",
+                "moisture": 50.09090909090909,
+                "fertiliser": 273.6363636363636,
+                "battery": 43
+            },
+            {
+                "timeofday": "2020-07-06T11:00:00.000Z",
+                "sunlight": 21500.928571428572,
+                "plantname": "Herbs",
+                "moisture": 51.357142857142854,
+                "fertiliser": 264.2857142857143,
+                "battery": 45
+            },
+            {
+                "timeofday": "2020-07-06T14:00:00.000Z",
+                "sunlight": 9575.333333333334,
+                "plantname": "Herbs",
+                "moisture": 50.666666666666664,
+                "fertiliser": 273.75,
+                "battery": 47
+            },
+            {
+                "timeofday": "2020-07-06T17:00:00.000Z",
+                "sunlight": 4428.5,
+                "plantname": "Herbs",
+                "moisture": 50.166666666666664,
+                "fertiliser": 280.3333333333333,
+                "battery": 47
+            }
+        ]
+    }
+]
