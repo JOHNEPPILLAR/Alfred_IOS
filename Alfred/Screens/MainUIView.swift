@@ -54,6 +54,7 @@ struct MainUIView: View {
                                     .frame(width: 10)
                             }
                             Spacer()
+                            FlowerCareDataGraph()
                         }
                         .transition(AnyTransition.opacity.animation(.easeIn(duration: 0.5)))
                     } else if self.stateSettings.currentMenuItem == 3 { // Bedroom
@@ -75,6 +76,23 @@ struct MainUIView: View {
                         }
                         .transition(AnyTransition.opacity.animation(.easeIn(duration: 0.5)))
                     } else if self.stateSettings.currentMenuItem == 4 { // Kids bedroom
+                        VStack {
+                            HStack {
+                                Spacer()
+                                    .frame(width: 10)
+                                RoomTempUIView()
+                                    .transition(.slide)
+                                Spacer()
+                                    .frame(width: 10)
+                                LightSwitchUIView()
+                                    .transition(.slide)
+                                Spacer()
+                                    .frame(width: 10)
+                            }
+                            Spacer()
+                        }
+                        .transition(AnyTransition.opacity.animation(.easeIn(duration: 0.5)))
+                    } else if self.stateSettings.currentMenuItem == 5 { // Kitchen
                         VStack {
                             HStack {
                                 Spacer()
