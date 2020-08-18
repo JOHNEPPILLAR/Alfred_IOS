@@ -27,17 +27,14 @@ struct MenuUIView: View {
                                         self.menuItems.loadData(roomID: self.stateSettings.currentMenuItem)
                                     }
                                 }) {
-                                    VStack(alignment: .trailing) {
+                                    VStack {
                                         Spacer()
                                         Text(item.room)
+                                            .underline(item.active ? true : false, color: .yellow)
                                             .fontWeight(item.active ? .bold : .light)
                                             .foregroundColor(item.active ? .white : .gray)
                                             .fixedSize(horizontal: true, vertical: false)
                                             .padding(.horizontal, 5)
-                                        Image("yellow_horizontal_line")
-                                            .foregroundColor(item.active ? .yellow : .clear)
-                                            .frame(height: 10)
-                                            .offset(x: -3, y: -12)
                                     }
                                 }
                             }
@@ -45,7 +42,7 @@ struct MenuUIView: View {
                     }
                 }
             }
-            .frame(width: geometry.size.width, height: 60)
+            .frame(width: geometry.size.width, height: 30)
         }
     }
 }
@@ -59,7 +56,7 @@ struct MenuUIView_Previews: PreviewProvider {
             MenuUIView().environmentObject(StateSettings())
         }
         .previewLayout(
-            .fixed(width: 414, height: 60)
+            .fixed(width: 414, height: 40)
         )
     }
 }

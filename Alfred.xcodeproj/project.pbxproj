@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		E804F99A24BCA5CC008CB851 /* LightSwitchUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E804F99924BCA5CC008CB851 /* LightSwitchUIView.swift */; };
 		E804F99C24BCDF60008CB851 /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E804F99B24BCDF60008CB851 /* CustomSlider.swift */; };
+		E84546F924EC3BB4002E7944 /* VideoDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84546F824EC3BB4002E7944 /* VideoDataModel.swift */; };
+		E84546FB24EC3C01002E7944 /* VideoUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84546FA24EC3C01002E7944 /* VideoUIView.swift */; };
 		E85E591B2489781700411BEA /* CurrentWeatherDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85E591A2489781700411BEA /* CurrentWeatherDataModel.swift */; };
 		E8644CA624BB2D65003A0202 /* RoomTempUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8644CA524BB2D65003A0202 /* RoomTempUIView.swift */; };
 		E873D3602475A5490072DAEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E873D35F2475A5490072DAEB /* AppDelegate.swift */; };
@@ -64,6 +66,8 @@
 		E804F99924BCA5CC008CB851 /* LightSwitchUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightSwitchUIView.swift; sourceTree = "<group>"; };
 		E804F99B24BCDF60008CB851 /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 		E82F87832475C1EF009B6040 /* Alfred.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Alfred.entitlements; sourceTree = "<group>"; };
+		E84546F824EC3BB4002E7944 /* VideoDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDataModel.swift; sourceTree = "<group>"; };
+		E84546FA24EC3C01002E7944 /* VideoUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoUIView.swift; sourceTree = "<group>"; };
 		E85E591A2489781700411BEA /* CurrentWeatherDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherDataModel.swift; sourceTree = "<group>"; };
 		E8644CA524BB2D65003A0202 /* RoomTempUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomTempUIView.swift; sourceTree = "<group>"; };
 		E873D35C2475A5490072DAEB /* Alfred.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alfred.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,6 +144,7 @@
 				E88AFD932492CF9D0090ACE9 /* FlowerCareDataModel.swift */,
 				E883B34724B5200500805209 /* StateSettings.swift */,
 				E89A8AA224C3997C00242F6F /* LightDataModel.swift */,
+				E84546F824EC3BB4002E7944 /* VideoDataModel.swift */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -259,6 +264,7 @@
 				E87E9AE224B2148F009129F3 /* GardenSensorChartUIView.swift */,
 				E8644CA524BB2D65003A0202 /* RoomTempUIView.swift */,
 				E804F99924BCA5CC008CB851 /* LightSwitchUIView.swift */,
+				E84546FA24EC3C01002E7944 /* VideoUIView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -457,10 +463,12 @@
 				E8ED97122486D3B900B90B80 /* HeaderUIView.swift in Sources */,
 				E873D3602475A5490072DAEB /* AppDelegate.swift in Sources */,
 				E89A8AA524C4557500242F6F /* HueColor.swift in Sources */,
+				E84546F924EC3BB4002E7944 /* VideoDataModel.swift in Sources */,
 				E883B34824B5200500805209 /* StateSettings.swift in Sources */,
 				E873D3622475A5490072DAEB /* SceneDelegate.swift in Sources */,
 				E8ED97062483C2A100B90B80 /* MainUIView.swift in Sources */,
 				E8644CA624BB2D65003A0202 /* RoomTempUIView.swift in Sources */,
+				E84546FB24EC3C01002E7944 /* VideoUIView.swift in Sources */,
 				E8ED96F92482644C00B90B80 /* ControllerUIView.swift in Sources */,
 				E85E591B2489781700411BEA /* CurrentWeatherDataModel.swift in Sources */,
 				E88AFD942492CF9D0090ACE9 /* FlowerCareDataModel.swift in Sources */,

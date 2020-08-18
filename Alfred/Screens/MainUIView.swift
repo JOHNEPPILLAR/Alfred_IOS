@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct MainUIView: View {
 
@@ -16,12 +17,15 @@ struct MainUIView: View {
         GeometryReader { geometry in
             VStack {
                 HeaderUIView()
-                    .frame(width: geometry.size.width, height: 200)
+                    .frame(width: geometry.size.width, height: 160)
                 VStack {
                     if self.stateSettings.currentMenuItem == 0 { // garden
-                        FlowerCareDataGraph()
-                            .transition(AnyTransition.opacity.animation(.easeIn(duration: 0.5)))
-                    } else if self.stateSettings.currentMenuItem == 1 { // Living rooms
+                        VStack {
+                            VideoUIView(player: AVPlayer())
+                            FlowerCareDataGraph()
+                        }
+                        .transition(AnyTransition.opacity.animation(.easeIn(duration: 0.5)))
+                    } else if self.stateSettings.currentMenuItem == 1 { // Office
                         VStack {
                             HStack {
                                 Spacer()
@@ -45,15 +49,16 @@ struct MainUIView: View {
                                 Spacer()
                                     .frame(width: 10)
                                 RoomTempUIView()
-                                    .transition(.slide)
+                                    //.transition(.slide)
                                 Spacer()
                                     .frame(width: 10)
                                 LightSwitchUIView()
-                                    .transition(.slide)
+                                    //.transition(.slide)
                                 Spacer()
                                     .frame(width: 10)
                             }
                             Spacer()
+                            VideoUIView(player: AVPlayer())
                             FlowerCareDataGraph()
                         }
                         .transition(AnyTransition.opacity.animation(.easeIn(duration: 0.5)))
@@ -89,6 +94,7 @@ struct MainUIView: View {
                                 Spacer()
                                     .frame(width: 10)
                             }
+                            VideoUIView(player: AVPlayer())
                             Spacer()
                         }
                         .transition(AnyTransition.opacity.animation(.easeIn(duration: 0.5)))
@@ -111,7 +117,6 @@ struct MainUIView: View {
                         .transition(AnyTransition.opacity.animation(.easeIn(duration: 0.5)))
                     }
                 }
-                .offset(x: 0, y: -20)
             }
         }
     }
