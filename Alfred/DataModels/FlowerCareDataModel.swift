@@ -11,23 +11,25 @@ import Combine
 
 struct SensorReadingDataItem: Codable {
     var id: String {
-        return timeofday
+        return time
     }
-    let timeofday: String
-    let sunlight: Double
-    let moisture: Double
-    let fertiliser: Double
+    let time: String
     let battery: Int
+    let temperature: Double
+    let lux: Double
+    let moisture: Double
+    let fertility: Double
 }
 
 struct SensorDataItem: Codable, Identifiable {
     var id: Date {
         return Date()
     }
-    let plantname: String
-    let address: String
-    let sensorlabel: String
-    let thresholdmoisture: Double
+    let device: String
+    let location: String
+    let plant: String
+    let zone: Int
+    let thresholdMoisture: Double
     let readings: [SensorReadingDataItem]
 }
 
@@ -46,7 +48,7 @@ extension FlowerCareData {
 
     func loadData(zone: String, duration: String) {
         let (urlRequest, errorURL) = getAlfredData(
-            for: "flowercare/sensors/zone/\(zone)?durationSpan=\(duration)"
+            for: "flowercare/sensors/zone/\(zone)?duration=\(duration)"
         )
         if errorURL == nil {
             self.cancellationToken = URLSession.shared.dataTaskPublisher(for: urlRequest!)

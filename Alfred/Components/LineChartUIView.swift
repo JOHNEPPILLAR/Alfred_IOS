@@ -94,7 +94,7 @@ struct LineChartUIView: UIViewRepresentable {
 #if DEBUG
 struct LineChartUIView_Previews: PreviewProvider {
 
-    static var arrayItem = 1
+    static var arrayItem = 0
     static func chartDataMoisture () -> [Double] {
         var mockSensorDataItem = MockSensorDataItem()
         return (0..<(mockSensorDataItem.data?[arrayItem].readings.count)!).map { (item) in
@@ -105,13 +105,13 @@ struct LineChartUIView_Previews: PreviewProvider {
     static func chartDataBattery () -> [Double] {
         var mockSensorDataItem = MockSensorDataItem()
         return (0..<(mockSensorDataItem.data?[arrayItem].readings.count)!).map { (item) in
-            return Double(mockSensorDataItem.data![arrayItem].readings[item].battery)
+            return Double(mockSensorDataItem.data![arrayItem].readings[item].battery).rounded(.down)
         }
     }
 
     static func chartDataThreshhold () -> Double {
         var mockSensorDataItem = MockSensorDataItem()
-        return mockSensorDataItem.data![arrayItem].thresholdmoisture
+        return mockSensorDataItem.data![arrayItem].thresholdMoisture
     }
 
     static var previews: some View {

@@ -13,34 +13,34 @@ import SwiftUI
 struct HouseSensorDataItem: Codable, Comparable {
 
     static func < (lhs: HouseSensorDataItem, rhs: HouseSensorDataItem) -> Bool {
-      return (lhs.co2 ?? 0, lhs.air ?? 0) < (rhs.co2 ?? 0, rhs.air ?? 0)
+      return (lhs.co2 ?? 0, lhs.airQuality ?? 0) < (rhs.co2 ?? 0, rhs.airQuality ?? 0)
     }
 
-    let location: String?
+    let name: String?
     let battery: Int?
     let temperature: Double?
     let humidity: Int?
     let pressure: Double?
     let co2: Int?
-    let air: Int?
-    let nitrogen: Int?
+    let airQuality: Int?
+    let nitrogenDioxideDensity: Int?
 
-    init(location: String? = nil,
+    init(name: String? = nil,
          battery: Int? = nil,
          temperature: Double? = nil,
          humidity: Int? = nil,
          pressure: Double? = nil,
          co2: Int? = nil,
-         air: Int? = nil,
-         nitrogen: Int? = nil) {
-        self.location = location
+         airQuality: Int? = nil,
+         nitrogenDioxideDensity: Int? = nil) {
+        self.name = name
         self.battery = battery
         self.temperature = temperature
         self.humidity = humidity
         self.pressure = pressure
         self.co2 = co2
-        self.air = air
-        self.nitrogen = nitrogen
+        self.airQuality = airQuality
+        self.nitrogenDioxideDensity = nitrogenDioxideDensity
     }
 }
 
@@ -106,7 +106,7 @@ extension HouseSensorData {
                 var airQuality: [Int] = [0, 0]
 
                 // Dyson
-                let airReading = dysonDataItems.max()?.air ?? 0
+                let airReading = dysonDataItems.max()?.airQuality ?? 0
                 airQuality[0] = self.dysonAirQuality(airReading: airReading)
 
                 // Netatmo
@@ -140,9 +140,9 @@ extension HouseSensorData {
         case 1, 3:
             var sensor = "Office"
             if currentMenuItem == 3 { sensor = "Bedroom" }
-            let officeData = self.dysonData.filter { $0.location == sensor }
+            let officeData = self.dysonData.filter { $0.name == sensor }
             self.roomTemp = Int(officeData[0].temperature?.rounded(.up) ?? 0)
-            let airQuality = dysonAirQuality(airReading: officeData[0].air ?? 0)
+            let airQuality = dysonAirQuality(airReading: officeData[0].airQuality ?? 0)
             switch airQuality {
             case 1: self.roomHealthIndicator = "air_quality_green"
             case 2: self.roomHealthIndicator = "air_quality_yellow"
@@ -151,9 +151,9 @@ extension HouseSensorData {
         case 2, 4, 5:
             var sensor = "Kitchen"
             if currentMenuItem == 4 { sensor = "Kids room" } else if currentMenuItem == 2 { sensor = "Living room" }
-            let netatmoData = self.netatmoData.filter { $0.location == sensor }
+            let netatmoData = self.netatmoData.filter { $0.name == sensor }
             self.roomTemp = Int(netatmoData[0].temperature?.rounded(.up) ?? 0)
-            let airQuality = dysonAirQuality(airReading: netatmoData[0].air ?? 0)
+            let airQuality = dysonAirQuality(airReading: netatmoData[0].airQuality ?? 0)
             switch airQuality {
             case 1: self.roomHealthIndicator = "air_quality_green"
             case 2: self.roomHealthIndicator = "air_quality_yellow"

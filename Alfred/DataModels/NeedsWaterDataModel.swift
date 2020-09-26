@@ -10,24 +10,18 @@ import Foundation
 import Combine
 
 struct NeedsWaterDataItem: Codable {
-    let address: String?
-    let sensorlabel: String?
-    let plantname: String?
-    let moisture: Double?
-    let thresholdmoisture: Double?
+    let device: String?
+    let location: String?
+    let plant: String?
     let zone: Int?
 
-    init(address: String? = nil,
-         sensorlabel: String? = nil,
-         plantname: String? = nil,
-         moisture: Double? = nil,
-         thresholdmoisture: Double? = nil,
+    init(device: String? = nil,
+         location: String? = nil,
+         plant: String? = nil,
          zone: Int? = nil) {
-        self.address = address
-        self.sensorlabel = sensorlabel
-        self.plantname = plantname
-        self.moisture = moisture
-        self.thresholdmoisture = thresholdmoisture
+        self.device = device
+        self.location = location
+        self.plant = plant
         self.zone = zone
     }
 }

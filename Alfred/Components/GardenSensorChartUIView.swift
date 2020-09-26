@@ -30,19 +30,19 @@ struct GardenSensorChartUIView: View {
         VStack {
             VStack {
                 HStack {
-                    Text(self.sensorData.plantname)
+                    Text(self.sensorData.plant)
                         .foregroundColor(.white)
                     Spacer()
                     if self.sensorData.readings.count > 0 {
                         Text("Latest: \(String(format: "%.0f", self.sensorData.readings.last!.moisture.rounded(.up)))")
                             .foregroundColor(self.sensorData.readings.last!.moisture >
-                                self.sensorData.thresholdmoisture ? .gray : .blue)
+                                self.sensorData.thresholdMoisture ? .gray : .blue)
                     }
                 }
                 LineChartUIView(
                     lineData: self.chartDataMoisture(data: self.sensorData.readings),
                     secondLineData: self.chartDataBattery(data: self.sensorData.readings),
-                    threshhold: self.sensorData.thresholdmoisture
+                    threshhold: self.sensorData.thresholdMoisture
                 )
                 .frame(height: 140)
             }

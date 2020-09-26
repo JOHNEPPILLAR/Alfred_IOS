@@ -9,7 +9,7 @@
 import Foundation
 
 class StateSettings: ObservableObject {
-    @Published var flowerCareZone: String = "1-2"
+    @Published var flowerCareZone: String = "1,2"
     @Published var flowerCareduration: String = "day"
     @Published var lightGroupID: Int = 0
     @Published var camera: String = "garden"
@@ -17,7 +17,7 @@ class StateSettings: ObservableObject {
         didSet {
             switch currentMenuItem {
             case 0: // Garden
-                flowerCareZone = "1-2"
+                flowerCareZone = "1,2"
                 camera = "garden"
             case 1: // Office
                 flowerCareZone = "3"

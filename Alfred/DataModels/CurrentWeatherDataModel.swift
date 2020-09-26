@@ -13,20 +13,20 @@ struct CurrentWeatherDataItem: Codable {
     let icon: String?
     let summary: String?
     let temperature: Int?
-    let apparentTemperature: Int?
+    let feelsLike: Int?
     let temperatureHigh: Int?
     let temperatureLow: Int?
 
     init(icon: String? = nil,
          summary: String? = nil,
          temperature: Int? = nil,
-         apparentTemperature: Int? = nil,
+         feelsLike: Int? = nil,
          temperatureHigh: Int? = nil,
          temperatureLow: Int? = nil) {
         self.icon = icon
         self.summary = summary
         self.temperature = temperature
-        self.apparentTemperature = apparentTemperature
+        self.feelsLike = feelsLike
         self.temperatureHigh = temperatureHigh
         self.temperatureLow = temperatureLow
     }
