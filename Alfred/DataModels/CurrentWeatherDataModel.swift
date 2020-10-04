@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import Combine
 
+// MARK: - CurrentWeatherDataItem
 struct CurrentWeatherDataItem: Codable {
     let icon: String?
     let summary: String?
@@ -32,32 +32,28 @@ struct CurrentWeatherDataItem: Codable {
     }
 }
 
+// MARK: - CurrentWeatherData class
 public class CurrentWeatherData: ObservableObject {
-
     @Published var results = CurrentWeatherDataItem()
-
-    private(set) var cancellationToken: AnyCancellable?
 }
 
+// MARK: - CurrentWeatherData extension
 extension CurrentWeatherData {
-
-    func emptyPublisher(completeImmediately: Bool = true) -> AnyPublisher<CurrentWeatherDataItem, Never> {
-        Empty<CurrentWeatherDataItem, Never>(completeImmediately: completeImmediately).eraseToAnyPublisher()
-    }
-
     func loadData() {
-        let (urlRequest, errorURL) = getAlfredData(for: "weather/today")
-        if errorURL == nil {
-            self.cancellationToken = URLSession.shared.dataTaskPublisher(for: urlRequest!)
-            .map { $0.data }
-            .decode(type: CurrentWeatherDataItem.self, decoder: JSONDecoder())
-            .eraseToAnyPublisher()
-            .receive(on: RunLoop.main)
-            .catch { error -> AnyPublisher<CurrentWeatherDataItem, Never> in
-                print("☣️ CurrentWeatherData - error decoding: \(error)")
-                return self.emptyPublisher()
+        getAlfredData(from: "weather/today", httpMethod: "GET") { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let decodedData = try JSONDecoder().decode(CurrentWeatherDataItem.self, from: data)
+                    DispatchQueue.main.async {
+                        self.results = decodedData
+                    }
+                } catch {
+                    print("☣️ JSONSerialization error:", error)
+                }
+            case .failure(let error):
+                print("☣️", error.localizedDescription)
             }
-            .assign(to: \.results, on: self)
         }
     }
 }

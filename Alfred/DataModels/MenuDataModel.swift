@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: - MenuDataItem
 struct MenuDataItem: Identifiable {
     let id: Int
     let room: String
@@ -20,6 +21,7 @@ struct MenuDataItem: Identifiable {
     }
 }
 
+// MARK: - MenuDataItems class
 class MenuDataItems: ObservableObject {
     @Published var menuDataItems: [MenuDataItem] = []
 
@@ -28,6 +30,7 @@ class MenuDataItems: ObservableObject {
     }
 }
 
+// MARK: - MenuDataItems extension
 extension MenuDataItems {
     func loadData(roomID: Int = 0) {
         self.menuDataItems = [

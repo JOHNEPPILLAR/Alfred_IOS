@@ -111,7 +111,7 @@ struct LineChartUIView_Previews: PreviewProvider {
 
     static func chartDataThreshhold () -> Double {
         var mockSensorDataItem = MockSensorDataItem()
-        return mockSensorDataItem.data![arrayItem].thresholdMoisture
+        return Double(mockSensorDataItem.data![arrayItem].thresholdMoisture)
     }
 
     static var previews: some View {

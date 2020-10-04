@@ -7,9 +7,9 @@
 //
 
 import Foundation
-import Combine
 import SwiftUI
 
+// MARK: - VideoDataItem
 struct VideoDataItem: Codable {
     let stream: String?
 
@@ -18,62 +18,72 @@ struct VideoDataItem: Codable {
     }
 }
 
+// MARK: - VideoData class
 public class VideoData: ObservableObject {
 
     @Published var image: UIImage?
-    @Published var videoURL: String?
+    @Published var videoUrl: URL?
+    @Published var showVideo: Bool? = false
+    @Published var apiError: Bool? = false
 
+    private let errorImage = UIImage(named: "image_unavailable")
     private var loadingVideo: Bool = false
     private var videoDataItem: VideoDataItem = VideoDataItem() {
         didSet {
-            videoURL = videoDataItem.stream
+            do {
+                videoUrl = try videoURL(url: videoDataItem.stream ?? "")
+            } catch {
+                print("☣️", error.localizedDescription)
+                self.apiError = true
+            }
         }
-    }
-    private(set) var cancellationToken: AnyCancellable?
-
-    deinit {
-        cancellationToken?.cancel()
     }
 }
 
+// MARK: - VideoData extension
 extension VideoData {
 
     @objc func getImage(camera: String) {
-        let (urlRequest, errorURL) = getAlfredData(for: "hls/camera/\(camera)/image")
-        if errorURL == nil {
-            self.cancellationToken = URLSession.shared.dataTaskPublisher(for: urlRequest!)
-                .map { UIImage(data: $0.data) }
-                .eraseToAnyPublisher()
-                .receive(on: RunLoop.main)
-                .catch { error -> AnyPublisher<UIImage?, Never> in
-                    print("☣️ getImage - error: \(error)")
-                    return Empty(completeImmediately: true)
-                        .eraseToAnyPublisher()
+        getAlfredData(from: "hls/camera/\(camera)/image", httpMethod: "GET") { result in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    self.image = UIImage(data: data)
                 }
-                .assign(to: \.image, on: self)
+            case .failure(let error):
+                print("☣️", error.localizedDescription)
+                DispatchQueue.main.async {
+                    self.apiError = true
+                }
+            }
         }
     }
 
     @objc func getVideo(camera: String) {
         if loadingVideo { return }
-        let (urlRequest, errorURL) = getAlfredData(for: "hls/camera/\(camera)/stream")
-        if errorURL == nil {
-            loadingVideo = true
-            self.cancellationToken = URLSession.shared.dataTaskPublisher(for: urlRequest!)
-                .map { $0.data }
-                .decode(type: VideoDataItem.self, decoder: JSONDecoder())
-                .eraseToAnyPublisher()
-                .receive(on: RunLoop.main)
-                .catch { error -> AnyPublisher<VideoDataItem, Never> in
-                    print("☣️ getVideo - error decoding: \(error)")
-                    return Empty(completeImmediately: true)
-                        .eraseToAnyPublisher()
+        getAlfredData(from: "hls/camera/\(camera)/stream", httpMethod: "GET") { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let decodedData = try JSONDecoder().decode(VideoDataItem.self, from: data)
+                    self.loadingVideo = false
+                    DispatchQueue.main.async {
+                        self.videoDataItem = decodedData
+                    }
+                } catch {
+                    print("☣️ JSONSerialization error:", error)
+                    self.loadingVideo = false
+                    DispatchQueue.main.async {
+                        self.apiError = true
+                    }
                 }
-                .assign(to: \.videoDataItem, on: self)
+            case .failure(let error):
+                print("☣️", error.localizedDescription)
+                self.loadingVideo = false
+                DispatchQueue.main.async {
+                    self.apiError = true
+                }
+            }
         }
-    }
-
-    func cancel() {
-        cancellationToken?.cancel()
     }
 }

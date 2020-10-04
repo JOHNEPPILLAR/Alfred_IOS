@@ -15,14 +15,14 @@ struct GardenSensorChartUIView: View {
     func chartDataMoisture (data: [SensorReadingDataItem]) -> [Double] {
         if data.count == 0 { return [] }
         return (0..<data.count).map { (item) in
-            return data[item].moisture.rounded(.down)
+            return data[item].moisture
         }
     }
 
     func chartDataBattery (data: [SensorReadingDataItem]) -> [Double] {
         if data.count == 0 { return [] }
         return (0..<data.count).map { (item) in
-            return Double(data[item].battery)
+            return Double(data[item].battery )
         }
     }
 
@@ -34,15 +34,15 @@ struct GardenSensorChartUIView: View {
                         .foregroundColor(.white)
                     Spacer()
                     if self.sensorData.readings.count > 0 {
-                        Text("Latest: \(String(format: "%.0f", self.sensorData.readings.last!.moisture.rounded(.up)))")
-                            .foregroundColor(self.sensorData.readings.last!.moisture >
-                                self.sensorData.thresholdMoisture ? .gray : .blue)
+                        Text("Latest: \(String(format: "%.0f", self.sensorData.readings.last?.moisture ?? 0 ))")
+                            .foregroundColor(Int(self.sensorData.readings.last!.moisture) >
+                                                Int(self.sensorData.thresholdMoisture) ? .gray : .blue)
                     }
                 }
                 LineChartUIView(
-                    lineData: self.chartDataMoisture(data: self.sensorData.readings),
-                    secondLineData: self.chartDataBattery(data: self.sensorData.readings),
-                    threshhold: self.sensorData.thresholdMoisture
+                    lineData: self.chartDataMoisture(data: self.sensorData.readings ),
+                    secondLineData: self.chartDataBattery(data: self.sensorData.readings ),
+                    threshhold: Double(self.sensorData.thresholdMoisture)
                 )
                 .frame(height: 140)
             }

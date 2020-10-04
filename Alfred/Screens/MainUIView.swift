@@ -21,11 +21,12 @@ struct MainUIView: View {
                 VStack {
                     if self.stateSettings.currentMenuItem == 0 { // garden
                         VStack {
-                            VideoUIView(player: AVPlayer())
+                            VideoUIView()
                             FlowerCareDataGraph()
                         }
                         .transition(AnyTransition.opacity.animation(.easeIn(duration: 0.5)))
-                    } else if self.stateSettings.currentMenuItem == 1 { // Office
+                    }
+                    if self.stateSettings.currentMenuItem == 1 { // Office
                         VStack {
                             HStack {
                                 Spacer()
@@ -43,7 +44,8 @@ struct MainUIView: View {
                             FlowerCareDataGraph()
                         }
                         .transition(AnyTransition.opacity.animation(.easeIn(duration: 0.5)))
-                    } else if self.stateSettings.currentMenuItem == 2 { // Living rooms
+                    }
+                    if self.stateSettings.currentMenuItem == 2 { // Living rooms
                         VStack {
                             HStack {
                                 Spacer()
@@ -58,11 +60,12 @@ struct MainUIView: View {
                                     .frame(width: 10)
                             }
                             Spacer()
-                            VideoUIView(player: AVPlayer())
+                            VideoUIView()
                             FlowerCareDataGraph()
                         }
                         .transition(AnyTransition.opacity.animation(.easeIn(duration: 0.5)))
-                    } else if self.stateSettings.currentMenuItem == 3 { // Bedroom
+                    }
+                    if self.stateSettings.currentMenuItem == 3 { // Bedroom
                         VStack {
                             HStack {
                                 Spacer()
@@ -80,7 +83,8 @@ struct MainUIView: View {
                             FlowerCareDataGraph()
                         }
                         .transition(AnyTransition.opacity.animation(.easeIn(duration: 0.5)))
-                    } else if self.stateSettings.currentMenuItem == 4 { // Kids bedroom
+                    }
+                    if self.stateSettings.currentMenuItem == 4 { // Kids bedroom
                         VStack {
                             HStack {
                                 Spacer()
@@ -94,11 +98,12 @@ struct MainUIView: View {
                                 Spacer()
                                     .frame(width: 10)
                             }
-                            VideoUIView(player: AVPlayer())
+                            VideoUIView()
                             Spacer()
                         }
                         .transition(AnyTransition.opacity.animation(.easeIn(duration: 0.5)))
-                    } else if self.stateSettings.currentMenuItem == 5 { // Kitchen
+                    }
+                    if self.stateSettings.currentMenuItem == 5 { // Kitchen
                         VStack {
                             HStack {
                                 Spacer()
@@ -131,9 +136,9 @@ struct MainUIView_Previews: PreviewProvider {
 
         return ZStack {
             Color(#colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1))
-            .edgesIgnoringSafeArea(.all)
+                .edgesIgnoringSafeArea(.all)
             MainUIView()
-           .environmentObject(stateSettings)
+                .environmentObject(stateSettings)
         }
     }
 }

@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import Combine
 
+// MARK: - PingDataItem
 struct PingDataItem: Codable {
     let reply: String?
     let error: String?
@@ -19,6 +19,7 @@ struct PingDataItem: Codable {
     }
 }
 
+// MARK: - PingData class
 class PingData: ObservableObject {
 
     @Published var pingError: Bool = false
@@ -31,32 +32,34 @@ class PingData: ObservableObject {
         }
     }
 
-    private(set) var cancellationToken: AnyCancellable?
-
     init() {
         loadData()
     }
 }
 
+// MARK: - PingData extension
 extension PingData {
-
-    func emptyPublisher(completeImmediately: Bool = true) -> AnyPublisher<PingDataItem, Never> {
-        Empty<PingDataItem, Never>(completeImmediately: completeImmediately).eraseToAnyPublisher()
-    }
-
     func loadData() {
-        let (urlRequest, errorURL) = getAlfredData(for: "health/ping")
-        if errorURL == nil {
-            self.cancellationToken = URLSession.shared.dataTaskPublisher(for: urlRequest!)
-            .map { $0.data }
-            .decode(type: PingDataItem.self, decoder: JSONDecoder())
-            .eraseToAnyPublisher()
-            .receive(on: RunLoop.main)
-            .catch { error -> AnyPublisher<PingDataItem, Never> in
-                print("☣️ PingData - error decoding: \(error)")
-                return self.emptyPublisher()
+        getAlfredData(from: "health/ping", httpMethod: "GET") { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let decodedData = try JSONDecoder().decode(PingDataItem.self, from: data)
+                    DispatchQueue.main.async {
+                        self.results = decodedData
+                    }
+                } catch {
+                    print("JSONSerialization error:", error)
+                    DispatchQueue.main.async {
+                        self.pingError = true
+                    }
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+                DispatchQueue.main.async {
+                    self.pingError = true
+                }
             }
-            .assign(to: \.results, on: self)
         }
     }
 }

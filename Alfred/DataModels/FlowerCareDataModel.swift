@@ -7,20 +7,21 @@
 //
 
 import Foundation
-import Combine
 
+// MARK: - SensorReadingDataItem
 struct SensorReadingDataItem: Codable {
     var id: String {
         return time
     }
     let time: String
-    let battery: Int
+    let battery: Double
     let temperature: Double
     let lux: Double
     let moisture: Double
     let fertility: Double
 }
 
+// MARK: - SensorDataItem
 struct SensorDataItem: Codable, Identifiable {
     var id: Date {
         return Date()
@@ -33,40 +34,28 @@ struct SensorDataItem: Codable, Identifiable {
     let readings: [SensorReadingDataItem]
 }
 
+// MARK: - FlowerCareData class
 public class FlowerCareData: ObservableObject {
-
     @Published var results: [SensorDataItem] = [SensorDataItem]()
-
-    private var cancellationToken: AnyCancellable?
 }
 
+// MARK: - FlowerCareData extension
 extension FlowerCareData {
-
-    func emptyPublisher(completeImmediately: Bool = true) -> AnyPublisher<[SensorDataItem], Never> {
-        Empty<[SensorDataItem], Never>(completeImmediately: completeImmediately).eraseToAnyPublisher()
-    }
-
     func loadData(zone: String, duration: String) {
-        let (urlRequest, errorURL) = getAlfredData(
-            for: "flowercare/sensors/zone/\(zone)?duration=\(duration)"
-        )
-        if errorURL == nil {
-            self.cancellationToken = URLSession.shared.dataTaskPublisher(for: urlRequest!)
-            //.map { $0.data }
-            .tryMap { output in
-                guard let response = output.response as? HTTPURLResponse, response.statusCode == 200 else {
-                    throw HTTPError.statusCode
+        getAlfredData(from: "flowercare/sensors/zone/\(zone)?duration=\(duration)", httpMethod: "GET") { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let decodedData = try JSONDecoder().decode([SensorDataItem].self, from: data)
+                    DispatchQueue.main.async {
+                        self.results = decodedData
+                    }
+                } catch {
+                    print("☣️ JSONSerialization error:", error)
                 }
-                return output.data
+            case .failure(let error):
+                print("☣️", error.localizedDescription)
             }
-            .decode(type: [SensorDataItem].self, decoder: JSONDecoder())
-            .eraseToAnyPublisher()
-            .receive(on: RunLoop.main)
-            .catch { error -> AnyPublisher<[SensorDataItem], Never> in
-                print("☣️ FlowerCareData - error decoding: \(error)")
-                return self.emptyPublisher()
-            }
-            .assign(to: \.results, on: self)
         }
     }
 }

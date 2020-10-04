@@ -9,82 +9,87 @@
 import SwiftUI
 import AVKit
 
-struct PlayerView: UIViewControllerRepresentable {
-    let player: AVPlayer
-
-    func makeUIViewController(context: UIViewControllerRepresentableContext<PlayerView>) -> AVPlayerViewController {
-        let controller = AVPlayerViewController()
-        controller.player = player
-        return controller
-    }
-
-    func updateUIViewController(_ uiViewController: AVPlayerViewController,
-                                context: UIViewControllerRepresentableContext<PlayerView>) {
-        return
-    }
-}
-
 struct VideoUIView: View {
 
     @EnvironmentObject var stateSettings: StateSettings
     @ObservedObject var videoData: VideoData = VideoData()
-    @State var showVideo: Bool = false
 
-    private let player: AVPlayer
-    init(player: AVPlayer) {
-        self.player = player
-    }
+    @State var showVideo: Bool = false
+    @State var apiError: Bool = false
+    @State var camImage: UIImage = UIImage()
+    @State var loading: Bool = false
+
+    private let player = AVPlayer()
+//    private let player: AVPlayer? // = AVPlayer(url: URL(string: "")!)
 
     var body: some View {
         VStack {
             VStack {
-                if videoData.videoURL != nil {
+                if apiError {
                     VStack {
-                        ZStack {
-                            PlayerView(player: player)
-                                .onAppear {
-                                    let (url, errorURL) = videoURL(url: videoData.videoURL ?? "")
-                                    if errorURL == nil {
-                                        player.replaceCurrentItem(with: AVPlayerItem(url: url!))
-                                        player.play()
-                                    }
-                                }
-                                .onDisappear {
-                                    player.pause()
-                                }
-                        }
+                        Image(uiImage: UIImage(named: "image_unavailable")!)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                            .cornerRadius(10)
                     }
                 } else {
-                    VStack {
-                        ZStack {
-                            Image(uiImage: videoData.image ?? UIImage())
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                                .onAppear {
-                                    videoData.getImage(camera: stateSettings.camera)
-                                }
-                                .onDisappear(perform: videoData.cancel)
-                                .cornerRadius(10)
-                            // swiftlint:disable multiple_closures_with_trailing_closure
-                            Button(action: {
-                                videoData.getVideo(camera: stateSettings.camera)
-                                self.showVideo = true
-                            }) {
-                                if showVideo {
-                                    ActivityIndicator(isAnimating: true)
-                                        .configure { $0.color = .white }
-                                } else {
-                                    Image(systemName: "play.fill")
-                                        .foregroundColor(.white)
-                                }
+                    if showVideo {
+                        VStack {
+                            VideoPlayer(player: player)
+                            .onDisappear {
+                                player.pause()
                             }
-                            .disabled(showVideo)
-                            .frame(width: 30, height: 30)
-                            .background(Color.black)
-                            .cornerRadius(5)
+                        }
+                    } else {
+                        VStack {
+                            ZStack {
+                                Image(uiImage: camImage)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                                    .onAppear {
+                                        videoData.getImage(camera: stateSettings.camera)
+                                        loading = true
+                                    }
+                                    .onReceive(videoData.$image) { image in
+                                        if !(image == nil) {
+                                            camImage = image!
+                                            loading = false
+                                        }
+                                    }
+                                    .cornerRadius(10)
+                                // swiftlint:disable multiple_closures_with_trailing_closure
+                                Button(action: {
+                                    videoData.getVideo(camera: stateSettings.camera)
+                                    loading = true
+                                }) {
+                                    if loading {
+                                        ActivityIndicator(isAnimating: true)
+                                            .configure { $0.color = .white }
+                                    } else {
+                                        Image(systemName: "play")
+                                            .foregroundColor(.white)
+                                    }
+                                }
+                                .disabled(showVideo)
+                                .frame(width: 30, height: 30)
+                                .background(Color.black)
+                                .cornerRadius(5)
+                            }
                         }
                     }
+                }
+            }
+            .onReceive(videoData.$apiError) { newStatus in
+                self.apiError = newStatus ?? false
+            }
+            .onReceive(videoData.$videoUrl) { videoUrl in
+                if !(videoUrl == nil) {
+                    loading = false
+                    player.replaceCurrentItem(with: AVPlayerItem(url: videoUrl!))
+                    player.play()
+                    showVideo = true
                 }
             }
             .padding(10)
@@ -107,7 +112,7 @@ struct VideoUIView_Previews: PreviewProvider {
         return ZStack {
             Color(#colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1))
                 .edgesIgnoringSafeArea(.all)
-            VideoUIView(player: AVPlayer())
+            VideoUIView()
                 .environmentObject(stateSettings)
         }
     }

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Combine
 import CoreGraphics
 import SwiftUI
 
@@ -85,6 +84,7 @@ struct StateAttributes: Codable {
     }
 }
 
+// MARK: - LightGroupData class
 public class LightGroupData: ObservableObject {
 
     @Published var lightGroupOn: Bool = false
@@ -110,7 +110,6 @@ public class LightGroupData: ObservableObject {
             } else {
                 lightColor = .gray
             }
-            //print(lightColor)
         }
     }
 
@@ -123,33 +122,30 @@ public class LightGroupData: ObservableObject {
             }
         }
     }
-
-    private(set) var cancellationTokenGet: AnyCancellable?
-    private(set) var cancellationTokenPut: AnyCancellable?
 }
 
+// MARK: - LightGroupData extension
 extension LightGroupData {
-
-    func emptyPublisher(completeImmediately: Bool = true) -> AnyPublisher<LightGroupDataItem, Never> {
-        Empty<LightGroupDataItem, Never>(completeImmediately: completeImmediately).eraseToAnyPublisher()
-    }
 
     @objc func loadData(lightGroupID: Int = 0) {
         if currentLightGroupID == -1 {
             currentLightGroupID = lightGroupID
         }
-        let (urlRequest, errorURL) = getAlfredData(for: "lights/lightgroups/\(currentLightGroupID)")
-        if errorURL == nil {
-            self.cancellationTokenGet = URLSession.shared.dataTaskPublisher(for: urlRequest!)
-            .map { $0.data }
-            .decode(type: LightGroupDataItem.self, decoder: JSONDecoder())
-            .eraseToAnyPublisher()
-            .receive(on: RunLoop.main)
-            .catch { error -> AnyPublisher<LightGroupDataItem, Never> in
-                print("☣️ LightData - error decoding: \(error)")
-                return self.emptyPublisher()
+
+        getAlfredData(from: "lights/lightgroups/\(currentLightGroupID)", httpMethod: "GET") { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let decodedData = try JSONDecoder().decode(LightGroupDataItem.self, from: data)
+                    DispatchQueue.main.async {
+                        self.results = decodedData
+                    }
+                } catch {
+                    print("☣️ JSONSerialization error:", error)
+                }
+            case .failure(let error):
+                print("☣️", error.localizedDescription)
             }
-            .assign(to: \.results, on: self)
         }
 
         if timer == nil || !(timer?.isValid ?? false) {
@@ -169,6 +165,7 @@ extension LightGroupData {
 
     func toggleLight() {
         stopTimer()
+        /*
         let body: [String: Any] = ["power": !lightGroupOn]
         var APIbody: Data?
         do {
@@ -176,23 +173,17 @@ extension LightGroupData {
         } catch let error as NSError {
             print("Failed to convert json to data type: \(error.localizedDescription)")
         }
-        let (urlRequest, errorURL) = putAlfredData(
+        let (request, errorURL) = putAlfredData(
             for: "lights/lightgroups/\(currentLightGroupID)",
             body: APIbody
         )
-        if errorURL == nil {
-            self.cancellationTokenPut = URLSession.shared.dataTaskPublisher(for: urlRequest!)
-            .tryMap { output in
-                guard let response = output.response as? HTTPURLResponse, response.statusCode == 200 else {
-                    throw HTTPError.statusCode
-                }
-                return output.data
-            }
-            .decode(type: LightGroupSaveDataItem.self, decoder: JSONDecoder())
-            .eraseToAnyPublisher()
-            .replaceError(with: LightGroupSaveDataItem(state: "error"))
-            .receive(on: RunLoop.main)
-            .assign(to: \.saved, on: self)
-        }
+        */
+        //    .catch { error -> AnyPublisher<LightGroupSaveDataItem, Never> in
+        //        print("☣️ toggleLight - error: \(error)")
+        //        return self.emptyPublisherUpdate()
+        //        .eraseToAnyPublisher()
+        //    }
+        //    .assign(to: \.saved, on: self)
+
     }
 }

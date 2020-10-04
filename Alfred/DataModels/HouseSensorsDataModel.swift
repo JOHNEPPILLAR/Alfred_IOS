@@ -10,6 +10,7 @@ import Foundation
 import Combine
 import SwiftUI
 
+// MARK: - HouseSensorDataItem
 struct HouseSensorDataItem: Codable, Comparable {
 
     static func < (lhs: HouseSensorDataItem, rhs: HouseSensorDataItem) -> Bool {
@@ -44,6 +45,7 @@ struct HouseSensorDataItem: Codable, Comparable {
     }
 }
 
+// MARK: - HouseSensorData class
 public class HouseSensorData: ObservableObject {
 
     @Published var healthIndicator: String = "1pxHeader"
@@ -63,39 +65,73 @@ public class HouseSensorData: ObservableObject {
     private var currentMenuItem: Int = -1
 }
 
+// MARK: - HouseSensorData extension
 extension HouseSensorData {
 
     func emptyPublisher(completeImmediately: Bool = true) -> AnyPublisher<[HouseSensorDataItem], Never> {
            Empty<[HouseSensorDataItem], Never>(completeImmediately: completeImmediately).eraseToAnyPublisher()
        }
 
+    // swiftlint:disable function_body_length
+    // swiftlint:disable cyclomatic_complexity
     func loadData(menuItem: Int) {
         currentMenuItem = menuItem
-        let (urlRequest1, errorURL1) = getAlfredData(for: "netatmo/sensors/current")
-        let (urlRequest2, errorURL2) = getAlfredData(for: "dyson/sensors/current")
 
-        if errorURL1 == nil && errorURL2 == nil {
+        do {
+            guard let request1 = try setAlfredRequestHeaders(url: "netatmo/sensors/current", httpMethod: "GET") else {
+                return
+            }
+            guard let request2 = try setAlfredRequestHeaders(url: "dyson/sensors/current", httpMethod: "GET") else {
+                return
+            }
+
             // Netatmo
-            let netatmo = URLSession.shared.dataTaskPublisher(for: urlRequest1!)
-            .map { $0.data }
+            let netatmo = URLSession.shared.dataTaskPublisher(for: request1)
+            .tryMap { response -> Data in
+                guard
+                    let httpURLResponse = response.response as? HTTPURLResponse,
+                        httpURLResponse.statusCode == 200
+                    else {
+                        throw NetworkError.responseUnsuccessful
+                    }
+                return response.data
+            }
+            .map { $0 }
             .decode(type: [HouseSensorDataItem].self, decoder: JSONDecoder())
+            .mapError { NetworkError.map($0) }
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
             .catch { error -> AnyPublisher<[HouseSensorDataItem], Never> in
-                print("☣️ HouseSensorData (net) - error decoding: \(error)")
+                print("☣️ HouseSensorData (net) - error: \(error)")
                 return self.emptyPublisher()
+                .eraseToAnyPublisher()
             }
 
             // Dyson
-            let dyson = URLSession.shared.dataTaskPublisher(for: urlRequest2!)
-            .map { $0.data }
+            let dyson = URLSession.shared.dataTaskPublisher(for: request2)
+            .tryMap { response -> Data in
+                guard
+                    let httpURLResponse = response.response as? HTTPURLResponse,
+                        httpURLResponse.statusCode == 200
+                    else {
+                        throw NetworkError.responseUnsuccessful
+                    }
+                return response.data
+            }
+            .map { $0 }
             .decode(type: [HouseSensorDataItem].self, decoder: JSONDecoder())
+            .mapError { NetworkError.map($0) }
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
             .catch { error -> AnyPublisher<[HouseSensorDataItem], Never> in
-                print("☣️ HouseSensorData (dys) - error decoding: \(error)")
+                print("☣️ HouseSensorData (dys) - error: \(error)")
                 return self.emptyPublisher()
+                .eraseToAnyPublisher()
             }
 
             self.cancellationToken = Publishers.Zip(netatmo, dyson)
             .eraseToAnyPublisher()
-            .receive(on: RunLoop.main)
+            .receive(on: DispatchQueue.main)
             .catch { _ in
                 Just(([], []))
             }
@@ -116,7 +152,7 @@ extension HouseSensorData {
                     < 1000    = Healthy
                     1000-2000 = Moderate
                     > 2000    = High
-                 */
+                */
                 switch co2Reading {
                 case ..<1000: airQuality[1] = 0
                 case 1000..<2000: airQuality[1] = 1
@@ -131,6 +167,8 @@ extension HouseSensorData {
                 default: self.healthIndicator = "air_quality_red"
                 }
             })
+        } catch {
+            print("☣️", error.localizedDescription)
         }
     }
 

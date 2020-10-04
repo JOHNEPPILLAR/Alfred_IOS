@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import Combine
 
+// MARK: - NeedsWaterDataItem
 struct NeedsWaterDataItem: Codable {
     let device: String?
     let location: String?
@@ -26,6 +26,7 @@ struct NeedsWaterDataItem: Codable {
     }
 }
 
+// MARK: - NeedsWaterData class
 public class NeedsWaterData: ObservableObject {
 
     @Published var needsWater: String = "1pxHeader"
@@ -40,33 +41,28 @@ public class NeedsWaterData: ObservableObject {
         }
     }
 
-    private(set) var cancellationToken: AnyCancellable?
-
     init() {
         loadData()
     }
 }
 
+// MARK: - NeedsWaterData extension
 extension NeedsWaterData {
-
-    func emptyPublisher(completeImmediately: Bool = true) -> AnyPublisher<[NeedsWaterDataItem], Never> {
-        Empty<[NeedsWaterDataItem], Never>(completeImmediately: completeImmediately).eraseToAnyPublisher()
-    }
-
     func loadData() {
-
-        let (urlRequest, errorURL) = getAlfredData(for: "flowercare/needswater")
-        if errorURL == nil {
-            self.cancellationToken = URLSession.shared.dataTaskPublisher(for: urlRequest!)
-            .map { $0.data }
-            .decode(type: [NeedsWaterDataItem].self, decoder: JSONDecoder())
-            .eraseToAnyPublisher()
-            .receive(on: RunLoop.main)
-            .catch { error -> AnyPublisher<[NeedsWaterDataItem], Never> in
-                print("☣️ NeedsWaterData - error decoding: \(error)")
-                return self.emptyPublisher()
+        getAlfredData(from: "flowercare/needswater", httpMethod: "GET") { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let decodedData = try JSONDecoder().decode([NeedsWaterDataItem].self, from: data)
+                    DispatchQueue.main.async {
+                        self.results = decodedData
+                    }
+                } catch {
+                    print("☣️ JSONSerialization error:", error)
+                }
+            case .failure(let error):
+                print("☣️", error.localizedDescription)
             }
-            .assign(to: \.results, on: self)
         }
     }
 }

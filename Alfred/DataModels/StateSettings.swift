@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: - StateSettings class
 class StateSettings: ObservableObject {
     @Published var flowerCareZone: String = "1,2"
     @Published var flowerCareduration: String = "day"
