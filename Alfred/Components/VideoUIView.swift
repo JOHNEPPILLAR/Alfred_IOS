@@ -8,6 +8,7 @@
 
 import SwiftUI
 import AVKit
+import iActivityIndicator
 
 struct VideoUIView: View {
 
@@ -20,7 +21,6 @@ struct VideoUIView: View {
     @State var loading: Bool = false
 
     private let player = AVPlayer()
-//    private let player: AVPlayer? // = AVPlayer(url: URL(string: "")!)
 
     var body: some View {
         VStack {
@@ -65,15 +65,15 @@ struct VideoUIView: View {
                                     loading = true
                                 }) {
                                     if loading {
-                                        ActivityIndicator(isAnimating: true)
-                                            .configure { $0.color = .white }
+                                        iActivityIndicator(style: .rotatingShapes(size: 5))
+                                            .foregroundColor(.gray)
                                     } else {
                                         Image(systemName: "play")
                                             .foregroundColor(.white)
                                     }
                                 }
                                 .disabled(showVideo)
-                                .frame(width: 30, height: 30)
+                                .frame(width: 40, height: 40)
                                 .background(Color.black)
                                 .cornerRadius(5)
                             }
@@ -83,6 +83,7 @@ struct VideoUIView: View {
             }
             .onReceive(videoData.$apiError) { newStatus in
                 self.apiError = newStatus ?? false
+                loading = false
             }
             .onReceive(videoData.$videoUrl) { videoUrl in
                 if !(videoUrl == nil) {

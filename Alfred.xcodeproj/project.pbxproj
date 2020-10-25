@@ -12,6 +12,7 @@
 		E84546F924EC3BB4002E7944 /* VideoDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84546F824EC3BB4002E7944 /* VideoDataModel.swift */; };
 		E84546FB24EC3C01002E7944 /* VideoUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84546FA24EC3C01002E7944 /* VideoUIView.swift */; };
 		E850E15E2544A61B00F6C8AA /* HeatingDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E850E15D2544A61B00F6C8AA /* HeatingDataModel.swift */; };
+		E850E1692545EBCA00F6C8AA /* iActivityIndicator in Frameworks */ = {isa = PBXBuildFile; productRef = E850E1682545EBCA00F6C8AA /* iActivityIndicator */; };
 		E85E591B2489781700411BEA /* CurrentWeatherDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85E591A2489781700411BEA /* CurrentWeatherDataModel.swift */; };
 		E8644CA624BB2D65003A0202 /* RoomTempUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8644CA524BB2D65003A0202 /* RoomTempUIView.swift */; };
 		E873D3602475A5490072DAEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E873D35F2475A5490072DAEB /* AppDelegate.swift */; };
@@ -115,6 +116,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E87E9AE124B0C39E009129F3 /* Charts in Frameworks */,
+				E850E1692545EBCA00F6C8AA /* iActivityIndicator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +294,7 @@
 			name = Alfred;
 			packageProductDependencies = (
 				E87E9AE024B0C39E009129F3 /* Charts */,
+				E850E1682545EBCA00F6C8AA /* iActivityIndicator */,
 			);
 			productName = Alfred;
 			productReference = E873D35C2475A5490072DAEB /* Alfred.app */;
@@ -367,6 +370,7 @@
 			mainGroup = E873D3532475A5490072DAEB;
 			packageReferences = (
 				E87E9ADF24B0C39E009129F3 /* XCRemoteSwiftPackageReference "Charts" */,
+				E850E1672545EBCA00F6C8AA /* XCRemoteSwiftPackageReference "iActivityIndicator" */,
 			);
 			productRefGroup = E873D35D2475A5490072DAEB /* Products */;
 			projectDirPath = "";
@@ -803,6 +807,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E850E1672545EBCA00F6C8AA /* XCRemoteSwiftPackageReference "iActivityIndicator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MojtabaHs/iActivityIndicator";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		E87E9ADF24B0C39E009129F3 /* XCRemoteSwiftPackageReference "Charts" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/danielgindi/Charts.git";
@@ -814,6 +826,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E850E1682545EBCA00F6C8AA /* iActivityIndicator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E850E1672545EBCA00F6C8AA /* XCRemoteSwiftPackageReference "iActivityIndicator" */;
+			productName = iActivityIndicator;
+		};
 		E87E9AE024B0C39E009129F3 /* Charts */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E87E9ADF24B0C39E009129F3 /* XCRemoteSwiftPackageReference "Charts" */;

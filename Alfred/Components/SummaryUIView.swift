@@ -65,9 +65,8 @@ struct WeatherUIView: View {
                 .foregroundColor(.white)
             Spacer()
             WeatherIconUIView(currentWeatherData: self.currentWeatherData)
-                .frame(width: 71, height: 40)
             Text("\(self.currentWeatherData.results.temperature ?? 0)" + "°")
-                .font(.system(size: 14))
+                .font(.system(size: 16))
                 .fixedSize(horizontal: true, vertical: false)
                 .foregroundColor(.white)
             Spacer()
@@ -110,30 +109,38 @@ struct HeatingUIView: View {
                 .fontWeight(.thin)
                 .fixedSize(horizontal: true, vertical: false)
                 .foregroundColor(.white)
-            Spacer()
-            if self.heatingData.results.ecoMode == "OFF" {
-                if self.heatingData.results.hvac == "Heating" {
-                    Text("\(self.heatingData.results.temperature ?? 0, specifier: "%.0f")°")
-                        .frame(width: 30, height: 30, alignment: .center)
-                        .padding()
-                        .foregroundColor(Color.orange)
-                        .overlay(
-                            Circle()
-                                .stroke(Color.orange, lineWidth: 2)
-                                .padding(6)
-                        )
+            if self.heatingData.results.ecoMode != nil {
+                if self.heatingData.results.ecoMode == "OFF" {
+                    if self.heatingData.results.hvac == "Heating" {
+                        Text("\(self.heatingData.results.temperature ?? 0, specifier: "%.0f")°")
+                            .font(.system(size: 24))
+                            .frame(width: 36, height: 36, alignment: .center)
+                            .padding()
+                            .foregroundColor(Color.orange)
+                            .overlay(
+                                Circle()
+                                    .stroke(Color.orange, lineWidth: 2)
+                                    .padding(6)
+                            )
+                        Spacer()
+                    } else {
+                        Spacer()
+                        Text("\(self.heatingData.results.temperature ?? 0, specifier: "%.0f")°")
+                            .font(.system(size: 24))
+                            .padding()
+                            .foregroundColor(.white)
+                        Spacer()
+                    }
                 } else {
-                    Text("\(self.heatingData.results.temperature ?? 0, specifier: "%.0f")°")
-                        .frame(width: 40, height: 40, alignment: .center)
-                        .padding()
-                        .foregroundColor(.white)
+                    Spacer()
+                    Image("leaf_green")
+                        .resizable()
+                        .frame(width: 40, height: 40)
+                    Spacer()
                 }
             } else {
-                Image("leaf_green")
-                    .resizable()
-                    .frame(width: 40, height: 40)
+                Spacer()
             }
-            Spacer()
         }
         .frame(width: 80, height: 100)
         .background(Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)))

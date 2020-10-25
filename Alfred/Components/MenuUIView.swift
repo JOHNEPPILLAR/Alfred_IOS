@@ -26,14 +26,11 @@ struct MenuUIView: View {
                                     self.menuItems.loadData(roomID: self.stateSettings.currentMenuItem)
                                 }
                             }) {
-                                VStack {
-                                    Text(item.room)
-                                        .underline(item.active ? true : false, color: .yellow)
-                                        .fontWeight(item.active ? .bold : .light)
-                                        .foregroundColor(item.active ? .white : .gray)
-                                        .fixedSize(horizontal: true, vertical: false)
-                                        .padding(.horizontal, 5)
-                                }
+                                Text(item.room)
+                                    .underline(item.active ? true : false, color: .yellow)
+                                    .foregroundColor(item.active ? .white : .gray)
+                                    .fixedSize(horizontal: true, vertical: false)
+                                    .padding(.horizontal, 5)
                             }
                         }
                     }
