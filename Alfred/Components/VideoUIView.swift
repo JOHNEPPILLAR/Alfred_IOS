@@ -107,7 +107,7 @@ struct VideoUIView_Previews: PreviewProvider {
 
     static var previews: some View {
         let stateSettings = StateSettings()
-        stateSettings.currentMenuItem = 1
+        stateSettings.currentMenuItem = 0
 
         return ZStack {
             Color(#colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1))

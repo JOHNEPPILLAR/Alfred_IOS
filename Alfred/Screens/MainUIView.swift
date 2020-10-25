@@ -14,113 +14,110 @@ struct MainUIView: View {
     @EnvironmentObject var stateSettings: StateSettings
 
     var body: some View {
-        GeometryReader { geometry in
+        VStack {
+            HeaderUIView()
             VStack {
-                HeaderUIView()
-                    .frame(width: geometry.size.width, height: 160)
-                VStack {
-                    if self.stateSettings.currentMenuItem == 0 { // garden
-                        VStack {
-                            VideoUIView()
-                            FlowerCareDataGraph()
-                        }
-                        .transition(AnyTransition.opacity.animation(.easeIn(duration: 0.5)))
+                if self.stateSettings.currentMenuItem == 0 { // garden
+                    VStack {
+                        VideoUIView()
+                        FlowerCareDataGraph()
                     }
-                    if self.stateSettings.currentMenuItem == 1 { // Office
-                        VStack {
-                            HStack {
-                                Spacer()
-                                    .frame(width: 10)
-                                RoomTempUIView()
-                                    .transition(.slide)
-                                Spacer()
-                                    .frame(width: 10)
-                                LightSwitchUIView()
-                                    .transition(.slide)
-                                Spacer()
-                                    .frame(width: 10)
-                            }
+                    .transition(AnyTransition.opacity.animation(.easeIn(duration: 0.5)))
+                }
+                if self.stateSettings.currentMenuItem == 1 { // Office
+                    VStack {
+                        HStack {
                             Spacer()
-                            FlowerCareDataGraph()
-                        }
-                        .transition(AnyTransition.opacity.animation(.easeIn(duration: 0.5)))
-                    }
-                    if self.stateSettings.currentMenuItem == 2 { // Living rooms
-                        VStack {
-                            HStack {
-                                Spacer()
-                                    .frame(width: 10)
-                                RoomTempUIView()
-                                    //.transition(.slide)
-                                Spacer()
-                                    .frame(width: 10)
-                                LightSwitchUIView()
-                                    //.transition(.slide)
-                                Spacer()
-                                    .frame(width: 10)
-                            }
+                                .frame(width: 10)
+                            RoomTempUIView()
+                                .transition(.slide)
                             Spacer()
-                            VideoUIView()
-                            FlowerCareDataGraph()
-                        }
-                        .transition(AnyTransition.opacity.animation(.easeIn(duration: 0.5)))
-                    }
-                    if self.stateSettings.currentMenuItem == 3 { // Bedroom
-                        VStack {
-                            HStack {
-                                Spacer()
-                                    .frame(width: 10)
-                                RoomTempUIView()
-                                    .transition(.slide)
-                                Spacer()
-                                    .frame(width: 10)
-                                LightSwitchUIView()
-                                    .transition(.slide)
-                                Spacer()
-                                    .frame(width: 10)
-                            }
+                                .frame(width: 10)
+                            LightSwitchUIView()
+                                .transition(.slide)
                             Spacer()
-                            FlowerCareDataGraph()
+                                .frame(width: 10)
                         }
-                        .transition(AnyTransition.opacity.animation(.easeIn(duration: 0.5)))
+                        Spacer()
+                        FlowerCareDataGraph()
                     }
-                    if self.stateSettings.currentMenuItem == 4 { // Kids bedroom
-                        VStack {
-                            HStack {
-                                Spacer()
-                                    .frame(width: 10)
-                                RoomTempUIView()
-                                    .transition(.slide)
-                                Spacer()
-                                    .frame(width: 10)
-                                LightSwitchUIView()
-                                    .transition(.slide)
-                                Spacer()
-                                    .frame(width: 10)
-                            }
-                            VideoUIView()
+                    .transition(AnyTransition.opacity.animation(.easeIn(duration: 0.5)))
+                }
+                if self.stateSettings.currentMenuItem == 2 { // Living rooms
+                    VStack {
+                        HStack {
                             Spacer()
-                        }
-                        .transition(AnyTransition.opacity.animation(.easeIn(duration: 0.5)))
-                    }
-                    if self.stateSettings.currentMenuItem == 5 { // Kitchen
-                        VStack {
-                            HStack {
-                                Spacer()
-                                    .frame(width: 10)
-                                RoomTempUIView()
-                                    .transition(.slide)
-                                Spacer()
-                                    .frame(width: 10)
-                                LightSwitchUIView()
-                                    .transition(.slide)
-                                Spacer()
-                                    .frame(width: 10)
-                            }
+                                .frame(width: 10)
+                            RoomTempUIView()
+                                //.transition(.slide)
                             Spacer()
+                                .frame(width: 10)
+                            LightSwitchUIView()
+                                //.transition(.slide)
+                            Spacer()
+                                .frame(width: 10)
                         }
-                        .transition(AnyTransition.opacity.animation(.easeIn(duration: 0.5)))
+                        Spacer()
+                        VideoUIView()
+                        FlowerCareDataGraph()
                     }
+                    .transition(AnyTransition.opacity.animation(.easeIn(duration: 0.5)))
+                }
+                if self.stateSettings.currentMenuItem == 3 { // Bedroom
+                    VStack {
+                        HStack {
+                            Spacer()
+                                .frame(width: 10)
+                            RoomTempUIView()
+                                .transition(.slide)
+                            Spacer()
+                                .frame(width: 10)
+                            LightSwitchUIView()
+                                .transition(.slide)
+                            Spacer()
+                                .frame(width: 10)
+                        }
+                        Spacer()
+                        FlowerCareDataGraph()
+                    }
+                    .transition(AnyTransition.opacity.animation(.easeIn(duration: 0.5)))
+                }
+                if self.stateSettings.currentMenuItem == 4 { // Kids bedroom
+                    VStack {
+                        HStack {
+                            Spacer()
+                                .frame(width: 10)
+                            RoomTempUIView()
+                                .transition(.slide)
+                            Spacer()
+                                .frame(width: 10)
+                            LightSwitchUIView()
+                                .transition(.slide)
+                            Spacer()
+                                .frame(width: 10)
+                        }
+                        VideoUIView()
+                        Spacer()
+                    }
+                    .transition(AnyTransition.opacity.animation(.easeIn(duration: 0.5)))
+                }
+                if self.stateSettings.currentMenuItem == 5 { // Kitchen
+                    VStack {
+                        HStack {
+                            Spacer()
+                                .frame(width: 10)
+                            RoomTempUIView()
+                                .transition(.slide)
+                            Spacer()
+                                .frame(width: 10)
+                            LightSwitchUIView()
+                                .transition(.slide)
+                            Spacer()
+                                .frame(width: 10)
+                        }
+                        Spacer()
+                    }
+                    .transition(AnyTransition.opacity.animation(.easeIn(duration: 0.5)))
                 }
             }
         }
@@ -132,7 +129,7 @@ struct MainUIView_Previews: PreviewProvider {
     static var previews: some View {
 
         let stateSettings = StateSettings()
-        stateSettings.currentMenuItem = 1
+        stateSettings.currentMenuItem = 0
 
         return ZStack {
             Color(#colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1))

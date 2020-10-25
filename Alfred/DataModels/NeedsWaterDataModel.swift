@@ -34,9 +34,9 @@ public class NeedsWaterData: ObservableObject {
     var results = [NeedsWaterDataItem]() {
         didSet {
             if results.count > 0 {
-                needsWater = "leaf_red"
+                needsWater = "water_plant"
             } else {
-                needsWater = "leaf_green"
+                needsWater = "plant_ok"
             }
         }
     }

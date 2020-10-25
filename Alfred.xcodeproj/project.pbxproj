@@ -11,6 +11,7 @@
 		E804F99C24BCDF60008CB851 /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E804F99B24BCDF60008CB851 /* CustomSlider.swift */; };
 		E84546F924EC3BB4002E7944 /* VideoDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84546F824EC3BB4002E7944 /* VideoDataModel.swift */; };
 		E84546FB24EC3C01002E7944 /* VideoUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84546FA24EC3C01002E7944 /* VideoUIView.swift */; };
+		E850E15E2544A61B00F6C8AA /* HeatingDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E850E15D2544A61B00F6C8AA /* HeatingDataModel.swift */; };
 		E85E591B2489781700411BEA /* CurrentWeatherDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85E591A2489781700411BEA /* CurrentWeatherDataModel.swift */; };
 		E8644CA624BB2D65003A0202 /* RoomTempUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8644CA524BB2D65003A0202 /* RoomTempUIView.swift */; };
 		E873D3602475A5490072DAEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E873D35F2475A5490072DAEB /* AppDelegate.swift */; };
@@ -68,6 +69,7 @@
 		E82F87832475C1EF009B6040 /* Alfred.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Alfred.entitlements; sourceTree = "<group>"; };
 		E84546F824EC3BB4002E7944 /* VideoDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDataModel.swift; sourceTree = "<group>"; };
 		E84546FA24EC3C01002E7944 /* VideoUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoUIView.swift; sourceTree = "<group>"; };
+		E850E15D2544A61B00F6C8AA /* HeatingDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatingDataModel.swift; sourceTree = "<group>"; };
 		E85E591A2489781700411BEA /* CurrentWeatherDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherDataModel.swift; sourceTree = "<group>"; };
 		E8644CA524BB2D65003A0202 /* RoomTempUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomTempUIView.swift; sourceTree = "<group>"; };
 		E873D35C2475A5490072DAEB /* Alfred.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alfred.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,6 +147,7 @@
 				E883B34724B5200500805209 /* StateSettings.swift */,
 				E89A8AA224C3997C00242F6F /* LightDataModel.swift */,
 				E84546F824EC3BB4002E7944 /* VideoDataModel.swift */,
+				E850E15D2544A61B00F6C8AA /* HeatingDataModel.swift */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -337,7 +340,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1140;
-				LastUpgradeCheck = 1140;
+				LastUpgradeCheck = 1210;
 				ORGANIZATIONNAME = "John Pillar";
 				TargetAttributes = {
 					E873D35B2475A5490072DAEB = {
@@ -455,6 +458,7 @@
 				E87E9AE324B2148F009129F3 /* GardenSensorChartUIView.swift in Sources */,
 				E8ED96FE24826DAC00B90B80 /* PingDataModel.swift in Sources */,
 				E88AFD9924937F7F0090ACE9 /* LineChartUIView.swift in Sources */,
+				E850E15E2544A61B00F6C8AA /* HeatingDataModel.swift in Sources */,
 				E89A8AA324C3997C00242F6F /* LightDataModel.swift in Sources */,
 				E8ED970F2484088E00B90B80 /* MenuDataModel.swift in Sources */,
 				E8ED97002482755A00B90B80 /* Helper.swift in Sources */,
@@ -537,6 +541,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -561,7 +566,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -598,6 +603,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -616,7 +622,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

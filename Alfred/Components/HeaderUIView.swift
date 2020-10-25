@@ -11,14 +11,11 @@ import SwiftUI
 struct HeaderUIView: View {
 
     var body: some View {
-        GeometryReader { geometry in
-            VStack {
-                SummaryUIView()
-                    .frame(width: geometry.size.width, height: 100)
-                MenuUIView()
-                    .frame(width: geometry.size.width, height: 80)
-            }
-        }
+        VStack {
+            SummaryUIView()
+            Spacer()
+            MenuUIView()
+        }.frame(height: 140)
     }
 }
 
@@ -31,7 +28,7 @@ struct HeaderUIView_Previews: PreviewProvider {
             HeaderUIView().environmentObject(StateSettings())
         }
         .previewLayout(
-            .fixed(width: 414, height: 180)
+            .fixed(width: 414, height: 160)
         )
     }
 }
