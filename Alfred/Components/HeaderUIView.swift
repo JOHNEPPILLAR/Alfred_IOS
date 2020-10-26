@@ -12,6 +12,7 @@ struct HeaderUIView: View {
 
     var body: some View {
         VStack {
+            Spacer()
             SummaryUIView()
             Spacer()
             MenuUIView()

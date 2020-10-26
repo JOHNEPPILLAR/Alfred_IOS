@@ -83,29 +83,40 @@ func getAlfredData(from url: String,
     do {
         guard let request = try setAlfredRequestHeaders(url: url,
                                 httpMethod: httpMethod)
-            else { completion(.failure(.responseUnsuccessful))
+        else {
+            DispatchQueue.main.async {
+                completion(.failure(.responseUnsuccessful))
+            }
             return
         }
 
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
-                print("☣️ Network error: \(error)")
-                completion(.failure(.requestFailed))
+                DispatchQueue.main.async {
+                    print("☣️ Network error: \(error)")
+                    completion(.failure(.requestFailed))
+                }
                 return
             }
             guard let httpResponse = response as? HTTPURLResponse,
                         (200...299).contains(httpResponse.statusCode) else {
-                print("☣️ Error with the response, unexpected status code: \(String(describing: response))")
-                completion(.failure(.responseUnsuccessful))
+                DispatchQueue.main.async {
+                    print("☣️ Error with the response, unexpected status code: \(String(describing: response))")
+                    completion(.failure(.responseUnsuccessful))
+                }
                 return
             }
             if let data = data {
-                completion(.success(data))
+                DispatchQueue.main.async {
+                    completion(.success(data))
+                }
             }
         }.resume()
     } catch {
-        print("☣️", error.localizedDescription)
-        completion(.failure(.requestFailed))
+        DispatchQueue.main.async {
+            print("☣️", error.localizedDescription)
+            completion(.failure(.requestFailed))
+        }
     }
 }
 

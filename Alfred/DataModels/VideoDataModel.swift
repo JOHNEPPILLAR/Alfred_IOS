@@ -47,14 +47,10 @@ extension VideoData {
         getAlfredData(from: "hls/camera/\(camera)/image", httpMethod: "GET") { result in
             switch result {
             case .success(let data):
-                DispatchQueue.main.async {
-                    self.image = UIImage(data: data)
-                }
+                self.image = UIImage(data: data)
             case .failure(let error):
                 print("☣️", error.localizedDescription)
-                DispatchQueue.main.async {
-                    self.apiError = true
-                }
+                self.apiError = true
             }
         }
     }
@@ -67,22 +63,16 @@ extension VideoData {
                 do {
                     let decodedData = try JSONDecoder().decode(VideoDataItem.self, from: data)
                     self.loadingVideo = false
-                    DispatchQueue.main.async {
-                        self.videoDataItem = decodedData
-                    }
+                    self.videoDataItem = decodedData
                 } catch {
                     print("☣️ JSONSerialization error:", error)
                     self.loadingVideo = false
-                    DispatchQueue.main.async {
-                        self.apiError = true
-                    }
+                    self.apiError = true
                 }
             case .failure(let error):
                 print("☣️", error.localizedDescription)
                 self.loadingVideo = false
-                DispatchQueue.main.async {
-                    self.apiError = true
-                }
+                self.apiError = true
             }
         }
     }
