@@ -18,7 +18,7 @@ struct WeatherIconUIView: UIViewRepresentable {
 
     func updateUIView(_ uiView: UIView, context: Context) {
 
-        let frame = CGRect(x: 20, y: 0, width: 40, height: 40)
+        let frame = CGRect(x: 15, y: 0, width: 40, height: 40)
         let iconView = SkyIconUIView(
             type: self.currentWeatherData.results.icon ?? "",
             strokeColor: .white,
@@ -36,7 +36,7 @@ struct AirQualityUIView: View {
     @ObservedObject var houseSensorData: HouseSensorData = HouseSensorData()
     var body: some View {
         VStack {
-            Text("Air quality")
+            Text("Air")
                 .fontWeight(.thin)
                 .fixedSize(horizontal: true, vertical: false)
                 .foregroundColor(.white)
@@ -66,11 +66,11 @@ struct WeatherUIView: View {
                 .foregroundColor(.white)
             Spacer()
             WeatherIconUIView(currentWeatherData: self.currentWeatherData)
+            Spacer()
             Text("\(self.currentWeatherData.results.temperature ?? 0)" + "°")
                 .font(.system(size: 16))
                 .fixedSize(horizontal: true, vertical: false)
                 .foregroundColor(.white)
-            Spacer()
         }
         .padding(5)
         .frame(width: 80, height: 100)

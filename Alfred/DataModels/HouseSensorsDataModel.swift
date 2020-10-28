@@ -87,6 +87,7 @@ extension HouseSensorData {
 
             // Netatmo
             let netatmo = URLSession.shared.dataTaskPublisher(for: request1)
+            .receive(on: DispatchQueue.main)
             .tryMap { response -> Data in
                 guard
                     let httpURLResponse = response.response as? HTTPURLResponse,
@@ -99,7 +100,6 @@ extension HouseSensorData {
             .map { $0 }
             .decode(type: [HouseSensorDataItem].self, decoder: JSONDecoder())
             .mapError { NetworkError.map($0) }
-            .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
             .catch { error -> AnyPublisher<[HouseSensorDataItem], Never> in
                 print("☣️ HouseSensorData (net) - error: \(error)")
@@ -109,6 +109,7 @@ extension HouseSensorData {
 
             // Dyson
             let dyson = URLSession.shared.dataTaskPublisher(for: request2)
+            .receive(on: DispatchQueue.main)
             .tryMap { response -> Data in
                 guard
                     let httpURLResponse = response.response as? HTTPURLResponse,
@@ -121,7 +122,6 @@ extension HouseSensorData {
             .map { $0 }
             .decode(type: [HouseSensorDataItem].self, decoder: JSONDecoder())
             .mapError { NetworkError.map($0) }
-            .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
             .catch { error -> AnyPublisher<[HouseSensorDataItem], Never> in
                 print("☣️ HouseSensorData (dys) - error: \(error)")
@@ -130,8 +130,8 @@ extension HouseSensorData {
             }
 
             self.cancellationToken = Publishers.Zip(netatmo, dyson)
-            .eraseToAnyPublisher()
             .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
             .catch { _ in
                 Just(([], []))
             }

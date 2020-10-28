@@ -84,31 +84,30 @@ func getAlfredData(from url: String,
         guard let request = try setAlfredRequestHeaders(url: url,
                                 httpMethod: httpMethod)
         else {
-            DispatchQueue.main.async {
-                completion(.failure(.responseUnsuccessful))
-            }
+            completion(.failure(.responseUnsuccessful))
             return
         }
 
         URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                if let error = error {
                     print("☣️ Network error: \(error)")
                     completion(.failure(.requestFailed))
+                    return
                 }
-                return
-            }
-            guard let httpResponse = response as? HTTPURLResponse,
-                        (200...299).contains(httpResponse.statusCode) else {
-                DispatchQueue.main.async {
-                    print("☣️ Error with the response, unexpected status code: \(String(describing: response))")
-                    completion(.failure(.responseUnsuccessful))
+
+                guard let httpResponse = response as? HTTPURLResponse,
+                            (200...299).contains(httpResponse.statusCode) else {
+                    DispatchQueue.main.async {
+                        print("☣️ Error with the response, unexpected status code: \(String(describing: response))")
+                        completion(.failure(.responseUnsuccessful))
+                    }
+                    return
                 }
-                return
-            }
-            if let data = data {
-                DispatchQueue.main.async {
-                    completion(.success(data))
+                if let data = data {
+                    DispatchQueue.main.async {
+                        completion(.success(data))
+                    }
                 }
             }
         }.resume()
