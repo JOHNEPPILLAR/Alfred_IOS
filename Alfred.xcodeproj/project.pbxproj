@@ -12,7 +12,7 @@
 		E84546F924EC3BB4002E7944 /* VideoDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84546F824EC3BB4002E7944 /* VideoDataModel.swift */; };
 		E84546FB24EC3C01002E7944 /* VideoUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84546FA24EC3C01002E7944 /* VideoUIView.swift */; };
 		E850E15E2544A61B00F6C8AA /* HeatingDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E850E15D2544A61B00F6C8AA /* HeatingDataModel.swift */; };
-		E850E1692545EBCA00F6C8AA /* iActivityIndicator in Frameworks */ = {isa = PBXBuildFile; productRef = E850E1682545EBCA00F6C8AA /* iActivityIndicator */; };
+		E857084B254F2058000AEE5C /* ActivityIndicators in Frameworks */ = {isa = PBXBuildFile; productRef = E857084A254F2058000AEE5C /* ActivityIndicators */; };
 		E85E591B2489781700411BEA /* CurrentWeatherDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85E591A2489781700411BEA /* CurrentWeatherDataModel.swift */; };
 		E8644CA624BB2D65003A0202 /* RoomTempUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8644CA524BB2D65003A0202 /* RoomTempUIView.swift */; };
 		E873D3602475A5490072DAEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E873D35F2475A5490072DAEB /* AppDelegate.swift */; };
@@ -115,8 +115,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E857084B254F2058000AEE5C /* ActivityIndicators in Frameworks */,
 				E87E9AE124B0C39E009129F3 /* Charts in Frameworks */,
-				E850E1692545EBCA00F6C8AA /* iActivityIndicator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,7 +294,7 @@
 			name = Alfred;
 			packageProductDependencies = (
 				E87E9AE024B0C39E009129F3 /* Charts */,
-				E850E1682545EBCA00F6C8AA /* iActivityIndicator */,
+				E857084A254F2058000AEE5C /* ActivityIndicators */,
 			);
 			productName = Alfred;
 			productReference = E873D35C2475A5490072DAEB /* Alfred.app */;
@@ -370,7 +370,7 @@
 			mainGroup = E873D3532475A5490072DAEB;
 			packageReferences = (
 				E87E9ADF24B0C39E009129F3 /* XCRemoteSwiftPackageReference "Charts" */,
-				E850E1672545EBCA00F6C8AA /* XCRemoteSwiftPackageReference "iActivityIndicator" */,
+				E8570849254F2058000AEE5C /* XCRemoteSwiftPackageReference "ActivityIndicators" */,
 			);
 			productRefGroup = E873D35D2475A5490072DAEB /* Products */;
 			projectDirPath = "";
@@ -807,11 +807,11 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E850E1672545EBCA00F6C8AA /* XCRemoteSwiftPackageReference "iActivityIndicator" */ = {
+		E8570849254F2058000AEE5C /* XCRemoteSwiftPackageReference "ActivityIndicators" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/MojtabaHs/iActivityIndicator";
+			repositoryURL = "https://github.com/sketch204/ActivityIndicators";
 			requirement = {
-				branch = main;
+				branch = master;
 				kind = branch;
 			};
 		};
@@ -826,10 +826,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E850E1682545EBCA00F6C8AA /* iActivityIndicator */ = {
+		E857084A254F2058000AEE5C /* ActivityIndicators */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E850E1672545EBCA00F6C8AA /* XCRemoteSwiftPackageReference "iActivityIndicator" */;
-			productName = iActivityIndicator;
+			package = E8570849254F2058000AEE5C /* XCRemoteSwiftPackageReference "ActivityIndicators" */;
+			productName = ActivityIndicators;
 		};
 		E87E9AE024B0C39E009129F3 /* Charts */ = {
 			isa = XCSwiftPackageProductDependency;

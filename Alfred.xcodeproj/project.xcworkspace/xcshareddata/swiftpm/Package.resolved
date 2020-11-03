@@ -2,21 +2,21 @@
   "object": {
     "pins": [
       {
+        "package": "ActivityIndicators",
+        "repositoryURL": "https://github.com/sketch204/ActivityIndicators",
+        "state": {
+          "branch": "master",
+          "revision": "8f44cd58ebf070db279cc9928955853d5fa59965",
+          "version": null
+        }
+      },
+      {
         "package": "Charts",
         "repositoryURL": "https://github.com/danielgindi/Charts.git",
         "state": {
           "branch": null,
           "revision": "66546404a6739173b8e436ab6bc1f2897cd08594",
           "version": "3.6.0"
-        }
-      },
-      {
-        "package": "iActivityIndicator",
-        "repositoryURL": "https://github.com/MojtabaHs/iActivityIndicator",
-        "state": {
-          "branch": "main",
-          "revision": "e00edb73b97cdefc4a948f7807b941bd2b8b46f3",
-          "version": null
         }
       }
     ]
