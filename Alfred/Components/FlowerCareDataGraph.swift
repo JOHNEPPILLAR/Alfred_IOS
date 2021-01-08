@@ -24,7 +24,7 @@ struct FlowerCareDataGraph: View {
             .onAppear {
                 self.flowerCareData.loadData(
                     zone: self.stateSettings.flowerCareZone,
-                    duration: self.stateSettings.flowerCareduration
+                    duration: self.stateSettings.flowerCareDuration
                 )
             }
         }

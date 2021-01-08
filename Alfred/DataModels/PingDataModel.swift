@@ -40,7 +40,7 @@ class PingData: ObservableObject {
 // MARK: - PingData extension
 extension PingData {
     func loadData() {
-        getAlfredData(from: "health/ping", httpMethod: "GET") { result in
+        callAlfredService(from: "health/ping", httpMethod: "GET") { result in
             switch result {
             case .success(let data):
                 do {

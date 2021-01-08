@@ -17,7 +17,7 @@ struct HouseSensorDataItem: Codable, Comparable {
       return (lhs.co2 ?? 0, lhs.airQuality ?? 0) < (rhs.co2 ?? 0, rhs.airQuality ?? 0)
     }
 
-    let name: String?
+    let location: String?
     let battery: Int?
     let temperature: Double?
     let humidity: Int?
@@ -26,7 +26,7 @@ struct HouseSensorDataItem: Codable, Comparable {
     let airQuality: Int?
     let nitrogenDioxideDensity: Int?
 
-    init(name: String? = nil,
+    init(location: String? = nil,
          battery: Int? = nil,
          temperature: Double? = nil,
          humidity: Int? = nil,
@@ -34,7 +34,7 @@ struct HouseSensorDataItem: Codable, Comparable {
          co2: Int? = nil,
          airQuality: Int? = nil,
          nitrogenDioxideDensity: Int? = nil) {
-        self.name = name
+        self.location = location
         self.battery = battery
         self.temperature = temperature
         self.humidity = humidity
@@ -178,7 +178,7 @@ extension HouseSensorData {
         case 1, 3:
             var sensor = "Office"
             if currentMenuItem == 3 { sensor = "Bedroom" }
-            let officeData = self.dysonData.filter { $0.name == sensor }
+            let officeData = self.dysonData.filter { $0.location == sensor }
             if officeData.count > 0 {
                 self.roomTemp = Int(officeData[0].temperature?.rounded(.up) ?? 0)
                 let airQuality = dysonAirQuality(airReading: officeData[0].airQuality ?? 0)
@@ -191,7 +191,7 @@ extension HouseSensorData {
         case 2, 4, 5:
             var sensor = "Kitchen"
             if currentMenuItem == 4 { sensor = "Kids room" } else if currentMenuItem == 2 { sensor = "Living room" }
-            let netatmoData = self.netatmoData.filter { $0.name == sensor }
+            let netatmoData = self.netatmoData.filter { $0.location == sensor }
             if netatmoData.count > 0 {
                 self.roomTemp = Int(netatmoData[0].temperature?.rounded(.up) ?? 0)
                 let airQuality = dysonAirQuality(airReading: netatmoData[0].airQuality ?? 0)

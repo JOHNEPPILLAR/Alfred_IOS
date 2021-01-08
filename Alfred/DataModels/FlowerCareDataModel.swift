@@ -42,7 +42,7 @@ public class FlowerCareData: ObservableObject {
 // MARK: - FlowerCareData extension
 extension FlowerCareData {
     func loadData(zone: String, duration: String) {
-        getAlfredData(from: "flowercare/sensors/zone/\(zone)?duration=\(duration)", httpMethod: "GET") { result in
+        callAlfredService(from: "flowercare/sensors/zone/\(zone)?duration=\(duration)", httpMethod: "GET") { result in
             switch result {
             case .success(let data):
                 do {

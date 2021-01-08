@@ -40,7 +40,7 @@ public class CurrentWeatherData: ObservableObject {
 // MARK: - CurrentWeatherData extension
 extension CurrentWeatherData {
     func loadData() {
-        getAlfredData(from: "weather/today", httpMethod: "GET") { result in
+        callAlfredService(from: "weather/today", httpMethod: "GET") { result in
             switch result {
             case .success(let data):
                 do {

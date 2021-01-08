@@ -44,7 +44,7 @@ public class VideoData: ObservableObject {
 extension VideoData {
 
     @objc func getImage(camera: String) {
-        getAlfredData(from: "hls/camera/\(camera)/image", httpMethod: "GET") { result in
+        callAlfredService(from: "hls/camera/\(camera)/image", httpMethod: "GET") { result in
             switch result {
             case .success(let data):
                 self.image = UIImage(data: data)
@@ -57,7 +57,7 @@ extension VideoData {
 
     @objc func getVideo(camera: String) {
         if loadingVideo { return }
-        getAlfredData(from: "hls/camera/\(camera)/stream", httpMethod: "GET") { result in
+        callAlfredService(from: "hls/camera/\(camera)/stream", httpMethod: "GET") { result in
             switch result {
             case .success(let data):
                 do {

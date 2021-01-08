@@ -98,7 +98,6 @@ struct PlantsUIView: View {
         }
         .padding(5)
         .frame(width: 80, height: 100)
-        //.background(Color(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)))
         .background(Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)))
         .cornerRadius(10)
     }

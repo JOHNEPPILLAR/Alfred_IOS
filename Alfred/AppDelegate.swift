@@ -5,7 +5,7 @@
 //  Created by John Pillar on 20/05/2020.
 //  Copyright © 2020 John Pillar. All rights reserved.
 //
-
+/*
 import UIKit
 import UserNotifications
 
@@ -84,3 +84,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       print("Failed to register: \(error)")
     }
 }
+
+ */

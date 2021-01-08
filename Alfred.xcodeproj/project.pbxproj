@@ -14,9 +14,8 @@
 		E850E15E2544A61B00F6C8AA /* HeatingDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E850E15D2544A61B00F6C8AA /* HeatingDataModel.swift */; };
 		E857084B254F2058000AEE5C /* ActivityIndicators in Frameworks */ = {isa = PBXBuildFile; productRef = E857084A254F2058000AEE5C /* ActivityIndicators */; };
 		E85E591B2489781700411BEA /* CurrentWeatherDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85E591A2489781700411BEA /* CurrentWeatherDataModel.swift */; };
+		E85F64E8256160DD0056984B /* AlfredApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F64E7256160DD0056984B /* AlfredApp.swift */; };
 		E8644CA624BB2D65003A0202 /* RoomTempUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8644CA524BB2D65003A0202 /* RoomTempUIView.swift */; };
-		E873D3602475A5490072DAEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E873D35F2475A5490072DAEB /* AppDelegate.swift */; };
-		E873D3622475A5490072DAEB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E873D3612475A5490072DAEB /* SceneDelegate.swift */; };
 		E873D3642475A5490072DAEB /* SplashUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E873D3632475A5490072DAEB /* SplashUIView.swift */; };
 		E873D3662475A54A0072DAEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E873D3652475A54A0072DAEB /* Assets.xcassets */; };
 		E873D3692475A54A0072DAEB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E873D3682475A54A0072DAEB /* Preview Assets.xcassets */; };
@@ -36,8 +35,6 @@
 		E88AFD9F249671EE0090ACE9 /* SensorDataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88AFD9E249671EE0090ACE9 /* SensorDataItem.swift */; };
 		E89A8AA324C3997C00242F6F /* LightDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89A8AA224C3997C00242F6F /* LightDataModel.swift */; };
 		E89A8AA524C4557500242F6F /* HueColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89A8AA424C4557500242F6F /* HueColor.swift */; };
-		E8ED96F92482644C00B90B80 /* ControllerUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ED96F82482644C00B90B80 /* ControllerUIView.swift */; };
-		E8ED96FB248264EF00B90B80 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ED96FA248264EF00B90B80 /* ViewRouter.swift */; };
 		E8ED96FE24826DAC00B90B80 /* PingDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ED96FD24826DAC00B90B80 /* PingDataModel.swift */; };
 		E8ED97002482755A00B90B80 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ED96FF2482755A00B90B80 /* Helper.swift */; };
 		E8ED9702248275C900B90B80 /* Alfred.plist in Resources */ = {isa = PBXBuildFile; fileRef = E8ED9701248275C900B90B80 /* Alfred.plist */; };
@@ -72,10 +69,9 @@
 		E84546FA24EC3C01002E7944 /* VideoUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoUIView.swift; sourceTree = "<group>"; };
 		E850E15D2544A61B00F6C8AA /* HeatingDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatingDataModel.swift; sourceTree = "<group>"; };
 		E85E591A2489781700411BEA /* CurrentWeatherDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherDataModel.swift; sourceTree = "<group>"; };
+		E85F64E7256160DD0056984B /* AlfredApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlfredApp.swift; sourceTree = "<group>"; };
 		E8644CA524BB2D65003A0202 /* RoomTempUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomTempUIView.swift; sourceTree = "<group>"; };
 		E873D35C2475A5490072DAEB /* Alfred.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alfred.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E873D35F2475A5490072DAEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E873D3612475A5490072DAEB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E873D3632475A5490072DAEB /* SplashUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashUIView.swift; sourceTree = "<group>"; };
 		E873D3652475A54A0072DAEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E873D3682475A54A0072DAEB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -99,8 +95,6 @@
 		E88AFD9E249671EE0090ACE9 /* SensorDataItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorDataItem.swift; sourceTree = "<group>"; };
 		E89A8AA224C3997C00242F6F /* LightDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDataModel.swift; sourceTree = "<group>"; };
 		E89A8AA424C4557500242F6F /* HueColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HueColor.swift; sourceTree = "<group>"; };
-		E8ED96F82482644C00B90B80 /* ControllerUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerUIView.swift; sourceTree = "<group>"; };
-		E8ED96FA248264EF00B90B80 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		E8ED96FD24826DAC00B90B80 /* PingDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingDataModel.swift; sourceTree = "<group>"; };
 		E8ED96FF2482755A00B90B80 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		E8ED9701248275C900B90B80 /* Alfred.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Alfred.plist; sourceTree = "<group>"; };
@@ -184,14 +178,11 @@
 				E8ED970A2483EC7A00B90B80 /* Components */,
 				E8ED97092483EC5F00B90B80 /* Screens */,
 				E82F87832475C1EF009B6040 /* Alfred.entitlements */,
-				E873D35F2475A5490072DAEB /* AppDelegate.swift */,
-				E873D3612475A5490072DAEB /* SceneDelegate.swift */,
 				E873D3652475A54A0072DAEB /* Assets.xcassets */,
 				E873D36D2475A54A0072DAEB /* Info.plist */,
 				E8ED9701248275C900B90B80 /* Alfred.plist */,
 				E873D3672475A54A0072DAEB /* Preview Content */,
-				E8ED96F82482644C00B90B80 /* ControllerUIView.swift */,
-				E8ED96FA248264EF00B90B80 /* ViewRouter.swift */,
+				E85F64E7256160DD0056984B /* AlfredApp.swift */,
 			);
 			path = Alfred;
 			sourceTree = "<group>";
@@ -467,18 +458,15 @@
 				E8ED970F2484088E00B90B80 /* MenuDataModel.swift in Sources */,
 				E8ED97002482755A00B90B80 /* Helper.swift in Sources */,
 				E88AFD9F249671EE0090ACE9 /* SensorDataItem.swift in Sources */,
-				E8ED96FB248264EF00B90B80 /* ViewRouter.swift in Sources */,
 				E8ED97122486D3B900B90B80 /* HeaderUIView.swift in Sources */,
-				E873D3602475A5490072DAEB /* AppDelegate.swift in Sources */,
 				E89A8AA524C4557500242F6F /* HueColor.swift in Sources */,
 				E84546F924EC3BB4002E7944 /* VideoDataModel.swift in Sources */,
 				E883B34824B5200500805209 /* StateSettings.swift in Sources */,
-				E873D3622475A5490072DAEB /* SceneDelegate.swift in Sources */,
 				E8ED97062483C2A100B90B80 /* MainUIView.swift in Sources */,
 				E8644CA624BB2D65003A0202 /* RoomTempUIView.swift in Sources */,
 				E84546FB24EC3C01002E7944 /* VideoUIView.swift in Sources */,
-				E8ED96F92482644C00B90B80 /* ControllerUIView.swift in Sources */,
 				E85E591B2489781700411BEA /* CurrentWeatherDataModel.swift in Sources */,
+				E85F64E8256160DD0056984B /* AlfredApp.swift in Sources */,
 				E88AFD942492CF9D0090ACE9 /* FlowerCareDataModel.swift in Sources */,
 				E804F99C24BCDF60008CB851 /* CustomSlider.swift in Sources */,
 				E804F99A24BCA5CC008CB851 /* LightSwitchUIView.swift in Sources */,
@@ -570,7 +558,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -626,7 +614,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -647,11 +635,12 @@
 				DEVELOPMENT_TEAM = P5E7TWCV9X;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Alfred/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.0;
+				MARKETING_VERSION = 5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = JP.Alfred;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -669,11 +658,12 @@
 				DEVELOPMENT_TEAM = P5E7TWCV9X;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Alfred/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.0;
+				MARKETING_VERSION = 5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = JP.Alfred;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

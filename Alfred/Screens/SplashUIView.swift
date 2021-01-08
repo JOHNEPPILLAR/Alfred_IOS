@@ -7,11 +7,10 @@
 //
 
 import SwiftUI
-import Combine
 
 struct SplashUIView: View {
 
-    @ObservedObject var viewRouter: ViewRouter
+    @EnvironmentObject var stateSettings: StateSettings
     @ObservedObject var pingData = PingData()
 
     var body: some View {
@@ -44,9 +43,16 @@ struct SplashUIView: View {
                 .font(.system(size: 48))
         }
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 if !self.pingData.pingError {
-                    self.viewRouter.currentPage = "Main"
+                    UNUserNotificationCenter.current().requestAuthorization(options: [.badge]) { (granted, _) in
+                        if granted {
+                            DispatchQueue.main.async {
+                                UIApplication.shared.applicationIconBadgeNumber = -1
+                            }
+                        }
+                    }
+                    self.stateSettings.splashScreen = false
                 }
             }
         }
@@ -68,7 +74,7 @@ struct ContentView_Previews: PreviewProvider {
         ZStack {
             Color(#colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1))
                 .edgesIgnoringSafeArea(.all)
-            SplashUIView(viewRouter: ViewRouter())
+            SplashUIView()
         }
     }
 }

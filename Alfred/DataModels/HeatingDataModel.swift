@@ -55,7 +55,7 @@ public class HeatingData: ObservableObject {
 // MARK: - NeedsWaterData extension
 extension HeatingData {
     func loadData() {
-        getAlfredData(from: "nest/sensors/current", httpMethod: "GET") { result in
+        callAlfredService(from: "nest/sensors/current", httpMethod: "GET") { result in
             switch result {
             case .success(let data):
                 do {

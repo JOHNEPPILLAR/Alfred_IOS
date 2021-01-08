@@ -13,7 +13,7 @@ struct LightSwitchUIView: View {
     @EnvironmentObject var stateSettings: StateSettings
     @ObservedObject var lightGroupData: LightGroupData = LightGroupData()
 
-    //@State var value: Double = 0
+    // @State var value: Double = 0
 
     var body: some View {
         VStack {

@@ -59,13 +59,13 @@ struct LightGroupDataItemAttributes: Codable {
 struct AttributesAttributes: Codable {
     let type: String?
     let lights: [String]?
-    let id: Int?
+    let id: String?
     let name: String?
     let attributesClass: String?
 
     enum CodingKeys: String, CodingKey {
         case type, lights, id, name
-        case attributesClass
+        case attributesClass = "class"
     }
 }
 
@@ -94,28 +94,33 @@ public class LightGroupData: ObservableObject {
     private var timer: Timer?
     private var currentLightGroupID: Int = -1
 
-    var results: LightGroupDataItem = LightGroupDataItem() {
+    var results: [LightGroupDataItem] = [LightGroupDataItem]() {
         didSet {
-            brightness = results.action?.attributes?.bri ?? 0
-            lightGroupOn = results.state?.attributes?.anyOn ?? false
-            if lightGroupOn {
-                switch results.action?.attributes?.colormode {
-                case nil, "hs": lightColor = .white
-                default:
-                    var point: CGPoint = CGPoint()
-                    point.x = CGFloat(results.action?.attributes?.xy?[0] ?? 0)
-                    point.y = CGFloat(results.action?.attributes?.xy?[1] ?? 0)
-                    lightColor = Color(HueColorHelper.colorFromXY(point, forModel: ""))
+            if results.count > 0 {
+                brightness = results[0].action?.attributes?.bri ?? 0
+                lightGroupOn = results[0].state?.attributes?.anyOn ?? false
+                if lightGroupOn {
+                    switch results[0].action?.attributes?.colormode {
+                    case nil, "ct": // White or yellow only
+                        // if val < x then white else yellow
+                        lightColor = .white
+                    case "xy": // Color
+                        var point: CGPoint = CGPoint()
+                        point.x = CGFloat(results[0].action?.attributes?.xy?[0] ?? 0)
+                        point.y = CGFloat(results[0].action?.attributes?.xy?[1] ?? 0)
+                        lightColor = Color(HueColorHelper.colorFromXY(point, forModel: "")) // add light model
+                    default: // HS
+                        lightColor = .white
+                    }
+                } else {
+                    lightColor = .gray
                 }
-            } else {
-                lightColor = .gray
             }
         }
     }
 
     private var saved: LightGroupSaveDataItem = LightGroupSaveDataItem() {
         didSet {
-            loadData()
             if saved.state == "saved" {
                 self.lightGroupOn = !self.lightGroupOn
                 if !self.lightGroupOn { self.lightColor = .gray }
@@ -132,11 +137,11 @@ extension LightGroupData {
             currentLightGroupID = lightGroupID
         }
 
-        getAlfredData(from: "lights/lightgroups/\(currentLightGroupID)", httpMethod: "GET") { result in
+        callAlfredService(from: "lights/lightgroups/\(currentLightGroupID)", httpMethod: "GET") { result in
             switch result {
             case .success(let data):
                 do {
-                    let decodedData = try JSONDecoder().decode(LightGroupDataItem.self, from: data)
+                    let decodedData = try JSONDecoder().decode([LightGroupDataItem].self, from: data)
                     DispatchQueue.main.async {
                         self.results = decodedData
                     }
@@ -149,41 +154,43 @@ extension LightGroupData {
         }
 
         if timer == nil || !(timer?.isValid ?? false) {
-            //timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
-            //    self.loadData()
-            //}
-            //print("new timer")
-            //print(timer)
+            timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
+                self.loadData()
+            }
         }
     }
 
     func stopTimer() {
-        //print("stopping timer")
-        //print(timer)
-        //timer?.invalidate()
+        timer?.invalidate()
     }
 
     func toggleLight() {
         stopTimer()
-        /*
         let body: [String: Any] = ["power": !lightGroupOn]
         var APIbody: Data?
         do {
             APIbody = try JSONSerialization.data(withJSONObject: body, options: [])
         } catch let error as NSError {
             print("Failed to convert json to data type: \(error.localizedDescription)")
+            self.loadData()
+            return
         }
-        let (request, errorURL) = putAlfredData(
-            for: "lights/lightgroups/\(currentLightGroupID)",
-            body: APIbody
-        )
-        */
-        //    .catch { error -> AnyPublisher<LightGroupSaveDataItem, Never> in
-        //        print("☣️ toggleLight - error: \(error)")
-        //        return self.emptyPublisherUpdate()
-        //        .eraseToAnyPublisher()
-        //    }
-        //    .assign(to: \.saved, on: self)
-
+        // swiftlint:disable line_length
+        callAlfredService(from: "lights/lightgroups/\(currentLightGroupID)", httpMethod: "PUT", body: APIbody) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let decodedData = try JSONDecoder().decode(LightGroupSaveDataItem.self, from: data)
+                    DispatchQueue.main.async {
+                        self.saved = decodedData
+                    }
+                } catch {
+                    print("☣️ JSONSerialization error:", error)
+                }
+            case .failure(let error):
+                print("☣️", error.localizedDescription)
+            }
+            self.loadData()
+        }
     }
 }

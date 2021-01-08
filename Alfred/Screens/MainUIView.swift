@@ -49,11 +49,11 @@ struct MainUIView: View {
                             Spacer()
                                 .frame(width: 10)
                             RoomTempUIView()
-                                //.transition(.slide)
+                                // .transition(.slide)
                             Spacer()
                                 .frame(width: 10)
                             LightSwitchUIView()
-                                //.transition(.slide)
+                                // .transition(.slide)
                             Spacer()
                                 .frame(width: 10)
                         }

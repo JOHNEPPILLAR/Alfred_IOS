@@ -49,10 +49,10 @@ func readPlist(item: String) -> String {
 }
 
 // MARK: - setAlfredRequestHeaders
-func setAlfredRequestHeaders(url: String, httpMethod: String) throws -> (URLRequest?) {
+func setAlfredRequestHeaders(url: String, httpMethod: String, body: Data? = nil) throws -> (URLRequest?) {
     #if DEBUG
     let baseURL = readPlist(item: "BaseURL")
-    //let baseURL = readPlist(item: "BaseURL_Local")
+    // let baseURL = readPlist(item: "BaseURL_Local")
     #else
     let baseURL = readPlist(item: "BaseURL")
     #endif
@@ -67,6 +67,10 @@ func setAlfredRequestHeaders(url: String, httpMethod: String) throws -> (URLRequ
 
     var request = URLRequest(url: apiURL)
     request.httpMethod = httpMethod
+    if let putBody = body {
+        request.httpBody = putBody
+        request.setValue("\(putBody.count)", forHTTPHeaderField: "Content-Length")
+    }
     request.cachePolicy = URLRequest.CachePolicy.reloadIgnoringLocalAndRemoteCacheData
     request.addValue(jsonHeader, forHTTPHeaderField: "Content-Type")
     request.addValue(jsonHeader, forHTTPHeaderField: "Accept")
@@ -76,13 +80,14 @@ func setAlfredRequestHeaders(url: String, httpMethod: String) throws -> (URLRequ
 }
 
 // MARK: - getAlfredData
-func getAlfredData(from url: String,
-                   httpMethod: String,
-                   completion: @escaping (Result<Data, NetworkError>) -> Void) {
+// swiftlint:disable line_length
+func callAlfredService(from url: String, httpMethod: String, body: Data? = nil, completion: @escaping (Result<Data, NetworkError>) -> Void) {
 
     do {
-        guard let request = try setAlfredRequestHeaders(url: url,
-                                httpMethod: httpMethod)
+        guard let request = try setAlfredRequestHeaders(
+                url: url,
+                httpMethod: httpMethod,
+                body: body)
         else {
             completion(.failure(.responseUnsuccessful))
             return
@@ -119,41 +124,11 @@ func getAlfredData(from url: String,
     }
 }
 
-// MARK: - putAlfredData
-func putAlfredData(for url: String, body: Data? = nil) -> (request: URLRequest?, error: NetworkError?) {
-    #if DEBUG
-    let baseURL = readPlist(item: "BaseURL")
-    //let baseURL = readPlist(item: "BaseURL_Local")
-    #else
-    let baseURL = readPlist(item: "BaseURL")
-    #endif
-
-    let accessKey = readPlist(item: "AccessKey")
-    guard let url = URL(string: baseURL + "/" + url) else {
-        print("Invalid URL")
-        return (nil, error: NetworkError.badURL)
-    }
-
-    let jsonHeader = "application/json"
-    var request = URLRequest(url: url)
-    request.httpMethod = "PUT"
-    if let putBody = body {
-        request.httpBody = putBody
-        request.setValue("\(putBody.count)", forHTTPHeaderField: "Content-Length")
-    }
-    request.cachePolicy = URLRequest.CachePolicy.reloadIgnoringLocalAndRemoteCacheData
-    request.addValue(jsonHeader, forHTTPHeaderField: "Content-Type")
-    request.addValue(jsonHeader, forHTTPHeaderField: "Accept")
-    request.addValue(accessKey, forHTTPHeaderField: "client-access-key")
-
-    return (request, error: nil)
-}
-
 // MARK: - videoURL
 func videoURL(url: String) throws -> (URL?) {
     #if DEBUG
     let baseURL = readPlist(item: "BaseURL")
-    //let baseURL = readPlist(item: "BaseURL_Local")
+    // let baseURL = readPlist(item: "BaseURL_Local")
     #else
     let baseURL = readPlist(item: "BaseURL")
     #endif
