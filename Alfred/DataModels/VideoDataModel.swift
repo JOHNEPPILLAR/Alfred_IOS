@@ -18,9 +18,19 @@ struct VideoDataItem: Codable {
     }
 }
 
+// MARK: - CameraStatusDataItem
+struct CameraStatusDataItem: Codable {
+    let isPrivacyEnabled: Bool?
+
+    init(isPrivacyEnabled: Bool? = nil) {
+        self.isPrivacyEnabled = isPrivacyEnabled
+    }
+}
+
 // MARK: - VideoData class
 public class VideoData: ObservableObject {
 
+    @Published var privacyStatus: Bool? = false
     @Published var image: UIImage?
     @Published var videoUrl: URL?
     @Published var showVideo: Bool? = false
@@ -42,6 +52,24 @@ public class VideoData: ObservableObject {
 
 // MARK: - VideoData extension
 extension VideoData {
+
+    @objc func getPrivacyStatus(camera: String) {
+        callAlfredService(from: "hls/camera/\(camera)/privacystatus", httpMethod: "GET") { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let decodedData = try JSONDecoder().decode(CameraStatusDataItem.self, from: data)
+                    self.privacyStatus = decodedData.isPrivacyEnabled
+                } catch {
+                    print("☣️ JSONSerialization error:", error)
+                    self.apiError = true
+                }
+            case .failure(let error):
+                print("☣️", error.localizedDescription)
+                self.apiError = true
+            }
+        }
+    }
 
     @objc func getImage(camera: String) {
         callAlfredService(from: "hls/camera/\(camera)/image", httpMethod: "GET") { result in
