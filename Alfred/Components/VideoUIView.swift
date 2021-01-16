@@ -10,30 +10,29 @@ import SwiftUI
 import AVKit
 import ActivityIndicators
 
-struct FullScreenVideoView: View {
+struct AVPlayerView: UIViewControllerRepresentable {
 
-  @Environment(\.presentationMode) var presentationMode
+    @Binding var videoURL: URL?
 
-  let player: AVPlayer
-
-  var body: some View {
-    VStack {
-      VideoPlayer(player: player)
-        .cornerRadius(10)
+    private var player: AVPlayer {
+        return AVPlayer(url: videoURL!)
     }
-    .frame(maxWidth: .infinity, maxHeight: .infinity)
-    .edgesIgnoringSafeArea(.all)
-    .onDisappear {
-      AppDelegate.orientationLock = UIInterfaceOrientationMask.portrait
-      UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
-      UIViewController.attemptRotationToDeviceOrientation()
+
+    func updateUIViewController(_ playerController: AVPlayerViewController, context: Context) {
     }
-  }
+
+    func makeUIViewController(context: Context) -> AVPlayerViewController {
+      let playerController = AVPlayerViewController()
+      playerController.player = self.player
+      playerController.videoGravity = .resizeAspectFill
+      playerController.player?.preventsDisplaySleepDuringVideoPlayback = true
+      playerController.player?.play()
+      return playerController
+    }
 }
 
 struct VideoUIView: View {
 
-  @Environment(\.presentationMode) var presentationMode
   @EnvironmentObject var stateSettings: StateSettings
   @ObservedObject var videoData: VideoData = VideoData()
 
@@ -44,7 +43,6 @@ struct VideoUIView: View {
   @State private var loadVideo: Bool = false
   @State private var videoReady: Bool = false
   @State private var videoURL: URL!
-  @State private var fullScreenVideo: Bool = false
 
   private let player = AVPlayer()
 
@@ -79,19 +77,10 @@ struct VideoUIView: View {
           .background(Color.black)
           .cornerRadius(15)
       } else if videoReady {
-        VideoPlayer(player: player)
-          .cornerRadius(10)
-          .onDisappear {
-            player.pause()
-          }
-          .onTapGesture {
-            AppDelegate.orientationLock = UIInterfaceOrientationMask.landscapeLeft
-            UIDevice.current.setValue(UIInterfaceOrientation.landscapeLeft.rawValue, forKey: "orientation")
-            UIViewController.attemptRotationToDeviceOrientation()
-
-            self.fullScreenVideo.toggle()
-          }
-          .fullScreenCover(isPresented: $fullScreenVideo) { FullScreenVideoView(player: player) }
+        AVPlayerView(videoURL: $videoURL)
+          .padding(10)
+          .background(Color.black)
+          .cornerRadius(15)
       } else {
         ZStack {
           Image(uiImage: camImage)
@@ -142,10 +131,8 @@ struct VideoUIView: View {
           }
           .onReceive(videoData.$videoUrl) { videoUrl in
             if !(videoUrl == nil) {
+              self.videoURL = videoUrl
               self.videoReady = true
-                player.replaceCurrentItem(with: AVPlayerItem(url: videoUrl!))
-                player.play()
-                player.preventsDisplaySleepDuringVideoPlayback = true
             }
           }
           .padding(10)

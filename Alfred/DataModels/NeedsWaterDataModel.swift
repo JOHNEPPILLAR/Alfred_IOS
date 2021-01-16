@@ -49,7 +49,7 @@ public class NeedsWaterData: ObservableObject {
 // MARK: - NeedsWaterData extension
 extension NeedsWaterData {
     func loadData() {
-        callAlfredService(from: "flowercare/needswater", httpMethod: "GET") { result in
+        callAlfredService(from: "houseplants/needswater", httpMethod: "GET") { result in
             switch result {
             case .success(let data):
                 do {

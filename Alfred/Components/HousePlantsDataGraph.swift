@@ -8,21 +8,21 @@
 
 import SwiftUI
 
-struct FlowerCareDataGraph: View {
+struct HousePlantsDataGraph: View {
 
     @EnvironmentObject var stateSettings: StateSettings
-    @ObservedObject var flowerCareData: FlowerCareData = FlowerCareData()
+    @ObservedObject var housePlantsData: HousePlantsData = HousePlantsData()
 
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack {
-                ForEach(self.flowerCareData.results) { sensor in
+                ForEach(self.housePlantsData.results) { sensor in
                     GardenSensorChartUIView(sensorData: sensor)
                 }
             }
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
             .onAppear {
-                self.flowerCareData.loadData(
+                self.housePlantsData.loadData(
                     zone: self.stateSettings.flowerCareZone,
                     duration: self.stateSettings.flowerCareDuration
                 )
@@ -32,20 +32,20 @@ struct FlowerCareDataGraph: View {
 }
 
 #if DEBUG
-struct FlowerCareDataGraph_Previews: PreviewProvider {
+struct HousePlantsDataGraph_Previews: PreviewProvider {
 
-    static func chartData() -> FlowerCareData {
-        let flowerCareData: FlowerCareData = FlowerCareData()
+    static func chartData() -> HousePlantsData {
+        let housePlantsData: HousePlantsData = HousePlantsData()
         var mockSensorDataItem = MockSensorDataItem()
-        flowerCareData.results = mockSensorDataItem.data!
-        return flowerCareData
+        housePlantsData.results = mockSensorDataItem.data!
+        return housePlantsData
     }
 
     static var previews: some View {
         ZStack {
             Color(#colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1))
                 .edgesIgnoringSafeArea(.all)
-            FlowerCareDataGraph(flowerCareData: chartData())
+            HousePlantsDataGraph(housePlantsData: chartData())
                 .environmentObject(StateSettings())
         }
     }

@@ -20,7 +20,7 @@ struct MainUIView: View {
                 if self.stateSettings.currentMenuItem == 0 { // garden
                     VStack {
                         VideoUIView()
-                        FlowerCareDataGraph()
+                      HousePlantsDataGraph()
                     }
                     .transition(AnyTransition.opacity.animation(.easeIn(duration: 0.5)))
                 }
@@ -39,7 +39,7 @@ struct MainUIView: View {
                                 .frame(width: 10)
                         }
                         Spacer()
-                        FlowerCareDataGraph()
+                        HousePlantsDataGraph()
                     }
                     .transition(AnyTransition.opacity.animation(.easeIn(duration: 0.5)))
                 }
@@ -59,7 +59,7 @@ struct MainUIView: View {
                         }
                         Spacer()
                         VideoUIView()
-                        FlowerCareDataGraph()
+                        HousePlantsDataGraph()
                     }
                     .transition(AnyTransition.opacity.animation(.easeIn(duration: 0.5)))
                 }
@@ -78,7 +78,7 @@ struct MainUIView: View {
                                 .frame(width: 10)
                         }
                         Spacer()
-                        FlowerCareDataGraph()
+                        HousePlantsDataGraph()
                     }
                     .transition(AnyTransition.opacity.animation(.easeIn(duration: 0.5)))
                 }

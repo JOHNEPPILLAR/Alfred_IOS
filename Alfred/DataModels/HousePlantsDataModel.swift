@@ -34,15 +34,15 @@ struct SensorDataItem: Codable, Identifiable {
     let readings: [SensorReadingDataItem]
 }
 
-// MARK: - FlowerCareData class
-public class FlowerCareData: ObservableObject {
+// MARK: - HousePlantsData class
+public class HousePlantsData: ObservableObject {
     @Published var results: [SensorDataItem] = [SensorDataItem]()
 }
 
-// MARK: - FlowerCareData extension
-extension FlowerCareData {
+// MARK: - HousePlantsData extension
+extension HousePlantsData {
     func loadData(zone: String, duration: String) {
-        callAlfredService(from: "flowercare/sensors/zone/\(zone)?duration=\(duration)", httpMethod: "GET") { result in
+        callAlfredService(from: "houseplants/sensors/zone/\(zone)?duration=\(duration)", httpMethod: "GET") { result in
             switch result {
             case .success(let data):
                 do {
