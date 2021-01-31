@@ -10,52 +10,50 @@ import Foundation
 
 // MARK: - SensorReadingDataItem
 struct SensorReadingDataItem: Codable {
-    var id: String {
-        return time
-    }
-    let time: String
-    let battery: Double
-    let temperature: Double
-    let lux: Double
-    let moisture: Double
-    let fertility: Double
+  var id: String {
+    return time
+  }
+  let time: String
+  let battery: Double
+  let temperature: Double
+  let lux: Double
+  let moisture: Double
+  let fertility: Double
 }
 
 // MARK: - SensorDataItem
 struct SensorDataItem: Codable, Identifiable {
-    var id: Date {
-        return Date()
-    }
-    let device: String
-    let location: String
-    let plant: String
-    let zone: Int
-    let thresholdMoisture: Double
-    let readings: [SensorReadingDataItem]
+  var id: Date {
+    return Date()
+  }
+  let device: String
+  let location: String
+  let plant: String
+  let zone: Int
+  let thresholdMoisture: Double
+  let readings: [SensorReadingDataItem]
 }
 
 // MARK: - HousePlantsData class
 public class HousePlantsData: ObservableObject {
-    @Published var results: [SensorDataItem] = [SensorDataItem]()
+  @Published var results: [SensorDataItem] = [SensorDataItem]()
 }
 
 // MARK: - HousePlantsData extension
 extension HousePlantsData {
-    func loadData(zone: String, duration: String) {
-        callAlfredService(from: "houseplants/sensors/zone/\(zone)?duration=\(duration)", httpMethod: "GET") { result in
-            switch result {
-            case .success(let data):
-                do {
-                    let decodedData = try JSONDecoder().decode([SensorDataItem].self, from: data)
-                    DispatchQueue.main.async {
-                        self.results = decodedData
-                    }
-                } catch {
-                    print("☣️ JSONSerialization error:", error)
-                }
-            case .failure(let error):
-                print("☣️", error.localizedDescription)
-            }
+  func loadData(zone: String, duration: String) {
+    callAlfredService(from: "houseplants/sensors/zone/\(zone)?duration=\(duration)", httpMethod: "GET") { result in
+      switch result {
+      case .success(let data):
+        do {
+          let decodedData = try JSONDecoder().decode([SensorDataItem].self, from: data)
+          self.results = decodedData
+        } catch {
+          print("☣️ JSONSerialization error:", error)
         }
+      case .failure(let error):
+        print("☣️", error.localizedDescription)
+      }
     }
+  }
 }

@@ -11,21 +11,21 @@ import UIKit
 
 class SkyIconUIView: UIView {
 
-    fileprivate var type: String = ""
-    fileprivate var strokeColor = UIColor.black
-    fileprivate var timer: Timer!
+  fileprivate var type: String = ""
+  fileprivate var strokeColor = UIColor.black
+  fileprivate var timer: Timer!
 
-    let strokeWidth: CGFloat = 0.08
-    let twoPi = Double.pi * 2.0
-    let twoOverSqrtTwo = 2.0 / sqrt(2)
+  let strokeWidth: CGFloat = 0.08
+  let twoPi = Double.pi * 2.0
+  let twoOverSqrtTwo = 2.0 / sqrt(2)
 
-    struct SkyWindOffset {
-        var start: CGFloat?
-        var end: CGFloat?
-    }
+  struct SkyWindOffset {
+    var start: CGFloat?
+    var end: CGFloat?
+  }
 
-    let windPaths = [
-        [
+  let windPaths = [
+    [
             -0.7500, -0.1800, -0.7219, -0.1527, -0.6971, -0.1225,
             -0.6739, -0.0910, -0.6516, -0.0588, -0.6298, -0.0262,
             -0.6083,  0.0065, -0.5868,  0.0396, -0.5643,  0.0731,

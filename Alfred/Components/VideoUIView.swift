@@ -12,23 +12,23 @@ import ActivityIndicators
 
 struct AVPlayerView: UIViewControllerRepresentable {
 
-    @Binding var videoURL: URL?
+  @Binding var videoURL: URL?
 
-    private var player: AVPlayer {
-        return AVPlayer(url: videoURL!)
-    }
+  private var player: AVPlayer {
+    return AVPlayer(url: videoURL!)
+  }
 
-    func updateUIViewController(_ playerController: AVPlayerViewController, context: Context) {
-    }
+  func updateUIViewController(_ playerController: AVPlayerViewController, context: Context) {
+  }
 
-    func makeUIViewController(context: Context) -> AVPlayerViewController {
-      let playerController = AVPlayerViewController()
-      playerController.player = self.player
-      playerController.videoGravity = .resizeAspectFill
-      playerController.player?.preventsDisplaySleepDuringVideoPlayback = true
-      playerController.player?.play()
-      return playerController
-    }
+  func makeUIViewController(context: Context) -> AVPlayerViewController {
+    let playerController = AVPlayerViewController()
+    playerController.player = self.player
+    playerController.videoGravity = .resizeAspectFill
+    playerController.player?.preventsDisplaySleepDuringVideoPlayback = true
+    playerController.player?.play()
+    return playerController
+  }
 }
 
 struct VideoUIView: View {
@@ -58,10 +58,10 @@ struct VideoUIView: View {
             .onAppear {
               loading = false
             }
-          }
-            .padding(10)
-            .background(Color.black)
-            .cornerRadius(15)
+        }
+        .padding(10)
+        .background(Color.black)
+        .cornerRadius(15)
       } else if privacyStatus {
         VStack {
           Image(uiImage: UIImage(named: "cam_privacy")!)
@@ -73,9 +73,9 @@ struct VideoUIView: View {
               loading = false
             }
         }
-          .padding(10)
-          .background(Color.black)
-          .cornerRadius(15)
+        .padding(10)
+        .background(Color.black)
+        .cornerRadius(15)
       } else if videoReady {
         AVPlayerView(videoURL: $videoURL)
           .padding(10)
@@ -96,8 +96,8 @@ struct VideoUIView: View {
                 camImage = image!
                 loading = false
               }
-            }
-            .cornerRadius(10)
+          }
+          .cornerRadius(10)
 
           // swiftlint:disable multiple_closures_with_trailing_closure
           Button(action: {
@@ -115,35 +115,35 @@ struct VideoUIView: View {
                 .font(.system(size: 40))
             }
           }
-            .frame(width: 40, height: 40)
-            .cornerRadius(5)
+          .frame(width: 40, height: 40)
+          .cornerRadius(5)
         }
-          .onReceive(videoData.$apiError) { newStatus in
-            self.apiError = newStatus ?? false
-          }
-          .onReceive(videoData.$privacyStatus) { newStatus in
-            if !(newStatus == nil) {
-              self.privacyStatus = newStatus!
-                if !(newStatus!) {
-                  videoData.getImage(camera: stateSettings.camera)
-                }
-            }
-          }
-          .onReceive(videoData.$videoUrl) { videoUrl in
-            if !(videoUrl == nil) {
-              self.videoURL = videoUrl
-              self.videoReady = true
-            }
-          }
-          .padding(10)
-          .background(Color.black)
-          .cornerRadius(15)
+        .onReceive(videoData.$apiError) { newStatus in
+          self.apiError = newStatus ?? false
         }
+        .onReceive(videoData.$privacyStatus) { newStatus in
+          if !(newStatus == nil) {
+            self.privacyStatus = newStatus!
+              if !(newStatus!) {
+                videoData.getImage(camera: stateSettings.camera)
+              }
+          }
+        }
+        .onReceive(videoData.$videoUrl) { videoUrl in
+          if !(videoUrl == nil) {
+            self.videoURL = videoUrl
+            self.videoReady = true
+          }
+        }
+        .padding(10)
+        .background(Color.black)
+        .cornerRadius(15)
       }
-      .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 160)
-      .padding(.horizontal, 15)
-      .padding(.vertical, 5)
     }
+    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 160)
+    .padding(.horizontal, 15)
+    .padding(.vertical, 5)
+  }
 }
 
 #if DEBUG

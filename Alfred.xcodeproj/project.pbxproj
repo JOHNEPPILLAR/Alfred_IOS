@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A2E4A0825C5B12A00733CC2 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2E4A0725C5B12A00733CC2 /* Notifications.swift */; };
+		0A2E4A0D25C5C60D00733CC2 /* NotificationHeaderUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2E4A0C25C5C60D00733CC2 /* NotificationHeaderUIView.swift */; };
+		0A2E4A1825C6BC1500733CC2 /* NotificationUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2E4A1725C6BC1500733CC2 /* NotificationUIView.swift */; };
 		E804F99A24BCA5CC008CB851 /* LightSwitchUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E804F99924BCA5CC008CB851 /* LightSwitchUIView.swift */; };
 		E804F99C24BCDF60008CB851 /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E804F99B24BCDF60008CB851 /* CustomSlider.swift */; };
 		E84546F924EC3BB4002E7944 /* VideoDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84546F824EC3BB4002E7944 /* VideoDataModel.swift */; };
@@ -62,6 +65,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A2E4A0725C5B12A00733CC2 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		0A2E4A0C25C5C60D00733CC2 /* NotificationHeaderUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHeaderUIView.swift; sourceTree = "<group>"; };
+		0A2E4A1725C6BC1500733CC2 /* NotificationUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationUIView.swift; sourceTree = "<group>"; };
 		E804F99924BCA5CC008CB851 /* LightSwitchUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightSwitchUIView.swift; sourceTree = "<group>"; };
 		E804F99B24BCDF60008CB851 /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 		E82F87832475C1EF009B6040 /* Alfred.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Alfred.entitlements; sourceTree = "<group>"; };
@@ -144,6 +150,7 @@
 				E89A8AA224C3997C00242F6F /* LightDataModel.swift */,
 				E84546F824EC3BB4002E7944 /* VideoDataModel.swift */,
 				E850E15D2544A61B00F6C8AA /* HeatingDataModel.swift */,
+				0A2E4A0725C5B12A00733CC2 /* Notifications.swift */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -261,6 +268,8 @@
 				E8644CA524BB2D65003A0202 /* RoomTempUIView.swift */,
 				E804F99924BCA5CC008CB851 /* LightSwitchUIView.swift */,
 				E84546FA24EC3C01002E7944 /* VideoUIView.swift */,
+				0A2E4A0C25C5C60D00733CC2 /* NotificationHeaderUIView.swift */,
+				0A2E4A1725C6BC1500733CC2 /* NotificationUIView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -453,8 +462,10 @@
 				E87E9AE324B2148F009129F3 /* GardenSensorChartUIView.swift in Sources */,
 				E8ED96FE24826DAC00B90B80 /* PingDataModel.swift in Sources */,
 				E88AFD9924937F7F0090ACE9 /* LineChartUIView.swift in Sources */,
+				0A2E4A0825C5B12A00733CC2 /* Notifications.swift in Sources */,
 				E850E15E2544A61B00F6C8AA /* HeatingDataModel.swift in Sources */,
 				E89A8AA324C3997C00242F6F /* LightDataModel.swift in Sources */,
+				0A2E4A1825C6BC1500733CC2 /* NotificationUIView.swift in Sources */,
 				E8ED970F2484088E00B90B80 /* MenuDataModel.swift in Sources */,
 				E8ED97002482755A00B90B80 /* Helper.swift in Sources */,
 				E88AFD9F249671EE0090ACE9 /* SensorDataItem.swift in Sources */,
@@ -467,6 +478,7 @@
 				E84546FB24EC3C01002E7944 /* VideoUIView.swift in Sources */,
 				E85E591B2489781700411BEA /* CurrentWeatherDataModel.swift in Sources */,
 				E85F64E8256160DD0056984B /* AlfredApp.swift in Sources */,
+				0A2E4A0D25C5C60D00733CC2 /* NotificationHeaderUIView.swift in Sources */,
 				E88AFD942492CF9D0090ACE9 /* HousePlantsDataModel.swift in Sources */,
 				E804F99C24BCDF60008CB851 /* CustomSlider.swift in Sources */,
 				E804F99A24BCA5CC008CB851 /* LightSwitchUIView.swift in Sources */,

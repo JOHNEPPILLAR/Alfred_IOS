@@ -10,27 +10,28 @@ import SwiftUI
 
 struct HeaderUIView: View {
 
-    var body: some View {
-        VStack {
-            Spacer()
-            SummaryUIView()
-            Spacer()
-            MenuUIView()
-        }.frame(height: 140)
+  var body: some View {
+    VStack {
+      Spacer()
+      SummaryUIView()
+      Spacer()
+      MenuUIView()
     }
+    .frame(height: 140)
+  }
 }
 
 #if DEBUG
 struct HeaderUIView_Previews: PreviewProvider {
-    static var previews: some View {
-        ZStack {
-            Color(#colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1))
-                .edgesIgnoringSafeArea(.all)
-            HeaderUIView().environmentObject(StateSettings())
-        }
-        .previewLayout(
-            .fixed(width: 414, height: 160)
-        )
+  static var previews: some View {
+    ZStack {
+      Color(#colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1))
+        .edgesIgnoringSafeArea(.all)
+      HeaderUIView().environmentObject(StateSettings())
     }
+    .previewLayout(
+      .fixed(width: 414, height: 160)
+    )
+  }
 }
 #endif

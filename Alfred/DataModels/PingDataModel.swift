@@ -25,41 +25,35 @@ class PingData: ObservableObject {
     @Published var pingError: Bool = false
 
     private var results = PingDataItem() {
-        didSet {
-            if self.results.error != nil {
-                pingError = true
-            }
+      didSet {
+        if self.results.error != nil {
+          pingError = true
         }
+      }
     }
 
     init() {
-        loadData()
+      loadData()
     }
 }
 
 // MARK: - PingData extension
 extension PingData {
-    func loadData() {
-        callAlfredService(from: "health/ping", httpMethod: "GET") { result in
-            switch result {
-            case .success(let data):
-                do {
-                    let decodedData = try JSONDecoder().decode(PingDataItem.self, from: data)
-                    DispatchQueue.main.async {
-                        self.results = decodedData
-                    }
-                } catch {
-                    print("JSONSerialization error:", error)
-                    DispatchQueue.main.async {
-                        self.pingError = true
-                    }
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
-                DispatchQueue.main.async {
-                    self.pingError = true
-                }
-            }
+  func loadData() {
+    callAlfredService(from: "health/ping", httpMethod: "GET") { result in
+      switch result {
+      case .success(let data):
+        do {
+          let decodedData = try JSONDecoder().decode(PingDataItem.self, from: data)
+          self.results = decodedData
+        } catch {
+          print("JSONSerialization error:", error)
+          self.pingError = true
         }
+      case .failure(let error):
+        print(error.localizedDescription)
+        self.pingError = true
+      }
     }
+  }
 }
