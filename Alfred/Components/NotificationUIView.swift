@@ -19,27 +19,25 @@ struct NotificationUIView: View {
     }
   }
 
-  init() {
-    UITableView.appearance().backgroundColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)
-  }
-
   var body: some View {
     VStack {
-        HStack {
-          Spacer()
-          Image(systemName: "xmark.circle")
-            .foregroundColor(.white)
-            .font(.system(size: 26))
-            .onTapGesture {
-              presentationMode.wrappedValue.dismiss()
-            }
+      HStack {
+        Spacer()
+        Image(systemName: "xmark.circle")
+          .foregroundColor(.white)
+          .font(.system(size: 26))
+          .onTapGesture {
+            presentationMode.wrappedValue.dismiss()
+          }
         }
         .padding(10)
         .frame(maxWidth: .infinity, maxHeight: 30)
-        List {
+      HStack {
+        ScrollView {
           ForEach(notificationData.results, id: \.id) { notification in
             ZStack {
               RoundedRectangle(cornerRadius: 15, style: .continuous)
+                .foregroundColor(Color(.black))
               HStack {
                 Text(notification.notification ?? "")
                   .foregroundColor(.white)
@@ -51,10 +49,10 @@ struct NotificationUIView: View {
           .onDelete(perform: removeRow)
           .listRowBackground(Color(#colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)))
         }
-        .frame(height: 750)
+      }
+      .frame(height: 750)
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity)
-    .background(Color(#colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)))
     .edgesIgnoringSafeArea(.all)
   }
 }

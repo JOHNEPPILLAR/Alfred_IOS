@@ -13,7 +13,7 @@ struct NotificationHeaderUIView: View {
   @ObservedObject var notificationData: NotificationData = NotificationData()
   @State private var isPresented = false
 
-  private var buttonFillColor = Color(UIColor.red)
+  private var buttonFillColor = Color(.systemRed)
 
   var body: some View {
     VStack {
