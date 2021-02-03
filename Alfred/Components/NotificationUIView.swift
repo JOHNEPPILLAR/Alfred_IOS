@@ -10,6 +10,10 @@ import SwiftUI
 
 struct NotificationUIView: View {
 
+  init() {
+    UITableView.appearance().backgroundColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)
+  }
+
   @Environment(\.presentationMode) var presentationMode
   @ObservedObject var notificationData: NotificationData = NotificationData()
 
@@ -33,7 +37,7 @@ struct NotificationUIView: View {
         .padding(10)
         .frame(maxWidth: .infinity, maxHeight: 30)
       HStack {
-        ScrollView {
+        List {
           ForEach(notificationData.results, id: \.id) { notification in
             ZStack {
               RoundedRectangle(cornerRadius: 15, style: .continuous)
@@ -52,8 +56,9 @@ struct NotificationUIView: View {
       }
       .frame(height: 750)
     }
-    .frame(maxWidth: .infinity, maxHeight: .infinity)
+    .background(Color(#colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)))
     .edgesIgnoringSafeArea(.all)
+    .frame(maxWidth: .infinity, maxHeight: .infinity)
   }
 }
 
