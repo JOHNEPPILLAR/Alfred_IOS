@@ -13,7 +13,9 @@ struct NotificationHeaderUIView: View {
   @ObservedObject var notificationData: NotificationData = NotificationData()
   @State private var isPresented = false
 
-  private var buttonFillColor = Color(.systemRed)
+  init() {
+    self.notificationData.loadData()
+  }
 
   var body: some View {
     VStack {
@@ -24,7 +26,7 @@ struct NotificationHeaderUIView: View {
         }) {
           Text("Notifications")
             .frame(width: 100, height: 30)
-            .background(buttonFillColor)
+            .background(Color(#colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)))
             .font(.system(size: 16))
             .fixedSize(horizontal: true, vertical: true)
             .cornerRadius(10)
@@ -33,9 +35,6 @@ struct NotificationHeaderUIView: View {
         }
         .fullScreenCover(isPresented: $isPresented, content: NotificationUIView.init)
       }
-    }
-    .onAppear {
-      self.notificationData.loadData()
     }
   }
 }

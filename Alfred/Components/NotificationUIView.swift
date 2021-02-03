@@ -24,19 +24,21 @@ struct NotificationUIView: View {
   }
 
   var body: some View {
-    VStack {
-      HStack {
-        Spacer()
-        Image(systemName: "xmark.circle")
-          .foregroundColor(.white)
-          .font(.system(size: 26))
-          .onTapGesture {
-            presentationMode.wrappedValue.dismiss()
+    ZStack {
+      Color(#colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1))
+        .edgesIgnoringSafeArea(.all)
+      VStack {
+        HStack {
+          Spacer()
+          Image(systemName: "xmark.circle")
+            .foregroundColor(.white)
+            .font(.system(size: 26))
+            .onTapGesture {
+              presentationMode.wrappedValue.dismiss()
           }
         }
-        .padding(10)
+        .padding(15)
         .frame(maxWidth: .infinity, maxHeight: 30)
-      HStack {
         List {
           ForEach(notificationData.results, id: \.id) { notification in
             ZStack {
@@ -53,12 +55,9 @@ struct NotificationUIView: View {
           .onDelete(perform: removeRow)
           .listRowBackground(Color(#colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)))
         }
+        .frame(height: 750)
       }
-      .frame(height: 750)
     }
-    .background(Color(#colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)))
-    .edgesIgnoringSafeArea(.all)
-    .frame(maxWidth: .infinity, maxHeight: .infinity)
   }
 }
 
@@ -68,6 +67,7 @@ struct NotificationUIView_Previews: PreviewProvider {
       Color(#colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1))
         .edgesIgnoringSafeArea(.all)
       NotificationUIView()
+        .environment(\.colorScheme, .dark)
     }
   }
 }
