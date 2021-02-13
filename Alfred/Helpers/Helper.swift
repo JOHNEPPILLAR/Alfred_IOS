@@ -123,8 +123,8 @@ func callAlfredService(from url: String, httpMethod: String, body: Data? = nil, 
   }
 }
 
-// MARK: - videoURL
-func videoURL(url: String) throws -> (URL?) {
+// MARK: - getVideoURL
+func getVideoURL(url: String) throws -> (URL?) {
   #if DEBUG
   let baseURL = readPlist(item: "BaseURL")
   // let baseURL = readPlist(item: "BaseURL_Local")

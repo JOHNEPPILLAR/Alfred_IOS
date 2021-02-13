@@ -44,7 +44,7 @@ struct VideoUIView: View {
   @State private var videoReady: Bool = false
   @State private var videoURL: URL!
 
-  private let player = AVPlayer()
+  // private let player = AVPlayer()
 
   var body: some View {
     VStack {
@@ -151,7 +151,7 @@ struct VideoUIView_Previews: PreviewProvider {
 
   static var previews: some View {
     let stateSettings = StateSettings()
-    stateSettings.currentMenuItem = 0
+    stateSettings.currentMenuItem = 1
 
     return ZStack {
       Color(#colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1))

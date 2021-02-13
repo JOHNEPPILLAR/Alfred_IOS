@@ -41,7 +41,7 @@ public class VideoData: ObservableObject {
   private var videoDataItem: VideoDataItem = VideoDataItem() {
     didSet {
       do {
-        videoUrl = try videoURL(url: videoDataItem.stream ?? "")
+        videoUrl = try getVideoURL(url: videoDataItem.stream ?? "")
       } catch {
         print("☣️", error.localizedDescription)
         self.apiError = true
