@@ -42,16 +42,7 @@ public class NotificationData: ObservableObject {
 
   private var saved: NotificationSaveDataItem = NotificationSaveDataItem() {
     didSet {
-      if saved.state == "saved" {
-        UNUserNotificationCenter.current().requestAuthorization(options: .badge) { (_, error) in
-          if error != nil {
-            if UIApplication.shared.applicationIconBadgeNumber > 1 {
-              UIApplication.shared.applicationIconBadgeNumber -= 1
-            }
-          }
-        }
-        self.loadData()
-      }
+      self.loadData()
     }
   }
 
@@ -69,9 +60,11 @@ extension NotificationData {
         do {
           let decodedData = try JSONDecoder().decode([NotificationDataItem].self, from: data)
           self.results = decodedData
-          UNUserNotificationCenter.current().requestAuthorization(options: .badge) { (_, error) in
-            if error != nil {
-              UIApplication.shared.applicationIconBadgeNumber = self.results.count
+          UNUserNotificationCenter.current().requestAuthorization(options: [.badge]) { (granted, _) in
+            if granted {
+              DispatchQueue.main.async {
+                UIApplication.shared.applicationIconBadgeNumber = self.results.count
+              }
             }
           }
         } catch {

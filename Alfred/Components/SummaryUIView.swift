@@ -32,7 +32,13 @@ struct WeatherIconUIView: UIViewRepresentable {
 }
 
 struct AirQualityUIView: View {
+
   @ObservedObject var houseSensorData: HouseSensorData = HouseSensorData()
+
+  init() {
+    self.houseSensorData.loadData(menuItem: -1)
+  }
+
   var body: some View {
     VStack {
       Text("Air")
@@ -49,14 +55,17 @@ struct AirQualityUIView: View {
     .frame(width: 80, height: 100)
     .background(Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)))
     .cornerRadius(10)
-    .onAppear {
-      self.houseSensorData.loadData(menuItem: -1)
-    }
   }
 }
 
 struct WeatherUIView: View {
+
   @ObservedObject var currentWeatherData: CurrentWeatherData = CurrentWeatherData()
+
+  init() {
+    self.currentWeatherData.loadData()
+  }
+
   var body: some View {
     VStack {
       Text("Weather")
@@ -75,9 +84,6 @@ struct WeatherUIView: View {
     .frame(width: 80, height: 100)
     .background(Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)))
     .cornerRadius(10)
-    .onAppear {
-      self.currentWeatherData.loadData()
-    }
   }
 }
 
@@ -103,7 +109,9 @@ struct PlantsUIView: View {
 }
 
 struct HeatingUIView: View {
+
   @ObservedObject var heatingData: HeatingData = HeatingData()
+
   var body: some View {
     VStack {
       Text("Heating")

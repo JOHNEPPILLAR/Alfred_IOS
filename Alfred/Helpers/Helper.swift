@@ -50,14 +50,24 @@ func readPlist(item: String) -> String {
 
 // MARK: - setAlfredRequestHeaders
 func setAlfredRequestHeaders(url: String, httpMethod: String, body: Data? = nil) throws -> (URLRequest?) {
-  #if DEBUG
-  let baseURL = readPlist(item: "BaseURL")
+  // #if DEBUG
   // let baseURL = readPlist(item: "BaseURL_Local")
-  #else
+  // #else
   let baseURL = readPlist(item: "BaseURL")
-  #endif
+  // #endif
 
-  guard let apiURL = URL(string: baseURL + "/" + url) else {
+  let urlString = baseURL + "/" + url
+
+  /*
+  #if DEBUG
+  if urlString.contains("hls/") {
+    urlString = readPlist(item: "BaseURL_Local") + "/"
+    + urlString.replacingOccurrences(of: readPlist(item: "BaseURL") + "/hls/", with: "")
+  }
+  #endif
+  */
+
+  guard let apiURL = URL(string: urlString) else {
       print("Invalid URL: \(baseURL + "/" + url)")
       throw NetworkError.badURL
   }
@@ -125,15 +135,17 @@ func callAlfredService(from url: String, httpMethod: String, body: Data? = nil, 
 
 // MARK: - getVideoURL
 func getVideoURL(url: String) throws -> (URL?) {
-  #if DEBUG
-  let baseURL = readPlist(item: "BaseURL")
-  // let baseURL = readPlist(item: "BaseURL_Local")
-  #else
-  let baseURL = readPlist(item: "BaseURL")
-  #endif
-
   let accessKey = readPlist(item: "AccessKey")
-  guard let returnURL = URL(string: "\(baseURL)/hls/stream/\(url)?clientaccesskey=\(accessKey)") else {
+
+  // #if DEBUG
+  // let baseURL = readPlist(item: "BaseURL_Local")
+  // let urlString = "\(baseURL)/stream/\(url)?clientaccesskey=\(accessKey)"
+  // #else
+  let baseURL = readPlist(item: "BaseURL")
+  let urlString = "\(baseURL)/hls/stream/\(url)?clientaccesskey=\(accessKey)"
+  // #endif
+
+  guard let returnURL = URL(string: urlString) else {
     print("Invalid URL: \(baseURL + "/" + url)")
     throw NetworkError.badURL
   }

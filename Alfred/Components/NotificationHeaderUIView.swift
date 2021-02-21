@@ -11,6 +11,7 @@ import SwiftUI
 struct NotificationHeaderUIView: View {
 
   @ObservedObject var notificationData: NotificationData = NotificationData()
+  @State private var shpwNotifications = false
   @State private var isPresented = false
 
   init() {
@@ -19,7 +20,7 @@ struct NotificationHeaderUIView: View {
 
   var body: some View {
     VStack {
-      if self.notificationData.results.count > 0 {
+      if shpwNotifications {
         // swiftlint:disable multiple_closures_with_trailing_closure
         Button(action: {
           self.isPresented.toggle()
@@ -34,6 +35,11 @@ struct NotificationHeaderUIView: View {
             .padding(10)
         }
         .fullScreenCover(isPresented: $isPresented, content: NotificationUIView.init)
+      }
+    }
+    .onReceive(notificationData.$results) { results in
+      if results.count > 0 {
+        self.shpwNotifications = true
       }
     }
   }
