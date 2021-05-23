@@ -132,9 +132,9 @@ extension HouseSensorData {
         self.cancellationToken = Publishers.Zip(netatmo, dyson)
         .receive(on: DispatchQueue.main)
         .eraseToAnyPublisher()
-        .catch { _ in
-          Just(([], []))
-        }
+        // .catch { _ in
+        //   Just(([], []))
+        // }
         .sink(receiveValue: { netatmoDataItems, dysonDataItems in
           self.netatmoData = netatmoDataItems
           self.dysonData = dysonDataItems

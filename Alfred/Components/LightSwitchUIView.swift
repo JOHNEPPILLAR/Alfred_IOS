@@ -37,7 +37,7 @@ struct LightSwitchUIView: View {
         .font(.system(size: 46.0))
         .foregroundColor(self.lightGroupData.lightColor)
         .onAppear {
-          self.lightGroupData.loadData(lightGroupID: self.stateSettings.lightGroupID)
+          self.lightGroupData.loadData(lightGroupID: Int(self.stateSettings.zone) ?? 0)
         }
         .onDisappear {
           self.lightGroupData.stopTimer()

@@ -1,28 +1,28 @@
 //
-//  FlowerCareDataGraph.swift
+//  GardenPlantsDataGraph.swift
 //  Alfred
 //
-//  Created by John Pillar on 11/06/2020.
-//  Copyright © 2020 John Pillar. All rights reserved.
+//  Created by John Pillar on 22/05/2021.
+//  Copyright © 2021 John Pillar. All rights reserved.
 //
 
 import SwiftUI
 
-struct HousePlantsDataGraph: View {
+struct GardenPlantsDataGraph: View {
 
   @EnvironmentObject var stateSettings: StateSettings
-  @ObservedObject var housePlantsData: PlantsData = PlantsData()
+  @ObservedObject var gardenPlantsData: PlantsData = PlantsData()
 
   var body: some View {
     ScrollView(.vertical, showsIndicators: false) {
       VStack {
-        ForEach(self.housePlantsData.results) { sensor in
+        ForEach(self.gardenPlantsData.results) { sensor in
           PlantSensorChartUIView(plantSensorData: sensor)
         }
       }
       .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
       .onAppear {
-        self.housePlantsData.loadHousePlantData(
+        self.gardenPlantsData.loadGardenPlantData(
           zone: self.stateSettings.zone,
           duration: self.stateSettings.plantGraphDuration
         )
@@ -32,20 +32,20 @@ struct HousePlantsDataGraph: View {
 }
 
 #if DEBUG
-struct HousePlantsDataGraph_Previews: PreviewProvider {
+struct GardenPlantsDataGraph_Previews: PreviewProvider {
 
   static func chartData() -> PlantsData {
-    let housePlantsData: PlantsData = PlantsData()
+    let gardenPlantsData: PlantsData = PlantsData()
     var mockHousePlantSensorDataItem = MockPlantSensorDataItem()
-    housePlantsData.results = mockHousePlantSensorDataItem.data!
-    return housePlantsData
+    gardenPlantsData.results = mockHousePlantSensorDataItem.data!
+    return gardenPlantsData
   }
 
   static var previews: some View {
     ZStack {
       Color(#colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1))
         .edgesIgnoringSafeArea(.all)
-      HousePlantsDataGraph(housePlantsData: chartData())
+      GardenPlantsDataGraph(gardenPlantsData: chartData())
         .environmentObject(StateSettings())
     }
   }

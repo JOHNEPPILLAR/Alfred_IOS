@@ -11,37 +11,33 @@ import Foundation
 // MARK: - StateSettings class
 class StateSettings: ObservableObject {
   @Published var splashScreen: Bool = true
-  @Published var flowerCareZone: String = "1,2"
-  @Published var flowerCareDuration: String = "day"
-  @Published var lightGroupID: Int = 0
+  @Published var zone: String = "0"
+  @Published var plantGraphDuration: String = "day"
   @Published var tpLinkRoom: String = ""
   @Published var camera: String = "garden"
   @Published var currentMenuItem: Int = 0 {
     didSet {
       switch currentMenuItem {
       case 0: // Garden
-        flowerCareZone = "1,2"
+        zone = "20,21,22,23"
         camera = "garden"
         tpLinkRoom = ""
       case 1: // Office
-        flowerCareZone = "3"
-        lightGroupID = 12
+        zone = "12"
         tpLinkRoom = "office"
       case 2: // Living room
-        flowerCareZone = "5"
-        lightGroupID = 8
+        zone = "8"
         camera = "livingroom"
         tpLinkRoom = "livingroom"
       case 3: // Master bedroom
-        flowerCareZone = "4"
-        lightGroupID = 5
+        zone = "5"
         tpLinkRoom = "master bedroom"
       case 4: // Kids bedroom
-        lightGroupID = 4
+        zone = "4"
         camera = "kids"
         tpLinkRoom = "kids"
       case 5: // Kitchen
-        lightGroupID = 9
+        zone = "9"
         tpLinkRoom = "kitchen"
       default:
         return

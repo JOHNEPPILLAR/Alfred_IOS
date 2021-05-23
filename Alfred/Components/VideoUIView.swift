@@ -62,7 +62,8 @@ struct VideoUIView: View {
         .padding(10)
         .background(Color.black)
         .cornerRadius(15)
-      } else if privacyStatus {
+      /*
+        } else if privacyStatus {
         VStack {
           Image(uiImage: UIImage(named: "cam_privacy")!)
             .resizable()
@@ -75,7 +76,7 @@ struct VideoUIView: View {
         }
         .padding(10)
         .background(Color.black)
-        .cornerRadius(15)
+        .cornerRadius(15)*/
       } else if videoReady {
         AVPlayerView(videoURL: $videoURL)
           .padding(10)
@@ -89,7 +90,7 @@ struct VideoUIView: View {
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
             .onAppear {
               loading = true
-              videoData.getPrivacyStatus(camera: stateSettings.camera)
+              // videoData.getPrivacyStatus(camera: stateSettings.camera)
             }
             .onReceive(videoData.$image) { image in
               if !(image == nil) {
@@ -151,7 +152,7 @@ struct VideoUIView_Previews: PreviewProvider {
 
   static var previews: some View {
     let stateSettings = StateSettings()
-    stateSettings.currentMenuItem = 1
+    stateSettings.currentMenuItem = 4
 
     return ZStack {
       Color(#colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1))

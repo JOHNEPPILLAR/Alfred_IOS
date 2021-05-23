@@ -10,6 +10,7 @@
 		0A2E4A0825C5B12A00733CC2 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2E4A0725C5B12A00733CC2 /* Notifications.swift */; };
 		0A2E4A0D25C5C60D00733CC2 /* NotificationHeaderUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2E4A0C25C5C60D00733CC2 /* NotificationHeaderUIView.swift */; };
 		0A2E4A1825C6BC1500733CC2 /* NotificationUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2E4A1725C6BC1500733CC2 /* NotificationUIView.swift */; };
+		0A64F66126591B1A005F071E /* GardenPlantsDataGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A64F66026591B1A005F071E /* GardenPlantsDataGraph.swift */; };
 		E804F99A24BCA5CC008CB851 /* LightSwitchUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E804F99924BCA5CC008CB851 /* LightSwitchUIView.swift */; };
 		E804F99C24BCDF60008CB851 /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E804F99B24BCDF60008CB851 /* CustomSlider.swift */; };
 		E84546F924EC3BB4002E7944 /* VideoDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84546F824EC3BB4002E7944 /* VideoDataModel.swift */; };
@@ -26,14 +27,14 @@
 		E873D3822475A54B0072DAEB /* AlfredUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E873D3812475A54B0072DAEB /* AlfredUITests.swift */; };
 		E87E9AC024B09E10009129F3 /* mockFlowerCareData.json in Resources */ = {isa = PBXBuildFile; fileRef = E87E9ABF24B09E10009129F3 /* mockFlowerCareData.json */; };
 		E87E9AE124B0C39E009129F3 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = E87E9AE024B0C39E009129F3 /* Charts */; };
-		E87E9AE324B2148F009129F3 /* GardenSensorChartUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87E9AE224B2148F009129F3 /* GardenSensorChartUIView.swift */; };
+		E87E9AE324B2148F009129F3 /* PlanrSensorChartUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87E9AE224B2148F009129F3 /* PlanrSensorChartUIView.swift */; };
 		E87F4342248BDDF300807222 /* SummaryUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87F4341248BDDF300807222 /* SummaryUIView.swift */; };
 		E87F4345248C167500807222 /* HouseSensorsDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87F4344248C167500807222 /* HouseSensorsDataModel.swift */; };
 		E87F434B248CE22300807222 /* SkyIconUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87F434A248CE22300807222 /* SkyIconUIView.swift */; };
 		E883B34824B5200500805209 /* StateSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E883B34724B5200500805209 /* StateSettings.swift */; };
 		E88AFD8E249271FE0090ACE9 /* NeedsWaterDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88AFD8D249271FE0090ACE9 /* NeedsWaterDataModel.swift */; };
 		E88AFD922492CCED0090ACE9 /* HousePlantsDataGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88AFD912492CCED0090ACE9 /* HousePlantsDataGraph.swift */; };
-		E88AFD942492CF9D0090ACE9 /* HousePlantsDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88AFD932492CF9D0090ACE9 /* HousePlantsDataModel.swift */; };
+		E88AFD942492CF9D0090ACE9 /* PlantsDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88AFD932492CF9D0090ACE9 /* PlantsDataModel.swift */; };
 		E88AFD9924937F7F0090ACE9 /* LineChartUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88AFD9824937F7F0090ACE9 /* LineChartUIView.swift */; };
 		E88AFD9F249671EE0090ACE9 /* SensorDataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88AFD9E249671EE0090ACE9 /* SensorDataItem.swift */; };
 		E89A8AA324C3997C00242F6F /* LightDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89A8AA224C3997C00242F6F /* LightDataModel.swift */; };
@@ -68,6 +69,7 @@
 		0A2E4A0725C5B12A00733CC2 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		0A2E4A0C25C5C60D00733CC2 /* NotificationHeaderUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHeaderUIView.swift; sourceTree = "<group>"; };
 		0A2E4A1725C6BC1500733CC2 /* NotificationUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationUIView.swift; sourceTree = "<group>"; };
+		0A64F66026591B1A005F071E /* GardenPlantsDataGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenPlantsDataGraph.swift; sourceTree = "<group>"; };
 		E804F99924BCA5CC008CB851 /* LightSwitchUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightSwitchUIView.swift; sourceTree = "<group>"; };
 		E804F99B24BCDF60008CB851 /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 		E82F87832475C1EF009B6040 /* Alfred.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Alfred.entitlements; sourceTree = "<group>"; };
@@ -89,14 +91,14 @@
 		E873D3812475A54B0072DAEB /* AlfredUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlfredUITests.swift; sourceTree = "<group>"; };
 		E873D3832475A54B0072DAEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E87E9ABF24B09E10009129F3 /* mockFlowerCareData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mockFlowerCareData.json; sourceTree = "<group>"; };
-		E87E9AE224B2148F009129F3 /* GardenSensorChartUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenSensorChartUIView.swift; sourceTree = "<group>"; };
+		E87E9AE224B2148F009129F3 /* PlanrSensorChartUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanrSensorChartUIView.swift; sourceTree = "<group>"; };
 		E87F4341248BDDF300807222 /* SummaryUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryUIView.swift; sourceTree = "<group>"; };
 		E87F4344248C167500807222 /* HouseSensorsDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseSensorsDataModel.swift; sourceTree = "<group>"; };
 		E87F434A248CE22300807222 /* SkyIconUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyIconUIView.swift; sourceTree = "<group>"; };
 		E883B34724B5200500805209 /* StateSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateSettings.swift; sourceTree = "<group>"; };
 		E88AFD8D249271FE0090ACE9 /* NeedsWaterDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedsWaterDataModel.swift; sourceTree = "<group>"; };
 		E88AFD912492CCED0090ACE9 /* HousePlantsDataGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HousePlantsDataGraph.swift; sourceTree = "<group>"; };
-		E88AFD932492CF9D0090ACE9 /* HousePlantsDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HousePlantsDataModel.swift; sourceTree = "<group>"; };
+		E88AFD932492CF9D0090ACE9 /* PlantsDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsDataModel.swift; sourceTree = "<group>"; };
 		E88AFD9824937F7F0090ACE9 /* LineChartUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartUIView.swift; sourceTree = "<group>"; };
 		E88AFD9E249671EE0090ACE9 /* SensorDataItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorDataItem.swift; sourceTree = "<group>"; };
 		E89A8AA224C3997C00242F6F /* LightDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDataModel.swift; sourceTree = "<group>"; };
@@ -145,7 +147,7 @@
 				E8ED96FD24826DAC00B90B80 /* PingDataModel.swift */,
 				E87F4344248C167500807222 /* HouseSensorsDataModel.swift */,
 				E88AFD8D249271FE0090ACE9 /* NeedsWaterDataModel.swift */,
-				E88AFD932492CF9D0090ACE9 /* HousePlantsDataModel.swift */,
+				E88AFD932492CF9D0090ACE9 /* PlantsDataModel.swift */,
 				E883B34724B5200500805209 /* StateSettings.swift */,
 				E89A8AA224C3997C00242F6F /* LightDataModel.swift */,
 				E84546F824EC3BB4002E7944 /* VideoDataModel.swift */,
@@ -264,12 +266,13 @@
 				E8ED970C2483EDD300B90B80 /* MenuUIView.swift */,
 				E87F4341248BDDF300807222 /* SummaryUIView.swift */,
 				E88AFD912492CCED0090ACE9 /* HousePlantsDataGraph.swift */,
-				E87E9AE224B2148F009129F3 /* GardenSensorChartUIView.swift */,
+				E87E9AE224B2148F009129F3 /* PlanrSensorChartUIView.swift */,
 				E8644CA524BB2D65003A0202 /* RoomTempUIView.swift */,
 				E804F99924BCA5CC008CB851 /* LightSwitchUIView.swift */,
 				E84546FA24EC3C01002E7944 /* VideoUIView.swift */,
 				0A2E4A0C25C5C60D00733CC2 /* NotificationHeaderUIView.swift */,
 				0A2E4A1725C6BC1500733CC2 /* NotificationUIView.swift */,
+				0A64F66026591B1A005F071E /* GardenPlantsDataGraph.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -459,7 +462,7 @@
 				E87F4342248BDDF300807222 /* SummaryUIView.swift in Sources */,
 				E87F434B248CE22300807222 /* SkyIconUIView.swift in Sources */,
 				E88AFD8E249271FE0090ACE9 /* NeedsWaterDataModel.swift in Sources */,
-				E87E9AE324B2148F009129F3 /* GardenSensorChartUIView.swift in Sources */,
+				E87E9AE324B2148F009129F3 /* PlanrSensorChartUIView.swift in Sources */,
 				E8ED96FE24826DAC00B90B80 /* PingDataModel.swift in Sources */,
 				E88AFD9924937F7F0090ACE9 /* LineChartUIView.swift in Sources */,
 				0A2E4A0825C5B12A00733CC2 /* Notifications.swift in Sources */,
@@ -475,11 +478,12 @@
 				E883B34824B5200500805209 /* StateSettings.swift in Sources */,
 				E8ED97062483C2A100B90B80 /* MainUIView.swift in Sources */,
 				E8644CA624BB2D65003A0202 /* RoomTempUIView.swift in Sources */,
+				0A64F66126591B1A005F071E /* GardenPlantsDataGraph.swift in Sources */,
 				E84546FB24EC3C01002E7944 /* VideoUIView.swift in Sources */,
 				E85E591B2489781700411BEA /* CurrentWeatherDataModel.swift in Sources */,
 				E85F64E8256160DD0056984B /* AlfredApp.swift in Sources */,
 				0A2E4A0D25C5C60D00733CC2 /* NotificationHeaderUIView.swift in Sources */,
-				E88AFD942492CF9D0090ACE9 /* HousePlantsDataModel.swift in Sources */,
+				E88AFD942492CF9D0090ACE9 /* PlantsDataModel.swift in Sources */,
 				E804F99C24BCDF60008CB851 /* CustomSlider.swift in Sources */,
 				E804F99A24BCA5CC008CB851 /* LightSwitchUIView.swift in Sources */,
 				E87F4345248C167500807222 /* HouseSensorsDataModel.swift in Sources */,

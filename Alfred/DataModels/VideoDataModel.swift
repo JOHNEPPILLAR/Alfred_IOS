@@ -54,6 +54,8 @@ public class VideoData: ObservableObject {
 extension VideoData {
 
   @objc func getPrivacyStatus(camera: String) {
+    self.privacyStatus = false
+    /*
     callAlfredService(from: "hls/camera/\(camera)/privacystatus", httpMethod: "GET") { result in
       switch result {
       case .success(let data):
@@ -69,6 +71,7 @@ extension VideoData {
         self.apiError = true
       }
     }
+ */
   }
 
   @objc func getImage(camera: String) {

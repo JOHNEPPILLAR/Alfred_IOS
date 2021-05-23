@@ -96,22 +96,22 @@ struct LineChartUIView_Previews: PreviewProvider {
 
   static var arrayItem = 0
   static func chartDataMoisture () -> [Double] {
-    var mockSensorDataItem = MockSensorDataItem()
+    var mockSensorDataItem = MockPlantSensorDataItem()
     return (0..<(mockSensorDataItem.data?[arrayItem].readings.count)!).map { (item) in
-      return mockSensorDataItem.data![arrayItem].readings[item].moisture.rounded(.down)
+      return mockSensorDataItem.data![arrayItem].readings[item].moisture!.rounded(.down)
     }
   }
 
   static func chartDataBattery () -> [Double] {
-    var mockSensorDataItem = MockSensorDataItem()
+    var mockSensorDataItem = MockPlantSensorDataItem()
     return (0..<(mockSensorDataItem.data?[arrayItem].readings.count)!).map { (item) in
         return
-      Double(mockSensorDataItem.data![arrayItem].readings[item].battery).rounded(.down)
+      Double(mockSensorDataItem.data![arrayItem].readings[item].battery ?? 0).rounded(.down)
     }
   }
 
   static func chartDataThreshhold () -> Double {
-    var mockSensorDataItem = MockSensorDataItem()
+    var mockSensorDataItem = MockPlantSensorDataItem()
     return Double(mockSensorDataItem.data![arrayItem].thresholdMoisture)
   }
 
