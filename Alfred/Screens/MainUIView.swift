@@ -21,8 +21,6 @@ struct MainUIView: View {
         if self.stateSettings.currentMenuItem == 0 { // garden
           VStack {
             // VideoUIView()
-            HousePlantsDataGraph()
-              .frame(height: 200)
             GardenPlantsDataGraph()
             Spacer()
           }

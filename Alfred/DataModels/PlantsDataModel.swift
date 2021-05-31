@@ -58,12 +58,17 @@ extension PlantsData {
   }
 
   func loadGardenPlantData(zone: String, duration: String) {
+
+    // Load garden platns that use FlowerCare devices
+    loadHousePlantData(zone: zone, duration: duration)
+
+    // Load garden platns that use FlowerPower devices
     callAlfredService(from: "gardenplants/sensors/zone/\(zone)?duration=\(duration)", httpMethod: "GET") { result in
       switch result {
       case .success(let data):
         do {
           let decodedData = try JSONDecoder().decode([PlantSensorDataItem].self, from: data)
-          self.results = decodedData
+          self.results += decodedData
         } catch {
           print("☣️ JSONSerialization error:", error)
         }
