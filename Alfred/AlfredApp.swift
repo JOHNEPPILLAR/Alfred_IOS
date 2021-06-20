@@ -9,7 +9,20 @@
 import SwiftUI
 import UIKit
 
-class AppDelegate: NSObject, UIApplicationDelegate {
+@available(iOS 13.0, *)
+
+class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+
+}
+
+@available(iOS 13.0, *)
+func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
+
+}
+
+class AppDelegate: UIResponder, UIApplicationDelegate {
+  var window: UIWindow?
+
   // swiftlint:disable colon line_length
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
     registerForPushNotifications()

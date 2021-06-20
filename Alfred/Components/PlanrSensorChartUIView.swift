@@ -28,7 +28,7 @@ struct PlantSensorChartUIView: View {
 
   var body: some View {
     VStack {
-      VStack {
+      VStack(alignment: .leading, spacing: -5) {
         HStack {
           Text(self.plantSensorData.plant)
             .foregroundColor(.white)
@@ -44,7 +44,7 @@ struct PlantSensorChartUIView: View {
           secondLineData: self.chartDataBattery(data: self.plantSensorData.readings ),
           threshhold: Double(self.plantSensorData.thresholdMoisture)
         )
-        .frame(height: 140)
+        .frame(height: 90)
       }
       .padding(10)
       .background(Color.black)

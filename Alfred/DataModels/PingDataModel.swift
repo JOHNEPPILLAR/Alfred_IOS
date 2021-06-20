@@ -10,31 +10,23 @@ import Foundation
 
 // MARK: - PingDataItem
 struct PingDataItem: Codable {
-    let reply: String?
-    let error: String?
+  let reply: String?
+  let error: String?
 
-    init(reply: String? = nil, error: String? = nil) {
-        self.reply = reply
-        self.error = error
-    }
+  init(reply: String? = nil, error: String? = nil) {
+    self.reply = reply
+    self.error = error
+  }
 }
 
 // MARK: - PingData class
 class PingData: ObservableObject {
+  @Published var results = PingDataItem()
+  @Published var pingError: Bool = false
 
-    @Published var pingError: Bool = false
-
-    private var results = PingDataItem() {
-      didSet {
-        if self.results.error != nil {
-          pingError = true
-        }
-      }
-    }
-
-    init() {
-      loadData()
-    }
+  init() {
+    loadData()
+  }
 }
 
 // MARK: - PingData extension
@@ -50,8 +42,7 @@ extension PingData {
           print("JSONSerialization error:", error)
           self.pingError = true
         }
-      case .failure(let error):
-        print(error.localizedDescription)
+      case .failure(_):
         self.pingError = true
       }
     }

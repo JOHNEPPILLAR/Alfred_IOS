@@ -44,4 +44,8 @@ class StateSettings: ObservableObject {
       }
     }
   }
+
+  init() {
+    currentMenuItem = 0
+  }
 }

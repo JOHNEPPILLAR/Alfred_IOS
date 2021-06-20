@@ -21,6 +21,8 @@ struct NotificationUIView: View {
     for offset in offsets {
       notificationData.markAsRead(id: notificationData.results[offset].id!)
     }
+    let tmpCounter = notificationData.results.count - 1
+    if tmpCounter == 0 { presentationMode.wrappedValue.dismiss() }
   }
 
   var body: some View {
