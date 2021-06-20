@@ -39,7 +39,6 @@ struct NotificationDataItem: Codable {
 // MARK: - NotificationData class
 public class NotificationData: ObservableObject {
   @Published var results: [NotificationDataItem] = [NotificationDataItem]()
-  @Published var show: Bool = false
 
   private var saved: NotificationSaveDataItem = NotificationSaveDataItem() {
     didSet {
@@ -68,7 +67,6 @@ extension NotificationData {
               }
             }
           }
-          if self.results.count > 0 { self.show = true }
         } catch {
           print("☣️ JSONSerialization error:", error)
         }

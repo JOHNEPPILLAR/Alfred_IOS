@@ -59,7 +59,9 @@ extension HeatingData {
       case .success(let data):
         do {
           let decodedData = try JSONDecoder().decode([HeatingDataItem].self, from: data)
-          self.results = decodedData[0]
+          if decodedData.count > 0 {
+            self.results = decodedData[0]
+          }
         } catch {
           print("☣️ JSONSerialization error:", error)
         }

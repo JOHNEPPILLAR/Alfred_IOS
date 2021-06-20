@@ -11,8 +11,8 @@ import SwiftUI
 struct NotificationHeaderUIView: View {
 
   @ObservedObject var notificationData: NotificationData = NotificationData()
-  // @State private var showNotifications = false
   @State private var isPresented = false
+  @State private var showNotificationMsg = false
 
   init() {
     self.notificationData.loadData()
@@ -20,7 +20,7 @@ struct NotificationHeaderUIView: View {
 
   var body: some View {
     VStack {
-      if notificationData.show {
+      if showNotificationMsg {
         // swiftlint:disable multiple_closures_with_trailing_closure
         Button(action: {
           self.isPresented.toggle()
@@ -35,6 +35,13 @@ struct NotificationHeaderUIView: View {
             .padding(10)
         }
         .fullScreenCover(isPresented: $isPresented, content: NotificationUIView.init)
+      }
+    }
+    .onReceive(notificationData.$results) { data in
+      if data.count > 0 {
+        self.showNotificationMsg = true
+      } else {
+        self.showNotificationMsg = false
       }
     }
   }
